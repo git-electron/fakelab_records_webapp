@@ -20,7 +20,7 @@ TelegramData _$TelegramDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TelegramData {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
@@ -45,7 +45,7 @@ abstract class $TelegramDataCopyWith<$Res> {
       _$TelegramDataCopyWithImpl<$Res, TelegramData>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String? username,
       String? photoUrl,
       @JsonKey(name: 'first_name') String? name,
@@ -77,7 +77,7 @@ class _$TelegramDataCopyWithImpl<$Res, $Val extends TelegramData>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -107,7 +107,7 @@ abstract class _$$TelegramDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String? username,
       String? photoUrl,
       @JsonKey(name: 'first_name') String? name,
@@ -137,7 +137,7 @@ class __$$TelegramDataImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -172,7 +172,7 @@ class _$TelegramDataImpl implements _TelegramData {
       _$$TelegramDataImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   @JsonKey()
   final String? username;
@@ -228,7 +228,7 @@ class _$TelegramDataImpl implements _TelegramData {
 
 abstract class _TelegramData implements TelegramData {
   factory _TelegramData(
-      {required final String id,
+      {required final int id,
       final String? username,
       final String? photoUrl,
       @JsonKey(name: 'first_name') final String? name,
@@ -238,7 +238,7 @@ abstract class _TelegramData implements TelegramData {
       _$TelegramDataImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String? get username;
   @override

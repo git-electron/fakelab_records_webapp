@@ -8,7 +8,7 @@ part of 'telegram_data.dart';
 
 _$TelegramDataImpl _$$TelegramDataImplFromJson(Map<String, dynamic> json) =>
     _$TelegramDataImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       username: json['username'] as String? ?? '',
       photoUrl: json['photo_url'] as String? ?? '',
       name: json['first_name'] as String? ?? '',
