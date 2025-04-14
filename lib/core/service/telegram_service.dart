@@ -1,25 +1,36 @@
 import 'dart:convert';
-import 'package:flutter/widgets.dart';
 import 'dart:js' as js;
 
-class TelegramService {
-  Map<String, dynamic>? telegramData;
+import 'package:fakelab_records_webapp/core/constants/typedefs.dart';
+import 'package:fakelab_records_webapp/core/domain/models/telegram_data.dart';
+import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
 
-  void getTelegramData() {
-    telegramData = initTelegramWebApp();
-    if (telegramData != null) {
-      debugPrint('Telegram Data: $telegramData');
-    } else {
-      debugPrint('Telegram data is null. This app is opened outside telegram');
-    }
+@singleton
+class TelegramService {
+  TelegramService({required this.logger});
+
+  final Logger logger;
+
+  TelegramData? _data;
+  TelegramData? get data {
+    if (_data != null) return _data;
+
+    final Json? dataJson = initTelegramWebApp();
+    if (dataJson == null || dataJson.isEmpty) return null;
+
+    final TelegramData telegramData = TelegramData.fromJson(dataJson);
+    _data = telegramData;
+
+    return _data;
   }
 
-  // Function to initialize the Telegram WebApp
-  static Map<String, dynamic>? initTelegramWebApp() {
+  Json? initTelegramWebApp() {
+    if (kDebugMode) return TelegramData.debugData;
+
     final result = js.context.callMethod('initTelegramWebApp');
-    debugPrint("result: $result");
     if (result != null) {
-      // Convert JsObject to JSON string and then parse it to a Map
       String jsonString = js.context['JSON'].callMethod('stringify', [result]);
       return jsonDecode(jsonString);
     }
@@ -28,12 +39,12 @@ class TelegramService {
   }
 
   // Function to send data back to Telegram
-  static void sendTelegramData(String data) {
+  void sendTelegramData(String data) {
     js.context.callMethod('sendTelegramData', [data]);
   }
 
   // Function to control the MainButton in Telegram
-  static void setMainButton(String text, bool isVisible) {
+  void setMainButton(String text, bool isVisible) {
     js.context.callMethod('setMainButton', [text, isVisible]);
   }
 }
