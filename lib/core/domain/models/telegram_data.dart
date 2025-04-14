@@ -7,7 +7,7 @@ part 'telegram_data.g.dart';
 @freezed
 class TelegramData with _$TelegramData {
   factory TelegramData({
-    required String id,
+    required int id,
     @Default('') String? username,
     @Default('') String? photoUrl,
     @JsonKey(name: 'first_name') @Default('') String? name,
@@ -19,7 +19,7 @@ class TelegramData with _$TelegramData {
 
   static const Json debugData = {
     'user': {
-      'id': '265685890',
+      'id': 265685890,
       'first_name': 'Egorick',
       'last_name': null,
       'username': 'raimeeee',
