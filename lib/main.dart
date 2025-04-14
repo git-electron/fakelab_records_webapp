@@ -1,8 +1,12 @@
 import 'dart:async';
 
+import 'package:fakelab_records_webapp/core/service/telegram_service.dart';
 import 'package:flutter/material.dart';
 
+final TelegramService telegramService = TelegramService();
+
 void main() {
+  telegramService.getTelegramData();
   runApp(const MyApp());
 }
 
@@ -59,6 +63,15 @@ class _MyAppState extends State<MyApp> {
                 'Разрабатываем${'.' * dotCount}',
                 style: const TextStyle(
                   fontSize: 18,
+                  color: Colors.white70,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 50),
+              Text(
+                'TG data: ${telegramService.telegramData.toString()}',
+                style: const TextStyle(
+                  fontSize: 14,
                   color: Colors.white70,
                   fontWeight: FontWeight.w500,
                 ),
