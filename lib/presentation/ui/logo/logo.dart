@@ -17,8 +17,7 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      clipBehavior: Clip.none,
+    return DecoratedBox(
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
