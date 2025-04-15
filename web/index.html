@@ -25,6 +25,20 @@
       return null
     }
 
+    function getSafeAreaInset() {
+      if (window.Telegram) {
+        return Telegram.WebApp.safeAreaInset;
+      }
+      return null
+    }
+
+    function getContentSafeAreaInset() {
+      if (window.Telegram) {
+        return Telegram.WebApp.contentSafeAreaInset;
+      }
+      return null
+    }
+
     function setupTelegramWebApp(shouldForceFullscreen) {
       if (window.Telegram) {
         if (shouldForceFullscreen) Telegram.WebApp.requestFullscreen();

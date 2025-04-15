@@ -1,6 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram_wrapper.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_user_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreenGreetings extends StatelessWidget {
@@ -9,19 +9,18 @@ class HomeScreenGreetings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const Pad(all: 20),
-      child: TelegramWrapper(builder: (context, data) {
+      padding: const Pad(horizontal: 20),
+      child: TelegramUserWrapper(builder: (context, user) {
         return Text.rich(
           TextSpan(
             children: [
-              TextSpan(text: '[Platform: ${data.platform}] Привет, '),
+              const TextSpan(text: 'Привет, '),
               TextSpan(
-                text: data.user.firstName,
+                text: '${user.firstName}!',
                 style: context.styles.subtitle1.copyWith(
                   color: context.colors.white,
                 ),
               ),
-              const TextSpan(text: '!'),
             ],
           ),
           style: context.styles.subtitle1,

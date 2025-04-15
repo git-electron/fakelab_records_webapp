@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'dart:js' as js;
 
+import 'package:fakelab_records_webapp/core/constants/mock.dart';
 import 'package:fakelab_records_webapp/core/constants/types.dart';
+import 'package:fakelab_records_webapp/core/domain/models/telegram/safe_area_inset.dart';
 import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_data.dart';
+import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_meta.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
@@ -15,40 +18,47 @@ class TelegramService {
     initTelegramWebApp();
   }
 
-  void initTelegramWebApp() => js.context.callMethod('initTelegramWebApp');
+  void initTelegramWebApp() => _call('initTelegramWebApp');
 
   TelegramData? getTelegramData() {
-    final Json? userJson = tryOrNull(_getUserData);
-    final String? platform = tryOrNull(_getPlatform);
+    final TelegramUser? user = tryOrNull(_getUserData);
+    final TelegramMeta? meta = tryOrNull(_getMeta);
 
     final TelegramData? data = tryOrNull(
-      () => TelegramData(
-        user: TelegramUser.fromJson(userJson!),
-        platform: platform!,
-      ),
+      () => TelegramData(user: user!, meta: meta!),
     );
 
-    tryOrNull(() => _setupTelegramWebApp(false));
+    tryOrNull(() => _setupTelegramWebApp(data!.meta.isMobile));
     return data;
   }
 
-  Json? _getUserData() {
-    if (kDebugMode) return TelegramUser.debugMock;
+  TelegramUser? _getUserData() {
+    if (kDebugMode) return Mock.telegramUser;
 
-    final result = js.context.callMethod('getUserData');
-    if (result != null) {
-      String jsonString = js.context['JSON'].callMethod('stringify', [result]);
-      return jsonDecode(jsonString);
-    }
-    return null;
+    final Json userJson = _jsDecode(_call('getUserData'));
+    return tryOrNull(() => TelegramUser.fromJson(userJson));
   }
 
-  String? _getPlatform() {
-    final result = js.context.callMethod('getPlatform');
-    return result;
+  TelegramMeta? _getMeta() {
+    final String? platform = _call('getPlatform');
+    final Json inset = _jsDecode(_call('getSafeAreaInset'));
+    final Json contentInset = _jsDecode(_call('getContentSafeAreaInset'));
+
+    return tryOrNull(() => TelegramMeta(
+          platform: platform!,
+          safeAreaInset: SafeAreaInset.fromJson(inset),
+          contentSafeAreaInset: SafeAreaInset.fromJson(contentInset),
+        ));
   }
 
-  void _setupTelegramWebApp(bool shouldForceFullscreen) {
-    js.context.callMethod('setupTelegramWebApp', [shouldForceFullscreen]);
+  void _setupTelegramWebApp(bool shouldForceFullscreen) =>
+      _call('setupTelegramWebApp', [shouldForceFullscreen]);
+
+  dynamic _call(String method, [List<dynamic>? args]) =>
+      js.context.callMethod(method, args);
+
+  Json _jsDecode(dynamic value) {
+    String jsonString = js.context['JSON'].callMethod('stringify', [value]);
+    return jsonDecode(jsonString);
   }
 }

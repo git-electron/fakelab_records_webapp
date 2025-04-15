@@ -1,5 +1,7 @@
-import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'telegram_meta.dart';
+import 'telegram_user.dart';
 
 part 'telegram_data.freezed.dart';
 part 'telegram_data.g.dart';
@@ -8,7 +10,7 @@ part 'telegram_data.g.dart';
 class TelegramData with _$TelegramData {
   factory TelegramData({
     required TelegramUser user,
-    required String platform,
+    required TelegramMeta meta,
   }) = _TelegramData;
 
   factory TelegramData.fromJson(Map<String, dynamic> json) =>
