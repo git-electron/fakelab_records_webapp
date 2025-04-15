@@ -17,7 +17,7 @@ class _HomeScreenDebugInfoState extends State<HomeScreenDebugInfo> {
 
   @override
   Widget build(BuildContext context) {
-    final bool shouldDisplayInfo = !_isHidden;
+    final bool shouldDisplayInfo = !_isHidden; //TODO: add && kDebugMode
     if (!shouldDisplayInfo) return const SizedBox();
 
     return Padding(
