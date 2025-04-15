@@ -18,12 +18,14 @@ class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      clipBehavior: Clip.none,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
+            blurRadius: 100,
             offset: Offset(0, 20),
             color: Color(0xffFF8F8F),
-            blurRadius: 100,
+            blurStyle: BlurStyle.normal,
           ),
         ],
       ),
