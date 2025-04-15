@@ -24,7 +24,7 @@ class Logo extends StatelessWidget {
             blurRadius: 100,
             offset: Offset(0, 20),
             color: Color(0xffFF8F8F),
-            blurStyle: BlurStyle.normal,
+            blurStyle: BlurStyle.solid,
           ),
         ],
       ),
