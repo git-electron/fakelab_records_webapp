@@ -13,6 +13,7 @@ class TelegramService {
 
   TelegramData? getTelegramData() {
     final Json? dataJson = _initTelegramWebApp();
+    _setupTelegramWebApp();
     return tryOrNull(() => TelegramData.fromJson(dataJson!));
   }
 
@@ -25,5 +26,9 @@ class TelegramService {
       return jsonDecode(jsonString);
     }
     return null;
+  }
+
+  void _setupTelegramWebApp() {
+    js.context.callMethod('setupTelegramWebApp');
   }
 }
