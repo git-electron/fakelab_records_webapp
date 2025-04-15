@@ -3,6 +3,7 @@ import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/features/my_orders_horizontal_scroll/my_orders_horizontal_scroll.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,14 @@ class HomeScreenSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        LoyaltyCard(),
+        Padding(
+          padding: Pad(bottom: 20),
+          child: MyOrdersHorizontalScroll(),
+        ),
+        Padding(
+          padding: Pad(horizontal: 20),
+          child: LoyaltyCard(),
+        ),
       ],
     );
   }
@@ -27,7 +35,7 @@ class LoyaltyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Clickable(
-      end: .99,
+      end: .98,
       onTap: () {},
       child: AspectRatio(
         aspectRatio: 6.5 / 4,
@@ -74,7 +82,8 @@ class LoyaltyCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Text(1500.formatCurrency(), style: context.styles.title2),
+                    child: Text(1500.formatCurrency(),
+                        style: context.styles.title2),
                   ),
                   const Gap(15),
                   Container(
