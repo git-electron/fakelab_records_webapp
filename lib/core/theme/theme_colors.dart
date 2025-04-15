@@ -29,10 +29,21 @@ class _Colors {
 
   static const Color shadowColor = Color(0x40424242);
 
-  // Тени
   static const BoxShadow shadow = BoxShadow(
     color: shadowColor,
     offset: Offset(0, 4),
     blurRadius: 40,
   );
+
+  static const Color awaitingConfirmation = AppColors.awaitingConfirmation;
+
+  static const Color cancelled = AppColors.cancelled;
+
+  static const Color completed = AppColors.completed;
+
+  static const Color inProgress = AppColors.inProgress;
+
+  static const Color pending = AppColors.pending;
+
+  static const Color request = AppColors.request;
 }

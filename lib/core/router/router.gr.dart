@@ -10,7 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:fakelab_records_webapp/presentation/screens/home/home_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/home_screen.dart'
     as _i1;
 import 'package:fakelab_records_webapp/presentation/screens/unknown_source/unknown_source_screen.dart'
     as _i2;

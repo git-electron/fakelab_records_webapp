@@ -55,6 +55,7 @@ flutter_gen:
   colors:
     inputs:
       - assets/colors/colors.xml
+      - assets/colors/statuses/statuses.xml
     outputs:
       class_name: AppColors
 

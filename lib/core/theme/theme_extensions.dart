@@ -25,6 +25,7 @@ class Colors extends ThemeExtension<Colors> with _$ColorsTailorMixin {
     required this.shadowColor,
     required this.primaryGradient,
     required this.shadow,
+    required this.statuses,
   });
 
   @override
@@ -68,6 +69,39 @@ class Colors extends ThemeExtension<Colors> with _$ColorsTailorMixin {
 
   @override
   final BoxShadow shadow;
+
+  @override
+  final Statuses statuses;
+}
+
+@TailorMixin(themeGetter: ThemeGetter.onBuildContext)
+class Statuses extends ThemeExtension<Statuses> with _$StatusesTailorMixin {
+  const Statuses({
+    required this.awaitingConfirmation,
+    required this.cancelled,
+    required this.completed,
+    required this.inProgress,
+    required this.pending,
+    required this.request,
+  });
+
+  @override
+  final Color awaitingConfirmation;
+
+  @override
+  final Color cancelled;
+
+  @override
+  final Color completed;
+
+  @override
+  final Color inProgress;
+
+  @override
+  final Color pending;
+
+  @override
+  final Color request;
 }
 
 const Colors colors = Colors(
@@ -85,6 +119,14 @@ const Colors colors = Colors(
   shadowColor: _Colors.shadowColor,
   primaryGradient: _Colors.primaryGradient,
   shadow: _Colors.shadow,
+  statuses: Statuses(
+    awaitingConfirmation: _Colors.awaitingConfirmation,
+    cancelled: _Colors.cancelled,
+    completed: _Colors.completed,
+    inProgress: _Colors.inProgress,
+    pending: _Colors.pending,
+    request: _Colors.request,
+  ),
 );
 
 @TailorMixin(themeGetter: ThemeGetter.onBuildContext)

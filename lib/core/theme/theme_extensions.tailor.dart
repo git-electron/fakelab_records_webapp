@@ -24,6 +24,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
   Color get shadowColor;
   LinearGradient get primaryGradient;
   BoxShadow get shadow;
+  Statuses get statuses;
 
   @override
   Colors copyWith({
@@ -41,6 +42,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
     Color? shadowColor,
     LinearGradient? primaryGradient,
     BoxShadow? shadow,
+    Statuses? statuses,
   }) {
     return Colors(
       white: white ?? this.white,
@@ -57,6 +59,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
       shadowColor: shadowColor ?? this.shadowColor,
       primaryGradient: primaryGradient ?? this.primaryGradient,
       shadow: shadow ?? this.shadow,
+      statuses: statuses ?? this.statuses,
     );
   }
 
@@ -80,6 +83,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
       shadowColor: Color.lerp(shadowColor, other.shadowColor, t)!,
       primaryGradient: t < 0.5 ? primaryGradient : other.primaryGradient,
       shadow: t < 0.5 ? shadow : other.shadow,
+      statuses: statuses.lerp(other.statuses, t) as Statuses,
     );
   }
 
@@ -107,7 +111,8 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
                 .equals(shadowColor, other.shadowColor) &&
             const DeepCollectionEquality()
                 .equals(primaryGradient, other.primaryGradient) &&
-            const DeepCollectionEquality().equals(shadow, other.shadow));
+            const DeepCollectionEquality().equals(shadow, other.shadow) &&
+            const DeepCollectionEquality().equals(statuses, other.statuses));
   }
 
   @override
@@ -128,12 +133,87 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
       const DeepCollectionEquality().hash(shadowColor),
       const DeepCollectionEquality().hash(primaryGradient),
       const DeepCollectionEquality().hash(shadow),
+      const DeepCollectionEquality().hash(statuses),
     );
   }
 }
 
 extension ColorsBuildContext on BuildContext {
   Colors get colors => Theme.of(this).extension<Colors>()!;
+}
+
+mixin _$StatusesTailorMixin on ThemeExtension<Statuses> {
+  Color get awaitingConfirmation;
+  Color get cancelled;
+  Color get completed;
+  Color get inProgress;
+  Color get pending;
+  Color get request;
+
+  @override
+  Statuses copyWith({
+    Color? awaitingConfirmation,
+    Color? cancelled,
+    Color? completed,
+    Color? inProgress,
+    Color? pending,
+    Color? request,
+  }) {
+    return Statuses(
+      awaitingConfirmation: awaitingConfirmation ?? this.awaitingConfirmation,
+      cancelled: cancelled ?? this.cancelled,
+      completed: completed ?? this.completed,
+      inProgress: inProgress ?? this.inProgress,
+      pending: pending ?? this.pending,
+      request: request ?? this.request,
+    );
+  }
+
+  @override
+  Statuses lerp(covariant ThemeExtension<Statuses>? other, double t) {
+    if (other is! Statuses) return this as Statuses;
+    return Statuses(
+      awaitingConfirmation:
+          Color.lerp(awaitingConfirmation, other.awaitingConfirmation, t)!,
+      cancelled: Color.lerp(cancelled, other.cancelled, t)!,
+      completed: Color.lerp(completed, other.completed, t)!,
+      inProgress: Color.lerp(inProgress, other.inProgress, t)!,
+      pending: Color.lerp(pending, other.pending, t)!,
+      request: Color.lerp(request, other.request, t)!,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Statuses &&
+            const DeepCollectionEquality()
+                .equals(awaitingConfirmation, other.awaitingConfirmation) &&
+            const DeepCollectionEquality().equals(cancelled, other.cancelled) &&
+            const DeepCollectionEquality().equals(completed, other.completed) &&
+            const DeepCollectionEquality()
+                .equals(inProgress, other.inProgress) &&
+            const DeepCollectionEquality().equals(pending, other.pending) &&
+            const DeepCollectionEquality().equals(request, other.request));
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      runtimeType.hashCode,
+      const DeepCollectionEquality().hash(awaitingConfirmation),
+      const DeepCollectionEquality().hash(cancelled),
+      const DeepCollectionEquality().hash(completed),
+      const DeepCollectionEquality().hash(inProgress),
+      const DeepCollectionEquality().hash(pending),
+      const DeepCollectionEquality().hash(request),
+    );
+  }
+}
+
+extension StatusesBuildContext on BuildContext {
+  Statuses get statuses => Theme.of(this).extension<Statuses>()!;
 }
 
 mixin _$StylesTailorMixin on ThemeExtension<Styles> {

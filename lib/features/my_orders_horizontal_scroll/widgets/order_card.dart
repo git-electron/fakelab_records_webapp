@@ -1,12 +1,16 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class OrderCard extends StatelessWidget {
-  const OrderCard({super.key});
+  const OrderCard(this.order, {super.key});
+
+  final Order order;
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +42,13 @@ class OrderCard extends StatelessWidget {
                   height: 15,
                   width: 15,
                   decoration: BoxDecoration(
-                    color: context.colors.white,
+                    color: order.status.color,
                     shape: BoxShape.circle,
                   ),
                 ),
                 const Gap(5),
                 Text(
-                  'Заявка',
+                  order.status.title,
                   style: context.styles.footer3.copyWith(
                     color: context.colors.white,
                   ),
@@ -53,7 +57,7 @@ class OrderCard extends StatelessWidget {
             ),
             FittedBox(
               child: Text(
-                'Кастомный\nбит'.toUpperCase(),
+                order.typeTitleForCard,
                 style: context.styles.title3.copyWith(
                   height: .85,
                   color: context.colors.white,
@@ -65,13 +69,13 @@ class OrderCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  '#65583',
+                  order.idShort,
                   style: context.styles.footer3.copyWith(
                     color: context.colors.subtitle,
                   ),
                 ),
                 Text(
-                  '22 окт 2024',
+                  order.dateCreated.toDDmmYYYYwithMonths(withWords: true),
                   style: context.styles.footer3.copyWith(
                     color: context.colors.subtitle,
                   ),

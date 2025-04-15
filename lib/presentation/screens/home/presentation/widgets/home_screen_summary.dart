@@ -14,13 +14,14 @@ class HomeScreenSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        Padding(
-          padding: Pad(bottom: 20),
-          child: MyOrdersHorizontalScroll(),
-        ),
-        Padding(
+        if (mockOrders.isNotEmpty)
+          Padding(
+            padding: const Pad(bottom: 20),
+            child: MyOrdersHorizontalScroll(orders: mockOrders),
+          ),
+        const Padding(
           padding: Pad(horizontal: 20),
           child: LoyaltyCard(),
         ),

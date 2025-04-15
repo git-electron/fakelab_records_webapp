@@ -1,9 +1,9 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/widgets/home_screen_app_bar.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/widgets/home_screen_greetings.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/widgets/home_screen_summary.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_app_bar.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_greetings.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_summary.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
