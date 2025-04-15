@@ -10,7 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:fakelab_records_webapp/core/di/locator.dart' as _i103;
-import 'package:fakelab_records_webapp/core/service/telegram_service.dart'
+import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart'
     as _i1046;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
