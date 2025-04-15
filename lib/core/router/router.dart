@@ -3,7 +3,7 @@ import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton
-@AutoRouterConfig()
+@AutoRouterConfig(deferredLoading: true)
 class AppRouter extends RootStackRouter {
   @override
   RouteType get defaultRouteType => const RouteType.material();

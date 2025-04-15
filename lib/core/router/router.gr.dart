@@ -11,9 +11,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i3;
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/home_screen.dart'
-    as _i1;
+    deferred as _i1;
 import 'package:fakelab_records_webapp/presentation/screens/unknown_source/unknown_source_screen.dart'
-    as _i2;
+    deferred as _i2;
 
 /// generated route for
 /// [_i1.HomeScreen]
@@ -26,7 +26,7 @@ class HomeRoute extends _i3.PageRouteInfo<void> {
   static _i3.PageInfo page = _i3.PageInfo(
     name,
     builder: (data) {
-      return const _i1.HomeScreen();
+      return _i3.DeferredWidget(_i1.loadLibrary, () => _i1.HomeScreen());
     },
   );
 }
@@ -42,7 +42,10 @@ class UnknownSourceRoute extends _i3.PageRouteInfo<void> {
   static _i3.PageInfo page = _i3.PageInfo(
     name,
     builder: (data) {
-      return const _i2.UnknownSourceScreen();
+      return _i3.DeferredWidget(
+        _i2.loadLibrary,
+        () => _i2.UnknownSourceScreen(),
+      );
     },
   );
 }
