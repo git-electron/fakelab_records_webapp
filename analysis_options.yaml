@@ -10,7 +10,9 @@
 analyzer:
   errors:
     avoid_web_libraries_in_flutter: ignore
+    constant_identifier_names: ignore
     invalid_annotation_target: ignore
+    unnecessary_cast: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:
