@@ -15,27 +15,42 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.background,
-      body: const SingleChildScrollView(
-        child: Padding(
-          padding: Pad(vertical: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HomeScreenAppBar(),
-              Gap(55),
-              HomeScreenGreetings(),
-              Gap(20),
-              HomeScreenSummary(),
-              Gap(55),
-              HomeScreenGreetings(),
-              Gap(20),
-              HomeScreenSummary(),
-              Gap(55),
-              HomeScreenGreetings(),
-              Gap(20),
-              HomeScreenSummary(),
-            ],
-          ),
+      body: const Column(
+        verticalDirection: VerticalDirection.up,
+        children: [
+          Expanded(child: HomeScreenBody()),
+          HomeScreenAppBar(),
+        ],
+      ),
+    );
+  }
+}
+
+class HomeScreenBody extends StatelessWidget {
+  const HomeScreenBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SingleChildScrollView(
+      clipBehavior: Clip.none,
+      child: Padding(
+        padding: Pad(vertical: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Gap(55),
+            HomeScreenGreetings(),
+            Gap(20),
+            HomeScreenSummary(),
+            Gap(55),
+            HomeScreenGreetings(),
+            Gap(20),
+            HomeScreenSummary(),
+            Gap(55),
+            HomeScreenGreetings(),
+            Gap(20),
+            HomeScreenSummary(),
+          ],
         ),
       ),
     );
