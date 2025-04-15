@@ -37,5 +37,9 @@ class Logo extends StatelessWidget {
         LogoType.recordsFull => Assets.icons.logo.records.full,
         LogoType.fakelabFull => Assets.icons.logo.fakelab.full,
       }
-          .svg(height: height ?? 25, width: width);
+          .svg(
+        height: height ?? 25,
+        width: width,
+        clipBehavior: Clip.none,
+      );
 }
