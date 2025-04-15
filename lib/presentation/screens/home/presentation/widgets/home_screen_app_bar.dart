@@ -8,18 +8,21 @@ class HomeScreenAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 90,
-      width: double.infinity,
-      child: Padding(
-        padding: Pad(horizontal: 20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Logo(),
-            UserAvatar(),
-          ],
+    return const ClipRect(
+      clipBehavior: Clip.none,
+      child: SizedBox(
+        height: 90,
+        width: double.infinity,
+        child: Padding(
+          padding: Pad(horizontal: 20),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Logo(),
+              UserAvatar(),
+            ],
+          ),
         ),
       ),
     );

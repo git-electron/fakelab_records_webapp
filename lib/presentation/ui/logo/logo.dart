@@ -1,4 +1,5 @@
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 
 enum LogoType { recordsCompact, recordsFull, fakelabCompact, fakelabFull }
@@ -17,31 +18,24 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Container(
-          height: 0,
-          width: 50,
-          decoration: const BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, 20),
-                color: Color(0xffFF8F8F),
-                blurRadius: 100,
-                spreadRadius: 20,
-              ),
-            ],
+    return Container(
+      foregroundDecoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xffFF8F8F),
+            blurRadius: 120,
           ),
-        ),
-        switch (type) {
-          LogoType.recordsCompact => Assets.icons.logo.records.compact,
-          LogoType.fakelabCompact => Assets.icons.logo.fakelab.compact,
-          LogoType.recordsFull => Assets.icons.logo.records.full,
-          LogoType.fakelabFull => Assets.icons.logo.fakelab.full,
-        }
-            .svg(height: height ?? 25, width: width)
-      ],
+        ],
+      ),
+      child: _logo(),
     );
   }
+
+  Widget _logo() => switch (type) {
+        LogoType.recordsCompact => Assets.icons.logo.records.compact,
+        LogoType.fakelabCompact => Assets.icons.logo.fakelab.compact,
+        LogoType.recordsFull => Assets.icons.logo.records.full,
+        LogoType.fakelabFull => Assets.icons.logo.fakelab.full,
+      }
+          .svg(height: height ?? 25, width: width);
 }
