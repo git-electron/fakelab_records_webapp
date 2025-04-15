@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         theme: AppTheme.primary,
         routerConfig: $<AppRouter>().config(),
-        builder: (context, child) => Text('test'),
+        builder: (context, child) => child ?? const SizedBox(),
       ),
     );
   }
