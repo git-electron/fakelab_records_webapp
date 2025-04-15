@@ -19,15 +19,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => $<TelegramDataBloc>()),
-      ],
-      child: MaterialApp.router(
-        theme: AppTheme.primary,
-        routerConfig: $<AppRouter>().config(),
-        builder: (context, child) => child ?? const Text('loading'),
-      ),
+    return MaterialApp.router(
+      theme: AppTheme.primary,
+      routerConfig: $<AppRouter>().config(),
+      builder: (context, child) => child ?? const SizedBox(),
     );
   }
 }
