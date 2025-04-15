@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/core/domain/models/telegram_data.dart';
+import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_data.dart';
 import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

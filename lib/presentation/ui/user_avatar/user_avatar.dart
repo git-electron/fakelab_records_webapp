@@ -20,9 +20,9 @@ class UserAvatar extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           child: SizedBox.square(
             dimension: size ?? 60,
-            child: data.photoUrl != null
+            child: data.user.photoUrl != null
                 ? Image.network(
-                    data.photoUrl!,
+                    data.user.photoUrl!,
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, imageChunkEvent) {
                       if (imageChunkEvent == null) return child;
@@ -43,7 +43,7 @@ class UserAvatar extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: Text(
-                      data.avatarLetter,
+                      data.user.avatarLetter,
                       style: context.styles.header,
                     ),
                   ),

@@ -2,23 +2,23 @@ import 'package:fakelab_records_webapp/core/constants/types.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'telegram_data.freezed.dart';
-part 'telegram_data.g.dart';
+part 'telegram_user.freezed.dart';
+part 'telegram_user.g.dart';
 
 @freezed
-class TelegramData with _$TelegramData {
-  factory TelegramData({
+class TelegramUser with _$TelegramUser {
+  factory TelegramUser({
     required int id,
     String? photoUrl,
     String? username,
     @JsonKey(name: 'first_name') String? name,
     @JsonKey(name: 'last_name') String? surname,
-  }) = _TelegramData;
+  }) = _TelegramUser;
 
-  factory TelegramData.fromJson(Map<String, dynamic> json) =>
-      _$TelegramDataFromJson(json['user']);
+  factory TelegramUser.fromJson(Map<String, dynamic> json) =>
+      _$TelegramUserFromJson(json['user']);
 
-  TelegramData._();
+  TelegramUser._();
 
   String get firstName {
     if (name.isNotNullAndEmpty) return name!;
@@ -39,7 +39,7 @@ class TelegramData with _$TelegramData {
     return '🥶';
   }
 
-  static const Json debugData = {
+  static const Json debugMock = {
     'user': {
       'id': 265685890,
       'first_name': 'Egorick',

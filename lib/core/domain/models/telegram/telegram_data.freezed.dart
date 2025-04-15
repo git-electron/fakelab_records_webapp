@@ -20,13 +20,8 @@ TelegramData _$TelegramDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TelegramData {
-  int get id => throw _privateConstructorUsedError;
-  String? get photoUrl => throw _privateConstructorUsedError;
-  String? get username => throw _privateConstructorUsedError;
-  @JsonKey(name: 'first_name')
-  String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'last_name')
-  String? get surname => throw _privateConstructorUsedError;
+  TelegramUser get user => throw _privateConstructorUsedError;
+  String get platform => throw _privateConstructorUsedError;
 
   /// Serializes this TelegramData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,12 +39,9 @@ abstract class $TelegramDataCopyWith<$Res> {
           TelegramData value, $Res Function(TelegramData) then) =
       _$TelegramDataCopyWithImpl<$Res, TelegramData>;
   @useResult
-  $Res call(
-      {int id,
-      String? photoUrl,
-      String? username,
-      @JsonKey(name: 'first_name') String? name,
-      @JsonKey(name: 'last_name') String? surname});
+  $Res call({TelegramUser user, String platform});
+
+  $TelegramUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -67,34 +59,29 @@ class _$TelegramDataCopyWithImpl<$Res, $Val extends TelegramData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? photoUrl = freezed,
-    Object? username = freezed,
-    Object? name = freezed,
-    Object? surname = freezed,
+    Object? user = null,
+    Object? platform = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      photoUrl: freezed == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      surname: freezed == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
-              as String?,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as TelegramUser,
+      platform: null == platform
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
+  }
+
+  /// Create a copy of TelegramData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TelegramUserCopyWith<$Res> get user {
+    return $TelegramUserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -106,12 +93,10 @@ abstract class _$$TelegramDataImplCopyWith<$Res>
       __$$TelegramDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String? photoUrl,
-      String? username,
-      @JsonKey(name: 'first_name') String? name,
-      @JsonKey(name: 'last_name') String? surname});
+  $Res call({TelegramUser user, String platform});
+
+  @override
+  $TelegramUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -127,33 +112,18 @@ class __$$TelegramDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? photoUrl = freezed,
-    Object? username = freezed,
-    Object? name = freezed,
-    Object? surname = freezed,
+    Object? user = null,
+    Object? platform = null,
   }) {
     return _then(_$TelegramDataImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      photoUrl: freezed == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      surname: freezed == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
-              as String?,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as TelegramUser,
+      platform: null == platform
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -161,33 +131,19 @@ class __$$TelegramDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TelegramDataImpl extends _TelegramData {
-  _$TelegramDataImpl(
-      {required this.id,
-      this.photoUrl,
-      this.username,
-      @JsonKey(name: 'first_name') this.name,
-      @JsonKey(name: 'last_name') this.surname})
-      : super._();
+  _$TelegramDataImpl({required this.user, required this.platform}) : super._();
 
   factory _$TelegramDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$TelegramDataImplFromJson(json);
 
   @override
-  final int id;
+  final TelegramUser user;
   @override
-  final String? photoUrl;
-  @override
-  final String? username;
-  @override
-  @JsonKey(name: 'first_name')
-  final String? name;
-  @override
-  @JsonKey(name: 'last_name')
-  final String? surname;
+  final String platform;
 
   @override
   String toString() {
-    return 'TelegramData(id: $id, photoUrl: $photoUrl, username: $username, name: $name, surname: $surname)';
+    return 'TelegramData(user: $user, platform: $platform)';
   }
 
   @override
@@ -195,19 +151,14 @@ class _$TelegramDataImpl extends _TelegramData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TelegramDataImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.photoUrl, photoUrl) ||
-                other.photoUrl == photoUrl) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.surname, surname) || other.surname == surname));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.platform, platform) ||
+                other.platform == platform));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, photoUrl, username, name, surname);
+  int get hashCode => Object.hash(runtimeType, user, platform);
 
   /// Create a copy of TelegramData
   /// with the given fields replaced by the non-null parameter values.
@@ -227,28 +178,17 @@ class _$TelegramDataImpl extends _TelegramData {
 
 abstract class _TelegramData extends TelegramData {
   factory _TelegramData(
-      {required final int id,
-      final String? photoUrl,
-      final String? username,
-      @JsonKey(name: 'first_name') final String? name,
-      @JsonKey(name: 'last_name') final String? surname}) = _$TelegramDataImpl;
+      {required final TelegramUser user,
+      required final String platform}) = _$TelegramDataImpl;
   _TelegramData._() : super._();
 
   factory _TelegramData.fromJson(Map<String, dynamic> json) =
       _$TelegramDataImpl.fromJson;
 
   @override
-  int get id;
+  TelegramUser get user;
   @override
-  String? get photoUrl;
-  @override
-  String? get username;
-  @override
-  @JsonKey(name: 'first_name')
-  String? get name;
-  @override
-  @JsonKey(name: 'last_name')
-  String? get surname;
+  String get platform;
 
   /// Create a copy of TelegramData
   /// with the given fields replaced by the non-null parameter values.
