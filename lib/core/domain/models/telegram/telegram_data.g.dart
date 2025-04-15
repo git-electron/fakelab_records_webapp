@@ -8,18 +8,12 @@ part of 'telegram_data.dart';
 
 _$TelegramDataImpl _$$TelegramDataImplFromJson(Map<String, dynamic> json) =>
     _$TelegramDataImpl(
-      id: (json['id'] as num).toInt(),
-      photoUrl: json['photo_url'] as String?,
-      username: json['username'] as String?,
-      name: json['first_name'] as String?,
-      surname: json['last_name'] as String?,
+      user: TelegramUser.fromJson(json['user'] as Map<String, dynamic>),
+      platform: json['platform'] as String,
     );
 
 Map<String, dynamic> _$$TelegramDataImplToJson(_$TelegramDataImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'photo_url': instance.photoUrl,
-      'username': instance.username,
-      'first_name': instance.name,
-      'last_name': instance.surname,
+      'user': instance.user.toJson(),
+      'platform': instance.platform,
     };

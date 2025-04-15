@@ -14,9 +14,9 @@ class HomeScreenGreetings extends StatelessWidget {
         return Text.rich(
           TextSpan(
             children: [
-              const TextSpan(text: 'Привет, '),
+              TextSpan(text: '[Platform: ${data.platform}] Привет, '),
               TextSpan(
-                text: data.firstName,
+                text: data.user.firstName,
                 style: context.styles.subtitle1.copyWith(
                   color: context.colors.white,
                 ),

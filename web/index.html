@@ -8,33 +8,28 @@
     function initTelegramWebApp() {
       if (window.Telegram) {
         Telegram.WebApp.ready();
+      }
+    }
+
+    function getUserData() {
+      if (window.Telegram) {
         return Telegram.WebApp.initDataUnsafe;
       }
       return null;
     }
 
-    function sendTelegramData(data) {
+    function getPlatform() {
       if (window.Telegram) {
-        Telegram.WebApp.sendData(data);
+        return Telegram.WebApp.platform;
       }
+      return null
     }
 
-    function setMainButton(text, isVisible) {
+    function setupTelegramWebApp(shouldForceFullscreen) {
       if (window.Telegram) {
-        Telegram.WebApp.MainButton.setText(text);
-        if (isVisible) {
-          Telegram.WebApp.MainButton.show();
-        } else {
-          Telegram.WebApp.MainButton.hide();
-        }
-      }
-    }
-
-    function setupTelegramWebApp() {
-      if (window.Telegram) {
-        Telegram.WebApp.requestFullscreen();
+        if (shouldForceFullscreen) Telegram.WebApp.requestFullscreen();
         Telegram.WebApp.lockOrientation();
-        Telegram.WebApp.enableClosingConfirmation();
+        Telegram.WebApp.disableVerticalSwipes();
       }
     }
   </script>
