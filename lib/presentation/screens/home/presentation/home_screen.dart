@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/debug/home_screen_debug_info.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_app_bar.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_greetings.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_summary.dart';
@@ -39,6 +40,7 @@ class HomeScreenBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Gap(55),
+            HomeScreenDebugInfo(),
             HomeScreenGreetings(),
             Gap(20),
             HomeScreenSummary(),

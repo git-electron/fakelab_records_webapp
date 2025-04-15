@@ -9,11 +9,11 @@ part of 'telegram_data.dart';
 _$TelegramDataImpl _$$TelegramDataImplFromJson(Map<String, dynamic> json) =>
     _$TelegramDataImpl(
       user: TelegramUser.fromJson(json['user'] as Map<String, dynamic>),
-      platform: json['platform'] as String,
+      meta: TelegramMeta.fromJson(json['meta'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$TelegramDataImplToJson(_$TelegramDataImpl instance) =>
     <String, dynamic>{
       'user': instance.user.toJson(),
-      'platform': instance.platform,
+      'meta': instance.meta.toJson(),
     };

@@ -1,4 +1,3 @@
-import 'package:fakelab_records_webapp/core/constants/types.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -38,15 +37,4 @@ class TelegramUser with _$TelegramUser {
     if (username.isNotNullAndEmpty) return username![0];
     return '🥶';
   }
-
-  static const Json debugMock = {
-    'user': {
-      'id': 265685890,
-      'first_name': 'Egorick',
-      'last_name': null,
-      'username': 'raimeeee',
-      'photo_url':
-          'https://t.me/i/userpic/320/QzaYKj8gtRiq3RqEWaoFAjlqDoTTcLn5DvXKCosQsfE.svg',
-    }
-  };
 }

@@ -1,6 +1,6 @@
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram_wrapper.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_user_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class UserAvatar extends StatelessWidget {
@@ -13,16 +13,16 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TelegramWrapper(builder: (context, data) {
+    return TelegramUserWrapper(builder: (context, user) {
       return Clickable(
         onTap: () {},
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: SizedBox.square(
             dimension: size ?? 60,
-            child: data.user.photoUrl != null
+            child: user.photoUrl != null
                 ? Image.network(
-                    data.user.photoUrl!,
+                    user.photoUrl!,
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, imageChunkEvent) {
                       if (imageChunkEvent == null) return child;
@@ -43,7 +43,7 @@ class UserAvatar extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: Text(
-                      data.user.avatarLetter,
+                      user.avatarLetter,
                       style: context.styles.header,
                     ),
                   ),

@@ -21,7 +21,7 @@ TelegramData _$TelegramDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TelegramData {
   TelegramUser get user => throw _privateConstructorUsedError;
-  String get platform => throw _privateConstructorUsedError;
+  TelegramMeta get meta => throw _privateConstructorUsedError;
 
   /// Serializes this TelegramData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,9 +39,10 @@ abstract class $TelegramDataCopyWith<$Res> {
           TelegramData value, $Res Function(TelegramData) then) =
       _$TelegramDataCopyWithImpl<$Res, TelegramData>;
   @useResult
-  $Res call({TelegramUser user, String platform});
+  $Res call({TelegramUser user, TelegramMeta meta});
 
   $TelegramUserCopyWith<$Res> get user;
+  $TelegramMetaCopyWith<$Res> get meta;
 }
 
 /// @nodoc
@@ -60,17 +61,17 @@ class _$TelegramDataCopyWithImpl<$Res, $Val extends TelegramData>
   @override
   $Res call({
     Object? user = null,
-    Object? platform = null,
+    Object? meta = null,
   }) {
     return _then(_value.copyWith(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as TelegramUser,
-      platform: null == platform
-          ? _value.platform
-          : platform // ignore: cast_nullable_to_non_nullable
-              as String,
+      meta: null == meta
+          ? _value.meta
+          : meta // ignore: cast_nullable_to_non_nullable
+              as TelegramMeta,
     ) as $Val);
   }
 
@@ -83,6 +84,16 @@ class _$TelegramDataCopyWithImpl<$Res, $Val extends TelegramData>
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
+
+  /// Create a copy of TelegramData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TelegramMetaCopyWith<$Res> get meta {
+    return $TelegramMetaCopyWith<$Res>(_value.meta, (value) {
+      return _then(_value.copyWith(meta: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -93,10 +104,12 @@ abstract class _$$TelegramDataImplCopyWith<$Res>
       __$$TelegramDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TelegramUser user, String platform});
+  $Res call({TelegramUser user, TelegramMeta meta});
 
   @override
   $TelegramUserCopyWith<$Res> get user;
+  @override
+  $TelegramMetaCopyWith<$Res> get meta;
 }
 
 /// @nodoc
@@ -113,17 +126,17 @@ class __$$TelegramDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
-    Object? platform = null,
+    Object? meta = null,
   }) {
     return _then(_$TelegramDataImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as TelegramUser,
-      platform: null == platform
-          ? _value.platform
-          : platform // ignore: cast_nullable_to_non_nullable
-              as String,
+      meta: null == meta
+          ? _value.meta
+          : meta // ignore: cast_nullable_to_non_nullable
+              as TelegramMeta,
     ));
   }
 }
@@ -131,7 +144,7 @@ class __$$TelegramDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TelegramDataImpl extends _TelegramData {
-  _$TelegramDataImpl({required this.user, required this.platform}) : super._();
+  _$TelegramDataImpl({required this.user, required this.meta}) : super._();
 
   factory _$TelegramDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$TelegramDataImplFromJson(json);
@@ -139,11 +152,11 @@ class _$TelegramDataImpl extends _TelegramData {
   @override
   final TelegramUser user;
   @override
-  final String platform;
+  final TelegramMeta meta;
 
   @override
   String toString() {
-    return 'TelegramData(user: $user, platform: $platform)';
+    return 'TelegramData(user: $user, meta: $meta)';
   }
 
   @override
@@ -152,13 +165,12 @@ class _$TelegramDataImpl extends _TelegramData {
         (other.runtimeType == runtimeType &&
             other is _$TelegramDataImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.platform, platform) ||
-                other.platform == platform));
+            (identical(other.meta, meta) || other.meta == meta));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, user, platform);
+  int get hashCode => Object.hash(runtimeType, user, meta);
 
   /// Create a copy of TelegramData
   /// with the given fields replaced by the non-null parameter values.
@@ -179,7 +191,7 @@ class _$TelegramDataImpl extends _TelegramData {
 abstract class _TelegramData extends TelegramData {
   factory _TelegramData(
       {required final TelegramUser user,
-      required final String platform}) = _$TelegramDataImpl;
+      required final TelegramMeta meta}) = _$TelegramDataImpl;
   _TelegramData._() : super._();
 
   factory _TelegramData.fromJson(Map<String, dynamic> json) =
@@ -188,7 +200,7 @@ abstract class _TelegramData extends TelegramData {
   @override
   TelegramUser get user;
   @override
-  String get platform;
+  TelegramMeta get meta;
 
   /// Create a copy of TelegramData
   /// with the given fields replaced by the non-null parameter values.
