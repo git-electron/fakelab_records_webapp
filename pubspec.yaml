@@ -64,6 +64,8 @@ flutter:
     - assets/icons/logo/
     - assets/icons/logo/fakelab/
     - assets/icons/logo/records/
+    - assets/images/
+    - assets/images/coin/
 
   fonts:
     - family: Unbounded
