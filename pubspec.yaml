@@ -1,6 +1,6 @@
 name: fakelab_records_webapp
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
 
   js: ^0.7.1
+  gap: ^3.0.1
   http: ^1.3.0
   dio: ^5.8.0+1
   get_it: ^8.0.3
@@ -19,38 +20,108 @@ dependencies:
   freezed: ^2.5.8
   retrofit: ^4.4.2
   injectable: ^2.5.0
+  auto_route: ^10.0.1
   flutter_svg: ^2.0.17
+  flutter_bloc: ^9.1.0
+  flutter_gen: ^5.10.0
+  flutter_dotenv: ^5.2.1
+  figma_squircle: ^0.6.3
   cupertino_icons: ^1.0.8
   json_annotation: ^4.9.0
-  freezed_annotation: ^2.4.4
   dio_smart_retry: ^7.0.1
-  flutter_dotenv: ^5.2.1
+  freezed_annotation: ^2.4.4
+  theme_tailor_annotation: ^3.0.2
+  assorted_layout_widgets: ^11.0.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  theme_tailor: ^3.0.2
   flutter_lints: ^4.0.0
   build_runner: ^2.4.15
   json_serializable: ^6.9.4
   retrofit_generator: ^9.1.9
+  flutter_gen_runner: ^5.10.0
   injectable_generator: ^2.7.0
+  auto_route_generator: ^10.0.1
+
+flutter_gen:
+  output: lib/core/gen
+  integrations:
+    image: true
+    flutter_svg: true
+  colors:
+    inputs:
+      - assets/colors/colors.xml
+      - assets/colors/statuses/statuses.xml
+    outputs:
+      class_name: AppColors
 
 flutter:
-
   uses-material-design: true
-
   assets:
+    - assets/
+    - assets/icons/
+    - assets/icons/logo/
+    - assets/icons/logo/fakelab/
+    - assets/icons/logo/records/
     - assets/images/
+    - assets/images/coin/
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Unbounded
+      fonts:
+        - asset: assets/fonts/Unbounded/ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Unbounded/Light.ttf
+          weight: 300
+        - asset: assets/fonts/Unbounded/Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Unbounded/Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Unbounded/SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Unbounded/Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Unbounded/ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Unbounded/Black.ttf
+          weight: 900
+    - family: SF Pro
+      fonts:
+        - asset: assets/fonts/SFPro/Light.ttf
+          weight: 300
+        - asset: assets/fonts/SFPro/LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/SFPro/Regular.ttf
+          weight: 400
+        - asset: assets/fonts/SFPro/RegularItalic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/SFPro/Medium.ttf
+          weight: 500
+        - asset: assets/fonts/SFPro/MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/SFPro/Semibold.ttf
+          weight: 600
+        - asset: assets/fonts/SFPro/SemiboldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/SFPro/Bold.ttf
+          weight: 700
+        - asset: assets/fonts/SFPro/BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/SFPro/Heavy.ttf
+          weight: 800
+        - asset: assets/fonts/SFPro/HeavyItalic.ttf
+          weight: 800
+          style: italic
+    - family: DelaGothic
+      fonts:
+        - asset: assets/fonts/DelaGothic/Regular.ttf
+          weight: 400

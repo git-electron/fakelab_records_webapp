@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:fakelab_records_webapp/core/di/injector.dart';
-import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart';
+import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc.dart';
+import 'package:fakelab_records_webapp/core/router/router.dart';
+import 'package:fakelab_records_webapp/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,38 +19,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: const Color(0xff161616),
-        body: SizedBox(
-          height: size.height,
-          width: size.width,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                'Разрабатываем...',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(height: 50),
-              Text(
-                'TG data: ${$<TelegramService>().data.toString()}',
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-        ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => $<TelegramDataBloc>()),
+      ],
+      child: MaterialApp.router(
+        theme: AppTheme.primary,
+        routerConfig: $<AppRouter>().config(),
       ),
     );
   }

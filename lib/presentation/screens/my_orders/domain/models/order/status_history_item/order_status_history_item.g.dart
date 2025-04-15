@@ -1,0 +1,30 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'order_status_history_item.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$OrderStatusHistoryItemImpl _$$OrderStatusHistoryItemImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OrderStatusHistoryItemImpl(
+      status: $enumDecode(_$OrderStatusEnumMap, json['status']),
+      dateChanged: DateTime.parse(json['date_changed'] as String),
+    );
+
+Map<String, dynamic> _$$OrderStatusHistoryItemImplToJson(
+        _$OrderStatusHistoryItemImpl instance) =>
+    <String, dynamic>{
+      'status': _$OrderStatusEnumMap[instance.status]!,
+      'date_changed': instance.dateChanged.toIso8601String(),
+    };
+
+const _$OrderStatusEnumMap = {
+  OrderStatus.REQUEST: 'REQUEST',
+  OrderStatus.PENDING: 'PENDING',
+  OrderStatus.IN_PROGRESS: 'IN_PROGRESS',
+  OrderStatus.AWAITING_CONFIRMATION: 'AWAITING_CONFIRMATION',
+  OrderStatus.COMPLETED: 'COMPLETED',
+  OrderStatus.CANCELLED: 'CANCELLED',
+};

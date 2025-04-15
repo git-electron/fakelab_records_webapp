@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="request">#FFFFFF</color>
+    <color name="pending">#FFE46B</color>
+    <color name="in_progress">#76A1FF</color>
+    <color name="awaiting_confirmation">#C26CFF</color>
+    <color name="completed">#A6FF90</color>
+    <color name="cancelled">#FF7E7E</color>
+</resources>

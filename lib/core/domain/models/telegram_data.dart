@@ -1,4 +1,5 @@
-import 'package:fakelab_records_webapp/core/constants/typedefs.dart';
+import 'package:fakelab_records_webapp/core/constants/types.dart';
+import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'telegram_data.freezed.dart';
@@ -8,14 +9,35 @@ part 'telegram_data.g.dart';
 class TelegramData with _$TelegramData {
   factory TelegramData({
     required int id,
-    @Default('') String? username,
-    @Default('') String? photoUrl,
-    @JsonKey(name: 'first_name') @Default('') String? name,
-    @JsonKey(name: 'last_name') @Default('') String? surname,
+    String? photoUrl,
+    String? username,
+    @JsonKey(name: 'first_name') String? name,
+    @JsonKey(name: 'last_name') String? surname,
   }) = _TelegramData;
 
   factory TelegramData.fromJson(Map<String, dynamic> json) =>
       _$TelegramDataFromJson(json['user']);
+
+  TelegramData._();
+
+  String get firstName {
+    if (name.isNotNullAndEmpty) return name!;
+    if (username.isNotNullAndEmpty) return username!;
+    return 'Юзер';
+  }
+
+  String get fullName {
+    if (name.isNotNullAndEmpty && surname.isNotNullAndEmpty) {
+      return '$name $surname';
+    }
+    return firstName;
+  }
+
+  String get avatarLetter {
+    if (name.isNotNullAndEmpty) return name![0];
+    if (username.isNotNullAndEmpty) return username![0];
+    return '🥶';
+  }
 
   static const Json debugData = {
     'user': {
