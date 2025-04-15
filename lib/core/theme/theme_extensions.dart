@@ -13,6 +13,7 @@ class Colors extends ThemeExtension<Colors> with _$ColorsTailorMixin {
   const Colors({
     required this.white,
     required this.black,
+    required this.transparent,
     required this.background,
     required this.onBackground,
     required this.title,
@@ -33,6 +34,9 @@ class Colors extends ThemeExtension<Colors> with _$ColorsTailorMixin {
 
   @override
   final Color black;
+
+  @override
+  final Color transparent;
 
   @override
   final Color background;
@@ -107,6 +111,7 @@ class Statuses extends ThemeExtension<Statuses> with _$StatusesTailorMixin {
 const Colors colors = Colors(
   white: _Colors.white,
   black: _Colors.black,
+  transparent: _Colors.transparent,
   background: _Colors.background,
   onBackground: _Colors.onBackground,
   title: _Colors.title,

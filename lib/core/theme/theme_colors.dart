@@ -5,6 +5,8 @@ class _Colors {
 
   static const Color black = AppColors.black;
 
+  static const Color transparent = Color(0x00000000);
+
   static const Color background = AppColors.background;
 
   static const Color onBackground = AppColors.onBackground;

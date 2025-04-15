@@ -12,6 +12,7 @@ part of 'theme_extensions.dart';
 mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
   Color get white;
   Color get black;
+  Color get transparent;
   Color get background;
   Color get onBackground;
   Color get title;
@@ -30,6 +31,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
   Colors copyWith({
     Color? white,
     Color? black,
+    Color? transparent,
     Color? background,
     Color? onBackground,
     Color? title,
@@ -47,6 +49,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
     return Colors(
       white: white ?? this.white,
       black: black ?? this.black,
+      transparent: transparent ?? this.transparent,
       background: background ?? this.background,
       onBackground: onBackground ?? this.onBackground,
       title: title ?? this.title,
@@ -69,6 +72,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
     return Colors(
       white: Color.lerp(white, other.white, t)!,
       black: Color.lerp(black, other.black, t)!,
+      transparent: Color.lerp(transparent, other.transparent, t)!,
       background: Color.lerp(background, other.background, t)!,
       onBackground: Color.lerp(onBackground, other.onBackground, t)!,
       title: Color.lerp(title, other.title, t)!,
@@ -94,6 +98,8 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
             other is Colors &&
             const DeepCollectionEquality().equals(white, other.white) &&
             const DeepCollectionEquality().equals(black, other.black) &&
+            const DeepCollectionEquality()
+                .equals(transparent, other.transparent) &&
             const DeepCollectionEquality()
                 .equals(background, other.background) &&
             const DeepCollectionEquality()
@@ -121,6 +127,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
       runtimeType.hashCode,
       const DeepCollectionEquality().hash(white),
       const DeepCollectionEquality().hash(black),
+      const DeepCollectionEquality().hash(transparent),
       const DeepCollectionEquality().hash(background),
       const DeepCollectionEquality().hash(onBackground),
       const DeepCollectionEquality().hash(title),
