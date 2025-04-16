@@ -21,8 +21,8 @@ class TelegramService {
   void initTelegramWebApp() => _call('initTelegramWebApp');
 
   TelegramData? getTelegramData() {
-    final TelegramUser? user = tryOrNull(_getUserData);
-    final TelegramMeta? meta = tryOrNull(_getMeta);
+    final TelegramUser? user = tryOrNull(getUserData);
+    final TelegramMeta? meta = tryOrNull(getMeta);
 
     final TelegramData? data = tryOrNull(
       () => TelegramData(user: user!, meta: meta!),
@@ -32,14 +32,14 @@ class TelegramService {
     return data;
   }
 
-  TelegramUser? _getUserData() {
+  TelegramUser? getUserData() {
     if (kDebugMode) return Mock.telegramUser;
 
     final Json userJson = _jsDecode(_call('getUserData'));
     return tryOrNull(() => TelegramUser.fromJson(userJson));
   }
 
-  TelegramMeta? _getMeta() {
+  TelegramMeta? getMeta() {
     final String? platform = _call('getPlatform');
     final Json inset = _jsDecode(_call('getSafeAreaInset'));
     final Json contentInset = _jsDecode(_call('getContentSafeAreaInset'));
