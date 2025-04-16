@@ -19,4 +19,11 @@ class TelegramMeta with _$TelegramMeta {
   TelegramMeta._();
 
   bool get isMobile => platform == 'ios' || platform == 'android';
+
+  SafeAreaInset get totalSafeAreaInset => SafeAreaInset(
+        top: safeAreaInset.top + contentSafeAreaInset.top,
+        left: safeAreaInset.left + contentSafeAreaInset.left,
+        right: safeAreaInset.right + contentSafeAreaInset.right,
+        bottom: safeAreaInset.bottom + contentSafeAreaInset.bottom,
+      );
 }

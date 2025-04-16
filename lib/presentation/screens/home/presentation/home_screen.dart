@@ -5,6 +5,7 @@ import 'package:fakelab_records_webapp/presentation/screens/home/presentation/wi
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_app_bar.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_greetings.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_summary.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/safe_area_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -16,12 +17,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.background,
-      body: const Column(
-        verticalDirection: VerticalDirection.up,
-        children: [
-          Expanded(child: HomeScreenBody()),
-          HomeScreenAppBar(),
-        ],
+      body: const SafeAreaWrapper(
+        top: true,
+        child: Column(
+          verticalDirection: VerticalDirection.up,
+          children: [
+            Expanded(child: HomeScreenBody()),
+            HomeScreenAppBar(),
+          ],
+        ),
       ),
     );
   }
