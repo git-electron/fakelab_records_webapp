@@ -30,7 +30,7 @@ class TelegramDataBloc extends Bloc<TelegramDataEvent, TelegramDataState> {
     emit(TelegramDataState.loaded(event.data));
     if (event.data.meta.isMobile &&
         event.data.meta.contentSafeAreaInset.top == 0) {
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(const Duration());
       tryOrNull(
         () => add(TelegramDataEvent.setData(
           telegramService.getTelegramData()!,
