@@ -44,10 +44,13 @@ class AboutHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'О нас',
-      style: context.styles.subtitle1.copyWith(
-        color: context.colors.title,
+    return Container(
+      color: context.colors.background,
+      child: Text(
+        'О нас',
+        style: context.styles.subtitle1.copyWith(
+          color: context.colors.title,
+        ),
       ),
     );
   }
@@ -60,9 +63,12 @@ class AboutText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: context.styles.body2,
+    return Container(
+      color: context.colors.background,
+      child: Text(
+        text,
+        style: context.styles.body2,
+      ),
     );
   }
 }
