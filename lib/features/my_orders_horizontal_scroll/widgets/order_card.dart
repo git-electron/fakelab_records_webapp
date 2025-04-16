@@ -50,7 +50,7 @@ class OrderCard extends StatelessWidget {
                 Text(
                   order.status.title,
                   style: context.styles.footer3.copyWith(
-                    color: context.colors.white,
+                    color: context.colors.body,
                   ),
                 ),
               ],
@@ -60,7 +60,7 @@ class OrderCard extends StatelessWidget {
                 order.typeTitleForCard,
                 style: context.styles.title3.copyWith(
                   height: .85,
-                  color: context.colors.white,
+                  color: context.colors.body,
                 ),
               ),
             ),

@@ -1,5 +1,4 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
@@ -42,7 +41,7 @@ class LoyaltyCard extends StatelessWidget {
         aspectRatio: 6.5 / 4,
         child: Container(
           clipBehavior: Clip.antiAlias,
-          padding: const Pad(all: 10),
+          padding: const Pad(all: 10, horizontal: 5),
           decoration: ShapeDecoration(
             color: const Color(0xff1A1A1A),
             shadows: [context.colors.shadow],
@@ -51,6 +50,10 @@ class LoyaltyCard extends StatelessWidget {
                 cornerRadius: 20,
                 cornerSmoothing: 0.6,
               ),
+            ),
+            image: DecorationImage(
+              image: Assets.images.cardBackground.provider(),
+              fit: BoxFit.cover,
             ),
           ),
           child: Column(
@@ -63,7 +66,7 @@ class LoyaltyCard extends StatelessWidget {
                   child: Text(
                     'Твои баллы',
                     style: context.styles.subtitle3.copyWith(
-                      color: context.colors.white,
+                      color: context.colors.title,
                     ),
                   ),
                 ),
@@ -73,34 +76,14 @@ class LoyaltyCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          offset: const Offset(-30, 20),
-                          blurRadius: 100,
-                          color: context.colors.white.copyWithOpacity(.4),
-                        ),
-                      ],
-                    ),
-                    child: Text(1500.formatCurrency(),
-                        style: context.styles.title2),
+                  Text(
+                    1500.formatCurrency(),
+                    style: context.styles.title2,
                   ),
                   const Gap(15),
-                  Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          offset: const Offset(-10, -20),
-                          blurRadius: 110,
-                          color: const Color(0xffFF7575).copyWithOpacity(.7),
-                        ),
-                      ],
-                    ),
-                    child: Assets.images.coin.small.image(
-                      height: 50,
-                      width: 50,
-                    ),
+                  Assets.images.coin.small.image(
+                    height: 50,
+                    width: 50,
                   ),
                 ],
               ),

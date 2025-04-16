@@ -19,7 +19,7 @@ class HomeScreenGreetings extends StatelessWidget {
               TextSpan(
                 text: '${user.firstName}!',
                 style: context.styles.subtitle1.copyWith(
-                  color: context.colors.white,
+                  color: context.colors.title,
                 ),
               ),
             ],

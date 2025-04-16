@@ -1,0 +1,81 @@
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/about/about_map_and_features.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
+import 'about_gallery.dart';
+
+class HomeScreenAbout extends StatelessWidget {
+  const HomeScreenAbout({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: Pad(horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AboutHeader(),
+          Gap(20),
+          AboutGallery(),
+          Gap(20),
+          AboutText(
+            'Fakelab Records — это уютная студия звукозаписи в Санкт-Петербурге. Изначально создаваясь как студия под личные цели творческого объединения FAKELAB, она объединила в себе профессиональную среду для работы над проектами любой сложности и уютную, домашнюю атмосферу, которая не давит на клиентов и позволяет им раскрыть свой творческий потенциал.',
+          ),
+          Gap(20),
+          AboutMapAndFeatures(),
+          Gap(20),
+          AboutButton(),
+          Gap(20),
+          AboutText(
+            'Студия расположена по адресу г. Санкт-Петербург, ул. Комсомола, д. 2, офис 14. Бизнес-центр находится в 10 минутах пешком от станции метро «Площадь Ленина», а также в удобной транспортной доступности.',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AboutHeader extends StatelessWidget {
+  const AboutHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'О нас',
+      style: context.styles.subtitle1.copyWith(
+        color: context.colors.title,
+      ),
+    );
+  }
+}
+
+class AboutText extends StatelessWidget {
+  const AboutText(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: context.styles.body2,
+    );
+  }
+}
+
+class AboutButton extends StatelessWidget {
+  const AboutButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppButton.primary(
+      onTap: () {},
+      text: 'Как нас найти?',
+      icon: Assets.icons.pin,
+    );
+  }
+}
