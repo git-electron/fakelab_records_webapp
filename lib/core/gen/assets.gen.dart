@@ -19,18 +19,66 @@ class $AssetsIconsGen {
   SvgGenImage get arrowRight =>
       const SvgGenImage('assets/icons/arrow_right.svg');
 
+  /// File path: assets/icons/box.svg
+  SvgGenImage get box => const SvgGenImage('assets/icons/box.svg');
+
+  /// File path: assets/icons/calendar.svg
+  SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
+
+  /// File path: assets/icons/cart.svg
+  SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
+
+  /// File path: assets/icons/clock.svg
+  SvgGenImage get clock => const SvgGenImage('assets/icons/clock.svg');
+
+  /// File path: assets/icons/home.svg
+  SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
+
   /// Directory path: assets/icons/logo
   $AssetsIconsLogoGen get logo => const $AssetsIconsLogoGen();
 
+  /// File path: assets/icons/map.svg
+  SvgGenImage get map => const SvgGenImage('assets/icons/map.svg');
+
+  /// File path: assets/icons/pin.svg
+  SvgGenImage get pin => const SvgGenImage('assets/icons/pin.svg');
+
+  /// File path: assets/icons/qr_code.svg
+  SvgGenImage get qrCode => const SvgGenImage('assets/icons/qr_code.svg');
+
+  /// File path: assets/icons/subway.svg
+  SvgGenImage get subway => const SvgGenImage('assets/icons/subway.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [arrowRight];
+  List<SvgGenImage> get values => [
+    arrowRight,
+    box,
+    calendar,
+    cart,
+    clock,
+    home,
+    map,
+    pin,
+    qrCode,
+    subway,
+  ];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// Directory path: assets/images/about
+  $AssetsImagesAboutGen get about => const $AssetsImagesAboutGen();
+
+  /// File path: assets/images/card_background.png
+  AssetGenImage get cardBackground =>
+      const AssetGenImage('assets/images/card_background.png');
+
   /// Directory path: assets/images/coin
   $AssetsImagesCoinGen get coin => const $AssetsImagesCoinGen();
+
+  /// List of all assets
+  List<AssetGenImage> get values => [cardBackground];
 }
 
 class $AssetsIconsLogoGen {
@@ -41,6 +89,84 @@ class $AssetsIconsLogoGen {
 
   /// Directory path: assets/icons/logo/records
   $AssetsIconsLogoRecordsGen get records => const $AssetsIconsLogoRecordsGen();
+}
+
+class $AssetsImagesAboutGen {
+  const $AssetsImagesAboutGen();
+
+  /// File path: assets/images/about/about01.jpg
+  AssetGenImage get about01 =>
+      const AssetGenImage('assets/images/about/about01.jpg');
+
+  /// File path: assets/images/about/about02.jpg
+  AssetGenImage get about02 =>
+      const AssetGenImage('assets/images/about/about02.jpg');
+
+  /// File path: assets/images/about/about03.jpg
+  AssetGenImage get about03 =>
+      const AssetGenImage('assets/images/about/about03.jpg');
+
+  /// File path: assets/images/about/about04.jpg
+  AssetGenImage get about04 =>
+      const AssetGenImage('assets/images/about/about04.jpg');
+
+  /// File path: assets/images/about/about05.jpg
+  AssetGenImage get about05 =>
+      const AssetGenImage('assets/images/about/about05.jpg');
+
+  /// File path: assets/images/about/about06.jpg
+  AssetGenImage get about06 =>
+      const AssetGenImage('assets/images/about/about06.jpg');
+
+  /// File path: assets/images/about/about07.jpg
+  AssetGenImage get about07 =>
+      const AssetGenImage('assets/images/about/about07.jpg');
+
+  /// File path: assets/images/about/about08.jpg
+  AssetGenImage get about08 =>
+      const AssetGenImage('assets/images/about/about08.jpg');
+
+  /// File path: assets/images/about/about09.jpg
+  AssetGenImage get about09 =>
+      const AssetGenImage('assets/images/about/about09.jpg');
+
+  /// File path: assets/images/about/about10.jpg
+  AssetGenImage get about10 =>
+      const AssetGenImage('assets/images/about/about10.jpg');
+
+  /// File path: assets/images/about/about11.jpg
+  AssetGenImage get about11 =>
+      const AssetGenImage('assets/images/about/about11.jpg');
+
+  /// File path: assets/images/about/about12.jpg
+  AssetGenImage get about12 =>
+      const AssetGenImage('assets/images/about/about12.jpg');
+
+  /// File path: assets/images/about/about13.jpg
+  AssetGenImage get about13 =>
+      const AssetGenImage('assets/images/about/about13.jpg');
+
+  /// File path: assets/images/about/about14.jpg
+  AssetGenImage get about14 =>
+      const AssetGenImage('assets/images/about/about14.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    about01,
+    about02,
+    about03,
+    about04,
+    about05,
+    about06,
+    about07,
+    about08,
+    about09,
+    about10,
+    about11,
+    about12,
+    about13,
+    about14,
+  ];
 }
 
 class $AssetsImagesCoinGen {

@@ -79,13 +79,13 @@ class HomeScreenAppBarMobile extends StatelessWidget {
                           Align(
                             alignment: _animate(
                               animation,
-                              valueWhenCollapsed: const Alignment(1.0, -7.0),
+                              valueWhenCollapsed: Alignment.topRight,
                               valueWhenExpanded: Alignment.centerRight,
                             ),
                             child: Opacity(
                               opacity: _animate(
                                 animation,
-                                valueWhenCollapsed: -5.0,
+                                valueWhenCollapsed: -1.0,
                                 valueWhenExpanded: 1.0,
                               ).clamp(0, 1),
                               child: const UserAvatar(),
