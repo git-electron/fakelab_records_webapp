@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           TelegramMetaWrapper(builder: (context, meta) {
-            if(meta.isMobile) return const HomeScreenAppBarMobile();
+            if (meta.isMobile) return const HomeScreenAppBarMobile();
             return const HomeScreenAppBar();
           }),
           const SliverToBoxAdapter(
@@ -43,7 +43,7 @@ class HomeScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Gap(55),
-          HomeScreenDebugInfo(),
+          // HomeScreenDebugInfo(),
           HomeScreenGreetings(),
           Gap(20),
           HomeScreenSummary(),
