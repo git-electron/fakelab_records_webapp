@@ -46,7 +46,7 @@ class HomeScreenBody extends StatelessWidget {
         children: [
           Gap(55),
           HomeScreenDebugInfo(),
-          // HomeScreenGreetings(),
+          HomeScreenGreetings(),
           Gap(20),
           HomeScreenSummary(),
           Gap(55),
