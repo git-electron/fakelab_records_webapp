@@ -40,6 +40,8 @@ class TelegramService {
   }
 
   TelegramMeta? getMeta() {
+    if (kDebugMode) return Mock.telegramMeta;
+
     final String? platform = _call('getPlatform');
     final Json inset = _jsDecode(_call('getSafeAreaInset'));
     final Json contentInset = _jsDecode(_call('getContentSafeAreaInset'));

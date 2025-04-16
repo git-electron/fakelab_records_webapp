@@ -1,3 +1,5 @@
+import 'package:fakelab_records_webapp/core/domain/models/telegram/safe_area_inset.dart';
+import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_meta.dart';
 import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_user.dart';
 
 class Mock {
@@ -7,5 +9,11 @@ class Mock {
     name: 'Mock',
     username: 'mock_user',
     photoUrl: 'https://t.me/i/userpic/320/$_photoFileName.svg',
+  );
+
+  static final TelegramMeta telegramMeta = TelegramMeta(
+    platform: 'unknown',
+    safeAreaInset: SafeAreaInset(top: 55, left: 0, right: 0, bottom: 20),
+    contentSafeAreaInset: SafeAreaInset(top: 45, left: 0, right: 0, bottom: 0),
   );
 }
