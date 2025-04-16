@@ -59,7 +59,6 @@ class TelegramService {
 
   Json _jsDecode(dynamic value) {
     String jsonString = js.context['JSON'].callMethod('stringify', [value]);
-    print(jsonString);
     return jsonDecode(jsonString);
   }
 }

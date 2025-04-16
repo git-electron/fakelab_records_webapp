@@ -7,10 +7,10 @@ part 'safe_area_inset.g.dart';
 class SafeAreaInset with _$SafeAreaInset {
 
   factory SafeAreaInset({
-    required int top,
-    required int left,
-    required int right,
-    required int bottom,
+    required double top,
+    required double left,
+    required double right,
+    required double bottom,
   }) = _SafeAreaInset;
 
   factory SafeAreaInset.fromJson(Map<String, dynamic> json) => _$SafeAreaInsetFromJson(json);

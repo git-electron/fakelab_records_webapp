@@ -20,10 +20,10 @@ SafeAreaInset _$SafeAreaInsetFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SafeAreaInset {
-  int get top => throw _privateConstructorUsedError;
-  int get left => throw _privateConstructorUsedError;
-  int get right => throw _privateConstructorUsedError;
-  int get bottom => throw _privateConstructorUsedError;
+  double get top => throw _privateConstructorUsedError;
+  double get left => throw _privateConstructorUsedError;
+  double get right => throw _privateConstructorUsedError;
+  double get bottom => throw _privateConstructorUsedError;
 
   /// Serializes this SafeAreaInset to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $SafeAreaInsetCopyWith<$Res> {
           SafeAreaInset value, $Res Function(SafeAreaInset) then) =
       _$SafeAreaInsetCopyWithImpl<$Res, SafeAreaInset>;
   @useResult
-  $Res call({int top, int left, int right, int bottom});
+  $Res call({double top, double left, double right, double bottom});
 }
 
 /// @nodoc
@@ -68,19 +68,19 @@ class _$SafeAreaInsetCopyWithImpl<$Res, $Val extends SafeAreaInset>
       top: null == top
           ? _value.top
           : top // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       left: null == left
           ? _value.left
           : left // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       right: null == right
           ? _value.right
           : right // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       bottom: null == bottom
           ? _value.bottom
           : bottom // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
     ) as $Val);
   }
 }
@@ -93,7 +93,7 @@ abstract class _$$SafeAreaInsetImplCopyWith<$Res>
       __$$SafeAreaInsetImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int top, int left, int right, int bottom});
+  $Res call({double top, double left, double right, double bottom});
 }
 
 /// @nodoc
@@ -118,19 +118,19 @@ class __$$SafeAreaInsetImplCopyWithImpl<$Res>
       top: null == top
           ? _value.top
           : top // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       left: null == left
           ? _value.left
           : left // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       right: null == right
           ? _value.right
           : right // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       bottom: null == bottom
           ? _value.bottom
           : bottom // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
     ));
   }
 }
@@ -148,13 +148,13 @@ class _$SafeAreaInsetImpl implements _SafeAreaInset {
       _$$SafeAreaInsetImplFromJson(json);
 
   @override
-  final int top;
+  final double top;
   @override
-  final int left;
+  final double left;
   @override
-  final int right;
+  final double right;
   @override
-  final int bottom;
+  final double bottom;
 
   @override
   String toString() {
@@ -194,22 +194,22 @@ class _$SafeAreaInsetImpl implements _SafeAreaInset {
 
 abstract class _SafeAreaInset implements SafeAreaInset {
   factory _SafeAreaInset(
-      {required final int top,
-      required final int left,
-      required final int right,
-      required final int bottom}) = _$SafeAreaInsetImpl;
+      {required final double top,
+      required final double left,
+      required final double right,
+      required final double bottom}) = _$SafeAreaInsetImpl;
 
   factory _SafeAreaInset.fromJson(Map<String, dynamic> json) =
       _$SafeAreaInsetImpl.fromJson;
 
   @override
-  int get top;
+  double get top;
   @override
-  int get left;
+  double get left;
   @override
-  int get right;
+  double get right;
   @override
-  int get bottom;
+  double get bottom;
 
   /// Create a copy of SafeAreaInset
   /// with the given fields replaced by the non-null parameter values.

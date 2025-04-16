@@ -8,10 +8,10 @@ part of 'safe_area_inset.dart';
 
 _$SafeAreaInsetImpl _$$SafeAreaInsetImplFromJson(Map<String, dynamic> json) =>
     _$SafeAreaInsetImpl(
-      top: (json['top'] as num).toInt(),
-      left: (json['left'] as num).toInt(),
-      right: (json['right'] as num).toInt(),
-      bottom: (json['bottom'] as num).toInt(),
+      top: (json['top'] as num).toDouble(),
+      left: (json['left'] as num).toDouble(),
+      right: (json['right'] as num).toDouble(),
+      bottom: (json['bottom'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$SafeAreaInsetImplToJson(_$SafeAreaInsetImpl instance) =>
