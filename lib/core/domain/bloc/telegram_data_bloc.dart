@@ -14,15 +14,11 @@ class TelegramDataBloc extends Bloc<TelegramDataEvent, TelegramDataState> {
   TelegramDataBloc(this.telegramService) : super(const _Initial()) {
     on<_SetData>(_onSetData);
 
-    tryOrNull(() async {
-      add(TelegramDataEvent.setData(
+    tryOrNull(
+      () => add(TelegramDataEvent.setData(
         telegramService.getTelegramData()!,
-      ));
-      await Future.delayed(const Duration(seconds: 10));
-      add(TelegramDataEvent.setData(
-        telegramService.getTelegramData()!,
-      ));
-    });
+      )),
+    );
   }
 
   final TelegramService telegramService;
@@ -30,6 +26,15 @@ class TelegramDataBloc extends Bloc<TelegramDataEvent, TelegramDataState> {
   Future<void> _onSetData(
     _SetData event,
     Emitter<TelegramDataState> emit,
-  ) async =>
-      emit(TelegramDataState.loaded(event.data));
+  ) async {
+    emit(TelegramDataState.loaded(event.data));
+    if (event.data.meta.isMobile &&
+        event.data.meta.contentSafeAreaInset.top == 0) {
+      tryOrNull(
+        () => add(TelegramDataEvent.setData(
+          telegramService.getTelegramData()!,
+        )),
+      );
+    }
+  }
 }
