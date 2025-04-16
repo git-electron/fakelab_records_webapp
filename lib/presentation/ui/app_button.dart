@@ -114,8 +114,7 @@ class AppButton extends StatelessWidget {
                           color: contentColor,
                         ),
                       ),
-                    // ignore: deprecated_member_use_from_same_package
-                    if (icon != null) icon!.svg(color: contentColor),
+                    if (icon != null) icon!.svg(),
                   ].alternateWith(const Gap(10)),
                 )
               : SizedBox.square(

@@ -16,7 +16,7 @@ class HomeScreenButtons extends StatelessWidget {
           AppButton.primary(
             onTap: () {},
             text: 'Забронировать запись',
-            icon: Assets.icons.calendar,
+            icon: Assets.icons.calendarBlack,
           ),
           const Gap(10),
           AppButton.secondary(

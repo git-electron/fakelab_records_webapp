@@ -5,6 +5,7 @@ import 'package:fakelab_records_webapp/presentation/screens/home/presentation/wi
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'about_gallery.dart';
 
@@ -79,9 +80,10 @@ class AboutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppButton.primary(
-      onTap: () {},
+      onTap: () => launchUrlString(
+          'https://yandex.ru/maps/?from=mapframe&ll=30.369747%2C59.954633&poi%5Bpoint%5D=30.369747&poi%5Bpoint%5D=59.954633&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D64952203819&source=mapframe&utm_source=mapframe&z=12'),
       text: 'Как нас найти?',
-      icon: Assets.icons.pin,
+      icon: Assets.icons.pinBlack,
     );
   }
 }

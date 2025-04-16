@@ -92,54 +92,57 @@ class _ClickableState extends State<Clickable>
       await widget.onLongTap?.call();
     }
 
-    return GestureDetector(
-      // call one tap event
-      onTap: widget.onTap,
-      // call long tap one event if the long tap repeat(loop) is false
-      onLongPress: widget.onLongTap != null && !widget.enableLongTapRepeatEvent
-          ? onLongPress
-          : null,
-      child: Listener(
-        onPointerDown: (c) async {
-          if (_isIgnore) return;
-
-          // prevent the onTap event from beign triggered
-          _isOnTap = true;
-          setState(() {});
-          // animate the Tween animation from the end point to the start point
-          _controller?.reverse();
-          // check if long tap loop is true
-          if (widget.enableLongTapRepeatEvent) {
-            // the duration before starting the loop event
-            await Future.delayed(widget.longTapRepeatDuration);
-            // _isOnTap is to check that the tap is still down (check onPointerUp method which assign _isOnTap to false)
-            while (_isOnTap) {
-              // the duration between every onTap/onLongTap loop event.
-              await Future.delayed(widget.longTapRepeatDuration, () async {
-                // call onTap if onLongTap is not specified
-                await (widget.onLongTap ?? widget.onTap)?.call();
-              });
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        // call one tap event
+        onTap: widget.onTap,
+        // call long tap one event if the long tap repeat(loop) is false
+        onLongPress: widget.onLongTap != null && !widget.enableLongTapRepeatEvent
+            ? onLongPress
+            : null,
+        child: Listener(
+          onPointerDown: (c) async {
+            if (_isIgnore) return;
+      
+            // prevent the onTap event from beign triggered
+            _isOnTap = true;
+            setState(() {});
+            // animate the Tween animation from the end point to the start point
+            _controller?.reverse();
+            // check if long tap loop is true
+            if (widget.enableLongTapRepeatEvent) {
+              // the duration before starting the loop event
+              await Future.delayed(widget.longTapRepeatDuration);
+              // _isOnTap is to check that the tap is still down (check onPointerUp method which assign _isOnTap to false)
+              while (_isOnTap) {
+                // the duration between every onTap/onLongTap loop event.
+                await Future.delayed(widget.longTapRepeatDuration, () async {
+                  // call onTap if onLongTap is not specified
+                  await (widget.onLongTap ?? widget.onTap)?.call();
+                });
+              }
             }
-          }
-        },
-        onPointerUp: (c) async {
-          if (_isIgnore) return;
-
-          // prevent the onTap event from beign triggered if the user has taped the widget for more than than 150 milliseconds
-          _isOnTap = false;
-          setState(() {});
-          // animate the Tween animation from the begin point to the end point
-          await _controller?.forward();
-        },
-        child: ColoredBox(
-          color: Colors.transparent,
-          child: ScaleTransition(
-              scale: _animation,
-              child: AnimatedOpacity(
-                duration: const Duration(milliseconds: 60),
-                opacity: _isOnTap ? .7 : 1,
-                child: widget.child,
-              )),
+          },
+          onPointerUp: (c) async {
+            if (_isIgnore) return;
+      
+            // prevent the onTap event from beign triggered if the user has taped the widget for more than than 150 milliseconds
+            _isOnTap = false;
+            setState(() {});
+            // animate the Tween animation from the begin point to the end point
+            await _controller?.forward();
+          },
+          child: ColoredBox(
+            color: Colors.transparent,
+            child: ScaleTransition(
+                scale: _animation,
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 60),
+                  opacity: _isOnTap ? .7 : 1,
+                  child: widget.child,
+                )),
+          ),
         ),
       ),
     );

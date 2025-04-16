@@ -19,11 +19,19 @@ class $AssetsIconsGen {
   SvgGenImage get arrowRight =>
       const SvgGenImage('assets/icons/arrow_right.svg');
 
+  /// File path: assets/icons/arrow_right_gray.svg
+  SvgGenImage get arrowRightGray =>
+      const SvgGenImage('assets/icons/arrow_right_gray.svg');
+
   /// File path: assets/icons/box.svg
   SvgGenImage get box => const SvgGenImage('assets/icons/box.svg');
 
   /// File path: assets/icons/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
+
+  /// File path: assets/icons/calendar_black.svg
+  SvgGenImage get calendarBlack =>
+      const SvgGenImage('assets/icons/calendar_black.svg');
 
   /// File path: assets/icons/cart.svg
   SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
@@ -43,6 +51,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/pin.svg
   SvgGenImage get pin => const SvgGenImage('assets/icons/pin.svg');
 
+  /// File path: assets/icons/pin_black.svg
+  SvgGenImage get pinBlack => const SvgGenImage('assets/icons/pin_black.svg');
+
   /// File path: assets/icons/qr_code.svg
   SvgGenImage get qrCode => const SvgGenImage('assets/icons/qr_code.svg');
 
@@ -52,13 +63,16 @@ class $AssetsIconsGen {
   /// List of all assets
   List<SvgGenImage> get values => [
     arrowRight,
+    arrowRightGray,
     box,
     calendar,
+    calendarBlack,
     cart,
     clock,
     home,
     map,
     pin,
+    pinBlack,
     qrCode,
     subway,
   ];
