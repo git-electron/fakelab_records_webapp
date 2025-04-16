@@ -106,10 +106,9 @@ class LoyaltyCard extends StatelessWidget {
                         ),
                         const Gap(5),
                         Assets.icons.arrowRight.svg(
-                            colorFilter: ColorFilter.mode(
-                          context.colors.subtitle,
-                          BlendMode.srcATop,
-                        )),
+                          // ignore: deprecated_member_use_from_same_package
+                          color: context.colors.subtitle,
+                        ),
                       ],
                     ),
                   ),

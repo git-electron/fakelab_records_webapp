@@ -104,10 +104,8 @@ class AboutFeature extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         icon.svg(
-          colorFilter: ColorFilter.mode(
-            iconColor ?? context.colors.white,
-            BlendMode.srcATop,
-          ),
+          // ignore: deprecated_member_use_from_same_package
+          color: iconColor ?? context.colors.white,
         ),
         const Gap(10),
         if (text != null) Text(text!, style: context.styles.body3),
