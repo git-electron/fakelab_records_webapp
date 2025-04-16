@@ -8,7 +8,8 @@ class HomeScreenGreetings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      color: context.colors.background,
       padding: const Pad(horizontal: 20),
       child: TelegramUserWrapper(builder: (context, user) {
         return Text.rich(
