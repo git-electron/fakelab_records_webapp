@@ -7,7 +7,6 @@ import 'package:fakelab_records_webapp/core/domain/models/telegram/safe_area_ins
 import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_data.dart';
 import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_meta.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
-import 'package:fakelab_records_webapp/core/utils/try_or/try_or_value.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -30,13 +29,7 @@ class TelegramService {
     );
 
     tryOrNull(() => _setupTelegramWebApp(data!.meta.isMobile));
-    return tryOrValue(
-      () {
-        final TelegramMeta? meta = tryOrNull(_getMeta);
-        return data!.copyWith(meta: meta ?? data.meta);
-      },
-      orValueCallback: () => data,
-    );
+    return data;
   }
 
   TelegramUser? _getUserData() {
@@ -66,6 +59,7 @@ class TelegramService {
 
   Json _jsDecode(dynamic value) {
     String jsonString = js.context['JSON'].callMethod('stringify', [value]);
+    print(jsonString);
     return jsonDecode(jsonString);
   }
 }
