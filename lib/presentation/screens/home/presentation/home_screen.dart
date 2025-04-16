@@ -41,9 +41,10 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: Pad(vertical: 20),
-      child: Column(
+    return Container(
+      color: context.colors.background,
+      padding: const Pad(vertical: 20),
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Gap(55),
