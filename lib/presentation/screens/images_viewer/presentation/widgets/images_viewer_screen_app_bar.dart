@@ -30,7 +30,7 @@ class ImagesViewerScreenAppBarMobile extends StatelessWidget {
               ],
             ),
           ),
-          padding: Pad(top: 12 + meta.safeAreaInset.top, left: 20, right: 20),
+          padding: Pad(top: meta.safeAreaInset.top, left: 20, right: 20),
           child: ListenableBuilder(
             listenable: bloc.controller,
             builder: (BuildContext context, Widget? child) {
@@ -40,6 +40,7 @@ class ImagesViewerScreenAppBarMobile extends StatelessWidget {
               final int currentPage = currentIndex + 1;
 
               return Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text('$currentPage'),
