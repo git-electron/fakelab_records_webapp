@@ -68,7 +68,12 @@ class TelegramService {
   void hideBackButton() => _call('hideBackButton');
 
   void _setupTelegramWebApp(bool shouldForceFullscreen) =>
-      _call('setupTelegramWebApp', [shouldForceFullscreen, () => router.pop()]);
+      _call('setupTelegramWebApp', [shouldForceFullscreen, _onBackButtonTap]);
+
+  void _onBackButtonTap() {
+    hideBackButton();
+    router.pop();
+  }
 
   dynamic _call(String method, [List<dynamic>? args]) =>
       js.context.callMethod(method, args);
