@@ -21,6 +21,8 @@ class TelegramService {
 
   final AppRouter router;
 
+  static bool _isSetup = false;
+
   void initTelegramWebApp() => _call('initTelegramWebApp');
 
   TelegramData? getTelegramData() {
@@ -31,7 +33,12 @@ class TelegramService {
       () => TelegramData(user: user!, meta: meta!),
     );
 
-    tryOrNull(() => _setupTelegramWebApp(data!.meta.isMobile));
+    if (!_isSetup) {
+      tryOrNull(() {
+        _setupTelegramWebApp(data!.meta.isMobile);
+        _isSetup = true;
+      });
+    }
     return data;
   }
 

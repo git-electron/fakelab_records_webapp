@@ -98,7 +98,7 @@ class _ImagesViewerScreenState extends State<ImagesViewerScreen> {
                     alignment: Alignment.topCenter,
                     child: TelegramMetaWrapper(
                       builder: (context, meta) {
-                        if (!meta.isMobile) {
+                        if (meta.isMobile) {
                           return const ImagesViewerScreenAppBarMobile();
                         }
 
