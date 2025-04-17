@@ -1,6 +1,9 @@
 import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/router/router.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
@@ -17,7 +20,7 @@ class AboutGallery extends StatelessWidget {
         AspectRatio(
           aspectRatio: 7 / 4,
           child: Clickable(
-            onTap: () {},
+            onTap: () => _onImageTapped(0),
             child: Container(
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
@@ -38,11 +41,13 @@ class AboutGallery extends StatelessWidget {
         const Gap(5),
         Row(
           children: List<Widget>.generate(3, (index) {
+            final int imageIndex = index + 1;
+
             return Expanded(
               child: AspectRatio(
                 aspectRatio: 5 / 4,
                 child: Clickable(
-                  onTap: () {},
+                  onTap: () => _onImageTapped(imageIndex),
                   child: Container(
                     clipBehavior: Clip.antiAlias,
                     decoration: ShapeDecoration(
@@ -52,17 +57,11 @@ class AboutGallery extends StatelessWidget {
                           cornerSmoothing: 0.6,
                         ),
                       ),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: Assets.images.about.values
-                            .sublist(1)[index]
-                            .provider(),
-                      ),
                     ),
                     child: Blur(
-                      blur: index == 2 ? 5 : 0,
+                      blur: imageIndex == 3 ? 5 : 0,
                       colorOpacity: 0,
-                      overlay: index == 2
+                      overlay: imageIndex == 3
                           ? Text(
                               '+${Assets.images.about.values.length - 3}',
                               style: context.styles.subtitle3.copyWith(
@@ -70,7 +69,12 @@ class AboutGallery extends StatelessWidget {
                               ),
                             )
                           : const SizedBox(),
-                      child: const SizedBox(),
+                      child: SizedBox(
+                        height: double.infinity,
+                        width: double.infinity,
+                        child: Assets.images.about.values[imageIndex]
+                            .image(fit: BoxFit.cover),
+                      ),
                     ),
                   ),
                 ),
@@ -80,5 +84,12 @@ class AboutGallery extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _onImageTapped(int index) {
+    $<AppRouter>().push(ImagesViewerRoute(
+      images: Assets.images.about.values.map((image) => image.path).toList(),
+      initialIndex: index,
+    ));
   }
 }
