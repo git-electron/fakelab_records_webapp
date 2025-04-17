@@ -6,6 +6,7 @@ import 'package:fakelab_records_webapp/core/constants/types.dart';
 import 'package:fakelab_records_webapp/core/domain/models/telegram/safe_area_inset.dart';
 import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_data.dart';
 import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_meta.dart';
+import 'package:fakelab_records_webapp/core/router/router.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
@@ -14,9 +15,11 @@ import '../models/telegram/telegram_user.dart';
 
 @injectable
 class TelegramService {
-  TelegramService() {
+  TelegramService(this.router) {
     initTelegramWebApp();
   }
+
+  final AppRouter router;
 
   void initTelegramWebApp() => _call('initTelegramWebApp');
 
@@ -51,6 +54,14 @@ class TelegramService {
           safeAreaInset: SafeAreaInset.fromJson(inset),
           contentSafeAreaInset: SafeAreaInset.fromJson(contentInset),
         ));
+  }
+
+  void showBackButton() {
+    _call('showBackButton', [() => router.pop()]);
+  }
+
+  void hideBackButton() {
+    _call('hideBackButton', [() => router.pop()]);
   }
 
   void _setupTelegramWebApp(bool shouldForceFullscreen) =>

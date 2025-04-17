@@ -34,9 +34,18 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final locator = _$Locator();
     gh.factory<_i974.Logger>(() => locator.logger);
-    gh.factory<_i435.TelegramService>(() => _i435.TelegramService());
-    gh.factory<_i15.ImagesViewerBloc>(() => _i15.ImagesViewerBloc());
     gh.singleton<_i352.AppRouter>(() => _i352.AppRouter());
+    gh.factory<_i435.TelegramService>(
+        () => _i435.TelegramService(gh<_i352.AppRouter>()));
+    gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
+      images,
+      initialIndex,
+    ) =>
+        _i15.ImagesViewerBloc(
+          images: images,
+          initialIndex: initialIndex,
+          telegramService: gh<_i435.TelegramService>(),
+        ));
     gh.singleton<_i1011.TelegramDataBloc>(
         () => _i1011.TelegramDataBloc(gh<_i435.TelegramService>()));
     return this;

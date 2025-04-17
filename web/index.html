@@ -11,6 +11,14 @@
       }
     }
 
+    function setupTelegramWebApp(shouldForceFullscreen) {
+      if (window.Telegram) {
+        if (shouldForceFullscreen) Telegram.WebApp.requestFullscreen();
+        Telegram.WebApp.lockOrientation();
+        Telegram.WebApp.disableVerticalSwipes();
+      }
+    }
+
     function getUserData() {
       if (window.Telegram) {
         return Telegram.WebApp.initDataUnsafe;
@@ -39,11 +47,17 @@
       return null
     }
 
-    function setupTelegramWebApp(shouldForceFullscreen) {
+    function showBackButton(onTap) {
       if (window.Telegram) {
-        if (shouldForceFullscreen) Telegram.WebApp.requestFullscreen();
-        Telegram.WebApp.lockOrientation();
-        Telegram.WebApp.disableVerticalSwipes();
+        Telegram.WebApp.BackButton.show();
+        Telegram.WebApp.BackButton.onClick(onTap);
+      }
+    }
+
+    function hideBackButton(onTap) {
+      if (window.Telegram) {
+        Telegram.WebApp.BackButton.hide();
+        Telegram.WebApp.BackButton.offClick(onTap);
       }
     }
   </script>

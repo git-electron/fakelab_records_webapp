@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
-import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
+import 'package:fakelab_records_webapp/presentation/screens/images_viewer/presentation/widgets/images_viewer_screen_app_bar.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_view/photo_view.dart';
@@ -32,35 +32,19 @@ class ImagesViewerScreen extends StatefulWidget {
 class _ImagesViewerScreenState extends State<ImagesViewerScreen> {
   static const int disposeLimit = 100;
 
-  late BuildContext blocContext;
-  late final PageController pageController;
-
-  @override
-  void initState() {
-    pageController = PageController(
-      initialPage: widget.initialIndex,
-      viewportFraction: 1.02,
-    );
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    pageController.dispose();
-
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
     return BlocProvider<ImagesViewerBloc>(
-      create: (_) => $<ImagesViewerBloc>(),
+      create: (_) => $<ImagesViewerBloc>(
+        param1: widget.images,
+        param2: widget.initialIndex,
+      ),
       child: BlocBuilder<ImagesViewerBloc, ImagesViewerState>(
         builder: (BuildContext context, ImagesViewerState state) {
-          blocContext = context;
+          final ImagesViewerBloc bloc = context.read();
+
           final double positionYDelta = state.positionYDelta;
           final Duration animationDuration = state.animationDuration;
 
@@ -89,7 +73,7 @@ class _ImagesViewerScreenState extends State<ImagesViewerScreen> {
                     left: 0,
                     right: 0,
                     child: PageView.builder(
-                      controller: pageController,
+                      controller: bloc.controller,
                       itemCount: widget.images.length,
                       itemBuilder: (BuildContext context, int index) {
                         final String image = widget.images[index];
@@ -112,51 +96,14 @@ class _ImagesViewerScreenState extends State<ImagesViewerScreen> {
                   ),
                   Align(
                     alignment: Alignment.topCenter,
-                    child: Container(
-                      width: size.width,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: <Color>[
-                            context.colors.black.copyWithOpacity(.8),
-                            context.colors.black.copyWithOpacity(0),
-                          ],
-                        ),
-                      ),
-                      padding: const EdgeInsets.fromLTRB(20.0, 12.0, 12.0, 0),
-                      child: ListenableBuilder(
-                        listenable: pageController,
-                        builder: (BuildContext context, Widget? child) {
-                          final int totalPages = widget.images.length;
-                          final int currentIndex =
-                              pageController.page?.round() ??
-                                  widget.initialIndex;
-                          final int currentPage = currentIndex + 1;
+                    child: TelegramMetaWrapper(
+                      builder: (context, meta) {
+                        if (!meta.isMobile) {
+                          return const ImagesViewerScreenAppBarMobile();
+                        }
 
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text('$currentPage'),
-                                  Opacity(
-                                    opacity: .5,
-                                    child: Text('/$totalPages'),
-                                  ),
-                                ],
-                              ),
-                              Clickable(
-                                onTap: context.pop,
-                                child: const Icon(Icons.close),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
+                        return const ImagesViewerScreenAppBar();
+                      },
                     ),
                   ),
                 ],

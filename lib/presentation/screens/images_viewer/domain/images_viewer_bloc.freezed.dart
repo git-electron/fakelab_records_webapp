@@ -21,7 +21,6 @@ mixin _$ImagesViewerEvent {
     required TResult Function(double positionYDelta) setPositionYDelta,
     required TResult Function(double initialYPosition) setInitialYPosition,
     required TResult Function(double currentYPosition) setCurrentYPosition,
-    required TResult Function(double backgroundOpacity) setBackgroundOpacity,
     required TResult Function(Duration animationDuration) setAnimationDuration,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +29,6 @@ mixin _$ImagesViewerEvent {
     TResult? Function(double positionYDelta)? setPositionYDelta,
     TResult? Function(double initialYPosition)? setInitialYPosition,
     TResult? Function(double currentYPosition)? setCurrentYPosition,
-    TResult? Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult? Function(Duration animationDuration)? setAnimationDuration,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +37,6 @@ mixin _$ImagesViewerEvent {
     TResult Function(double positionYDelta)? setPositionYDelta,
     TResult Function(double initialYPosition)? setInitialYPosition,
     TResult Function(double currentYPosition)? setCurrentYPosition,
-    TResult Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult Function(Duration animationDuration)? setAnimationDuration,
     required TResult orElse(),
   }) =>
@@ -49,7 +46,6 @@ mixin _$ImagesViewerEvent {
     required TResult Function(_SetPositionYDelta value) setPositionYDelta,
     required TResult Function(_SetInitialYPosition value) setInitialYPosition,
     required TResult Function(_SetCurrentYPosition value) setCurrentYPosition,
-    required TResult Function(_SetBackgroundOpacity value) setBackgroundOpacity,
     required TResult Function(_SetAnimationDuration value) setAnimationDuration,
   }) =>
       throw _privateConstructorUsedError;
@@ -58,7 +54,6 @@ mixin _$ImagesViewerEvent {
     TResult? Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult? Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult? Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult? Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult? Function(_SetAnimationDuration value)? setAnimationDuration,
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +62,6 @@ mixin _$ImagesViewerEvent {
     TResult Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult Function(_SetAnimationDuration value)? setAnimationDuration,
     required TResult orElse(),
   }) =>
@@ -168,7 +162,6 @@ class _$SetPositionYDeltaImpl implements _SetPositionYDelta {
     required TResult Function(double positionYDelta) setPositionYDelta,
     required TResult Function(double initialYPosition) setInitialYPosition,
     required TResult Function(double currentYPosition) setCurrentYPosition,
-    required TResult Function(double backgroundOpacity) setBackgroundOpacity,
     required TResult Function(Duration animationDuration) setAnimationDuration,
   }) {
     return setPositionYDelta(positionYDelta);
@@ -180,7 +173,6 @@ class _$SetPositionYDeltaImpl implements _SetPositionYDelta {
     TResult? Function(double positionYDelta)? setPositionYDelta,
     TResult? Function(double initialYPosition)? setInitialYPosition,
     TResult? Function(double currentYPosition)? setCurrentYPosition,
-    TResult? Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult? Function(Duration animationDuration)? setAnimationDuration,
   }) {
     return setPositionYDelta?.call(positionYDelta);
@@ -192,7 +184,6 @@ class _$SetPositionYDeltaImpl implements _SetPositionYDelta {
     TResult Function(double positionYDelta)? setPositionYDelta,
     TResult Function(double initialYPosition)? setInitialYPosition,
     TResult Function(double currentYPosition)? setCurrentYPosition,
-    TResult Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult Function(Duration animationDuration)? setAnimationDuration,
     required TResult orElse(),
   }) {
@@ -208,7 +199,6 @@ class _$SetPositionYDeltaImpl implements _SetPositionYDelta {
     required TResult Function(_SetPositionYDelta value) setPositionYDelta,
     required TResult Function(_SetInitialYPosition value) setInitialYPosition,
     required TResult Function(_SetCurrentYPosition value) setCurrentYPosition,
-    required TResult Function(_SetBackgroundOpacity value) setBackgroundOpacity,
     required TResult Function(_SetAnimationDuration value) setAnimationDuration,
   }) {
     return setPositionYDelta(this);
@@ -220,7 +210,6 @@ class _$SetPositionYDeltaImpl implements _SetPositionYDelta {
     TResult? Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult? Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult? Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult? Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult? Function(_SetAnimationDuration value)? setAnimationDuration,
   }) {
     return setPositionYDelta?.call(this);
@@ -232,7 +221,6 @@ class _$SetPositionYDeltaImpl implements _SetPositionYDelta {
     TResult Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult Function(_SetAnimationDuration value)? setAnimationDuration,
     required TResult orElse(),
   }) {
@@ -329,7 +317,6 @@ class _$SetInitialYPositionImpl implements _SetInitialYPosition {
     required TResult Function(double positionYDelta) setPositionYDelta,
     required TResult Function(double initialYPosition) setInitialYPosition,
     required TResult Function(double currentYPosition) setCurrentYPosition,
-    required TResult Function(double backgroundOpacity) setBackgroundOpacity,
     required TResult Function(Duration animationDuration) setAnimationDuration,
   }) {
     return setInitialYPosition(initialYPosition);
@@ -341,7 +328,6 @@ class _$SetInitialYPositionImpl implements _SetInitialYPosition {
     TResult? Function(double positionYDelta)? setPositionYDelta,
     TResult? Function(double initialYPosition)? setInitialYPosition,
     TResult? Function(double currentYPosition)? setCurrentYPosition,
-    TResult? Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult? Function(Duration animationDuration)? setAnimationDuration,
   }) {
     return setInitialYPosition?.call(initialYPosition);
@@ -353,7 +339,6 @@ class _$SetInitialYPositionImpl implements _SetInitialYPosition {
     TResult Function(double positionYDelta)? setPositionYDelta,
     TResult Function(double initialYPosition)? setInitialYPosition,
     TResult Function(double currentYPosition)? setCurrentYPosition,
-    TResult Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult Function(Duration animationDuration)? setAnimationDuration,
     required TResult orElse(),
   }) {
@@ -369,7 +354,6 @@ class _$SetInitialYPositionImpl implements _SetInitialYPosition {
     required TResult Function(_SetPositionYDelta value) setPositionYDelta,
     required TResult Function(_SetInitialYPosition value) setInitialYPosition,
     required TResult Function(_SetCurrentYPosition value) setCurrentYPosition,
-    required TResult Function(_SetBackgroundOpacity value) setBackgroundOpacity,
     required TResult Function(_SetAnimationDuration value) setAnimationDuration,
   }) {
     return setInitialYPosition(this);
@@ -381,7 +365,6 @@ class _$SetInitialYPositionImpl implements _SetInitialYPosition {
     TResult? Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult? Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult? Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult? Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult? Function(_SetAnimationDuration value)? setAnimationDuration,
   }) {
     return setInitialYPosition?.call(this);
@@ -393,7 +376,6 @@ class _$SetInitialYPositionImpl implements _SetInitialYPosition {
     TResult Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult Function(_SetAnimationDuration value)? setAnimationDuration,
     required TResult orElse(),
   }) {
@@ -490,7 +472,6 @@ class _$SetCurrentYPositionImpl implements _SetCurrentYPosition {
     required TResult Function(double positionYDelta) setPositionYDelta,
     required TResult Function(double initialYPosition) setInitialYPosition,
     required TResult Function(double currentYPosition) setCurrentYPosition,
-    required TResult Function(double backgroundOpacity) setBackgroundOpacity,
     required TResult Function(Duration animationDuration) setAnimationDuration,
   }) {
     return setCurrentYPosition(currentYPosition);
@@ -502,7 +483,6 @@ class _$SetCurrentYPositionImpl implements _SetCurrentYPosition {
     TResult? Function(double positionYDelta)? setPositionYDelta,
     TResult? Function(double initialYPosition)? setInitialYPosition,
     TResult? Function(double currentYPosition)? setCurrentYPosition,
-    TResult? Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult? Function(Duration animationDuration)? setAnimationDuration,
   }) {
     return setCurrentYPosition?.call(currentYPosition);
@@ -514,7 +494,6 @@ class _$SetCurrentYPositionImpl implements _SetCurrentYPosition {
     TResult Function(double positionYDelta)? setPositionYDelta,
     TResult Function(double initialYPosition)? setInitialYPosition,
     TResult Function(double currentYPosition)? setCurrentYPosition,
-    TResult Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult Function(Duration animationDuration)? setAnimationDuration,
     required TResult orElse(),
   }) {
@@ -530,7 +509,6 @@ class _$SetCurrentYPositionImpl implements _SetCurrentYPosition {
     required TResult Function(_SetPositionYDelta value) setPositionYDelta,
     required TResult Function(_SetInitialYPosition value) setInitialYPosition,
     required TResult Function(_SetCurrentYPosition value) setCurrentYPosition,
-    required TResult Function(_SetBackgroundOpacity value) setBackgroundOpacity,
     required TResult Function(_SetAnimationDuration value) setAnimationDuration,
   }) {
     return setCurrentYPosition(this);
@@ -542,7 +520,6 @@ class _$SetCurrentYPositionImpl implements _SetCurrentYPosition {
     TResult? Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult? Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult? Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult? Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult? Function(_SetAnimationDuration value)? setAnimationDuration,
   }) {
     return setCurrentYPosition?.call(this);
@@ -554,7 +531,6 @@ class _$SetCurrentYPositionImpl implements _SetCurrentYPosition {
     TResult Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult Function(_SetAnimationDuration value)? setAnimationDuration,
     required TResult orElse(),
   }) {
@@ -576,168 +552,6 @@ abstract class _SetCurrentYPosition implements ImagesViewerEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetCurrentYPositionImplCopyWith<_$SetCurrentYPositionImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SetBackgroundOpacityImplCopyWith<$Res> {
-  factory _$$SetBackgroundOpacityImplCopyWith(_$SetBackgroundOpacityImpl value,
-          $Res Function(_$SetBackgroundOpacityImpl) then) =
-      __$$SetBackgroundOpacityImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({double backgroundOpacity});
-}
-
-/// @nodoc
-class __$$SetBackgroundOpacityImplCopyWithImpl<$Res>
-    extends _$ImagesViewerEventCopyWithImpl<$Res, _$SetBackgroundOpacityImpl>
-    implements _$$SetBackgroundOpacityImplCopyWith<$Res> {
-  __$$SetBackgroundOpacityImplCopyWithImpl(_$SetBackgroundOpacityImpl _value,
-      $Res Function(_$SetBackgroundOpacityImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ImagesViewerEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? backgroundOpacity = null,
-  }) {
-    return _then(_$SetBackgroundOpacityImpl(
-      null == backgroundOpacity
-          ? _value.backgroundOpacity
-          : backgroundOpacity // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SetBackgroundOpacityImpl implements _SetBackgroundOpacity {
-  const _$SetBackgroundOpacityImpl(this.backgroundOpacity);
-
-  @override
-  final double backgroundOpacity;
-
-  @override
-  String toString() {
-    return 'ImagesViewerEvent.setBackgroundOpacity(backgroundOpacity: $backgroundOpacity)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SetBackgroundOpacityImpl &&
-            (identical(other.backgroundOpacity, backgroundOpacity) ||
-                other.backgroundOpacity == backgroundOpacity));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, backgroundOpacity);
-
-  /// Create a copy of ImagesViewerEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SetBackgroundOpacityImplCopyWith<_$SetBackgroundOpacityImpl>
-      get copyWith =>
-          __$$SetBackgroundOpacityImplCopyWithImpl<_$SetBackgroundOpacityImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(double positionYDelta) setPositionYDelta,
-    required TResult Function(double initialYPosition) setInitialYPosition,
-    required TResult Function(double currentYPosition) setCurrentYPosition,
-    required TResult Function(double backgroundOpacity) setBackgroundOpacity,
-    required TResult Function(Duration animationDuration) setAnimationDuration,
-  }) {
-    return setBackgroundOpacity(backgroundOpacity);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double positionYDelta)? setPositionYDelta,
-    TResult? Function(double initialYPosition)? setInitialYPosition,
-    TResult? Function(double currentYPosition)? setCurrentYPosition,
-    TResult? Function(double backgroundOpacity)? setBackgroundOpacity,
-    TResult? Function(Duration animationDuration)? setAnimationDuration,
-  }) {
-    return setBackgroundOpacity?.call(backgroundOpacity);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double positionYDelta)? setPositionYDelta,
-    TResult Function(double initialYPosition)? setInitialYPosition,
-    TResult Function(double currentYPosition)? setCurrentYPosition,
-    TResult Function(double backgroundOpacity)? setBackgroundOpacity,
-    TResult Function(Duration animationDuration)? setAnimationDuration,
-    required TResult orElse(),
-  }) {
-    if (setBackgroundOpacity != null) {
-      return setBackgroundOpacity(backgroundOpacity);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SetPositionYDelta value) setPositionYDelta,
-    required TResult Function(_SetInitialYPosition value) setInitialYPosition,
-    required TResult Function(_SetCurrentYPosition value) setCurrentYPosition,
-    required TResult Function(_SetBackgroundOpacity value) setBackgroundOpacity,
-    required TResult Function(_SetAnimationDuration value) setAnimationDuration,
-  }) {
-    return setBackgroundOpacity(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetPositionYDelta value)? setPositionYDelta,
-    TResult? Function(_SetInitialYPosition value)? setInitialYPosition,
-    TResult? Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult? Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
-    TResult? Function(_SetAnimationDuration value)? setAnimationDuration,
-  }) {
-    return setBackgroundOpacity?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetPositionYDelta value)? setPositionYDelta,
-    TResult Function(_SetInitialYPosition value)? setInitialYPosition,
-    TResult Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
-    TResult Function(_SetAnimationDuration value)? setAnimationDuration,
-    required TResult orElse(),
-  }) {
-    if (setBackgroundOpacity != null) {
-      return setBackgroundOpacity(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SetBackgroundOpacity implements ImagesViewerEvent {
-  const factory _SetBackgroundOpacity(final double backgroundOpacity) =
-      _$SetBackgroundOpacityImpl;
-
-  double get backgroundOpacity;
-
-  /// Create a copy of ImagesViewerEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SetBackgroundOpacityImplCopyWith<_$SetBackgroundOpacityImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -814,7 +628,6 @@ class _$SetAnimationDurationImpl implements _SetAnimationDuration {
     required TResult Function(double positionYDelta) setPositionYDelta,
     required TResult Function(double initialYPosition) setInitialYPosition,
     required TResult Function(double currentYPosition) setCurrentYPosition,
-    required TResult Function(double backgroundOpacity) setBackgroundOpacity,
     required TResult Function(Duration animationDuration) setAnimationDuration,
   }) {
     return setAnimationDuration(animationDuration);
@@ -826,7 +639,6 @@ class _$SetAnimationDurationImpl implements _SetAnimationDuration {
     TResult? Function(double positionYDelta)? setPositionYDelta,
     TResult? Function(double initialYPosition)? setInitialYPosition,
     TResult? Function(double currentYPosition)? setCurrentYPosition,
-    TResult? Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult? Function(Duration animationDuration)? setAnimationDuration,
   }) {
     return setAnimationDuration?.call(animationDuration);
@@ -838,7 +650,6 @@ class _$SetAnimationDurationImpl implements _SetAnimationDuration {
     TResult Function(double positionYDelta)? setPositionYDelta,
     TResult Function(double initialYPosition)? setInitialYPosition,
     TResult Function(double currentYPosition)? setCurrentYPosition,
-    TResult Function(double backgroundOpacity)? setBackgroundOpacity,
     TResult Function(Duration animationDuration)? setAnimationDuration,
     required TResult orElse(),
   }) {
@@ -854,7 +665,6 @@ class _$SetAnimationDurationImpl implements _SetAnimationDuration {
     required TResult Function(_SetPositionYDelta value) setPositionYDelta,
     required TResult Function(_SetInitialYPosition value) setInitialYPosition,
     required TResult Function(_SetCurrentYPosition value) setCurrentYPosition,
-    required TResult Function(_SetBackgroundOpacity value) setBackgroundOpacity,
     required TResult Function(_SetAnimationDuration value) setAnimationDuration,
   }) {
     return setAnimationDuration(this);
@@ -866,7 +676,6 @@ class _$SetAnimationDurationImpl implements _SetAnimationDuration {
     TResult? Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult? Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult? Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult? Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult? Function(_SetAnimationDuration value)? setAnimationDuration,
   }) {
     return setAnimationDuration?.call(this);
@@ -878,7 +687,6 @@ class _$SetAnimationDurationImpl implements _SetAnimationDuration {
     TResult Function(_SetPositionYDelta value)? setPositionYDelta,
     TResult Function(_SetInitialYPosition value)? setInitialYPosition,
     TResult Function(_SetCurrentYPosition value)? setCurrentYPosition,
-    TResult Function(_SetBackgroundOpacity value)? setBackgroundOpacity,
     TResult Function(_SetAnimationDuration value)? setAnimationDuration,
     required TResult orElse(),
   }) {
@@ -907,7 +715,6 @@ mixin _$ImagesViewerState {
   double get positionYDelta => throw _privateConstructorUsedError;
   double get initialYPosition => throw _privateConstructorUsedError;
   double get currentYPosition => throw _privateConstructorUsedError;
-  double get backgroundOpacity => throw _privateConstructorUsedError;
   Duration get animationDuration => throw _privateConstructorUsedError;
 
   /// Create a copy of ImagesViewerState
@@ -927,7 +734,6 @@ abstract class $ImagesViewerStateCopyWith<$Res> {
       {double positionYDelta,
       double initialYPosition,
       double currentYPosition,
-      double backgroundOpacity,
       Duration animationDuration});
 }
 
@@ -949,7 +755,6 @@ class _$ImagesViewerStateCopyWithImpl<$Res, $Val extends ImagesViewerState>
     Object? positionYDelta = null,
     Object? initialYPosition = null,
     Object? currentYPosition = null,
-    Object? backgroundOpacity = null,
     Object? animationDuration = null,
   }) {
     return _then(_value.copyWith(
@@ -964,10 +769,6 @@ class _$ImagesViewerStateCopyWithImpl<$Res, $Val extends ImagesViewerState>
       currentYPosition: null == currentYPosition
           ? _value.currentYPosition
           : currentYPosition // ignore: cast_nullable_to_non_nullable
-              as double,
-      backgroundOpacity: null == backgroundOpacity
-          ? _value.backgroundOpacity
-          : backgroundOpacity // ignore: cast_nullable_to_non_nullable
               as double,
       animationDuration: null == animationDuration
           ? _value.animationDuration
@@ -989,7 +790,6 @@ abstract class _$$ImagesViewerStateImplCopyWith<$Res>
       {double positionYDelta,
       double initialYPosition,
       double currentYPosition,
-      double backgroundOpacity,
       Duration animationDuration});
 }
 
@@ -1009,7 +809,6 @@ class __$$ImagesViewerStateImplCopyWithImpl<$Res>
     Object? positionYDelta = null,
     Object? initialYPosition = null,
     Object? currentYPosition = null,
-    Object? backgroundOpacity = null,
     Object? animationDuration = null,
   }) {
     return _then(_$ImagesViewerStateImpl(
@@ -1024,10 +823,6 @@ class __$$ImagesViewerStateImplCopyWithImpl<$Res>
       currentYPosition: null == currentYPosition
           ? _value.currentYPosition
           : currentYPosition // ignore: cast_nullable_to_non_nullable
-              as double,
-      backgroundOpacity: null == backgroundOpacity
-          ? _value.backgroundOpacity
-          : backgroundOpacity // ignore: cast_nullable_to_non_nullable
               as double,
       animationDuration: null == animationDuration
           ? _value.animationDuration
@@ -1044,7 +839,6 @@ class _$ImagesViewerStateImpl implements _ImagesViewerState {
       {this.positionYDelta = 0.0,
       this.initialYPosition = 0.0,
       this.currentYPosition = 0.0,
-      this.backgroundOpacity = 1.0,
       this.animationDuration = Duration.zero});
 
   @override
@@ -1058,14 +852,11 @@ class _$ImagesViewerStateImpl implements _ImagesViewerState {
   final double currentYPosition;
   @override
   @JsonKey()
-  final double backgroundOpacity;
-  @override
-  @JsonKey()
   final Duration animationDuration;
 
   @override
   String toString() {
-    return 'ImagesViewerState(positionYDelta: $positionYDelta, initialYPosition: $initialYPosition, currentYPosition: $currentYPosition, backgroundOpacity: $backgroundOpacity, animationDuration: $animationDuration)';
+    return 'ImagesViewerState(positionYDelta: $positionYDelta, initialYPosition: $initialYPosition, currentYPosition: $currentYPosition, animationDuration: $animationDuration)';
   }
 
   @override
@@ -1079,15 +870,13 @@ class _$ImagesViewerStateImpl implements _ImagesViewerState {
                 other.initialYPosition == initialYPosition) &&
             (identical(other.currentYPosition, currentYPosition) ||
                 other.currentYPosition == currentYPosition) &&
-            (identical(other.backgroundOpacity, backgroundOpacity) ||
-                other.backgroundOpacity == backgroundOpacity) &&
             (identical(other.animationDuration, animationDuration) ||
                 other.animationDuration == animationDuration));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, positionYDelta, initialYPosition,
-      currentYPosition, backgroundOpacity, animationDuration);
+      currentYPosition, animationDuration);
 
   /// Create a copy of ImagesViewerState
   /// with the given fields replaced by the non-null parameter values.
@@ -1104,7 +893,6 @@ abstract class _ImagesViewerState implements ImagesViewerState {
       {final double positionYDelta,
       final double initialYPosition,
       final double currentYPosition,
-      final double backgroundOpacity,
       final Duration animationDuration}) = _$ImagesViewerStateImpl;
 
   @override
@@ -1113,8 +901,6 @@ abstract class _ImagesViewerState implements ImagesViewerState {
   double get initialYPosition;
   @override
   double get currentYPosition;
-  @override
-  double get backgroundOpacity;
   @override
   Duration get animationDuration;
 

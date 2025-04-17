@@ -1,3 +1,5 @@
+import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -8,12 +10,36 @@ part 'images_viewer_bloc.freezed.dart';
 
 @injectable
 class ImagesViewerBloc extends Bloc<ImagesViewerEvent, ImagesViewerState> {
-  ImagesViewerBloc() : super(const _ImagesViewerState()) {
+  ImagesViewerBloc({
+    @factoryParam required this.images,
+    @factoryParam required this.initialIndex,
+    required this.telegramService,
+  }) : super(const _ImagesViewerState()) {
     on<_SetPositionYDelta>(_setPositionYDelta);
     on<_SetInitialYPosition>(_setInitialYPosition);
     on<_SetCurrentYPosition>(_setCurrentYPosition);
     on<_SetAnimationDuration>(_setAnimationDuration);
+
+    controller = PageController(
+      initialPage: initialIndex,
+      viewportFraction: 1.02,
+    );
+
+    telegramService.showBackButton();
   }
+
+  @override
+  Future<void> close() {
+    controller.dispose();
+    telegramService.hideBackButton();
+    return super.close();
+  }
+
+  final int initialIndex;
+  final List<String> images;
+  final TelegramService telegramService;
+
+  late final PageController controller;
 
   Future<void> _setPositionYDelta(
     _SetPositionYDelta event,
