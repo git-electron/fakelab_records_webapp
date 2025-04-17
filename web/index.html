@@ -11,11 +11,12 @@
       }
     }
 
-    function setupTelegramWebApp(shouldForceFullscreen) {
+    function setupTelegramWebApp(shouldForceFullscreen, onBackButtonTap) {
       if (window.Telegram) {
         if (shouldForceFullscreen) Telegram.WebApp.requestFullscreen();
         Telegram.WebApp.lockOrientation();
         Telegram.WebApp.disableVerticalSwipes();
+        Telegram.WebApp.BackButton.onClick(onBackButtonTap);
       }
     }
 
@@ -50,14 +51,12 @@
     function showBackButton(onTap) {
       if (window.Telegram) {
         Telegram.WebApp.BackButton.show();
-        Telegram.WebApp.BackButton.onClick(onTap);
       }
     }
 
     function hideBackButton(onTap) {
       if (window.Telegram) {
         Telegram.WebApp.BackButton.hide();
-        Telegram.WebApp.BackButton.offClick(onTap);
       }
     }
   </script>
