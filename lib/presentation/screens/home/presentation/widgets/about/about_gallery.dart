@@ -5,6 +5,7 @@ import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/router/router.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/images_viewer/presentation/images_viewer_screen.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -90,6 +91,7 @@ class AboutGallery extends StatelessWidget {
     $<AppRouter>().push(ImagesViewerRoute(
       images: Assets.images.about.values.map((image) => image.path).toList(),
       initialIndex: index,
+      source: ImageSource.asset,
     ));
   }
 }
