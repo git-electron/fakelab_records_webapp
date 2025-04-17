@@ -3,7 +3,7 @@ import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton
-@AutoRouterConfig(deferredLoading: true)
+@AutoRouterConfig()
 class AppRouter extends RootStackRouter {
   @override
   RouteType get defaultRouteType => const RouteType.material();
@@ -11,7 +11,15 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page, path: '/', initial: true),
+        AutoRoute(page: ImagesViewerRoute.page),
         AutoRoute(page: UnknownSourceRoute.page),
-        RedirectRoute(path: '*', redirectTo: '/')
+        ...customRoutes,
+        ...redirections,
+      ];
+
+  List<CustomRoute> get customRoutes => [];
+
+  List<RedirectRoute> get redirections => [
+        RedirectRoute(path: '*', redirectTo: '/'),
       ];
 }
