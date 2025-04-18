@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'dart:async';
 
-class Clickable extends StatefulWidget {
-  const Clickable({
+class Tappable extends StatefulWidget {
+  const Tappable({
     required this.child,
     super.key,
     this.onTap,
@@ -48,11 +48,11 @@ class Clickable extends StatefulWidget {
 
   final bool isIgnoreIfOnTapIsNull;
   @override
-  State<StatefulWidget> createState() => _ClickableState();
+  State<StatefulWidget> createState() => _TappableState();
 }
 
-class _ClickableState extends State<Clickable>
-    with SingleTickerProviderStateMixin<Clickable> {
+class _TappableState extends State<Tappable>
+    with SingleTickerProviderStateMixin<Tappable> {
   // make AnimationController nullable to make sure to not use it if it's null
   AnimationController? _controller;
   late Animation<double> _animation;

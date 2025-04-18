@@ -3,7 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/images_viewer/domain/images_viewer_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -101,7 +101,7 @@ class ImagesViewerScreenAppBar extends StatelessWidget {
                   ),
                 ],
               ),
-              Clickable(
+              Tappable(
                 onTap: context.pop,
                 child: const Icon(Icons.close),
               ),

@@ -1,5 +1,5 @@
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_user_wrapper.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class UserAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TelegramUserWrapper(builder: (context, user) {
-      return Clickable(
+      return Tappable(
         onTap: () {},
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),

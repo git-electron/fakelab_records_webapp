@@ -6,7 +6,7 @@ import 'package:fakelab_records_webapp/core/router/router.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/images_viewer/presentation/images_viewer_screen.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -20,7 +20,7 @@ class AboutGallery extends StatelessWidget {
       children: [
         AspectRatio(
           aspectRatio: 7 / 4,
-          child: Clickable(
+          child: Tappable(
             onTap: () => _onImageTapped(0),
             child: Container(
               clipBehavior: Clip.antiAlias,
@@ -47,7 +47,7 @@ class AboutGallery extends StatelessWidget {
             return Expanded(
               child: AspectRatio(
                 aspectRatio: 5 / 4,
-                child: Clickable(
+                child: Tappable(
                   onTap: () => _onImageTapped(imageIndex),
                   child: Container(
                     clipBehavior: Clip.antiAlias,

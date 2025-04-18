@@ -2,7 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -47,20 +47,20 @@ class HomeScreenFooter extends StatelessWidget {
               children: <Widget>[
                 Text('Контакты', style: context.styles.body2),
                 const Gap(40),
-                TapableText(
+                TappableText(
                   text: 'Telegram',
                   onTap: () => launchUrlString('https://t.me/fakelab_records'),
                 ),
-                TapableText(
+                TappableText(
                   text: 'VK',
                   onTap: () =>
                       launchUrlString('https://vk.com/fakelab.records'),
                 ),
-                TapableText(
+                TappableText(
                   text: '+7 (995) 988-20-64',
                   onTap: () => launchUrlString('tel:+7 (995) 988-20-64'),
                 ),
-                TapableText(
+                TappableText(
                   text: 'records@fakelab.media',
                   onTap: () => launchUrlString('mailto:records@fakelab.media'),
                 ),
@@ -73,8 +73,8 @@ class HomeScreenFooter extends StatelessWidget {
   }
 }
 
-class TapableText extends StatelessWidget {
-  const TapableText({
+class TappableText extends StatelessWidget {
+  const TappableText({
     required this.text,
     required this.onTap,
     super.key,
@@ -86,7 +86,7 @@ class TapableText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FittedBox(
-      child: Clickable(
+      child: Tappable(
         onTap: onTap,
         child: Text(
           text,

@@ -3,7 +3,7 @@ import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/gen/colors.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/clickable.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -84,7 +84,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool canTap = isEnabled && !isLoading;
 
-    return Clickable(
+    return Tappable(
       onTap: canTap ? onTap : null,
       child: Opacity(
         opacity: isEnabled ? 1 : .25,
