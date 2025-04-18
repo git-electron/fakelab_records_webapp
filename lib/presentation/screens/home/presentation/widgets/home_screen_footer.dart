@@ -39,7 +39,7 @@ class HomeScreenFooter extends StatelessWidget {
               ].alternateWith(const Gap(8)),
             ),
           ),
-          const Gap(40),
+          const Gap(30),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -47,50 +47,54 @@ class HomeScreenFooter extends StatelessWidget {
               children: <Widget>[
                 Text('Контакты', style: context.styles.body2),
                 const Gap(40),
-                Clickable(
+                TapableText(
+                  text: 'Telegram',
                   onTap: () => launchUrlString('https://t.me/fakelab_records'),
-                  child: Text(
-                    'Telegram',
-                    style: context.styles.footer1.copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: context.colors.footer,
-                    ),
-                  ),
                 ),
-                Clickable(
-                  onTap: () => launchUrlString('https://vk.com/fakelab.records'),
-                  child: Text(
-                    'VK',
-                    style: context.styles.footer1.copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: context.colors.footer,
-                    ),
-                  ),
+                TapableText(
+                  text: 'VK',
+                  onTap: () =>
+                      launchUrlString('https://vk.com/fakelab.records'),
                 ),
-                Clickable(
+                TapableText(
+                  text: '+7 (995) 988-20-64',
                   onTap: () => launchUrlString('tel:+7 (995) 988-20-64'),
-                  child: Text(
-                    '+7 (995) 988-20-64',
-                    style: context.styles.footer1.copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: context.colors.footer,
-                    ),
-                  ),
                 ),
-                Clickable(
+                TapableText(
+                  text: 'records@fakelab.media',
                   onTap: () => launchUrlString('mailto:records@fakelab.media'),
-                  child: Text(
-                    'records@fakelab.media',
-                    style: context.styles.footer1.copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: context.colors.footer,
-                    ),
-                  ),
                 ),
               ].alternateWith(const Gap(8)),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class TapableText extends StatelessWidget {
+  const TapableText({
+    required this.text,
+    required this.onTap,
+    super.key,
+  });
+
+  final String text;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      child: Clickable(
+        onTap: onTap,
+        child: Text(
+          text,
+          style: context.styles.footer1.copyWith(
+            decoration: TextDecoration.underline,
+            decorationColor: context.colors.footer,
+          ),
+        ),
       ),
     );
   }
