@@ -18,14 +18,14 @@ class ExamplesList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ExampleCard(
-            filePath: Assets.audio.examples.tuff,
-            title: 'TUFF',
-            artists: const ['kontree', 'raimee'],
-            services: ExampleServiceType.values,
-            genres: const [ExampleGenre.HIP_HOP, ExampleGenre.AMBIENT],
-          ),
-          const Gap(20), //TODO: вставить после 25 апреля
+          // ExampleCard(
+          //   filePath: Assets.audio.examples.tuff,
+          //   title: 'TUFF',
+          //   artists: const ['kontree', 'raimee'],
+          //   services: ExampleServiceType.values,
+          //   genres: const [ExampleGenre.HIP_HOP, ExampleGenre.AMBIENT],
+          // ),
+          // const Gap(20), //TODO: вставить после 25 апреля
           ExampleCard(
             filePath: Assets.audio.examples.brave,
             title: 'brave',
@@ -70,18 +70,18 @@ class ExamplesList extends StatelessWidget {
             genres: const [ExampleGenre.HIP_HOP],
           ),
           const Gap(20),
-          ExampleCard(
-            filePath: Assets.audio.examples.today,
-            title: 'Здесь и сейчас',
-            artists: const ['Четверг'],
-            services: const [
-              ExampleServiceType.RECORDING,
-              ExampleServiceType.MIX,
-              ExampleServiceType.MASTERING,
-            ],
-            genres: const [ExampleGenre.HIP_HOP],
-          ),
-          const Gap(20), //TODO: вставить после 9 мая
+          // ExampleCard(
+          //   filePath: Assets.audio.examples.today,
+          //   title: 'Здесь и сейчас',
+          //   artists: const ['Четверг'],
+          //   services: const [
+          //     ExampleServiceType.RECORDING,
+          //     ExampleServiceType.MIX,
+          //     ExampleServiceType.MASTERING,
+          //   ],
+          //   genres: const [ExampleGenre.HIP_HOP],
+          // ),
+          // const Gap(20), //TODO: вставить после 9 мая
           ExampleCard(
             filePath: Assets.audio.examples.tired,
             title: 'Заебали ***',
