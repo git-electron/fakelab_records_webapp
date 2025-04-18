@@ -15,6 +15,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
   Color get transparent;
   Color get background;
   Color get onBackground;
+  Color get card;
   Color get title;
   Color get subtitle;
   Color get body;
@@ -22,9 +23,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
   Color get primary;
   Color get primaryGradientEnd;
   Color get primaryGradientStart;
-  Color get shadowColor;
   LinearGradient get primaryGradient;
-  BoxShadow get shadow;
   Statuses get statuses;
 
   @override
@@ -34,6 +33,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
     Color? transparent,
     Color? background,
     Color? onBackground,
+    Color? card,
     Color? title,
     Color? subtitle,
     Color? body,
@@ -41,9 +41,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
     Color? primary,
     Color? primaryGradientEnd,
     Color? primaryGradientStart,
-    Color? shadowColor,
     LinearGradient? primaryGradient,
-    BoxShadow? shadow,
     Statuses? statuses,
   }) {
     return Colors(
@@ -52,6 +50,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
       transparent: transparent ?? this.transparent,
       background: background ?? this.background,
       onBackground: onBackground ?? this.onBackground,
+      card: card ?? this.card,
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
       body: body ?? this.body,
@@ -59,9 +58,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
       primary: primary ?? this.primary,
       primaryGradientEnd: primaryGradientEnd ?? this.primaryGradientEnd,
       primaryGradientStart: primaryGradientStart ?? this.primaryGradientStart,
-      shadowColor: shadowColor ?? this.shadowColor,
       primaryGradient: primaryGradient ?? this.primaryGradient,
-      shadow: shadow ?? this.shadow,
       statuses: statuses ?? this.statuses,
     );
   }
@@ -75,6 +72,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
       transparent: Color.lerp(transparent, other.transparent, t)!,
       background: Color.lerp(background, other.background, t)!,
       onBackground: Color.lerp(onBackground, other.onBackground, t)!,
+      card: Color.lerp(card, other.card, t)!,
       title: Color.lerp(title, other.title, t)!,
       subtitle: Color.lerp(subtitle, other.subtitle, t)!,
       body: Color.lerp(body, other.body, t)!,
@@ -84,9 +82,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
           Color.lerp(primaryGradientEnd, other.primaryGradientEnd, t)!,
       primaryGradientStart:
           Color.lerp(primaryGradientStart, other.primaryGradientStart, t)!,
-      shadowColor: Color.lerp(shadowColor, other.shadowColor, t)!,
       primaryGradient: t < 0.5 ? primaryGradient : other.primaryGradient,
-      shadow: t < 0.5 ? shadow : other.shadow,
       statuses: statuses.lerp(other.statuses, t) as Statuses,
     );
   }
@@ -104,6 +100,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
                 .equals(background, other.background) &&
             const DeepCollectionEquality()
                 .equals(onBackground, other.onBackground) &&
+            const DeepCollectionEquality().equals(card, other.card) &&
             const DeepCollectionEquality().equals(title, other.title) &&
             const DeepCollectionEquality().equals(subtitle, other.subtitle) &&
             const DeepCollectionEquality().equals(body, other.body) &&
@@ -114,10 +111,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
             const DeepCollectionEquality()
                 .equals(primaryGradientStart, other.primaryGradientStart) &&
             const DeepCollectionEquality()
-                .equals(shadowColor, other.shadowColor) &&
-            const DeepCollectionEquality()
                 .equals(primaryGradient, other.primaryGradient) &&
-            const DeepCollectionEquality().equals(shadow, other.shadow) &&
             const DeepCollectionEquality().equals(statuses, other.statuses));
   }
 
@@ -130,6 +124,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
       const DeepCollectionEquality().hash(transparent),
       const DeepCollectionEquality().hash(background),
       const DeepCollectionEquality().hash(onBackground),
+      const DeepCollectionEquality().hash(card),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(subtitle),
       const DeepCollectionEquality().hash(body),
@@ -137,9 +132,7 @@ mixin _$ColorsTailorMixin on ThemeExtension<Colors> {
       const DeepCollectionEquality().hash(primary),
       const DeepCollectionEquality().hash(primaryGradientEnd),
       const DeepCollectionEquality().hash(primaryGradientStart),
-      const DeepCollectionEquality().hash(shadowColor),
       const DeepCollectionEquality().hash(primaryGradient),
-      const DeepCollectionEquality().hash(shadow),
       const DeepCollectionEquality().hash(statuses),
     );
   }

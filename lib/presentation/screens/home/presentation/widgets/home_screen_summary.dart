@@ -42,8 +42,7 @@ class LoyaltyCard extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           padding: const Pad(all: 10, horizontal: 5),
           decoration: ShapeDecoration(
-            color: const Color(0xff1A1A1A),
-            shadows: [context.colors.shadow],
+          color: context.colors.card,
             shape: SmoothRectangleBorder(
               borderRadius: SmoothBorderRadius(
                 cornerRadius: 20,

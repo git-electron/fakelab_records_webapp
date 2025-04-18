@@ -27,7 +27,7 @@ class _HomeScreenDebugInfoState extends State<HomeScreenDebugInfo> {
         return Container(
           width: double.infinity,
           padding: const Pad(all: 20),
-          color: context.colors.shadowColor,
+          color: context.colors.card,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

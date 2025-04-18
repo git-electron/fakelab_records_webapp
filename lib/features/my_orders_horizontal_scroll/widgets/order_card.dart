@@ -21,8 +21,7 @@ class OrderCard extends StatelessWidget {
         height: 120,
         padding: const Pad(all: 15),
         decoration: ShapeDecoration(
-          color: const Color(0xff1A1A1A),
-          shadows: [context.colors.shadow],
+          color: context.colors.card,
           shape: SmoothRectangleBorder(
             borderRadius: SmoothBorderRadius(
               cornerRadius: 20,

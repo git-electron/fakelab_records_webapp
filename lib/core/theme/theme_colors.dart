@@ -11,6 +11,8 @@ class _Colors {
 
   static const Color onBackground = AppColors.onBackground;
 
+  static const Color card = AppColors.card;
+
   static const Color title = AppColors.title;
 
   static const Color subtitle = AppColors.subtitle;
@@ -27,14 +29,6 @@ class _Colors {
 
   static const LinearGradient primaryGradient = LinearGradient(
     colors: [AppColors.primaryGradientStart, AppColors.primaryGradientEnd],
-  );
-
-  static const Color shadowColor = Color(0x40424242);
-
-  static const BoxShadow shadow = BoxShadow(
-    color: shadowColor,
-    offset: Offset(0, 4),
-    blurRadius: 40,
   );
 
   static const Color awaitingConfirmation = AppColors.awaitingConfirmation;

@@ -14,7 +14,7 @@ class HomeScreenFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const Pad(all: 40, bottom: 100),
-      color: context.colors.shadowColor,
+      color: context.colors.card,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

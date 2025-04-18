@@ -4,6 +4,7 @@
     <color name="black">#000000</color>
     <color name="background">#1C1C1C</color>
     <color name="on_background">#FFFFFF</color>
+    <color name="card">#212121</color>
     <color name="title">#FFFFFF</color>
     <color name="subtitle">#999999</color>
     <color name="body">#FFFFFF</color>

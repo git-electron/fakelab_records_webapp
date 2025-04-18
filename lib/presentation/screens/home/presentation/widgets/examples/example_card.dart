@@ -53,7 +53,7 @@ class ExampleCard extends StatelessWidget {
           padding: const Pad(vertical: 5, horizontal: 10),
           margin: const Pad(right: 5, bottom: 5),
           decoration: ShapeDecoration(
-            color: context.colors.shadowColor,
+            color: context.colors.card,
             shape: SmoothRectangleBorder(
               borderRadius: SmoothBorderRadius(
                 cornerRadius: 8,
@@ -112,7 +112,7 @@ class AudioPlayer extends StatelessWidget {
     return Container(
       padding: const Pad(all: 20),
       decoration: ShapeDecoration(
-        color: context.colors.shadowColor,
+        color: context.colors.card,
         shape: SmoothRectangleBorder(
           borderRadius: SmoothBorderRadius(
             cornerRadius: 20,

@@ -28,6 +28,9 @@ class AppColors {
   /// Color: #FF7E7E
   static const Color cancelled = Color(0xFFFF7E7E);
 
+  /// Color: #212121
+  static const Color card = Color(0xFF212121);
+
   /// Color: #A6FF90
   static const Color completed = Color(0xFFA6FF90);
 

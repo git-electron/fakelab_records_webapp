@@ -16,6 +16,7 @@ class Colors extends ThemeExtension<Colors> with _$ColorsTailorMixin {
     required this.transparent,
     required this.background,
     required this.onBackground,
+    required this.card,
     required this.title,
     required this.subtitle,
     required this.body,
@@ -23,9 +24,7 @@ class Colors extends ThemeExtension<Colors> with _$ColorsTailorMixin {
     required this.primary,
     required this.primaryGradientEnd,
     required this.primaryGradientStart,
-    required this.shadowColor,
     required this.primaryGradient,
-    required this.shadow,
     required this.statuses,
   });
 
@@ -43,6 +42,9 @@ class Colors extends ThemeExtension<Colors> with _$ColorsTailorMixin {
 
   @override
   final Color onBackground;
+
+  @override
+  final Color card;
 
   @override
   final Color title;
@@ -66,13 +68,7 @@ class Colors extends ThemeExtension<Colors> with _$ColorsTailorMixin {
   final Color primaryGradientStart;
 
   @override
-  final Color shadowColor;
-
-  @override
   final LinearGradient primaryGradient;
-
-  @override
-  final BoxShadow shadow;
 
   @override
   final Statuses statuses;
@@ -114,6 +110,7 @@ const Colors colors = Colors(
   transparent: _Colors.transparent,
   background: _Colors.background,
   onBackground: _Colors.onBackground,
+  card: _Colors.card,
   title: _Colors.title,
   subtitle: _Colors.subtitle,
   body: _Colors.body,
@@ -121,9 +118,7 @@ const Colors colors = Colors(
   primary: _Colors.primary,
   primaryGradientEnd: _Colors.primaryGradientEnd,
   primaryGradientStart: _Colors.primaryGradientStart,
-  shadowColor: _Colors.shadowColor,
   primaryGradient: _Colors.primaryGradient,
-  shadow: _Colors.shadow,
   statuses: Statuses(
     awaitingConfirmation: _Colors.awaitingConfirmation,
     cancelled: _Colors.cancelled,
