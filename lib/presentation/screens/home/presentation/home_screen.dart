@@ -51,7 +51,6 @@ class HomeScreenBody extends StatelessWidget {
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HomeScreenExamples(),
           Gap(55),
           HomeScreenDebugInfo(),
           HomeScreenGreetings(),
