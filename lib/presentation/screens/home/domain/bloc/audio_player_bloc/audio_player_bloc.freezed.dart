@@ -867,6 +867,7 @@ abstract class _IsPlayingStateChanged implements AudioPlayerEvent {
 mixin _$AudioPlayerState {
   bool get isPlaying => throw _privateConstructorUsedError;
   String? get filePath => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   bool get isSeekInProgress => throw _privateConstructorUsedError;
   double get seekProgressValue => throw _privateConstructorUsedError;
 
@@ -886,6 +887,7 @@ abstract class $AudioPlayerStateCopyWith<$Res> {
   $Res call(
       {bool isPlaying,
       String? filePath,
+      bool isLoading,
       bool isSeekInProgress,
       double seekProgressValue});
 }
@@ -907,6 +909,7 @@ class _$AudioPlayerStateCopyWithImpl<$Res, $Val extends AudioPlayerState>
   $Res call({
     Object? isPlaying = null,
     Object? filePath = freezed,
+    Object? isLoading = null,
     Object? isSeekInProgress = null,
     Object? seekProgressValue = null,
   }) {
@@ -919,6 +922,10 @@ class _$AudioPlayerStateCopyWithImpl<$Res, $Val extends AudioPlayerState>
           ? _value.filePath
           : filePath // ignore: cast_nullable_to_non_nullable
               as String?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSeekInProgress: null == isSeekInProgress
           ? _value.isSeekInProgress
           : isSeekInProgress // ignore: cast_nullable_to_non_nullable
@@ -942,6 +949,7 @@ abstract class _$$AudioPlayerStateImplCopyWith<$Res>
   $Res call(
       {bool isPlaying,
       String? filePath,
+      bool isLoading,
       bool isSeekInProgress,
       double seekProgressValue});
 }
@@ -961,6 +969,7 @@ class __$$AudioPlayerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isPlaying = null,
     Object? filePath = freezed,
+    Object? isLoading = null,
     Object? isSeekInProgress = null,
     Object? seekProgressValue = null,
   }) {
@@ -973,6 +982,10 @@ class __$$AudioPlayerStateImplCopyWithImpl<$Res>
           ? _value.filePath
           : filePath // ignore: cast_nullable_to_non_nullable
               as String?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSeekInProgress: null == isSeekInProgress
           ? _value.isSeekInProgress
           : isSeekInProgress // ignore: cast_nullable_to_non_nullable
@@ -991,6 +1004,7 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
   const _$AudioPlayerStateImpl(
       {this.isPlaying = false,
       this.filePath = null,
+      this.isLoading = false,
       this.isSeekInProgress = false,
       this.seekProgressValue = 0.0})
       : super._();
@@ -1003,6 +1017,9 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
   final String? filePath;
   @override
   @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
   final bool isSeekInProgress;
   @override
   @JsonKey()
@@ -1010,7 +1027,7 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
 
   @override
   String toString() {
-    return 'AudioPlayerState(isPlaying: $isPlaying, filePath: $filePath, isSeekInProgress: $isSeekInProgress, seekProgressValue: $seekProgressValue)';
+    return 'AudioPlayerState(isPlaying: $isPlaying, filePath: $filePath, isLoading: $isLoading, isSeekInProgress: $isSeekInProgress, seekProgressValue: $seekProgressValue)';
   }
 
   @override
@@ -1022,6 +1039,8 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
                 other.isPlaying == isPlaying) &&
             (identical(other.filePath, filePath) ||
                 other.filePath == filePath) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.isSeekInProgress, isSeekInProgress) ||
                 other.isSeekInProgress == isSeekInProgress) &&
             (identical(other.seekProgressValue, seekProgressValue) ||
@@ -1029,8 +1048,8 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isPlaying, filePath, isSeekInProgress, seekProgressValue);
+  int get hashCode => Object.hash(runtimeType, isPlaying, filePath, isLoading,
+      isSeekInProgress, seekProgressValue);
 
   /// Create a copy of AudioPlayerState
   /// with the given fields replaced by the non-null parameter values.
@@ -1046,6 +1065,7 @@ abstract class _AudioPlayerState extends AudioPlayerState {
   const factory _AudioPlayerState(
       {final bool isPlaying,
       final String? filePath,
+      final bool isLoading,
       final bool isSeekInProgress,
       final double seekProgressValue}) = _$AudioPlayerStateImpl;
   const _AudioPlayerState._() : super._();
@@ -1054,6 +1074,8 @@ abstract class _AudioPlayerState extends AudioPlayerState {
   bool get isPlaying;
   @override
   String? get filePath;
+  @override
+  bool get isLoading;
   @override
   bool get isSeekInProgress;
   @override

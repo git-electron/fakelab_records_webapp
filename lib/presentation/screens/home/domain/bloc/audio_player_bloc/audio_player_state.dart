@@ -5,6 +5,7 @@ class AudioPlayerState with _$AudioPlayerState {
   const factory AudioPlayerState({
     @Default(false) bool isPlaying,
     @Default(null) String? filePath,
+    @Default(false) bool isLoading,
     @Default(false) bool isSeekInProgress,
     @Default(0.0) double seekProgressValue,
   }) = _AudioPlayerState;
@@ -15,4 +16,7 @@ class AudioPlayerState with _$AudioPlayerState {
 
   bool isFilePlaying(String filePathToCheck) =>
       isFileSelected(filePathToCheck) && isPlaying;
+
+  bool isFileLoading(String filePathToCheck) =>
+      isFileSelected(filePathToCheck) && isLoading;
 }

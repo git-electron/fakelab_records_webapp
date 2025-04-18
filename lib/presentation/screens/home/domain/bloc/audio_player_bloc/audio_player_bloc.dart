@@ -1,5 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:fakelab_records_webapp/core/constants/constants.dart';
+import 'package:fakelab_records_webapp/core/constants/env.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -10,7 +11,8 @@ part 'audio_player_bloc.freezed.dart';
 
 @injectable
 class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
-  AudioPlayerBloc(this.audioPlayer) : super(const _AudioPlayerState()) {
+  AudioPlayerBloc(this.env, this.audioPlayer)
+      : super(const _AudioPlayerState()) {
     on<_OnSeek>(_onSeek);
     on<_OnSeekEnd>(_onSeekEnd);
     on<_OnSeekStart>(_onSeekStart);
@@ -30,6 +32,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     return super.close();
   }
 
+  final Env env;
   final AssetsAudioPlayer audioPlayer;
 
   Future<void> _onSeek(_OnSeek event, Emitter<AudioPlayerState> emit) async {
@@ -60,17 +63,21 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     if (event.filePath == state.filePath) {
       await audioPlayer.playOrPause();
     } else {
+      emit(state.copyWith(isLoading: true));
+
       await audioPlayer.stop();
-      print('https://fakelab-records-webapp.vercel.app/assets/${event.filePath}');
       await audioPlayer.open(
-        Audio.network(
-            'https://fakelab-records-webapp.vercel.app/assets/${event.filePath}'),
+        Audio.network(_getFilePath(event.filePath)),
         autoStart: false,
       );
       await audioPlayer.play();
+      
       emit(state.copyWith(filePath: event.filePath));
     }
-    emit(state.copyWith(isPlaying: audioPlayer.isPlaying.value));
+    emit(state.copyWith(
+      isPlaying: audioPlayer.isPlaying.value,
+      isLoading: false,
+    ));
   }
 
   Future<void> _onIsPlayingStateChanged(
@@ -79,6 +86,8 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
   ) async {
     emit(state.copyWith(isPlaying: event.isPlaying));
   }
+
+  String _getFilePath(String filePath) => '${env.baseUrl}/assets/$filePath';
 
   Duration get totalDuration =>
       audioPlayer.current.value?.audio.duration ?? const Duration();

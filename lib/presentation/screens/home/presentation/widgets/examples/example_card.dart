@@ -136,13 +136,22 @@ class AudioPlayer extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   alignment: Alignment.center,
-                  child: Icon(
-                    state.isFilePlaying(filePath)
-                        ? Icons.pause_rounded
-                        : Icons.play_arrow_rounded,
-                    size: state.isFilePlaying(filePath) ? 25 : 30,
-                    color: context.colors.background,
-                  ),
+                  child: state.isFileLoading(filePath)
+                      ? SizedBox.square(
+                          dimension: 20,
+                          child: CircularProgressIndicator(
+                            color: context.colors.background,
+                            strokeCap: StrokeCap.round,
+                            strokeWidth: 3,
+                          ),
+                        )
+                      : Icon(
+                          state.isFilePlaying(filePath)
+                              ? Icons.pause_rounded
+                              : Icons.play_arrow_rounded,
+                          size: state.isFilePlaying(filePath) ? 25 : 30,
+                          color: context.colors.background,
+                        ),
                 );
               },
             ),
