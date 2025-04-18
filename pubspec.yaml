@@ -28,7 +28,6 @@ dependencies:
   flutter_bloc: ^9.1.0
   flutter_gen: ^5.10.0
   url_launcher: ^6.3.1
-  flutter_dotenv: ^5.2.1
   figma_squircle: ^0.6.3
   cupertino_icons: ^1.0.8
   json_annotation: ^4.9.0

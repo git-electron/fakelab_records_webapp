@@ -18,27 +18,30 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AudioPlayerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double value) onSeek,
-    required TResult Function() onSeekStart,
-    required TResult Function(Duration to) onSeekEnd,
+    required TResult Function(double value) seek,
+    required TResult Function() seekStart,
+    required TResult Function(Duration to) seekEnd,
+    required TResult Function(bool isLoading) setLoading,
     required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double value)? onSeek,
-    TResult? Function()? onSeekStart,
-    TResult? Function(Duration to)? onSeekEnd,
+    TResult? Function(double value)? seek,
+    TResult? Function()? seekStart,
+    TResult? Function(Duration to)? seekEnd,
+    TResult? Function(bool isLoading)? setLoading,
     TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double value)? onSeek,
-    TResult Function()? onSeekStart,
-    TResult Function(Duration to)? onSeekEnd,
+    TResult Function(double value)? seek,
+    TResult Function()? seekStart,
+    TResult Function(Duration to)? seekEnd,
+    TResult Function(bool isLoading)? setLoading,
     TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
@@ -46,9 +49,10 @@ mixin _$AudioPlayerEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnSeek value) onSeek,
-    required TResult Function(_OnSeekStart value) onSeekStart,
-    required TResult Function(_OnSeekEnd value) onSeekEnd,
+    required TResult Function(_Seek value) seek,
+    required TResult Function(_SeekStart value) seekStart,
+    required TResult Function(_SeekEnd value) seekEnd,
+    required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_PlayButtonPressed value) playButtonPressed,
     required TResult Function(_IsPlayingStateChanged value)
         isPlayingStateChanged,
@@ -56,18 +60,20 @@ mixin _$AudioPlayerEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OnSeek value)? onSeek,
-    TResult? Function(_OnSeekStart value)? onSeekStart,
-    TResult? Function(_OnSeekEnd value)? onSeekEnd,
+    TResult? Function(_Seek value)? seek,
+    TResult? Function(_SeekStart value)? seekStart,
+    TResult? Function(_SeekEnd value)? seekEnd,
+    TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_PlayButtonPressed value)? playButtonPressed,
     TResult? Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnSeek value)? onSeek,
-    TResult Function(_OnSeekStart value)? onSeekStart,
-    TResult Function(_OnSeekEnd value)? onSeekEnd,
+    TResult Function(_Seek value)? seek,
+    TResult Function(_SeekStart value)? seekStart,
+    TResult Function(_SeekEnd value)? seekEnd,
+    TResult Function(_SetLoading value)? setLoading,
     TResult Function(_PlayButtonPressed value)? playButtonPressed,
     TResult Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
     required TResult orElse(),
@@ -97,20 +103,19 @@ class _$AudioPlayerEventCopyWithImpl<$Res, $Val extends AudioPlayerEvent>
 }
 
 /// @nodoc
-abstract class _$$OnSeekImplCopyWith<$Res> {
-  factory _$$OnSeekImplCopyWith(
-          _$OnSeekImpl value, $Res Function(_$OnSeekImpl) then) =
-      __$$OnSeekImplCopyWithImpl<$Res>;
+abstract class _$$SeekImplCopyWith<$Res> {
+  factory _$$SeekImplCopyWith(
+          _$SeekImpl value, $Res Function(_$SeekImpl) then) =
+      __$$SeekImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double value});
 }
 
 /// @nodoc
-class __$$OnSeekImplCopyWithImpl<$Res>
-    extends _$AudioPlayerEventCopyWithImpl<$Res, _$OnSeekImpl>
-    implements _$$OnSeekImplCopyWith<$Res> {
-  __$$OnSeekImplCopyWithImpl(
-      _$OnSeekImpl _value, $Res Function(_$OnSeekImpl) _then)
+class __$$SeekImplCopyWithImpl<$Res>
+    extends _$AudioPlayerEventCopyWithImpl<$Res, _$SeekImpl>
+    implements _$$SeekImplCopyWith<$Res> {
+  __$$SeekImplCopyWithImpl(_$SeekImpl _value, $Res Function(_$SeekImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AudioPlayerEvent
@@ -120,7 +125,7 @@ class __$$OnSeekImplCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$OnSeekImpl(
+    return _then(_$SeekImpl(
       null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -131,22 +136,22 @@ class __$$OnSeekImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OnSeekImpl implements _OnSeek {
-  const _$OnSeekImpl(this.value);
+class _$SeekImpl implements _Seek {
+  const _$SeekImpl(this.value);
 
   @override
   final double value;
 
   @override
   String toString() {
-    return 'AudioPlayerEvent.onSeek(value: $value)';
+    return 'AudioPlayerEvent.seek(value: $value)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OnSeekImpl &&
+            other is _$SeekImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -158,45 +163,48 @@ class _$OnSeekImpl implements _OnSeek {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OnSeekImplCopyWith<_$OnSeekImpl> get copyWith =>
-      __$$OnSeekImplCopyWithImpl<_$OnSeekImpl>(this, _$identity);
+  _$$SeekImplCopyWith<_$SeekImpl> get copyWith =>
+      __$$SeekImplCopyWithImpl<_$SeekImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double value) onSeek,
-    required TResult Function() onSeekStart,
-    required TResult Function(Duration to) onSeekEnd,
+    required TResult Function(double value) seek,
+    required TResult Function() seekStart,
+    required TResult Function(Duration to) seekEnd,
+    required TResult Function(bool isLoading) setLoading,
     required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
-    return onSeek(value);
+    return seek(value);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double value)? onSeek,
-    TResult? Function()? onSeekStart,
-    TResult? Function(Duration to)? onSeekEnd,
+    TResult? Function(double value)? seek,
+    TResult? Function()? seekStart,
+    TResult? Function(Duration to)? seekEnd,
+    TResult? Function(bool isLoading)? setLoading,
     TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
-    return onSeek?.call(value);
+    return seek?.call(value);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double value)? onSeek,
-    TResult Function()? onSeekStart,
-    TResult Function(Duration to)? onSeekEnd,
+    TResult Function(double value)? seek,
+    TResult Function()? seekStart,
+    TResult Function(Duration to)? seekEnd,
+    TResult Function(bool isLoading)? setLoading,
     TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
-    if (onSeek != null) {
-      return onSeek(value);
+    if (seek != null) {
+      return seek(value);
     }
     return orElse();
   }
@@ -204,70 +212,73 @@ class _$OnSeekImpl implements _OnSeek {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnSeek value) onSeek,
-    required TResult Function(_OnSeekStart value) onSeekStart,
-    required TResult Function(_OnSeekEnd value) onSeekEnd,
+    required TResult Function(_Seek value) seek,
+    required TResult Function(_SeekStart value) seekStart,
+    required TResult Function(_SeekEnd value) seekEnd,
+    required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_PlayButtonPressed value) playButtonPressed,
     required TResult Function(_IsPlayingStateChanged value)
         isPlayingStateChanged,
   }) {
-    return onSeek(this);
+    return seek(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OnSeek value)? onSeek,
-    TResult? Function(_OnSeekStart value)? onSeekStart,
-    TResult? Function(_OnSeekEnd value)? onSeekEnd,
+    TResult? Function(_Seek value)? seek,
+    TResult? Function(_SeekStart value)? seekStart,
+    TResult? Function(_SeekEnd value)? seekEnd,
+    TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_PlayButtonPressed value)? playButtonPressed,
     TResult? Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
   }) {
-    return onSeek?.call(this);
+    return seek?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnSeek value)? onSeek,
-    TResult Function(_OnSeekStart value)? onSeekStart,
-    TResult Function(_OnSeekEnd value)? onSeekEnd,
+    TResult Function(_Seek value)? seek,
+    TResult Function(_SeekStart value)? seekStart,
+    TResult Function(_SeekEnd value)? seekEnd,
+    TResult Function(_SetLoading value)? setLoading,
     TResult Function(_PlayButtonPressed value)? playButtonPressed,
     TResult Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
-    if (onSeek != null) {
-      return onSeek(this);
+    if (seek != null) {
+      return seek(this);
     }
     return orElse();
   }
 }
 
-abstract class _OnSeek implements AudioPlayerEvent {
-  const factory _OnSeek(final double value) = _$OnSeekImpl;
+abstract class _Seek implements AudioPlayerEvent {
+  const factory _Seek(final double value) = _$SeekImpl;
 
   double get value;
 
   /// Create a copy of AudioPlayerEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OnSeekImplCopyWith<_$OnSeekImpl> get copyWith =>
+  _$$SeekImplCopyWith<_$SeekImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OnSeekStartImplCopyWith<$Res> {
-  factory _$$OnSeekStartImplCopyWith(
-          _$OnSeekStartImpl value, $Res Function(_$OnSeekStartImpl) then) =
-      __$$OnSeekStartImplCopyWithImpl<$Res>;
+abstract class _$$SeekStartImplCopyWith<$Res> {
+  factory _$$SeekStartImplCopyWith(
+          _$SeekStartImpl value, $Res Function(_$SeekStartImpl) then) =
+      __$$SeekStartImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$OnSeekStartImplCopyWithImpl<$Res>
-    extends _$AudioPlayerEventCopyWithImpl<$Res, _$OnSeekStartImpl>
-    implements _$$OnSeekStartImplCopyWith<$Res> {
-  __$$OnSeekStartImplCopyWithImpl(
-      _$OnSeekStartImpl _value, $Res Function(_$OnSeekStartImpl) _then)
+class __$$SeekStartImplCopyWithImpl<$Res>
+    extends _$AudioPlayerEventCopyWithImpl<$Res, _$SeekStartImpl>
+    implements _$$SeekStartImplCopyWith<$Res> {
+  __$$SeekStartImplCopyWithImpl(
+      _$SeekStartImpl _value, $Res Function(_$SeekStartImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AudioPlayerEvent
@@ -276,18 +287,18 @@ class __$$OnSeekStartImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OnSeekStartImpl implements _OnSeekStart {
-  const _$OnSeekStartImpl();
+class _$SeekStartImpl implements _SeekStart {
+  const _$SeekStartImpl();
 
   @override
   String toString() {
-    return 'AudioPlayerEvent.onSeekStart()';
+    return 'AudioPlayerEvent.seekStart()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OnSeekStartImpl);
+        (other.runtimeType == runtimeType && other is _$SeekStartImpl);
   }
 
   @override
@@ -296,39 +307,42 @@ class _$OnSeekStartImpl implements _OnSeekStart {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double value) onSeek,
-    required TResult Function() onSeekStart,
-    required TResult Function(Duration to) onSeekEnd,
+    required TResult Function(double value) seek,
+    required TResult Function() seekStart,
+    required TResult Function(Duration to) seekEnd,
+    required TResult Function(bool isLoading) setLoading,
     required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
-    return onSeekStart();
+    return seekStart();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double value)? onSeek,
-    TResult? Function()? onSeekStart,
-    TResult? Function(Duration to)? onSeekEnd,
+    TResult? Function(double value)? seek,
+    TResult? Function()? seekStart,
+    TResult? Function(Duration to)? seekEnd,
+    TResult? Function(bool isLoading)? setLoading,
     TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
-    return onSeekStart?.call();
+    return seekStart?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double value)? onSeek,
-    TResult Function()? onSeekStart,
-    TResult Function(Duration to)? onSeekEnd,
+    TResult Function(double value)? seek,
+    TResult Function()? seekStart,
+    TResult Function(Duration to)? seekEnd,
+    TResult Function(bool isLoading)? setLoading,
     TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
-    if (onSeekStart != null) {
-      return onSeekStart();
+    if (seekStart != null) {
+      return seekStart();
     }
     return orElse();
   }
@@ -336,64 +350,67 @@ class _$OnSeekStartImpl implements _OnSeekStart {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnSeek value) onSeek,
-    required TResult Function(_OnSeekStart value) onSeekStart,
-    required TResult Function(_OnSeekEnd value) onSeekEnd,
+    required TResult Function(_Seek value) seek,
+    required TResult Function(_SeekStart value) seekStart,
+    required TResult Function(_SeekEnd value) seekEnd,
+    required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_PlayButtonPressed value) playButtonPressed,
     required TResult Function(_IsPlayingStateChanged value)
         isPlayingStateChanged,
   }) {
-    return onSeekStart(this);
+    return seekStart(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OnSeek value)? onSeek,
-    TResult? Function(_OnSeekStart value)? onSeekStart,
-    TResult? Function(_OnSeekEnd value)? onSeekEnd,
+    TResult? Function(_Seek value)? seek,
+    TResult? Function(_SeekStart value)? seekStart,
+    TResult? Function(_SeekEnd value)? seekEnd,
+    TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_PlayButtonPressed value)? playButtonPressed,
     TResult? Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
   }) {
-    return onSeekStart?.call(this);
+    return seekStart?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnSeek value)? onSeek,
-    TResult Function(_OnSeekStart value)? onSeekStart,
-    TResult Function(_OnSeekEnd value)? onSeekEnd,
+    TResult Function(_Seek value)? seek,
+    TResult Function(_SeekStart value)? seekStart,
+    TResult Function(_SeekEnd value)? seekEnd,
+    TResult Function(_SetLoading value)? setLoading,
     TResult Function(_PlayButtonPressed value)? playButtonPressed,
     TResult Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
-    if (onSeekStart != null) {
-      return onSeekStart(this);
+    if (seekStart != null) {
+      return seekStart(this);
     }
     return orElse();
   }
 }
 
-abstract class _OnSeekStart implements AudioPlayerEvent {
-  const factory _OnSeekStart() = _$OnSeekStartImpl;
+abstract class _SeekStart implements AudioPlayerEvent {
+  const factory _SeekStart() = _$SeekStartImpl;
 }
 
 /// @nodoc
-abstract class _$$OnSeekEndImplCopyWith<$Res> {
-  factory _$$OnSeekEndImplCopyWith(
-          _$OnSeekEndImpl value, $Res Function(_$OnSeekEndImpl) then) =
-      __$$OnSeekEndImplCopyWithImpl<$Res>;
+abstract class _$$SeekEndImplCopyWith<$Res> {
+  factory _$$SeekEndImplCopyWith(
+          _$SeekEndImpl value, $Res Function(_$SeekEndImpl) then) =
+      __$$SeekEndImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Duration to});
 }
 
 /// @nodoc
-class __$$OnSeekEndImplCopyWithImpl<$Res>
-    extends _$AudioPlayerEventCopyWithImpl<$Res, _$OnSeekEndImpl>
-    implements _$$OnSeekEndImplCopyWith<$Res> {
-  __$$OnSeekEndImplCopyWithImpl(
-      _$OnSeekEndImpl _value, $Res Function(_$OnSeekEndImpl) _then)
+class __$$SeekEndImplCopyWithImpl<$Res>
+    extends _$AudioPlayerEventCopyWithImpl<$Res, _$SeekEndImpl>
+    implements _$$SeekEndImplCopyWith<$Res> {
+  __$$SeekEndImplCopyWithImpl(
+      _$SeekEndImpl _value, $Res Function(_$SeekEndImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AudioPlayerEvent
@@ -403,7 +420,7 @@ class __$$OnSeekEndImplCopyWithImpl<$Res>
   $Res call({
     Object? to = null,
   }) {
-    return _then(_$OnSeekEndImpl(
+    return _then(_$SeekEndImpl(
       null == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
@@ -414,22 +431,22 @@ class __$$OnSeekEndImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OnSeekEndImpl implements _OnSeekEnd {
-  const _$OnSeekEndImpl(this.to);
+class _$SeekEndImpl implements _SeekEnd {
+  const _$SeekEndImpl(this.to);
 
   @override
   final Duration to;
 
   @override
   String toString() {
-    return 'AudioPlayerEvent.onSeekEnd(to: $to)';
+    return 'AudioPlayerEvent.seekEnd(to: $to)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OnSeekEndImpl &&
+            other is _$SeekEndImpl &&
             (identical(other.to, to) || other.to == to));
   }
 
@@ -441,45 +458,48 @@ class _$OnSeekEndImpl implements _OnSeekEnd {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OnSeekEndImplCopyWith<_$OnSeekEndImpl> get copyWith =>
-      __$$OnSeekEndImplCopyWithImpl<_$OnSeekEndImpl>(this, _$identity);
+  _$$SeekEndImplCopyWith<_$SeekEndImpl> get copyWith =>
+      __$$SeekEndImplCopyWithImpl<_$SeekEndImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double value) onSeek,
-    required TResult Function() onSeekStart,
-    required TResult Function(Duration to) onSeekEnd,
+    required TResult Function(double value) seek,
+    required TResult Function() seekStart,
+    required TResult Function(Duration to) seekEnd,
+    required TResult Function(bool isLoading) setLoading,
     required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
-    return onSeekEnd(to);
+    return seekEnd(to);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double value)? onSeek,
-    TResult? Function()? onSeekStart,
-    TResult? Function(Duration to)? onSeekEnd,
+    TResult? Function(double value)? seek,
+    TResult? Function()? seekStart,
+    TResult? Function(Duration to)? seekEnd,
+    TResult? Function(bool isLoading)? setLoading,
     TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
-    return onSeekEnd?.call(to);
+    return seekEnd?.call(to);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double value)? onSeek,
-    TResult Function()? onSeekStart,
-    TResult Function(Duration to)? onSeekEnd,
+    TResult Function(double value)? seek,
+    TResult Function()? seekStart,
+    TResult Function(Duration to)? seekEnd,
+    TResult Function(bool isLoading)? setLoading,
     TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
-    if (onSeekEnd != null) {
-      return onSeekEnd(to);
+    if (seekEnd != null) {
+      return seekEnd(to);
     }
     return orElse();
   }
@@ -487,54 +507,223 @@ class _$OnSeekEndImpl implements _OnSeekEnd {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnSeek value) onSeek,
-    required TResult Function(_OnSeekStart value) onSeekStart,
-    required TResult Function(_OnSeekEnd value) onSeekEnd,
+    required TResult Function(_Seek value) seek,
+    required TResult Function(_SeekStart value) seekStart,
+    required TResult Function(_SeekEnd value) seekEnd,
+    required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_PlayButtonPressed value) playButtonPressed,
     required TResult Function(_IsPlayingStateChanged value)
         isPlayingStateChanged,
   }) {
-    return onSeekEnd(this);
+    return seekEnd(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OnSeek value)? onSeek,
-    TResult? Function(_OnSeekStart value)? onSeekStart,
-    TResult? Function(_OnSeekEnd value)? onSeekEnd,
+    TResult? Function(_Seek value)? seek,
+    TResult? Function(_SeekStart value)? seekStart,
+    TResult? Function(_SeekEnd value)? seekEnd,
+    TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_PlayButtonPressed value)? playButtonPressed,
     TResult? Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
   }) {
-    return onSeekEnd?.call(this);
+    return seekEnd?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnSeek value)? onSeek,
-    TResult Function(_OnSeekStart value)? onSeekStart,
-    TResult Function(_OnSeekEnd value)? onSeekEnd,
+    TResult Function(_Seek value)? seek,
+    TResult Function(_SeekStart value)? seekStart,
+    TResult Function(_SeekEnd value)? seekEnd,
+    TResult Function(_SetLoading value)? setLoading,
     TResult Function(_PlayButtonPressed value)? playButtonPressed,
     TResult Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
-    if (onSeekEnd != null) {
-      return onSeekEnd(this);
+    if (seekEnd != null) {
+      return seekEnd(this);
     }
     return orElse();
   }
 }
 
-abstract class _OnSeekEnd implements AudioPlayerEvent {
-  const factory _OnSeekEnd(final Duration to) = _$OnSeekEndImpl;
+abstract class _SeekEnd implements AudioPlayerEvent {
+  const factory _SeekEnd(final Duration to) = _$SeekEndImpl;
 
   Duration get to;
 
   /// Create a copy of AudioPlayerEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OnSeekEndImplCopyWith<_$OnSeekEndImpl> get copyWith =>
+  _$$SeekEndImplCopyWith<_$SeekEndImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetLoadingImplCopyWith<$Res> {
+  factory _$$SetLoadingImplCopyWith(
+          _$SetLoadingImpl value, $Res Function(_$SetLoadingImpl) then) =
+      __$$SetLoadingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isLoading});
+}
+
+/// @nodoc
+class __$$SetLoadingImplCopyWithImpl<$Res>
+    extends _$AudioPlayerEventCopyWithImpl<$Res, _$SetLoadingImpl>
+    implements _$$SetLoadingImplCopyWith<$Res> {
+  __$$SetLoadingImplCopyWithImpl(
+      _$SetLoadingImpl _value, $Res Function(_$SetLoadingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioPlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+  }) {
+    return _then(_$SetLoadingImpl(
+      null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetLoadingImpl implements _SetLoading {
+  const _$SetLoadingImpl(this.isLoading);
+
+  @override
+  final bool isLoading;
+
+  @override
+  String toString() {
+    return 'AudioPlayerEvent.setLoading(isLoading: $isLoading)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetLoadingImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isLoading);
+
+  /// Create a copy of AudioPlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetLoadingImplCopyWith<_$SetLoadingImpl> get copyWith =>
+      __$$SetLoadingImplCopyWithImpl<_$SetLoadingImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double value) seek,
+    required TResult Function() seekStart,
+    required TResult Function(Duration to) seekEnd,
+    required TResult Function(bool isLoading) setLoading,
+    required TResult Function(String filePath) playButtonPressed,
+    required TResult Function(bool isPlaying) isPlayingStateChanged,
+  }) {
+    return setLoading(isLoading);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double value)? seek,
+    TResult? Function()? seekStart,
+    TResult? Function(Duration to)? seekEnd,
+    TResult? Function(bool isLoading)? setLoading,
+    TResult? Function(String filePath)? playButtonPressed,
+    TResult? Function(bool isPlaying)? isPlayingStateChanged,
+  }) {
+    return setLoading?.call(isLoading);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double value)? seek,
+    TResult Function()? seekStart,
+    TResult Function(Duration to)? seekEnd,
+    TResult Function(bool isLoading)? setLoading,
+    TResult Function(String filePath)? playButtonPressed,
+    TResult Function(bool isPlaying)? isPlayingStateChanged,
+    required TResult orElse(),
+  }) {
+    if (setLoading != null) {
+      return setLoading(isLoading);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Seek value) seek,
+    required TResult Function(_SeekStart value) seekStart,
+    required TResult Function(_SeekEnd value) seekEnd,
+    required TResult Function(_SetLoading value) setLoading,
+    required TResult Function(_PlayButtonPressed value) playButtonPressed,
+    required TResult Function(_IsPlayingStateChanged value)
+        isPlayingStateChanged,
+  }) {
+    return setLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Seek value)? seek,
+    TResult? Function(_SeekStart value)? seekStart,
+    TResult? Function(_SeekEnd value)? seekEnd,
+    TResult? Function(_SetLoading value)? setLoading,
+    TResult? Function(_PlayButtonPressed value)? playButtonPressed,
+    TResult? Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
+  }) {
+    return setLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Seek value)? seek,
+    TResult Function(_SeekStart value)? seekStart,
+    TResult Function(_SeekEnd value)? seekEnd,
+    TResult Function(_SetLoading value)? setLoading,
+    TResult Function(_PlayButtonPressed value)? playButtonPressed,
+    TResult Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
+    required TResult orElse(),
+  }) {
+    if (setLoading != null) {
+      return setLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetLoading implements AudioPlayerEvent {
+  const factory _SetLoading(final bool isLoading) = _$SetLoadingImpl;
+
+  bool get isLoading;
+
+  /// Create a copy of AudioPlayerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetLoadingImplCopyWith<_$SetLoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -608,9 +797,10 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double value) onSeek,
-    required TResult Function() onSeekStart,
-    required TResult Function(Duration to) onSeekEnd,
+    required TResult Function(double value) seek,
+    required TResult Function() seekStart,
+    required TResult Function(Duration to) seekEnd,
+    required TResult Function(bool isLoading) setLoading,
     required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
@@ -620,9 +810,10 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double value)? onSeek,
-    TResult? Function()? onSeekStart,
-    TResult? Function(Duration to)? onSeekEnd,
+    TResult? Function(double value)? seek,
+    TResult? Function()? seekStart,
+    TResult? Function(Duration to)? seekEnd,
+    TResult? Function(bool isLoading)? setLoading,
     TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
@@ -632,9 +823,10 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double value)? onSeek,
-    TResult Function()? onSeekStart,
-    TResult Function(Duration to)? onSeekEnd,
+    TResult Function(double value)? seek,
+    TResult Function()? seekStart,
+    TResult Function(Duration to)? seekEnd,
+    TResult Function(bool isLoading)? setLoading,
     TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
@@ -648,9 +840,10 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnSeek value) onSeek,
-    required TResult Function(_OnSeekStart value) onSeekStart,
-    required TResult Function(_OnSeekEnd value) onSeekEnd,
+    required TResult Function(_Seek value) seek,
+    required TResult Function(_SeekStart value) seekStart,
+    required TResult Function(_SeekEnd value) seekEnd,
+    required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_PlayButtonPressed value) playButtonPressed,
     required TResult Function(_IsPlayingStateChanged value)
         isPlayingStateChanged,
@@ -661,9 +854,10 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OnSeek value)? onSeek,
-    TResult? Function(_OnSeekStart value)? onSeekStart,
-    TResult? Function(_OnSeekEnd value)? onSeekEnd,
+    TResult? Function(_Seek value)? seek,
+    TResult? Function(_SeekStart value)? seekStart,
+    TResult? Function(_SeekEnd value)? seekEnd,
+    TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_PlayButtonPressed value)? playButtonPressed,
     TResult? Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
   }) {
@@ -673,9 +867,10 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnSeek value)? onSeek,
-    TResult Function(_OnSeekStart value)? onSeekStart,
-    TResult Function(_OnSeekEnd value)? onSeekEnd,
+    TResult Function(_Seek value)? seek,
+    TResult Function(_SeekStart value)? seekStart,
+    TResult Function(_SeekEnd value)? seekEnd,
+    TResult Function(_SetLoading value)? setLoading,
     TResult Function(_PlayButtonPressed value)? playButtonPressed,
     TResult Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
     required TResult orElse(),
@@ -771,9 +966,10 @@ class _$IsPlayingStateChangedImpl implements _IsPlayingStateChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double value) onSeek,
-    required TResult Function() onSeekStart,
-    required TResult Function(Duration to) onSeekEnd,
+    required TResult Function(double value) seek,
+    required TResult Function() seekStart,
+    required TResult Function(Duration to) seekEnd,
+    required TResult Function(bool isLoading) setLoading,
     required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
@@ -783,9 +979,10 @@ class _$IsPlayingStateChangedImpl implements _IsPlayingStateChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(double value)? onSeek,
-    TResult? Function()? onSeekStart,
-    TResult? Function(Duration to)? onSeekEnd,
+    TResult? Function(double value)? seek,
+    TResult? Function()? seekStart,
+    TResult? Function(Duration to)? seekEnd,
+    TResult? Function(bool isLoading)? setLoading,
     TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
@@ -795,9 +992,10 @@ class _$IsPlayingStateChangedImpl implements _IsPlayingStateChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double value)? onSeek,
-    TResult Function()? onSeekStart,
-    TResult Function(Duration to)? onSeekEnd,
+    TResult Function(double value)? seek,
+    TResult Function()? seekStart,
+    TResult Function(Duration to)? seekEnd,
+    TResult Function(bool isLoading)? setLoading,
     TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
@@ -811,9 +1009,10 @@ class _$IsPlayingStateChangedImpl implements _IsPlayingStateChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_OnSeek value) onSeek,
-    required TResult Function(_OnSeekStart value) onSeekStart,
-    required TResult Function(_OnSeekEnd value) onSeekEnd,
+    required TResult Function(_Seek value) seek,
+    required TResult Function(_SeekStart value) seekStart,
+    required TResult Function(_SeekEnd value) seekEnd,
+    required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_PlayButtonPressed value) playButtonPressed,
     required TResult Function(_IsPlayingStateChanged value)
         isPlayingStateChanged,
@@ -824,9 +1023,10 @@ class _$IsPlayingStateChangedImpl implements _IsPlayingStateChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OnSeek value)? onSeek,
-    TResult? Function(_OnSeekStart value)? onSeekStart,
-    TResult? Function(_OnSeekEnd value)? onSeekEnd,
+    TResult? Function(_Seek value)? seek,
+    TResult? Function(_SeekStart value)? seekStart,
+    TResult? Function(_SeekEnd value)? seekEnd,
+    TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_PlayButtonPressed value)? playButtonPressed,
     TResult? Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
   }) {
@@ -836,9 +1036,10 @@ class _$IsPlayingStateChangedImpl implements _IsPlayingStateChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnSeek value)? onSeek,
-    TResult Function(_OnSeekStart value)? onSeekStart,
-    TResult Function(_OnSeekEnd value)? onSeekEnd,
+    TResult Function(_Seek value)? seek,
+    TResult Function(_SeekStart value)? seekStart,
+    TResult Function(_SeekEnd value)? seekEnd,
+    TResult Function(_SetLoading value)? setLoading,
     TResult Function(_PlayButtonPressed value)? playButtonPressed,
     TResult Function(_IsPlayingStateChanged value)? isPlayingStateChanged,
     required TResult orElse(),

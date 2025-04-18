@@ -7,7 +7,7 @@ final $ = GetIt.instance;
 
 @InjectableInit()
 Future<GetIt> initInjector() async {
-  await $.init();
+  $.init();
 
   await $.allReady().timeout(
         const Duration(seconds: 7),

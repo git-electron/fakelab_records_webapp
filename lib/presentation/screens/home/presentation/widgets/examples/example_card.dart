@@ -138,7 +138,7 @@ class AudioPlayer extends StatelessWidget {
                   alignment: Alignment.center,
                   child: state.isFileLoading(filePath)
                       ? SizedBox.square(
-                          dimension: 20,
+                          dimension: 15,
                           child: CircularProgressIndicator(
                             color: context.colors.background,
                             strokeCap: StrokeCap.round,
@@ -174,7 +174,7 @@ class AudioPlayer extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   child: BlocBuilder<AudioPlayerBloc, AudioPlayerState>(
                     builder: (context, state) {
-                      if (state.isFileSelected(filePath)) {
+                      if (state.isFileSelected(filePath) && bloc.currentDurationInMs != 0) {
                         return StreamBuilder<Duration>(
                           stream: bloc.audioPlayer.currentPosition,
                           builder: (context, snapshot) {
@@ -237,13 +237,13 @@ class AudioProgressBar extends StatelessWidget {
                 : bloc.currentDurationInMs,
             max: bloc.totalDurationInMs,
             onChanged: (value) => bloc.add(
-              AudioPlayerEvent.onSeek(value),
+              AudioPlayerEvent.seek(value),
             ),
             onChangeStart: (value) => bloc.add(
-              const AudioPlayerEvent.onSeekStart(),
+              const AudioPlayerEvent.seekStart(),
             ),
             onChangeEnd: (value) => bloc.add(
-              AudioPlayerEvent.onSeekEnd(
+              AudioPlayerEvent.seekEnd(
                 Duration(
                   milliseconds: value.round(),
                 ),

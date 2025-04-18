@@ -25,7 +25,7 @@ class ExamplesList extends StatelessWidget {
           //   services: ExampleServiceType.values,
           //   genres: const [ExampleGenre.HIP_HOP, ExampleGenre.AMBIENT],
           // ),
-          // const Gap(20), //TODO: вставить после 25 апреля
+          // const Gap(20), //TODO: add after april 25
           ExampleCard(
             filePath: Assets.audio.examples.brave,
             title: 'brave',
@@ -81,7 +81,7 @@ class ExamplesList extends StatelessWidget {
           //   ],
           //   genres: const [ExampleGenre.HIP_HOP],
           // ),
-          // const Gap(20), //TODO: вставить после 9 мая
+          // const Gap(20), //TODO: add after may 9
           ExampleCard(
             filePath: Assets.audio.examples.tired,
             title: 'Заебали ***',

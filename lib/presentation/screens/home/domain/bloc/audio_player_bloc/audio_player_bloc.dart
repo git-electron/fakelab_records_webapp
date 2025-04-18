@@ -1,6 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:fakelab_records_webapp/core/constants/constants.dart';
-import 'package:fakelab_records_webapp/core/constants/env.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -11,13 +10,19 @@ part 'audio_player_bloc.freezed.dart';
 
 @injectable
 class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
-  AudioPlayerBloc(this.env, this.audioPlayer)
-      : super(const _AudioPlayerState()) {
-    on<_OnSeek>(_onSeek);
-    on<_OnSeekEnd>(_onSeekEnd);
-    on<_OnSeekStart>(_onSeekStart);
+  AudioPlayerBloc(this.audioPlayer) : super(const _AudioPlayerState()) {
+    on<_Seek>(_onSeek);
+    on<_SeekEnd>(_onSeekEnd);
+    on<_SeekStart>(_onSeekStart);
+    on<_SetLoading>(_onSetLoading);
     on<_PlayButtonPressed>(_onPlayButtonPressed);
     on<_IsPlayingStateChanged>(_onIsPlayingStateChanged);
+
+    audioPlayer.currentPosition.listen((Duration currentPosition) {
+      if (currentPosition.inMilliseconds != 0) {
+        add(const AudioPlayerEvent.setLoading(false));
+      }
+    });
 
     audioPlayer.isPlaying.listen((bool isPlaying) {
       if (isPlaying != state.isPlaying) {
@@ -32,28 +37,34 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     return super.close();
   }
 
-  final Env env;
   final AssetsAudioPlayer audioPlayer;
 
-  Future<void> _onSeek(_OnSeek event, Emitter<AudioPlayerState> emit) async {
+  Future<void> _onSeek(_Seek event, Emitter<AudioPlayerState> emit) async {
     emit(state.copyWith(seekProgressValue: event.value));
   }
 
   Future<void> _onSeekStart(
-    _OnSeekStart event,
+    _SeekStart event,
     Emitter<AudioPlayerState> emit,
   ) async {
     emit(state.copyWith(isSeekInProgress: true));
   }
 
   Future<void> _onSeekEnd(
-    _OnSeekEnd event,
+    _SeekEnd event,
     Emitter<AudioPlayerState> emit,
   ) async {
     await audioPlayer.seek(event.to);
     await audioPlayer.play();
     await Future.delayed(kAnimationDuration);
     emit(state.copyWith(isSeekInProgress: false));
+  }
+
+  Future<void> _onSetLoading(
+    _SetLoading event,
+    Emitter<AudioPlayerState> emit,
+  ) async {
+    emit(state.copyWith(isLoading: event.isLoading));
   }
 
   Future<void> _onPlayButtonPressed(
@@ -75,10 +86,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
       );
       await audioPlayer.play();
     }
-    emit(state.copyWith(
-      isPlaying: audioPlayer.isPlaying.value,
-      isLoading: false,
-    ));
+    emit(state.copyWith(isPlaying: audioPlayer.isPlaying.value));
   }
 
   Future<void> _onIsPlayingStateChanged(
@@ -88,7 +96,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     emit(state.copyWith(isPlaying: event.isPlaying));
   }
 
-  String _getFilePath(String filePath) => '${env.baseUrl}/assets/$filePath';
+  String _getFilePath(String filePath) => '$baseUrl/assets/$filePath';
 
   Duration get totalDuration =>
       audioPlayer.current.value?.audio.duration ?? const Duration();
