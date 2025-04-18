@@ -61,8 +61,10 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
       await audioPlayer.playOrPause();
     } else {
       await audioPlayer.stop();
+      print('https://fakelab-records-webapp.vercel.app/assets/${event.filePath}');
       await audioPlayer.open(
-        Audio.network(event.filePath),
+        Audio.network(
+            'https://fakelab-records-webapp.vercel.app/assets/${event.filePath}'),
         autoStart: false,
       );
       await audioPlayer.play();
