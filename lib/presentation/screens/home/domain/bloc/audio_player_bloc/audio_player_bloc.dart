@@ -63,7 +63,10 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     if (event.filePath == state.filePath) {
       await audioPlayer.playOrPause();
     } else {
-      emit(state.copyWith(isLoading: true));
+      emit(state.copyWith(
+        isLoading: true,
+        filePath: event.filePath,
+      ));
 
       await audioPlayer.stop();
       await audioPlayer.open(
@@ -71,8 +74,6 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
         autoStart: false,
       );
       await audioPlayer.play();
-      
-      emit(state.copyWith(filePath: event.filePath));
     }
     emit(state.copyWith(
       isPlaying: audioPlayer.isPlaying.value,

@@ -44,10 +44,6 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.singleton<_i352.AppRouter>(() => _i352.AppRouter());
-    gh.factory<_i29.AudioPlayerBloc>(() => _i29.AudioPlayerBloc(
-          gh<_i584.Env>(),
-          gh<_i842.AssetsAudioPlayer>(),
-        ));
     gh.factory<_i435.TelegramService>(
         () => _i435.TelegramService(gh<_i352.AppRouter>()));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
@@ -58,6 +54,10 @@ extension GetItInjectableX on _i174.GetIt {
           images: images,
           initialIndex: initialIndex,
           telegramService: gh<_i435.TelegramService>(),
+        ));
+    gh.factory<_i29.AudioPlayerBloc>(() => _i29.AudioPlayerBloc(
+          gh<_i584.Env>(),
+          gh<_i842.AssetsAudioPlayer>(),
         ));
     gh.singleton<_i1011.TelegramDataBloc>(
         () => _i1011.TelegramDataBloc(gh<_i435.TelegramService>()));
