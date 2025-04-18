@@ -9,7 +9,7 @@ final class Env {
 
   @FactoryMethod(preResolve: true)
   static Future<Env> load() async {
-    await dotenv.load(fileName: './../.env');
+    await dotenv.load(fileName: './../config.env');
     return _instance ??= Env._();
   }
   
