@@ -5,6 +5,9 @@ import 'package:fakelab_records_webapp/presentation/screens/home/presentation/wi
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/about/home_screen_about.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_app_bar.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_buttons.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/equipment/home_screen_equipment.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_footer.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_promo_text.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_greetings.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_summary.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
@@ -43,7 +46,7 @@ class HomeScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: context.colors.background,
-      padding: const Pad(vertical: 20),
+      padding: const Pad(top: 20),
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,7 +59,14 @@ class HomeScreenBody extends StatelessWidget {
           HomeScreenButtons(),
           Gap(60),
           HomeScreenAbout(),
-          Gap(100),
+          Gap(60),
+          HomeScreenEquipment(),
+          Gap(40),
+          HomeScreenPromoText(),
+          Gap(20),
+          HomeScreenButtons(),
+          Gap(40),
+          HomeScreenFooter(),
         ],
       ),
     );

@@ -91,6 +91,9 @@ class $AssetsImagesGen {
   /// Directory path: assets/images/coin
   $AssetsImagesCoinGen get coin => const $AssetsImagesCoinGen();
 
+  /// Directory path: assets/images/equipment
+  $AssetsImagesEquipmentGen get equipment => const $AssetsImagesEquipmentGen();
+
   /// List of all assets
   List<AssetGenImage> get values => [cardBackground];
 }
@@ -195,6 +198,44 @@ class $AssetsImagesCoinGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [big, small];
+}
+
+class $AssetsImagesEquipmentGen {
+  const $AssetsImagesEquipmentGen();
+
+  /// File path: assets/images/equipment/guitar.png
+  AssetGenImage get guitar =>
+      const AssetGenImage('assets/images/equipment/guitar.png');
+
+  /// File path: assets/images/equipment/headphones.png
+  AssetGenImage get headphones =>
+      const AssetGenImage('assets/images/equipment/headphones.png');
+
+  /// File path: assets/images/equipment/interface.png
+  AssetGenImage get interface =>
+      const AssetGenImage('assets/images/equipment/interface.png');
+
+  /// File path: assets/images/equipment/mic.png
+  AssetGenImage get mic =>
+      const AssetGenImage('assets/images/equipment/mic.png');
+
+  /// File path: assets/images/equipment/midi.png
+  AssetGenImage get midi =>
+      const AssetGenImage('assets/images/equipment/midi.png');
+
+  /// File path: assets/images/equipment/monitors.png
+  AssetGenImage get monitors =>
+      const AssetGenImage('assets/images/equipment/monitors.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    guitar,
+    headphones,
+    interface,
+    mic,
+    midi,
+    monitors,
+  ];
 }
 
 class $AssetsIconsLogoFakelabGen {

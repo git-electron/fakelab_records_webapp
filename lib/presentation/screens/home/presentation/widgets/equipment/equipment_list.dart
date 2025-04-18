@@ -1,0 +1,52 @@
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/equipment/equipment_tile.dart';
+import 'package:flutter/material.dart';
+
+class EquipmentList extends StatelessWidget {
+  const EquipmentList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const Pad(right: 30),
+      child: Column(
+        children: [
+          EquipmentTile(
+            title: 'Союз 023 bomblet',
+            description:
+                'Тёплое аналоговое звучание с винтажным характером, идеально для вокала. Кастомный трансформатор придаёт звуку особенный тембр, окраску и глубину',
+            image: Assets.images.equipment.mic,
+          ),
+          EquipmentTile(
+            title: 'Mackie big knob studio',
+            description:
+                'Аудиоинтерфейс и мониторный контроллер в одном: чистый звук, удобное управление и максимум контроля на студии',
+            image: Assets.images.equipment.interface,
+          ),
+          EquipmentTile(
+            title: 'Beyerdynamic DT 770/990 pro',
+            description:
+                'Высококлассное звучание и комфорт при длительной работе. 770 — закрытые для записи, 990 — открытые для микса с широкой стереосценой',
+            image: Assets.images.equipment.headphones,
+          ),
+          EquipmentTile(
+            title: 'KRK Rokit 5 G4',
+            description: 'Мощный звук и точная передача частот. Идеальны для сведения и продюсирования в студийных условиях',
+            image: Assets.images.equipment.monitors,
+          ),
+          EquipmentTile(
+            title: 'Fender Squier bullet stratocaster',
+            description: 'Классическое звучание Fender, лёгкая и универсальная гитара для записи ритма и соло',
+            image: Assets.images.equipment.guitar,
+          ),
+          EquipmentTile(
+            title: 'Arturia keylab essential 88 MKIII',
+            description: 'Полувзвешенные клавиши, глубокая интеграция с DAW и софтом. Полный контроль и вдохновение под рукой',
+            image: Assets.images.equipment.midi,
+          ),
+        ],
+      ),
+    );
+  }
+}
