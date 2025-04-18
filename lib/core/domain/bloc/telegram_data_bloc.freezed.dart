@@ -249,38 +249,38 @@ abstract class _SetData implements TelegramDataEvent {
 mixin _$TelegramDataState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() unsupported,
     required TResult Function(TelegramData data) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? unsupported,
     TResult? Function(TelegramData data)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? unsupported,
     TResult Function(TelegramData data)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Unsupported value) unsupported,
     required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Unsupported value)? unsupported,
     TResult? Function(_Loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Unsupported value)? unsupported,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) =>
@@ -309,18 +309,18 @@ class _$TelegramDataStateCopyWithImpl<$Res, $Val extends TelegramDataState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$UnsupportedImplCopyWith<$Res> {
+  factory _$$UnsupportedImplCopyWith(
+          _$UnsupportedImpl value, $Res Function(_$UnsupportedImpl) then) =
+      __$$UnsupportedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$TelegramDataStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$UnsupportedImplCopyWithImpl<$Res>
+    extends _$TelegramDataStateCopyWithImpl<$Res, _$UnsupportedImpl>
+    implements _$$UnsupportedImplCopyWith<$Res> {
+  __$$UnsupportedImplCopyWithImpl(
+      _$UnsupportedImpl _value, $Res Function(_$UnsupportedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TelegramDataState
@@ -329,18 +329,18 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl extends _Initial {
-  const _$InitialImpl() : super._();
+class _$UnsupportedImpl extends _Unsupported {
+  const _$UnsupportedImpl() : super._();
 
   @override
   String toString() {
-    return 'TelegramDataState.initial()';
+    return 'TelegramDataState.unsupported()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$UnsupportedImpl);
   }
 
   @override
@@ -349,30 +349,30 @@ class _$InitialImpl extends _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() unsupported,
     required TResult Function(TelegramData data) loaded,
   }) {
-    return initial();
+    return unsupported();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? unsupported,
     TResult? Function(TelegramData data)? loaded,
   }) {
-    return initial?.call();
+    return unsupported?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? unsupported,
     TResult Function(TelegramData data)? loaded,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (unsupported != null) {
+      return unsupported();
     }
     return orElse();
   }
@@ -380,38 +380,38 @@ class _$InitialImpl extends _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Unsupported value) unsupported,
     required TResult Function(_Loaded value) loaded,
   }) {
-    return initial(this);
+    return unsupported(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Unsupported value)? unsupported,
     TResult? Function(_Loaded value)? loaded,
   }) {
-    return initial?.call(this);
+    return unsupported?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Unsupported value)? unsupported,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (unsupported != null) {
+      return unsupported(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initial extends TelegramDataState {
-  const factory _Initial() = _$InitialImpl;
-  const _Initial._() : super._();
+abstract class _Unsupported extends TelegramDataState {
+  const factory _Unsupported() = _$UnsupportedImpl;
+  const _Unsupported._() : super._();
 }
 
 /// @nodoc
@@ -494,7 +494,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() unsupported,
     required TResult Function(TelegramData data) loaded,
   }) {
     return loaded(data);
@@ -503,7 +503,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? unsupported,
     TResult? Function(TelegramData data)? loaded,
   }) {
     return loaded?.call(data);
@@ -512,7 +512,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? unsupported,
     TResult Function(TelegramData data)? loaded,
     required TResult orElse(),
   }) {
@@ -525,7 +525,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Unsupported value) unsupported,
     required TResult Function(_Loaded value) loaded,
   }) {
     return loaded(this);
@@ -534,7 +534,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Unsupported value)? unsupported,
     TResult? Function(_Loaded value)? loaded,
   }) {
     return loaded?.call(this);
@@ -543,7 +543,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Unsupported value)? unsupported,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {

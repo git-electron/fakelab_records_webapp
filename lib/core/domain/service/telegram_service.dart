@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'dart:js' as js;
 
+import 'package:auto_route/auto_route.dart';
+import 'package:fakelab_records_webapp/core/constants/constants.dart';
+
 import '../../constants/mock.dart';
 import '../../constants/types.dart';
 import '../models/telegram/safe_area_inset.dart';
 import '../models/telegram/telegram_data.dart';
 import '../models/telegram/telegram_meta.dart';
-import '../../router/router.dart';
 import '../../utils/try_or/try_or_null.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
@@ -15,11 +17,9 @@ import '../models/telegram/telegram_user.dart';
 
 @injectable
 class TelegramService {
-  TelegramService(this.router) {
+  TelegramService() {
     initTelegramWebApp();
   }
-
-  final AppRouter router;
 
   static bool _isSetup = false;
 
@@ -72,7 +72,7 @@ class TelegramService {
 
   void _onBackButtonTap() {
     hideBackButton();
-    router.pop();
+    rootContext.pop();
   }
 
   dynamic _call(String method, [List<dynamic>? args]) =>

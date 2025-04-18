@@ -12,7 +12,7 @@ class TelegramUserWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TelegramDataBloc, TelegramDataState>(
       builder: (context, state) {
-        if (state.isLoaded) {
+        if (state.isSupported) {
           return builder(context, state.telegramData!.user);
         }
 

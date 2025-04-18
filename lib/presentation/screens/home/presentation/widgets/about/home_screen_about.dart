@@ -1,4 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/constants/constants.dart';
 import '../../../../../../core/gen/assets.gen.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
 import 'about_map_and_features.dart';
@@ -80,8 +81,7 @@ class AboutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppButton.primary(
-      onTap: () => launchUrlString(
-          'https://yandex.ru/maps/?from=mapframe&ll=30.369747%2C59.954633&poi%5Bpoint%5D=30.369747&poi%5Bpoint%5D=59.954633&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D64952203819&source=mapframe&utm_source=mapframe&z=12'),
+      onTap: () => launchUrlString(yandexMapsUrl),
       text: 'Как нас найти?',
       icon: Assets.icons.pinBlack,
     );

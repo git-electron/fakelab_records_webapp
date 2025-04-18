@@ -1,4 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/constants/constants.dart';
 import '../../../../../core/extensions/list_extensions.dart';
 import '../../../../../core/gen/assets.gen.dart';
 import '../../../../../core/theme/theme_extensions.dart';
@@ -28,14 +29,13 @@ class HomeScreenFooter extends StatelessWidget {
                   child: Assets.icons.logo.fakelab.full.svg(width: 100),
                 ),
                 const Gap(40),
-                Text('Fakelab, 2024', style: context.styles.footer1),
-                Text('ИП Мядзюта Егор Константинович',
-                    style: context.styles.footer1),
-                Text('ИНН 784803454288', style: context.styles.footer1),
                 Text(
-                  '195009, Санкт-Петербург, ул. Комсомола, д.2, офис 14',
+                  '$businessName, ${DateTime.now().year}',
                   style: context.styles.footer1,
                 ),
+                Text(businessOwner, style: context.styles.footer1),
+                Text('ИНН $businessTIN', style: context.styles.footer1),
+                Text(businessAddress, style: context.styles.footer1),
               ].alternateWith(const Gap(8)),
             ),
           ),
@@ -49,20 +49,19 @@ class HomeScreenFooter extends StatelessWidget {
                 const Gap(40),
                 TappableText(
                   text: 'Telegram',
-                  onTap: () => launchUrlString('https://t.me/fakelab_records'),
+                  onTap: () => launchUrlString(telegramChannelUrl),
                 ),
                 TappableText(
                   text: 'VK',
-                  onTap: () =>
-                      launchUrlString('https://vk.com/fakelab.records'),
+                  onTap: () => launchUrlString(vkPublicUrl),
                 ),
                 TappableText(
-                  text: '+7 (995) 988-20-64',
-                  onTap: () => launchUrlString('tel:+7 (995) 988-20-64'),
+                  text: businessPhoneNumber,
+                  onTap: () => launchUrlString('tel:$businessPhoneNumber'),
                 ),
                 TappableText(
-                  text: 'records@fakelab.media',
-                  onTap: () => launchUrlString('mailto:records@fakelab.media'),
+                  text: businessEmailAddress,
+                  onTap: () => launchUrlString('mailto:$businessEmailAddress'),
                 ),
               ].alternateWith(const Gap(8)),
             ),

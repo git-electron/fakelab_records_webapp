@@ -1,0 +1,14 @@
+{
+    "flutter": {
+        "platforms": {
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "fakelab-records",
+                    "configurations": {
+                        "web": "1:1048321734586:web:78571154286bf81b238f83"
+                    }
+                }
+            }
+        }
+    }
+}

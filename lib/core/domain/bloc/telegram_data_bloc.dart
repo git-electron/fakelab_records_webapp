@@ -11,7 +11,7 @@ part 'telegram_data_bloc.freezed.dart';
 
 @singleton
 class TelegramDataBloc extends Bloc<TelegramDataEvent, TelegramDataState> {
-  TelegramDataBloc(this.telegramService) : super(const _Initial()) {
+  TelegramDataBloc(this.telegramService) : super(const _Unsupported()) {
     on<_SetData>(_onSetData);
 
     tryOrNull(

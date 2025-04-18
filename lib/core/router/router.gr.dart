@@ -14,7 +14,7 @@ import 'package:fakelab_records_webapp/presentation/screens/home/presentation/ho
     as _i1;
 import 'package:fakelab_records_webapp/presentation/screens/images_viewer/presentation/images_viewer_screen.dart'
     as _i2;
-import 'package:fakelab_records_webapp/presentation/screens/unknown_source/unknown_source_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/unsupported/unsupported_screen.dart'
     as _i3;
 import 'package:flutter/material.dart' as _i5;
 
@@ -93,17 +93,17 @@ class ImagesViewerRouteArgs {
 }
 
 /// generated route for
-/// [_i3.UnknownSourceScreen]
-class UnknownSourceRoute extends _i4.PageRouteInfo<void> {
-  const UnknownSourceRoute({List<_i4.PageRouteInfo>? children})
-    : super(UnknownSourceRoute.name, initialChildren: children);
+/// [_i3.UnsupportedScreen]
+class UnsupportedRoute extends _i4.PageRouteInfo<void> {
+  const UnsupportedRoute({List<_i4.PageRouteInfo>? children})
+    : super(UnsupportedRoute.name, initialChildren: children);
 
-  static const String name = 'UnknownSourceRoute';
+  static const String name = 'UnsupportedRoute';
 
   static _i4.PageInfo page = _i4.PageInfo(
     name,
     builder: (data) {
-      return const _i3.UnknownSourceScreen();
+      return const _i3.UnsupportedScreen();
     },
   );
 }

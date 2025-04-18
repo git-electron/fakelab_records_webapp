@@ -1,3 +1,5 @@
+import 'package:fakelab_records_webapp/core/constants/constants.dart';
+
 import '../../../../../../core/gen/assets.gen.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
 import 'package:figma_squircle/figma_squircle.dart';
@@ -25,9 +27,7 @@ class AboutMapAndFeatures extends StatelessWidget {
                 ),
               ),
             ),
-            child: const HtmlWidget('''
-<iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=64952203819" width="100%" height="180" frameborder="0"></iframe>
-'''),
+            child: const HtmlWidget(yandexMapsIFrame),
           ),
         ),
         const Gap(10),
