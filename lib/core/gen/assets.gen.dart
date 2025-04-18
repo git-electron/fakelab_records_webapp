@@ -203,29 +203,29 @@ class $AssetsImagesCoinGen {
 class $AssetsImagesEquipmentGen {
   const $AssetsImagesEquipmentGen();
 
-  /// File path: assets/images/equipment/guitar.png
+  /// File path: assets/images/equipment/guitar.webp
   AssetGenImage get guitar =>
-      const AssetGenImage('assets/images/equipment/guitar.png');
+      const AssetGenImage('assets/images/equipment/guitar.webp');
 
-  /// File path: assets/images/equipment/headphones.png
+  /// File path: assets/images/equipment/headphones.webp
   AssetGenImage get headphones =>
-      const AssetGenImage('assets/images/equipment/headphones.png');
+      const AssetGenImage('assets/images/equipment/headphones.webp');
 
-  /// File path: assets/images/equipment/interface.png
+  /// File path: assets/images/equipment/interface.webp
   AssetGenImage get interface =>
-      const AssetGenImage('assets/images/equipment/interface.png');
+      const AssetGenImage('assets/images/equipment/interface.webp');
 
-  /// File path: assets/images/equipment/mic.png
+  /// File path: assets/images/equipment/mic.webp
   AssetGenImage get mic =>
-      const AssetGenImage('assets/images/equipment/mic.png');
+      const AssetGenImage('assets/images/equipment/mic.webp');
 
-  /// File path: assets/images/equipment/midi.png
+  /// File path: assets/images/equipment/midi.webp
   AssetGenImage get midi =>
-      const AssetGenImage('assets/images/equipment/midi.png');
+      const AssetGenImage('assets/images/equipment/midi.webp');
 
-  /// File path: assets/images/equipment/monitors.png
+  /// File path: assets/images/equipment/monitors.webp
   AssetGenImage get monitors =>
-      const AssetGenImage('assets/images/equipment/monitors.png');
+      const AssetGenImage('assets/images/equipment/monitors.webp');
 
   /// List of all assets
   List<AssetGenImage> get values => [
