@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:fakelab_records_webapp/core/di/injector.dart';
-import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc.dart';
-import 'package:fakelab_records_webapp/core/router/router.dart';
-import 'package:fakelab_records_webapp/core/theme/app_theme.dart';
+import 'core/di/injector.dart';
+import 'core/domain/bloc/telegram_data_bloc.dart';
+import 'core/router/router.dart';
+import 'core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

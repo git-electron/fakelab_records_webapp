@@ -1,12 +1,12 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
-import 'package:fakelab_records_webapp/core/utils/scroll_physics/snap_bounce_scroll_physics.dart';
-import 'package:fakelab_records_webapp/features/my_orders_horizontal_scroll/widgets/order_card.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/order.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/order_type.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/service/order_service.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/service/order_service_type.dart';
+import '../../core/domain/models/user/user.dart';
+import '../../core/utils/scroll_physics/snap_bounce_scroll_physics.dart';
+import 'widgets/order_card.dart';
+import '../../presentation/screens/my_orders/domain/models/order/order.dart';
+import '../../presentation/screens/my_orders/domain/models/order/order_status.dart';
+import '../../presentation/screens/my_orders/domain/models/order/order_type.dart';
+import '../../presentation/screens/my_orders/domain/models/order/service/order_service.dart';
+import '../../presentation/screens/my_orders/domain/models/order/service/order_service_type.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

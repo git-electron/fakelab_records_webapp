@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/router/router.gr.dart';
+import 'router.gr.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton

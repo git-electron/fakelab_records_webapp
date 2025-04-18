@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import '../../../core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 enum LogoType { recordsCompact, recordsFull, fakelabCompact, fakelabFull }

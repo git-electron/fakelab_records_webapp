@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'dart:js' as js;
 
-import 'package:fakelab_records_webapp/core/constants/mock.dart';
-import 'package:fakelab_records_webapp/core/constants/types.dart';
-import 'package:fakelab_records_webapp/core/domain/models/telegram/safe_area_inset.dart';
-import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_data.dart';
-import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_meta.dart';
-import 'package:fakelab_records_webapp/core/router/router.dart';
-import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
+import '../../constants/mock.dart';
+import '../../constants/types.dart';
+import '../models/telegram/safe_area_inset.dart';
+import '../models/telegram/telegram_data.dart';
+import '../models/telegram/telegram_meta.dart';
+import '../../router/router.dart';
+import '../../utils/try_or/try_or_null.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 

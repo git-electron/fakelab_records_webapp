@@ -1,5 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import 'telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/widgets.dart';
 
 class SafeAreaWrapper extends StatelessWidget {

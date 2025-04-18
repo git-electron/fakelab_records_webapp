@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'theme_extensions.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {

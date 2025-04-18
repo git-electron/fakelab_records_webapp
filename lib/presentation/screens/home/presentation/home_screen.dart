@@ -1,16 +1,16 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/debug/home_screen_debug_info.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/about/home_screen_about.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_app_bar.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_buttons.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/equipment/home_screen_equipment.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_footer.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_promo_text.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_greetings.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_summary.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import '../../../../core/theme/theme_extensions.dart';
+import 'widgets/debug/home_screen_debug_info.dart';
+import 'widgets/about/home_screen_about.dart';
+import 'widgets/home_screen_app_bar.dart';
+import 'widgets/home_screen_buttons.dart';
+import 'widgets/equipment/home_screen_equipment.dart';
+import 'widgets/home_screen_footer.dart';
+import 'widgets/home_screen_promo_text.dart';
+import 'widgets/home_screen_greetings.dart';
+import 'widgets/home_screen_summary.dart';
+import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

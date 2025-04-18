@@ -1,10 +1,10 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/images_viewer/domain/images_viewer_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import '../../../../../core/extensions/color_extensions.dart';
+import '../../../../../core/theme/theme_extensions.dart';
+import '../../domain/images_viewer_bloc.dart';
+import '../../../../ui/wrappers/tappable.dart';
+import '../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,6 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/equipment/equipment_tile.dart';
+import '../../../../../../core/gen/assets.gen.dart';
+import 'equipment_tile.dart';
 import 'package:flutter/material.dart';
 
 class EquipmentList extends StatelessWidget {

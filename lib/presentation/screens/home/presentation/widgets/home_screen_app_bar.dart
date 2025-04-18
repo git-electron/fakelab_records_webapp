@@ -1,9 +1,9 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:blur/blur.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/logo/logo.dart';
-import 'package:fakelab_records_webapp/presentation/ui/user_avatar/user_avatar.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import '../../../../../core/theme/theme_extensions.dart';
+import '../../../../ui/logo/logo.dart';
+import '../../../../ui/user_avatar/user_avatar.dart';
+import '../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 
 const double _toolbarHeight = 90;

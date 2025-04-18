@@ -1,5 +1,5 @@
-import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import '../../../../../../core/gen/assets.gen.dart';
+import '../../../../../../core/theme/theme_extensions.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';

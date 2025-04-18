@@ -1,7 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_wrapper.dart';
+import '../../../../../../core/theme/theme_extensions.dart';
+import '../../../../../ui/wrappers/tappable.dart';
+import '../../../../../ui/wrappers/telegram/telegram_wrapper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

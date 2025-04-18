@@ -1,6 +1,6 @@
-import 'package:fakelab_records_webapp/core/domain/models/telegram/safe_area_inset.dart';
-import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_meta.dart';
-import 'package:fakelab_records_webapp/core/domain/models/telegram/telegram_user.dart';
+import '../domain/models/telegram/safe_area_inset.dart';
+import '../domain/models/telegram/telegram_meta.dart';
+import '../domain/models/telegram/telegram_user.dart';
 
 class Mock {
   static const _photoFileName = 'QzaYKj8gtRiq3RqEWaoFAjlqDoTTcLn5DvXKCosQsfE';

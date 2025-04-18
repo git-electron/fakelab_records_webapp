@@ -1,5 +1,6 @@
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../extensions/string_extensions.dart';
 
 part 'telegram_user.freezed.dart';
 part 'telegram_user.g.dart';

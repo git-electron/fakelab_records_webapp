@@ -1,8 +1,8 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/order.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
+import '../../../core/extensions/datetime_extensions.dart';
+import '../../../core/theme/theme_extensions.dart';
+import '../../../presentation/screens/my_orders/domain/models/order/order.dart';
+import '../../../presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
