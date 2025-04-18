@@ -12,12 +12,23 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $AssetsAudioGen {
+  const $AssetsAudioGen();
+
+  /// Directory path: assets/audio/examples
+  $AssetsAudioExamplesGen get examples => const $AssetsAudioExamplesGen();
+}
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   /// File path: assets/icons/arrow_right.svg
   SvgGenImage get arrowRight =>
       const SvgGenImage('assets/icons/arrow_right.svg');
+
+  /// File path: assets/icons/arrow_right_background.svg
+  SvgGenImage get arrowRightBackground =>
+      const SvgGenImage('assets/icons/arrow_right_background.svg');
 
   /// File path: assets/icons/arrow_right_gray.svg
   SvgGenImage get arrowRightGray =>
@@ -63,6 +74,7 @@ class $AssetsIconsGen {
   /// List of all assets
   List<SvgGenImage> get values => [
     arrowRight,
+    arrowRightBackground,
     arrowRightGray,
     box,
     calendar,
@@ -96,6 +108,34 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [cardBackground];
+}
+
+class $AssetsAudioExamplesGen {
+  const $AssetsAudioExamplesGen();
+
+  /// File path: assets/audio/examples/brave.mp3
+  String get brave => 'assets/audio/examples/brave.mp3';
+
+  /// File path: assets/audio/examples/cats.mp3
+  String get cats => 'assets/audio/examples/cats.mp3';
+
+  /// File path: assets/audio/examples/damn.mp3
+  String get damn => 'assets/audio/examples/damn.mp3';
+
+  /// File path: assets/audio/examples/inmyneon.mp3
+  String get inmyneon => 'assets/audio/examples/inmyneon.mp3';
+
+  /// File path: assets/audio/examples/tired.mp3
+  String get tired => 'assets/audio/examples/tired.mp3';
+
+  /// File path: assets/audio/examples/today.mp3
+  String get today => 'assets/audio/examples/today.mp3';
+
+  /// File path: assets/audio/examples/tuff.mp3
+  String get tuff => 'assets/audio/examples/tuff.mp3';
+
+  /// List of all assets
+  List<String> get values => [brave, cats, damn, inmyneon, tired, today, tuff];
 }
 
 class $AssetsIconsLogoGen {
@@ -271,6 +311,7 @@ class $AssetsIconsLogoRecordsGen {
 class Assets {
   const Assets._();
 
+  static const $AssetsAudioGen audio = $AssetsAudioGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }

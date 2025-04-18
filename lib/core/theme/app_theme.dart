@@ -26,6 +26,14 @@ class AppTheme {
         selectedItemColor: colors.onBackground,
         unselectedItemColor: colors.background,
       ),
+      sliderTheme: SliderThemeData(
+        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 0),
+        trackShape: const RoundedRectSliderTrackShape(),
+        trackHeight: 2,
+        overlayShape: const RoundSliderOverlayShape(overlayRadius: 5),
+        overlayColor: colors.primary,
+        activeTrackColor: colors.primary,
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/examples/home_screen_examples.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import 'widgets/debug/home_screen_debug_info.dart';
 import 'widgets/about/home_screen_about.dart';
@@ -61,6 +62,8 @@ class HomeScreenBody extends StatelessWidget {
           HomeScreenAbout(),
           Gap(60),
           HomeScreenEquipment(),
+          Gap(40),
+          HomeScreenExamples(),
           Gap(40),
           HomeScreenPromoText(),
           Gap(20),

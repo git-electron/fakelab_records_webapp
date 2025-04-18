@@ -35,7 +35,6 @@ class LoyaltyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tappable(
-      end: .98,
       onTap: () {},
       child: AspectRatio(
         aspectRatio: 6.5 / 4,
