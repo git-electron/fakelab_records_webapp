@@ -1,4 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/constants/mock.dart';
 import '../../../../../core/extensions/num_extensions.dart';
 import '../../../../../core/gen/assets.gen.dart';
 import '../../../../../core/theme/theme_extensions.dart';
@@ -15,10 +16,10 @@ class HomeScreenSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (mockOrders.isNotEmpty)
+        if (Mock.orders.isNotEmpty)
           Padding(
             padding: const Pad(bottom: 20),
-            child: MyOrdersHorizontalScroll(orders: mockOrders),
+            child: MyOrdersHorizontalScroll(orders: Mock.orders),
           ),
         const Padding(
           padding: Pad(horizontal: 20),
@@ -42,7 +43,7 @@ class LoyaltyCard extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           padding: const Pad(all: 10, horizontal: 5),
           decoration: ShapeDecoration(
-          color: context.colors.card,
+            color: context.colors.card,
             shape: SmoothRectangleBorder(
               borderRadius: SmoothBorderRadius(
                 cornerRadius: 20,
