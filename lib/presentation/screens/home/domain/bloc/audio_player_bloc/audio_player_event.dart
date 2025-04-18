@@ -8,7 +8,7 @@ class AudioPlayerEvent with _$AudioPlayerEvent {
 
   const factory AudioPlayerEvent.onSeekEnd(Duration to) = _OnSeekEnd;
 
-  const factory AudioPlayerEvent.playButtonPressed(String fileName) =
+  const factory AudioPlayerEvent.playButtonPressed(String filePath) =
       _PlayButtonPressed;
 
   const factory AudioPlayerEvent.isPlayingStateChanged(bool isPlaying) =

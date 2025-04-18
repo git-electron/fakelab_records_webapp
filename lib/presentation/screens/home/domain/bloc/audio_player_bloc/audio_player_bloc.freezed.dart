@@ -21,7 +21,7 @@ mixin _$AudioPlayerEvent {
     required TResult Function(double value) onSeek,
     required TResult Function() onSeekStart,
     required TResult Function(Duration to) onSeekEnd,
-    required TResult Function(String fileName) playButtonPressed,
+    required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ mixin _$AudioPlayerEvent {
     TResult? Function(double value)? onSeek,
     TResult? Function()? onSeekStart,
     TResult? Function(Duration to)? onSeekEnd,
-    TResult? Function(String fileName)? playButtonPressed,
+    TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ mixin _$AudioPlayerEvent {
     TResult Function(double value)? onSeek,
     TResult Function()? onSeekStart,
     TResult Function(Duration to)? onSeekEnd,
-    TResult Function(String fileName)? playButtonPressed,
+    TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
   }) =>
@@ -167,7 +167,7 @@ class _$OnSeekImpl implements _OnSeek {
     required TResult Function(double value) onSeek,
     required TResult Function() onSeekStart,
     required TResult Function(Duration to) onSeekEnd,
-    required TResult Function(String fileName) playButtonPressed,
+    required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
     return onSeek(value);
@@ -179,7 +179,7 @@ class _$OnSeekImpl implements _OnSeek {
     TResult? Function(double value)? onSeek,
     TResult? Function()? onSeekStart,
     TResult? Function(Duration to)? onSeekEnd,
-    TResult? Function(String fileName)? playButtonPressed,
+    TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
     return onSeek?.call(value);
@@ -191,7 +191,7 @@ class _$OnSeekImpl implements _OnSeek {
     TResult Function(double value)? onSeek,
     TResult Function()? onSeekStart,
     TResult Function(Duration to)? onSeekEnd,
-    TResult Function(String fileName)? playButtonPressed,
+    TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
@@ -299,7 +299,7 @@ class _$OnSeekStartImpl implements _OnSeekStart {
     required TResult Function(double value) onSeek,
     required TResult Function() onSeekStart,
     required TResult Function(Duration to) onSeekEnd,
-    required TResult Function(String fileName) playButtonPressed,
+    required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
     return onSeekStart();
@@ -311,7 +311,7 @@ class _$OnSeekStartImpl implements _OnSeekStart {
     TResult? Function(double value)? onSeek,
     TResult? Function()? onSeekStart,
     TResult? Function(Duration to)? onSeekEnd,
-    TResult? Function(String fileName)? playButtonPressed,
+    TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
     return onSeekStart?.call();
@@ -323,7 +323,7 @@ class _$OnSeekStartImpl implements _OnSeekStart {
     TResult Function(double value)? onSeek,
     TResult Function()? onSeekStart,
     TResult Function(Duration to)? onSeekEnd,
-    TResult Function(String fileName)? playButtonPressed,
+    TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
@@ -450,7 +450,7 @@ class _$OnSeekEndImpl implements _OnSeekEnd {
     required TResult Function(double value) onSeek,
     required TResult Function() onSeekStart,
     required TResult Function(Duration to) onSeekEnd,
-    required TResult Function(String fileName) playButtonPressed,
+    required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
     return onSeekEnd(to);
@@ -462,7 +462,7 @@ class _$OnSeekEndImpl implements _OnSeekEnd {
     TResult? Function(double value)? onSeek,
     TResult? Function()? onSeekStart,
     TResult? Function(Duration to)? onSeekEnd,
-    TResult? Function(String fileName)? playButtonPressed,
+    TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
     return onSeekEnd?.call(to);
@@ -474,7 +474,7 @@ class _$OnSeekEndImpl implements _OnSeekEnd {
     TResult Function(double value)? onSeek,
     TResult Function()? onSeekStart,
     TResult Function(Duration to)? onSeekEnd,
-    TResult Function(String fileName)? playButtonPressed,
+    TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
@@ -544,7 +544,7 @@ abstract class _$$PlayButtonPressedImplCopyWith<$Res> {
           $Res Function(_$PlayButtonPressedImpl) then) =
       __$$PlayButtonPressedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String fileName});
+  $Res call({String filePath});
 }
 
 /// @nodoc
@@ -560,12 +560,12 @@ class __$$PlayButtonPressedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fileName = null,
+    Object? filePath = null,
   }) {
     return _then(_$PlayButtonPressedImpl(
-      null == fileName
-          ? _value.fileName
-          : fileName // ignore: cast_nullable_to_non_nullable
+      null == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -574,14 +574,14 @@ class __$$PlayButtonPressedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PlayButtonPressedImpl implements _PlayButtonPressed {
-  const _$PlayButtonPressedImpl(this.fileName);
+  const _$PlayButtonPressedImpl(this.filePath);
 
   @override
-  final String fileName;
+  final String filePath;
 
   @override
   String toString() {
-    return 'AudioPlayerEvent.playButtonPressed(fileName: $fileName)';
+    return 'AudioPlayerEvent.playButtonPressed(filePath: $filePath)';
   }
 
   @override
@@ -589,12 +589,12 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlayButtonPressedImpl &&
-            (identical(other.fileName, fileName) ||
-                other.fileName == fileName));
+            (identical(other.filePath, filePath) ||
+                other.filePath == filePath));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fileName);
+  int get hashCode => Object.hash(runtimeType, filePath);
 
   /// Create a copy of AudioPlayerEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -611,10 +611,10 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
     required TResult Function(double value) onSeek,
     required TResult Function() onSeekStart,
     required TResult Function(Duration to) onSeekEnd,
-    required TResult Function(String fileName) playButtonPressed,
+    required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
-    return playButtonPressed(fileName);
+    return playButtonPressed(filePath);
   }
 
   @override
@@ -623,10 +623,10 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
     TResult? Function(double value)? onSeek,
     TResult? Function()? onSeekStart,
     TResult? Function(Duration to)? onSeekEnd,
-    TResult? Function(String fileName)? playButtonPressed,
+    TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
-    return playButtonPressed?.call(fileName);
+    return playButtonPressed?.call(filePath);
   }
 
   @override
@@ -635,12 +635,12 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
     TResult Function(double value)? onSeek,
     TResult Function()? onSeekStart,
     TResult Function(Duration to)? onSeekEnd,
-    TResult Function(String fileName)? playButtonPressed,
+    TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
     if (playButtonPressed != null) {
-      return playButtonPressed(fileName);
+      return playButtonPressed(filePath);
     }
     return orElse();
   }
@@ -688,10 +688,10 @@ class _$PlayButtonPressedImpl implements _PlayButtonPressed {
 }
 
 abstract class _PlayButtonPressed implements AudioPlayerEvent {
-  const factory _PlayButtonPressed(final String fileName) =
+  const factory _PlayButtonPressed(final String filePath) =
       _$PlayButtonPressedImpl;
 
-  String get fileName;
+  String get filePath;
 
   /// Create a copy of AudioPlayerEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -774,7 +774,7 @@ class _$IsPlayingStateChangedImpl implements _IsPlayingStateChanged {
     required TResult Function(double value) onSeek,
     required TResult Function() onSeekStart,
     required TResult Function(Duration to) onSeekEnd,
-    required TResult Function(String fileName) playButtonPressed,
+    required TResult Function(String filePath) playButtonPressed,
     required TResult Function(bool isPlaying) isPlayingStateChanged,
   }) {
     return isPlayingStateChanged(isPlaying);
@@ -786,7 +786,7 @@ class _$IsPlayingStateChangedImpl implements _IsPlayingStateChanged {
     TResult? Function(double value)? onSeek,
     TResult? Function()? onSeekStart,
     TResult? Function(Duration to)? onSeekEnd,
-    TResult? Function(String fileName)? playButtonPressed,
+    TResult? Function(String filePath)? playButtonPressed,
     TResult? Function(bool isPlaying)? isPlayingStateChanged,
   }) {
     return isPlayingStateChanged?.call(isPlaying);
@@ -798,7 +798,7 @@ class _$IsPlayingStateChangedImpl implements _IsPlayingStateChanged {
     TResult Function(double value)? onSeek,
     TResult Function()? onSeekStart,
     TResult Function(Duration to)? onSeekEnd,
-    TResult Function(String fileName)? playButtonPressed,
+    TResult Function(String filePath)? playButtonPressed,
     TResult Function(bool isPlaying)? isPlayingStateChanged,
     required TResult orElse(),
   }) {
@@ -866,7 +866,7 @@ abstract class _IsPlayingStateChanged implements AudioPlayerEvent {
 /// @nodoc
 mixin _$AudioPlayerState {
   bool get isPlaying => throw _privateConstructorUsedError;
-  String? get fileName => throw _privateConstructorUsedError;
+  String? get filePath => throw _privateConstructorUsedError;
   bool get isSeekInProgress => throw _privateConstructorUsedError;
   double get seekProgressValue => throw _privateConstructorUsedError;
 
@@ -885,7 +885,7 @@ abstract class $AudioPlayerStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isPlaying,
-      String? fileName,
+      String? filePath,
       bool isSeekInProgress,
       double seekProgressValue});
 }
@@ -906,7 +906,7 @@ class _$AudioPlayerStateCopyWithImpl<$Res, $Val extends AudioPlayerState>
   @override
   $Res call({
     Object? isPlaying = null,
-    Object? fileName = freezed,
+    Object? filePath = freezed,
     Object? isSeekInProgress = null,
     Object? seekProgressValue = null,
   }) {
@@ -915,9 +915,9 @@ class _$AudioPlayerStateCopyWithImpl<$Res, $Val extends AudioPlayerState>
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
               as bool,
-      fileName: freezed == fileName
-          ? _value.fileName
-          : fileName // ignore: cast_nullable_to_non_nullable
+      filePath: freezed == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
               as String?,
       isSeekInProgress: null == isSeekInProgress
           ? _value.isSeekInProgress
@@ -941,7 +941,7 @@ abstract class _$$AudioPlayerStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isPlaying,
-      String? fileName,
+      String? filePath,
       bool isSeekInProgress,
       double seekProgressValue});
 }
@@ -960,7 +960,7 @@ class __$$AudioPlayerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isPlaying = null,
-    Object? fileName = freezed,
+    Object? filePath = freezed,
     Object? isSeekInProgress = null,
     Object? seekProgressValue = null,
   }) {
@@ -969,9 +969,9 @@ class __$$AudioPlayerStateImplCopyWithImpl<$Res>
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
               as bool,
-      fileName: freezed == fileName
-          ? _value.fileName
-          : fileName // ignore: cast_nullable_to_non_nullable
+      filePath: freezed == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
               as String?,
       isSeekInProgress: null == isSeekInProgress
           ? _value.isSeekInProgress
@@ -990,7 +990,7 @@ class __$$AudioPlayerStateImplCopyWithImpl<$Res>
 class _$AudioPlayerStateImpl extends _AudioPlayerState {
   const _$AudioPlayerStateImpl(
       {this.isPlaying = false,
-      this.fileName = null,
+      this.filePath = null,
       this.isSeekInProgress = false,
       this.seekProgressValue = 0.0})
       : super._();
@@ -1000,7 +1000,7 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
   final bool isPlaying;
   @override
   @JsonKey()
-  final String? fileName;
+  final String? filePath;
   @override
   @JsonKey()
   final bool isSeekInProgress;
@@ -1010,7 +1010,7 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
 
   @override
   String toString() {
-    return 'AudioPlayerState(isPlaying: $isPlaying, fileName: $fileName, isSeekInProgress: $isSeekInProgress, seekProgressValue: $seekProgressValue)';
+    return 'AudioPlayerState(isPlaying: $isPlaying, filePath: $filePath, isSeekInProgress: $isSeekInProgress, seekProgressValue: $seekProgressValue)';
   }
 
   @override
@@ -1020,8 +1020,8 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
             other is _$AudioPlayerStateImpl &&
             (identical(other.isPlaying, isPlaying) ||
                 other.isPlaying == isPlaying) &&
-            (identical(other.fileName, fileName) ||
-                other.fileName == fileName) &&
+            (identical(other.filePath, filePath) ||
+                other.filePath == filePath) &&
             (identical(other.isSeekInProgress, isSeekInProgress) ||
                 other.isSeekInProgress == isSeekInProgress) &&
             (identical(other.seekProgressValue, seekProgressValue) ||
@@ -1030,7 +1030,7 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, isPlaying, fileName, isSeekInProgress, seekProgressValue);
+      runtimeType, isPlaying, filePath, isSeekInProgress, seekProgressValue);
 
   /// Create a copy of AudioPlayerState
   /// with the given fields replaced by the non-null parameter values.
@@ -1045,7 +1045,7 @@ class _$AudioPlayerStateImpl extends _AudioPlayerState {
 abstract class _AudioPlayerState extends AudioPlayerState {
   const factory _AudioPlayerState(
       {final bool isPlaying,
-      final String? fileName,
+      final String? filePath,
       final bool isSeekInProgress,
       final double seekProgressValue}) = _$AudioPlayerStateImpl;
   const _AudioPlayerState._() : super._();
@@ -1053,7 +1053,7 @@ abstract class _AudioPlayerState extends AudioPlayerState {
   @override
   bool get isPlaying;
   @override
-  String? get fileName;
+  String? get filePath;
   @override
   bool get isSeekInProgress;
   @override

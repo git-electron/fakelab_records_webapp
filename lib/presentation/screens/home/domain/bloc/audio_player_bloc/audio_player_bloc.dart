@@ -47,7 +47,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     _OnSeekEnd event,
     Emitter<AudioPlayerState> emit,
   ) async {
-    await audioPlayer.seek(event.to);
+    await audioPlayer.seek(event.to, force: true);
     await audioPlayer.play();
     await Future.delayed(kAnimationDuration);
     emit(state.copyWith(isSeekInProgress: false));
@@ -57,16 +57,16 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     _PlayButtonPressed event,
     Emitter<AudioPlayerState> emit,
   ) async {
-    if (event.fileName == state.fileName) {
+    if (event.filePath == state.filePath) {
       await audioPlayer.playOrPause();
     } else {
       await audioPlayer.stop();
       await audioPlayer.open(
-        Audio.file('assets/audio/examples/${event.fileName}.mp3'),
+        Audio.file(event.filePath),
         autoStart: false,
       );
       await audioPlayer.play();
-      emit(state.copyWith(fileName: event.fileName));
+      emit(state.copyWith(filePath: event.filePath));
     }
     emit(state.copyWith(isPlaying: audioPlayer.isPlaying.value));
   }

@@ -13,7 +13,7 @@ import 'package:gap/gap.dart';
 
 class ExampleCard extends StatelessWidget {
   const ExampleCard({
-    required this.fileName,
+    required this.filePath,
     required this.title,
     required this.artists,
     required this.services,
@@ -21,7 +21,7 @@ class ExampleCard extends StatelessWidget {
     super.key,
   });
 
-  final String fileName;
+  final String filePath;
   final String title;
   final List<String> artists;
   final List<ExampleGenre> genres;
@@ -33,7 +33,7 @@ class ExampleCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AudioPlayer(
-          fileName: fileName,
+          filePath: filePath,
           title: title,
           artists: artists,
         ),
@@ -95,13 +95,13 @@ class ExampleCard extends StatelessWidget {
 
 class AudioPlayer extends StatelessWidget {
   const AudioPlayer({
-    required this.fileName,
+    required this.filePath,
     required this.title,
     required this.artists,
     super.key,
   });
 
-  final String fileName;
+  final String filePath;
   final String title;
   final List<String> artists;
 
@@ -125,7 +125,7 @@ class AudioPlayer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Tappable(
-            onTap: () => bloc.add(AudioPlayerEvent.playButtonPressed(fileName)),
+            onTap: () => bloc.add(AudioPlayerEvent.playButtonPressed(filePath)),
             child: BlocBuilder<AudioPlayerBloc, AudioPlayerState>(
               builder: (context, state) {
                 return Container(
@@ -137,10 +137,10 @@ class AudioPlayer extends StatelessWidget {
                   ),
                   alignment: Alignment.center,
                   child: Icon(
-                    state.isFilePlaying(fileName)
+                    state.isFilePlaying(filePath)
                         ? Icons.pause_rounded
                         : Icons.play_arrow_rounded,
-                    size: state.isFilePlaying(fileName) ? 25 : 30,
+                    size: state.isFilePlaying(filePath) ? 25 : 30,
                     color: context.colors.background,
                   ),
                 );
@@ -165,7 +165,7 @@ class AudioPlayer extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   child: BlocBuilder<AudioPlayerBloc, AudioPlayerState>(
                     builder: (context, state) {
-                      if (state.isFileSelected(fileName)) {
+                      if (state.isFileSelected(filePath)) {
                         return StreamBuilder<Duration>(
                           stream: bloc.audioPlayer.currentPosition,
                           builder: (context, snapshot) {

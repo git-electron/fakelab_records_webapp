@@ -1,4 +1,5 @@
 import 'package:fakelab_records_webapp/core/di/injector.dart';
+import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/audio_player_bloc/audio_player_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/models/example_genre.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/models/example_service_type.dart';
@@ -14,83 +15,83 @@ class ExamplesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => $<AudioPlayerBloc>(),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // ExampleCard(
-          //   fileName: 'tuff',
-          //   title: 'TUFF',
-          //   artists: ['kontree', 'raimee'],
-          //   services: ExampleServiceType.values,
-          //   genres: [ExampleGenre.HIP_HOP, ExampleGenre.AMBIENT],
-          // ),
-          // Gap(20), //TODO: вставить после 25 апреля
           ExampleCard(
-            fileName: 'brave',
-            title: 'brave',
-            artists: ['raimee', 'rockstarchild', 'KXSRILLO'],
+            filePath: Assets.audio.examples.tuff,
+            title: 'TUFF',
+            artists: const ['kontree', 'raimee'],
             services: ExampleServiceType.values,
-            genres: [
+            genres: const [ExampleGenre.HIP_HOP, ExampleGenre.AMBIENT],
+          ),
+          const Gap(20), //TODO: вставить после 25 апреля
+          ExampleCard(
+            filePath: Assets.audio.examples.brave,
+            title: 'brave',
+            artists: const ['raimee', 'rockstarchild', 'KXSRILLO'],
+            services: ExampleServiceType.values,
+            genres: const [
               ExampleGenre.HIP_HOP,
               ExampleGenre.EDM,
               ExampleGenre.AMBIENT,
             ],
           ),
-          Gap(20),
+          const Gap(20),
           ExampleCard(
-            fileName: 'inmyneon',
+            filePath: Assets.audio.examples.inmyneon,
             title: 'in my neon',
-            artists: ['rockstarchild'],
+            artists: const ['rockstarchild'],
             services: ExampleServiceType.values,
-            genres: [ExampleGenre.POP, ExampleGenre.EDM],
+            genres: const [ExampleGenre.POP, ExampleGenre.EDM],
           ),
-          Gap(20),
+          const Gap(20),
           ExampleCard(
-            fileName: 'damn',
+            filePath: Assets.audio.examples.damn,
             title: 'Могу убить за своих',
-            artists: ['Horin', 'nimflore'],
-            services: [
+            artists: const ['Horin', 'nimflore'],
+            services: const [
               ExampleServiceType.RECORDING,
               ExampleServiceType.MIX,
               ExampleServiceType.MASTERING,
             ],
-            genres: [ExampleGenre.HIP_HOP],
+            genres: const [ExampleGenre.HIP_HOP],
           ),
-          Gap(20),
+          const Gap(20),
           ExampleCard(
-            fileName: 'cats',
+            filePath: Assets.audio.examples.cats,
             title: 'Молодой предприниматель',
-            artists: ['Horin'],
-            services: [
+            artists: const ['Horin'],
+            services: const [
               ExampleServiceType.RECORDING,
               ExampleServiceType.MIX,
               ExampleServiceType.MASTERING,
             ],
-            genres: [ExampleGenre.HIP_HOP],
+            genres: const [ExampleGenre.HIP_HOP],
           ),
-          Gap(20),
-          // ExampleCard(
-          //   fileName: 'today',
-          //   title: 'Здесь и сейчас',
-          //   artists: ['Четверг'],
-          //   services: [
-          //     ExampleServiceType.RECORDING,
-          //     ExampleServiceType.MIX,
-          //     ExampleServiceType.MASTERING,
-          //   ],
-          // genres: [ExampleGenre.HIP_HOP],
-          // ),
-          // Gap(20), //TODO: вставить после 9 мая
+          const Gap(20),
           ExampleCard(
-            fileName: 'tired',
-            title: 'Заебали ***',
-            artists: ['raimee'],
-            services: [
+            filePath: Assets.audio.examples.today,
+            title: 'Здесь и сейчас',
+            artists: const ['Четверг'],
+            services: const [
               ExampleServiceType.RECORDING,
               ExampleServiceType.MIX,
               ExampleServiceType.MASTERING,
             ],
-            genres: [ExampleGenre.ROCK, ExampleGenre.POP],
+            genres: const [ExampleGenre.HIP_HOP],
+          ),
+          const Gap(20), //TODO: вставить после 9 мая
+          ExampleCard(
+            filePath: Assets.audio.examples.tired,
+            title: 'Заебали ***',
+            artists: const ['raimee'],
+            services: const [
+              ExampleServiceType.RECORDING,
+              ExampleServiceType.MIX,
+              ExampleServiceType.MASTERING,
+            ],
+            genres: const [ExampleGenre.ROCK, ExampleGenre.POP],
           ),
         ],
       ),
