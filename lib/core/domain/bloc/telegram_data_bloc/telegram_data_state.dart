@@ -8,10 +8,12 @@ class TelegramDataState with _$TelegramDataState {
 
   const TelegramDataState._();
 
-  bool get isSupported => maybeWhen(
+  bool get isLoaded => maybeWhen(
         loaded: (_) => true,
         orElse: () => false,
       );
+
+  bool get isSupported => isLoaded;
 
   TelegramData? get telegramData => whenOrNull(
         loaded: (telegramData) => telegramData,

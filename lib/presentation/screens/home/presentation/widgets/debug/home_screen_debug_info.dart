@@ -1,4 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
 import '../../../../../ui/wrappers/tappable.dart';
 import '../../../../../ui/wrappers/telegram/telegram_wrapper.dart';
@@ -66,6 +68,17 @@ class _HomeScreenDebugInfoState extends State<HomeScreenDebugInfo> {
               Text('''
 - Force fullscreen: ${data.meta.isMobile}
 - Vertical swipes enabled: false'''),
+              const Gap(15),
+              const Text(
+                'User state',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const Gap(10),
+              BlocBuilder<UserBloc, UserState>(
+                builder: (context, state) {
+                  return Text(state.toString());
+                },
+              ),
             ],
           ),
         );

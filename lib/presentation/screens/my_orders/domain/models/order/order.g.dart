@@ -11,13 +11,13 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       customer: User.fromJson(json['customer'] as Map<String, dynamic>),
       type: $enumDecode(_$OrderTypeEnumMap, json['type']),
       status: $enumDecode(_$OrderStatusEnumMap, json['status']),
-      statusHistory: (json['status_history'] as List<dynamic>)
+      statusHistory: (json['statusHistory'] as List<dynamic>)
           .map(
               (e) => OrderStatusHistoryItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      dateCreated: DateTime.parse(json['date_created'] as String),
-      totalCost: (json['total_cost'] as num).toDouble(),
-      costFrom: json['cost_from'] as bool,
+      dateCreated: DateTime.parse(json['dateCreated'] as String),
+      totalCost: (json['totalCost'] as num).toDouble(),
+      costFrom: json['costFrom'] as bool,
       services: (json['services'] as List<dynamic>)
           .map((e) => OrderService.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -32,10 +32,10 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
       'customer': instance.customer.toJson(),
       'type': _$OrderTypeEnumMap[instance.type]!,
       'status': _$OrderStatusEnumMap[instance.status]!,
-      'status_history': instance.statusHistory.map((e) => e.toJson()).toList(),
-      'date_created': instance.dateCreated.toIso8601String(),
-      'total_cost': instance.totalCost,
-      'cost_from': instance.costFrom,
+      'statusHistory': instance.statusHistory.map((e) => e.toJson()).toList(),
+      'dateCreated': instance.dateCreated.toIso8601String(),
+      'totalCost': instance.totalCost,
+      'costFrom': instance.costFrom,
       'services': instance.services.map((e) => e.toJson()).toList(),
       'rating': instance.rating?.toJson(),
     };

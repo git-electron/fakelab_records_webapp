@@ -60,6 +60,7 @@ class LoyaltyCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
+                flex: 10,
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
@@ -88,6 +89,7 @@ class LoyaltyCard extends StatelessWidget {
               ),
               const Gap(15),
               Expanded(
+                flex: 9,
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: Tappable(

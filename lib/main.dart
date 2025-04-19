@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:fakelab_records_webapp/core/constants/constants.dart';
+import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
 
 import 'core/di/injector.dart';
-import 'core/domain/bloc/telegram_data_bloc.dart';
+import 'core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
 import 'core/router/router.dart';
 import 'core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (_) => $<UserBloc>()),
         BlocProvider(create: (_) => $<TelegramDataBloc>()),
       ],
       child: MaterialApp.router(

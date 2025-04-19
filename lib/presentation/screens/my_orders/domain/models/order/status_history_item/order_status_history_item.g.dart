@@ -10,14 +10,14 @@ _$OrderStatusHistoryItemImpl _$$OrderStatusHistoryItemImplFromJson(
         Map<String, dynamic> json) =>
     _$OrderStatusHistoryItemImpl(
       status: $enumDecode(_$OrderStatusEnumMap, json['status']),
-      dateChanged: DateTime.parse(json['date_changed'] as String),
+      dateChanged: DateTime.parse(json['dateChanged'] as String),
     );
 
 Map<String, dynamic> _$$OrderStatusHistoryItemImplToJson(
         _$OrderStatusHistoryItemImpl instance) =>
     <String, dynamic>{
       'status': _$OrderStatusEnumMap[instance.status]!,
-      'date_changed': instance.dateChanged.toIso8601String(),
+      'dateChanged': instance.dateChanged.toIso8601String(),
     };
 
 const _$OrderStatusEnumMap = {

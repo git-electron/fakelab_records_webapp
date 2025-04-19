@@ -10,9 +10,13 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:assets_audio_player/assets_audio_player.dart' as _i842;
+import 'package:fakelab_records_webapp/core/data/client/user_client.dart'
+    as _i415;
 import 'package:fakelab_records_webapp/core/di/locator.dart' as _i103;
-import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc.dart'
-    as _i1011;
+import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart'
+    as _i133;
+import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart'
+    as _i109;
 import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart'
     as _i435;
 import 'package:fakelab_records_webapp/core/router/router.dart' as _i352;
@@ -42,8 +46,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i345.DatabaseReference>(() => locator.ref);
     gh.factory<_i974.Logger>(() => locator.logger);
     gh.factory<_i435.TelegramService>(() => _i435.TelegramService());
-    gh.singleton<_i1011.TelegramDataBloc>(
-        () => _i1011.TelegramDataBloc(gh<_i435.TelegramService>()));
+    gh.singleton<_i133.TelegramDataBloc>(
+        () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
       images,
       initialIndex,
@@ -53,10 +57,18 @@ extension GetItInjectableX on _i174.GetIt {
           initialIndex: initialIndex,
           telegramService: gh<_i435.TelegramService>(),
         ));
+    gh.factory<_i415.UserClient>(() => _i415.UserClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.singleton<_i352.AppRouter>(
+        () => _i352.AppRouter(gh<_i133.TelegramDataBloc>()));
     gh.factory<_i29.AudioPlayerBloc>(
         () => _i29.AudioPlayerBloc(gh<_i842.AssetsAudioPlayer>()));
-    gh.singleton<_i352.AppRouter>(
-        () => _i352.AppRouter(gh<_i1011.TelegramDataBloc>()));
+    gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
+          gh<_i415.UserClient>(),
+          gh<_i133.TelegramDataBloc>(),
+        ));
     return this;
   }
 }
