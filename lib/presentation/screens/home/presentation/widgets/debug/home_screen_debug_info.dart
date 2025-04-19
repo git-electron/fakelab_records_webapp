@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
 import '../../../../../ui/wrappers/tappable.dart';
 import '../../../../../ui/wrappers/telegram/telegram_wrapper.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -20,7 +19,7 @@ class _HomeScreenDebugInfoState extends State<HomeScreenDebugInfo> {
 
   @override
   Widget build(BuildContext context) {
-    final bool shouldDisplayInfo = kDebugMode && !_isHidden;
+    final bool shouldDisplayInfo = !_isHidden; //TODO: && kDebugMode
     if (!shouldDisplayInfo) return const SizedBox();
 
     return Padding(
