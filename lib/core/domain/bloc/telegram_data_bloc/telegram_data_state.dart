@@ -15,7 +15,6 @@ class TelegramDataState with _$TelegramDataState {
 
   bool get isSupported => isLoaded;
 
-  TelegramData? get telegramData => whenOrNull(
-        loaded: (telegramData) => telegramData,
-      );
+  TelegramData? get telegramData =>
+      whenOrNull(loaded: (telegramData) => telegramData);
 }

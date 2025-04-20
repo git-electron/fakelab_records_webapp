@@ -1,5 +1,5 @@
-import '../../../../../../core/domain/models/rating/rating.dart';
-import '../../../../../../core/domain/models/user/user.dart';
+import '../../../../../core/domain/models/rating/rating.dart';
+import '../../../../../core/domain/models/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'service/order_service.dart';

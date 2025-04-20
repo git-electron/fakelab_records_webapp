@@ -22,12 +22,16 @@ import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart
 import 'package:fakelab_records_webapp/core/router/router.dart' as _i352;
 import 'package:fakelab_records_webapp/features/my_orders/data/client/orders_client.dart'
     as _i652;
-import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/orders_bloc.dart'
-    as _i652;
+import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart'
+    as _i790;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/audio_player_bloc/audio_player_bloc.dart'
     as _i29;
 import 'package:fakelab_records_webapp/presentation/screens/images_viewer/domain/images_viewer_bloc.dart'
     as _i15;
+import 'package:fakelab_records_webapp/presentation/screens/my_order/data/client/my_order_client.dart'
+    as _i129;
+import 'package:fakelab_records_webapp/presentation/screens/my_order/domain/bloc/my_order_bloc.dart'
+    as _i843;
 import 'package:firebase_database/firebase_database.dart' as _i345;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -69,15 +73,27 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
+    gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
     gh.singleton<_i352.AppRouter>(
         () => _i352.AppRouter(gh<_i133.TelegramDataBloc>()));
     gh.factory<_i29.AudioPlayerBloc>(
         () => _i29.AudioPlayerBloc(gh<_i842.AssetsAudioPlayer>()));
+    gh.factoryParam<_i843.MyOrderBloc, String, dynamic>((
+      orderId,
+      _,
+    ) =>
+        _i843.MyOrderBloc(
+          orderId,
+          gh<_i129.MyOrderClient>(),
+        ));
     gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
           gh<_i415.UserClient>(),
           gh<_i133.TelegramDataBloc>(),
         ));
-    gh.factory<_i652.OrdersBloc>(() => _i652.OrdersBloc(
+    gh.factory<_i790.MyOrdersFeatureBloc>(() => _i790.MyOrdersFeatureBloc(
           gh<_i109.UserBloc>(),
           gh<_i652.OrdersClient>(),
         ));

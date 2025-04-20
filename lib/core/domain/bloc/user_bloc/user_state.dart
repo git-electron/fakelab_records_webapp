@@ -27,11 +27,7 @@ class UserState with _$UserState {
         orElse: () => false,
       );
 
-  User? get user => whenOrNull(
-        authorized: (user) => user,
-      );
+  User? get user => whenOrNull(authorized: (user) => user);
 
-  String? get error => whenOrNull(
-        error: (error) => error,
-      );
+  String? get error => whenOrNull(error: (error) => error);
 }

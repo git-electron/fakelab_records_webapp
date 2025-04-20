@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'orders_bloc.dart';
+part of 'my_order_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,25 +15,25 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$OrdersEvent {
+mixin _$MyOrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
-    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setLoading,
-    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setLoading,
-    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
     required TResult orElse(),
   }) =>
@@ -63,23 +63,23 @@ mixin _$OrdersEvent {
 }
 
 /// @nodoc
-abstract class $OrdersEventCopyWith<$Res> {
-  factory $OrdersEventCopyWith(
-          OrdersEvent value, $Res Function(OrdersEvent) then) =
-      _$OrdersEventCopyWithImpl<$Res, OrdersEvent>;
+abstract class $MyOrderEventCopyWith<$Res> {
+  factory $MyOrderEventCopyWith(
+          MyOrderEvent value, $Res Function(MyOrderEvent) then) =
+      _$MyOrderEventCopyWithImpl<$Res, MyOrderEvent>;
 }
 
 /// @nodoc
-class _$OrdersEventCopyWithImpl<$Res, $Val extends OrdersEvent>
-    implements $OrdersEventCopyWith<$Res> {
-  _$OrdersEventCopyWithImpl(this._value, this._then);
+class _$MyOrderEventCopyWithImpl<$Res, $Val extends MyOrderEvent>
+    implements $MyOrderEventCopyWith<$Res> {
+  _$MyOrderEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrdersEvent
+  /// Create a copy of MyOrderEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -92,13 +92,13 @@ abstract class _$$SetLoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SetLoadingImplCopyWithImpl<$Res>
-    extends _$OrdersEventCopyWithImpl<$Res, _$SetLoadingImpl>
+    extends _$MyOrderEventCopyWithImpl<$Res, _$SetLoadingImpl>
     implements _$$SetLoadingImplCopyWith<$Res> {
   __$$SetLoadingImplCopyWithImpl(
       _$SetLoadingImpl _value, $Res Function(_$SetLoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrdersEvent
+  /// Create a copy of MyOrderEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -109,7 +109,7 @@ class _$SetLoadingImpl implements _SetLoading {
 
   @override
   String toString() {
-    return 'OrdersEvent.setLoading()';
+    return 'MyOrderEvent.setLoading()';
   }
 
   @override
@@ -125,7 +125,7 @@ class _$SetLoadingImpl implements _SetLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
-    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
   }) {
     return setLoading();
@@ -135,7 +135,7 @@ class _$SetLoadingImpl implements _SetLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setLoading,
-    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
   }) {
     return setLoading?.call();
@@ -145,7 +145,7 @@ class _$SetLoadingImpl implements _SetLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setLoading,
-    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
     required TResult orElse(),
   }) {
@@ -190,7 +190,7 @@ class _$SetLoadingImpl implements _SetLoading {
   }
 }
 
-abstract class _SetLoading implements OrdersEvent {
+abstract class _SetLoading implements MyOrderEvent {
   const factory _SetLoading() = _$SetLoadingImpl;
 }
 
@@ -200,49 +200,56 @@ abstract class _$$SetLoadedImplCopyWith<$Res> {
           _$SetLoadedImpl value, $Res Function(_$SetLoadedImpl) then) =
       __$$SetLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Order> orders});
+  $Res call({Order order});
+
+  $OrderCopyWith<$Res> get order;
 }
 
 /// @nodoc
 class __$$SetLoadedImplCopyWithImpl<$Res>
-    extends _$OrdersEventCopyWithImpl<$Res, _$SetLoadedImpl>
+    extends _$MyOrderEventCopyWithImpl<$Res, _$SetLoadedImpl>
     implements _$$SetLoadedImplCopyWith<$Res> {
   __$$SetLoadedImplCopyWithImpl(
       _$SetLoadedImpl _value, $Res Function(_$SetLoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrdersEvent
+  /// Create a copy of MyOrderEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orders = null,
+    Object? order = null,
   }) {
     return _then(_$SetLoadedImpl(
-      null == orders
-          ? _value._orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<Order>,
+      null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as Order,
     ));
+  }
+
+  /// Create a copy of MyOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OrderCopyWith<$Res> get order {
+    return $OrderCopyWith<$Res>(_value.order, (value) {
+      return _then(_value.copyWith(order: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$SetLoadedImpl implements _SetLoaded {
-  const _$SetLoadedImpl(final List<Order> orders) : _orders = orders;
+  const _$SetLoadedImpl(this.order);
 
-  final List<Order> _orders;
   @override
-  List<Order> get orders {
-    if (_orders is EqualUnmodifiableListView) return _orders;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_orders);
-  }
+  final Order order;
 
   @override
   String toString() {
-    return 'OrdersEvent.setLoaded(orders: $orders)';
+    return 'MyOrderEvent.setLoaded(order: $order)';
   }
 
   @override
@@ -250,14 +257,13 @@ class _$SetLoadedImpl implements _SetLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetLoadedImpl &&
-            const DeepCollectionEquality().equals(other._orders, _orders));
+            (identical(other.order, order) || other.order == order));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
+  int get hashCode => Object.hash(runtimeType, order);
 
-  /// Create a copy of OrdersEvent
+  /// Create a copy of MyOrderEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -269,32 +275,32 @@ class _$SetLoadedImpl implements _SetLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
-    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
   }) {
-    return setLoaded(orders);
+    return setLoaded(order);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setLoading,
-    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
   }) {
-    return setLoaded?.call(orders);
+    return setLoaded?.call(order);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setLoading,
-    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
     required TResult orElse(),
   }) {
     if (setLoaded != null) {
-      return setLoaded(orders);
+      return setLoaded(order);
     }
     return orElse();
   }
@@ -334,12 +340,12 @@ class _$SetLoadedImpl implements _SetLoaded {
   }
 }
 
-abstract class _SetLoaded implements OrdersEvent {
-  const factory _SetLoaded(final List<Order> orders) = _$SetLoadedImpl;
+abstract class _SetLoaded implements MyOrderEvent {
+  const factory _SetLoaded(final Order order) = _$SetLoadedImpl;
 
-  List<Order> get orders;
+  Order get order;
 
-  /// Create a copy of OrdersEvent
+  /// Create a copy of MyOrderEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetLoadedImplCopyWith<_$SetLoadedImpl> get copyWith =>
@@ -357,13 +363,13 @@ abstract class _$$SetErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SetErrorImplCopyWithImpl<$Res>
-    extends _$OrdersEventCopyWithImpl<$Res, _$SetErrorImpl>
+    extends _$MyOrderEventCopyWithImpl<$Res, _$SetErrorImpl>
     implements _$$SetErrorImplCopyWith<$Res> {
   __$$SetErrorImplCopyWithImpl(
       _$SetErrorImpl _value, $Res Function(_$SetErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrdersEvent
+  /// Create a copy of MyOrderEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -389,7 +395,7 @@ class _$SetErrorImpl implements _SetError {
 
   @override
   String toString() {
-    return 'OrdersEvent.setError(message: $message)';
+    return 'MyOrderEvent.setError(message: $message)';
   }
 
   @override
@@ -403,7 +409,7 @@ class _$SetErrorImpl implements _SetError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of OrdersEvent
+  /// Create a copy of MyOrderEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -415,7 +421,7 @@ class _$SetErrorImpl implements _SetError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
-    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
   }) {
     return setError(message);
@@ -425,7 +431,7 @@ class _$SetErrorImpl implements _SetError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setLoading,
-    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
   }) {
     return setError?.call(message);
@@ -435,7 +441,7 @@ class _$SetErrorImpl implements _SetError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setLoading,
-    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
     required TResult orElse(),
   }) {
@@ -480,12 +486,12 @@ class _$SetErrorImpl implements _SetError {
   }
 }
 
-abstract class _SetError implements OrdersEvent {
+abstract class _SetError implements MyOrderEvent {
   const factory _SetError(final String? message) = _$SetErrorImpl;
 
   String? get message;
 
-  /// Create a copy of OrdersEvent
+  /// Create a copy of MyOrderEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetErrorImplCopyWith<_$SetErrorImpl> get copyWith =>
@@ -493,25 +499,25 @@ abstract class _SetError implements OrdersEvent {
 }
 
 /// @nodoc
-mixin _$OrdersState {
+mixin _$MyOrderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(Order order) loaded,
     required TResult Function(String? message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(Order order)? loaded,
     TResult? Function(String? message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(Order order)? loaded,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) =>
@@ -541,23 +547,23 @@ mixin _$OrdersState {
 }
 
 /// @nodoc
-abstract class $OrdersStateCopyWith<$Res> {
-  factory $OrdersStateCopyWith(
-          OrdersState value, $Res Function(OrdersState) then) =
-      _$OrdersStateCopyWithImpl<$Res, OrdersState>;
+abstract class $MyOrderStateCopyWith<$Res> {
+  factory $MyOrderStateCopyWith(
+          MyOrderState value, $Res Function(MyOrderState) then) =
+      _$MyOrderStateCopyWithImpl<$Res, MyOrderState>;
 }
 
 /// @nodoc
-class _$OrdersStateCopyWithImpl<$Res, $Val extends OrdersState>
-    implements $OrdersStateCopyWith<$Res> {
-  _$OrdersStateCopyWithImpl(this._value, this._then);
+class _$MyOrderStateCopyWithImpl<$Res, $Val extends MyOrderState>
+    implements $MyOrderStateCopyWith<$Res> {
+  _$MyOrderStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of OrdersState
+  /// Create a copy of MyOrderState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -570,13 +576,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$OrdersStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$MyOrderStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrdersState
+  /// Create a copy of MyOrderState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -587,7 +593,7 @@ class _$LoadingImpl extends _Loading {
 
   @override
   String toString() {
-    return 'OrdersState.loading()';
+    return 'MyOrderState.loading()';
   }
 
   @override
@@ -603,7 +609,7 @@ class _$LoadingImpl extends _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(Order order) loaded,
     required TResult Function(String? message) error,
   }) {
     return loading();
@@ -613,7 +619,7 @@ class _$LoadingImpl extends _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(Order order)? loaded,
     TResult? Function(String? message)? error,
   }) {
     return loading?.call();
@@ -623,7 +629,7 @@ class _$LoadingImpl extends _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(Order order)? loaded,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
@@ -668,7 +674,7 @@ class _$LoadingImpl extends _Loading {
   }
 }
 
-abstract class _Loading extends OrdersState {
+abstract class _Loading extends MyOrderState {
   const factory _Loading() = _$LoadingImpl;
   const _Loading._() : super._();
 }
@@ -679,51 +685,56 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Order> orders});
+  $Res call({Order order});
+
+  $OrderCopyWith<$Res> get order;
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$OrdersStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$MyOrderStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrdersState
+  /// Create a copy of MyOrderState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orders = null,
+    Object? order = null,
   }) {
     return _then(_$LoadedImpl(
-      null == orders
-          ? _value._orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<Order>,
+      null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as Order,
     ));
+  }
+
+  /// Create a copy of MyOrderState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OrderCopyWith<$Res> get order {
+    return $OrderCopyWith<$Res>(_value.order, (value) {
+      return _then(_value.copyWith(order: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$LoadedImpl extends _Loaded {
-  const _$LoadedImpl(final List<Order> orders)
-      : _orders = orders,
-        super._();
+  const _$LoadedImpl(this.order) : super._();
 
-  final List<Order> _orders;
   @override
-  List<Order> get orders {
-    if (_orders is EqualUnmodifiableListView) return _orders;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_orders);
-  }
+  final Order order;
 
   @override
   String toString() {
-    return 'OrdersState.loaded(orders: $orders)';
+    return 'MyOrderState.loaded(order: $order)';
   }
 
   @override
@@ -731,14 +742,13 @@ class _$LoadedImpl extends _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._orders, _orders));
+            (identical(other.order, order) || other.order == order));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
+  int get hashCode => Object.hash(runtimeType, order);
 
-  /// Create a copy of OrdersState
+  /// Create a copy of MyOrderState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -750,32 +760,32 @@ class _$LoadedImpl extends _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(Order order) loaded,
     required TResult Function(String? message) error,
   }) {
-    return loaded(orders);
+    return loaded(order);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(Order order)? loaded,
     TResult? Function(String? message)? error,
   }) {
-    return loaded?.call(orders);
+    return loaded?.call(order);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(Order order)? loaded,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(orders);
+      return loaded(order);
     }
     return orElse();
   }
@@ -815,13 +825,13 @@ class _$LoadedImpl extends _Loaded {
   }
 }
 
-abstract class _Loaded extends OrdersState {
-  const factory _Loaded(final List<Order> orders) = _$LoadedImpl;
+abstract class _Loaded extends MyOrderState {
+  const factory _Loaded(final Order order) = _$LoadedImpl;
   const _Loaded._() : super._();
 
-  List<Order> get orders;
+  Order get order;
 
-  /// Create a copy of OrdersState
+  /// Create a copy of MyOrderState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -839,13 +849,13 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$OrdersStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$MyOrderStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of OrdersState
+  /// Create a copy of MyOrderState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -871,7 +881,7 @@ class _$ErrorImpl extends _Error {
 
   @override
   String toString() {
-    return 'OrdersState.error(message: $message)';
+    return 'MyOrderState.error(message: $message)';
   }
 
   @override
@@ -885,7 +895,7 @@ class _$ErrorImpl extends _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of OrdersState
+  /// Create a copy of MyOrderState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -897,7 +907,7 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(Order order) loaded,
     required TResult Function(String? message) error,
   }) {
     return error(message);
@@ -907,7 +917,7 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(Order order)? loaded,
     TResult? Function(String? message)? error,
   }) {
     return error?.call(message);
@@ -917,7 +927,7 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(Order order)? loaded,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
@@ -962,13 +972,13 @@ class _$ErrorImpl extends _Error {
   }
 }
 
-abstract class _Error extends OrdersState {
+abstract class _Error extends MyOrderState {
   const factory _Error(final String? message) = _$ErrorImpl;
   const _Error._() : super._();
 
   String? get message;
 
-  /// Create a copy of OrdersState
+  /// Create a copy of MyOrderState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>

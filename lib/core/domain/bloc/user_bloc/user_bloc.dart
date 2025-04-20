@@ -2,6 +2,7 @@ import 'package:fakelab_records_webapp/core/data/client/user_client.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
 import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
 import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
+import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -19,11 +20,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<_SetAuthorized>(_onSetAuthorized);
     on<_SetUnauthorized>(_onSetUnauthorized);
 
-    telegramDataBloc.stream.listen((telegramDataState) {
-      if (telegramDataState.isLoaded) {
-        _getUser(telegramDataState.telegramData!.user.id);
-      }
-    });
+    tryOrNullAsync(_getUser);
+    telegramDataBloc.stream.listen(_onTelegramDataStateEvent);
   }
 
   final UserClient userClient;
@@ -57,7 +55,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     emit(const UserState.unauthorized());
   }
 
-  Future<void> _getUser(int userId) async {
+  void _onTelegramDataStateEvent(TelegramDataState telegramDataState) {
+    if (telegramDataState.isLoaded) _getUser();
+  }
+
+  Future<void> _getUser() async {
+    final int userId = telegramDataBloc.state.telegramData!.user.id;
     add(const UserEvent.setLoading());
     final Result<User> result = await userClient.getUser(userId);
     result.when(

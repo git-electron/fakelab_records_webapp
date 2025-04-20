@@ -9,23 +9,28 @@ import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
 
 @injectable
-class OrdersClient {
-  OrdersClient(this.ref, this.logger);
+class MyOrderClient {
+  MyOrderClient(this.ref, this.logger);
 
   final Logger logger;
   final DatabaseReference ref;
 
-  Future<Result<List<Order>>> getOrders(int userId) async {
-    if (kDebugMode) return Result.success(Mock.orders);
+  Future<Result<Order>> getOrder(String orderId) async {
+    if (kDebugMode) {
+      final Order? mockOrder = Mock.getOrder(orderId);
+      if (mockOrder != null) {
+        return Result.success(mockOrder);
+      } else {
+        return Result.error('Заказ не найден');
+      }
+    }
 
     try {
-      const String path = 'orders';
-      final DataSnapshot snapshot = await ref
-          .child(path)
-          .orderByChild('customer/id')
-          .equalTo(userId)
-          .limitToFirst(8)
-          .get();
+      final String path = 'orders/$orderId';
+      final DataSnapshot snapshot = await ref.child(path).get();
+      final bool isExists = snapshot.exists;
+
+      if (!isExists) return Result.error('Заказ не найден');
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
@@ -33,13 +38,12 @@ class OrdersClient {
 Path: $path
 Data: $json''');
 
-      if (json == null) return Result.success([]);
+      if (json == null) return Result.error('Заказ не найден');
 
-      final List<Order> orders =
-          json.values.map((order) => Order.fromJson(order)).toList();
-      return Result.success(orders);
+      final Order order = Order.fromJson(json);
+      return Result.success(order);
     } catch (error) {
-      logger.e('Failed to get orders', error: error);
+      logger.e('Failed to get orer', error: error);
       return Result.error(error.toString());
     }
   }

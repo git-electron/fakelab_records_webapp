@@ -3,7 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import '../../../core/extensions/datetime_extensions.dart';
 import '../../../core/theme/theme_extensions.dart';
-import '../../../presentation/screens/my_orders/domain/models/order/order.dart';
+import '../domain/models/order/order.dart';
 import '../../../presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';

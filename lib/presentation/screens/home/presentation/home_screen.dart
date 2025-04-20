@@ -1,7 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
-import 'package:fakelab_records_webapp/features/my_orders/my_orders.dart';
+import 'package:fakelab_records_webapp/features/my_orders/my_orders_feature.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/examples/home_screen_examples.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_loyalty.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,7 +60,7 @@ class HomeScreenBody extends StatelessWidget {
           HomeScreenDebugInfo(),
           HomeScreenGreetings(),
           Gap(20),
-          MyOrders.horizontal(),
+          MyOrdersFeature.horizontal(),
           HomeScreenLoyalty(),
           Gap(40),
           HomeScreenButtons(),

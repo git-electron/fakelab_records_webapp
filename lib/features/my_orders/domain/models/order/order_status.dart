@@ -1,4 +1,4 @@
-import '../../../../../../core/gen/colors.gen.dart';
+import '../../../../../core/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
 
 enum OrderStatus {

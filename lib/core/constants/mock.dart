@@ -1,11 +1,12 @@
 import 'package:fakelab_records_webapp/core/domain/models/rating/rating.dart';
 import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/order.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/order_type.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/service/order_service.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/service/order_service_type.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
+import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/service/order_service.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/service/order_service_type.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
 
 import '../domain/models/telegram/safe_area_inset.dart';
 import '../domain/models/telegram/telegram_meta.dart';
@@ -142,7 +143,7 @@ class Mock {
       ],
     ),
     Order(
-      id: '5528550578537165',
+      id: '5528550578549815',
       customer: user,
       type: OrderType.BEAT,
       status: OrderStatus.COMPLETED,
@@ -218,4 +219,7 @@ class Mock {
       ],
     ),
   ];
+
+  static Order? getOrder(String orderId) =>
+      tryOrNull(() => orders.firstWhere((order) => order.id == orderId));
 }
