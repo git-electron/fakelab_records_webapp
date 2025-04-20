@@ -1,4 +1,5 @@
 import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
+import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/presentation/screens/my_order/data/client/my_order_client.dart';
@@ -15,16 +16,26 @@ class MyOrderBloc extends Bloc<MyOrderEvent, MyOrderState> {
   MyOrderBloc(
     @factoryParam this.orderId,
     this.myOrderClient,
+    this.telegramService,
   ) : super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);
 
     tryOrNullAsync(_getOrder);
+
+    telegramService.showBackButton();
+  }
+
+  @override
+  Future<void> close() {
+    telegramService.hideBackButton();
+    return super.close();
   }
 
   final String orderId;
   final MyOrderClient myOrderClient;
+  final TelegramService telegramService;
 
   Future<void> _onSetLoading(
     _SetLoading event,

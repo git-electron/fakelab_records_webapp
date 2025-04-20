@@ -1,10 +1,8 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
-import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
 import 'package:fakelab_records_webapp/features/my_orders/my_orders_feature.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/examples/home_screen_examples.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_loyalty.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import 'widgets/debug/home_screen_debug_info.dart';
 import 'widgets/about/home_screen_about.dart';
@@ -34,10 +32,8 @@ class HomeScreen extends StatelessWidget {
             if (meta.isMobile) return const HomeScreenAppBarMobile();
             return const HomeScreenAppBar();
           }),
-          SliverToBoxAdapter(
-            child: BlocBuilder<UserBloc, UserState>(
-              builder: (context, state) => const HomeScreenBody(),
-            ),
+          const SliverToBoxAdapter(
+            child: HomeScreenContent(),
           ),
         ],
       ),
@@ -45,8 +41,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class HomeScreenBody extends StatelessWidget {
-  const HomeScreenBody({super.key});
+class HomeScreenContent extends StatelessWidget {
+  const HomeScreenContent({super.key});
 
   @override
   Widget build(BuildContext context) {

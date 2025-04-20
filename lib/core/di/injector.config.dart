@@ -88,6 +88,7 @@ extension GetItInjectableX on _i174.GetIt {
         _i843.MyOrderBloc(
           orderId,
           gh<_i129.MyOrderClient>(),
+          gh<_i435.TelegramService>(),
         ));
     gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
           gh<_i415.UserClient>(),
