@@ -21,12 +21,13 @@ TelegramUser _$TelegramUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TelegramUser {
   int get id => throw _privateConstructorUsedError;
-  String? get photoUrl => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
   String? get surname => throw _privateConstructorUsedError;
+  @JsonKey(name: 'photo_url')
+  String? get photoUrl => throw _privateConstructorUsedError;
 
   /// Serializes this TelegramUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,10 +47,10 @@ abstract class $TelegramUserCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String? photoUrl,
       String? username,
       @JsonKey(name: 'first_name') String? name,
-      @JsonKey(name: 'last_name') String? surname});
+      @JsonKey(name: 'last_name') String? surname,
+      @JsonKey(name: 'photo_url') String? photoUrl});
 }
 
 /// @nodoc
@@ -68,20 +69,16 @@ class _$TelegramUserCopyWithImpl<$Res, $Val extends TelegramUser>
   @override
   $Res call({
     Object? id = null,
-    Object? photoUrl = freezed,
     Object? username = freezed,
     Object? name = freezed,
     Object? surname = freezed,
+    Object? photoUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      photoUrl: freezed == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -93,6 +90,10 @@ class _$TelegramUserCopyWithImpl<$Res, $Val extends TelegramUser>
       surname: freezed == surname
           ? _value.surname
           : surname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      photoUrl: freezed == photoUrl
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -108,10 +109,10 @@ abstract class _$$TelegramUserImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String? photoUrl,
       String? username,
       @JsonKey(name: 'first_name') String? name,
-      @JsonKey(name: 'last_name') String? surname});
+      @JsonKey(name: 'last_name') String? surname,
+      @JsonKey(name: 'photo_url') String? photoUrl});
 }
 
 /// @nodoc
@@ -128,20 +129,16 @@ class __$$TelegramUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? photoUrl = freezed,
     Object? username = freezed,
     Object? name = freezed,
     Object? surname = freezed,
+    Object? photoUrl = freezed,
   }) {
     return _then(_$TelegramUserImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      photoUrl: freezed == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
       username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -154,6 +151,10 @@ class __$$TelegramUserImplCopyWithImpl<$Res>
           ? _value.surname
           : surname // ignore: cast_nullable_to_non_nullable
               as String?,
+      photoUrl: freezed == photoUrl
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -163,10 +164,10 @@ class __$$TelegramUserImplCopyWithImpl<$Res>
 class _$TelegramUserImpl extends _TelegramUser {
   _$TelegramUserImpl(
       {required this.id,
-      this.photoUrl,
       this.username,
       @JsonKey(name: 'first_name') this.name,
-      @JsonKey(name: 'last_name') this.surname})
+      @JsonKey(name: 'last_name') this.surname,
+      @JsonKey(name: 'photo_url') this.photoUrl})
       : super._();
 
   factory _$TelegramUserImpl.fromJson(Map<String, dynamic> json) =>
@@ -175,8 +176,6 @@ class _$TelegramUserImpl extends _TelegramUser {
   @override
   final int id;
   @override
-  final String? photoUrl;
-  @override
   final String? username;
   @override
   @JsonKey(name: 'first_name')
@@ -184,10 +183,13 @@ class _$TelegramUserImpl extends _TelegramUser {
   @override
   @JsonKey(name: 'last_name')
   final String? surname;
+  @override
+  @JsonKey(name: 'photo_url')
+  final String? photoUrl;
 
   @override
   String toString() {
-    return 'TelegramUser(id: $id, photoUrl: $photoUrl, username: $username, name: $name, surname: $surname)';
+    return 'TelegramUser(id: $id, username: $username, name: $name, surname: $surname, photoUrl: $photoUrl)';
   }
 
   @override
@@ -196,18 +198,18 @@ class _$TelegramUserImpl extends _TelegramUser {
         (other.runtimeType == runtimeType &&
             other is _$TelegramUserImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.photoUrl, photoUrl) ||
-                other.photoUrl == photoUrl) &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.surname, surname) || other.surname == surname));
+            (identical(other.surname, surname) || other.surname == surname) &&
+            (identical(other.photoUrl, photoUrl) ||
+                other.photoUrl == photoUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, photoUrl, username, name, surname);
+      Object.hash(runtimeType, id, username, name, surname, photoUrl);
 
   /// Create a copy of TelegramUser
   /// with the given fields replaced by the non-null parameter values.
@@ -228,10 +230,10 @@ class _$TelegramUserImpl extends _TelegramUser {
 abstract class _TelegramUser extends TelegramUser {
   factory _TelegramUser(
       {required final int id,
-      final String? photoUrl,
       final String? username,
       @JsonKey(name: 'first_name') final String? name,
-      @JsonKey(name: 'last_name') final String? surname}) = _$TelegramUserImpl;
+      @JsonKey(name: 'last_name') final String? surname,
+      @JsonKey(name: 'photo_url') final String? photoUrl}) = _$TelegramUserImpl;
   _TelegramUser._() : super._();
 
   factory _TelegramUser.fromJson(Map<String, dynamic> json) =
@@ -240,8 +242,6 @@ abstract class _TelegramUser extends TelegramUser {
   @override
   int get id;
   @override
-  String? get photoUrl;
-  @override
   String? get username;
   @override
   @JsonKey(name: 'first_name')
@@ -249,6 +249,9 @@ abstract class _TelegramUser extends TelegramUser {
   @override
   @JsonKey(name: 'last_name')
   String? get surname;
+  @override
+  @JsonKey(name: 'photo_url')
+  String? get photoUrl;
 
   /// Create a copy of TelegramUser
   /// with the given fields replaced by the non-null parameter values.

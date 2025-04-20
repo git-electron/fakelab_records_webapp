@@ -9,10 +9,10 @@ part 'telegram_user.g.dart';
 class TelegramUser with _$TelegramUser {
   factory TelegramUser({
     required int id,
-    String? photoUrl,
     String? username,
     @JsonKey(name: 'first_name') String? name,
     @JsonKey(name: 'last_name') String? surname,
+    @JsonKey(name: 'photo_url') String? photoUrl,
   }) = _TelegramUser;
 
   factory TelegramUser.fromJson(Map<String, dynamic> json) =>
