@@ -1,4 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import '../../../core/extensions/datetime_extensions.dart';
 import '../../../core/theme/theme_extensions.dart';
 import '../../../presentation/screens/my_orders/domain/models/order/order.dart';
@@ -15,7 +17,7 @@ class OrderCardSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tappable(
-      onTap: () {},
+      onTap: () => context.pushRoute(MyOrderRoute(orderId: order.id)),
       child: Container(
         width: 200,
         height: 120,

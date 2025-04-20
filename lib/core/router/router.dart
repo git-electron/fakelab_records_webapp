@@ -39,7 +39,9 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page, path: '/', initial: true),
-        AutoRoute(page: ImagesViewerRoute.page),
+        AutoRoute(page: MyOrdersRoute.page, path: '/orders'),
+        AutoRoute(page: MyOrderRoute.page, path: '/orders/:id'),
+        AutoRoute(page: ImagesViewerRoute.page, path: '/images'),
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
         ...redirections,
         ...customRoutes,
