@@ -20,6 +20,10 @@ import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart
 import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart'
     as _i435;
 import 'package:fakelab_records_webapp/core/router/router.dart' as _i352;
+import 'package:fakelab_records_webapp/features/my_orders/data/client/orders_client.dart'
+    as _i652;
+import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/orders_bloc.dart'
+    as _i652;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/audio_player_bloc/audio_player_bloc.dart'
     as _i29;
 import 'package:fakelab_records_webapp/presentation/screens/images_viewer/domain/images_viewer_bloc.dart'
@@ -61,6 +65,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
+    gh.factory<_i652.OrdersClient>(() => _i652.OrdersClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
     gh.singleton<_i352.AppRouter>(
         () => _i352.AppRouter(gh<_i133.TelegramDataBloc>()));
     gh.factory<_i29.AudioPlayerBloc>(
@@ -68,6 +76,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
           gh<_i415.UserClient>(),
           gh<_i133.TelegramDataBloc>(),
+        ));
+    gh.factory<_i652.OrdersBloc>(() => _i652.OrdersBloc(
+          gh<_i109.UserBloc>(),
+          gh<_i652.OrdersClient>(),
         ));
     return this;
   }

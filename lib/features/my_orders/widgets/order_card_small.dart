@@ -7,8 +7,8 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class OrderCard extends StatelessWidget {
-  const OrderCard(this.order, {super.key});
+class OrderCardSmall extends StatelessWidget {
+  const OrderCardSmall(this.order, {super.key});
 
   final Order order;
 

@@ -60,9 +60,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Future<void> _getUser(int userId) async {
     add(const UserEvent.setLoading());
     final Result<User> result = await userClient.getUser(userId);
-    result.map(
-      success: (success) => add(UserEvent.setAuthorized(success.data)),
-      error: (error) => add(UserEvent.setError(error.message)),
+    result.when(
+      success: (user) => add(UserEvent.setAuthorized(user)),
+      error: (message) => add(UserEvent.setError(message)),
     );
   }
 }

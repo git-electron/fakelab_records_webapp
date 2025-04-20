@@ -17,6 +17,8 @@ abstract class Locator {
         level: Level.all,
         output: ConsoleOutput(),
         printer: PrettyPrinter(
+          methodCount: 0,
+          errorMethodCount: 4,
           dateTimeFormat: DateTimeFormat.dateAndTime,
         ),
       );

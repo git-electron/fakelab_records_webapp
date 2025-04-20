@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
+import 'package:fakelab_records_webapp/features/my_orders/my_orders.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/examples/home_screen_examples.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_loyalty.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,6 @@ import 'widgets/home_screen_app_bar.dart';
 import 'widgets/home_screen_buttons.dart';
 import 'widgets/equipment/home_screen_equipment.dart';
 import 'widgets/home_screen_footer.dart';
-import 'widgets/home_screen_orders.dart';
 import 'widgets/home_screen_promo_text.dart';
 import 'widgets/home_screen_greetings.dart';
 import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
@@ -60,7 +60,7 @@ class HomeScreenBody extends StatelessWidget {
           HomeScreenDebugInfo(),
           HomeScreenGreetings(),
           Gap(20),
-          HomeScreenOrders(),
+          MyOrders.horizontal(),
           HomeScreenLoyalty(),
           Gap(40),
           HomeScreenButtons(),
