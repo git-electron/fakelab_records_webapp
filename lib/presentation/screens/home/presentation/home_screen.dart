@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/examples/home_screen_examples.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_loyalty.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import 'widgets/debug/home_screen_debug_info.dart';
@@ -10,9 +11,9 @@ import 'widgets/home_screen_app_bar.dart';
 import 'widgets/home_screen_buttons.dart';
 import 'widgets/equipment/home_screen_equipment.dart';
 import 'widgets/home_screen_footer.dart';
+import 'widgets/home_screen_orders.dart';
 import 'widgets/home_screen_promo_text.dart';
 import 'widgets/home_screen_greetings.dart';
-import 'widgets/home_screen_summary.dart';
 import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -35,10 +36,7 @@ class HomeScreen extends StatelessWidget {
           }),
           SliverToBoxAdapter(
             child: BlocBuilder<UserBloc, UserState>(
-              builder: (context, state) {
-                print(state);
-                return const HomeScreenBody();
-              },
+              builder: (context, state) => const HomeScreenBody(),
             ),
           ),
         ],
@@ -62,7 +60,8 @@ class HomeScreenBody extends StatelessWidget {
           HomeScreenDebugInfo(),
           HomeScreenGreetings(),
           Gap(20),
-          HomeScreenSummary(),
+          HomeScreenOrders(),
+          HomeScreenLoyalty(),
           Gap(40),
           HomeScreenButtons(),
           Gap(60),

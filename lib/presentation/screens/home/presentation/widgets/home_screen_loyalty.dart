@@ -1,31 +1,20 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/constants/mock.dart';
-import '../../../../../core/extensions/num_extensions.dart';
-import '../../../../../core/gen/assets.gen.dart';
-import '../../../../../core/theme/theme_extensions.dart';
-import '../../../../../features/my_orders_horizontal_scroll/my_orders_horizontal_scroll.dart';
-import '../../../../ui/wrappers/tappable.dart';
+import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
+import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class HomeScreenSummary extends StatelessWidget {
-  const HomeScreenSummary({super.key});
+class HomeScreenLoyalty extends StatelessWidget {
+  const HomeScreenLoyalty({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        if (Mock.orders.isNotEmpty)
-          Padding(
-            padding: const Pad(bottom: 20),
-            child: MyOrdersHorizontalScroll(orders: Mock.orders),
-          ),
-        const Padding(
-          padding: Pad(horizontal: 20),
-          child: LoyaltyCard(),
-        ),
-      ],
+    return const Padding(
+      padding: Pad(horizontal: 20),
+      child: LoyaltyCard(),
     );
   }
 }
