@@ -25,7 +25,6 @@ class MyOrderScreenInfo extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gap(meta.totalSafeAreaInset.top),
               const Gap(20),
               OrderStatusChip(order.status),
               const Gap(20),
