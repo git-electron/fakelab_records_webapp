@@ -106,9 +106,12 @@ class OrderStatusHistoryItemInfo extends StatelessWidget {
                   ),
                   const Gap(5),
                   Text(
-                    item.dateChanged.toDDmmYYYYwithMonths(
-                      withWords: true,
-                      isShort: false,
+                    _dateTime(
+                      item.dateChanged.toDDmmYYYYwithMonths(
+                        withWords: true,
+                        isShort: false,
+                      ),
+                      item.dateChanged.toHHmm(shoudApplyPaddingToHours: true),
                     ),
                     style: context.styles.footer1,
                   ),
@@ -120,6 +123,8 @@ class OrderStatusHistoryItemInfo extends StatelessWidget {
       },
     );
   }
+
+  String _dateTime(String date, String time) => '$date в $time';
 
   SvgGenImage get icon => switch (item.status) {
         OrderStatus.REQUEST => Assets.icons.box.background,

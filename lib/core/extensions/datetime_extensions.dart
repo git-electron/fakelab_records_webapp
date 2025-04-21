@@ -23,6 +23,10 @@ extension DateTimeExtensions on DateTime {
     return '$day ${_textMonth(month, isShort: isShort)} $year';
   }
 
+  String toHHmm({bool shoudApplyPaddingToHours = false}) {
+    return '${shoudApplyPaddingToHours ? _pad(hour) : hour}:${_pad(minute)}';
+  }
+
   String? _word(DateTime value) {
     final today = DateTime(_now.year, _now.month, _now.day);
     final yesterday = DateTime(_now.year, _now.month, _now.day - 1);
