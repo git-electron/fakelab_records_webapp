@@ -61,7 +61,7 @@ class TelegramService {
   }
 
   void addBackButtonEvent(VoidCallback onTap) =>
-      _call('showBackButton', [onTap]);
+      _call('addBackButtonEvent', [onTap]);
 
   void showBackButton() => _call('showBackButton');
 

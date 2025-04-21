@@ -18,7 +18,7 @@ class AppRouter extends RootStackRouter {
   @override
   late final List<AutoRouteGuard> guards = [
     AutoRouteGuard.simple((resolver, router) {
-      if (router.canPop()) {
+      if (router.canPop() && resolver.routeName != HomeRoute.name) {
         telegramDataBloc.telegramService.showBackButton();
       } else {
         telegramDataBloc.telegramService.hideBackButton();
