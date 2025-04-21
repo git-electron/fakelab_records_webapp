@@ -2,10 +2,11 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/presentation/screens/my_order/domain/bloc/my_order_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/widgets/my_order_screen_app_bar.dart';
 import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/widgets/my_order_screen_info.dart';
+import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/widgets/my_order_screen_services.dart';
+import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/widgets/my_order_screen_status_history.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/loading_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
@@ -38,8 +39,8 @@ class MyOrderScreen extends StatelessWidget {
                   if (meta.isMobile) return const MyOrderScreenAppBarMobile();
                   return const SliverToBoxAdapter();
                 }),
-                SliverToBoxAdapter(
-                  child: MyOrderScreenContent(state.order!),
+                const SliverToBoxAdapter(
+                  child: MyOrderScreenContent(),
                 ),
               ],
             );
@@ -51,38 +52,21 @@ class MyOrderScreen extends StatelessWidget {
 }
 
 class MyOrderScreenContent extends StatelessWidget {
-  const MyOrderScreenContent(this.order, {super.key});
-
-  final Order order;
+  const MyOrderScreenContent({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: context.colors.background,
       padding: const Pad(top: 20, horizontal: 20),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const MyOrderScreenInfo(),
-          Text(
-            order.type.title,
-            style: context.styles.title2.copyWith(height: .85),
-          ),
-          const Gap(20),
-          Container(
-            padding: const Pad(horizontal: 15, vertical: 4),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: order.status.color,
-            ),
-            child: Text(
-              order.status.title,
-              style: context.styles.title3.copyWith(
-                fontSize: 12,
-                color: context.colors.background,
-              ),
-            ),
-          ),
+          MyOrderScreenInfo(),
+          Gap(10),
+          MyOrderScreenServices(),
+          Gap(10),
+          MyOrderScreenStatusHistory(),
         ],
       ),
     );

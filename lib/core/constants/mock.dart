@@ -50,12 +50,12 @@ class Mock {
       ],
       dateCreated: _now,
       totalCost: 10000,
-      costFrom: false,
+      costFrom: true,
       services: [
         OrderService(
           type: OrderServiceType.BEAT,
           totalCost: 10000,
-          costFrom: false,
+          costFrom: true,
         ),
       ],
     ),
@@ -138,6 +138,11 @@ class Mock {
         OrderService(
           type: OrderServiceType.MIX,
           totalCost: 3000,
+          costFrom: false,
+        ),
+        OrderService(
+          type: OrderServiceType.MASTERING,
+          totalCost: 500,
           costFrom: false,
         ),
       ],

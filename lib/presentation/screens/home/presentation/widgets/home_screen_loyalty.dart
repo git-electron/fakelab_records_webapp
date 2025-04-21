@@ -66,7 +66,7 @@ class LoyaltyCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    1500.formatCurrency(),
+                    1500.formatDecimal(),
                     style: context.styles.title2,
                   ),
                   const Gap(15),

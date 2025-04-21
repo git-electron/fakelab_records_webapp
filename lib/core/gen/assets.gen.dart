@@ -59,6 +59,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/clock.svg
   SvgGenImage get clock => const SvgGenImage('assets/icons/clock.svg');
 
+  /// File path: assets/icons/copy.svg
+  SvgGenImage get copy => const SvgGenImage('assets/icons/copy.svg');
+
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
 
@@ -77,6 +80,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/qr_code.svg
   SvgGenImage get qrCode => const SvgGenImage('assets/icons/qr_code.svg');
 
+  /// File path: assets/icons/question.svg
+  SvgGenImage get question => const SvgGenImage('assets/icons/question.svg');
+
+  /// File path: assets/icons/question_background.svg
+  SvgGenImage get questionBackground =>
+      const SvgGenImage('assets/icons/question_background.svg');
+
+  /// File path: assets/icons/question_gray.svg
+  SvgGenImage get questionGray =>
+      const SvgGenImage('assets/icons/question_gray.svg');
+
   /// File path: assets/icons/subway.svg
   SvgGenImage get subway => const SvgGenImage('assets/icons/subway.svg');
 
@@ -93,11 +107,15 @@ class $AssetsIconsGen {
     calendarBlack,
     cart,
     clock,
+    copy,
     home,
     map,
     pin,
     pinBlack,
     qrCode,
+    question,
+    questionBackground,
+    questionGray,
     subway,
   ];
 }
