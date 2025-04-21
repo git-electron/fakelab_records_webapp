@@ -1,15 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
+import 'package:logger/logger.dart';
 import 'router.gr.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
-  AppRouter(this.telegramDataBloc) {
+  AppRouter(this.logger, this.telegramDataBloc) {
     telegramDataBloc.telegramService.addBackButtonEvent(pop);
   }
 
+  final Logger logger;
   final TelegramDataBloc telegramDataBloc;
 
   @override
@@ -17,6 +19,13 @@ class AppRouter extends RootStackRouter {
 
   @override
   late final List<AutoRouteGuard> guards = [
+    AutoRouteGuard.simple((resolver, router) {
+      logger.i('''Navigation:
+Path: ${resolver.route.path}
+Path params: ${resolver.route.params}
+Args: ${resolver.route.args}''');
+      resolver.next();
+    }),
     AutoRouteGuard.simple((resolver, router) {
       if (router.canPop() && resolver.routeName != HomeRoute.name) {
         telegramDataBloc.telegramService.showBackButton();
