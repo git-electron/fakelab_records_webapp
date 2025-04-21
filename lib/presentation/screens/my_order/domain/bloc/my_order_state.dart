@@ -20,5 +20,12 @@ class MyOrderState with _$MyOrderState {
         orElse: () => false,
       );
 
+  bool get hasError => maybeWhen(
+        error: (_) => true,
+        orElse: () => false,
+      );
+
   Order? get order => whenOrNull(loaded: (order) => order);
+
+  String? get message => whenOrNull(error: (message) => message);
 }

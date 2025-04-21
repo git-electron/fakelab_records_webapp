@@ -1,12 +1,9 @@
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:blur/blur.dart';
 import 'package:fakelab_records_webapp/presentation/screens/my_order/domain/bloc/my_order_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/theme/theme_extensions.dart';
 import '../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
-
-const double _toolbarHeight = 90;
 
 class MyOrderScreenAppBarMobile extends StatelessWidget {
   const MyOrderScreenAppBarMobile({super.key});
@@ -40,7 +37,7 @@ class MyOrderScreenAppBarMobile extends StatelessWidget {
                         alignment: Alignment.center,
                         height: meta.contentSafeAreaInset.top,
                         child: Text(
-                          state.order?.idShort ?? '',
+                          'Заказ ${state.order!.idShort}',
                           style: context.styles.body1,
                         ),
                       ),
@@ -54,46 +51,6 @@ class MyOrderScreenAppBarMobile extends StatelessWidget {
               ),
             );
           },
-        );
-      },
-    );
-  }
-}
-
-class MyOrderScreenAppBar extends StatelessWidget {
-  const MyOrderScreenAppBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<MyOrderBloc, MyOrderState>(
-      builder: (context, state) {
-        return SliverAppBar(
-          pinned: true,
-          toolbarHeight: _toolbarHeight,
-          automaticallyImplyLeading: false,
-          backgroundColor: context.colors.transparent,
-          surfaceTintColor: context.colors.transparent,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          forceElevated: false,
-          flexibleSpace: Blur(
-            blur: 10,
-            blurColor: context.colors.background,
-            alignment: Alignment.bottomCenter,
-            overlay: Container(
-              height: _toolbarHeight,
-              padding: const Pad(horizontal: 20),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                state.order?.idShort ?? '',
-                style: context.styles.body1,
-              ),
-            ),
-            child: const SizedBox(
-              height: _toolbarHeight,
-              width: double.infinity,
-            ),
-          ),
         );
       },
     );
