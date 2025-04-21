@@ -67,6 +67,7 @@ class MyOrderScreenContent extends StatelessWidget {
           MyOrderScreenServices(),
           Gap(10),
           MyOrderScreenStatusHistory(),
+          Gap(40),
         ],
       ),
     );
