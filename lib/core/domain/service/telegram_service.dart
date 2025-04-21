@@ -1,9 +1,6 @@
 import 'dart:convert';
 import 'dart:js' as js;
 
-import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/constants/constants.dart';
-
 import '../../constants/mock.dart';
 import '../../constants/types.dart';
 import '../models/telegram/safe_area_inset.dart';
@@ -63,17 +60,15 @@ class TelegramService {
         ));
   }
 
+  void addBackButtonEvent(VoidCallback onTap) =>
+      _call('showBackButton', [onTap]);
+
   void showBackButton() => _call('showBackButton');
 
   void hideBackButton() => _call('hideBackButton');
 
   void _setupTelegramWebApp(bool shouldForceFullscreen) =>
-      _call('setupTelegramWebApp', [shouldForceFullscreen, _onBackButtonTap]);
-
-  void _onBackButtonTap() {
-    hideBackButton();
-    rootContext.pop();
-  }
+      _call('setupTelegramWebApp', [shouldForceFullscreen]);
 
   dynamic _call(String method, [List<dynamic>? args]) =>
       js.context.callMethod(method, args);

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-late BuildContext rootContext;
-
 const Duration kAnimationDuration = Duration(milliseconds: 300);
 
 const Curve kAnimationCurve = Curves.easeInOutCubicEmphasized;

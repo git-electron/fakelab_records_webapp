@@ -6,7 +6,9 @@ import 'package:injectable/injectable.dart';
 @singleton
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
-  AppRouter(this.telegramDataBloc);
+  AppRouter(this.telegramDataBloc) {
+    telegramDataBloc.telegramService.addBackButtonEvent(pop);
+  }
 
   final TelegramDataBloc telegramDataBloc;
 
@@ -15,6 +17,14 @@ class AppRouter extends RootStackRouter {
 
   @override
   late final List<AutoRouteGuard> guards = [
+    AutoRouteGuard.simple((resolver, router) {
+      if (router.canPop()) {
+        telegramDataBloc.telegramService.showBackButton();
+      } else {
+        telegramDataBloc.telegramService.hideBackButton();
+      }
+      resolver.next();
+    }),
     AutoRouteGuard.simple(
       (resolver, router) {
         final bool isSupported = telegramDataBloc.state.isSupported;

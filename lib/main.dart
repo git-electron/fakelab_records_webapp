@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:fakelab_records_webapp/core/constants/constants.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
 
 import 'core/di/injector.dart';
@@ -38,10 +37,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         theme: AppTheme.primary,
         routerConfig: $<AppRouter>().config(),
-        builder: (context, child) {
-          rootContext = context;
-          return child ?? const SizedBox();
-        },
+        builder: (context, child) => child ?? const SizedBox(),
       ),
     );
   }
