@@ -27,9 +27,13 @@ class Order with _$Order {
 
   Order._();
 
-  String get idShort =>  '#${id.substring(id.length - 5)}';
+  String get idShort => '#${id.substring(id.length - 5)}';
 
-  String get typeTitleForCard => (type.titleForCard ?? type.title).toUpperCase();
+  String get typeTitleForCard =>
+      (type.titleForCard ?? type.title).toUpperCase();
+
+  bool isCurrentStatus(OrderStatus status) =>
+      statusHistory.last.status == status;
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 }

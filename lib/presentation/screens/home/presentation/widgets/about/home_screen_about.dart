@@ -83,7 +83,7 @@ class AboutButton extends StatelessWidget {
     return AppButton.primary(
       onTap: () => launchUrlString(yandexMapsUrl),
       text: 'Как нас найти?',
-      icon: Assets.icons.pinBlack,
+      icon: Assets.icons.pin.background,
     );
   }
 }

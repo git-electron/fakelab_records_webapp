@@ -37,12 +37,12 @@ class AboutMapAndFeatures extends StatelessWidget {
           children: [
             AboutFeature(
               text: 'ПН-ВС 8:00 — 23:00',
-              icon: Assets.icons.clock,
+              icon: Assets.icons.clock.white,
             ),
             const Gap(10),
             AboutFeature(
               text: 'Улица Комсомола, д. 2,\nофис 14',
-              icon: Assets.icons.pin,
+              icon: Assets.icons.pin.white,
             ),
             const Gap(10),
             AboutFeature.widget(

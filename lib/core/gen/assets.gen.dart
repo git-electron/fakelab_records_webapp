@@ -28,39 +28,36 @@ class $AssetsIconsGen {
   /// File path: assets/icons/arrow_left.svg
   SvgGenImage get arrowLeft => const SvgGenImage('assets/icons/arrow_left.svg');
 
-  /// File path: assets/icons/arrow_right.svg
-  SvgGenImage get arrowRight =>
-      const SvgGenImage('assets/icons/arrow_right.svg');
-
-  /// File path: assets/icons/arrow_right_background.svg
-  SvgGenImage get arrowRightBackground =>
-      const SvgGenImage('assets/icons/arrow_right_background.svg');
-
-  /// File path: assets/icons/arrow_right_gray.svg
-  SvgGenImage get arrowRightGray =>
-      const SvgGenImage('assets/icons/arrow_right_gray.svg');
+  /// Directory path: assets/icons/arrow_right
+  $AssetsIconsArrowRightGen get arrowRight => const $AssetsIconsArrowRightGen();
 
   /// File path: assets/icons/arrow_up.svg
   SvgGenImage get arrowUp => const SvgGenImage('assets/icons/arrow_up.svg');
 
-  /// File path: assets/icons/box.svg
-  SvgGenImage get box => const SvgGenImage('assets/icons/box.svg');
+  /// Directory path: assets/icons/box
+  $AssetsIconsBoxGen get box => const $AssetsIconsBoxGen();
 
-  /// File path: assets/icons/calendar.svg
-  SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
-
-  /// File path: assets/icons/calendar_black.svg
-  SvgGenImage get calendarBlack =>
-      const SvgGenImage('assets/icons/calendar_black.svg');
+  /// Directory path: assets/icons/calendar
+  $AssetsIconsCalendarGen get calendar => const $AssetsIconsCalendarGen();
 
   /// File path: assets/icons/cart.svg
   SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
 
-  /// File path: assets/icons/clock.svg
-  SvgGenImage get clock => const SvgGenImage('assets/icons/clock.svg');
+  /// Directory path: assets/icons/check
+  $AssetsIconsCheckGen get check => const $AssetsIconsCheckGen();
+
+  /// Directory path: assets/icons/clock
+  $AssetsIconsClockGen get clock => const $AssetsIconsClockGen();
 
   /// File path: assets/icons/copy.svg
   SvgGenImage get copy => const SvgGenImage('assets/icons/copy.svg');
+
+  /// Directory path: assets/icons/cross
+  $AssetsIconsCrossGen get cross => const $AssetsIconsCrossGen();
+
+  /// Directory path: assets/icons/double_check
+  $AssetsIconsDoubleCheckGen get doubleCheck =>
+      const $AssetsIconsDoubleCheckGen();
 
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
@@ -71,25 +68,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/map.svg
   SvgGenImage get map => const SvgGenImage('assets/icons/map.svg');
 
-  /// File path: assets/icons/pin.svg
-  SvgGenImage get pin => const SvgGenImage('assets/icons/pin.svg');
-
-  /// File path: assets/icons/pin_black.svg
-  SvgGenImage get pinBlack => const SvgGenImage('assets/icons/pin_black.svg');
+  /// Directory path: assets/icons/pin
+  $AssetsIconsPinGen get pin => const $AssetsIconsPinGen();
 
   /// File path: assets/icons/qr_code.svg
   SvgGenImage get qrCode => const SvgGenImage('assets/icons/qr_code.svg');
 
-  /// File path: assets/icons/question.svg
-  SvgGenImage get question => const SvgGenImage('assets/icons/question.svg');
-
-  /// File path: assets/icons/question_background.svg
-  SvgGenImage get questionBackground =>
-      const SvgGenImage('assets/icons/question_background.svg');
-
-  /// File path: assets/icons/question_gray.svg
-  SvgGenImage get questionGray =>
-      const SvgGenImage('assets/icons/question_gray.svg');
+  /// Directory path: assets/icons/question
+  $AssetsIconsQuestionGen get question => const $AssetsIconsQuestionGen();
 
   /// File path: assets/icons/subway.svg
   SvgGenImage get subway => const SvgGenImage('assets/icons/subway.svg');
@@ -98,24 +84,12 @@ class $AssetsIconsGen {
   List<SvgGenImage> get values => [
     arrowDown,
     arrowLeft,
-    arrowRight,
-    arrowRightBackground,
-    arrowRightGray,
     arrowUp,
-    box,
-    calendar,
-    calendarBlack,
     cart,
-    clock,
     copy,
     home,
     map,
-    pin,
-    pinBlack,
     qrCode,
-    question,
-    questionBackground,
-    questionGray,
     subway,
   ];
 }
@@ -168,6 +142,110 @@ class $AssetsAudioExamplesGen {
   List<String> get values => [brave, cats, damn, inmyneon, tired, today, tuff];
 }
 
+class $AssetsIconsArrowRightGen {
+  const $AssetsIconsArrowRightGen();
+
+  /// File path: assets/icons/arrow_right/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/arrow_right/background.svg');
+
+  /// File path: assets/icons/arrow_right/gray.svg
+  SvgGenImage get gray =>
+      const SvgGenImage('assets/icons/arrow_right/gray.svg');
+
+  /// File path: assets/icons/arrow_right/white.svg
+  SvgGenImage get white =>
+      const SvgGenImage('assets/icons/arrow_right/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, gray, white];
+}
+
+class $AssetsIconsBoxGen {
+  const $AssetsIconsBoxGen();
+
+  /// File path: assets/icons/box/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/box/background.svg');
+
+  /// File path: assets/icons/box/white.svg
+  SvgGenImage get white => const SvgGenImage('assets/icons/box/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, white];
+}
+
+class $AssetsIconsCalendarGen {
+  const $AssetsIconsCalendarGen();
+
+  /// File path: assets/icons/calendar/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/calendar/background.svg');
+
+  /// File path: assets/icons/calendar/white.svg
+  SvgGenImage get white => const SvgGenImage('assets/icons/calendar/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, white];
+}
+
+class $AssetsIconsCheckGen {
+  const $AssetsIconsCheckGen();
+
+  /// File path: assets/icons/check/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/check/background.svg');
+
+  /// File path: assets/icons/check/white.svg
+  SvgGenImage get white => const SvgGenImage('assets/icons/check/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, white];
+}
+
+class $AssetsIconsClockGen {
+  const $AssetsIconsClockGen();
+
+  /// File path: assets/icons/clock/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/clock/background.svg');
+
+  /// File path: assets/icons/clock/white.svg
+  SvgGenImage get white => const SvgGenImage('assets/icons/clock/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, white];
+}
+
+class $AssetsIconsCrossGen {
+  const $AssetsIconsCrossGen();
+
+  /// File path: assets/icons/cross/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/cross/background.svg');
+
+  /// File path: assets/icons/cross/white.svg
+  SvgGenImage get white => const SvgGenImage('assets/icons/cross/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, white];
+}
+
+class $AssetsIconsDoubleCheckGen {
+  const $AssetsIconsDoubleCheckGen();
+
+  /// File path: assets/icons/double_check/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/double_check/background.svg');
+
+  /// File path: assets/icons/double_check/white.svg
+  SvgGenImage get white =>
+      const SvgGenImage('assets/icons/double_check/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, white];
+}
+
 class $AssetsIconsLogoGen {
   const $AssetsIconsLogoGen();
 
@@ -176,6 +254,37 @@ class $AssetsIconsLogoGen {
 
   /// Directory path: assets/icons/logo/records
   $AssetsIconsLogoRecordsGen get records => const $AssetsIconsLogoRecordsGen();
+}
+
+class $AssetsIconsPinGen {
+  const $AssetsIconsPinGen();
+
+  /// File path: assets/icons/pin/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/pin/background.svg');
+
+  /// File path: assets/icons/pin/white.svg
+  SvgGenImage get white => const SvgGenImage('assets/icons/pin/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, white];
+}
+
+class $AssetsIconsQuestionGen {
+  const $AssetsIconsQuestionGen();
+
+  /// File path: assets/icons/question/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/question/background.svg');
+
+  /// File path: assets/icons/question/gray.svg
+  SvgGenImage get gray => const SvgGenImage('assets/icons/question/gray.svg');
+
+  /// File path: assets/icons/question/white.svg
+  SvgGenImage get white => const SvgGenImage('assets/icons/question/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, gray, white];
 }
 
 class $AssetsImagesAboutGen {

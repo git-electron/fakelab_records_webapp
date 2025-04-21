@@ -52,7 +52,7 @@ class ExamplesButton extends StatelessWidget {
     return AppButton.primary(
       onTap: () {},
       text: 'Больше примеров',
-      icon: Assets.icons.arrowRightBackground,
+      icon: Assets.icons.arrowRight.background,
     );
   }
 }

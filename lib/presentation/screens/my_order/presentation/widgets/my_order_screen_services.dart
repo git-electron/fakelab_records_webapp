@@ -114,7 +114,7 @@ class TotalCostWarning extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Assets.icons.questionGray.svg(),
+            Assets.icons.question.gray.svg(),
             const Gap(10),
             Expanded(
               child: Text(
