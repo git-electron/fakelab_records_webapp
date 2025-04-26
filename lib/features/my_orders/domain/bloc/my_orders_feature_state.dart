@@ -26,4 +26,11 @@ class MyOrdersFeatureState with _$MyOrdersFeatureState {
         loaded: (orders) => orders.isNotEmpty,
         orElse: () => false,
       );
+
+  String? get message => whenOrNull(error: (message) => message);
+
+  bool get hasError => maybeWhen(
+        error: (_) => true,
+        orElse: () => false,
+      );
 }

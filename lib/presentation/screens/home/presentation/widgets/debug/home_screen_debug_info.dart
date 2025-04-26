@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/home_bloc/home_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
@@ -77,6 +78,19 @@ class _HomeScreenDebugInfoState extends State<HomeScreenDebugInfo> {
               BlocBuilder<UserBloc, UserState>(
                 builder: (context, state) {
                   return Text(state.toString());
+                },
+              ),
+              const Gap(15),
+              const Text(
+                'Home state',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const Gap(10),
+              BlocBuilder<HomeBloc, HomeState>(
+                builder: (context, state) {
+                  return Text('''
+- Is loading: ${state.isLoading}
+- Has error: ${state.hasError}''');
                 },
               ),
             ],

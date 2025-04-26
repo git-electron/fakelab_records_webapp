@@ -31,7 +31,7 @@ class MyOrderScreen extends StatelessWidget {
         body: BlocBuilder<MyOrderBloc, MyOrderState>(
           builder: (context, state) {
             if (state.isLoading) return const LoadingPage();
-            if (state.hasError) return ErrorPage(state.message);
+            if (state.hasError) return ErrorPage(message: state.message);
 
             return CustomScrollView(
               slivers: [

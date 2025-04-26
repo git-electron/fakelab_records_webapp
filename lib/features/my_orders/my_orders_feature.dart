@@ -1,5 +1,4 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,17 +8,19 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class MyOrdersFeature extends StatelessWidget {
-  const MyOrdersFeature.vertical({super.key}) : scrollDirection = Axis.vertical;
+  const MyOrdersFeature.vertical(this.bloc, {super.key})
+      : scrollDirection = Axis.vertical;
 
-  const MyOrdersFeature.horizontal({super.key})
+  const MyOrdersFeature.horizontal(this.bloc, {super.key})
       : scrollDirection = Axis.horizontal;
 
+  final MyOrdersFeatureBloc bloc;
   final Axis scrollDirection;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => $<MyOrdersFeatureBloc>(),
+    return BlocProvider.value(
+      value: bloc,
       child: BlocBuilder<MyOrdersFeatureBloc, MyOrdersFeatureState>(
         builder: (context, state) {
           return switch (scrollDirection) {

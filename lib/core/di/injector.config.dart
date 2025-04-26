@@ -26,6 +26,8 @@ import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_
     as _i790;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/audio_player_bloc/audio_player_bloc.dart'
     as _i29;
+import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/home_bloc/home_bloc.dart'
+    as _i19;
 import 'package:fakelab_records_webapp/presentation/screens/images_viewer/domain/images_viewer_bloc.dart'
     as _i15;
 import 'package:fakelab_records_webapp/presentation/screens/my_order/data/client/my_order_client.dart'
@@ -99,6 +101,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i790.MyOrdersFeatureBloc>(() => _i790.MyOrdersFeatureBloc(
           gh<_i109.UserBloc>(),
           gh<_i652.OrdersClient>(),
+        ));
+    gh.factory<_i19.HomeBloc>(() => _i19.HomeBloc(
+          gh<_i109.UserBloc>(),
+          gh<_i790.MyOrdersFeatureBloc>(),
         ));
     return this;
   }

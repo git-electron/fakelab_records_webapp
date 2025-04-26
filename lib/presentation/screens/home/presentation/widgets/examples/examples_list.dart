@@ -18,14 +18,14 @@ class ExamplesList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // ExampleCard(
-          //   filePath: Assets.audio.examples.tuff,
-          //   title: 'TUFF',
-          //   artists: const ['kontree', 'raimee'],
-          //   services: ExampleServiceType.values,
-          //   genres: const [ExampleGenre.HIP_HOP, ExampleGenre.AMBIENT],
-          // ),
-          // const Gap(20), //TODO: add after april 25
+          ExampleCard(
+            filePath: Assets.audio.examples.tuff,
+            title: 'TUFF',
+            artists: const ['kontree', 'raimee'],
+            services: ExampleServiceType.values,
+            genres: const [ExampleGenre.HIP_HOP, ExampleGenre.AMBIENT],
+          ),
+          const Gap(20),
           ExampleCard(
             filePath: Assets.audio.examples.brave,
             title: 'brave',
