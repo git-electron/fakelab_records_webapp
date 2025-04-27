@@ -82,10 +82,10 @@ flutter:
     - assets/icons/double_check/
     - assets/icons/logo/fakelab/
     - assets/icons/logo/records/
+    - assets/icons/equipment/
     - assets/images/
     - assets/images/coin/
     - assets/images/about/
-    - assets/images/equipment/
     - assets/audio/
     - assets/audio/examples/
 

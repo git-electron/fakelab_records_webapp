@@ -59,6 +59,9 @@ class $AssetsIconsGen {
   $AssetsIconsDoubleCheckGen get doubleCheck =>
       const $AssetsIconsDoubleCheckGen();
 
+  /// Directory path: assets/icons/equipment
+  $AssetsIconsEquipmentGen get equipment => const $AssetsIconsEquipmentGen();
+
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
 
@@ -106,9 +109,6 @@ class $AssetsImagesGen {
 
   /// Directory path: assets/images/coin
   $AssetsImagesCoinGen get coin => const $AssetsImagesCoinGen();
-
-  /// Directory path: assets/images/equipment
-  $AssetsImagesEquipmentGen get equipment => const $AssetsImagesEquipmentGen();
 
   /// List of all assets
   List<AssetGenImage> get values => [cardBackground];
@@ -246,6 +246,42 @@ class $AssetsIconsDoubleCheckGen {
   List<SvgGenImage> get values => [background, white];
 }
 
+class $AssetsIconsEquipmentGen {
+  const $AssetsIconsEquipmentGen();
+
+  /// File path: assets/icons/equipment/guitar.svg
+  SvgGenImage get guitar =>
+      const SvgGenImage('assets/icons/equipment/guitar.svg');
+
+  /// File path: assets/icons/equipment/headphones.svg
+  SvgGenImage get headphones =>
+      const SvgGenImage('assets/icons/equipment/headphones.svg');
+
+  /// File path: assets/icons/equipment/interface.svg
+  SvgGenImage get interface =>
+      const SvgGenImage('assets/icons/equipment/interface.svg');
+
+  /// File path: assets/icons/equipment/mic.svg
+  SvgGenImage get mic => const SvgGenImage('assets/icons/equipment/mic.svg');
+
+  /// File path: assets/icons/equipment/midi.svg
+  SvgGenImage get midi => const SvgGenImage('assets/icons/equipment/midi.svg');
+
+  /// File path: assets/icons/equipment/monitors.svg
+  SvgGenImage get monitors =>
+      const SvgGenImage('assets/icons/equipment/monitors.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+    guitar,
+    headphones,
+    interface,
+    mic,
+    midi,
+    monitors,
+  ];
+}
+
 class $AssetsIconsLogoGen {
   const $AssetsIconsLogoGen();
 
@@ -377,44 +413,6 @@ class $AssetsImagesCoinGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [big, small];
-}
-
-class $AssetsImagesEquipmentGen {
-  const $AssetsImagesEquipmentGen();
-
-  /// File path: assets/images/equipment/guitar.webp
-  AssetGenImage get guitar =>
-      const AssetGenImage('assets/images/equipment/guitar.webp');
-
-  /// File path: assets/images/equipment/headphones.webp
-  AssetGenImage get headphones =>
-      const AssetGenImage('assets/images/equipment/headphones.webp');
-
-  /// File path: assets/images/equipment/interface.webp
-  AssetGenImage get interface =>
-      const AssetGenImage('assets/images/equipment/interface.webp');
-
-  /// File path: assets/images/equipment/mic.webp
-  AssetGenImage get mic =>
-      const AssetGenImage('assets/images/equipment/mic.webp');
-
-  /// File path: assets/images/equipment/midi.webp
-  AssetGenImage get midi =>
-      const AssetGenImage('assets/images/equipment/midi.webp');
-
-  /// File path: assets/images/equipment/monitors.webp
-  AssetGenImage get monitors =>
-      const AssetGenImage('assets/images/equipment/monitors.webp');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [
-    guitar,
-    headphones,
-    interface,
-    mic,
-    midi,
-    monitors,
-  ];
 }
 
 class $AssetsIconsLogoFakelabGen {

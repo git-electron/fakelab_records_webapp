@@ -23,3 +23,8 @@ const String yandexMapsUrl =
 const String yandexMapsIFrame = '''
 <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=64952203819" width="100%" height="180" frameborder="0"></iframe>
 ''';
+
+const List<int> adminAccountIds = [
+  265685890, // @raimeeee
+  7452326346, // @fakelab_records_support
+];

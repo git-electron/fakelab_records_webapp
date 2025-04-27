@@ -77,7 +77,9 @@ class _HomeScreenDebugInfoState extends State<HomeScreenDebugInfo> {
               const Gap(10),
               BlocBuilder<UserBloc, UserState>(
                 builder: (context, state) {
-                  return Text(state.toString());
+                  return Text('''
+${state.toString()}
+- Is admin: ${state.user?.isAdmin}''');
                 },
               ),
               const Gap(15),

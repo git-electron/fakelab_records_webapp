@@ -16,34 +16,37 @@ class EquipmentList extends StatelessWidget {
             title: 'Союз 023 bomblet',
             description:
                 'Тёплое аналоговое звучание с винтажным характером, идеально для вокала. Кастомный трансформатор придаёт звуку особенный тембр, окраску и глубину',
-            image: Assets.images.equipment.mic,
+            icon: Assets.icons.equipment.mic,
           ),
           EquipmentTile(
             title: 'Mackie big knob studio',
             description:
                 'Аудиоинтерфейс и мониторный контроллер в одном: чистый звук, удобное управление и максимум контроля на студии',
-            image: Assets.images.equipment.interface,
+            icon: Assets.icons.equipment.interface,
           ),
           EquipmentTile(
             title: 'Beyerdynamic DT 770/990 pro',
             description:
                 'Высококлассное звучание и комфорт при длительной работе. 770 — закрытые для записи, 990 — открытые для микса с широкой стереосценой',
-            image: Assets.images.equipment.headphones,
+            icon: Assets.icons.equipment.headphones,
           ),
           EquipmentTile(
             title: 'KRK Rokit 5 G4',
-            description: 'Мощный звук и точная передача частот. Идеальны для сведения и продюсирования в студийных условиях',
-            image: Assets.images.equipment.monitors,
+            description:
+                'Мощный звук и точная передача частот. Идеальны для сведения и продюсирования в студийных условиях',
+            icon: Assets.icons.equipment.monitors,
           ),
           EquipmentTile(
             title: 'Fender Squier bullet stratocaster',
-            description: 'Классическое звучание Fender, лёгкая и универсальная гитара для записи ритма и соло',
-            image: Assets.images.equipment.guitar,
+            description:
+                'Классическое звучание Fender, лёгкая и универсальная гитара для записи ритма и соло',
+            icon: Assets.icons.equipment.guitar,
           ),
           EquipmentTile(
             title: 'Arturia keylab essential 88 MKIII',
-            description: 'Полувзвешенные клавиши, глубокая интеграция с DAW и софтом. Полный контроль и вдохновение под рукой',
-            image: Assets.images.equipment.midi,
+            description:
+                'Полувзвешенные клавиши, глубокая интеграция с DAW и софтом. Полный контроль и вдохновение под рукой',
+            icon: Assets.icons.equipment.midi,
           ),
         ],
       ),

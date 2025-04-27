@@ -1,3 +1,4 @@
+import 'package:fakelab_records_webapp/core/constants/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
@@ -14,4 +15,8 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  User._();
+
+  bool get isAdmin => adminAccountIds.contains(id);
 }
