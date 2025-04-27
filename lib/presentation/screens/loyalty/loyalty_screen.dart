@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 @RoutePage()
-class MyOrdersScreen extends StatelessWidget {
-  const MyOrdersScreen({super.key});
+class LoyaltyScreen extends StatelessWidget {
+  const LoyaltyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class MyOrdersScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'My orders screen',
+              'Loyalty screen',
               style: context.styles.title3.copyWith(fontSize: 20),
             ),
             const Gap(10),

@@ -70,22 +70,26 @@ flutter:
   assets:
     - assets/
     - assets/icons/
-    - assets/icons/logo/
     - assets/icons/box/
     - assets/icons/pin/
+    - assets/icons/logo/
+    - assets/icons/home/
     - assets/icons/check/
     - assets/icons/clock/
     - assets/icons/cross/
+    - assets/icons/qr_code/
     - assets/icons/calendar/
     - assets/icons/question/
+    - assets/icons/equipment/
     - assets/icons/arrow_right/
     - assets/icons/double_check/
     - assets/icons/logo/fakelab/
     - assets/icons/logo/records/
-    - assets/icons/equipment/
+
     - assets/images/
     - assets/images/coin/
     - assets/images/about/
+    
     - assets/audio/
     - assets/audio/examples/
 

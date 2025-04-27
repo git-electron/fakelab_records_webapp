@@ -57,13 +57,20 @@ Args: ${resolver.route.args}''');
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: HomeRoute.page, path: '/', initial: true),
-        AutoRoute(page: MyOrdersRoute.page, path: '/orders'),
+        ...customRoutes,
+        AutoRoute(
+          page: BaseRoute.page,
+          path: '/',
+          children: [
+            AutoRoute(page: HomeRoute.page, path: 'home', initial: true),
+            AutoRoute(page: MyOrdersRoute.page, path: 'orders'),
+            AutoRoute(page: LoyaltyRoute.page, path: 'loyalty'),
+          ],
+        ),
         AutoRoute(page: MyOrderRoute.page, path: '/orders/:id'),
         AutoRoute(page: ImagesViewerRoute.page, path: '/images'),
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
         ...redirections,
-        ...customRoutes,
       ];
 
   List<CustomRoute> get customRoutes => [];

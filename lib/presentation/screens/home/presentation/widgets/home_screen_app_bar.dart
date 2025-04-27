@@ -49,7 +49,11 @@ class HomeScreenAppBarMobile extends StatelessWidget {
               return Align(
                 alignment: Alignment.bottomCenter,
                 child: Blur(
-                  blur: 10,
+                  blur: _animate(
+                    animation,
+                    valueWhenCollapsed: 10,
+                    valueWhenExpanded: 30,
+                  ),
                   colorOpacity: _animate(
                     animation,
                     valueWhenCollapsed: .5,
@@ -157,7 +161,7 @@ class HomeScreenAppBar extends StatelessWidget {
       scrolledUnderElevation: 0,
       forceElevated: false,
       flexibleSpace: Blur(
-        blur: 10,
+        blur: 30,
         blurColor: context.colors.background,
         alignment: Alignment.bottomCenter,
         overlay: const SizedBox(

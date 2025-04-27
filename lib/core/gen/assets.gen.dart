@@ -62,8 +62,8 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/equipment
   $AssetsIconsEquipmentGen get equipment => const $AssetsIconsEquipmentGen();
 
-  /// File path: assets/icons/home.svg
-  SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
+  /// Directory path: assets/icons/home
+  $AssetsIconsHomeGen get home => const $AssetsIconsHomeGen();
 
   /// Directory path: assets/icons/logo
   $AssetsIconsLogoGen get logo => const $AssetsIconsLogoGen();
@@ -74,8 +74,8 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/pin
   $AssetsIconsPinGen get pin => const $AssetsIconsPinGen();
 
-  /// File path: assets/icons/qr_code.svg
-  SvgGenImage get qrCode => const SvgGenImage('assets/icons/qr_code.svg');
+  /// Directory path: assets/icons/qr_code
+  $AssetsIconsQrCodeGen get qrCode => const $AssetsIconsQrCodeGen();
 
   /// Directory path: assets/icons/question
   $AssetsIconsQuestionGen get question => const $AssetsIconsQuestionGen();
@@ -90,9 +90,7 @@ class $AssetsIconsGen {
     arrowUp,
     cart,
     copy,
-    home,
     map,
-    qrCode,
     subway,
   ];
 }
@@ -282,6 +280,20 @@ class $AssetsIconsEquipmentGen {
   ];
 }
 
+class $AssetsIconsHomeGen {
+  const $AssetsIconsHomeGen();
+
+  /// File path: assets/icons/home/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/home/background.svg');
+
+  /// File path: assets/icons/home/white.svg
+  SvgGenImage get white => const SvgGenImage('assets/icons/home/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, white];
+}
+
 class $AssetsIconsLogoGen {
   const $AssetsIconsLogoGen();
 
@@ -301,6 +313,20 @@ class $AssetsIconsPinGen {
 
   /// File path: assets/icons/pin/white.svg
   SvgGenImage get white => const SvgGenImage('assets/icons/pin/white.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, white];
+}
+
+class $AssetsIconsQrCodeGen {
+  const $AssetsIconsQrCodeGen();
+
+  /// File path: assets/icons/qr_code/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/qr_code/background.svg');
+
+  /// File path: assets/icons/qr_code/white.svg
+  SvgGenImage get white => const SvgGenImage('assets/icons/qr_code/white.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [background, white];

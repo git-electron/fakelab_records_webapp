@@ -9,44 +9,64 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/home_screen.dart'
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:fakelab_records_webapp/presentation/screens/base/base_screen.dart'
     as _i1;
-import 'package:fakelab_records_webapp/presentation/screens/images_viewer/presentation/images_viewer_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/home_screen.dart'
     as _i2;
-import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/my_order_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/images_viewer/presentation/images_viewer_screen.dart'
     as _i3;
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/presentation/my_orders_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/loyalty/loyalty_screen.dart'
     as _i4;
-import 'package:fakelab_records_webapp/presentation/screens/unsupported/unsupported_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/my_order_screen.dart'
     as _i5;
-import 'package:flutter/material.dart' as _i7;
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/presentation/my_orders_screen.dart'
+    as _i6;
+import 'package:fakelab_records_webapp/presentation/screens/unsupported/unsupported_screen.dart'
+    as _i7;
+import 'package:flutter/material.dart' as _i9;
 
 /// generated route for
-/// [_i1.HomeScreen]
-class HomeRoute extends _i6.PageRouteInfo<void> {
-  const HomeRoute({List<_i6.PageRouteInfo>? children})
-    : super(HomeRoute.name, initialChildren: children);
+/// [_i1.BaseScreen]
+class BaseRoute extends _i8.PageRouteInfo<void> {
+  const BaseRoute({List<_i8.PageRouteInfo>? children})
+    : super(BaseRoute.name, initialChildren: children);
 
-  static const String name = 'HomeRoute';
+  static const String name = 'BaseRoute';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i1.HomeScreen();
+      return const _i1.BaseScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i2.ImagesViewerScreen]
-class ImagesViewerRoute extends _i6.PageRouteInfo<ImagesViewerRouteArgs> {
+/// [_i2.HomeScreen]
+class HomeRoute extends _i8.PageRouteInfo<void> {
+  const HomeRoute({List<_i8.PageRouteInfo>? children})
+    : super(HomeRoute.name, initialChildren: children);
+
+  static const String name = 'HomeRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i2.HomeScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [_i3.ImagesViewerScreen]
+class ImagesViewerRoute extends _i8.PageRouteInfo<ImagesViewerRouteArgs> {
   ImagesViewerRoute({
     required List<String> images,
     required int initialIndex,
-    _i2.ImageSource source = _i2.ImageSource.network,
-    _i7.Key? key,
-    List<_i6.PageRouteInfo>? children,
+    _i3.ImageSource source = _i3.ImageSource.network,
+    _i9.Key? key,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
          ImagesViewerRoute.name,
          args: ImagesViewerRouteArgs(
@@ -60,11 +80,11 @@ class ImagesViewerRoute extends _i6.PageRouteInfo<ImagesViewerRouteArgs> {
 
   static const String name = 'ImagesViewerRoute';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ImagesViewerRouteArgs>();
-      return _i2.ImagesViewerScreen(
+      return _i3.ImagesViewerScreen(
         images: args.images,
         initialIndex: args.initialIndex,
         source: args.source,
@@ -78,7 +98,7 @@ class ImagesViewerRouteArgs {
   const ImagesViewerRouteArgs({
     required this.images,
     required this.initialIndex,
-    this.source = _i2.ImageSource.network,
+    this.source = _i3.ImageSource.network,
     this.key,
   });
 
@@ -86,9 +106,9 @@ class ImagesViewerRouteArgs {
 
   final int initialIndex;
 
-  final _i2.ImageSource source;
+  final _i3.ImageSource source;
 
-  final _i7.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -97,12 +117,28 @@ class ImagesViewerRouteArgs {
 }
 
 /// generated route for
-/// [_i3.MyOrderScreen]
-class MyOrderRoute extends _i6.PageRouteInfo<MyOrderRouteArgs> {
+/// [_i4.LoyaltyScreen]
+class LoyaltyRoute extends _i8.PageRouteInfo<void> {
+  const LoyaltyRoute({List<_i8.PageRouteInfo>? children})
+    : super(LoyaltyRoute.name, initialChildren: children);
+
+  static const String name = 'LoyaltyRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i4.LoyaltyScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [_i5.MyOrderScreen]
+class MyOrderRoute extends _i8.PageRouteInfo<MyOrderRouteArgs> {
   MyOrderRoute({
     required String orderId,
-    _i7.Key? key,
-    List<_i6.PageRouteInfo>? children,
+    _i9.Key? key,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
          MyOrderRoute.name,
          args: MyOrderRouteArgs(orderId: orderId, key: key),
@@ -112,14 +148,14 @@ class MyOrderRoute extends _i6.PageRouteInfo<MyOrderRouteArgs> {
 
   static const String name = 'MyOrderRoute';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final pathParams = data.inheritedPathParams;
       final args = data.argsAs<MyOrderRouteArgs>(
         orElse: () => MyOrderRouteArgs(orderId: pathParams.getString('id')),
       );
-      return _i3.MyOrderScreen(orderId: args.orderId, key: args.key);
+      return _i5.MyOrderScreen(orderId: args.orderId, key: args.key);
     },
   );
 }
@@ -129,7 +165,7 @@ class MyOrderRouteArgs {
 
   final String orderId;
 
-  final _i7.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -138,33 +174,33 @@ class MyOrderRouteArgs {
 }
 
 /// generated route for
-/// [_i4.MyOrdersScreen]
-class MyOrdersRoute extends _i6.PageRouteInfo<void> {
-  const MyOrdersRoute({List<_i6.PageRouteInfo>? children})
+/// [_i6.MyOrdersScreen]
+class MyOrdersRoute extends _i8.PageRouteInfo<void> {
+  const MyOrdersRoute({List<_i8.PageRouteInfo>? children})
     : super(MyOrdersRoute.name, initialChildren: children);
 
   static const String name = 'MyOrdersRoute';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i4.MyOrdersScreen();
+      return const _i6.MyOrdersScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i5.UnsupportedScreen]
-class UnsupportedRoute extends _i6.PageRouteInfo<void> {
-  const UnsupportedRoute({List<_i6.PageRouteInfo>? children})
+/// [_i7.UnsupportedScreen]
+class UnsupportedRoute extends _i8.PageRouteInfo<void> {
+  const UnsupportedRoute({List<_i8.PageRouteInfo>? children})
     : super(UnsupportedRoute.name, initialChildren: children);
 
   static const String name = 'UnsupportedRoute';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i5.UnsupportedScreen();
+      return const _i7.UnsupportedScreen();
     },
   );
 }

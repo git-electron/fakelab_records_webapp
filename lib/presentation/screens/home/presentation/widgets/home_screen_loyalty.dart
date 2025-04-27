@@ -1,6 +1,8 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
@@ -24,8 +26,10 @@ class LoyaltyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tabsRouter = AutoTabsRouter.of(context);
+
     return Tappable(
-      onTap: () {},
+      onTap: () => _onTap(tabsRouter),
       child: AspectRatio(
         aspectRatio: 6.5 / 4,
         child: Container(
@@ -82,7 +86,7 @@ class LoyaltyCard extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: Tappable(
-                    onTap: () {},
+                    onTap: () => _onTap(tabsRouter),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -107,4 +111,7 @@ class LoyaltyCard extends StatelessWidget {
       ),
     );
   }
+
+  void _onTap(TabsRouter tabsRouter) =>
+      tabsRouter.navigate(const LoyaltyRoute());
 }

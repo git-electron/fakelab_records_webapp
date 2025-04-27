@@ -1,6 +1,11 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
+import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/utils/scroll_physics/snap_bounce_scroll_physics.dart';
 import 'widgets/order_card_small.dart';
@@ -49,7 +54,7 @@ class MyOrdersHorizontalScroll extends StatelessWidget {
       child: SizedBox(
         height: 120,
         child: ListView.separated(
-          itemCount: orders.length,
+          itemCount: orders.length + 1,
           scrollDirection: Axis.horizontal,
           clipBehavior: Clip.none,
           physics: const SnapBounceScrollPhysics(itemWidth: 210),
@@ -57,9 +62,44 @@ class MyOrdersHorizontalScroll extends StatelessWidget {
           itemBuilder: (context, index) => Padding(
             padding: Pad(
               left: index == 0 ? 20 : 0,
-              right: index == orders.length - 1 ? 20 : 0,
+              right: index == orders.length ? 20 : 0,
             ),
-            child: OrderCardSmall(orders[index]),
+            child: index == orders.length
+                ? const AllOrdersButton()
+                : OrderCardSmall(orders[index]),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AllOrdersButton extends StatelessWidget {
+  const AllOrdersButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final tabsRouter = AutoTabsRouter.of(context);
+
+    return Tappable(
+      onTap: () => tabsRouter.navigate(const MyOrdersRoute()),
+      child: Container(
+        height: 120,
+        padding: const Pad(all: 15),
+        decoration: ShapeDecoration(
+          color: context.colors.onBackground,
+          shape: SmoothRectangleBorder(
+            borderRadius: SmoothBorderRadius(
+              cornerRadius: 20,
+              cornerSmoothing: 0.6,
+            ),
+          ),
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          'Все\nзаказы',
+          style: context.styles.footer1.copyWith(
+            color: context.colors.background,
           ),
         ),
       ),
