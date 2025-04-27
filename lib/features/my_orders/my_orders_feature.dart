@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/bloc/my_orders_filters_bloc/my_orders_filters_bloc.dart';
 import '../../core/router/router.gr.dart';
 import '../../core/theme/theme_extensions.dart';
 import 'domain/bloc/my_orders_feature_bloc.dart';
@@ -15,13 +16,20 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class MyOrdersFeature extends StatelessWidget {
-  const MyOrdersFeature.vertical(this.bloc, {super.key})
-      : scrollDirection = Axis.vertical;
+  const MyOrdersFeature.vertical(
+    this.bloc, {
+    this.filtersBloc,
+    super.key,
+  }) : scrollDirection = Axis.vertical;
 
-  const MyOrdersFeature.horizontal(this.bloc, {super.key})
-      : scrollDirection = Axis.horizontal;
+  const MyOrdersFeature.horizontal(
+    this.bloc, {
+    super.key,
+  })  : scrollDirection = Axis.horizontal,
+        filtersBloc = null;
 
   final MyOrdersFeatureBloc bloc;
+  final MyOrdersFiltersBloc? filtersBloc;
   final Axis scrollDirection;
 
   @override
@@ -31,7 +39,16 @@ class MyOrdersFeature extends StatelessWidget {
       child: BlocBuilder<MyOrdersFeatureBloc, MyOrdersFeatureState>(
         builder: (context, state) {
           return switch (scrollDirection) {
-            Axis.vertical => MyOrdersVerticalScroll(state),
+            Axis.vertical => filtersBloc != null
+                ? BlocBuilder<MyOrdersFiltersBloc, MyOrdersFiltersState>(
+                    builder: (context, filtersState) {
+                      return MyOrdersVerticalScroll(
+                        state,
+                        filtersState: filtersState,
+                      );
+                    },
+                  )
+                : MyOrdersVerticalScroll(state),
             Axis.horizontal => MyOrdersHorizontalScroll(state),
           };
         },
@@ -41,15 +58,20 @@ class MyOrdersFeature extends StatelessWidget {
 }
 
 class MyOrdersVerticalScroll extends StatelessWidget {
-  const MyOrdersVerticalScroll(this.state, {super.key});
+  const MyOrdersVerticalScroll(
+    this.state, {
+    this.filtersState,
+    super.key,
+  });
 
   final MyOrdersFeatureState state;
+  final MyOrdersFiltersState? filtersState;
 
   @override
   Widget build(BuildContext context) {
-    if (!state.hasOrders) return const EmptyPage(isExpanded: false);
+    final List<Order> orders = _orders;
 
-    final List<Order> orders = state.orders!;
+    if (orders.isEmpty) return const EmptyPage(isExpanded: false);
 
     return ListView.separated(
       itemCount: orders.length,
@@ -59,6 +81,27 @@ class MyOrdersVerticalScroll extends StatelessWidget {
       separatorBuilder: (context, index) => const Gap(10),
       itemBuilder: (context, index) => OrderCard(orders[index]),
     );
+  }
+
+  List<Order> get _orders {
+    if (filtersState != null) {
+      return state.orders?.where((order) {
+            bool isProperOrderType = true;
+            bool isProperOrderStatus = true;
+
+            if (filtersState!.type != null) {
+              isProperOrderType = order.type == filtersState!.type;
+            }
+            if (filtersState!.status != null) {
+              isProperOrderStatus = order.status == filtersState!.status;
+            }
+
+            return isProperOrderType && isProperOrderStatus;
+          }).toList() ??
+          [];
+    }
+
+    return state.orders ?? [];
   }
 }
 

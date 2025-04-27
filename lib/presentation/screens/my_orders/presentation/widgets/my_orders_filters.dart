@@ -2,6 +2,8 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/bloc/my_orders_filters_bloc/my_orders_filters_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import '../../../../ui/app_dropdown_button.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,8 @@ class MyOrdersFilters extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyOrdersFiltersBloc bloc = context.read();
+
     return Padding(
       padding: const Pad(horizontal: 20),
       child: Row(
@@ -24,7 +28,9 @@ class MyOrdersFilters extends StatelessWidget {
                       ))
                   .toList(),
               hintText: 'Услуга',
-              onChanged: print,
+              onChanged: (type) => bloc.add(
+                MyOrdersFiltersEvent.typeFilterChanged(type),
+              ),
             ),
           ),
           const Gap(10),
@@ -37,7 +43,9 @@ class MyOrdersFilters extends StatelessWidget {
                       ))
                   .toList(),
               hintText: 'Статус заказа',
-              onChanged: print,
+              onChanged: (status) => bloc.add(
+                MyOrdersFiltersEvent.statusFilterChanged(status),
+              ),
               menuItemBuilder: (item) =>
                   _orderStatusMenuItemBuilder(context, item),
               selectedItemBuilder: (item) =>

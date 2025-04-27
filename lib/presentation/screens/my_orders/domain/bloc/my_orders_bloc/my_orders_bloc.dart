@@ -1,5 +1,5 @@
-import '../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
-import '../../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
+import '../../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
+import '../../../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

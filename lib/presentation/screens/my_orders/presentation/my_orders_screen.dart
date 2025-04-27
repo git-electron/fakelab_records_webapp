@@ -1,10 +1,11 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/bloc/my_orders_filters_bloc/my_orders_filters_bloc.dart';
 import '../../../../core/di/injector.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import '../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import '../../base/widgets/base_app_bar.dart';
-import '../domain/bloc/my_orders_bloc.dart';
+import '../domain/bloc/my_orders_bloc/my_orders_bloc.dart';
 import 'widgets/my_orders_filters.dart';
 import 'widgets/my_orders_header.dart';
 import 'widgets/my_orders_screen_my_orders.dart';
@@ -21,10 +22,15 @@ class MyOrdersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => $<MyOrdersBloc>(
-        param1: $<MyOrdersFeatureBloc>(param1: false),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => $<MyOrdersBloc>(
+            param1: $<MyOrdersFeatureBloc>(param1: false),
+          ),
+        ),
+        BlocProvider(create: (context) => $<MyOrdersFiltersBloc>()),
+      ],
       child: Scaffold(
         backgroundColor: context.colors.background,
         body: BlocBuilder<MyOrdersBloc, MyOrdersState>(

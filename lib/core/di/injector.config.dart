@@ -34,8 +34,10 @@ import 'package:fakelab_records_webapp/presentation/screens/my_order/data/client
     as _i129;
 import 'package:fakelab_records_webapp/presentation/screens/my_order/domain/bloc/my_order_bloc.dart'
     as _i843;
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/bloc/my_orders_bloc.dart'
-    as _i296;
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/bloc/my_orders_bloc/my_orders_bloc.dart'
+    as _i768;
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/bloc/my_orders_filters_bloc/my_orders_filters_bloc.dart'
+    as _i454;
 import 'package:firebase_database/firebase_database.dart' as _i345;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -58,6 +60,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i345.DatabaseReference>(() => locator.ref);
     gh.factory<_i974.Logger>(() => locator.logger);
     gh.factory<_i435.TelegramService>(() => _i435.TelegramService());
+    gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.singleton<_i352.AppRouter>(() => _i352.AppRouter(
@@ -117,11 +120,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           myOrdersFeatureBloc,
         ));
-    gh.factoryParam<_i296.MyOrdersBloc, _i790.MyOrdersFeatureBloc, dynamic>((
+    gh.factoryParam<_i768.MyOrdersBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,
       _,
     ) =>
-        _i296.MyOrdersBloc(
+        _i768.MyOrdersBloc(
           gh<_i109.UserBloc>(),
           myOrdersFeatureBloc,
         ));
