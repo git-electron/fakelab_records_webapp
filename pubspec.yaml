@@ -24,21 +24,23 @@ dependencies:
   injectable: ^2.5.0
   auto_route: ^10.0.1
   photo_view: ^0.15.0
+  collection: ^1.19.0
   flutter_svg: ^2.0.17
   flutter_bloc: ^9.1.0
   flutter_gen: ^5.10.0
   url_launcher: ^6.3.1
   figma_squircle: ^0.6.3
+  firebase_core: ^3.13.0
   cupertino_icons: ^1.0.8
   json_annotation: ^4.9.0
   dio_smart_retry: ^7.0.1
+  dropdown_button2: ^2.3.9
   freezed_annotation: ^2.4.4
+  firebase_database: ^11.3.5
   assets_audio_player: ^3.1.1
   theme_tailor_annotation: ^3.0.2
   assorted_layout_widgets: ^11.0.0
   flutter_widget_from_html: ^0.16.0
-  firebase_core: ^3.13.0
-  firebase_database: ^11.3.5
 
 dev_dependencies:
   flutter_test:
@@ -70,19 +72,29 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/icons/arrow_down/
+    - assets/icons/arrow_left/
+    - assets/icons/arrow_right/
+    - assets/icons/arrow_up/
     - assets/icons/box/
-    - assets/icons/pin/
-    - assets/icons/logo/
-    - assets/icons/home/
+    - assets/icons/calendar/
+    - assets/icons/cart/
     - assets/icons/check/
     - assets/icons/clock/
+    - assets/icons/copy/
     - assets/icons/cross/
-    - assets/icons/qr_code/
-    - assets/icons/calendar/
-    - assets/icons/question/
-    - assets/icons/equipment/
-    - assets/icons/arrow_right/
     - assets/icons/double_check/
+    - assets/icons/equipment/
+    - assets/icons/home/
+    - assets/icons/keyboard_arrow_down/
+    - assets/icons/keyboard_arrow_left/
+    - assets/icons/keyboard_arrow_right/
+    - assets/icons/keyboard_arrow_up/
+    - assets/icons/logo/
+    - assets/icons/map/
+    - assets/icons/pin/
+    - assets/icons/qr_code/
+    - assets/icons/question/
     - assets/icons/logo/fakelab/
     - assets/icons/logo/records/
 

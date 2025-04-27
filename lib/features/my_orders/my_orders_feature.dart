@@ -5,6 +5,7 @@ import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/features/my_orders/widgets/order_card.dart';
+import 'package:fakelab_records_webapp/presentation/ui/pages/empty_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,7 +47,7 @@ class MyOrdersVerticalScroll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!state.hasOrders) return const SizedBox();
+    if (!state.hasOrders) return const EmptyPage(isExpanded: false);
 
     final List<Order> orders = state.orders!;
 

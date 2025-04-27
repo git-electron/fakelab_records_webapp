@@ -69,14 +69,14 @@ class BottomNavBar extends StatelessWidget {
       isActive ? _activeIcon(index) : _inactiveIcon(index);
 
   SvgGenImage _activeIcon(int index) => [
-        Assets.icons.home.background,
-        Assets.icons.qrCode.background,
-        Assets.icons.box.background,
+        Assets.icons.home.dark,
+        Assets.icons.qrCode.dark,
+        Assets.icons.box.dark,
       ][index];
 
   SvgGenImage _inactiveIcon(int index) => [
-        Assets.icons.home.white,
-        Assets.icons.qrCode.white,
-        Assets.icons.box.white,
+        Assets.icons.home.light,
+        Assets.icons.qrCode.light,
+        Assets.icons.box.light,
       ][index];
 }

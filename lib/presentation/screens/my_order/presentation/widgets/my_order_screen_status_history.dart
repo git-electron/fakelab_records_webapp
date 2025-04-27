@@ -127,11 +127,11 @@ class OrderStatusHistoryItemInfo extends StatelessWidget {
   String _dateTime(String date, String time) => '$date в $time';
 
   SvgGenImage get icon => switch (item.status) {
-        OrderStatus.REQUEST => Assets.icons.box.background,
-        OrderStatus.PENDING => Assets.icons.clock.background,
-        OrderStatus.IN_PROGRESS => Assets.icons.clock.background,
-        OrderStatus.AWAITING_CONFIRMATION => Assets.icons.check.background,
-        OrderStatus.COMPLETED => Assets.icons.doubleCheck.background,
-        OrderStatus.CANCELLED => Assets.icons.cross.background,
+        OrderStatus.REQUEST => Assets.icons.box.dark,
+        OrderStatus.PENDING => Assets.icons.clock.dark,
+        OrderStatus.IN_PROGRESS => Assets.icons.clock.dark,
+        OrderStatus.AWAITING_CONFIRMATION => Assets.icons.check.dark,
+        OrderStatus.COMPLETED => Assets.icons.doubleCheck.dark,
+        OrderStatus.CANCELLED => Assets.icons.cross.dark,
       };
 }

@@ -104,7 +104,7 @@ class OrderIdCard extends StatelessWidget {
                 const SnackBar(content: Text('Скопировано')),
               );
             },
-            child: Assets.icons.copy.svg(height: 30, width: 30),
+            child: Assets.icons.copy.light.svg(height: 30, width: 30),
           ),
         ],
       ),

@@ -5,6 +5,8 @@ import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/base/widgets/base_app_bar.dart';
 import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/bloc/my_orders_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/presentation/widgets/my_orders_filters.dart';
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/presentation/widgets/my_orders_header.dart';
 import 'package:fakelab_records_webapp/presentation/screens/my_orders/presentation/widgets/my_orders_screen_my_orders.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/loading_page.dart';
@@ -62,27 +64,11 @@ class MyOrdersScreenContent extends StatelessWidget {
           Gap(55),
           MyOrdersHeader(),
           Gap(20),
+          MyOrdersFilters(),
+          Gap(20),
           MyOrdersScreenMyOrders(),
           Gap(140),
         ],
-      ),
-    );
-  }
-}
-
-class MyOrdersHeader extends StatelessWidget {
-  const MyOrdersHeader({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: context.colors.background,
-      padding: const Pad(horizontal: 20),
-      child: Text(
-        'Мои заказы',
-        style: context.styles.subtitle1.copyWith(
-          color: context.colors.title,
-        ),
       ),
     );
   }
