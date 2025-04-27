@@ -16,7 +16,7 @@ class Tappable extends StatefulWidget {
     this.endCurve = Curves.fastOutSlowIn,
     this.onLongTap,
     this.enableLongTapRepeatEvent = false,
-    this.isIgnoreIfOnTapIsNull = true,
+    this.shouldIgnoreIfOnTapIsNull = true,
   });
   // child: your widget that you want to put the zoom effect on.
   final Widget child;
@@ -46,7 +46,7 @@ class Tappable extends StatefulWidget {
   final Curve beginCurve;
   final Curve endCurve;
 
-  final bool isIgnoreIfOnTapIsNull;
+  final bool shouldIgnoreIfOnTapIsNull;
   @override
   State<StatefulWidget> createState() => _TappableState();
 }
@@ -81,7 +81,7 @@ class _TappableState extends State<Tappable>
 
   bool _isOnTap = false;
 
-  bool get _isIgnore => widget.isIgnoreIfOnTapIsNull && widget.onTap == null;
+  bool get _isIgnore => widget.shouldIgnoreIfOnTapIsNull && widget.onTap == null;
 
   @override
   Widget build(BuildContext context) {
