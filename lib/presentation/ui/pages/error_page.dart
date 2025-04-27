@@ -1,8 +1,8 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/constants/constants.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
+import '../../../core/constants/constants.dart';
+import '../../../core/extensions/string_extensions.dart';
+import '../../../core/theme/theme_extensions.dart';
+import '../wrappers/tappable.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher_string.dart';

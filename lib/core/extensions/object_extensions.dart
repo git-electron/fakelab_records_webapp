@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:fakelab_records_webapp/core/constants/types.dart';
+import '../constants/types.dart';
 
 extension ObjectExtensions on Object? {
   Json? firebaseResponseToJson() {

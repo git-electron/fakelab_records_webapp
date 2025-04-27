@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/core/constants/constants.dart';
+import '../../../constants/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';

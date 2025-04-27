@@ -1,8 +1,8 @@
-import 'package:fakelab_records_webapp/core/data/client/user_client.dart';
-import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
-import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
+import '../../../data/client/user_client.dart';
+import '../telegram_data_bloc/telegram_data_bloc.dart';
+import '../../models/result/result.dart';
+import '../../models/user/user.dart';
+import '../../../utils/try_or/try_or_null.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

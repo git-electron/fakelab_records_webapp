@@ -1,9 +1,9 @@
-import 'package:fakelab_records_webapp/core/di/injector.dart';
-import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/audio_player_bloc/audio_player_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/domain/models/example_genre.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/domain/models/example_service_type.dart';
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/examples/example_card.dart';
+import '../../../../../../core/di/injector.dart';
+import '../../../../../../core/gen/assets.gen.dart';
+import '../../../domain/bloc/audio_player_bloc/audio_player_bloc.dart';
+import '../../../domain/models/example_genre.dart';
+import '../../../domain/models/example_service_type.dart';
+import 'example_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';

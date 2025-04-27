@@ -1,8 +1,8 @@
-import 'package:fakelab_records_webapp/core/constants/mock.dart';
-import 'package:fakelab_records_webapp/core/constants/types.dart';
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
-import 'package:fakelab_records_webapp/core/extensions/object_extensions.dart';
+import '../../constants/mock.dart';
+import '../../constants/types.dart';
+import '../../domain/models/result/result.dart';
+import '../../domain/models/user/user.dart';
+import '../../extensions/object_extensions.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';

@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import '../../../../../core/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/theme/theme_extensions.dart';
 
 class HomeScreenPromoText extends StatelessWidget {
   const HomeScreenPromoText({super.key});

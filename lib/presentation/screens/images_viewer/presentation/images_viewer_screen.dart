@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import '../../../../core/di/injector.dart';
-import '../../../../core/theme/theme_extensions.dart';
-import 'widgets/images_viewer_screen_app_bar.dart';
-import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_view/photo_view.dart';
 
+import '../../../../core/di/injector.dart';
+import '../../../../core/theme/theme_extensions.dart';
+import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../domain/images_viewer_bloc.dart';
+import 'widgets/images_viewer_screen_app_bar.dart';
 
 enum ImageSource { asset, network }
 

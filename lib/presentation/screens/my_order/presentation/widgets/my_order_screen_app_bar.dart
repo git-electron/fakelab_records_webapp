@@ -1,5 +1,5 @@
 import 'package:blur/blur.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_order/domain/bloc/my_order_bloc.dart';
+import '../../domain/bloc/my_order_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/theme/theme_extensions.dart';
 import '../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';

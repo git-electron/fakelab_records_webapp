@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/core/constants/constants.dart';
+import '../../../../../../core/constants/constants.dart';
 
 import '../../../../../../core/gen/assets.gen.dart';
 import '../../../../../../core/theme/theme_extensions.dart';

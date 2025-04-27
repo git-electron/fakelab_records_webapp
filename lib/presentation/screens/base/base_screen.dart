@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/router/router.gr.dart';
-import 'package:fakelab_records_webapp/presentation/ui/bottom_nav_bar.dart';
+import '../../../core/router/router.gr.dart';
+import '../../ui/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()

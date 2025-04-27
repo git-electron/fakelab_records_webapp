@@ -1,6 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/router/router.gr.dart';
+import '../../../core/router/router.gr.dart';
 import '../../../core/extensions/datetime_extensions.dart';
 import '../../../core/theme/theme_extensions.dart';
 import '../domain/models/order/order.dart';

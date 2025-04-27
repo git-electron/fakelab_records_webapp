@@ -1,6 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_button.dart';
+import '../../../../../core/theme/theme_extensions.dart';
+import '../../../../ui/app_dropdown_button.dart';
 import 'package:flutter/material.dart';
 
 class MyOrdersFilters extends StatelessWidget {

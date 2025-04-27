@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
+import 'core/domain/bloc/user_bloc/user_bloc.dart';
 
 import 'core/di/injector.dart';
 import 'core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';

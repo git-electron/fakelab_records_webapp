@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import '../../../extensions/string_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'result.freezed.dart';

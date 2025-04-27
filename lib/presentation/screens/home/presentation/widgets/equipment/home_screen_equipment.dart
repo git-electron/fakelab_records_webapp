@@ -1,8 +1,9 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import '../../../../../../core/theme/theme_extensions.dart';
-import 'equipment_list.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../../../core/theme/theme_extensions.dart';
+import 'equipment_list.dart';
 
 class HomeScreenEquipment extends StatelessWidget {
   const HomeScreenEquipment({super.key});

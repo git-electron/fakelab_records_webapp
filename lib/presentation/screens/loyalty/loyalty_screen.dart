@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import '../../../core/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

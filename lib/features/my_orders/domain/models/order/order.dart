@@ -1,10 +1,10 @@
-import '../../../../../core/domain/models/rating/rating.dart';
-import '../../../../../core/domain/models/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'service/order_service.dart';
+import '../../../../../core/domain/models/rating/rating.dart';
+import '../../../../../core/domain/models/user/user.dart';
 import 'order_status.dart';
 import 'order_type.dart';
+import 'service/order_service.dart';
 import 'status_history_item/order_status_history_item.dart';
 
 part 'order.freezed.dart';

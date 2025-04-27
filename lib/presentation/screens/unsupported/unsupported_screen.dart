@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
+import '../../ui/pages/error_page.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()

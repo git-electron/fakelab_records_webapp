@@ -1,7 +1,8 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:flutter/material.dart';
+
 import '../../../../../../core/gen/assets.gen.dart';
 import 'equipment_tile.dart';
-import 'package:flutter/material.dart';
 
 class EquipmentList extends StatelessWidget {
   const EquipmentList({super.key});
