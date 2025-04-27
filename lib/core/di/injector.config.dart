@@ -34,6 +34,8 @@ import 'package:fakelab_records_webapp/presentation/screens/my_order/data/client
     as _i129;
 import 'package:fakelab_records_webapp/presentation/screens/my_order/domain/bloc/my_order_bloc.dart'
     as _i843;
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/bloc/my_orders_bloc.dart'
+    as _i296;
 import 'package:firebase_database/firebase_database.dart' as _i345;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -98,13 +100,30 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i415.UserClient>(),
           gh<_i133.TelegramDataBloc>(),
         ));
-    gh.factory<_i790.MyOrdersFeatureBloc>(() => _i790.MyOrdersFeatureBloc(
+    gh.factoryParam<_i790.MyOrdersFeatureBloc, bool, dynamic>((
+      hasLimit,
+      _,
+    ) =>
+        _i790.MyOrdersFeatureBloc(
+          hasLimit,
           gh<_i109.UserBloc>(),
           gh<_i652.OrdersClient>(),
         ));
-    gh.factory<_i19.HomeBloc>(() => _i19.HomeBloc(
+    gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
+      myOrdersFeatureBloc,
+      _,
+    ) =>
+        _i19.HomeBloc(
           gh<_i109.UserBloc>(),
-          gh<_i790.MyOrdersFeatureBloc>(),
+          myOrdersFeatureBloc,
+        ));
+    gh.factoryParam<_i296.MyOrdersBloc, _i790.MyOrdersFeatureBloc, dynamic>((
+      myOrdersFeatureBloc,
+      _,
+    ) =>
+        _i296.MyOrdersBloc(
+          gh<_i109.UserBloc>(),
+          myOrdersFeatureBloc,
         ));
     return this;
   }

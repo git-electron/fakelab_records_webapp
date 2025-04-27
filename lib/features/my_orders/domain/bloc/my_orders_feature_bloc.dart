@@ -14,8 +14,11 @@ part 'my_orders_feature_bloc.freezed.dart';
 @injectable
 class MyOrdersFeatureBloc
     extends Bloc<MyOrdersFeatureEvent, MyOrdersFeatureState> {
-  MyOrdersFeatureBloc(this.userBloc, this.ordersClient)
-      : super(const _Loading()) {
+  MyOrdersFeatureBloc(
+    @factoryParam this.hasLimit,
+    this.userBloc,
+    this.ordersClient,
+  ) : super(const _Loading()) {
     on<_SetError>(_onSetError);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetLoading>(_onSetLoading);
@@ -24,6 +27,7 @@ class MyOrdersFeatureBloc
     userBloc.stream.listen(_onUserStateEvent);
   }
 
+  final bool hasLimit;
   final UserBloc userBloc;
   final OrdersClient ordersClient;
 
@@ -55,7 +59,10 @@ class MyOrdersFeatureBloc
   Future<void> _getOrders() async {
     final int userId = userBloc.state.user!.id;
     add(const MyOrdersFeatureEvent.setLoading());
-    final Result<List<Order>> result = await ordersClient.getOrders(userId);
+    final Result<List<Order>> result = await ordersClient.getOrders(
+      userId,
+      hasLimit: hasLimit,
+    );
     result.when(
       success: (orders) => add(MyOrdersFeatureEvent.setLoaded(orders)),
       error: (message) => add(MyOrdersFeatureEvent.setError(message)),

@@ -15,17 +15,20 @@ class OrdersClient {
   final Logger logger;
   final DatabaseReference ref;
 
-  Future<Result<List<Order>>> getOrders(int userId) async {
-    if (kDebugMode) return Result.success(Mock.orders);
+  Future<Result<List<Order>>> getOrders(
+    int userId, {
+    bool hasLimit = false,
+  }) async {
+    if (kDebugMode) {
+      return Result.success(hasLimit ? Mock.orders.sublist(0, 5) : Mock.orders);
+    }
 
     try {
       const String path = 'orders';
-      final DataSnapshot snapshot = await ref
-          .child(path)
-          .orderByChild('customer/id')
-          .equalTo(userId)
-          .limitToFirst(8)
-          .get();
+      final Query query =
+          ref.child(path).orderByChild('customer/id').equalTo(userId);
+      final DataSnapshot snapshot =
+          hasLimit ? await query.limitToFirst(5).get() : await query.get();
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 

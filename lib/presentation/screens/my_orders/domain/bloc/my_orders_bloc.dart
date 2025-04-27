@@ -4,24 +4,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'home_event.dart';
-part 'home_state.dart';
-part 'home_bloc.freezed.dart';
+part 'my_orders_event.dart';
+part 'my_orders_state.dart';
+part 'my_orders_bloc.freezed.dart';
 
 @injectable
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc(
+class MyOrdersBloc extends Bloc<MyOrdersEvent, MyOrdersState> {
+  MyOrdersBloc(
     this.userBloc,
     @factoryParam this.myOrdersFeatureBloc,
-  ) : super(const _HomeState()) {
+  ) : super(const _MyOrdersState()) {
     on<_UserStateChanged>(_onUserStateChanged);
     on<_MyOrdersFeatureStateChanged>(_onMyOrdersFeatureStateChanged);
 
     userBloc.stream.listen(
-      (state) => add(HomeEvent.userStateChanged(state)),
+      (state) => add(MyOrdersEvent.userStateChanged(state)),
     );
     myOrdersFeatureBloc.stream.listen(
-      (state) => add(HomeEvent.myOrdersFeatureStateChanged(state)),
+      (state) => add(MyOrdersEvent.myOrdersFeatureStateChanged(state)),
     );
   }
 
@@ -30,14 +30,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _onUserStateChanged(
     _UserStateChanged event,
-    Emitter<HomeState> emit,
+    Emitter<MyOrdersState> emit,
   ) async {
     emit(state.copyWith(userState: event.state));
   }
 
   Future<void> _onMyOrdersFeatureStateChanged(
     _MyOrdersFeatureStateChanged event,
-    Emitter<HomeState> emit,
+    Emitter<MyOrdersState> emit,
   ) async {
     emit(state.copyWith(myOrdersFeatureState: event.state));
   }

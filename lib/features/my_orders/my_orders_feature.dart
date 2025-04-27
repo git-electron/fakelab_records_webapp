@@ -4,6 +4,7 @@ import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
+import 'package:fakelab_records_webapp/features/my_orders/widgets/order_card.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,11 +30,33 @@ class MyOrdersFeature extends StatelessWidget {
       child: BlocBuilder<MyOrdersFeatureBloc, MyOrdersFeatureState>(
         builder: (context, state) {
           return switch (scrollDirection) {
-            Axis.vertical => const Placeholder(),
+            Axis.vertical => MyOrdersVerticalScroll(state),
             Axis.horizontal => MyOrdersHorizontalScroll(state),
           };
         },
       ),
+    );
+  }
+}
+
+class MyOrdersVerticalScroll extends StatelessWidget {
+  const MyOrdersVerticalScroll(this.state, {super.key});
+
+  final MyOrdersFeatureState state;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!state.hasOrders) return const SizedBox();
+
+    final List<Order> orders = state.orders!;
+
+    return ListView.separated(
+      itemCount: orders.length,
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      separatorBuilder: (context, index) => const Gap(10),
+      itemBuilder: (context, index) => OrderCard(orders[index]),
     );
   }
 }
