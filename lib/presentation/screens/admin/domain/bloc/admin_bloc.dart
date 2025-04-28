@@ -17,11 +17,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
 
     telegramService.showBackButton();
     tryOrNull(telegramService.requestFullscreen);
-    tryOrNull(
-      () => telegramDataBloc.add(TelegramDataEvent.setData(
-        telegramService.getTelegramData()!,
-      )),
-    );
+    tryOrNullAsync(_updateTelegramData);
   }
 
   @override
@@ -29,15 +25,23 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
     telegramService.hideBackButton();
     if (!telegramDataBloc.state.isMobile) {
       tryOrNull(telegramService.exitFullscreen);
-      tryOrNull(
-        () => telegramDataBloc.add(TelegramDataEvent.setData(
-          telegramService.getTelegramData()!,
-        )),
-      );
+      tryOrNullAsync(_updateTelegramData);
     }
     return super.close();
   }
 
   final TelegramService telegramService;
   final TelegramDataBloc telegramDataBloc;
+
+  Future<void> _updateTelegramData() async {
+    telegramDataBloc.add(TelegramDataEvent.setData(
+      telegramService.getTelegramData()!,
+    ));
+    await Future.delayed(const Duration());
+    tryOrNull(
+      () => telegramDataBloc.add(TelegramDataEvent.setData(
+        telegramService.getTelegramData()!,
+      )),
+    );
+  }
 }
