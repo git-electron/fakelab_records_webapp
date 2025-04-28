@@ -16,6 +16,8 @@ class AppRouter extends RootStackRouter {
   final UserBloc userBloc;
   final TelegramDataBloc telegramDataBloc;
 
+  bool get isMobile => telegramDataBloc.state.isMobile;
+
   @override
   RouteType get defaultRouteType => const RouteType.material();
 
@@ -28,15 +30,15 @@ Path params: ${resolver.route.params}
 Args: ${resolver.route.args}''');
       resolver.next();
     }),
-    AutoRouteGuard.simple((resolver, router) {
-      if (resolver.routeName == AdminRoute.name) {
-        if (!userBloc.state.isAuthorized ||
-            !(userBloc.state.user?.isAdmin ?? false)) {
-          resolver.redirectUntil(const HomeRoute());
-        }
-      }
-      resolver.next();
-    }),
+    // AutoRouteGuard.simple((resolver, router) {
+    //   if (resolver.routeName == AdminRoute.name) {
+    //     if (!userBloc.state.isAuthorized ||
+    //         !(userBloc.state.user?.isAdmin ?? false)) {
+    //       resolver.redirectUntil(const HomeRoute());
+    //     }
+    //   }
+    //   resolver.next();
+    // }), //TODO: uncomment
     AutoRouteGuard.simple(
       (resolver, router) {
         final bool isSupported = telegramDataBloc.state.isSupported;
@@ -73,16 +75,13 @@ Args: ${resolver.route.args}''');
         AutoRoute(page: MyOrderRoute.page, path: '/orders/:id'),
         AutoRoute(page: ImagesViewerRoute.page, path: '/images'),
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
-        telegramDataBloc.state.isMobile
-            ? AutoRoute(page: AdminRoute.page, path: '/admin')
-            : CustomRoute(
-                page: AdminRoute.page,
-                path: '/admin',
-              ),
+        if (isMobile) AutoRoute(page: AdminRoute.page, path: '/admin'),
         ...redirections,
       ];
 
-  List<CustomRoute> get customRoutes => [];
+  List<CustomRoute> get customRoutes => [
+        if (!isMobile) CustomRoute(page: AdminRoute.page, path: '/admin'),
+      ];
 
   List<RedirectRoute> get redirections => [
         RedirectRoute(path: '*', redirectTo: '/'),
