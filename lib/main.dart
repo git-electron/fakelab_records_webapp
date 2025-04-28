@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
 import 'core/domain/bloc/user_bloc/user_bloc.dart';
 
 import 'core/di/injector.dart';
@@ -12,7 +14,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
 
-const bool isDevelopment = true;
+const bool isDevelopment = kDebugMode && false;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

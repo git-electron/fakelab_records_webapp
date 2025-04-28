@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
-import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import '../domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
 import 'package:logger/logger.dart';
 import 'router.gr.dart';
@@ -35,22 +34,6 @@ Args: ${resolver.route.args}''');
             !(userBloc.state.user?.isAdmin ?? false)) {
           resolver.redirectUntil(const HomeRoute());
         }
-
-        tryOrNull(telegramDataBloc.telegramService.requestFullscreen);
-      } else {
-        final bool isMobile =
-            telegramDataBloc.state.telegramData?.meta.isMobile ?? false;
-        if (!isMobile) {
-          tryOrNull(telegramDataBloc.telegramService.exitFullscreen);
-        }
-      }
-      resolver.next();
-    }),
-    AutoRouteGuard.simple((resolver, router) {
-      if (!rootStackRoutesNames.contains(resolver.routeName)) {
-        telegramDataBloc.telegramService.showBackButton();
-      } else {
-        telegramDataBloc.telegramService.hideBackButton();
       }
       resolver.next();
     }),
@@ -74,14 +57,6 @@ Args: ${resolver.route.args}''');
       },
     ),
   ];
-
-  List<String> get rootStackRoutesNames => [
-        BaseRoute.name,
-        HomeRoute.name,
-        LoyaltyRoute.name,
-        MyOrdersRoute.name,
-        UnsupportedRoute.name,
-      ];
 
   @override
   List<AutoRoute> get routes => [

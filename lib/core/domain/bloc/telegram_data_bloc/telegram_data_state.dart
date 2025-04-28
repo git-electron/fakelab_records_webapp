@@ -17,4 +17,9 @@ class TelegramDataState with _$TelegramDataState {
 
   TelegramData? get telegramData =>
       whenOrNull(loaded: (telegramData) => telegramData);
+
+  bool get isMobile => maybeWhen(
+        loaded: (data) => data.meta.isMobile,
+        orElse: () => false,
+      );
 }
