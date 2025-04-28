@@ -29,23 +29,23 @@ Path params: ${resolver.route.params}
 Args: ${resolver.route.args}''');
       resolver.next();
     }),
-    AutoRouteGuard.simple((resolver, router) {
-      if (resolver.routeName == AdminRoute.name) {
-        if (!userBloc.state.isAuthorized ||
-            !(userBloc.state.user?.isAdmin ?? false)) {
-          resolver.redirectUntil(const HomeRoute());
-        }
+    // AutoRouteGuard.simple((resolver, router) {
+    //   if (resolver.routeName == AdminRoute.name) {
+    //     if (!userBloc.state.isAuthorized ||
+    //         !(userBloc.state.user?.isAdmin ?? false)) {
+    //       resolver.redirectUntil(const HomeRoute());
+    //     }
 
-        tryOrNull(telegramDataBloc.telegramService.requestFullscreen);
-      } else {
-        final bool isMobile =
-            telegramDataBloc.state.telegramData?.meta.isMobile ?? false;
-        if (!isMobile) {
-          tryOrNull(telegramDataBloc.telegramService.exitFullscreen);
-        }
-      }
-      resolver.next();
-    }),
+    //     tryOrNull(telegramDataBloc.telegramService.requestFullscreen);
+    //   } else {
+    //     final bool isMobile =
+    //         telegramDataBloc.state.telegramData?.meta.isMobile ?? false;
+    //     if (!isMobile) {
+    //       tryOrNull(telegramDataBloc.telegramService.exitFullscreen);
+    //     }
+    //   }
+    //   resolver.next();
+    // }),
     AutoRouteGuard.simple((resolver, router) {
       if (router.canPop() && resolver.routeName != HomeRoute.name) {
         telegramDataBloc.telegramService.showBackButton();
