@@ -73,11 +73,22 @@ Args: ${resolver.route.args}''');
         AutoRoute(page: MyOrderRoute.page, path: '/orders/:id'),
         AutoRoute(page: ImagesViewerRoute.page, path: '/images'),
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
-        AutoRoute(page: AdminRoute.page, path: '/admin'),
+        // telegramDataBloc.state.isMobile
+        //     ? AutoRoute(page: AdminRoute.page, path: '/admin')
+        //     : CustomRoute(
+        //         page: AdminRoute.page,
+        //         path: '/admin',
+        //       ),
         ...redirections,
       ];
 
-  List<CustomRoute> get customRoutes => [];
+  List<CustomRoute> get customRoutes => [
+        CustomRoute(
+          page: AdminRoute.page,
+          path: '/admin',
+          transitionsBuilder: TransitionsBuilders.noTransition,
+        ),
+      ];
 
   List<RedirectRoute> get redirections => [
         RedirectRoute(path: '*', redirectTo: '/'),
