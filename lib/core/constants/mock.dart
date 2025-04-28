@@ -27,6 +27,7 @@ class Mock {
     platform: 'unknown',
     safeAreaInset: SafeAreaInset(top: 55, left: 0, right: 0, bottom: 20),
     contentSafeAreaInset: SafeAreaInset(top: 45, left: 0, right: 0, bottom: 0),
+    isFullscreen: false,
   );
 
   static final User user = User(

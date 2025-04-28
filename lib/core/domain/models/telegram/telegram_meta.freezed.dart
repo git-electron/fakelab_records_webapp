@@ -23,6 +23,7 @@ mixin _$TelegramMeta {
   String get platform => throw _privateConstructorUsedError;
   SafeAreaInset get safeAreaInset => throw _privateConstructorUsedError;
   SafeAreaInset get contentSafeAreaInset => throw _privateConstructorUsedError;
+  bool get isFullscreen => throw _privateConstructorUsedError;
 
   /// Serializes this TelegramMeta to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +44,8 @@ abstract class $TelegramMetaCopyWith<$Res> {
   $Res call(
       {String platform,
       SafeAreaInset safeAreaInset,
-      SafeAreaInset contentSafeAreaInset});
+      SafeAreaInset contentSafeAreaInset,
+      bool isFullscreen});
 
   $SafeAreaInsetCopyWith<$Res> get safeAreaInset;
   $SafeAreaInsetCopyWith<$Res> get contentSafeAreaInset;
@@ -67,6 +69,7 @@ class _$TelegramMetaCopyWithImpl<$Res, $Val extends TelegramMeta>
     Object? platform = null,
     Object? safeAreaInset = null,
     Object? contentSafeAreaInset = null,
+    Object? isFullscreen = null,
   }) {
     return _then(_value.copyWith(
       platform: null == platform
@@ -81,6 +84,10 @@ class _$TelegramMetaCopyWithImpl<$Res, $Val extends TelegramMeta>
           ? _value.contentSafeAreaInset
           : contentSafeAreaInset // ignore: cast_nullable_to_non_nullable
               as SafeAreaInset,
+      isFullscreen: null == isFullscreen
+          ? _value.isFullscreen
+          : isFullscreen // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -116,7 +123,8 @@ abstract class _$$TelegramMetaImplCopyWith<$Res>
   $Res call(
       {String platform,
       SafeAreaInset safeAreaInset,
-      SafeAreaInset contentSafeAreaInset});
+      SafeAreaInset contentSafeAreaInset,
+      bool isFullscreen});
 
   @override
   $SafeAreaInsetCopyWith<$Res> get safeAreaInset;
@@ -140,6 +148,7 @@ class __$$TelegramMetaImplCopyWithImpl<$Res>
     Object? platform = null,
     Object? safeAreaInset = null,
     Object? contentSafeAreaInset = null,
+    Object? isFullscreen = null,
   }) {
     return _then(_$TelegramMetaImpl(
       platform: null == platform
@@ -154,6 +163,10 @@ class __$$TelegramMetaImplCopyWithImpl<$Res>
           ? _value.contentSafeAreaInset
           : contentSafeAreaInset // ignore: cast_nullable_to_non_nullable
               as SafeAreaInset,
+      isFullscreen: null == isFullscreen
+          ? _value.isFullscreen
+          : isFullscreen // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -164,7 +177,8 @@ class _$TelegramMetaImpl extends _TelegramMeta {
   _$TelegramMetaImpl(
       {required this.platform,
       required this.safeAreaInset,
-      required this.contentSafeAreaInset})
+      required this.contentSafeAreaInset,
+      required this.isFullscreen})
       : super._();
 
   factory _$TelegramMetaImpl.fromJson(Map<String, dynamic> json) =>
@@ -176,10 +190,12 @@ class _$TelegramMetaImpl extends _TelegramMeta {
   final SafeAreaInset safeAreaInset;
   @override
   final SafeAreaInset contentSafeAreaInset;
+  @override
+  final bool isFullscreen;
 
   @override
   String toString() {
-    return 'TelegramMeta(platform: $platform, safeAreaInset: $safeAreaInset, contentSafeAreaInset: $contentSafeAreaInset)';
+    return 'TelegramMeta(platform: $platform, safeAreaInset: $safeAreaInset, contentSafeAreaInset: $contentSafeAreaInset, isFullscreen: $isFullscreen)';
   }
 
   @override
@@ -192,13 +208,15 @@ class _$TelegramMetaImpl extends _TelegramMeta {
             (identical(other.safeAreaInset, safeAreaInset) ||
                 other.safeAreaInset == safeAreaInset) &&
             (identical(other.contentSafeAreaInset, contentSafeAreaInset) ||
-                other.contentSafeAreaInset == contentSafeAreaInset));
+                other.contentSafeAreaInset == contentSafeAreaInset) &&
+            (identical(other.isFullscreen, isFullscreen) ||
+                other.isFullscreen == isFullscreen));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, platform, safeAreaInset, contentSafeAreaInset);
+  int get hashCode => Object.hash(
+      runtimeType, platform, safeAreaInset, contentSafeAreaInset, isFullscreen);
 
   /// Create a copy of TelegramMeta
   /// with the given fields replaced by the non-null parameter values.
@@ -220,7 +238,8 @@ abstract class _TelegramMeta extends TelegramMeta {
   factory _TelegramMeta(
       {required final String platform,
       required final SafeAreaInset safeAreaInset,
-      required final SafeAreaInset contentSafeAreaInset}) = _$TelegramMetaImpl;
+      required final SafeAreaInset contentSafeAreaInset,
+      required final bool isFullscreen}) = _$TelegramMetaImpl;
   _TelegramMeta._() : super._();
 
   factory _TelegramMeta.fromJson(Map<String, dynamic> json) =
@@ -232,6 +251,8 @@ abstract class _TelegramMeta extends TelegramMeta {
   SafeAreaInset get safeAreaInset;
   @override
   SafeAreaInset get contentSafeAreaInset;
+  @override
+  bool get isFullscreen;
 
   /// Create a copy of TelegramMeta
   /// with the given fields replaced by the non-null parameter values.

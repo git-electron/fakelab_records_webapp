@@ -33,6 +33,13 @@
       return null
     }
 
+    function getIsFullscreen() {
+      if (window.Telegram) {
+        return Telegram.WebApp.isFullscreen;
+      }
+      return null
+    }
+
     function getSafeAreaInset() {
       if (window.Telegram) {
         return Telegram.WebApp.safeAreaInset;

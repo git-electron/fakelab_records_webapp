@@ -50,11 +50,13 @@ class TelegramService {
     if (kDebugMode) return Mock.telegramMeta;
 
     final String? platform = _call('getPlatform');
+    final bool? isFullscreen = _call('getIsFullscreen');
     final Json inset = _jsDecode(_call('getSafeAreaInset'));
     final Json contentInset = _jsDecode(_call('getContentSafeAreaInset'));
 
     return tryOrNull(() => TelegramMeta(
           platform: platform!,
+          isFullscreen: isFullscreen!,
           safeAreaInset: SafeAreaInset.fromJson(inset),
           contentSafeAreaInset: SafeAreaInset.fromJson(contentInset),
         ));

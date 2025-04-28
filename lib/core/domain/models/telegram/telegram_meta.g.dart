@@ -13,6 +13,7 @@ _$TelegramMetaImpl _$$TelegramMetaImplFromJson(Map<String, dynamic> json) =>
           SafeAreaInset.fromJson(json['safeAreaInset'] as Map<String, dynamic>),
       contentSafeAreaInset: SafeAreaInset.fromJson(
           json['contentSafeAreaInset'] as Map<String, dynamic>),
+      isFullscreen: json['isFullscreen'] as bool,
     );
 
 Map<String, dynamic> _$$TelegramMetaImplToJson(_$TelegramMetaImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$TelegramMetaImplToJson(_$TelegramMetaImpl instance) =>
       'platform': instance.platform,
       'safeAreaInset': instance.safeAreaInset.toJson(),
       'contentSafeAreaInset': instance.contentSafeAreaInset.toJson(),
+      'isFullscreen': instance.isFullscreen,
     };

@@ -1,7 +1,13 @@
 import '../../../core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
-enum LogoType { recordsCompact, recordsFull, fakelabCompact, fakelabFull }
+enum LogoType {
+  recordsCompact,
+  recordsFull,
+  recordsAdmin,
+  fakelabCompact,
+  fakelabFull,
+}
 
 class Logo extends StatelessWidget {
   const Logo({
@@ -22,6 +28,7 @@ class Logo extends StatelessWidget {
       LogoType.fakelabCompact => Assets.icons.logo.fakelab.compact,
       LogoType.recordsFull => Assets.icons.logo.records.full,
       LogoType.fakelabFull => Assets.icons.logo.fakelab.full,
+      LogoType.recordsAdmin => Assets.icons.logo.records.admin,
     }
         .svg(
       height: height ?? 25,

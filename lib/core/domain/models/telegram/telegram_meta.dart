@@ -11,6 +11,7 @@ class TelegramMeta with _$TelegramMeta {
     required String platform,
     required SafeAreaInset safeAreaInset,
     required SafeAreaInset contentSafeAreaInset,
+    required bool isFullscreen,
   }) = _TelegramMeta;
 
   factory TelegramMeta.fromJson(Map<String, dynamic> json) =>
