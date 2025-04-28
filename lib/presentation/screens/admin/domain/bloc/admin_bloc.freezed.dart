@@ -16,37 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AdminEvent {
+  AdminTab get tab => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(AdminTab tab) tabChabged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(AdminTab tab)? tabChabged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(AdminTab tab)? tabChabged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_TabChanged value) tabChabged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_TabChanged value)? tabChabged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_TabChanged value)? tabChabged,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  /// Create a copy of AdminEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AdminEventCopyWith<AdminEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +62,8 @@ abstract class $AdminEventCopyWith<$Res> {
   factory $AdminEventCopyWith(
           AdminEvent value, $Res Function(AdminEvent) then) =
       _$AdminEventCopyWithImpl<$Res, AdminEvent>;
+  @useResult
+  $Res call({AdminTab tab});
 }
 
 /// @nodoc
@@ -69,70 +78,111 @@ class _$AdminEventCopyWithImpl<$Res, $Val extends AdminEvent>
 
   /// Create a copy of AdminEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tab = null,
+  }) {
+    return _then(_value.copyWith(
+      tab: null == tab
+          ? _value.tab
+          : tab // ignore: cast_nullable_to_non_nullable
+              as AdminTab,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$TabChangedImplCopyWith<$Res>
+    implements $AdminEventCopyWith<$Res> {
+  factory _$$TabChangedImplCopyWith(
+          _$TabChangedImpl value, $Res Function(_$TabChangedImpl) then) =
+      __$$TabChangedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({AdminTab tab});
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AdminEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$TabChangedImplCopyWithImpl<$Res>
+    extends _$AdminEventCopyWithImpl<$Res, _$TabChangedImpl>
+    implements _$$TabChangedImplCopyWith<$Res> {
+  __$$TabChangedImplCopyWithImpl(
+      _$TabChangedImpl _value, $Res Function(_$TabChangedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AdminEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tab = null,
+  }) {
+    return _then(_$TabChangedImpl(
+      null == tab
+          ? _value.tab
+          : tab // ignore: cast_nullable_to_non_nullable
+              as AdminTab,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$TabChangedImpl implements _TabChanged {
+  const _$TabChangedImpl(this.tab);
+
+  @override
+  final AdminTab tab;
 
   @override
   String toString() {
-    return 'AdminEvent.started()';
+    return 'AdminEvent.tabChabged(tab: $tab)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$TabChangedImpl &&
+            (identical(other.tab, tab) || other.tab == tab));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, tab);
+
+  /// Create a copy of AdminEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TabChangedImplCopyWith<_$TabChangedImpl> get copyWith =>
+      __$$TabChangedImplCopyWithImpl<_$TabChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(AdminTab tab) tabChabged,
   }) {
-    return started();
+    return tabChabged(tab);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(AdminTab tab)? tabChabged,
   }) {
-    return started?.call();
+    return tabChabged?.call(tab);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(AdminTab tab)? tabChabged,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (tabChabged != null) {
+      return tabChabged(tab);
     }
     return orElse();
   }
@@ -140,69 +190,54 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_TabChanged value) tabChabged,
   }) {
-    return started(this);
+    return tabChabged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_TabChanged value)? tabChabged,
   }) {
-    return started?.call(this);
+    return tabChabged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_TabChanged value)? tabChabged,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (tabChabged != null) {
+      return tabChabged(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements AdminEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _TabChanged implements AdminEvent {
+  const factory _TabChanged(final AdminTab tab) = _$TabChangedImpl;
+
+  @override
+  AdminTab get tab;
+
+  /// Create a copy of AdminEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TabChangedImplCopyWith<_$TabChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$AdminState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  AdminTab get selectedTab => throw _privateConstructorUsedError;
+
+  /// Create a copy of AdminState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AdminStateCopyWith<AdminState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -211,6 +246,8 @@ abstract class $AdminStateCopyWith<$Res> {
   factory $AdminStateCopyWith(
           AdminState value, $Res Function(AdminState) then) =
       _$AdminStateCopyWithImpl<$Res, AdminState>;
+  @useResult
+  $Res call({AdminTab selectedTab});
 }
 
 /// @nodoc
@@ -225,103 +262,101 @@ class _$AdminStateCopyWithImpl<$Res, $Val extends AdminState>
 
   /// Create a copy of AdminState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedTab = null,
+  }) {
+    return _then(_value.copyWith(
+      selectedTab: null == selectedTab
+          ? _value.selectedTab
+          : selectedTab // ignore: cast_nullable_to_non_nullable
+              as AdminTab,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$AdminStateImplCopyWith<$Res>
+    implements $AdminStateCopyWith<$Res> {
+  factory _$$AdminStateImplCopyWith(
+          _$AdminStateImpl value, $Res Function(_$AdminStateImpl) then) =
+      __$$AdminStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({AdminTab selectedTab});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$AdminStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$AdminStateImplCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$AdminStateImpl>
+    implements _$$AdminStateImplCopyWith<$Res> {
+  __$$AdminStateImplCopyWithImpl(
+      _$AdminStateImpl _value, $Res Function(_$AdminStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AdminState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedTab = null,
+  }) {
+    return _then(_$AdminStateImpl(
+      selectedTab: null == selectedTab
+          ? _value.selectedTab
+          : selectedTab // ignore: cast_nullable_to_non_nullable
+              as AdminTab,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$AdminStateImpl extends _AdminState {
+  const _$AdminStateImpl({this.selectedTab = AdminTab.general}) : super._();
+
+  @override
+  @JsonKey()
+  final AdminTab selectedTab;
 
   @override
   String toString() {
-    return 'AdminState.initial()';
+    return 'AdminState(selectedTab: $selectedTab)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AdminStateImpl &&
+            (identical(other.selectedTab, selectedTab) ||
+                other.selectedTab == selectedTab));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, selectedTab);
 
+  /// Create a copy of AdminState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$AdminStateImplCopyWith<_$AdminStateImpl> get copyWith =>
+      __$$AdminStateImplCopyWithImpl<_$AdminStateImpl>(this, _$identity);
 }
 
-abstract class _Initial implements AdminState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _AdminState extends AdminState {
+  const factory _AdminState({final AdminTab selectedTab}) = _$AdminStateImpl;
+  const _AdminState._() : super._();
+
+  @override
+  AdminTab get selectedTab;
+
+  /// Create a copy of AdminState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AdminStateImplCopyWith<_$AdminStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

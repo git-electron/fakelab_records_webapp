@@ -45,7 +45,7 @@ class MyOrdersScreen extends StatelessWidget {
                   return const BaseAppBar();
                 }),
                 const SliverToBoxAdapter(
-                  child: MyOrdersScreenContent(),
+                  child: MyOrdersScreenBody(),
                 ),
               ],
             );
@@ -56,8 +56,8 @@ class MyOrdersScreen extends StatelessWidget {
   }
 }
 
-class MyOrdersScreenContent extends StatelessWidget {
-  const MyOrdersScreenContent({super.key});
+class MyOrdersScreenBody extends StatelessWidget {
+  const MyOrdersScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {

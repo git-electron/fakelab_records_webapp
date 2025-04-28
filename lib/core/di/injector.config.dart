@@ -26,6 +26,10 @@ import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_
     as _i790;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc.dart'
     as _i864;
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/data/client/admin_general_client.dart'
+    as _i914;
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/domain/bloc/admin_general_bloc.dart'
+    as _i200;
 import 'package:fakelab_records_webapp/presentation/screens/home/data/client/admin_panel_client.dart'
     as _i562;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/admin_panel_bloc/admin_panel_bloc.dart'
@@ -94,6 +98,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
+    gh.factory<_i914.AdminGeneralClient>(() => _i914.AdminGeneralClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
     gh.factory<_i864.AdminBloc>(() => _i864.AdminBloc(
           gh<_i435.TelegramService>(),
           gh<_i133.TelegramDataBloc>(),
@@ -112,6 +120,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
           gh<_i415.UserClient>(),
           gh<_i133.TelegramDataBloc>(),
+        ));
+    gh.factory<_i200.AdminGeneralBloc>(() => _i200.AdminGeneralBloc(
+          gh<_i109.UserBloc>(),
+          gh<_i914.AdminGeneralClient>(),
         ));
     gh.factoryParam<_i790.MyOrdersFeatureBloc, bool, dynamic>((
       hasLimit,

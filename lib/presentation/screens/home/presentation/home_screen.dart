@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                   return const BaseAppBar();
                 }),
                 const SliverToBoxAdapter(
-                  child: HomeScreenContent(),
+                  child: HomeScreenBody(),
                 ),
               ],
             );
@@ -64,8 +64,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class HomeScreenContent extends StatelessWidget {
-  const HomeScreenContent({super.key});
+class HomeScreenBody extends StatelessWidget {
+  const HomeScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {

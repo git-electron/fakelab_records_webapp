@@ -3,6 +3,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/domain/bloc/admin_general_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/widgets/admin_screen_content.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/widgets/admin_screen_tab_bar.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,9 +19,14 @@ class AdminScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      lazy: false,
-      create: (context) => $<AdminBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          lazy: false,
+          create: (context) => $<AdminBloc>(),
+        ),
+        BlocProvider(create: (context) => $<AdminGeneralBloc>()),
+      ],
       child: Scaffold(
         backgroundColor: context.colors.background,
         body: BlocBuilder<AdminBloc, AdminState>(
@@ -30,7 +38,7 @@ class AdminScreen extends StatelessWidget {
                   return const AdminAppBar();
                 }),
                 const SliverToBoxAdapter(
-                  child: AdminScreenContent(),
+                  child: AdminScreenBody(),
                 ),
               ],
             );
@@ -41,32 +49,26 @@ class AdminScreen extends StatelessWidget {
   }
 }
 
-class AdminScreenContent extends StatelessWidget {
-  const AdminScreenContent({super.key});
+class AdminScreenBody extends StatelessWidget {
+  const AdminScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: context.colors.background,
-      padding: const Pad(top: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Gap(55),
-          Text(
-            'Admin panel screen',
-            style: context.styles.title3.copyWith(fontSize: 20),
-          ),
-          const Gap(10),
-          Text('In development...', style: context.styles.footer1),
-          const Gap(40),
-          TelegramMetaWrapper(
-            builder: (context, meta) => Padding(
-              padding: const Pad(horizontal: 20),
-              child: Text(meta.toString()),
-            ),
-          ),
-        ],
+    return Align(
+      alignment: Alignment.center,
+      child: Container(
+        color: context.colors.background,
+        constraints: const BoxConstraints(maxWidth: 1500),
+        padding: const Pad(top: 20),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Gap(20),
+            AdminScreenTabBar(),
+            Gap(20),
+            AdminScreenContent(),
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
 import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/models/admin_tab.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -12,8 +13,8 @@ part 'admin_bloc.freezed.dart';
 @injectable
 class AdminBloc extends Bloc<AdminEvent, AdminState> {
   AdminBloc(this.telegramService, this.telegramDataBloc)
-      : super(const _Initial()) {
-    on<AdminEvent>((event, emit) {});
+      : super(const _AdminState()) {
+    on<_TabChanged>(_onTabChanged);
 
     telegramService.showBackButton();
     tryOrNull(telegramService.requestFullscreen);
@@ -32,6 +33,13 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
 
   final TelegramService telegramService;
   final TelegramDataBloc telegramDataBloc;
+
+  Future<void> _onTabChanged(
+    _TabChanged event,
+    Emitter<AdminState> emit,
+  ) async {
+    emit(state.copyWith(selectedTab: event.tab));
+  }
 
   Future<void> _updateTelegramData() async {
     telegramDataBloc.add(TelegramDataEvent.setData(
