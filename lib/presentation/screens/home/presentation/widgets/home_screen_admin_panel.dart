@@ -1,8 +1,10 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
 import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/admin_panel_bloc/admin_panel_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
@@ -79,8 +81,7 @@ class HomeScreenAdminPanel extends StatelessWidget {
                     ),
                     const Gap(10),
                     AppButton.secondary(
-                      onTap: () {},
-                      isEnabled: false,
+                      onTap: () => context.pushRoute(const AdminRoute()),
                       text: 'В админ-панель',
                       icon: Assets.icons.arrowRight.light,
                     ),
@@ -146,8 +147,7 @@ class HomeScreenAdminPanel extends StatelessWidget {
                   ),
                   const Gap(15),
                   AppButton.primary(
-                    onTap: () {},
-                    isEnabled: false,
+                    onTap: () => context.pushRoute(const AdminRoute()),
                     text: 'В админ-панель',
                     icon: Assets.icons.arrowRight.dark,
                   ),

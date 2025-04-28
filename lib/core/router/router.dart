@@ -70,6 +70,7 @@ Args: ${resolver.route.args}''');
         AutoRoute(page: MyOrderRoute.page, path: '/orders/:id'),
         AutoRoute(page: ImagesViewerRoute.page, path: '/images'),
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
+        AutoRoute(page: AdminRoute.page, path: '/admin'),
         ...redirections,
       ];
 

@@ -67,6 +67,10 @@ class TelegramService {
 
   void hideBackButton() => _call('hideBackButton');
 
+  void requestFullscreen() => _call('requestFullscreen');
+
+  void exitFullscreen() => _call('exitFullscreen');
+
   void _setupTelegramWebApp(bool shouldForceFullscreen) =>
       _call('setupTelegramWebApp', [shouldForceFullscreen]);
 
