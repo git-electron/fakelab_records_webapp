@@ -30,6 +30,8 @@ class TelegramService {
       () => TelegramData(user: user!, meta: meta!),
     );
 
+    print(data.toString());
+
     if (!_isSetup) {
       tryOrNull(() {
         _setupTelegramWebApp(data!.meta.isMobile);

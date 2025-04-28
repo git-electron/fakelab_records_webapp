@@ -37,7 +37,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
     telegramDataBloc.add(TelegramDataEvent.setData(
       telegramService.getTelegramData()!,
     ));
-    await Future.delayed(const Duration());
+    await Future.delayed(const Duration(milliseconds: 100));
     tryOrNull(
       () => telegramDataBloc.add(TelegramDataEvent.setData(
         telegramService.getTelegramData()!,
