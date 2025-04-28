@@ -85,6 +85,8 @@ flutter:
     - assets/icons/cross/
     - assets/icons/double_check/
     - assets/icons/equipment/
+    - assets/icons/eye/
+    - assets/icons/eye_closed/
     - assets/icons/home/
     - assets/icons/keyboard_arrow_down/
     - assets/icons/keyboard_arrow_left/

@@ -2,6 +2,8 @@ part of 'admin_panel_bloc.dart';
 
 @freezed
 class AdminPanelState with _$AdminPanelState {
+  const factory AdminPanelState.collapsed() = _Collapsed;
+
   const factory AdminPanelState.loading() = _Loading;
 
   const factory AdminPanelState.loaded(List<Order> orders) = _Loaded;
@@ -9,6 +11,11 @@ class AdminPanelState with _$AdminPanelState {
   const factory AdminPanelState.error(String? message) = _Error;
 
   const AdminPanelState._();
+
+  bool get isCollapsed => maybeWhen(
+        collapsed: () => true,
+        orElse: () => false,
+      );
 
   bool get isLoading => maybeWhen(
         loading: () => true,

@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/domain/models/rating/rating.dart';
 import '../../../../../core/domain/models/user/user.dart';
+import 'order_filters.dart';
 import 'order_status.dart';
 import 'order_type.dart';
 import 'service/order_service.dart';
@@ -20,8 +21,10 @@ class Order with _$Order {
     required OrderStatus status,
     required List<OrderStatusHistoryItem> statusHistory,
     @DateTimeConverter() required DateTime dateCreated,
+    @DateTimeConverter() required DateTime dateChanged,
     required double totalCost,
     required bool costFrom,
+    required OrderFilters filters,
     required List<OrderService> services,
     Rating? rating,
   }) = _Order;

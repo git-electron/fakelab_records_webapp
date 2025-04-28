@@ -17,8 +17,11 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
           .toList(),
       dateCreated:
           const DateTimeConverter().fromJson(json['dateCreated'] as String),
+      dateChanged:
+          const DateTimeConverter().fromJson(json['dateChanged'] as String),
       totalCost: (json['totalCost'] as num).toDouble(),
       costFrom: json['costFrom'] as bool,
+      filters: OrderFilters.fromJson(json['filters'] as Map<String, dynamic>),
       services: (json['services'] as List<dynamic>)
           .map((e) => OrderService.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -35,8 +38,10 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
       'status': _$OrderStatusEnumMap[instance.status]!,
       'statusHistory': instance.statusHistory.map((e) => e.toJson()).toList(),
       'dateCreated': const DateTimeConverter().toJson(instance.dateCreated),
+      'dateChanged': const DateTimeConverter().toJson(instance.dateChanged),
       'totalCost': instance.totalCost,
       'costFrom': instance.costFrom,
+      'filters': instance.filters.toJson(),
       'services': instance.services.map((e) => e.toJson()).toList(),
       'rating': instance.rating?.toJson(),
     };

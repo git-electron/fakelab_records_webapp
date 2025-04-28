@@ -19,94 +19,141 @@ class HomeScreenAdminPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AdminPanelBloc bloc = context.read();
+
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         final bool shouldDisplayPanel = state.user?.isAdmin ?? false;
         if (!shouldDisplayPanel) return const SizedBox();
 
-        return Padding(
-          padding: const Pad(horizontal: 20, top: 20),
-          child: Container(
-            width: double.infinity,
-            padding: const Pad(all: 20),
-            decoration: ShapeDecoration(
-              color: context.colors.card,
-              shape: SmoothRectangleBorder(
-                borderRadius: SmoothBorderRadius(
-                  cornerRadius: 20,
-                  cornerSmoothing: 0.6,
-                ),
+        return Container(
+          width: double.infinity,
+          padding: const Pad(all: 20),
+          margin: const Pad(horizontal: 20, top: 20),
+          decoration: ShapeDecoration(
+            color: context.colors.card,
+            shape: SmoothRectangleBorder(
+              borderRadius: SmoothBorderRadius(
+                cornerRadius: 20,
+                cornerSmoothing: 0.6,
               ),
             ),
-            child: BlocBuilder<AdminPanelBloc, AdminPanelState>(
-              builder: (context, state) {
-                if (state.isLoading) return const LoadingPage(height: 300);
-                if (state.hasError) {
-                  return ErrorPage(message: state.message, height: 300);
-                }
-
+          ),
+          child: BlocBuilder<AdminPanelBloc, AdminPanelState>(
+            builder: (context, state) {
+              if (state.isCollapsed) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Assets.icons.logo.records.admin.svg(height: 20),
-                    const Gap(15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        const AdminStatsCard(
-                          title: 'Клиенты',
-                          value: 0,
-                          isEnabled: false,
+                      children: [
+                        Assets.icons.logo.records.admin.svg(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Assets.icons.eyeClosed.gray.svg(),
+                            const Gap(10),
+                            Text(
+                              'Скрыто для\nэкономии трафика',
+                              style: context.styles.footer3,
+                            ),
+                          ],
                         ),
-                        const AdminStatsCard(
-                          title: 'Брони',
-                          value: 0,
-                          isEnabled: false,
-                        ),
-                      ].alternateWith(const Gap(5)),
+                      ],
                     ),
-                    const Gap(10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        AdminStatsCard(
-                          title: 'Заявки',
-                          value: state.requestCount,
-                        ),
-                        AdminStatsCard(
-                          title: 'В очереди',
-                          value: state.pendingCount,
-                        ),
-                        AdminStatsCard(
-                          title: 'В работе',
-                          value: state.inProgressCount,
-                        ),
-                      ].alternateWith(const Gap(5)),
+                    const Gap(20),
+                    Text(
+                      'Для избежания перерасхода трафика, используй эту функцию только по необходимости',
+                      style: context.styles.body2,
                     ),
-                    const Gap(10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        AdminStatsCard(
-                          title: 'Доход за месяц',
-                          value: state.totalIncome.formatCurrency(),
-                        ),
-                      ].alternateWith(const Gap(5)),
-                    ),
-                    const Gap(15),
+                    const Gap(20),
                     AppButton.primary(
+                      onTap: () {
+                        bloc.add(const AdminPanelEvent.setExpanded());
+                      },
+                      text: 'Показать данные',
+                      icon: Assets.icons.eye.dark,
+                    ),
+                    const Gap(10),
+                    AppButton.secondary(
                       onTap: () {},
                       isEnabled: false,
                       text: 'В админ-панель',
-                      icon: Assets.icons.arrowRight.dark,
+                      icon: Assets.icons.arrowRight.light,
                     ),
                   ],
                 );
-              },
-            ),
+              }
+
+              if (state.isLoading) return const LoadingPage(height: 400);
+              if (state.hasError) {
+                return ErrorPage(message: state.message, height: 400);
+              }
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Assets.icons.logo.records.admin.svg(height: 20),
+                  const Gap(15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      const AdminStatsCard(
+                        title: 'Клиенты',
+                        value: 0,
+                        isEnabled: false,
+                      ),
+                      const AdminStatsCard(
+                        title: 'Брони',
+                        value: 0,
+                        isEnabled: false,
+                      ),
+                    ].alternateWith(const Gap(5)),
+                  ),
+                  const Gap(10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      AdminStatsCard(
+                        title: 'Заявки',
+                        value: state.requestCount,
+                      ),
+                      AdminStatsCard(
+                        title: 'В очереди',
+                        value: state.pendingCount,
+                      ),
+                      AdminStatsCard(
+                        title: 'В работе',
+                        value: state.inProgressCount,
+                      ),
+                    ].alternateWith(const Gap(5)),
+                  ),
+                  const Gap(10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      AdminStatsCard(
+                        title: 'Доход за месяц',
+                        value: state.totalIncome.formatCurrency(),
+                      ),
+                    ].alternateWith(const Gap(5)),
+                  ),
+                  const Gap(15),
+                  AppButton.primary(
+                    onTap: () {},
+                    isEnabled: false,
+                    text: 'В админ-панель',
+                    icon: Assets.icons.arrowRight.dark,
+                  ),
+                ],
+              );
+            },
           ),
         );
       },

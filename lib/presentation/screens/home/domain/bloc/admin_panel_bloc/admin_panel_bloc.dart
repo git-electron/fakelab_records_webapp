@@ -16,13 +16,19 @@ part 'admin_panel_bloc.freezed.dart';
 @injectable
 class AdminPanelBloc extends Bloc<AdminPanelEvent, AdminPanelState> {
   AdminPanelBloc(this.userBloc, this.adminPanelClient)
-      : super(const _Loading()) {
+      : super(const _Collapsed()) {
+    on<_SetExpanded>(_onSetExpanded);
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);
+  }
 
+  Future<void> _onSetExpanded(
+    _SetExpanded event,
+    Emitter<AdminPanelState> emit,
+  ) async {
     tryOrNullAsync(_getOrders);
-    userBloc.stream.listen(_onUserStateEvent);
+    emit(const AdminPanelState.loading());
   }
 
   Future<void> _onSetLoading(
@@ -48,10 +54,6 @@ class AdminPanelBloc extends Bloc<AdminPanelEvent, AdminPanelState> {
 
   final UserBloc userBloc;
   final AdminPanelClient adminPanelClient;
-
-  void _onUserStateEvent(UserState userState) {
-    if (userState.isAuthorized && !state.isLoaded) _getOrders();
-  }
 
   Future<void> _getOrders() async {
     if (!userBloc.state.user!.isAdmin) return;

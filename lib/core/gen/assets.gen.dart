@@ -62,6 +62,12 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/equipment
   $AssetsIconsEquipmentGen get equipment => const $AssetsIconsEquipmentGen();
 
+  /// Directory path: assets/icons/eye
+  $AssetsIconsEyeGen get eye => const $AssetsIconsEyeGen();
+
+  /// Directory path: assets/icons/eye_closed
+  $AssetsIconsEyeClosedGen get eyeClosed => const $AssetsIconsEyeClosedGen();
+
   /// Directory path: assets/icons/home
   $AssetsIconsHomeGen get home => const $AssetsIconsHomeGen();
 
@@ -348,6 +354,39 @@ class $AssetsIconsEquipmentGen {
     midi,
     monitors,
   ];
+}
+
+class $AssetsIconsEyeGen {
+  const $AssetsIconsEyeGen();
+
+  /// File path: assets/icons/eye/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/eye/dark.svg');
+
+  /// File path: assets/icons/eye/gray.svg
+  SvgGenImage get gray => const SvgGenImage('assets/icons/eye/gray.svg');
+
+  /// File path: assets/icons/eye/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/eye/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, gray, light];
+}
+
+class $AssetsIconsEyeClosedGen {
+  const $AssetsIconsEyeClosedGen();
+
+  /// File path: assets/icons/eye_closed/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/eye_closed/dark.svg');
+
+  /// File path: assets/icons/eye_closed/gray.svg
+  SvgGenImage get gray => const SvgGenImage('assets/icons/eye_closed/gray.svg');
+
+  /// File path: assets/icons/eye_closed/light.svg
+  SvgGenImage get light =>
+      const SvgGenImage('assets/icons/eye_closed/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, gray, light];
 }
 
 class $AssetsIconsHomeGen {

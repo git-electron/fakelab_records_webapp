@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AdminPanelEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setExpanded,
     required TResult Function() setLoading,
     required TResult Function(List<Order> orders) setLoaded,
     required TResult Function(String? message) setError,
@@ -25,6 +26,7 @@ mixin _$AdminPanelEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setExpanded,
     TResult? Function()? setLoading,
     TResult? Function(List<Order> orders)? setLoaded,
     TResult? Function(String? message)? setError,
@@ -32,6 +34,7 @@ mixin _$AdminPanelEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setExpanded,
     TResult Function()? setLoading,
     TResult Function(List<Order> orders)? setLoaded,
     TResult Function(String? message)? setError,
@@ -40,6 +43,7 @@ mixin _$AdminPanelEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_SetExpanded value) setExpanded,
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
@@ -47,6 +51,7 @@ mixin _$AdminPanelEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetExpanded value)? setExpanded,
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
@@ -54,6 +59,7 @@ mixin _$AdminPanelEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetExpanded value)? setExpanded,
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
@@ -81,6 +87,123 @@ class _$AdminPanelEventCopyWithImpl<$Res, $Val extends AdminPanelEvent>
 
   /// Create a copy of AdminPanelEvent
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$SetExpandedImplCopyWith<$Res> {
+  factory _$$SetExpandedImplCopyWith(
+          _$SetExpandedImpl value, $Res Function(_$SetExpandedImpl) then) =
+      __$$SetExpandedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SetExpandedImplCopyWithImpl<$Res>
+    extends _$AdminPanelEventCopyWithImpl<$Res, _$SetExpandedImpl>
+    implements _$$SetExpandedImplCopyWith<$Res> {
+  __$$SetExpandedImplCopyWithImpl(
+      _$SetExpandedImpl _value, $Res Function(_$SetExpandedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AdminPanelEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SetExpandedImpl implements _SetExpanded {
+  const _$SetExpandedImpl();
+
+  @override
+  String toString() {
+    return 'AdminPanelEvent.setExpanded()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SetExpandedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() setExpanded,
+    required TResult Function() setLoading,
+    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(String? message) setError,
+  }) {
+    return setExpanded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setExpanded,
+    TResult? Function()? setLoading,
+    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(String? message)? setError,
+  }) {
+    return setExpanded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setExpanded,
+    TResult Function()? setLoading,
+    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(String? message)? setError,
+    required TResult orElse(),
+  }) {
+    if (setExpanded != null) {
+      return setExpanded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetExpanded value) setExpanded,
+    required TResult Function(_SetLoading value) setLoading,
+    required TResult Function(_SetLoaded value) setLoaded,
+    required TResult Function(_SetError value) setError,
+  }) {
+    return setExpanded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetExpanded value)? setExpanded,
+    TResult? Function(_SetLoading value)? setLoading,
+    TResult? Function(_SetLoaded value)? setLoaded,
+    TResult? Function(_SetError value)? setError,
+  }) {
+    return setExpanded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetExpanded value)? setExpanded,
+    TResult Function(_SetLoading value)? setLoading,
+    TResult Function(_SetLoaded value)? setLoaded,
+    TResult Function(_SetError value)? setError,
+    required TResult orElse(),
+  }) {
+    if (setExpanded != null) {
+      return setExpanded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetExpanded implements AdminPanelEvent {
+  const factory _SetExpanded() = _$SetExpandedImpl;
 }
 
 /// @nodoc
@@ -124,6 +247,7 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setExpanded,
     required TResult Function() setLoading,
     required TResult Function(List<Order> orders) setLoaded,
     required TResult Function(String? message) setError,
@@ -134,6 +258,7 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setExpanded,
     TResult? Function()? setLoading,
     TResult? Function(List<Order> orders)? setLoaded,
     TResult? Function(String? message)? setError,
@@ -144,6 +269,7 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setExpanded,
     TResult Function()? setLoading,
     TResult Function(List<Order> orders)? setLoaded,
     TResult Function(String? message)? setError,
@@ -158,6 +284,7 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_SetExpanded value) setExpanded,
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
@@ -168,6 +295,7 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetExpanded value)? setExpanded,
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
@@ -178,6 +306,7 @@ class _$SetLoadingImpl implements _SetLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetExpanded value)? setExpanded,
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
@@ -268,6 +397,7 @@ class _$SetLoadedImpl implements _SetLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setExpanded,
     required TResult Function() setLoading,
     required TResult Function(List<Order> orders) setLoaded,
     required TResult Function(String? message) setError,
@@ -278,6 +408,7 @@ class _$SetLoadedImpl implements _SetLoaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setExpanded,
     TResult? Function()? setLoading,
     TResult? Function(List<Order> orders)? setLoaded,
     TResult? Function(String? message)? setError,
@@ -288,6 +419,7 @@ class _$SetLoadedImpl implements _SetLoaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setExpanded,
     TResult Function()? setLoading,
     TResult Function(List<Order> orders)? setLoaded,
     TResult Function(String? message)? setError,
@@ -302,6 +434,7 @@ class _$SetLoadedImpl implements _SetLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_SetExpanded value) setExpanded,
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
@@ -312,6 +445,7 @@ class _$SetLoadedImpl implements _SetLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetExpanded value)? setExpanded,
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
@@ -322,6 +456,7 @@ class _$SetLoadedImpl implements _SetLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetExpanded value)? setExpanded,
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
@@ -414,6 +549,7 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() setExpanded,
     required TResult Function() setLoading,
     required TResult Function(List<Order> orders) setLoaded,
     required TResult Function(String? message) setError,
@@ -424,6 +560,7 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setExpanded,
     TResult? Function()? setLoading,
     TResult? Function(List<Order> orders)? setLoaded,
     TResult? Function(String? message)? setError,
@@ -434,6 +571,7 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setExpanded,
     TResult Function()? setLoading,
     TResult Function(List<Order> orders)? setLoaded,
     TResult Function(String? message)? setError,
@@ -448,6 +586,7 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_SetExpanded value) setExpanded,
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
@@ -458,6 +597,7 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetExpanded value)? setExpanded,
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
@@ -468,6 +608,7 @@ class _$SetErrorImpl implements _SetError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetExpanded value)? setExpanded,
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
@@ -496,6 +637,7 @@ abstract class _SetError implements AdminPanelEvent {
 mixin _$AdminPanelState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() collapsed,
     required TResult Function() loading,
     required TResult Function(List<Order> orders) loaded,
     required TResult Function(String? message) error,
@@ -503,6 +645,7 @@ mixin _$AdminPanelState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? collapsed,
     TResult? Function()? loading,
     TResult? Function(List<Order> orders)? loaded,
     TResult? Function(String? message)? error,
@@ -510,6 +653,7 @@ mixin _$AdminPanelState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? collapsed,
     TResult Function()? loading,
     TResult Function(List<Order> orders)? loaded,
     TResult Function(String? message)? error,
@@ -518,6 +662,7 @@ mixin _$AdminPanelState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Collapsed value) collapsed,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -525,6 +670,7 @@ mixin _$AdminPanelState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Collapsed value)? collapsed,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
@@ -532,6 +678,7 @@ mixin _$AdminPanelState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Collapsed value)? collapsed,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -559,6 +706,124 @@ class _$AdminPanelStateCopyWithImpl<$Res, $Val extends AdminPanelState>
 
   /// Create a copy of AdminPanelState
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$CollapsedImplCopyWith<$Res> {
+  factory _$$CollapsedImplCopyWith(
+          _$CollapsedImpl value, $Res Function(_$CollapsedImpl) then) =
+      __$$CollapsedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CollapsedImplCopyWithImpl<$Res>
+    extends _$AdminPanelStateCopyWithImpl<$Res, _$CollapsedImpl>
+    implements _$$CollapsedImplCopyWith<$Res> {
+  __$$CollapsedImplCopyWithImpl(
+      _$CollapsedImpl _value, $Res Function(_$CollapsedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AdminPanelState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CollapsedImpl extends _Collapsed {
+  const _$CollapsedImpl() : super._();
+
+  @override
+  String toString() {
+    return 'AdminPanelState.collapsed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CollapsedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() collapsed,
+    required TResult Function() loading,
+    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(String? message) error,
+  }) {
+    return collapsed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? collapsed,
+    TResult? Function()? loading,
+    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(String? message)? error,
+  }) {
+    return collapsed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? collapsed,
+    TResult Function()? loading,
+    TResult Function(List<Order> orders)? loaded,
+    TResult Function(String? message)? error,
+    required TResult orElse(),
+  }) {
+    if (collapsed != null) {
+      return collapsed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Collapsed value) collapsed,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return collapsed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Collapsed value)? collapsed,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return collapsed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Collapsed value)? collapsed,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (collapsed != null) {
+      return collapsed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Collapsed extends AdminPanelState {
+  const factory _Collapsed() = _$CollapsedImpl;
+  const _Collapsed._() : super._();
 }
 
 /// @nodoc
@@ -602,6 +867,7 @@ class _$LoadingImpl extends _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() collapsed,
     required TResult Function() loading,
     required TResult Function(List<Order> orders) loaded,
     required TResult Function(String? message) error,
@@ -612,6 +878,7 @@ class _$LoadingImpl extends _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? collapsed,
     TResult? Function()? loading,
     TResult? Function(List<Order> orders)? loaded,
     TResult? Function(String? message)? error,
@@ -622,6 +889,7 @@ class _$LoadingImpl extends _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? collapsed,
     TResult Function()? loading,
     TResult Function(List<Order> orders)? loaded,
     TResult Function(String? message)? error,
@@ -636,6 +904,7 @@ class _$LoadingImpl extends _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Collapsed value) collapsed,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -646,6 +915,7 @@ class _$LoadingImpl extends _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Collapsed value)? collapsed,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
@@ -656,6 +926,7 @@ class _$LoadingImpl extends _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Collapsed value)? collapsed,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -749,6 +1020,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() collapsed,
     required TResult Function() loading,
     required TResult Function(List<Order> orders) loaded,
     required TResult Function(String? message) error,
@@ -759,6 +1031,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? collapsed,
     TResult? Function()? loading,
     TResult? Function(List<Order> orders)? loaded,
     TResult? Function(String? message)? error,
@@ -769,6 +1042,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? collapsed,
     TResult Function()? loading,
     TResult Function(List<Order> orders)? loaded,
     TResult Function(String? message)? error,
@@ -783,6 +1057,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Collapsed value) collapsed,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -793,6 +1068,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Collapsed value)? collapsed,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
@@ -803,6 +1079,7 @@ class _$LoadedImpl extends _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Collapsed value)? collapsed,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -896,6 +1173,7 @@ class _$ErrorImpl extends _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() collapsed,
     required TResult Function() loading,
     required TResult Function(List<Order> orders) loaded,
     required TResult Function(String? message) error,
@@ -906,6 +1184,7 @@ class _$ErrorImpl extends _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? collapsed,
     TResult? Function()? loading,
     TResult? Function(List<Order> orders)? loaded,
     TResult? Function(String? message)? error,
@@ -916,6 +1195,7 @@ class _$ErrorImpl extends _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? collapsed,
     TResult Function()? loading,
     TResult Function(List<Order> orders)? loaded,
     TResult Function(String? message)? error,
@@ -930,6 +1210,7 @@ class _$ErrorImpl extends _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Collapsed value) collapsed,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -940,6 +1221,7 @@ class _$ErrorImpl extends _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Collapsed value)? collapsed,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
@@ -950,6 +1232,7 @@ class _$ErrorImpl extends _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Collapsed value)? collapsed,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,

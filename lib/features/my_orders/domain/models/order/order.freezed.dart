@@ -28,8 +28,11 @@ mixin _$Order {
       throw _privateConstructorUsedError;
   @DateTimeConverter()
   DateTime get dateCreated => throw _privateConstructorUsedError;
+  @DateTimeConverter()
+  DateTime get dateChanged => throw _privateConstructorUsedError;
   double get totalCost => throw _privateConstructorUsedError;
   bool get costFrom => throw _privateConstructorUsedError;
+  OrderFilters get filters => throw _privateConstructorUsedError;
   List<OrderService> get services => throw _privateConstructorUsedError;
   Rating? get rating => throw _privateConstructorUsedError;
 
@@ -54,12 +57,15 @@ abstract class $OrderCopyWith<$Res> {
       OrderStatus status,
       List<OrderStatusHistoryItem> statusHistory,
       @DateTimeConverter() DateTime dateCreated,
+      @DateTimeConverter() DateTime dateChanged,
       double totalCost,
       bool costFrom,
+      OrderFilters filters,
       List<OrderService> services,
       Rating? rating});
 
   $UserCopyWith<$Res> get customer;
+  $OrderFiltersCopyWith<$Res> get filters;
   $RatingCopyWith<$Res>? get rating;
 }
 
@@ -84,8 +90,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? status = null,
     Object? statusHistory = null,
     Object? dateCreated = null,
+    Object? dateChanged = null,
     Object? totalCost = null,
     Object? costFrom = null,
+    Object? filters = null,
     Object? services = null,
     Object? rating = freezed,
   }) {
@@ -114,6 +122,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      dateChanged: null == dateChanged
+          ? _value.dateChanged
+          : dateChanged // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       totalCost: null == totalCost
           ? _value.totalCost
           : totalCost // ignore: cast_nullable_to_non_nullable
@@ -122,6 +134,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.costFrom
           : costFrom // ignore: cast_nullable_to_non_nullable
               as bool,
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as OrderFilters,
       services: null == services
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
@@ -140,6 +156,16 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
   $UserCopyWith<$Res> get customer {
     return $UserCopyWith<$Res>(_value.customer, (value) {
       return _then(_value.copyWith(customer: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OrderFiltersCopyWith<$Res> get filters {
+    return $OrderFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value) as $Val);
     });
   }
 
@@ -172,13 +198,17 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       OrderStatus status,
       List<OrderStatusHistoryItem> statusHistory,
       @DateTimeConverter() DateTime dateCreated,
+      @DateTimeConverter() DateTime dateChanged,
       double totalCost,
       bool costFrom,
+      OrderFilters filters,
       List<OrderService> services,
       Rating? rating});
 
   @override
   $UserCopyWith<$Res> get customer;
+  @override
+  $OrderFiltersCopyWith<$Res> get filters;
   @override
   $RatingCopyWith<$Res>? get rating;
 }
@@ -202,8 +232,10 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? status = null,
     Object? statusHistory = null,
     Object? dateCreated = null,
+    Object? dateChanged = null,
     Object? totalCost = null,
     Object? costFrom = null,
+    Object? filters = null,
     Object? services = null,
     Object? rating = freezed,
   }) {
@@ -232,6 +264,10 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      dateChanged: null == dateChanged
+          ? _value.dateChanged
+          : dateChanged // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       totalCost: null == totalCost
           ? _value.totalCost
           : totalCost // ignore: cast_nullable_to_non_nullable
@@ -240,6 +276,10 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.costFrom
           : costFrom // ignore: cast_nullable_to_non_nullable
               as bool,
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as OrderFilters,
       services: null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
@@ -262,8 +302,10 @@ class _$OrderImpl extends _Order {
       required this.status,
       required final List<OrderStatusHistoryItem> statusHistory,
       @DateTimeConverter() required this.dateCreated,
+      @DateTimeConverter() required this.dateChanged,
       required this.totalCost,
       required this.costFrom,
+      required this.filters,
       required final List<OrderService> services,
       this.rating})
       : _statusHistory = statusHistory,
@@ -293,9 +335,14 @@ class _$OrderImpl extends _Order {
   @DateTimeConverter()
   final DateTime dateCreated;
   @override
+  @DateTimeConverter()
+  final DateTime dateChanged;
+  @override
   final double totalCost;
   @override
   final bool costFrom;
+  @override
+  final OrderFilters filters;
   final List<OrderService> _services;
   @override
   List<OrderService> get services {
@@ -309,7 +356,7 @@ class _$OrderImpl extends _Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, customer: $customer, type: $type, status: $status, statusHistory: $statusHistory, dateCreated: $dateCreated, totalCost: $totalCost, costFrom: $costFrom, services: $services, rating: $rating)';
+    return 'Order(id: $id, customer: $customer, type: $type, status: $status, statusHistory: $statusHistory, dateCreated: $dateCreated, dateChanged: $dateChanged, totalCost: $totalCost, costFrom: $costFrom, filters: $filters, services: $services, rating: $rating)';
   }
 
   @override
@@ -326,10 +373,13 @@ class _$OrderImpl extends _Order {
                 .equals(other._statusHistory, _statusHistory) &&
             (identical(other.dateCreated, dateCreated) ||
                 other.dateCreated == dateCreated) &&
+            (identical(other.dateChanged, dateChanged) ||
+                other.dateChanged == dateChanged) &&
             (identical(other.totalCost, totalCost) ||
                 other.totalCost == totalCost) &&
             (identical(other.costFrom, costFrom) ||
                 other.costFrom == costFrom) &&
+            (identical(other.filters, filters) || other.filters == filters) &&
             const DeepCollectionEquality().equals(other._services, _services) &&
             (identical(other.rating, rating) || other.rating == rating));
   }
@@ -344,8 +394,10 @@ class _$OrderImpl extends _Order {
       status,
       const DeepCollectionEquality().hash(_statusHistory),
       dateCreated,
+      dateChanged,
       totalCost,
       costFrom,
+      filters,
       const DeepCollectionEquality().hash(_services),
       rating);
 
@@ -373,8 +425,10 @@ abstract class _Order extends Order {
       required final OrderStatus status,
       required final List<OrderStatusHistoryItem> statusHistory,
       @DateTimeConverter() required final DateTime dateCreated,
+      @DateTimeConverter() required final DateTime dateChanged,
       required final double totalCost,
       required final bool costFrom,
+      required final OrderFilters filters,
       required final List<OrderService> services,
       final Rating? rating}) = _$OrderImpl;
   _Order._() : super._();
@@ -395,9 +449,14 @@ abstract class _Order extends Order {
   @DateTimeConverter()
   DateTime get dateCreated;
   @override
+  @DateTimeConverter()
+  DateTime get dateChanged;
+  @override
   double get totalCost;
   @override
   bool get costFrom;
+  @override
+  OrderFilters get filters;
   @override
   List<OrderService> get services;
   @override
