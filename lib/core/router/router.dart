@@ -47,9 +47,12 @@ Args: ${resolver.route.args}''');
     //   resolver.next();
     // }),
     AutoRouteGuard.simple((resolver, router) {
+      print(router.canPop());
       if (router.canPop() && resolver.routeName != HomeRoute.name) {
+        print('show');
         telegramDataBloc.telegramService.showBackButton();
       } else {
+        print('hide');
         telegramDataBloc.telegramService.hideBackButton();
       }
       resolver.next();
