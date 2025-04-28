@@ -168,9 +168,9 @@ class AdminAppBar extends StatelessWidget {
           flexibleSpace: Blur(
             blur: 30,
             blurColor: context.colors.background,
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.topCenter,
             overlay: SizedBox(
-              height: toolbarHeight,
+              height: meta.totalSafeAreaInset.top,
               child: Padding(
                 padding: Pad(
                   left: toolbarHeight,
@@ -180,12 +180,17 @@ class AdminAppBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Logo(
-                      type: LogoType.recordsAdmin,
-                      height: meta.totalSafeAreaInset.top * .4,
+                    Align(
+                      alignment: const Alignment(-1, .25),
+                      child: Logo(
+                        type: LogoType.recordsAdmin,
+                        height: meta.totalSafeAreaInset.top * .4,
+                      ),
                     ),
-                    UserAvatar(
-                      size: meta.totalSafeAreaInset.top * .7,
+                    Align(alignment: Alignment.bottomRight,
+                      child: UserAvatar(
+                        size: meta.totalSafeAreaInset.top * .75,
+                      ),
                     ),
                   ],
                 ),
