@@ -17,6 +17,11 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
 
     telegramService.showBackButton();
     tryOrNull(telegramService.requestFullscreen);
+    tryOrNull(
+      () => telegramDataBloc.add(TelegramDataEvent.setData(
+        telegramService.getTelegramData()!,
+      )),
+    );
   }
 
   @override
@@ -24,6 +29,11 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
     telegramService.hideBackButton();
     if (!telegramDataBloc.state.isMobile) {
       tryOrNull(telegramService.exitFullscreen);
+      tryOrNull(
+        () => telegramDataBloc.add(TelegramDataEvent.setData(
+          telegramService.getTelegramData()!,
+        )),
+      );
     }
     return super.close();
   }
