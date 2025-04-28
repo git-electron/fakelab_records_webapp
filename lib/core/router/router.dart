@@ -29,30 +29,27 @@ Path params: ${resolver.route.params}
 Args: ${resolver.route.args}''');
       resolver.next();
     }),
-    // AutoRouteGuard.simple((resolver, router) {
-    //   if (resolver.routeName == AdminRoute.name) {
-    //     if (!userBloc.state.isAuthorized ||
-    //         !(userBloc.state.user?.isAdmin ?? false)) {
-    //       resolver.redirectUntil(const HomeRoute());
-    //     }
-
-    //     tryOrNull(telegramDataBloc.telegramService.requestFullscreen);
-    //   } else {
-    //     final bool isMobile =
-    //         telegramDataBloc.state.telegramData?.meta.isMobile ?? false;
-    //     if (!isMobile) {
-    //       tryOrNull(telegramDataBloc.telegramService.exitFullscreen);
-    //     }
-    //   }
-    //   resolver.next();
-    // }),
     AutoRouteGuard.simple((resolver, router) {
-      print(router.canPop());
-      if (router.canPop() && resolver.routeName != HomeRoute.name) {
-        print('show');
+      if (resolver.routeName == AdminRoute.name) {
+        if (!userBloc.state.isAuthorized ||
+            !(userBloc.state.user?.isAdmin ?? false)) {
+          resolver.redirectUntil(const HomeRoute());
+        }
+
+        tryOrNull(telegramDataBloc.telegramService.requestFullscreen);
+      } else {
+        final bool isMobile =
+            telegramDataBloc.state.telegramData?.meta.isMobile ?? false;
+        if (!isMobile) {
+          tryOrNull(telegramDataBloc.telegramService.exitFullscreen);
+        }
+      }
+      resolver.next();
+    }),
+    AutoRouteGuard.simple((resolver, router) {
+      if (!rootStackRoutesNames.contains(resolver.routeName)) {
         telegramDataBloc.telegramService.showBackButton();
       } else {
-        print('hide');
         telegramDataBloc.telegramService.hideBackButton();
       }
       resolver.next();
@@ -78,6 +75,14 @@ Args: ${resolver.route.args}''');
     ),
   ];
 
+  List<String> get rootStackRoutesNames => [
+        BaseRoute.name,
+        HomeRoute.name,
+        LoyaltyRoute.name,
+        MyOrdersRoute.name,
+        UnsupportedRoute.name,
+      ];
+
   @override
   List<AutoRoute> get routes => [
         ...customRoutes,
@@ -86,8 +91,8 @@ Args: ${resolver.route.args}''');
           path: '/',
           children: [
             AutoRoute(page: HomeRoute.page, path: 'home', initial: true),
-            AutoRoute(page: MyOrdersRoute.page, path: 'orders'),
             AutoRoute(page: LoyaltyRoute.page, path: 'loyalty'),
+            AutoRoute(page: MyOrdersRoute.page, path: 'orders'),
           ],
         ),
         AutoRoute(page: MyOrderRoute.page, path: '/orders/:id'),

@@ -74,7 +74,6 @@ extension GetItInjectableX on _i174.GetIt {
         _i15.ImagesViewerBloc(
           images: images,
           initialIndex: initialIndex,
-          telegramService: gh<_i435.TelegramService>(),
         ));
     gh.factory<_i415.UserClient>(() => _i415.UserClient(
           gh<_i345.DatabaseReference>(),
@@ -101,7 +100,6 @@ extension GetItInjectableX on _i174.GetIt {
         _i843.MyOrderBloc(
           orderId,
           gh<_i129.MyOrderClient>(),
-          gh<_i435.TelegramService>(),
         ));
     gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
           gh<_i415.UserClient>(),
