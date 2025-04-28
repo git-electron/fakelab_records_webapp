@@ -16,7 +16,6 @@ abstract class Locator {
   Logger get logger => Logger(
         level: Level.all,
         output: ConsoleOutput(),
-        filter: ProductionFilter(),
         printer: PrettyPrinter(
           methodCount: 0,
           errorMethodCount: 4,
