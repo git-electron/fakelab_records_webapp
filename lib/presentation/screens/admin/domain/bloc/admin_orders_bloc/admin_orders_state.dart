@@ -1,14 +1,14 @@
-part of 'admin_general_bloc.dart';
+part of 'admin_orders_bloc.dart';
 
 @freezed
-class AdminGeneralState with _$AdminGeneralState {
-  const factory AdminGeneralState.loading() = _Loading;
+class AdminOrdersState with _$AdminOrdersState {
+  const factory AdminOrdersState.loading() = _Loading;
 
-  const factory AdminGeneralState.loaded(List<Order> orders) = _Loaded;
+  const factory AdminOrdersState.loaded(List<Order> orders) = _Loaded;
 
-  const factory AdminGeneralState.error(String? message) = _Error;
+  const factory AdminOrdersState.error(String? message) = _Error;
 
-  const AdminGeneralState._();
+  const AdminOrdersState._();
 
   bool get isLoading => maybeWhen(
         loading: () => true,

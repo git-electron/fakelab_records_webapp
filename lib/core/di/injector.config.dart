@@ -24,12 +24,12 @@ import 'package:fakelab_records_webapp/features/my_orders/data/client/orders_cli
     as _i652;
 import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart'
     as _i790;
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc.dart'
-    as _i864;
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/data/client/admin_general_client.dart'
-    as _i914;
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/domain/bloc/admin_general_bloc.dart'
-    as _i200;
+import 'package:fakelab_records_webapp/presentation/screens/admin/client/admin_orders_client.dart'
+    as _i9;
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc/admin_bloc.dart'
+    as _i869;
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart'
+    as _i522;
 import 'package:fakelab_records_webapp/presentation/screens/home/data/client/admin_panel_client.dart'
     as _i562;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/admin_panel_bloc/admin_panel_bloc.dart'
@@ -98,11 +98,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i914.AdminGeneralClient>(() => _i914.AdminGeneralClient(
+    gh.factory<_i9.AdminOrdersClient>(() => _i9.AdminOrdersClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i864.AdminBloc>(() => _i864.AdminBloc(
+    gh.factory<_i869.AdminBloc>(() => _i869.AdminBloc(
           gh<_i435.TelegramService>(),
           gh<_i133.TelegramDataBloc>(),
         ));
@@ -120,10 +120,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
           gh<_i415.UserClient>(),
           gh<_i133.TelegramDataBloc>(),
-        ));
-    gh.factory<_i200.AdminGeneralBloc>(() => _i200.AdminGeneralBloc(
-          gh<_i109.UserBloc>(),
-          gh<_i914.AdminGeneralClient>(),
         ));
     gh.factoryParam<_i790.MyOrdersFeatureBloc, bool, dynamic>((
       hasLimit,
@@ -158,6 +154,10 @@ extension GetItInjectableX on _i174.GetIt {
         _i768.MyOrdersBloc(
           gh<_i109.UserBloc>(),
           myOrdersFeatureBloc,
+        ));
+    gh.factory<_i522.AdminOrdersBloc>(() => _i522.AdminOrdersBloc(
+          gh<_i109.UserBloc>(),
+          gh<_i9.AdminOrdersClient>(),
         ));
     return this;
   }

@@ -2,6 +2,7 @@ import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc/teleg
 import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/models/admin_tab.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -23,6 +24,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
 
   @override
   Future<void> close() {
+    tabsController.dispose();
     telegramService.hideBackButton();
     if (!telegramDataBloc.state.isMobile) {
       tryOrNull(telegramService.exitFullscreen);
@@ -33,6 +35,8 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
 
   final TelegramService telegramService;
   final TelegramDataBloc telegramDataBloc;
+
+  final ScrollController tabsController = ScrollController();
 
   Future<void> _onTabChanged(
     _TabChanged event,

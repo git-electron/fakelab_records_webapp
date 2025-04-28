@@ -2,7 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/domain/bloc/admin_general_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/loading_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
@@ -19,7 +19,7 @@ class AdminGeneralScreenStats extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1000;
 
-    return BlocBuilder<AdminGeneralBloc, AdminGeneralState>(
+    return BlocBuilder<AdminOrdersBloc, AdminOrdersState>(
       builder: (context, state) {
         if (state.isLoading) return const LoadingPage(height: 400);
         if (state.hasError) {

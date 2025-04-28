@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'admin_general_bloc.dart';
+part of 'admin_orders_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AdminGeneralEvent {
+mixin _$AdminOrdersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
@@ -63,23 +63,23 @@ mixin _$AdminGeneralEvent {
 }
 
 /// @nodoc
-abstract class $AdminGeneralEventCopyWith<$Res> {
-  factory $AdminGeneralEventCopyWith(
-          AdminGeneralEvent value, $Res Function(AdminGeneralEvent) then) =
-      _$AdminGeneralEventCopyWithImpl<$Res, AdminGeneralEvent>;
+abstract class $AdminOrdersEventCopyWith<$Res> {
+  factory $AdminOrdersEventCopyWith(
+          AdminOrdersEvent value, $Res Function(AdminOrdersEvent) then) =
+      _$AdminOrdersEventCopyWithImpl<$Res, AdminOrdersEvent>;
 }
 
 /// @nodoc
-class _$AdminGeneralEventCopyWithImpl<$Res, $Val extends AdminGeneralEvent>
-    implements $AdminGeneralEventCopyWith<$Res> {
-  _$AdminGeneralEventCopyWithImpl(this._value, this._then);
+class _$AdminOrdersEventCopyWithImpl<$Res, $Val extends AdminOrdersEvent>
+    implements $AdminOrdersEventCopyWith<$Res> {
+  _$AdminOrdersEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AdminGeneralEvent
+  /// Create a copy of AdminOrdersEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -92,13 +92,13 @@ abstract class _$$SetLoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SetLoadingImplCopyWithImpl<$Res>
-    extends _$AdminGeneralEventCopyWithImpl<$Res, _$SetLoadingImpl>
+    extends _$AdminOrdersEventCopyWithImpl<$Res, _$SetLoadingImpl>
     implements _$$SetLoadingImplCopyWith<$Res> {
   __$$SetLoadingImplCopyWithImpl(
       _$SetLoadingImpl _value, $Res Function(_$SetLoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AdminGeneralEvent
+  /// Create a copy of AdminOrdersEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -109,7 +109,7 @@ class _$SetLoadingImpl implements _SetLoading {
 
   @override
   String toString() {
-    return 'AdminGeneralEvent.setLoading()';
+    return 'AdminOrdersEvent.setLoading()';
   }
 
   @override
@@ -190,7 +190,7 @@ class _$SetLoadingImpl implements _SetLoading {
   }
 }
 
-abstract class _SetLoading implements AdminGeneralEvent {
+abstract class _SetLoading implements AdminOrdersEvent {
   const factory _SetLoading() = _$SetLoadingImpl;
 }
 
@@ -205,13 +205,13 @@ abstract class _$$SetLoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SetLoadedImplCopyWithImpl<$Res>
-    extends _$AdminGeneralEventCopyWithImpl<$Res, _$SetLoadedImpl>
+    extends _$AdminOrdersEventCopyWithImpl<$Res, _$SetLoadedImpl>
     implements _$$SetLoadedImplCopyWith<$Res> {
   __$$SetLoadedImplCopyWithImpl(
       _$SetLoadedImpl _value, $Res Function(_$SetLoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AdminGeneralEvent
+  /// Create a copy of AdminOrdersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -242,7 +242,7 @@ class _$SetLoadedImpl implements _SetLoaded {
 
   @override
   String toString() {
-    return 'AdminGeneralEvent.setLoaded(orders: $orders)';
+    return 'AdminOrdersEvent.setLoaded(orders: $orders)';
   }
 
   @override
@@ -257,7 +257,7 @@ class _$SetLoadedImpl implements _SetLoaded {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
 
-  /// Create a copy of AdminGeneralEvent
+  /// Create a copy of AdminOrdersEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -334,12 +334,12 @@ class _$SetLoadedImpl implements _SetLoaded {
   }
 }
 
-abstract class _SetLoaded implements AdminGeneralEvent {
+abstract class _SetLoaded implements AdminOrdersEvent {
   const factory _SetLoaded(final List<Order> orders) = _$SetLoadedImpl;
 
   List<Order> get orders;
 
-  /// Create a copy of AdminGeneralEvent
+  /// Create a copy of AdminOrdersEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetLoadedImplCopyWith<_$SetLoadedImpl> get copyWith =>
@@ -357,13 +357,13 @@ abstract class _$$SetErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SetErrorImplCopyWithImpl<$Res>
-    extends _$AdminGeneralEventCopyWithImpl<$Res, _$SetErrorImpl>
+    extends _$AdminOrdersEventCopyWithImpl<$Res, _$SetErrorImpl>
     implements _$$SetErrorImplCopyWith<$Res> {
   __$$SetErrorImplCopyWithImpl(
       _$SetErrorImpl _value, $Res Function(_$SetErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AdminGeneralEvent
+  /// Create a copy of AdminOrdersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -389,7 +389,7 @@ class _$SetErrorImpl implements _SetError {
 
   @override
   String toString() {
-    return 'AdminGeneralEvent.setError(message: $message)';
+    return 'AdminOrdersEvent.setError(message: $message)';
   }
 
   @override
@@ -403,7 +403,7 @@ class _$SetErrorImpl implements _SetError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AdminGeneralEvent
+  /// Create a copy of AdminOrdersEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -480,12 +480,12 @@ class _$SetErrorImpl implements _SetError {
   }
 }
 
-abstract class _SetError implements AdminGeneralEvent {
+abstract class _SetError implements AdminOrdersEvent {
   const factory _SetError(final String? message) = _$SetErrorImpl;
 
   String? get message;
 
-  /// Create a copy of AdminGeneralEvent
+  /// Create a copy of AdminOrdersEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetErrorImplCopyWith<_$SetErrorImpl> get copyWith =>
@@ -493,7 +493,7 @@ abstract class _SetError implements AdminGeneralEvent {
 }
 
 /// @nodoc
-mixin _$AdminGeneralState {
+mixin _$AdminOrdersState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
@@ -541,23 +541,23 @@ mixin _$AdminGeneralState {
 }
 
 /// @nodoc
-abstract class $AdminGeneralStateCopyWith<$Res> {
-  factory $AdminGeneralStateCopyWith(
-          AdminGeneralState value, $Res Function(AdminGeneralState) then) =
-      _$AdminGeneralStateCopyWithImpl<$Res, AdminGeneralState>;
+abstract class $AdminOrdersStateCopyWith<$Res> {
+  factory $AdminOrdersStateCopyWith(
+          AdminOrdersState value, $Res Function(AdminOrdersState) then) =
+      _$AdminOrdersStateCopyWithImpl<$Res, AdminOrdersState>;
 }
 
 /// @nodoc
-class _$AdminGeneralStateCopyWithImpl<$Res, $Val extends AdminGeneralState>
-    implements $AdminGeneralStateCopyWith<$Res> {
-  _$AdminGeneralStateCopyWithImpl(this._value, this._then);
+class _$AdminOrdersStateCopyWithImpl<$Res, $Val extends AdminOrdersState>
+    implements $AdminOrdersStateCopyWith<$Res> {
+  _$AdminOrdersStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AdminGeneralState
+  /// Create a copy of AdminOrdersState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -570,13 +570,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$AdminGeneralStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$AdminOrdersStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AdminGeneralState
+  /// Create a copy of AdminOrdersState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -587,7 +587,7 @@ class _$LoadingImpl extends _Loading {
 
   @override
   String toString() {
-    return 'AdminGeneralState.loading()';
+    return 'AdminOrdersState.loading()';
   }
 
   @override
@@ -668,7 +668,7 @@ class _$LoadingImpl extends _Loading {
   }
 }
 
-abstract class _Loading extends AdminGeneralState {
+abstract class _Loading extends AdminOrdersState {
   const factory _Loading() = _$LoadingImpl;
   const _Loading._() : super._();
 }
@@ -684,13 +684,13 @@ abstract class _$$LoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$AdminGeneralStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$AdminOrdersStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AdminGeneralState
+  /// Create a copy of AdminOrdersState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -723,7 +723,7 @@ class _$LoadedImpl extends _Loaded {
 
   @override
   String toString() {
-    return 'AdminGeneralState.loaded(orders: $orders)';
+    return 'AdminOrdersState.loaded(orders: $orders)';
   }
 
   @override
@@ -738,7 +738,7 @@ class _$LoadedImpl extends _Loaded {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
 
-  /// Create a copy of AdminGeneralState
+  /// Create a copy of AdminOrdersState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -815,13 +815,13 @@ class _$LoadedImpl extends _Loaded {
   }
 }
 
-abstract class _Loaded extends AdminGeneralState {
+abstract class _Loaded extends AdminOrdersState {
   const factory _Loaded(final List<Order> orders) = _$LoadedImpl;
   const _Loaded._() : super._();
 
   List<Order> get orders;
 
-  /// Create a copy of AdminGeneralState
+  /// Create a copy of AdminOrdersState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -839,13 +839,13 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$AdminGeneralStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$AdminOrdersStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AdminGeneralState
+  /// Create a copy of AdminOrdersState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -871,7 +871,7 @@ class _$ErrorImpl extends _Error {
 
   @override
   String toString() {
-    return 'AdminGeneralState.error(message: $message)';
+    return 'AdminOrdersState.error(message: $message)';
   }
 
   @override
@@ -885,7 +885,7 @@ class _$ErrorImpl extends _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AdminGeneralState
+  /// Create a copy of AdminOrdersState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -962,13 +962,13 @@ class _$ErrorImpl extends _Error {
   }
 }
 
-abstract class _Error extends AdminGeneralState {
+abstract class _Error extends AdminOrdersState {
   const factory _Error(final String? message) = _$ErrorImpl;
   const _Error._() : super._();
 
   String? get message;
 
-  /// Create a copy of AdminGeneralState
+  /// Create a copy of AdminOrdersState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
