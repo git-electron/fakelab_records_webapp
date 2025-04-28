@@ -154,9 +154,11 @@ class AdminAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TelegramMetaWrapper(
       builder: (context, meta) {
+        final double toolbarHeight = meta.totalSafeAreaInset.top + 10;
+        
         return SliverAppBar(
           pinned: true,
-          toolbarHeight: meta.totalSafeAreaInset.top,
+          toolbarHeight: toolbarHeight,
           automaticallyImplyLeading: false,
           backgroundColor: context.colors.transparent,
           surfaceTintColor: context.colors.transparent,
@@ -168,10 +170,10 @@ class AdminAppBar extends StatelessWidget {
             blurColor: context.colors.background,
             alignment: Alignment.bottomCenter,
             overlay: SizedBox(
-              height: meta.totalSafeAreaInset.top,
+              height: toolbarHeight,
               child: Padding(
                 padding: Pad(
-                  left: meta.totalSafeAreaInset.top,
+                  left: toolbarHeight,
                   right: meta.totalSafeAreaInset.top * 2,
                 ),
                 child: Row(
@@ -183,14 +185,14 @@ class AdminAppBar extends StatelessWidget {
                       height: meta.totalSafeAreaInset.top * .4,
                     ),
                     UserAvatar(
-                      size: meta.totalSafeAreaInset.top * .75,
+                      size: meta.totalSafeAreaInset.top * .7,
                     ),
                   ],
                 ),
               ),
             ),
             child: SizedBox(
-              height: meta.totalSafeAreaInset.top,
+              height: toolbarHeight,
               width: double.infinity,
             ),
           ),
