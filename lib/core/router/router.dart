@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
+import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import '../domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
 import 'package:logger/logger.dart';
 import 'router.gr.dart';
@@ -7,11 +9,12 @@ import 'package:injectable/injectable.dart';
 @singleton
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
-  AppRouter(this.logger, this.telegramDataBloc) {
+  AppRouter(this.logger, this.userBloc, this.telegramDataBloc) {
     telegramDataBloc.telegramService.addBackButtonEvent(pop);
   }
 
   final Logger logger;
+  final UserBloc userBloc;
   final TelegramDataBloc telegramDataBloc;
 
   @override
@@ -24,6 +27,23 @@ class AppRouter extends RootStackRouter {
 Path: ${resolver.route.path}
 Path params: ${resolver.route.params}
 Args: ${resolver.route.args}''');
+      resolver.next();
+    }),
+    AutoRouteGuard.simple((resolver, router) {
+      if (resolver.routeName == AdminRoute.name) {
+        if (!userBloc.state.isAuthorized ||
+            !(userBloc.state.user?.isAdmin ?? false)) {
+          resolver.redirectUntil(const HomeRoute());
+        }
+
+        tryOrNull(telegramDataBloc.telegramService.requestFullscreen);
+      } else {
+        final bool isMobile =
+            telegramDataBloc.state.telegramData?.meta.isMobile ?? false;
+        if (!isMobile) {
+          tryOrNull(telegramDataBloc.telegramService.exitFullscreen);
+        }
+      }
       resolver.next();
     }),
     AutoRouteGuard.simple((resolver, router) {

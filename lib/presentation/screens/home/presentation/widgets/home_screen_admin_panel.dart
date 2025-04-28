@@ -195,7 +195,7 @@ class AdminStatsCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(title, style: context.styles.body3),
+                Text(title, style: context.styles.footer2),
                 const Gap(5),
                 Text(
                   value.toString(),
