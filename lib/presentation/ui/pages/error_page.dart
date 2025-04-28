@@ -11,16 +11,19 @@ class ErrorPage extends StatelessWidget {
   const ErrorPage({
     this.title = 'Ой, произошла ошибка',
     this.message,
+    this.height,
     super.key,
   });
 
   final String title;
   final String? message;
+  
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: double.maxFinite,
+      height: height ?? double.maxFinite,
       width: double.maxFinite,
       padding: const Pad(horizontal: 30),
       child: Column(

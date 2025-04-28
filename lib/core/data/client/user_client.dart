@@ -1,10 +1,11 @@
+import 'package:fakelab_records_webapp/main.dart';
+
 import '../../constants/mock.dart';
 import '../../constants/types.dart';
 import '../../domain/models/result/result.dart';
 import '../../domain/models/user/user.dart';
 import '../../extensions/object_extensions.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 
@@ -16,7 +17,7 @@ class UserClient {
   final DatabaseReference ref;
 
   Future<Result<User>> getUser(int userId) async {
-    if (kDebugMode) return Result.success(Mock.user);
+    if (isDevelopment) return Result.success(Mock.user);
 
     try {
       final String path = 'users/$userId';

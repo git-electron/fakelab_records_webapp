@@ -2,14 +2,18 @@ import '../../../core/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 
 class LoadingPage extends StatelessWidget {
-  const LoadingPage({super.key});
+  const LoadingPage({
+    this.height,
+    super.key,
+  });
+
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: double.maxFinite,
+      height: height ?? double.maxFinite,
       width: double.maxFinite,
-      color: context.colors.background,
       alignment: Alignment.center,
       child: SizedBox.square(
         dimension: 30,

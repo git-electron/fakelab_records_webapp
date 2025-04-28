@@ -15,12 +15,14 @@ class HomeScreenButtons extends StatelessWidget {
         children: [
           AppButton.primary(
             onTap: () {},
+            isEnabled: false,
             text: 'Забронировать запись',
             icon: Assets.icons.calendar.dark,
           ),
           const Gap(10),
           AppButton.secondary(
             onTap: () {},
+            isEnabled: false,
             text: 'Заказать услугу',
             icon: Assets.icons.cart.light,
           ),

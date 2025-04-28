@@ -598,6 +598,10 @@ class $AssetsIconsLogoFakelabGen {
 class $AssetsIconsLogoRecordsGen {
   const $AssetsIconsLogoRecordsGen();
 
+  /// File path: assets/icons/logo/records/admin.svg
+  SvgGenImage get admin =>
+      const SvgGenImage('assets/icons/logo/records/admin.svg');
+
   /// File path: assets/icons/logo/records/compact.svg
   SvgGenImage get compact =>
       const SvgGenImage('assets/icons/logo/records/compact.svg');
@@ -607,7 +611,7 @@ class $AssetsIconsLogoRecordsGen {
       const SvgGenImage('assets/icons/logo/records/full.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [compact, full];
+  List<SvgGenImage> get values => [admin, compact, full];
 }
 
 class Assets {

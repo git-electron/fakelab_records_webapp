@@ -22,6 +22,7 @@ OrderStatusHistoryItem _$OrderStatusHistoryItemFromJson(
 /// @nodoc
 mixin _$OrderStatusHistoryItem {
   OrderStatus get status => throw _privateConstructorUsedError;
+  @DateTimeConverter()
   DateTime get dateChanged => throw _privateConstructorUsedError;
 
   /// Serializes this OrderStatusHistoryItem to a JSON map.
@@ -40,7 +41,7 @@ abstract class $OrderStatusHistoryItemCopyWith<$Res> {
           $Res Function(OrderStatusHistoryItem) then) =
       _$OrderStatusHistoryItemCopyWithImpl<$Res, OrderStatusHistoryItem>;
   @useResult
-  $Res call({OrderStatus status, DateTime dateChanged});
+  $Res call({OrderStatus status, @DateTimeConverter() DateTime dateChanged});
 }
 
 /// @nodoc
@@ -84,7 +85,7 @@ abstract class _$$OrderStatusHistoryItemImplCopyWith<$Res>
       __$$OrderStatusHistoryItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({OrderStatus status, DateTime dateChanged});
+  $Res call({OrderStatus status, @DateTimeConverter() DateTime dateChanged});
 }
 
 /// @nodoc
@@ -122,7 +123,7 @@ class __$$OrderStatusHistoryItemImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OrderStatusHistoryItemImpl implements _OrderStatusHistoryItem {
   _$OrderStatusHistoryItemImpl(
-      {required this.status, required this.dateChanged});
+      {required this.status, @DateTimeConverter() required this.dateChanged});
 
   factory _$OrderStatusHistoryItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderStatusHistoryItemImplFromJson(json);
@@ -130,6 +131,7 @@ class _$OrderStatusHistoryItemImpl implements _OrderStatusHistoryItem {
   @override
   final OrderStatus status;
   @override
+  @DateTimeConverter()
   final DateTime dateChanged;
 
   @override
@@ -170,8 +172,9 @@ class _$OrderStatusHistoryItemImpl implements _OrderStatusHistoryItem {
 
 abstract class _OrderStatusHistoryItem implements OrderStatusHistoryItem {
   factory _OrderStatusHistoryItem(
-      {required final OrderStatus status,
-      required final DateTime dateChanged}) = _$OrderStatusHistoryItemImpl;
+          {required final OrderStatus status,
+          @DateTimeConverter() required final DateTime dateChanged}) =
+      _$OrderStatusHistoryItemImpl;
 
   factory _OrderStatusHistoryItem.fromJson(Map<String, dynamic> json) =
       _$OrderStatusHistoryItemImpl.fromJson;
@@ -179,6 +182,7 @@ abstract class _OrderStatusHistoryItem implements OrderStatusHistoryItem {
   @override
   OrderStatus get status;
   @override
+  @DateTimeConverter()
   DateTime get dateChanged;
 
   /// Create a copy of OrderStatusHistoryItem

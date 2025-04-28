@@ -1,3 +1,4 @@
+import 'package:fakelab_records_webapp/core/converters/date_time_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/domain/models/rating/rating.dart';
@@ -18,7 +19,7 @@ class Order with _$Order {
     required OrderType type,
     required OrderStatus status,
     required List<OrderStatusHistoryItem> statusHistory,
-    required DateTime dateCreated,
+    @DateTimeConverter() required DateTime dateCreated,
     required double totalCost,
     required bool costFrom,
     required List<OrderService> services,

@@ -1,10 +1,11 @@
+import 'package:fakelab_records_webapp/main.dart';
+
 import '../../../../core/constants/mock.dart';
 import '../../../../core/constants/types.dart';
 import '../../../../core/domain/models/result/result.dart';
 import '../../../../core/extensions/object_extensions.dart';
 import '../../domain/models/order/order.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
 
@@ -19,7 +20,7 @@ class OrdersClient {
     int userId, {
     bool hasLimit = false,
   }) async {
-    if (kDebugMode) {
+    if (isDevelopment) {
       return Result.success(hasLimit ? Mock.orders.sublist(0, 5) : Mock.orders);
     }
 

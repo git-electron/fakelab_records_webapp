@@ -71,7 +71,7 @@ class MyOrdersVerticalScroll extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Order> orders = _orders;
 
-    if (orders.isEmpty) return const EmptyPage(isExpanded: false);
+    if (orders.isEmpty) return const EmptyPage(height: 500);
 
     return ListView.separated(
       itemCount: orders.length,

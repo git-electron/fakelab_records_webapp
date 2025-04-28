@@ -51,6 +51,7 @@ class ExamplesButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton.primary(
       onTap: () {},
+      isEnabled: false,
       text: 'Больше примеров',
       icon: Assets.icons.arrowRight.dark,
     );

@@ -1,5 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/admin_panel_bloc/admin_panel_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/widgets/home_screen_admin_panel.dart';
 import '../../../../core/di/injector.dart';
 import '../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import '../domain/bloc/home_bloc/home_bloc.dart';
@@ -28,10 +30,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => $<HomeBloc>(
-        param1: $<MyOrdersFeatureBloc>(param1: true),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => $<HomeBloc>(
+            param1: $<MyOrdersFeatureBloc>(param1: true),
+          ),
+        ),
+        BlocProvider(create: (context) => $<AdminPanelBloc>()),
+      ],
       child: Scaffold(
         backgroundColor: context.colors.background,
         body: BlocBuilder<HomeBloc, HomeState>(
@@ -71,6 +78,7 @@ class HomeScreenContent extends StatelessWidget {
           Gap(55),
           HomeScreenDebugInfo(),
           HomeScreenGreetings(),
+          HomeScreenAdminPanel(),
           Gap(20),
           HomeScreenMyOrders(),
           HomeScreenLoyalty(),

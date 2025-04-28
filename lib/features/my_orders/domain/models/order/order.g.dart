@@ -15,7 +15,8 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
           .map(
               (e) => OrderStatusHistoryItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      dateCreated: DateTime.parse(json['dateCreated'] as String),
+      dateCreated:
+          const DateTimeConverter().fromJson(json['dateCreated'] as String),
       totalCost: (json['totalCost'] as num).toDouble(),
       costFrom: json['costFrom'] as bool,
       services: (json['services'] as List<dynamic>)
@@ -33,7 +34,7 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
       'type': _$OrderTypeEnumMap[instance.type]!,
       'status': _$OrderStatusEnumMap[instance.status]!,
       'statusHistory': instance.statusHistory.map((e) => e.toJson()).toList(),
-      'dateCreated': instance.dateCreated.toIso8601String(),
+      'dateCreated': const DateTimeConverter().toJson(instance.dateCreated),
       'totalCost': instance.totalCost,
       'costFrom': instance.costFrom,
       'services': instance.services.map((e) => e.toJson()).toList(),

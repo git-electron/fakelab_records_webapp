@@ -24,6 +24,10 @@ import 'package:fakelab_records_webapp/features/my_orders/data/client/orders_cli
     as _i652;
 import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart'
     as _i790;
+import 'package:fakelab_records_webapp/presentation/screens/home/data/client/admin_panel_client.dart'
+    as _i562;
+import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/admin_panel_bloc/admin_panel_bloc.dart'
+    as _i481;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/audio_player_bloc/audio_player_bloc.dart'
     as _i29;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/home_bloc/home_bloc.dart'
@@ -88,6 +92,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
+    gh.factory<_i562.AdminPanelClient>(() => _i562.AdminPanelClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
     gh.factory<_i29.AudioPlayerBloc>(
         () => _i29.AudioPlayerBloc(gh<_i842.AssetsAudioPlayer>()));
     gh.factoryParam<_i843.MyOrderBloc, String, dynamic>((
@@ -111,6 +119,10 @@ extension GetItInjectableX on _i174.GetIt {
           hasLimit,
           gh<_i109.UserBloc>(),
           gh<_i652.OrdersClient>(),
+        ));
+    gh.factory<_i481.AdminPanelBloc>(() => _i481.AdminPanelBloc(
+          gh<_i109.UserBloc>(),
+          gh<_i562.AdminPanelClient>(),
         ));
     gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,

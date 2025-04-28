@@ -5,16 +5,16 @@ import 'package:gap/gap.dart';
 
 class EmptyPage extends StatelessWidget {
   const EmptyPage({
-    this.isExpanded = true,
+    this.height,
     super.key,
   });
 
-  final bool isExpanded;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: isExpanded ? double.maxFinite : 500,
+      height: height ?? double.maxFinite,
       width: double.maxFinite,
       padding: const Pad(horizontal: 30),
       child: Column(

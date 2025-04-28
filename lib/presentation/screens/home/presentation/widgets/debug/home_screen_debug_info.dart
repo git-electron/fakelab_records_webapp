@@ -1,7 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/main.dart';
 import '../../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
 import '../../../domain/bloc/home_bloc/home_bloc.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
 import '../../../../../ui/wrappers/tappable.dart';
@@ -21,7 +21,7 @@ class _HomeScreenDebugInfoState extends State<HomeScreenDebugInfo> {
 
   @override
   Widget build(BuildContext context) {
-    final bool shouldDisplayInfo = kDebugMode && !_isHidden;
+    final bool shouldDisplayInfo = isDevelopment && !_isHidden;
     if (!shouldDisplayInfo) return const SizedBox();
 
     return Padding(

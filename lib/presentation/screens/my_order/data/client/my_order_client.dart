@@ -1,10 +1,11 @@
+import 'package:fakelab_records_webapp/main.dart';
+
 import '../../../../../core/constants/mock.dart';
 import '../../../../../core/constants/types.dart';
 import '../../../../../core/domain/models/result/result.dart';
 import '../../../../../core/extensions/object_extensions.dart';
 import '../../../../../features/my_orders/domain/models/order/order.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
 
@@ -16,7 +17,7 @@ class MyOrderClient {
   final DatabaseReference ref;
 
   Future<Result<Order>> getOrder(String orderId) async {
-    if (kDebugMode) {
+    if (isDevelopment) {
       final Order? mockOrder = Mock.getOrder(orderId);
       if (mockOrder != null) {
         return Result.success(mockOrder);
@@ -43,7 +44,7 @@ Data: $json''');
       final Order order = Order.fromJson(json);
       return Result.success(order);
     } catch (error) {
-      logger.e('Failed to get orer', error: error);
+      logger.e('Failed to get order', error: error);
       return Result.error(error.toString());
     }
   }

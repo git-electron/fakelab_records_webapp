@@ -26,6 +26,7 @@ mixin _$Order {
   OrderStatus get status => throw _privateConstructorUsedError;
   List<OrderStatusHistoryItem> get statusHistory =>
       throw _privateConstructorUsedError;
+  @DateTimeConverter()
   DateTime get dateCreated => throw _privateConstructorUsedError;
   double get totalCost => throw _privateConstructorUsedError;
   bool get costFrom => throw _privateConstructorUsedError;
@@ -52,7 +53,7 @@ abstract class $OrderCopyWith<$Res> {
       OrderType type,
       OrderStatus status,
       List<OrderStatusHistoryItem> statusHistory,
-      DateTime dateCreated,
+      @DateTimeConverter() DateTime dateCreated,
       double totalCost,
       bool costFrom,
       List<OrderService> services,
@@ -170,7 +171,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       OrderType type,
       OrderStatus status,
       List<OrderStatusHistoryItem> statusHistory,
-      DateTime dateCreated,
+      @DateTimeConverter() DateTime dateCreated,
       double totalCost,
       bool costFrom,
       List<OrderService> services,
@@ -260,7 +261,7 @@ class _$OrderImpl extends _Order {
       required this.type,
       required this.status,
       required final List<OrderStatusHistoryItem> statusHistory,
-      required this.dateCreated,
+      @DateTimeConverter() required this.dateCreated,
       required this.totalCost,
       required this.costFrom,
       required final List<OrderService> services,
@@ -289,6 +290,7 @@ class _$OrderImpl extends _Order {
   }
 
   @override
+  @DateTimeConverter()
   final DateTime dateCreated;
   @override
   final double totalCost;
@@ -370,7 +372,7 @@ abstract class _Order extends Order {
       required final OrderType type,
       required final OrderStatus status,
       required final List<OrderStatusHistoryItem> statusHistory,
-      required final DateTime dateCreated,
+      @DateTimeConverter() required final DateTime dateCreated,
       required final double totalCost,
       required final bool costFrom,
       required final List<OrderService> services,
@@ -390,6 +392,7 @@ abstract class _Order extends Order {
   @override
   List<OrderStatusHistoryItem> get statusHistory;
   @override
+  @DateTimeConverter()
   DateTime get dateCreated;
   @override
   double get totalCost;
