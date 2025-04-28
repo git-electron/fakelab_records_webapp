@@ -25,8 +25,8 @@ class Mock {
 
   static final TelegramMeta telegramMeta = TelegramMeta(
     platform: 'unknown',
-    safeAreaInset: SafeAreaInset(top: 55, left: 0, right: 0, bottom: 20),
-    contentSafeAreaInset: SafeAreaInset(top: 45, left: 0, right: 0, bottom: 0),
+    safeAreaInset: SafeAreaInset(top: 25, left: 0, right: 0, bottom: 20),
+    contentSafeAreaInset: SafeAreaInset(top: 30, left: 0, right: 0, bottom: 0),
     isFullscreen: false,
   );
 

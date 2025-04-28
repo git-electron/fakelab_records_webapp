@@ -152,45 +152,50 @@ class AdminAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      pinned: true,
-      toolbarHeight: _toolbarHeight,
-      automaticallyImplyLeading: false,
-      backgroundColor: context.colors.transparent,
-      surfaceTintColor: context.colors.transparent,
-      elevation: 0,
-      scrolledUnderElevation: 0,
-      forceElevated: false,
-      flexibleSpace: Blur(
-        blur: 30,
-        blurColor: context.colors.background,
-        alignment: Alignment.bottomCenter,
-        overlay: const SizedBox(
-          height: _toolbarHeight,
-          child: Padding(
-            padding: Pad(horizontal: 20),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+    return TelegramMetaWrapper(
+      builder: (context, meta) {
+        return SliverAppBar(
+          pinned: true,
+          toolbarHeight: meta.totalSafeAreaInset.top,
+          automaticallyImplyLeading: false,
+          backgroundColor: context.colors.transparent,
+          surfaceTintColor: context.colors.transparent,
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          forceElevated: false,
+          flexibleSpace: Blur(
+            blur: 30,
+            blurColor: context.colors.background,
+            alignment: Alignment.bottomCenter,
+            overlay: SizedBox(
+              height: meta.totalSafeAreaInset.top,
+              child: Padding(
+                padding: Pad(
+                  left: meta.totalSafeAreaInset.top,
+                  right: meta.totalSafeAreaInset.top * 2,
+                ),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox.square(dimension: _toolbarHeight),
-                    Logo(type: LogoType.recordsAdmin),
+                    Logo(
+                      type: LogoType.recordsAdmin,
+                      height: meta.totalSafeAreaInset.top * .4,
+                    ),
+                    UserAvatar(
+                      size: meta.totalSafeAreaInset.top * .75,
+                    ),
                   ],
                 ),
-                UserAvatar(),
-              ],
+              ),
+            ),
+            child: SizedBox(
+              height: meta.totalSafeAreaInset.top,
+              width: double.infinity,
             ),
           ),
-        ),
-        child: const SizedBox(
-          height: _toolbarHeight,
-          width: double.infinity,
-        ),
-      ),
+        );
+      },
     );
   }
 }
