@@ -20,6 +20,10 @@ class AdminOrdersState with _$AdminOrdersState {
         orElse: () => false,
       );
 
+  bool get hasOrders => maybeWhen(
+        loaded: (orders) => orders.isNotEmpty,
+        orElse: () => false,
+      );
   List<Order>? get orders => whenOrNull(loaded: (orders) => orders);
 
   bool get hasError => maybeWhen(

@@ -1,3 +1,5 @@
+import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+
 import '../../../constants/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -19,4 +21,8 @@ class User with _$User {
   User._();
 
   bool get isAdmin => adminAccountIds.contains(id);
+
+  String get fullName {
+    return '$firstName${lastName.isNotNullAndEmpty ? ' $lastName' : ''}';
+  }
 }

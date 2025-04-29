@@ -82,7 +82,7 @@ class HomeScreenAdminPanel extends StatelessWidget {
                     const Gap(10),
                     AppButton.secondary(
                       onTap: () => context.pushRoute(const AdminRoute()),
-                      text: 'В админ-панель',
+                      text: 'В админку',
                       icon: Assets.icons.arrowRight.light,
                     ),
                   ],
@@ -148,7 +148,7 @@ class HomeScreenAdminPanel extends StatelessWidget {
                   const Gap(15),
                   AppButton.primary(
                     onTap: () => context.pushRoute(const AdminRoute()),
-                    text: 'В админ-панель',
+                    text: 'В админку',
                     icon: Assets.icons.arrowRight.dark,
                   ),
                 ],
