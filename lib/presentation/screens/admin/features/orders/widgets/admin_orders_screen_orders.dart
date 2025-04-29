@@ -25,12 +25,7 @@ class AdminOrdersScreenOrders extends StatelessWidget {
           }
           if (!state.hasOrders) return const EmptyPage(height: 500);
 
-          final List<Order> orders = [
-            ...state.orders!,
-            ...state.orders!,
-            ...state.orders!,
-            ...state.orders!,
-          ];
+          final List<Order> orders = state.orders!;
 
           return ListView.separated(
             clipBehavior: Clip.none,

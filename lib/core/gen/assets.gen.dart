@@ -93,6 +93,9 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/map
   $AssetsIconsMapGen get map => const $AssetsIconsMapGen();
 
+  /// Directory path: assets/icons/money
+  $AssetsIconsMoneyGen get money => const $AssetsIconsMoneyGen();
+
   /// Directory path: assets/icons/pin
   $AssetsIconsPinGen get pin => const $AssetsIconsPinGen();
 
@@ -104,6 +107,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/subway.svg
   SvgGenImage get subway => const SvgGenImage('assets/icons/subway.svg');
+
+  /// Directory path: assets/icons/user
+  $AssetsIconsUserGen get user => const $AssetsIconsUserGen();
 
   /// List of all assets
   List<SvgGenImage> get values => [subway];
@@ -485,6 +491,23 @@ class $AssetsIconsMapGen {
   List<SvgGenImage> get values => [dark, light];
 }
 
+class $AssetsIconsMoneyGen {
+  const $AssetsIconsMoneyGen();
+
+  /// File path: assets/icons/money/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/money/background.svg');
+
+  /// File path: assets/icons/money/gray.svg
+  SvgGenImage get gray => const SvgGenImage('assets/icons/money/gray.svg');
+
+  /// File path: assets/icons/money/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/money/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, gray, light];
+}
+
 class $AssetsIconsPinGen {
   const $AssetsIconsPinGen();
 
@@ -525,6 +548,23 @@ class $AssetsIconsQuestionGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [dark, gray, light];
+}
+
+class $AssetsIconsUserGen {
+  const $AssetsIconsUserGen();
+
+  /// File path: assets/icons/user/background.svg
+  SvgGenImage get background =>
+      const SvgGenImage('assets/icons/user/background.svg');
+
+  /// File path: assets/icons/user/gray.svg
+  SvgGenImage get gray => const SvgGenImage('assets/icons/user/gray.svg');
+
+  /// File path: assets/icons/user/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/user/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [background, gray, light];
 }
 
 class $AssetsImagesAboutGen {

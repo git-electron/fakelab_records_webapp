@@ -23,6 +23,7 @@ class AdminScreenTabBar extends StatelessWidget {
 
         return Container(
           height: 60,
+          constraints: const BoxConstraints(maxWidth: 1500),
           alignment: Alignment.center,
           child: SizedBox(
             height: 40,
