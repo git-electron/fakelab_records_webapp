@@ -24,84 +24,105 @@ class AdminOrderCard extends StatelessWidget {
 
     return Tappable(
       onTap: () {},
-      child: Container(
-        width: isMobile ? 200 : 280,
-        height: isMobile ? 120 : 140,
-        padding: Pad(all: isMobile ? 15 : 20),
-        decoration: ShapeDecoration(
-          color: context.colors.card,
-          shape: SmoothRectangleBorder(
-            borderRadius: SmoothBorderRadius(
-              cornerRadius: 20,
-              cornerSmoothing: 0.6,
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.topRight,
+        children: [
+          Container(
+            width: isMobile ? 200 : 280,
+            height: isMobile ? 120 : 140,
+            padding: Pad(all: isMobile ? 15 : 20),
+            decoration: ShapeDecoration(
+              color: context.colors.card,
+              shape: SmoothRectangleBorder(
+                borderRadius: SmoothBorderRadius(
+                  cornerRadius: 20,
+                  cornerSmoothing: 0.6,
+                ),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    OrderTileStatus(order.status),
+                    if (!isMobile) const CircleDivider(),
+                    if (!isMobile)
+                      Text(
+                        order.idShort,
+                        style: _topInfo(context, isMobile: isMobile)
+                            .copyWith(color: context.colors.subtitle),
+                      ),
+                    const CircleDivider(),
+                    Text(
+                      order.dateCreated.toDDmmYYYYwithMonths(withWords: true),
+                      style: _topInfo(context, isMobile: isMobile)
+                          .copyWith(color: context.colors.subtitle),
+                    ),
+                  ],
+                ),
+                Text(
+                  order.type.title,
+                  style: _body(context, isMobile: isMobile)
+                      .copyWith(color: context.colors.body),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OrderTilePropertyTextSpan(
+                        icon: Assets.icons.user.gray,
+                        children: [
+                          TextSpan(text: order.customer.fullName),
+                          if (order.customer.username.isNotNullAndEmpty)
+                            TextSpan(
+                              text: ' @${order.customer.username}',
+                              style: _footer(context, isMobile: isMobile),
+                            ),
+                        ],
+                      ),
+                    ),
+                    const Gap(15),
+                    Expanded(
+                      child: OrderTilePropertyTextSpan(
+                        icon: Assets.icons.money.gray,
+                        children: [
+                          if (order.costFrom)
+                            TextSpan(
+                              text: 'от ',
+                              style: _footer(context, isMobile: isMobile),
+                            ),
+                          TextSpan(
+                            text: order.totalCost.formatCurrency(),
+                            style: _orderCostTextStyle(context,
+                                isMobile: isMobile),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                OrderTileStatus(order.status),
-                if (!isMobile) const CircleDivider(),
-                if (!isMobile)
-                  Text(
-                    order.idShort,
-                    style: _topInfo(context, isMobile: isMobile)
-                        .copyWith(color: context.colors.subtitle),
-                  ),
-                const CircleDivider(),
-                Text(
-                  order.dateCreated.toDDmmYYYYwithMonths(withWords: true),
-                  style: _topInfo(context, isMobile: isMobile)
-                      .copyWith(color: context.colors.subtitle),
+          if (order.status == OrderStatus.REQUEST)
+            Container(
+              height: 10,
+              width: 10,
+              decoration: BoxDecoration(
+                color: context.colors.primary,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  width: 5,
+                  color: context.colors.background,
+                  strokeAlign: BorderSide.strokeAlignOutside,
                 ),
-              ],
+              ),
             ),
-            Text(
-              order.type.title,
-              style: _body(context, isMobile: isMobile)
-                  .copyWith(color: context.colors.body),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: OrderTilePropertyTextSpan(
-                    icon: Assets.icons.user.gray,
-                    children: [
-                      TextSpan(text: order.customer.fullName),
-                      if (order.customer.username.isNotNullAndEmpty)
-                        TextSpan(
-                          text: ' @${order.customer.username}',
-                          style: _footer(context, isMobile: isMobile),
-                        ),
-                    ],
-                  ),
-                ),
-                const Gap(15),
-                Expanded(
-                  child: OrderTilePropertyTextSpan(
-                    icon: Assets.icons.money.gray,
-                    children: [
-                      if (order.costFrom)
-                        TextSpan(
-                          text: 'от ',
-                          style: _footer(context, isMobile: isMobile),
-                        ),
-                      TextSpan(
-                        text: order.totalCost.formatCurrency(),
-                        style: _orderCostTextStyle(context, isMobile: isMobile),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+        ],
       ),
     );
   }

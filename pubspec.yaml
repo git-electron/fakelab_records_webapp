@@ -98,6 +98,7 @@ flutter:
     - assets/icons/pin/
     - assets/icons/qr_code/
     - assets/icons/question/
+    - assets/icons/search/
     - assets/icons/user/
     - assets/icons/logo/fakelab/
     - assets/icons/logo/records/

@@ -19,18 +19,21 @@ mixin _$AdminOrdersFiltersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType? type) typeFilterChanged,
+    required TResult Function(String? query) searchQueryChanged,
     required TResult Function(OrderStatus? status) statusFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType? type)? typeFilterChanged,
+    TResult? Function(String? query)? searchQueryChanged,
     TResult? Function(OrderStatus? status)? statusFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType? type)? typeFilterChanged,
+    TResult Function(String? query)? searchQueryChanged,
     TResult Function(OrderStatus? status)? statusFilterChanged,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$AdminOrdersFiltersEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TypeFilterChanged value) typeFilterChanged,
+    required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_StatusFilterChanged value) statusFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_StatusFilterChanged value)? statusFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_StatusFilterChanged value)? statusFilterChanged,
     required TResult orElse(),
   }) =>
@@ -148,6 +154,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType? type) typeFilterChanged,
+    required TResult Function(String? query) searchQueryChanged,
     required TResult Function(OrderStatus? status) statusFilterChanged,
   }) {
     return typeFilterChanged(type);
@@ -157,6 +164,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType? type)? typeFilterChanged,
+    TResult? Function(String? query)? searchQueryChanged,
     TResult? Function(OrderStatus? status)? statusFilterChanged,
   }) {
     return typeFilterChanged?.call(type);
@@ -166,6 +174,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType? type)? typeFilterChanged,
+    TResult Function(String? query)? searchQueryChanged,
     TResult Function(OrderStatus? status)? statusFilterChanged,
     required TResult orElse(),
   }) {
@@ -179,6 +188,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TypeFilterChanged value) typeFilterChanged,
+    required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_StatusFilterChanged value) statusFilterChanged,
   }) {
     return typeFilterChanged(this);
@@ -188,6 +198,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_StatusFilterChanged value)? statusFilterChanged,
   }) {
     return typeFilterChanged?.call(this);
@@ -197,6 +208,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_StatusFilterChanged value)? statusFilterChanged,
     required TResult orElse(),
   }) {
@@ -217,6 +229,155 @@ abstract class _TypeFilterChanged implements AdminOrdersFiltersEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TypeFilterChangedImplCopyWith<_$TypeFilterChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchQueryChangedImplCopyWith<$Res> {
+  factory _$$SearchQueryChangedImplCopyWith(_$SearchQueryChangedImpl value,
+          $Res Function(_$SearchQueryChangedImpl) then) =
+      __$$SearchQueryChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? query});
+}
+
+/// @nodoc
+class __$$SearchQueryChangedImplCopyWithImpl<$Res>
+    extends _$AdminOrdersFiltersEventCopyWithImpl<$Res,
+        _$SearchQueryChangedImpl>
+    implements _$$SearchQueryChangedImplCopyWith<$Res> {
+  __$$SearchQueryChangedImplCopyWithImpl(_$SearchQueryChangedImpl _value,
+      $Res Function(_$SearchQueryChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AdminOrdersFiltersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = freezed,
+  }) {
+    return _then(_$SearchQueryChangedImpl(
+      freezed == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchQueryChangedImpl implements _SearchQueryChanged {
+  const _$SearchQueryChangedImpl(this.query);
+
+  @override
+  final String? query;
+
+  @override
+  String toString() {
+    return 'AdminOrdersFiltersEvent.searchQueryChanged(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchQueryChangedImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  /// Create a copy of AdminOrdersFiltersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchQueryChangedImplCopyWith<_$SearchQueryChangedImpl> get copyWith =>
+      __$$SearchQueryChangedImplCopyWithImpl<_$SearchQueryChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OrderType? type) typeFilterChanged,
+    required TResult Function(String? query) searchQueryChanged,
+    required TResult Function(OrderStatus? status) statusFilterChanged,
+  }) {
+    return searchQueryChanged(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(OrderType? type)? typeFilterChanged,
+    TResult? Function(String? query)? searchQueryChanged,
+    TResult? Function(OrderStatus? status)? statusFilterChanged,
+  }) {
+    return searchQueryChanged?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OrderType? type)? typeFilterChanged,
+    TResult Function(String? query)? searchQueryChanged,
+    TResult Function(OrderStatus? status)? statusFilterChanged,
+    required TResult orElse(),
+  }) {
+    if (searchQueryChanged != null) {
+      return searchQueryChanged(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TypeFilterChanged value) typeFilterChanged,
+    required TResult Function(_SearchQueryChanged value) searchQueryChanged,
+    required TResult Function(_StatusFilterChanged value) statusFilterChanged,
+  }) {
+    return searchQueryChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
+    TResult? Function(_StatusFilterChanged value)? statusFilterChanged,
+  }) {
+    return searchQueryChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult Function(_SearchQueryChanged value)? searchQueryChanged,
+    TResult Function(_StatusFilterChanged value)? statusFilterChanged,
+    required TResult orElse(),
+  }) {
+    if (searchQueryChanged != null) {
+      return searchQueryChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchQueryChanged implements AdminOrdersFiltersEvent {
+  const factory _SearchQueryChanged(final String? query) =
+      _$SearchQueryChangedImpl;
+
+  String? get query;
+
+  /// Create a copy of AdminOrdersFiltersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchQueryChangedImplCopyWith<_$SearchQueryChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -291,6 +452,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType? type) typeFilterChanged,
+    required TResult Function(String? query) searchQueryChanged,
     required TResult Function(OrderStatus? status) statusFilterChanged,
   }) {
     return statusFilterChanged(status);
@@ -300,6 +462,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType? type)? typeFilterChanged,
+    TResult? Function(String? query)? searchQueryChanged,
     TResult? Function(OrderStatus? status)? statusFilterChanged,
   }) {
     return statusFilterChanged?.call(status);
@@ -309,6 +472,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType? type)? typeFilterChanged,
+    TResult Function(String? query)? searchQueryChanged,
     TResult Function(OrderStatus? status)? statusFilterChanged,
     required TResult orElse(),
   }) {
@@ -322,6 +486,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_TypeFilterChanged value) typeFilterChanged,
+    required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_StatusFilterChanged value) statusFilterChanged,
   }) {
     return statusFilterChanged(this);
@@ -331,6 +496,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_StatusFilterChanged value)? statusFilterChanged,
   }) {
     return statusFilterChanged?.call(this);
@@ -340,6 +506,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_StatusFilterChanged value)? statusFilterChanged,
     required TResult orElse(),
   }) {
@@ -367,6 +534,7 @@ abstract class _StatusFilterChanged implements AdminOrdersFiltersEvent {
 mixin _$AdminOrdersFiltersState {
   OrderType? get type => throw _privateConstructorUsedError;
   OrderStatus? get status => throw _privateConstructorUsedError;
+  String? get searchQuery => throw _privateConstructorUsedError;
 
   /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.
@@ -381,7 +549,7 @@ abstract class $AdminOrdersFiltersStateCopyWith<$Res> {
           $Res Function(AdminOrdersFiltersState) then) =
       _$AdminOrdersFiltersStateCopyWithImpl<$Res, AdminOrdersFiltersState>;
   @useResult
-  $Res call({OrderType? type, OrderStatus? status});
+  $Res call({OrderType? type, OrderStatus? status, String? searchQuery});
 }
 
 /// @nodoc
@@ -402,6 +570,7 @@ class _$AdminOrdersFiltersStateCopyWithImpl<$Res,
   $Res call({
     Object? type = freezed,
     Object? status = freezed,
+    Object? searchQuery = freezed,
   }) {
     return _then(_value.copyWith(
       type: freezed == type
@@ -412,6 +581,10 @@ class _$AdminOrdersFiltersStateCopyWithImpl<$Res,
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as OrderStatus?,
+      searchQuery: freezed == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -425,7 +598,7 @@ abstract class _$$AdminOrdersFiltersStateImplCopyWith<$Res>
       __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({OrderType? type, OrderStatus? status});
+  $Res call({OrderType? type, OrderStatus? status, String? searchQuery});
 }
 
 /// @nodoc
@@ -445,6 +618,7 @@ class __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>
   $Res call({
     Object? type = freezed,
     Object? status = freezed,
+    Object? searchQuery = freezed,
   }) {
     return _then(_$AdminOrdersFiltersStateImpl(
       type: freezed == type
@@ -455,6 +629,10 @@ class __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as OrderStatus?,
+      searchQuery: freezed == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -462,16 +640,20 @@ class __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AdminOrdersFiltersStateImpl extends _AdminOrdersFiltersState {
-  const _$AdminOrdersFiltersStateImpl({this.type, this.status}) : super._();
+  const _$AdminOrdersFiltersStateImpl(
+      {this.type, this.status, this.searchQuery})
+      : super._();
 
   @override
   final OrderType? type;
   @override
   final OrderStatus? status;
+  @override
+  final String? searchQuery;
 
   @override
   String toString() {
-    return 'AdminOrdersFiltersState(type: $type, status: $status)';
+    return 'AdminOrdersFiltersState(type: $type, status: $status, searchQuery: $searchQuery)';
   }
 
   @override
@@ -480,11 +662,13 @@ class _$AdminOrdersFiltersStateImpl extends _AdminOrdersFiltersState {
         (other.runtimeType == runtimeType &&
             other is _$AdminOrdersFiltersStateImpl &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, type, status);
+  int get hashCode => Object.hash(runtimeType, type, status, searchQuery);
 
   /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.
@@ -499,13 +683,16 @@ class _$AdminOrdersFiltersStateImpl extends _AdminOrdersFiltersState {
 abstract class _AdminOrdersFiltersState extends AdminOrdersFiltersState {
   const factory _AdminOrdersFiltersState(
       {final OrderType? type,
-      final OrderStatus? status}) = _$AdminOrdersFiltersStateImpl;
+      final OrderStatus? status,
+      final String? searchQuery}) = _$AdminOrdersFiltersStateImpl;
   const _AdminOrdersFiltersState._() : super._();
 
   @override
   OrderType? get type;
   @override
   OrderStatus? get status;
+  @override
+  String? get searchQuery;
 
   /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.

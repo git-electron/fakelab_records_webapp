@@ -1,3 +1,4 @@
+import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
@@ -14,6 +15,7 @@ class AdminOrdersFiltersBloc
     extends Bloc<AdminOrdersFiltersEvent, AdminOrdersFiltersState> {
   AdminOrdersFiltersBloc() : super(const _AdminOrdersFiltersState()) {
     on<_TypeFilterChanged>(_onTypeFilterChanged);
+    on<_SearchQueryChanged>(_onSearchQueryChanged);
     on<_StatusFilterChanged>(_onStatusFilterChanged);
   }
 
@@ -22,6 +24,13 @@ class AdminOrdersFiltersBloc
     Emitter<AdminOrdersFiltersState> emit,
   ) async {
     emit(state.copyWith(type: event.type));
+  }
+
+  Future<void> _onSearchQueryChanged(
+    _SearchQueryChanged event,
+    Emitter<AdminOrdersFiltersState> emit,
+  ) async {
+    emit(state.copyWith(searchQuery: event.query));
   }
 
   Future<void> _onStatusFilterChanged(
