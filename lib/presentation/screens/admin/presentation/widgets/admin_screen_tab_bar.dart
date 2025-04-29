@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/constants/constants.dart';
+import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc/admin_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/models/admin_tab.dart';
@@ -20,64 +21,68 @@ class AdminScreenTabBar extends StatelessWidget {
       builder: (context, state) {
         const List<AdminTab> tabs = AdminTab.values;
 
-        return SizedBox(
-          height: 40,
-          child: ListView.separated(
-            itemCount: tabs.length,
-            controller: bloc.tabsController,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              final AdminTab tab = tabs[index];
-              final bool isSelected = state.isSelected(tab);
-
-              return Padding(
-                padding: Pad(
-                  left: index == 0 ? 20 : 0,
-                  right: index == tabs.length - 1 ? 20 : 0,
-                ),
-                child: Tappable(
-                  onTap: () {
-                    bloc.add(AdminEvent.tabChabged(tab));
-                    bloc.tabsController.animateTo(
-                      index == tabs.length - 1
-                          ? bloc.tabsController.position.maxScrollExtent
-                          : 100.0 * (index - 1),
-                      duration: kAnimationDuration,
-                      curve: kAnimationCurve,
-                    );
-                    bloc.tabsController.animateTo(
-                      (70.0 * index).clamp(
-                        bloc.tabsController.position.minScrollExtent,
-                        bloc.tabsController.position.maxScrollExtent,
+        return Container(
+          height: 60,
+          alignment: Alignment.center,
+          child: SizedBox(
+            height: 40,
+            child: ListView.separated(
+              itemCount: tabs.length,
+              controller: bloc.tabsController,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                final AdminTab tab = tabs[index];
+                final bool isSelected = state.isSelected(tab);
+          
+                return Padding(
+                  padding: Pad(
+                    left: index == 0 ? 20 : 0,
+                    right: index == tabs.length - 1 ? 20 : 0,
+                  ),
+                  child: Tappable(
+                    onTap: () {
+                      bloc.add(AdminEvent.tabChabged(tab));
+                      bloc.tabsController.animateTo(
+                        index == tabs.length - 1
+                            ? bloc.tabsController.position.maxScrollExtent
+                            : 100.0 * (index - 1),
+                        duration: kAnimationDuration,
+                        curve: kAnimationCurve,
+                      );
+                      bloc.tabsController.animateTo(
+                        (70.0 * index).clamp(
+                          bloc.tabsController.position.minScrollExtent,
+                          bloc.tabsController.position.maxScrollExtent,
+                        ),
+                        duration: kAnimationDuration,
+                        curve: kAnimationCurve,
+                      );
+                    },
+                    child: Container(
+                      padding: const Pad(horizontal: 20, vertical: 8),
+                      decoration: ShapeDecoration(
+                        color: isSelected
+                            ? context.colors.onBackground
+                            : context.colors.onBackground.copyWithOpacity(.05),
+                        shape: SmoothRectangleBorder(
+                          borderRadius: SmoothBorderRadius(
+                            cornerRadius: 10,
+                            cornerSmoothing: 0.6,
+                          ),
+                        ),
                       ),
-                      duration: kAnimationDuration,
-                      curve: kAnimationCurve,
-                    );
-                  },
-                  child: Container(
-                    padding: const Pad(horizontal: 20, vertical: 8),
-                    decoration: ShapeDecoration(
-                      color: isSelected
-                          ? context.colors.onBackground
-                          : context.colors.card,
-                      shape: SmoothRectangleBorder(
-                        borderRadius: SmoothBorderRadius(
-                          cornerRadius: 10,
-                          cornerSmoothing: 0.6,
+                      child: Text(
+                        tab.title,
+                        style: context.styles.body1.copyWith(
+                          color: isSelected ? context.colors.background : null,
                         ),
                       ),
                     ),
-                    child: Text(
-                      tab.title,
-                      style: context.styles.body1.copyWith(
-                        color: isSelected ? context.colors.background : null,
-                      ),
-                    ),
                   ),
-                ),
-              );
-            },
-            separatorBuilder: (context, index) => const Gap(10),
+                );
+              },
+              separatorBuilder: (context, index) => const Gap(10),
+            ),
           ),
         );
       },
