@@ -12,8 +12,8 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class AdminOrderCard extends StatelessWidget {
-  const AdminOrderCard(this.order, {super.key});
+class AdminOrderTile extends StatelessWidget {
+  const AdminOrderTile(this.order, {super.key});
 
   final Order order;
 
@@ -25,12 +25,9 @@ class AdminOrderCard extends StatelessWidget {
     return Tappable(
       onTap: () {},
       child: Stack(
-        clipBehavior: Clip.none,
         alignment: Alignment.topRight,
         children: [
           Container(
-            width: isMobile ? 200 : 280,
-            height: isMobile ? 120 : 140,
             padding: Pad(all: isMobile ? 15 : 20),
             decoration: ShapeDecoration(
               color: context.colors.card,
@@ -42,7 +39,6 @@ class AdminOrderCard extends StatelessWidget {
               ),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
@@ -50,13 +46,12 @@ class AdminOrderCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     OrderTileStatus(order.status),
-                    if (!isMobile) const CircleDivider(),
-                    if (!isMobile)
-                      Text(
-                        order.idShort,
-                        style: _topInfo(context, isMobile: isMobile)
-                            .copyWith(color: context.colors.subtitle),
-                      ),
+                    const CircleDivider(),
+                    Text(
+                      order.idShort,
+                      style: _topInfo(context, isMobile: isMobile)
+                          .copyWith(color: context.colors.subtitle),
+                    ),
                     const CircleDivider(),
                     Text(
                       order.dateCreated.toDDmmYYYYwithMonths(withWords: true),
@@ -65,13 +60,19 @@ class AdminOrderCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(
-                  order.type.title,
-                  style: _body(context, isMobile: isMobile)
-                      .copyWith(color: context.colors.body),
-                ),
+                const Gap(15),
                 Row(
                   children: [
+                    Expanded(
+                      flex: isMobile ? 2 : 4,
+                      child: Text(
+                        order.type.title,
+                        style: _body(context, isMobile: isMobile),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const Gap(15),
                     Expanded(
                       child: OrderTilePropertyTextSpan(
                         icon: Assets.icons.user.gray,
@@ -218,8 +219,8 @@ class OrderTilePropertyTextSpan extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         icon.svg(
-          height: isMobile ? 15 : 25,
-          width: isMobile ? 15 : 25,
+          height: isMobile ? 20 : 25,
+          width: isMobile ? 20 : 25,
         ),
         const Gap(5),
         Expanded(

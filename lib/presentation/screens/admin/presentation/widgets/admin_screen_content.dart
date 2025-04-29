@@ -2,7 +2,7 @@ import 'package:fakelab_records_webapp/core/constants/constants.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc/admin_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/models/admin_tab.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/admin_general_screen.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/admin_orders_screen.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/presentation/admin_orders_screen.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/in_development_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -84,23 +84,7 @@ class MyOrdersVerticalScroll extends StatelessWidget {
   }
 
   List<Order> get _orders {
-    if (filtersState != null) {
-      return state.orders?.where((order) {
-            bool isProperOrderType = true;
-            bool isProperOrderStatus = true;
-
-            if (filtersState!.type != null) {
-              isProperOrderType = order.type == filtersState!.type;
-            }
-            if (filtersState!.status != null) {
-              isProperOrderStatus = order.status == filtersState!.status;
-            }
-
-            return isProperOrderType && isProperOrderStatus;
-          }).toList() ??
-          [];
-    }
-
+    if (filtersState != null) return filtersState!.filteredOrders(state.orders);
     return state.orders ?? [];
   }
 }

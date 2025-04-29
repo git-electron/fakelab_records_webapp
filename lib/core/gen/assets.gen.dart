@@ -93,6 +93,9 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/map
   $AssetsIconsMapGen get map => const $AssetsIconsMapGen();
 
+  /// Directory path: assets/icons/money
+  $AssetsIconsMoneyGen get money => const $AssetsIconsMoneyGen();
+
   /// Directory path: assets/icons/pin
   $AssetsIconsPinGen get pin => const $AssetsIconsPinGen();
 
@@ -102,8 +105,14 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/question
   $AssetsIconsQuestionGen get question => const $AssetsIconsQuestionGen();
 
+  /// Directory path: assets/icons/search
+  $AssetsIconsSearchGen get search => const $AssetsIconsSearchGen();
+
   /// File path: assets/icons/subway.svg
   SvgGenImage get subway => const SvgGenImage('assets/icons/subway.svg');
+
+  /// Directory path: assets/icons/user
+  $AssetsIconsUserGen get user => const $AssetsIconsUserGen();
 
   /// List of all assets
   List<SvgGenImage> get values => [subway];
@@ -485,6 +494,22 @@ class $AssetsIconsMapGen {
   List<SvgGenImage> get values => [dark, light];
 }
 
+class $AssetsIconsMoneyGen {
+  const $AssetsIconsMoneyGen();
+
+  /// File path: assets/icons/money/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/money/dark.svg');
+
+  /// File path: assets/icons/money/gray.svg
+  SvgGenImage get gray => const SvgGenImage('assets/icons/money/gray.svg');
+
+  /// File path: assets/icons/money/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/money/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, gray, light];
+}
+
 class $AssetsIconsPinGen {
   const $AssetsIconsPinGen();
 
@@ -522,6 +547,35 @@ class $AssetsIconsQuestionGen {
 
   /// File path: assets/icons/question/light.svg
   SvgGenImage get light => const SvgGenImage('assets/icons/question/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, gray, light];
+}
+
+class $AssetsIconsSearchGen {
+  const $AssetsIconsSearchGen();
+
+  /// File path: assets/icons/search/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/search/dark.svg');
+
+  /// File path: assets/icons/search/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/search/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, light];
+}
+
+class $AssetsIconsUserGen {
+  const $AssetsIconsUserGen();
+
+  /// File path: assets/icons/user/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/user/dark.svg');
+
+  /// File path: assets/icons/user/gray.svg
+  SvgGenImage get gray => const SvgGenImage('assets/icons/user/gray.svg');
+
+  /// File path: assets/icons/user/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/user/light.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [dark, gray, light];

@@ -16,8 +16,8 @@ import 'package:gap/gap.dart';
 
 import 'admin_order_card.dart';
 
-class AdminGeneralScreenOrders extends StatelessWidget {
-  const AdminGeneralScreenOrders({super.key});
+class AdminGeneralOrders extends StatelessWidget {
+  const AdminGeneralOrders({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +55,7 @@ class AdminGeneralScreenOrders extends StatelessWidget {
                 ),
                 child: index == orders.length
                     ? const AllOrdersButton()
-                    : isMobile
-                        ? AdminOrderCardMobile(orders[index])
-                        : AdminOrderCardDesktop(orders[index]),
+                    : AdminOrderCard(orders[index]),
               ),
             ),
           ),

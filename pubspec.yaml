@@ -94,9 +94,12 @@ flutter:
     - assets/icons/keyboard_arrow_up/
     - assets/icons/logo/
     - assets/icons/map/
+    - assets/icons/money/
     - assets/icons/pin/
     - assets/icons/qr_code/
     - assets/icons/question/
+    - assets/icons/search/
+    - assets/icons/user/
     - assets/icons/logo/fakelab/
     - assets/icons/logo/records/
 
