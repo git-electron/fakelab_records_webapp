@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:blur/blur.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/widgets/admin_screen_tab_bar.dart';
 import 'package:fakelab_records_webapp/presentation/ui/logo/logo.dart';
 
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
@@ -13,8 +14,10 @@ class AdminAppBarMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return TelegramMetaWrapper(
       builder: (context, meta) {
+        final double toolbarHeight = meta.totalSafeAreaInset.top + 60;
+
         return SliverAppBar(
-          toolbarHeight: meta.totalSafeAreaInset.top,
+          toolbarHeight: toolbarHeight,
           automaticallyImplyLeading: false,
           backgroundColor: context.colors.transparent,
           surfaceTintColor: context.colors.transparent,
@@ -31,14 +34,20 @@ class AdminAppBarMobile extends StatelessWidget {
                   blur: 10,
                   blurColor: context.colors.background,
                   alignment: Alignment.bottomCenter,
-                  overlay: Container(
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    height: meta.contentSafeAreaInset.top,
-                    child: const Logo(
-                      height: 15,
-                      type: LogoType.recordsAdmin,
-                    ),
+                  overlay: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        height: meta.contentSafeAreaInset.top,
+                        child: const Logo(
+                          height: 15,
+                          type: LogoType.recordsAdmin,
+                        ),
+                      ),
+                      const AdminScreenTabBar(),
+                    ],
                   ),
                   child: const SizedBox(
                     height: double.infinity,
@@ -61,7 +70,7 @@ class AdminAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TelegramMetaWrapper(
       builder: (context, meta) {
-        final double toolbarHeight = meta.totalSafeAreaInset.top + 10;
+        final double toolbarHeight = meta.totalSafeAreaInset.top + 70;
 
         return SliverAppBar(
           pinned: true,
@@ -76,14 +85,20 @@ class AdminAppBar extends StatelessWidget {
             blur: 30,
             blurColor: context.colors.background,
             alignment: Alignment.topCenter,
-            overlay: Container(
-              height: meta.totalSafeAreaInset.top,
-              padding: Pad(left: toolbarHeight),
-              alignment: Alignment.centerLeft,
-              child: Logo(
-                type: LogoType.recordsAdmin,
-                height: meta.totalSafeAreaInset.top * .4,
-              ),
+            overlay: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  height: meta.totalSafeAreaInset.top,
+                  padding: Pad(left: toolbarHeight),
+                  alignment: Alignment.centerLeft,
+                  child: Logo(
+                    type: LogoType.recordsAdmin,
+                    height: meta.totalSafeAreaInset.top * .4,
+                  ),
+                ),
+                const AdminScreenTabBar(),
+              ],
             ),
             child: SizedBox(
               height: toolbarHeight,

@@ -5,11 +5,9 @@ import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc/admin_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/widgets/admin_screen_content.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/widgets/admin_screen_tab_bar.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
 import 'widgets/admin_app_bar.dart';
 
@@ -55,21 +53,12 @@ class AdminScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.center,
+      alignment: Alignment.topCenter,
       child: Container(
-        clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(color: context.colors.background),
+        color: context.colors.background,
         constraints: const BoxConstraints(maxWidth: 1500),
         padding: const Pad(top: 20),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Gap(20),
-            AdminScreenTabBar(),
-            Gap(20),
-            AdminScreenContent(),
-          ],
-        ),
+        child: const AdminScreenContent(),
       ),
     );
   }

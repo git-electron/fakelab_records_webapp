@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-import 'admin_order_card_small.dart';
+import 'admin_order_card.dart';
 
 class AdminGeneralScreenOrders extends StatelessWidget {
   const AdminGeneralScreenOrders({super.key});
@@ -23,6 +23,7 @@ class AdminGeneralScreenOrders extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1000;
+    final bool isFillingScreen = size.width < 1500;
 
     return BlocBuilder<AdminOrdersBloc, AdminOrdersState>(
       builder: (context, state) {
@@ -34,8 +35,11 @@ class AdminGeneralScreenOrders extends StatelessWidget {
 
         final List<Order> orders = state.orders!;
 
-        return Padding(
+        return Container(
           padding: const Pad(bottom: 20),
+          margin: isFillingScreen ? null : const Pad(horizontal: 20),
+          clipBehavior: isFillingScreen ? Clip.none : Clip.antiAlias,
+          decoration: BoxDecoration(color: context.colors.background),
           child: SizedBox(
             height: isMobile ? 120 : 140,
             child: ListView.separated(
@@ -46,14 +50,14 @@ class AdminGeneralScreenOrders extends StatelessWidget {
               separatorBuilder: (context, index) => const Gap(10),
               itemBuilder: (context, index) => Padding(
                 padding: Pad(
-                  left: index == 0 ? 20 : 0,
-                  right: index == orders.length ? 20 : 0,
+                  left: index == 0 && isFillingScreen ? 20 : 0,
+                  right: index == orders.length && isFillingScreen ? 20 : 0,
                 ),
                 child: index == orders.length
                     ? const AllOrdersButton()
                     : isMobile
-                        ? AdminOrderCardSmallMobile(orders[index])
-                        : AdminOrderCardSmallDesktop(orders[index]),
+                        ? AdminOrderCardMobile(orders[index])
+                        : AdminOrderCardDesktop(orders[index]),
               ),
             ),
           ),
