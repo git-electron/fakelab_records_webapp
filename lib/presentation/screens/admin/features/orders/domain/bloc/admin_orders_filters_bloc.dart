@@ -5,28 +5,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart' hide Order;
 
-part 'my_orders_filters_event.dart';
-part 'my_orders_filters_state.dart';
-part 'my_orders_filters_bloc.freezed.dart';
+part 'admin_orders_filters_event.dart';
+part 'admin_orders_filters_state.dart';
+part 'admin_orders_filters_bloc.freezed.dart';
 
 @injectable
-class MyOrdersFiltersBloc
-    extends Bloc<MyOrdersFiltersEvent, MyOrdersFiltersState> {
-  MyOrdersFiltersBloc() : super(const _MyOrdersFiltersState()) {
+class AdminOrdersFiltersBloc
+    extends Bloc<AdminOrdersFiltersEvent, AdminOrdersFiltersState> {
+  AdminOrdersFiltersBloc() : super(const _AdminOrdersFiltersState()) {
     on<_TypeFilterChanged>(_onTypeFilterChanged);
     on<_StatusFilterChanged>(_onStatusFilterChanged);
   }
 
   Future<void> _onTypeFilterChanged(
     _TypeFilterChanged event,
-    Emitter<MyOrdersFiltersState> emit,
+    Emitter<AdminOrdersFiltersState> emit,
   ) async {
     emit(state.copyWith(type: event.type));
   }
 
   Future<void> _onStatusFilterChanged(
     _StatusFilterChanged event,
-    Emitter<MyOrdersFiltersState> emit,
+    Emitter<AdminOrdersFiltersState> emit,
   ) async {
     emit(state.copyWith(status: event.status));
   }

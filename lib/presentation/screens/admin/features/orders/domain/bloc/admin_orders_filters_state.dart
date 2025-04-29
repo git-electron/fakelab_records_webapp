@@ -1,13 +1,13 @@
-part of 'my_orders_filters_bloc.dart';
+part of 'admin_orders_filters_bloc.dart';
 
 @freezed
-class MyOrdersFiltersState with _$MyOrdersFiltersState {
-  const factory MyOrdersFiltersState({
+class AdminOrdersFiltersState with _$AdminOrdersFiltersState {
+  const factory AdminOrdersFiltersState({
     OrderType? type,
     OrderStatus? status,
-  }) = _MyOrdersFiltersState;
+  }) = _AdminOrdersFiltersState;
 
-  const MyOrdersFiltersState._();
+  const AdminOrdersFiltersState._();
 
   List<Order> filteredOrders(List<Order>? orders) {
     final List<Order>? filtered = orders?.where((order) {

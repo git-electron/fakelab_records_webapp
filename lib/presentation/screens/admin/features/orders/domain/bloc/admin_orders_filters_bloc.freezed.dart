@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'my_orders_filters_bloc.dart';
+part of 'admin_orders_filters_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$MyOrdersFiltersEvent {
+mixin _$AdminOrdersFiltersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType? type) typeFilterChanged,
@@ -57,24 +57,24 @@ mixin _$MyOrdersFiltersEvent {
 }
 
 /// @nodoc
-abstract class $MyOrdersFiltersEventCopyWith<$Res> {
-  factory $MyOrdersFiltersEventCopyWith(MyOrdersFiltersEvent value,
-          $Res Function(MyOrdersFiltersEvent) then) =
-      _$MyOrdersFiltersEventCopyWithImpl<$Res, MyOrdersFiltersEvent>;
+abstract class $AdminOrdersFiltersEventCopyWith<$Res> {
+  factory $AdminOrdersFiltersEventCopyWith(AdminOrdersFiltersEvent value,
+          $Res Function(AdminOrdersFiltersEvent) then) =
+      _$AdminOrdersFiltersEventCopyWithImpl<$Res, AdminOrdersFiltersEvent>;
 }
 
 /// @nodoc
-class _$MyOrdersFiltersEventCopyWithImpl<$Res,
-        $Val extends MyOrdersFiltersEvent>
-    implements $MyOrdersFiltersEventCopyWith<$Res> {
-  _$MyOrdersFiltersEventCopyWithImpl(this._value, this._then);
+class _$AdminOrdersFiltersEventCopyWithImpl<$Res,
+        $Val extends AdminOrdersFiltersEvent>
+    implements $AdminOrdersFiltersEventCopyWith<$Res> {
+  _$AdminOrdersFiltersEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MyOrdersFiltersEvent
+  /// Create a copy of AdminOrdersFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -89,13 +89,13 @@ abstract class _$$TypeFilterChangedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$TypeFilterChangedImplCopyWithImpl<$Res>
-    extends _$MyOrdersFiltersEventCopyWithImpl<$Res, _$TypeFilterChangedImpl>
+    extends _$AdminOrdersFiltersEventCopyWithImpl<$Res, _$TypeFilterChangedImpl>
     implements _$$TypeFilterChangedImplCopyWith<$Res> {
   __$$TypeFilterChangedImplCopyWithImpl(_$TypeFilterChangedImpl _value,
       $Res Function(_$TypeFilterChangedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MyOrdersFiltersEvent
+  /// Create a copy of AdminOrdersFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -121,7 +121,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
 
   @override
   String toString() {
-    return 'MyOrdersFiltersEvent.typeFilterChanged(type: $type)';
+    return 'AdminOrdersFiltersEvent.typeFilterChanged(type: $type)';
   }
 
   @override
@@ -135,7 +135,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @override
   int get hashCode => Object.hash(runtimeType, type);
 
-  /// Create a copy of MyOrdersFiltersEvent
+  /// Create a copy of AdminOrdersFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -207,13 +207,13 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   }
 }
 
-abstract class _TypeFilterChanged implements MyOrdersFiltersEvent {
+abstract class _TypeFilterChanged implements AdminOrdersFiltersEvent {
   const factory _TypeFilterChanged(final OrderType? type) =
       _$TypeFilterChangedImpl;
 
   OrderType? get type;
 
-  /// Create a copy of MyOrdersFiltersEvent
+  /// Create a copy of AdminOrdersFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TypeFilterChangedImplCopyWith<_$TypeFilterChangedImpl> get copyWith =>
@@ -231,13 +231,14 @@ abstract class _$$StatusFilterChangedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StatusFilterChangedImplCopyWithImpl<$Res>
-    extends _$MyOrdersFiltersEventCopyWithImpl<$Res, _$StatusFilterChangedImpl>
+    extends _$AdminOrdersFiltersEventCopyWithImpl<$Res,
+        _$StatusFilterChangedImpl>
     implements _$$StatusFilterChangedImplCopyWith<$Res> {
   __$$StatusFilterChangedImplCopyWithImpl(_$StatusFilterChangedImpl _value,
       $Res Function(_$StatusFilterChangedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MyOrdersFiltersEvent
+  /// Create a copy of AdminOrdersFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -263,7 +264,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
 
   @override
   String toString() {
-    return 'MyOrdersFiltersEvent.statusFilterChanged(status: $status)';
+    return 'AdminOrdersFiltersEvent.statusFilterChanged(status: $status)';
   }
 
   @override
@@ -277,7 +278,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @override
   int get hashCode => Object.hash(runtimeType, status);
 
-  /// Create a copy of MyOrdersFiltersEvent
+  /// Create a copy of AdminOrdersFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -349,13 +350,13 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   }
 }
 
-abstract class _StatusFilterChanged implements MyOrdersFiltersEvent {
+abstract class _StatusFilterChanged implements AdminOrdersFiltersEvent {
   const factory _StatusFilterChanged(final OrderStatus? status) =
       _$StatusFilterChangedImpl;
 
   OrderStatus? get status;
 
-  /// Create a copy of MyOrdersFiltersEvent
+  /// Create a copy of AdminOrdersFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StatusFilterChangedImplCopyWith<_$StatusFilterChangedImpl> get copyWith =>
@@ -363,38 +364,38 @@ abstract class _StatusFilterChanged implements MyOrdersFiltersEvent {
 }
 
 /// @nodoc
-mixin _$MyOrdersFiltersState {
+mixin _$AdminOrdersFiltersState {
   OrderType? get type => throw _privateConstructorUsedError;
   OrderStatus? get status => throw _privateConstructorUsedError;
 
-  /// Create a copy of MyOrdersFiltersState
+  /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MyOrdersFiltersStateCopyWith<MyOrdersFiltersState> get copyWith =>
+  $AdminOrdersFiltersStateCopyWith<AdminOrdersFiltersState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MyOrdersFiltersStateCopyWith<$Res> {
-  factory $MyOrdersFiltersStateCopyWith(MyOrdersFiltersState value,
-          $Res Function(MyOrdersFiltersState) then) =
-      _$MyOrdersFiltersStateCopyWithImpl<$Res, MyOrdersFiltersState>;
+abstract class $AdminOrdersFiltersStateCopyWith<$Res> {
+  factory $AdminOrdersFiltersStateCopyWith(AdminOrdersFiltersState value,
+          $Res Function(AdminOrdersFiltersState) then) =
+      _$AdminOrdersFiltersStateCopyWithImpl<$Res, AdminOrdersFiltersState>;
   @useResult
   $Res call({OrderType? type, OrderStatus? status});
 }
 
 /// @nodoc
-class _$MyOrdersFiltersStateCopyWithImpl<$Res,
-        $Val extends MyOrdersFiltersState>
-    implements $MyOrdersFiltersStateCopyWith<$Res> {
-  _$MyOrdersFiltersStateCopyWithImpl(this._value, this._then);
+class _$AdminOrdersFiltersStateCopyWithImpl<$Res,
+        $Val extends AdminOrdersFiltersState>
+    implements $AdminOrdersFiltersStateCopyWith<$Res> {
+  _$AdminOrdersFiltersStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MyOrdersFiltersState
+  /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -416,25 +417,28 @@ class _$MyOrdersFiltersStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$MyOrdersFiltersStateImplCopyWith<$Res>
-    implements $MyOrdersFiltersStateCopyWith<$Res> {
-  factory _$$MyOrdersFiltersStateImplCopyWith(_$MyOrdersFiltersStateImpl value,
-          $Res Function(_$MyOrdersFiltersStateImpl) then) =
-      __$$MyOrdersFiltersStateImplCopyWithImpl<$Res>;
+abstract class _$$AdminOrdersFiltersStateImplCopyWith<$Res>
+    implements $AdminOrdersFiltersStateCopyWith<$Res> {
+  factory _$$AdminOrdersFiltersStateImplCopyWith(
+          _$AdminOrdersFiltersStateImpl value,
+          $Res Function(_$AdminOrdersFiltersStateImpl) then) =
+      __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({OrderType? type, OrderStatus? status});
 }
 
 /// @nodoc
-class __$$MyOrdersFiltersStateImplCopyWithImpl<$Res>
-    extends _$MyOrdersFiltersStateCopyWithImpl<$Res, _$MyOrdersFiltersStateImpl>
-    implements _$$MyOrdersFiltersStateImplCopyWith<$Res> {
-  __$$MyOrdersFiltersStateImplCopyWithImpl(_$MyOrdersFiltersStateImpl _value,
-      $Res Function(_$MyOrdersFiltersStateImpl) _then)
+class __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>
+    extends _$AdminOrdersFiltersStateCopyWithImpl<$Res,
+        _$AdminOrdersFiltersStateImpl>
+    implements _$$AdminOrdersFiltersStateImplCopyWith<$Res> {
+  __$$AdminOrdersFiltersStateImplCopyWithImpl(
+      _$AdminOrdersFiltersStateImpl _value,
+      $Res Function(_$AdminOrdersFiltersStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MyOrdersFiltersState
+  /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -442,7 +446,7 @@ class __$$MyOrdersFiltersStateImplCopyWithImpl<$Res>
     Object? type = freezed,
     Object? status = freezed,
   }) {
-    return _then(_$MyOrdersFiltersStateImpl(
+    return _then(_$AdminOrdersFiltersStateImpl(
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -457,8 +461,8 @@ class __$$MyOrdersFiltersStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MyOrdersFiltersStateImpl extends _MyOrdersFiltersState {
-  const _$MyOrdersFiltersStateImpl({this.type, this.status}) : super._();
+class _$AdminOrdersFiltersStateImpl extends _AdminOrdersFiltersState {
+  const _$AdminOrdersFiltersStateImpl({this.type, this.status}) : super._();
 
   @override
   final OrderType? type;
@@ -467,14 +471,14 @@ class _$MyOrdersFiltersStateImpl extends _MyOrdersFiltersState {
 
   @override
   String toString() {
-    return 'MyOrdersFiltersState(type: $type, status: $status)';
+    return 'AdminOrdersFiltersState(type: $type, status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyOrdersFiltersStateImpl &&
+            other is _$AdminOrdersFiltersStateImpl &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -482,32 +486,31 @@ class _$MyOrdersFiltersStateImpl extends _MyOrdersFiltersState {
   @override
   int get hashCode => Object.hash(runtimeType, type, status);
 
-  /// Create a copy of MyOrdersFiltersState
+  /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyOrdersFiltersStateImplCopyWith<_$MyOrdersFiltersStateImpl>
-      get copyWith =>
-          __$$MyOrdersFiltersStateImplCopyWithImpl<_$MyOrdersFiltersStateImpl>(
-              this, _$identity);
+  _$$AdminOrdersFiltersStateImplCopyWith<_$AdminOrdersFiltersStateImpl>
+      get copyWith => __$$AdminOrdersFiltersStateImplCopyWithImpl<
+          _$AdminOrdersFiltersStateImpl>(this, _$identity);
 }
 
-abstract class _MyOrdersFiltersState extends MyOrdersFiltersState {
-  const factory _MyOrdersFiltersState(
+abstract class _AdminOrdersFiltersState extends AdminOrdersFiltersState {
+  const factory _AdminOrdersFiltersState(
       {final OrderType? type,
-      final OrderStatus? status}) = _$MyOrdersFiltersStateImpl;
-  const _MyOrdersFiltersState._() : super._();
+      final OrderStatus? status}) = _$AdminOrdersFiltersStateImpl;
+  const _AdminOrdersFiltersState._() : super._();
 
   @override
   OrderType? get type;
   @override
   OrderStatus? get status;
 
-  /// Create a copy of MyOrdersFiltersState
+  /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MyOrdersFiltersStateImplCopyWith<_$MyOrdersFiltersStateImpl>
+  _$$AdminOrdersFiltersStateImplCopyWith<_$AdminOrdersFiltersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
