@@ -46,17 +46,13 @@ class AdminOrderTile extends StatelessWidget {
                 const CircleDivider(),
                 Text(
                   order.idShort,
-                  style: (isMobile
-                          ? context.styles.footer3
-                          : context.styles.footer2)
+                  style: _topInfo(context, isMobile: isMobile)
                       .copyWith(color: context.colors.subtitle),
                 ),
                 const CircleDivider(),
                 Text(
                   order.dateCreated.toDDmmYYYYwithMonths(withWords: true),
-                  style: (isMobile
-                          ? context.styles.footer3
-                          : context.styles.footer2)
+                  style: _topInfo(context, isMobile: isMobile)
                       .copyWith(color: context.colors.subtitle),
                 ),
               ],
@@ -68,8 +64,9 @@ class AdminOrderTile extends StatelessWidget {
                   flex: isMobile ? 2 : 4,
                   child: Text(
                     order.type.title,
-                    style:
-                        isMobile ? context.styles.body3 : context.styles.body1,
+                    style: _body(context, isMobile: isMobile),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 const Gap(15),
@@ -81,9 +78,7 @@ class AdminOrderTile extends StatelessWidget {
                       if (order.customer.username.isNotNullAndEmpty)
                         TextSpan(
                           text: ' @${order.customer.username}',
-                          style: isMobile
-                              ? context.styles.footer3
-                              : context.styles.footer1,
+                          style: _footer(context, isMobile: isMobile),
                         ),
                     ],
                   ),
@@ -96,11 +91,12 @@ class AdminOrderTile extends StatelessWidget {
                       if (order.costFrom)
                         TextSpan(
                           text: 'от ',
-                          style: isMobile
-                              ? context.styles.footer3
-                              : context.styles.footer1,
+                          style: _footer(context, isMobile: isMobile),
                         ),
-                      TextSpan(text: order.totalCost.formatCurrency()),
+                      TextSpan(
+                        text: order.totalCost.formatCurrency(),
+                        style: _orderCostTextStyle(context, isMobile: isMobile),
+                      ),
                     ],
                   ),
                 ),
@@ -110,6 +106,40 @@ class AdminOrderTile extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  TextStyle _body(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.body3 : context.styles.body1;
+
+  TextStyle _footer(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.footer3 : context.styles.footer1;
+
+  TextStyle _topInfo(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.footer3 : context.styles.footer2;
+
+  TextStyle? _orderCostTextStyle(
+    BuildContext context, {
+    required bool isMobile,
+  }) {
+    final bool shouldReplaceStyle = [
+      OrderStatus.COMPLETED,
+      OrderStatus.CANCELLED,
+    ].contains(order.status);
+
+    if (!shouldReplaceStyle) return null;
+
+    final TextStyle style = _footer(context, isMobile: isMobile);
+    return style.copyWith(
+      color: order.status.color,
+      decoration: _textDecoration,
+      decorationColor: order.status.color,
+    );
+  }
+
+  TextDecoration? get _textDecoration {
+    return order.status == OrderStatus.CANCELLED
+        ? TextDecoration.lineThrough
+        : null;
   }
 }
 
@@ -138,12 +168,15 @@ class OrderTileStatus extends StatelessWidget {
         const Gap(5),
         Text(
           status.title,
-          style: (isMobile ? context.styles.footer3 : context.styles.footer2)
+          style: _topInfo(context, isMobile: isMobile)
               .copyWith(color: context.colors.body),
         ),
       ],
     );
   }
+
+  TextStyle _topInfo(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.footer3 : context.styles.footer2;
 }
 
 class OrderTilePropertyTextSpan extends StatelessWidget {
@@ -173,13 +206,18 @@ class OrderTilePropertyTextSpan extends StatelessWidget {
         Expanded(
           child: Text.rich(
             TextSpan(children: children),
-            style: (isMobile ? context.styles.footer3 : context.styles.footer1)
+            style: _footer(context, isMobile: isMobile)
                 .copyWith(color: context.colors.body),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],
     );
   }
+
+  TextStyle _footer(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.footer3 : context.styles.footer1;
 }
 
 class CircleDivider extends StatelessWidget {
