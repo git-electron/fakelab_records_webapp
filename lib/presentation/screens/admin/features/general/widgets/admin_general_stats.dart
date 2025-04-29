@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-class AdminGeneralScreenStats extends StatelessWidget {
-  const AdminGeneralScreenStats({super.key});
+class AdminGeneralStats extends StatelessWidget {
+  const AdminGeneralStats({super.key});
 
   @override
   Widget build(BuildContext context) {

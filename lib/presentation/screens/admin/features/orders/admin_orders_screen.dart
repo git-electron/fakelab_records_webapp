@@ -1,4 +1,5 @@
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/widgets/admin_orders_screen_orders.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/widgets/admin_orders_filters.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/widgets/orders/admin_orders_list.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -10,8 +11,9 @@ class AdminOrdersScreen extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        AdminOrdersFilters(),
         Gap(20),
-        AdminOrdersScreenOrders(),
+        AdminOrdersList(),
         Gap(100),
       ],
     );

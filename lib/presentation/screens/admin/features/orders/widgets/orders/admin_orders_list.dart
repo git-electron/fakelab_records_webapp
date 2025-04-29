@@ -10,8 +10,8 @@ import 'package:gap/gap.dart';
 
 import 'admin_order_tile.dart';
 
-class AdminOrdersScreenOrders extends StatelessWidget {
-  const AdminOrdersScreenOrders({super.key});
+class AdminOrdersList extends StatelessWidget {
+  const AdminOrdersList({super.key});
 
   @override
   Widget build(BuildContext context) {

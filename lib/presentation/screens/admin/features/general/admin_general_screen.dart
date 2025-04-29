@@ -1,7 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/widgets/admin_general_screen_stats.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/widgets/orders/admin_general_screen_orders.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/widgets/admin_general_stats.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/widgets/orders/admin_general_orders.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -13,14 +13,13 @@ class AdminGeneralScreen extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Gap(20),
         GeneralHeader('Статистика'),
         Gap(20),
-        AdminGeneralScreenStats(),
+        AdminGeneralStats(),
         Gap(40),
         GeneralHeader('Заказы'),
         Gap(20),
-        AdminGeneralScreenOrders(),
+        AdminGeneralOrders(),
         Gap(100),
       ],
     );

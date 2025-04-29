@@ -16,8 +16,8 @@ import 'package:gap/gap.dart';
 
 import 'admin_order_card.dart';
 
-class AdminGeneralScreenOrders extends StatelessWidget {
-  const AdminGeneralScreenOrders({super.key});
+class AdminGeneralOrders extends StatelessWidget {
+  const AdminGeneralOrders({super.key});
 
   @override
   Widget build(BuildContext context) {
