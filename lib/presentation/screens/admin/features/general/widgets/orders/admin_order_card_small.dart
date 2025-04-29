@@ -9,8 +9,8 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class AdminOrderCardMobile extends StatelessWidget {
-  const AdminOrderCardMobile(this.order, {super.key});
+class AdminOrderCardSmallMobile extends StatelessWidget {
+  const AdminOrderCardSmallMobile(this.order, {super.key});
 
   final Order order;
 
@@ -114,8 +114,8 @@ class AdminOrderCardMobile extends StatelessWidget {
   }
 }
 
-class AdminOrderCardDesktop extends StatelessWidget {
-  const AdminOrderCardDesktop(this.order, {super.key});
+class AdminOrderCardSmallDesktop extends StatelessWidget {
+  const AdminOrderCardSmallDesktop(this.order, {super.key});
 
   final Order order;
 

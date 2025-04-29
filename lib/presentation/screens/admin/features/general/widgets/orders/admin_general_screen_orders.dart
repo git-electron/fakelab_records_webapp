@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-import 'admin_order_card.dart';
+import 'admin_order_card_small.dart';
 
 class AdminGeneralScreenOrders extends StatelessWidget {
   const AdminGeneralScreenOrders({super.key});
@@ -52,8 +52,8 @@ class AdminGeneralScreenOrders extends StatelessWidget {
                 child: index == orders.length
                     ? const AllOrdersButton()
                     : isMobile
-                        ? AdminOrderCardMobile(orders[index])
-                        : AdminOrderCardDesktop(orders[index]),
+                        ? AdminOrderCardSmallMobile(orders[index])
+                        : AdminOrderCardSmallDesktop(orders[index]),
               ),
             ),
           ),
