@@ -55,9 +55,7 @@ class AdminGeneralScreenOrders extends StatelessWidget {
                 ),
                 child: index == orders.length
                     ? const AllOrdersButton()
-                    : isMobile
-                        ? AdminOrderCardMobile(orders[index])
-                        : AdminOrderCardDesktop(orders[index]),
+                    : AdminOrderCard(orders[index]),
               ),
             ),
           ),

@@ -1,27 +1,33 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class AdminOrderCardMobile extends StatelessWidget {
-  const AdminOrderCardMobile(this.order, {super.key});
+class AdminOrderCard extends StatelessWidget {
+  const AdminOrderCard(this.order, {super.key});
 
   final Order order;
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final bool isMobile = size.width < 1000;
+
     return Tappable(
       onTap: () {},
       child: Container(
-        width: 200,
-        height: 120,
-        padding: const Pad(all: 15),
+        width: isMobile ? 200 : 280,
+        height: isMobile ? 120 : 140,
+        padding: Pad(all: isMobile ? 15 : 20),
         decoration: ShapeDecoration(
           color: context.colors.card,
           shape: SmoothRectangleBorder(
@@ -39,70 +45,57 @@ class AdminOrderCardMobile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  height: 15,
-                  width: 15,
-                  decoration: BoxDecoration(
-                    color: order.status.color,
-                    shape: BoxShape.circle,
+                OrderTileStatus(order.status),
+                if (!isMobile) const CircleDivider(),
+                if (!isMobile)
+                  Text(
+                    order.idShort,
+                    style: _topInfo(context, isMobile: isMobile)
+                        .copyWith(color: context.colors.subtitle),
                   ),
-                ),
-                const Gap(5),
+                const CircleDivider(),
                 Text(
-                  order.status.title,
-                  style: context.styles.footer3.copyWith(
-                    color: context.colors.body,
-                  ),
+                  order.dateCreated.toDDmmYYYYwithMonths(withWords: true),
+                  style: _topInfo(context, isMobile: isMobile)
+                      .copyWith(color: context.colors.subtitle),
                 ),
               ],
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Text(
+              order.type.title,
+              style: _body(context, isMobile: isMobile)
+                  .copyWith(color: context.colors.body),
+            ),
+            Row(
               children: [
-                Text(
-                  order.type.title,
-                  style: context.styles.body3.copyWith(
-                    color: context.colors.body,
-                  ),
-                ),
-                const Gap(5),
-                Text.rich(
-                  TextSpan(
+                Expanded(
+                  child: OrderTilePropertyTextSpan(
+                    icon: Assets.icons.user.gray,
                     children: [
-                      TextSpan(text: 'Заказчик: ${order.customer.fullName}'),
+                      TextSpan(text: order.customer.fullName),
                       if (order.customer.username.isNotNullAndEmpty)
                         TextSpan(
                           text: ' @${order.customer.username}',
-                          style: context.styles.footer3,
+                          style: _footer(context, isMobile: isMobile),
                         ),
                     ],
                   ),
-                  style: context.styles.footer3.copyWith(
-                    color: context.colors.body,
-                  ),
                 ),
-                Text(
-                  'Стоимость: ${order.costFrom ? 'от ' : ''}${order.totalCost.formatCurrency()}',
-                  style: context.styles.footer3.copyWith(
-                    color: context.colors.body,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  order.idShort,
-                  style: context.styles.footer3.copyWith(
-                    color: context.colors.subtitle,
-                  ),
-                ),
-                Text(
-                  order.dateCreated.toDDmmYYYYwithMonths(withWords: true),
-                  style: context.styles.footer3.copyWith(
-                    color: context.colors.subtitle,
+                const Gap(15),
+                Expanded(
+                  child: OrderTilePropertyTextSpan(
+                    icon: Assets.icons.money.gray,
+                    children: [
+                      if (order.costFrom)
+                        TextSpan(
+                          text: 'от ',
+                          style: _footer(context, isMobile: isMobile),
+                        ),
+                      TextSpan(
+                        text: order.totalCost.formatCurrency(),
+                        style: _orderCostTextStyle(context, isMobile: isMobile),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -112,108 +105,131 @@ class AdminOrderCardMobile extends StatelessWidget {
       ),
     );
   }
+
+  TextStyle _body(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.body3 : context.styles.body1;
+
+  TextStyle _footer(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.footer3 : context.styles.footer1;
+
+  TextStyle _topInfo(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.footer3 : context.styles.footer2;
+
+  TextStyle? _orderCostTextStyle(
+    BuildContext context, {
+    required bool isMobile,
+  }) {
+    final bool shouldReplaceStyle = [
+      OrderStatus.COMPLETED,
+      OrderStatus.CANCELLED,
+    ].contains(order.status);
+
+    if (!shouldReplaceStyle) return null;
+
+    final TextStyle style = _footer(context, isMobile: isMobile);
+    return style.copyWith(
+      color: order.status.color,
+      decoration: _textDecoration,
+      decorationColor: order.status.color,
+    );
+  }
+
+  TextDecoration? get _textDecoration {
+    return order.status == OrderStatus.CANCELLED
+        ? TextDecoration.lineThrough
+        : null;
+  }
 }
 
-class AdminOrderCardDesktop extends StatelessWidget {
-  const AdminOrderCardDesktop(this.order, {super.key});
+class OrderTileStatus extends StatelessWidget {
+  const OrderTileStatus(this.status, {super.key});
 
-  final Order order;
+  final OrderStatus status;
 
   @override
   Widget build(BuildContext context) {
-    return Tappable(
-      onTap: () {},
-      child: Container(
-        width: 280,
-        height: 140,
-        padding: const Pad(all: 15),
-        decoration: ShapeDecoration(
-          color: context.colors.card,
-          shape: SmoothRectangleBorder(
-            borderRadius: SmoothBorderRadius(
-              cornerRadius: 20,
-              cornerSmoothing: 0.6,
-            ),
+    final Size size = MediaQuery.of(context).size;
+    final bool isMobile = size.width < 1000;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          height: isMobile ? 15 : 20,
+          width: isMobile ? 15 : 20,
+          decoration: BoxDecoration(
+            color: status.color,
+            shape: BoxShape.circle,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  height: 15,
-                  width: 15,
-                  decoration: BoxDecoration(
-                    color: order.status.color,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                const Gap(5),
-                Text(
-                  order.status.title,
-                  style: context.styles.footer2.copyWith(
-                    color: context.colors.body,
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  order.type.title,
-                  style: context.styles.body1.copyWith(
-                    color: context.colors.body,
-                  ),
-                ),
-                const Gap(5),
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(text: 'Заказчик: ${order.customer.fullName}'),
-                      if (order.customer.username.isNotNullAndEmpty)
-                        TextSpan(
-                          text: ' @${order.customer.username}',
-                          style: context.styles.footer1,
-                        ),
-                    ],
-                  ),
-                  style: context.styles.footer1.copyWith(
-                    color: context.colors.body,
-                  ),
-                ),
-                Text(
-                  'Стоимость: ${order.costFrom ? 'от ' : ''}${order.totalCost.formatCurrency()}',
-                  style: context.styles.footer1.copyWith(
-                    color: context.colors.body,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  order.idShort,
-                  style: context.styles.footer2.copyWith(
-                    color: context.colors.subtitle,
-                  ),
-                ),
-                Text(
-                  order.dateCreated.toDDmmYYYYwithMonths(withWords: true),
-                  style: context.styles.footer2.copyWith(
-                    color: context.colors.subtitle,
-                  ),
-                ),
-              ],
-            ),
-          ],
+        const Gap(5),
+        Text(
+          status.title,
+          style: _topInfo(context, isMobile: isMobile)
+              .copyWith(color: context.colors.body),
         ),
+      ],
+    );
+  }
+
+  TextStyle _topInfo(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.footer3 : context.styles.footer2;
+}
+
+class OrderTilePropertyTextSpan extends StatelessWidget {
+  const OrderTilePropertyTextSpan({
+    required this.icon,
+    required this.children,
+    super.key,
+  });
+
+  final SvgGenImage icon;
+  final List<TextSpan> children;
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final bool isMobile = size.width < 1000;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        icon.svg(
+          height: isMobile ? 15 : 25,
+          width: isMobile ? 15 : 25,
+        ),
+        const Gap(5),
+        Expanded(
+          child: Text.rich(
+            TextSpan(children: children),
+            style: _footer(context, isMobile: isMobile)
+                .copyWith(color: context.colors.body),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
+    );
+  }
+
+  TextStyle _footer(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.footer3 : context.styles.footer1;
+}
+
+class CircleDivider extends StatelessWidget {
+  const CircleDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 3,
+      width: 3,
+      margin: const Pad(horizontal: 7),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: context.colors.footer.copyWithOpacity(.5),
       ),
     );
   }
