@@ -55,10 +55,9 @@ class AdminScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.center,
+      alignment: Alignment.topCenter,
       child: Container(
-        clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(color: context.colors.background),
+        color: context.colors.background,
         constraints: const BoxConstraints(maxWidth: 1500),
         padding: const Pad(top: 20),
         child: const Column(
