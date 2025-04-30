@@ -81,10 +81,7 @@ class AppDatePicker extends StatelessWidget {
               headerHeight: 50,
               minDate: minDate,
               maxDate: maxDate,
-              onCancel: context.pop,
               monthFormat: 'MMMM',
-              cancelText: 'Отменить',
-              confirmText: 'Подтвердить',
               selectionMode: selectionMode,
               initialSelectedDate: initialDate,
               initialSelectedRange: initialDateRange,
@@ -110,7 +107,6 @@ class AppDatePicker extends StatelessWidget {
               selectionColor: context.colors.primary,
               backgroundColor: context.colors.transparent,
               todayHighlightColor: context.colors.primary,
-              onSubmit: (dateRange) => context.pop(dateRange),
               rangeSelectionColor: context.colors.primary.copyWithOpacity(.25),
             ),
           ),
@@ -118,19 +114,22 @@ class AppDatePicker extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              DatePickerButton(
-                onTap: () => switch (selectionMode) {
-                  DateRangePickerSelectionMode.single =>
-                    context.pop(DatePickerResult(isReset: true)),
-                  DateRangePickerSelectionMode.range =>
-                    context.pop(DatePickerRangeResult(isReset: true)),
-                  _ => null,
-                },
-                text: 'Сброс',
-                textColor: context.colors.onBackground,
-                backgroundColor:
-                    context.colors.onBackground.copyWithOpacity(.1),
-              ),
+              if (initialDate != null || initialDateRange != null)
+                DatePickerButton(
+                  onTap: () => switch (selectionMode) {
+                    DateRangePickerSelectionMode.single =>
+                      context.pop(DatePickerResult(isReset: true)),
+                    DateRangePickerSelectionMode.range =>
+                      context.pop(DatePickerRangeResult(isReset: true)),
+                    _ => null,
+                  },
+                  text: 'Сброс',
+                  textColor: context.colors.onBackground,
+                  backgroundColor:
+                      context.colors.onBackground.copyWithOpacity(.1),
+                )
+              else
+                const SizedBox(),
               Row(
                 children: [
                   DatePickerButton(
@@ -153,7 +152,7 @@ class AppDatePicker extends StatelessWidget {
                         )),
                       _ => null,
                     },
-                    text: 'Подтвердить',
+                    text: 'Выбрать',
                   ),
                 ],
               ),

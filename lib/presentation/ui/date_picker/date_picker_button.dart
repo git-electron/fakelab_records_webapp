@@ -21,10 +21,16 @@ class DatePickerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final bool isMobile = size.width < 1000;
+
     return Tappable(
       onTap: onTap,
       child: Container(
-        padding: const Pad(vertical: 4, horizontal: 10),
+        padding: Pad(
+          vertical: isMobile ? 5 : 8,
+          horizontal: isMobile ? 12 : 20,
+        ),
         alignment: Alignment.center,
         decoration: ShapeDecoration(
           color: backgroundColor ?? context.colors.onBackground,
@@ -37,7 +43,8 @@ class DatePickerButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: context.styles.body2.copyWith(
+          style:
+              (isMobile ? context.styles.body3 : context.styles.body2).copyWith(
             color: textColor ?? context.colors.background,
           ),
         ),
