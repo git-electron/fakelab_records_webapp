@@ -76,6 +76,7 @@ Args: ${resolver.route.args}''');
         AutoRoute(page: ImagesViewerRoute.page, path: '/images'),
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
         if (isMobile) AutoRoute(page: AdminRoute.page, path: '/admin'),
+        AutoRoute(page: AdminOrderRoute.page, path: '/admin/orders/:id'),
         ...redirections,
       ];
 
