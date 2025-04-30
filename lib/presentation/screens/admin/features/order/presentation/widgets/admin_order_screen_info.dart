@@ -26,7 +26,13 @@ class AdminOrderScreenInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Gap(20),
-              OrderStatusChip(order.status),
+              Row(
+                children: [
+                  OrderStatusChip(order.status),
+                  const Gap(10),
+                  const NewChip(),
+                ],
+              ),
               const Gap(20),
               Text(
                 order.type.title,
@@ -60,6 +66,28 @@ class OrderStatusChip extends StatelessWidget {
         style: context.styles.title3.copyWith(
           fontSize: 12,
           color: context.colors.background,
+        ),
+      ),
+    );
+  }
+}
+
+class NewChip extends StatelessWidget {
+  const NewChip({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const Pad(horizontal: 15, vertical: 4),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: context.colors.primary,
+      ),
+      child: Text(
+        'НОВОЕ!',
+        style: context.styles.title3.copyWith(
+          fontSize: 12,
+          color: context.colors.onBackground,
         ),
       ),
     );

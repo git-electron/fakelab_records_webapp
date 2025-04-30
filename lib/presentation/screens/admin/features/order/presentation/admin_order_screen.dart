@@ -4,6 +4,7 @@ import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/widgets/admin_order_screen_app_bar.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/widgets/admin_order_screen_customer_info.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/loading_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
@@ -66,6 +67,8 @@ class AdminOrderScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AdminOrderScreenInfo(),
+          Gap(10),
+          AdminOrderScreenCustomerInfo(),
           Gap(10),
           AdminOrderScreenServices(),
           Gap(10),
