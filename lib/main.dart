@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
 import 'core/domain/bloc/user_bloc/user_bloc.dart';
 
@@ -38,6 +40,12 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         theme: AppTheme.primary,
+        localizationsDelegates: const [
+          SfGlobalLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: const [Locale('ru')],
+        locale: const Locale('ru'),
         routerConfig: $<AppRouter>().config(),
         builder: (context, child) => child ?? const SizedBox(),
       ),

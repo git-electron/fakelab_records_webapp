@@ -67,4 +67,12 @@ extension DateTimeExtensions on DateTime {
   }
 
   DateTime get _now => DateTime.now();
+
+  bool isAfterOrAtSameMomentAs(DateTime other) {
+    return isAfter(other) || isAtSameMomentAs(other);
+  }
+
+  bool isBeforeOrAtSameMomentAs(DateTime other) {
+    return isBefore(other) || isAtSameMomentAs(other);
+  }
 }

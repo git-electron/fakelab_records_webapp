@@ -72,9 +72,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i345.DatabaseReference>(() => locator.ref);
     gh.factory<_i974.Logger>(() => locator.logger);
     gh.factory<_i435.TelegramService>(() => _i435.TelegramService());
-    gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
     gh.factory<_i718.AdminOrdersFiltersBloc>(
         () => _i718.AdminOrdersFiltersBloc());
+    gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
@@ -94,7 +94,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
+    gh.factory<_i9.AdminOrdersClient>(() => _i9.AdminOrdersClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
@@ -102,7 +102,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i9.AdminOrdersClient>(() => _i9.AdminOrdersClient(
+    gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
