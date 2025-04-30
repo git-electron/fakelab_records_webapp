@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AdminOrdersFiltersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(PickerDateRange? dateRange) dateRangeChanged,
     required TResult Function(OrderType? type) typeFilterChanged,
     required TResult Function(String? query) searchQueryChanged,
     required TResult Function(OrderStatus? status) statusFilterChanged,
@@ -25,6 +26,7 @@ mixin _$AdminOrdersFiltersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PickerDateRange? dateRange)? dateRangeChanged,
     TResult? Function(OrderType? type)? typeFilterChanged,
     TResult? Function(String? query)? searchQueryChanged,
     TResult? Function(OrderStatus? status)? statusFilterChanged,
@@ -32,6 +34,7 @@ mixin _$AdminOrdersFiltersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PickerDateRange? dateRange)? dateRangeChanged,
     TResult Function(OrderType? type)? typeFilterChanged,
     TResult Function(String? query)? searchQueryChanged,
     TResult Function(OrderStatus? status)? statusFilterChanged,
@@ -40,6 +43,7 @@ mixin _$AdminOrdersFiltersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_DateRangeChanged value) dateRangeChanged,
     required TResult Function(_TypeFilterChanged value) typeFilterChanged,
     required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_StatusFilterChanged value) statusFilterChanged,
@@ -47,6 +51,7 @@ mixin _$AdminOrdersFiltersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DateRangeChanged value)? dateRangeChanged,
     TResult? Function(_TypeFilterChanged value)? typeFilterChanged,
     TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_StatusFilterChanged value)? statusFilterChanged,
@@ -54,6 +59,7 @@ mixin _$AdminOrdersFiltersEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DateRangeChanged value)? dateRangeChanged,
     TResult Function(_TypeFilterChanged value)? typeFilterChanged,
     TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_StatusFilterChanged value)? statusFilterChanged,
@@ -82,6 +88,161 @@ class _$AdminOrdersFiltersEventCopyWithImpl<$Res,
 
   /// Create a copy of AdminOrdersFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$DateRangeChangedImplCopyWith<$Res> {
+  factory _$$DateRangeChangedImplCopyWith(_$DateRangeChangedImpl value,
+          $Res Function(_$DateRangeChangedImpl) then) =
+      __$$DateRangeChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PickerDateRange? dateRange});
+}
+
+/// @nodoc
+class __$$DateRangeChangedImplCopyWithImpl<$Res>
+    extends _$AdminOrdersFiltersEventCopyWithImpl<$Res, _$DateRangeChangedImpl>
+    implements _$$DateRangeChangedImplCopyWith<$Res> {
+  __$$DateRangeChangedImplCopyWithImpl(_$DateRangeChangedImpl _value,
+      $Res Function(_$DateRangeChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AdminOrdersFiltersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dateRange = freezed,
+  }) {
+    return _then(_$DateRangeChangedImpl(
+      freezed == dateRange
+          ? _value.dateRange
+          : dateRange // ignore: cast_nullable_to_non_nullable
+              as PickerDateRange?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DateRangeChangedImpl implements _DateRangeChanged {
+  const _$DateRangeChangedImpl(this.dateRange);
+
+  @override
+  final PickerDateRange? dateRange;
+
+  @override
+  String toString() {
+    return 'AdminOrdersFiltersEvent.dateRangeChanged(dateRange: $dateRange)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DateRangeChangedImpl &&
+            (identical(other.dateRange, dateRange) ||
+                other.dateRange == dateRange));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dateRange);
+
+  /// Create a copy of AdminOrdersFiltersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DateRangeChangedImplCopyWith<_$DateRangeChangedImpl> get copyWith =>
+      __$$DateRangeChangedImplCopyWithImpl<_$DateRangeChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PickerDateRange? dateRange) dateRangeChanged,
+    required TResult Function(OrderType? type) typeFilterChanged,
+    required TResult Function(String? query) searchQueryChanged,
+    required TResult Function(OrderStatus? status) statusFilterChanged,
+  }) {
+    return dateRangeChanged(dateRange);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PickerDateRange? dateRange)? dateRangeChanged,
+    TResult? Function(OrderType? type)? typeFilterChanged,
+    TResult? Function(String? query)? searchQueryChanged,
+    TResult? Function(OrderStatus? status)? statusFilterChanged,
+  }) {
+    return dateRangeChanged?.call(dateRange);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PickerDateRange? dateRange)? dateRangeChanged,
+    TResult Function(OrderType? type)? typeFilterChanged,
+    TResult Function(String? query)? searchQueryChanged,
+    TResult Function(OrderStatus? status)? statusFilterChanged,
+    required TResult orElse(),
+  }) {
+    if (dateRangeChanged != null) {
+      return dateRangeChanged(dateRange);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DateRangeChanged value) dateRangeChanged,
+    required TResult Function(_TypeFilterChanged value) typeFilterChanged,
+    required TResult Function(_SearchQueryChanged value) searchQueryChanged,
+    required TResult Function(_StatusFilterChanged value) statusFilterChanged,
+  }) {
+    return dateRangeChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DateRangeChanged value)? dateRangeChanged,
+    TResult? Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
+    TResult? Function(_StatusFilterChanged value)? statusFilterChanged,
+  }) {
+    return dateRangeChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DateRangeChanged value)? dateRangeChanged,
+    TResult Function(_TypeFilterChanged value)? typeFilterChanged,
+    TResult Function(_SearchQueryChanged value)? searchQueryChanged,
+    TResult Function(_StatusFilterChanged value)? statusFilterChanged,
+    required TResult orElse(),
+  }) {
+    if (dateRangeChanged != null) {
+      return dateRangeChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DateRangeChanged implements AdminOrdersFiltersEvent {
+  const factory _DateRangeChanged(final PickerDateRange? dateRange) =
+      _$DateRangeChangedImpl;
+
+  PickerDateRange? get dateRange;
+
+  /// Create a copy of AdminOrdersFiltersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DateRangeChangedImplCopyWith<_$DateRangeChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -153,6 +314,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(PickerDateRange? dateRange) dateRangeChanged,
     required TResult Function(OrderType? type) typeFilterChanged,
     required TResult Function(String? query) searchQueryChanged,
     required TResult Function(OrderStatus? status) statusFilterChanged,
@@ -163,6 +325,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PickerDateRange? dateRange)? dateRangeChanged,
     TResult? Function(OrderType? type)? typeFilterChanged,
     TResult? Function(String? query)? searchQueryChanged,
     TResult? Function(OrderStatus? status)? statusFilterChanged,
@@ -173,6 +336,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PickerDateRange? dateRange)? dateRangeChanged,
     TResult Function(OrderType? type)? typeFilterChanged,
     TResult Function(String? query)? searchQueryChanged,
     TResult Function(OrderStatus? status)? statusFilterChanged,
@@ -187,6 +351,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_DateRangeChanged value) dateRangeChanged,
     required TResult Function(_TypeFilterChanged value) typeFilterChanged,
     required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_StatusFilterChanged value) statusFilterChanged,
@@ -197,6 +362,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DateRangeChanged value)? dateRangeChanged,
     TResult? Function(_TypeFilterChanged value)? typeFilterChanged,
     TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_StatusFilterChanged value)? statusFilterChanged,
@@ -207,6 +373,7 @@ class _$TypeFilterChangedImpl implements _TypeFilterChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DateRangeChanged value)? dateRangeChanged,
     TResult Function(_TypeFilterChanged value)? typeFilterChanged,
     TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_StatusFilterChanged value)? statusFilterChanged,
@@ -302,6 +469,7 @@ class _$SearchQueryChangedImpl implements _SearchQueryChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(PickerDateRange? dateRange) dateRangeChanged,
     required TResult Function(OrderType? type) typeFilterChanged,
     required TResult Function(String? query) searchQueryChanged,
     required TResult Function(OrderStatus? status) statusFilterChanged,
@@ -312,6 +480,7 @@ class _$SearchQueryChangedImpl implements _SearchQueryChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PickerDateRange? dateRange)? dateRangeChanged,
     TResult? Function(OrderType? type)? typeFilterChanged,
     TResult? Function(String? query)? searchQueryChanged,
     TResult? Function(OrderStatus? status)? statusFilterChanged,
@@ -322,6 +491,7 @@ class _$SearchQueryChangedImpl implements _SearchQueryChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PickerDateRange? dateRange)? dateRangeChanged,
     TResult Function(OrderType? type)? typeFilterChanged,
     TResult Function(String? query)? searchQueryChanged,
     TResult Function(OrderStatus? status)? statusFilterChanged,
@@ -336,6 +506,7 @@ class _$SearchQueryChangedImpl implements _SearchQueryChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_DateRangeChanged value) dateRangeChanged,
     required TResult Function(_TypeFilterChanged value) typeFilterChanged,
     required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_StatusFilterChanged value) statusFilterChanged,
@@ -346,6 +517,7 @@ class _$SearchQueryChangedImpl implements _SearchQueryChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DateRangeChanged value)? dateRangeChanged,
     TResult? Function(_TypeFilterChanged value)? typeFilterChanged,
     TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_StatusFilterChanged value)? statusFilterChanged,
@@ -356,6 +528,7 @@ class _$SearchQueryChangedImpl implements _SearchQueryChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DateRangeChanged value)? dateRangeChanged,
     TResult Function(_TypeFilterChanged value)? typeFilterChanged,
     TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_StatusFilterChanged value)? statusFilterChanged,
@@ -451,6 +624,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(PickerDateRange? dateRange) dateRangeChanged,
     required TResult Function(OrderType? type) typeFilterChanged,
     required TResult Function(String? query) searchQueryChanged,
     required TResult Function(OrderStatus? status) statusFilterChanged,
@@ -461,6 +635,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PickerDateRange? dateRange)? dateRangeChanged,
     TResult? Function(OrderType? type)? typeFilterChanged,
     TResult? Function(String? query)? searchQueryChanged,
     TResult? Function(OrderStatus? status)? statusFilterChanged,
@@ -471,6 +646,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PickerDateRange? dateRange)? dateRangeChanged,
     TResult Function(OrderType? type)? typeFilterChanged,
     TResult Function(String? query)? searchQueryChanged,
     TResult Function(OrderStatus? status)? statusFilterChanged,
@@ -485,6 +661,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_DateRangeChanged value) dateRangeChanged,
     required TResult Function(_TypeFilterChanged value) typeFilterChanged,
     required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_StatusFilterChanged value) statusFilterChanged,
@@ -495,6 +672,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DateRangeChanged value)? dateRangeChanged,
     TResult? Function(_TypeFilterChanged value)? typeFilterChanged,
     TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_StatusFilterChanged value)? statusFilterChanged,
@@ -505,6 +683,7 @@ class _$StatusFilterChangedImpl implements _StatusFilterChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DateRangeChanged value)? dateRangeChanged,
     TResult Function(_TypeFilterChanged value)? typeFilterChanged,
     TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_StatusFilterChanged value)? statusFilterChanged,
@@ -535,6 +714,7 @@ mixin _$AdminOrdersFiltersState {
   OrderType? get type => throw _privateConstructorUsedError;
   OrderStatus? get status => throw _privateConstructorUsedError;
   String? get searchQuery => throw _privateConstructorUsedError;
+  PickerDateRange? get dateRange => throw _privateConstructorUsedError;
 
   /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.
@@ -549,7 +729,11 @@ abstract class $AdminOrdersFiltersStateCopyWith<$Res> {
           $Res Function(AdminOrdersFiltersState) then) =
       _$AdminOrdersFiltersStateCopyWithImpl<$Res, AdminOrdersFiltersState>;
   @useResult
-  $Res call({OrderType? type, OrderStatus? status, String? searchQuery});
+  $Res call(
+      {OrderType? type,
+      OrderStatus? status,
+      String? searchQuery,
+      PickerDateRange? dateRange});
 }
 
 /// @nodoc
@@ -571,6 +755,7 @@ class _$AdminOrdersFiltersStateCopyWithImpl<$Res,
     Object? type = freezed,
     Object? status = freezed,
     Object? searchQuery = freezed,
+    Object? dateRange = freezed,
   }) {
     return _then(_value.copyWith(
       type: freezed == type
@@ -585,6 +770,10 @@ class _$AdminOrdersFiltersStateCopyWithImpl<$Res,
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
               as String?,
+      dateRange: freezed == dateRange
+          ? _value.dateRange
+          : dateRange // ignore: cast_nullable_to_non_nullable
+              as PickerDateRange?,
     ) as $Val);
   }
 }
@@ -598,7 +787,11 @@ abstract class _$$AdminOrdersFiltersStateImplCopyWith<$Res>
       __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({OrderType? type, OrderStatus? status, String? searchQuery});
+  $Res call(
+      {OrderType? type,
+      OrderStatus? status,
+      String? searchQuery,
+      PickerDateRange? dateRange});
 }
 
 /// @nodoc
@@ -619,6 +812,7 @@ class __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>
     Object? type = freezed,
     Object? status = freezed,
     Object? searchQuery = freezed,
+    Object? dateRange = freezed,
   }) {
     return _then(_$AdminOrdersFiltersStateImpl(
       type: freezed == type
@@ -633,6 +827,10 @@ class __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
               as String?,
+      dateRange: freezed == dateRange
+          ? _value.dateRange
+          : dateRange // ignore: cast_nullable_to_non_nullable
+              as PickerDateRange?,
     ));
   }
 }
@@ -641,7 +839,7 @@ class __$$AdminOrdersFiltersStateImplCopyWithImpl<$Res>
 
 class _$AdminOrdersFiltersStateImpl extends _AdminOrdersFiltersState {
   const _$AdminOrdersFiltersStateImpl(
-      {this.type, this.status, this.searchQuery})
+      {this.type, this.status, this.searchQuery, this.dateRange})
       : super._();
 
   @override
@@ -650,10 +848,12 @@ class _$AdminOrdersFiltersStateImpl extends _AdminOrdersFiltersState {
   final OrderStatus? status;
   @override
   final String? searchQuery;
+  @override
+  final PickerDateRange? dateRange;
 
   @override
   String toString() {
-    return 'AdminOrdersFiltersState(type: $type, status: $status, searchQuery: $searchQuery)';
+    return 'AdminOrdersFiltersState(type: $type, status: $status, searchQuery: $searchQuery, dateRange: $dateRange)';
   }
 
   @override
@@ -664,11 +864,14 @@ class _$AdminOrdersFiltersStateImpl extends _AdminOrdersFiltersState {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.searchQuery, searchQuery) ||
-                other.searchQuery == searchQuery));
+                other.searchQuery == searchQuery) &&
+            (identical(other.dateRange, dateRange) ||
+                other.dateRange == dateRange));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, type, status, searchQuery);
+  int get hashCode =>
+      Object.hash(runtimeType, type, status, searchQuery, dateRange);
 
   /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.
@@ -684,7 +887,8 @@ abstract class _AdminOrdersFiltersState extends AdminOrdersFiltersState {
   const factory _AdminOrdersFiltersState(
       {final OrderType? type,
       final OrderStatus? status,
-      final String? searchQuery}) = _$AdminOrdersFiltersStateImpl;
+      final String? searchQuery,
+      final PickerDateRange? dateRange}) = _$AdminOrdersFiltersStateImpl;
   const _AdminOrdersFiltersState._() : super._();
 
   @override
@@ -693,6 +897,8 @@ abstract class _AdminOrdersFiltersState extends AdminOrdersFiltersState {
   OrderStatus? get status;
   @override
   String? get searchQuery;
+  @override
+  PickerDateRange? get dateRange;
 
   /// Create a copy of AdminOrdersFiltersState
   /// with the given fields replaced by the non-null parameter values.

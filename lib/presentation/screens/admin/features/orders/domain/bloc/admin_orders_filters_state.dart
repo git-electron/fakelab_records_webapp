@@ -6,6 +6,7 @@ class AdminOrdersFiltersState with _$AdminOrdersFiltersState {
     OrderType? type,
     OrderStatus? status,
     String? searchQuery,
+    PickerDateRange? dateRange,
   }) = _AdminOrdersFiltersState;
 
   const AdminOrdersFiltersState._();
@@ -15,6 +16,7 @@ class AdminOrdersFiltersState with _$AdminOrdersFiltersState {
       bool isProperOrderType = true;
       bool isProperOrderStatus = true;
       bool isProperSearchQuery = true;
+      bool isProperDateRange = true;
 
       if (type != null) {
         isProperOrderType = order.type == type;
@@ -45,7 +47,43 @@ class AdminOrdersFiltersState with _$AdminOrdersFiltersState {
             isProperCustomerId;
       }
 
-      return isProperOrderType && isProperOrderStatus && isProperSearchQuery;
+      if (dateRange != null) {
+        bool isProperStartDate = true;
+        bool isProperEndDate = true;
+
+        final DateTime dateCreated = order.dateCreated;
+
+        final DateTime? startDate = dateRange!.startDate;
+        final DateTime? endDate = dateRange!.endDate;
+
+        if (startDate != null) {
+          isProperStartDate = dateCreated.isAfterOrAtSameMomentAs(startDate);
+        } else {
+          isProperStartDate = dateCreated.isAfterOrAtSameMomentAs(endDate!);
+        }
+        if (endDate != null) {
+          isProperEndDate =
+              dateCreated.isBeforeOrAtSameMomentAs(endDate.copyWith(
+            hour: 23,
+            minute: 59,
+            second: 59,
+          ));
+        } else {
+          isProperEndDate =
+              dateCreated.isBeforeOrAtSameMomentAs(startDate!.copyWith(
+            hour: 23,
+            minute: 59,
+            second: 59,
+          ));
+        }
+
+        isProperDateRange = isProperStartDate && isProperEndDate;
+      }
+
+      return isProperOrderType &&
+          isProperOrderStatus &&
+          isProperSearchQuery &&
+          isProperDateRange;
     }).toList();
 
     return filtered ?? orders ?? [];
