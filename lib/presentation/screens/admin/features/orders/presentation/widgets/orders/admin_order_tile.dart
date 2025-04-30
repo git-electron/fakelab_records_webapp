@@ -1,9 +1,11 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
@@ -23,7 +25,7 @@ class AdminOrderTile extends StatelessWidget {
     final bool isMobile = size.width < 1000;
 
     return Tappable(
-      onTap: () {},
+      onTap: () => context.pushRoute(AdminOrderRoute(orderId: order.id)),
       child: Stack(
         alignment: Alignment.topRight,
         children: [
