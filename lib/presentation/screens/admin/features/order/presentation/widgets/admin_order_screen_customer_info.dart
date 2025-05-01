@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
+import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
@@ -19,6 +20,9 @@ class AdminOrderScreenCustomerInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final bool isMobile = size.width < 1000;
+
     return TelegramMetaWrapper(builder: (context, meta) {
       return BlocBuilder<AdminOrderBloc, AdminOrderState>(
         builder: (context, state) {
@@ -56,28 +60,12 @@ class AdminOrderScreenCustomerInfo extends StatelessWidget {
                     color: context.colors.onBackground,
                   ),
                 ),
-                Padding(
-                  padding: const Pad(top: 5),
-                  child: ContactItem(
-                    text: '${order.customer.id}',
-                    icon: Assets.icons.sort.light,
-                    isEnabled: false,
-                  ),
-                ),
-                if (order.customer.username.isNotNullAndEmpty)
-                  Padding(
-                    padding: const Pad(top: 5),
-                    child: ContactItem(
-                      text: '${order.customer.username}',
-                      icon: Assets.icons.user.light,
-                    ),
-                  ),
-                if (order.customer.phoneNumber.isNotNullAndEmpty)
-                  Padding(
-                    padding: const Pad(top: 5),
-                    child: ContactItem(
-                      text: order.customer.phoneNumber,
-                      icon: Assets.icons.phone.light,
+                if (isMobile)
+                  ..._contacts(order)
+                else
+                  Row(
+                    children: _contacts(order).alternateWith(
+                      const Gap(20),
                     ),
                   ),
               ],
@@ -87,6 +75,34 @@ class AdminOrderScreenCustomerInfo extends StatelessWidget {
       );
     });
   }
+
+  List<Widget> _contacts(Order order) => [
+        Padding(
+          padding: const Pad(top: 5),
+          child: ContactItem(
+            text: '${order.customer.id}',
+            icon: Assets.icons.sort.light,
+            isEnabled: false,
+          ),
+        ),
+        if (order.customer.username.isNotNullAndEmpty)
+          Padding(
+            padding: const Pad(top: 5),
+            child: ContactItem(
+              text: '${order.customer.username}',
+              icon: Assets.icons.user.light,
+            ),
+          ),
+        if (order.customer.phoneNumber.isNotNullAndEmpty)
+          Padding(
+            padding: const Pad(top: 5),
+            child: ContactItem(
+              text: order.customer.phoneNumber,
+              icon: Assets.icons.phone.light,
+              shouldDisplayCallButton: true,
+            ),
+          ),
+      ];
 }
 
 class ContactItem extends StatelessWidget {
@@ -94,6 +110,7 @@ class ContactItem extends StatelessWidget {
     required this.text,
     required this.icon,
     this.isEnabled = true,
+    this.shouldDisplayCallButton = false,
     super.key,
   });
 
@@ -101,9 +118,13 @@ class ContactItem extends StatelessWidget {
   final SvgGenImage icon;
 
   final bool isEnabled;
+  final bool shouldDisplayCallButton;
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final bool isMobile = size.width < 1000;
+
     return Row(
       children: [
         Tappable(
@@ -113,7 +134,10 @@ class ContactItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              icon.svg(height: 15, width: 15),
+              icon.svg(
+                height: isMobile ? 15 : 20,
+                width: isMobile ? 15 : 20,
+              ),
               const Gap(5),
               Text(text, style: context.styles.footer1),
             ],
@@ -126,6 +150,11 @@ class ContactItem extends StatelessWidget {
             const SnackBar(content: Text('Скопировано')),
           );
         }),
+        if (shouldDisplayCallButton) const Gap(5),
+        if (shouldDisplayCallButton)
+          ContactCallButton(onTap: () {
+            launchUrlString('tel:+${text.extractNumerals()}');
+          }),
       ],
     );
   }
@@ -141,15 +170,12 @@ class ContactCopyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final bool isMobile = size.width < 1000;
-
     return Tappable(
       onTap: onTap,
       child: Container(
-        padding: Pad(
-          vertical: isMobile ? 4 : 8,
-          horizontal: isMobile ? 10 : 20,
+        padding: const Pad(
+          vertical: 4,
+          horizontal: 10,
         ),
         alignment: Alignment.center,
         decoration: ShapeDecoration(
@@ -163,8 +189,45 @@ class ContactCopyButton extends StatelessWidget {
         ),
         child: Text(
           'Скопировать',
-          style:
-              (isMobile ? context.styles.body3 : context.styles.body2).copyWith(
+          style: context.styles.body3.copyWith(
+            color: context.colors.onBackground,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ContactCallButton extends StatelessWidget {
+  const ContactCallButton({
+    required this.onTap,
+    super.key,
+  });
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tappable(
+      onTap: onTap,
+      child: Container(
+        padding: const Pad(
+          vertical: 4,
+          horizontal: 10,
+        ),
+        alignment: Alignment.center,
+        decoration: ShapeDecoration(
+          color: context.colors.onBackground.copyWithOpacity(.1),
+          shape: SmoothRectangleBorder(
+            borderRadius: SmoothBorderRadius(
+              cornerRadius: 10,
+              cornerSmoothing: 0.6,
+            ),
+          ),
+        ),
+        child: Text(
+          'Позвонить',
+          style: context.styles.body3.copyWith(
             color: context.colors.onBackground,
           ),
         ),

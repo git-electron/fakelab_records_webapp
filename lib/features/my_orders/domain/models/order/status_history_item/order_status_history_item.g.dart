@@ -12,6 +12,7 @@ _$OrderStatusHistoryItemImpl _$$OrderStatusHistoryItemImplFromJson(
       status: $enumDecode(_$OrderStatusEnumMap, json['status']),
       dateChanged:
           const DateTimeConverter().fromJson(json['dateChanged'] as String),
+      message: json['message'] as String?,
     );
 
 Map<String, dynamic> _$$OrderStatusHistoryItemImplToJson(
@@ -19,6 +20,7 @@ Map<String, dynamic> _$$OrderStatusHistoryItemImplToJson(
     <String, dynamic>{
       'status': _$OrderStatusEnumMap[instance.status]!,
       'dateChanged': const DateTimeConverter().toJson(instance.dateChanged),
+      'message': instance.message,
     };
 
 const _$OrderStatusEnumMap = {

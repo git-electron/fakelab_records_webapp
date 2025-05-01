@@ -2,7 +2,9 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/widgets/admin_order_screen_actions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/widgets/admin_order_screen_app_bar.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/widgets/admin_order_screen_customer_info.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
@@ -20,15 +22,20 @@ import 'widgets/admin_order_screen_status_history.dart';
 class AdminOrderScreen extends StatelessWidget {
   const AdminOrderScreen({
     @PathParam('id') required this.orderId,
+    required this.adminOrdersBloc,
     super.key,
   });
 
   final String orderId;
+  final AdminOrdersBloc adminOrdersBloc;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => $<AdminOrderBloc>(param1: orderId),
+      create: (context) => $<AdminOrderBloc>(
+        param1: orderId,
+        param2: adminOrdersBloc,
+      ),
       child: Scaffold(
         body: BlocBuilder<AdminOrderBloc, AdminOrderState>(
           builder: (context, state) {
@@ -60,21 +67,27 @@ class AdminOrderScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: context.colors.background,
-      padding: const Pad(top: 20, horizontal: 20),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AdminOrderScreenInfo(),
-          Gap(10),
-          AdminOrderScreenCustomerInfo(),
-          Gap(10),
-          AdminOrderScreenServices(),
-          Gap(10),
-          AdminOrderScreenStatusHistory(),
-          Gap(40),
-        ],
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Container(
+        color: context.colors.background,
+        constraints: const BoxConstraints(maxWidth: 1500),
+        padding: const Pad(top: 20, horizontal: 20),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AdminOrderScreenInfo(),
+            Gap(10),
+            AdminOrderScreenCustomerInfo(),
+            Gap(10),
+            AdminOrderScreenServices(),
+            Gap(10),
+            AdminOrderScreenActions(),
+            Gap(10),
+            AdminOrderScreenStatusHistory(),
+            Gap(40),
+          ],
+        ),
       ),
     );
   }

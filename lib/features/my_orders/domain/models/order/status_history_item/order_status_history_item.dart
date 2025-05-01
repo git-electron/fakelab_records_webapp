@@ -11,6 +11,7 @@ class OrderStatusHistoryItem with _$OrderStatusHistoryItem {
   factory OrderStatusHistoryItem({
     required OrderStatus status,
     @DateTimeConverter() required DateTime dateChanged,
+    String? message,
   }) = _OrderStatusHistoryItem;
 
   factory OrderStatusHistoryItem.fromJson(Map<String, dynamic> json) =>

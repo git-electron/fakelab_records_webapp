@@ -1,8 +1,12 @@
+import 'package:collection/collection.dart';
 import 'package:fakelab_records_webapp/core/constants/mock.dart';
 import 'package:fakelab_records_webapp/core/constants/types.dart';
 import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
 import 'package:fakelab_records_webapp/core/extensions/object_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_filters.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
 import 'package:fakelab_records_webapp/main.dart';
 
 import 'package:firebase_database/firebase_database.dart';
@@ -47,5 +51,99 @@ Data: $json''');
       logger.e('Failed to get order', error: error);
       return Result.error(error.toString());
     }
+  }
+
+  Future<Result<Order>> updateOrder(
+    Order order, {
+    String? message,
+    double? totalCost,
+    OrderStatus? status,
+  }) async {
+    if (isDevelopment) {
+      final Order? mockOrder = Mock.getOrder(order.id);
+      if (mockOrder != null) {
+        return Result.success(_updateOrderInfo(
+          mockOrder,
+          status: status,
+          message: message,
+          totalCost: totalCost,
+        ));
+      } else {
+        return Result.error('Не удалось изменить заказ');
+      }
+    }
+
+    try {
+      final Order updatedOrder = _updateOrderInfo(
+        order,
+        status: status,
+        message: message,
+        totalCost: totalCost,
+      );
+
+      final String path = 'orders/${order.id}';
+
+      logger.i('''Realtime Database update request:
+Path: $path
+Data: $updatedOrder''');
+
+      await ref.child(path).update(updatedOrder.toJson());
+
+      return Result.success(updatedOrder);
+    } catch (error) {
+      logger.e('Failed to update order', error: error);
+      return Result.error(error.toString());
+    }
+  }
+
+  Order _updateOrderInfo(
+    Order order, {
+    OrderStatus? status,
+    double? totalCost,
+    String? message,
+  }) {
+    final DateTime now = DateTime.now();
+
+    final bool costFrom = totalCost != null ? false : order.costFrom;
+
+    return order.copyWith(
+      status: status ?? order.status,
+      dateChanged: now,
+      costFrom: costFrom,
+      totalCost: totalCost ?? order.totalCost,
+      services: totalCost != null
+          ? order.services.map((service) {
+              if (service.type.costFrom) {
+                return service.copyWith(
+                  costFrom: costFrom,
+                  totalCost: totalCost -
+                      (order.services
+                          .where((service) => !service.type.costFrom)
+                          .map((service) => service.totalCost)
+                          .sum),
+                );
+              }
+              return service;
+            }).toList()
+          : order.services,
+      statusHistory: status != null
+          ? [
+              ...order.statusHistory,
+              OrderStatusHistoryItem(
+                status: status,
+                dateChanged: now,
+                message: message,
+              ),
+            ]
+          : order.statusHistory,
+      filters: OrderFilters(
+        userIdStatusType: status != null
+            ? order.filters.userIdStatusType.replaceFirst(
+                order.status.name,
+                status.name,
+              )
+            : order.filters.userIdStatusType,
+      ),
+    );
   }
 }

@@ -120,14 +120,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i29.AudioPlayerBloc>(
         () => _i29.AudioPlayerBloc(gh<_i842.AssetsAudioPlayer>()));
-    gh.factoryParam<_i46.AdminOrderBloc, String, dynamic>((
-      orderId,
-      _,
-    ) =>
-        _i46.AdminOrderBloc(
-          orderId,
-          gh<_i310.AdminOrderClient>(),
-        ));
     gh.factoryParam<_i843.MyOrderBloc, String, dynamic>((
       orderId,
       _,
@@ -136,6 +128,15 @@ extension GetItInjectableX on _i174.GetIt {
           orderId,
           gh<_i129.MyOrderClient>(),
           gh<_i435.TelegramService>(),
+        ));
+    gh.factoryParam<_i46.AdminOrderBloc, String, _i522.AdminOrdersBloc>((
+      orderId,
+      adminOrdersBloc,
+    ) =>
+        _i46.AdminOrderBloc(
+          orderId,
+          adminOrdersBloc,
+          gh<_i310.AdminOrderClient>(),
         ));
     gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
           gh<_i415.UserClient>(),

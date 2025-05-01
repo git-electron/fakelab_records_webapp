@@ -36,8 +36,8 @@ class Order with _$Order {
   String get typeTitleForCard =>
       (type.titleForCard ?? type.title).toUpperCase();
 
-  bool isCurrentStatus(OrderStatus status) =>
-      statusHistory.last.status == status;
+  bool isCurrentStatusHistoryItem(OrderStatusHistoryItem item) =>
+      statusHistory.last == item;
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 }

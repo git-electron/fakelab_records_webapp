@@ -1,9 +1,13 @@
 enum OrderServiceType {
   MIX('Сведение'),
-  MASTERING('Мастеринг'),
-  BEAT('Кастомный бит');
+  BEAT('Кастомный бит'),
+  MASTERING('Мастеринг', costFrom: false);
 
-  const OrderServiceType(this.title);
+  const OrderServiceType(
+    this.title, {
+    this.costFrom = true,
+  });
 
   final String title;
+  final bool costFrom;
 }

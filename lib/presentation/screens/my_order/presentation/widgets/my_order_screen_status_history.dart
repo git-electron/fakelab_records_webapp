@@ -1,4 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import '../../../../../core/extensions/color_extensions.dart';
 import '../../../../../core/extensions/datetime_extensions.dart';
 import '../../../../../core/extensions/list_extensions.dart';
@@ -76,7 +77,7 @@ class OrderStatusHistoryItemInfo extends StatelessWidget {
         final Order order = state.order!;
 
         return Opacity(
-          opacity: order.isCurrentStatus(item.status) ? 1 : .25,
+          opacity: order.isCurrentStatusHistoryItem(item) ? 1 : .25,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -115,6 +116,11 @@ class OrderStatusHistoryItemInfo extends StatelessWidget {
                     ),
                     style: context.styles.footer1,
                   ),
+                  if (item.message.isNotNullAndEmpty)
+                    Text(
+                      item.message!,
+                      style: context.styles.footer1,
+                    ),
                 ],
               ),
             ],

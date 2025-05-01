@@ -4,8 +4,8 @@ import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 
-class DatePickerButton extends StatelessWidget {
-  const DatePickerButton({
+class DatePickerDialogButton extends StatelessWidget {
+  const DatePickerDialogButton({
     required this.text,
     required this.onTap,
     this.textColor,

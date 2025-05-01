@@ -96,11 +96,17 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/money
   $AssetsIconsMoneyGen get money => const $AssetsIconsMoneyGen();
 
+  /// Directory path: assets/icons/pencil
+  $AssetsIconsPencilGen get pencil => const $AssetsIconsPencilGen();
+
   /// Directory path: assets/icons/phone
   $AssetsIconsPhoneGen get phone => const $AssetsIconsPhoneGen();
 
   /// Directory path: assets/icons/pin
   $AssetsIconsPinGen get pin => const $AssetsIconsPinGen();
+
+  /// Directory path: assets/icons/plus
+  $AssetsIconsPlusGen get plus => const $AssetsIconsPlusGen();
 
   /// Directory path: assets/icons/qr_code
   $AssetsIconsQrCodeGen get qrCode => const $AssetsIconsQrCodeGen();
@@ -516,6 +522,19 @@ class $AssetsIconsMoneyGen {
   List<SvgGenImage> get values => [dark, gray, light];
 }
 
+class $AssetsIconsPencilGen {
+  const $AssetsIconsPencilGen();
+
+  /// File path: assets/icons/pencil/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/pencil/dark.svg');
+
+  /// File path: assets/icons/pencil/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/pencil/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, light];
+}
+
 class $AssetsIconsPhoneGen {
   const $AssetsIconsPhoneGen();
 
@@ -537,6 +556,19 @@ class $AssetsIconsPinGen {
 
   /// File path: assets/icons/pin/light.svg
   SvgGenImage get light => const SvgGenImage('assets/icons/pin/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, light];
+}
+
+class $AssetsIconsPlusGen {
+  const $AssetsIconsPlusGen();
+
+  /// File path: assets/icons/plus/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/plus/dark.svg');
+
+  /// File path: assets/icons/plus/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/plus/light.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [dark, light];

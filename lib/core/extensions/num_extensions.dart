@@ -8,8 +8,8 @@ extension NumExtensions on num {
       NumberFormat.currency(
         decimalDigits: decimalDigits,
         symbol: symbol,
-        customPattern: ',###.0# $symbol',
+        locale: 'ru',
       ).format(this);
 
-  String formatDecimal() => NumberFormat.decimalPattern().format(this);
+  String formatDecimal() => NumberFormat.decimalPattern('ru').format(this);
 }

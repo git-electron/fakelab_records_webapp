@@ -3,7 +3,8 @@ enum AdminTab {
   stats('Статистика'),
   clients('Клиенты'),
   bookings('Бронирования'),
-  orders('Заказы');
+  orders('Заказы'),
+  staff('Сотрудники');
 
   const AdminTab(this.title);
 

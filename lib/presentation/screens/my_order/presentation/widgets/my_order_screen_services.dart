@@ -1,4 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import '../../../../../core/extensions/num_extensions.dart';
 import '../../../../../core/gen/assets.gen.dart';
 import '../../../../../core/theme/theme_extensions.dart';
@@ -38,7 +39,8 @@ class MyOrderScreenServices extends StatelessWidget {
               const Gap(10),
               ...order.services.map(_buildServiceInfo),
               OrderServiceInfo.total(order),
-              if (order.costFrom) const TotalCostWarning()
+              if (order.costFrom && order.status != OrderStatus.CANCELLED)
+                const TotalCostWarning()
             ],
           ),
         );
