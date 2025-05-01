@@ -24,6 +24,7 @@ mixin _$StaffUser {
   String get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
+  List<StaffActivity> get activities => throw _privateConstructorUsedError;
   List<OrderServiceType> get services => throw _privateConstructorUsedError;
 
   /// Serializes this StaffUser to a JSON map.
@@ -46,6 +47,7 @@ abstract class $StaffUserCopyWith<$Res> {
       String firstName,
       String? lastName,
       String? username,
+      List<StaffActivity> activities,
       List<OrderServiceType> services});
 }
 
@@ -68,6 +70,7 @@ class _$StaffUserCopyWithImpl<$Res, $Val extends StaffUser>
     Object? firstName = null,
     Object? lastName = freezed,
     Object? username = freezed,
+    Object? activities = null,
     Object? services = null,
   }) {
     return _then(_value.copyWith(
@@ -87,6 +90,10 @@ class _$StaffUserCopyWithImpl<$Res, $Val extends StaffUser>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
+      activities: null == activities
+          ? _value.activities
+          : activities // ignore: cast_nullable_to_non_nullable
+              as List<StaffActivity>,
       services: null == services
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
@@ -108,6 +115,7 @@ abstract class _$$StaffUserImplCopyWith<$Res>
       String firstName,
       String? lastName,
       String? username,
+      List<StaffActivity> activities,
       List<OrderServiceType> services});
 }
 
@@ -128,6 +136,7 @@ class __$$StaffUserImplCopyWithImpl<$Res>
     Object? firstName = null,
     Object? lastName = freezed,
     Object? username = freezed,
+    Object? activities = null,
     Object? services = null,
   }) {
     return _then(_$StaffUserImpl(
@@ -147,6 +156,10 @@ class __$$StaffUserImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
+      activities: null == activities
+          ? _value._activities
+          : activities // ignore: cast_nullable_to_non_nullable
+              as List<StaffActivity>,
       services: null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
@@ -163,8 +176,10 @@ class _$StaffUserImpl extends _StaffUser {
       required this.firstName,
       required this.lastName,
       required this.username,
+      required final List<StaffActivity> activities,
       required final List<OrderServiceType> services})
-      : _services = services,
+      : _activities = activities,
+        _services = services,
         super._();
 
   factory _$StaffUserImpl.fromJson(Map<String, dynamic> json) =>
@@ -178,6 +193,14 @@ class _$StaffUserImpl extends _StaffUser {
   final String? lastName;
   @override
   final String? username;
+  final List<StaffActivity> _activities;
+  @override
+  List<StaffActivity> get activities {
+    if (_activities is EqualUnmodifiableListView) return _activities;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_activities);
+  }
+
   final List<OrderServiceType> _services;
   @override
   List<OrderServiceType> get services {
@@ -188,7 +211,7 @@ class _$StaffUserImpl extends _StaffUser {
 
   @override
   String toString() {
-    return 'StaffUser(id: $id, firstName: $firstName, lastName: $lastName, username: $username, services: $services)';
+    return 'StaffUser(id: $id, firstName: $firstName, lastName: $lastName, username: $username, activities: $activities, services: $services)';
   }
 
   @override
@@ -203,13 +226,21 @@ class _$StaffUserImpl extends _StaffUser {
                 other.lastName == lastName) &&
             (identical(other.username, username) ||
                 other.username == username) &&
+            const DeepCollectionEquality()
+                .equals(other._activities, _activities) &&
             const DeepCollectionEquality().equals(other._services, _services));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, firstName, lastName,
-      username, const DeepCollectionEquality().hash(_services));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      firstName,
+      lastName,
+      username,
+      const DeepCollectionEquality().hash(_activities),
+      const DeepCollectionEquality().hash(_services));
 
   /// Create a copy of StaffUser
   /// with the given fields replaced by the non-null parameter values.
@@ -233,6 +264,7 @@ abstract class _StaffUser extends StaffUser {
       required final String firstName,
       required final String? lastName,
       required final String? username,
+      required final List<StaffActivity> activities,
       required final List<OrderServiceType> services}) = _$StaffUserImpl;
   _StaffUser._() : super._();
 
@@ -247,6 +279,8 @@ abstract class _StaffUser extends StaffUser {
   String? get lastName;
   @override
   String? get username;
+  @override
+  List<StaffActivity> get activities;
   @override
   List<OrderServiceType> get services;
 
