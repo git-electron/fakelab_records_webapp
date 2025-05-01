@@ -36,6 +36,8 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/order
     as _i46;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/domain/bloc/admin_orders_filters_bloc.dart'
     as _i718;
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/bloc/admin_staff_filters_bloc.dart'
+    as _i565;
 import 'package:fakelab_records_webapp/presentation/screens/home/data/client/admin_panel_client.dart'
     as _i562;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/admin_panel_bloc/admin_panel_bloc.dart'
@@ -79,6 +81,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i718.AdminOrdersFiltersBloc>(
         () => _i718.AdminOrdersFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
+    gh.factory<_i565.AdminStaffFiltersBloc>(
+        () => _i565.AdminStaffFiltersBloc());
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((

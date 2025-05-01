@@ -1,0 +1,26 @@
+import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/service/order_service_type.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'staff_user.freezed.dart';
+part 'staff_user.g.dart';
+
+@freezed
+class StaffUser with _$StaffUser {
+  factory StaffUser({
+    required int id,
+    required String firstName,
+    required String? lastName,
+    required String? username,
+    required List<OrderServiceType> services,
+  }) = _StaffUser;
+
+  factory StaffUser.fromJson(Map<String, dynamic> json) =>
+      _$StaffUserFromJson(json);
+
+  StaffUser._();
+
+  String get fullName {
+    return '$firstName${lastName.isNotNullAndEmpty ? ' $lastName' : ''}';
+  }
+}
