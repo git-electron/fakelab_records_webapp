@@ -356,7 +356,6 @@ class AllActions extends StatelessWidget {
                         ))
                     .toList(),
               ).then((status) {
-                print(status);
                 if (status != null && status != order.status) {
                   if (order.costFrom && status != OrderStatus.CANCELLED) {
                     return AppTextFieldDialog.show(
