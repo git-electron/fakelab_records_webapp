@@ -271,7 +271,7 @@ class AllActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AdminOrderBloc bloc = context.read();
-    
+
     return Column(
       children: [
         AppButton.primary(
@@ -279,39 +279,52 @@ class AllActions extends StatelessWidget {
           icon: Assets.icons.pencil.dark,
           text: 'Изменить статус',
         ),
-        const Gap(5),
-        AppButton.primary(
-          onTap: () {},
-          icon: Assets.icons.money.dark,
-          text: 'Изменить стоимость',
-        ),
-        const Gap(5),
-        AppButton(
-          onTap: () async {
-            final String? cancelReason = await AppTextFieldDialog.show(
-              context,
-              title: 'Отменить заказ',
-              hintText: 'Причина отмены',
-              autofillHints: [
-                'По желанию заказчика',
-                'Не удалось связаться с заказчиком',
-              ],
-              description:
-                  'Укажи причину отмены заказа. Она отобразится в боте и мини-приложении заказчика',
-            );
-
-            if (cancelReason != null) {
-              bloc.add(
-                AdminOrderEvent.changeOrderStatus(
-                  OrderStatus.CANCELLED,
-                  cancelReason: cancelReason,
-                ),
-              );
+        BlocBuilder<AdminOrderBloc, AdminOrderState>(
+          builder: (context, state) {
+            if ([OrderStatus.COMPLETED, OrderStatus.CANCELLED]
+                .contains(state.order!.status)) {
+              return const SizedBox();
             }
+
+            return Column(
+              children: [
+                const Gap(5),
+                AppButton.primary(
+                  onTap: () {},
+                  icon: Assets.icons.money.dark,
+                  text: 'Изменить стоимость',
+                ),
+                const Gap(5),
+                AppButton(
+                  onTap: () async {
+                    final String? cancelReason = await AppTextFieldDialog.show(
+                      context,
+                      title: 'Отменить заказ',
+                      hintText: 'Причина отмены',
+                      autofillHints: [
+                        'По желанию заказчика',
+                        'Не удалось связаться с заказчиком',
+                      ],
+                      description:
+                          'Укажи причину отмены заказа. Она отобразится в боте и мини-приложении заказчика',
+                    );
+
+                    if (cancelReason != null) {
+                      bloc.add(
+                        AdminOrderEvent.changeOrderStatus(
+                          OrderStatus.CANCELLED,
+                          cancelReason: cancelReason,
+                        ),
+                      );
+                    }
+                  },
+                  text: 'Отменить',
+                  backgroundColor: context.colors.primary,
+                  contentColor: context.colors.onBackground,
+                ),
+              ],
+            );
           },
-          text: 'Отменить',
-          backgroundColor: context.colors.primary,
-          contentColor: context.colors.onBackground,
         ),
       ],
     );

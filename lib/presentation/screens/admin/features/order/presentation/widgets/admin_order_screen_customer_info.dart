@@ -99,6 +99,7 @@ class AdminOrderScreenCustomerInfo extends StatelessWidget {
             child: ContactItem(
               text: order.customer.phoneNumber,
               icon: Assets.icons.phone.light,
+              shouldDisplayCallButton: true,
             ),
           ),
       ];
@@ -109,6 +110,7 @@ class ContactItem extends StatelessWidget {
     required this.text,
     required this.icon,
     this.isEnabled = true,
+    this.shouldDisplayCallButton = false,
     super.key,
   });
 
@@ -116,6 +118,7 @@ class ContactItem extends StatelessWidget {
   final SvgGenImage icon;
 
   final bool isEnabled;
+  final bool shouldDisplayCallButton;
 
   @override
   Widget build(BuildContext context) {
@@ -147,6 +150,11 @@ class ContactItem extends StatelessWidget {
             const SnackBar(content: Text('Скопировано')),
           );
         }),
+        if (shouldDisplayCallButton) const Gap(5),
+        if (shouldDisplayCallButton)
+          ContactCallButton(onTap: () {
+            launchUrlString('tel:+${text.extractNumerals()}');
+          }),
       ],
     );
   }
@@ -181,6 +189,44 @@ class ContactCopyButton extends StatelessWidget {
         ),
         child: Text(
           'Скопировать',
+          style: context.styles.body3.copyWith(
+            color: context.colors.onBackground,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ContactCallButton extends StatelessWidget {
+  const ContactCallButton({
+    required this.onTap,
+    super.key,
+  });
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tappable(
+      onTap: onTap,
+      child: Container(
+        padding: const Pad(
+          vertical: 4,
+          horizontal: 10,
+        ),
+        alignment: Alignment.center,
+        decoration: ShapeDecoration(
+          color: context.colors.onBackground.copyWithOpacity(.1),
+          shape: SmoothRectangleBorder(
+            borderRadius: SmoothBorderRadius(
+              cornerRadius: 10,
+              cornerSmoothing: 0.6,
+            ),
+          ),
+        ),
+        child: Text(
+          'Позвонить',
           style: context.styles.body3.copyWith(
             color: context.colors.onBackground,
           ),

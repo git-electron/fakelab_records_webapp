@@ -77,6 +77,7 @@ Data: $json''');
         order,
         status: status,
         totalCost: totalCost,
+        cancelReason: cancelReason,
       );
 
       final String path = 'orders/${order.id}';
