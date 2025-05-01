@@ -11,6 +11,6 @@ class AdminOrderEvent with _$AdminOrderEvent {
   const factory AdminOrderEvent.changeOrderStatus(
     OrderStatus status, {
     double? totalCost,
-    String? cancelReason,
+    String? message,
   }) = _ChangeOrderStatus;
 }

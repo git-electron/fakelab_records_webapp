@@ -8,6 +8,7 @@ import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/or
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_confirmation_dialog/app_confirmation_dialog.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_text_field_dialog/app_text_field_dialog.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -123,31 +124,49 @@ class ActualActions extends StatelessWidget {
 
           return ExpandedWrapper(
             child: AppButton(
-              onTap: () async {
-                final String? totalCostString = await AppTextFieldDialog.show(
-                  context,
-                  title: 'Принять заказ',
-                  hintText: 'Стоимость',
-                  keyboardType: TextInputType.number,
-                  autofillHints: [1, 1.5, 2]
-                      .map((x) => (totalCost * x).formatCurrency())
-                      .toList(),
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    CurrencyTextInputFormatter(),
-                  ],
-                  description:
-                      'Укажи итоговую стоимость, на которую вы договорились с заказчиком',
-                );
-                final double? newTotalCost =
-                    double.tryParse(totalCostString?.extractNumerals() ?? '');
-                if (newTotalCost != null) {
-                  bloc.add(
-                    AdminOrderEvent.changeOrderStatus(
-                      OrderStatus.PENDING,
-                      totalCost: newTotalCost,
-                    ),
-                  );
+              onTap: () {
+                if (order.costFrom) {
+                  AppTextFieldDialog.show(
+                    context,
+                    title: 'Принять заказ',
+                    hintText: 'Стоимость',
+                    keyboardType: TextInputType.number,
+                    autofillHints: [1, 1.5, 2]
+                        .map((x) => (totalCost * x).formatCurrency())
+                        .toList(),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      CurrencyTextInputFormatter(),
+                    ],
+                    description:
+                        'Укажи итоговую стоимость, на которую вы договорились с заказчиком',
+                  ).then((totalCostString) {
+                    final double? newTotalCost = double.tryParse(
+                        totalCostString?.extractNumerals() ?? '');
+                    if (newTotalCost != null) {
+                      bloc.add(
+                        AdminOrderEvent.changeOrderStatus(
+                          OrderStatus.PENDING,
+                          totalCost: newTotalCost,
+                        ),
+                      );
+                    }
+                  });
+                } else {
+                  AppConfirmationDialog.show(
+                    context,
+                    title: 'Подтверждение',
+                    description:
+                        'Подтвердить заказ? Стоимость фиксированная — ${order.totalCost.formatCurrency()}',
+                  ).then((isConfirmed) {
+                    if (isConfirmed ?? false) {
+                      bloc.add(
+                        const AdminOrderEvent.changeOrderStatus(
+                          OrderStatus.PENDING,
+                        ),
+                      );
+                    }
+                  });
                 }
               },
               text: 'Принять',
@@ -160,28 +179,26 @@ class ActualActions extends StatelessWidget {
       const Gap(5),
       ExpandedWrapper(
         child: AppButton(
-          onTap: () async {
-            final String? cancelReason = await AppTextFieldDialog.show(
-              context,
-              title: 'Отменить заказ',
-              hintText: 'Причина отмены',
-              autofillHints: [
-                'По желанию заказчика',
-                'Не удалось связаться с заказчиком',
-              ],
-              description:
-                  'Укажи причину отмены заказа. Она отобразится в боте и мини-приложении заказчика',
-            );
-
-            if (cancelReason != null) {
+          onTap: () => AppTextFieldDialog.show(
+            context,
+            title: 'Отменить заказ',
+            hintText: 'Причина отмены',
+            autofillHints: [
+              'По желанию заказчика',
+              'Не удалось связаться с заказчиком',
+            ],
+            description:
+                'Укажи причину отмены заказа. Она отобразится в мини-приложении заказчика',
+          ).then((message) {
+            if (message != null) {
               bloc.add(
                 AdminOrderEvent.changeOrderStatus(
                   OrderStatus.CANCELLED,
-                  cancelReason: cancelReason,
+                  message: message,
                 ),
               );
             }
-          },
+          }),
           text: 'Отменить',
           backgroundColor: context.colors.primary,
           contentColor: context.colors.onBackground,
@@ -196,9 +213,19 @@ class ActualActions extends StatelessWidget {
     final AdminOrderBloc bloc = context.read();
 
     return AppButton(
-      onTap: () => bloc.add(
-        const AdminOrderEvent.changeOrderStatus(OrderStatus.IN_PROGRESS),
-      ),
+      onTap: () => AppConfirmationDialog.show(
+        context,
+        title: 'Подтверждение',
+        description: 'Взять этот заказ в работу?',
+      ).then((isConfirmed) {
+        if (isConfirmed ?? false) {
+          bloc.add(
+            const AdminOrderEvent.changeOrderStatus(
+              OrderStatus.IN_PROGRESS,
+            ),
+          );
+        }
+      }),
       text: 'Взять в работу',
       backgroundColor: context.colors.statuses.inProgress,
       contentColor: context.colors.background,
@@ -209,11 +236,19 @@ class ActualActions extends StatelessWidget {
     final AdminOrderBloc bloc = context.read();
 
     return AppButton(
-      onTap: () => bloc.add(
-        const AdminOrderEvent.changeOrderStatus(
-          OrderStatus.AWAITING_CONFIRMATION,
-        ),
-      ),
+      onTap: () => AppConfirmationDialog.show(
+        context,
+        title: 'Подтверждение',
+        description: 'Заказ готов к передаче на проверку заказчику?',
+      ).then((isConfirmed) {
+        if (isConfirmed ?? false) {
+          bloc.add(
+            const AdminOrderEvent.changeOrderStatus(
+              OrderStatus.AWAITING_CONFIRMATION,
+            ),
+          );
+        }
+      }),
       text: 'На проверку клиентом',
       backgroundColor: context.colors.statuses.awaitingConfirmation,
       contentColor: context.colors.background,
@@ -227,9 +262,19 @@ class ActualActions extends StatelessWidget {
       children: [
         ExpandedWrapper(
           child: AppButton(
-            onTap: () => bloc.add(
-              const AdminOrderEvent.changeOrderStatus(OrderStatus.COMPLETED),
-            ),
+            onTap: () => AppConfirmationDialog.show(
+              context,
+              title: 'Подтверждение',
+              description: 'Заказчик оплатил заказ и подтвердил готовность?',
+            ).then((isConfirmed) {
+              if (isConfirmed ?? false) {
+                bloc.add(
+                  const AdminOrderEvent.changeOrderStatus(
+                    OrderStatus.COMPLETED,
+                  ),
+                );
+              }
+            }),
             text: 'Заказ готов',
             backgroundColor: context.colors.statuses.completed,
             contentColor: context.colors.background,
@@ -238,9 +283,19 @@ class ActualActions extends StatelessWidget {
         const Gap(5),
         ExpandedWrapper(
           child: AppButton(
-            onTap: () => bloc.add(
-              const AdminOrderEvent.changeOrderStatus(OrderStatus.IN_PROGRESS),
-            ),
+            onTap: () => AppTextFieldDialog.show(
+              context,
+              title: 'Вернуть в работу',
+              hintText: 'Причина возврата',
+              autofillHints: ['Правки от заказчика'],
+              description:
+                  'Укажи причину возврата заказа. Она отобразится в мини-приложении заказчика',
+            ).then((message) => bloc.add(
+                  AdminOrderEvent.changeOrderStatus(
+                    OrderStatus.IN_PROGRESS,
+                    message: message,
+                  ),
+                )),
             text: 'Вернуть в работу',
             backgroundColor: context.colors.statuses.inProgress,
             contentColor: context.colors.background,
@@ -297,7 +352,7 @@ class AllActions extends StatelessWidget {
                 const Gap(5),
                 AppButton(
                   onTap: () async {
-                    final String? cancelReason = await AppTextFieldDialog.show(
+                    final String? message = await AppTextFieldDialog.show(
                       context,
                       title: 'Отменить заказ',
                       hintText: 'Причина отмены',
@@ -309,11 +364,11 @@ class AllActions extends StatelessWidget {
                           'Укажи причину отмены заказа. Она отобразится в боте и мини-приложении заказчика',
                     );
 
-                    if (cancelReason != null) {
+                    if (message != null) {
                       bloc.add(
                         AdminOrderEvent.changeOrderStatus(
                           OrderStatus.CANCELLED,
-                          cancelReason: cancelReason,
+                          message: message,
                         ),
                       );
                     }

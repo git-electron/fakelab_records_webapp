@@ -59,8 +59,8 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
   ) async {
     tryOrNullAsync(() => _changeOrderStatus(
           event.status,
+          message: event.message,
           totalCost: event.totalCost,
-          cancelReason: event.cancelReason,
         ));
   }
 
@@ -76,14 +76,14 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
   Future<void> _changeOrderStatus(
     OrderStatus status, {
     double? totalCost,
-    String? cancelReason,
+    String? message,
   }) async {
     add(const AdminOrderEvent.setLoading());
     final Result<Order> result = await adminOrderClient.changeOrderStatus(
       status,
       order: state.order!,
       totalCost: totalCost,
-      cancelReason: cancelReason,
+      message: message,
     );
     result.when(
       success: (updatedOrder) {

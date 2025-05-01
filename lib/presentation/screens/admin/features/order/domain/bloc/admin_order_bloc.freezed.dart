@@ -22,7 +22,7 @@ mixin _$AdminOrderEvent {
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
     required TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)
+            OrderStatus status, double? totalCost, String? message)
         changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,8 +31,7 @@ mixin _$AdminOrderEvent {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
@@ -41,8 +40,7 @@ mixin _$AdminOrderEvent {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
     required TResult orElse(),
   }) =>
@@ -140,7 +138,7 @@ class _$SetLoadingImpl implements _SetLoading {
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
     required TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)
+            OrderStatus status, double? totalCost, String? message)
         changeOrderStatus,
   }) {
     return setLoading();
@@ -152,8 +150,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
   }) {
     return setLoading?.call();
@@ -165,8 +162,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
     required TResult orElse(),
   }) {
@@ -302,7 +298,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
     required TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)
+            OrderStatus status, double? totalCost, String? message)
         changeOrderStatus,
   }) {
     return setLoaded(order);
@@ -314,8 +310,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
   }) {
     return setLoaded?.call(order);
@@ -327,8 +322,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
     required TResult orElse(),
   }) {
@@ -460,7 +454,7 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
     required TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)
+            OrderStatus status, double? totalCost, String? message)
         changeOrderStatus,
   }) {
     return setError(message);
@@ -472,8 +466,7 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
   }) {
     return setError?.call(message);
@@ -485,8 +478,7 @@ class _$SetErrorImpl implements _SetError {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
     required TResult orElse(),
   }) {
@@ -552,7 +544,7 @@ abstract class _$$ChangeOrderStatusImplCopyWith<$Res> {
           $Res Function(_$ChangeOrderStatusImpl) then) =
       __$$ChangeOrderStatusImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OrderStatus status, double? totalCost, String? cancelReason});
+  $Res call({OrderStatus status, double? totalCost, String? message});
 }
 
 /// @nodoc
@@ -570,7 +562,7 @@ class __$$ChangeOrderStatusImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? totalCost = freezed,
-    Object? cancelReason = freezed,
+    Object? message = freezed,
   }) {
     return _then(_$ChangeOrderStatusImpl(
       null == status
@@ -581,9 +573,9 @@ class __$$ChangeOrderStatusImplCopyWithImpl<$Res>
           ? _value.totalCost
           : totalCost // ignore: cast_nullable_to_non_nullable
               as double?,
-      cancelReason: freezed == cancelReason
-          ? _value.cancelReason
-          : cancelReason // ignore: cast_nullable_to_non_nullable
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -592,19 +584,18 @@ class __$$ChangeOrderStatusImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
-  const _$ChangeOrderStatusImpl(this.status,
-      {this.totalCost, this.cancelReason});
+  const _$ChangeOrderStatusImpl(this.status, {this.totalCost, this.message});
 
   @override
   final OrderStatus status;
   @override
   final double? totalCost;
   @override
-  final String? cancelReason;
+  final String? message;
 
   @override
   String toString() {
-    return 'AdminOrderEvent.changeOrderStatus(status: $status, totalCost: $totalCost, cancelReason: $cancelReason)';
+    return 'AdminOrderEvent.changeOrderStatus(status: $status, totalCost: $totalCost, message: $message)';
   }
 
   @override
@@ -615,12 +606,11 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.totalCost, totalCost) ||
                 other.totalCost == totalCost) &&
-            (identical(other.cancelReason, cancelReason) ||
-                other.cancelReason == cancelReason));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, totalCost, cancelReason);
+  int get hashCode => Object.hash(runtimeType, status, totalCost, message);
 
   /// Create a copy of AdminOrderEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -638,10 +628,10 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
     required TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)
+            OrderStatus status, double? totalCost, String? message)
         changeOrderStatus,
   }) {
-    return changeOrderStatus(status, totalCost, cancelReason);
+    return changeOrderStatus(status, totalCost, message);
   }
 
   @override
@@ -650,11 +640,10 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
   }) {
-    return changeOrderStatus?.call(status, totalCost, cancelReason);
+    return changeOrderStatus?.call(status, totalCost, message);
   }
 
   @override
@@ -663,13 +652,12 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(
-            OrderStatus status, double? totalCost, String? cancelReason)?
+    TResult Function(OrderStatus status, double? totalCost, String? message)?
         changeOrderStatus,
     required TResult orElse(),
   }) {
     if (changeOrderStatus != null) {
-      return changeOrderStatus(status, totalCost, cancelReason);
+      return changeOrderStatus(status, totalCost, message);
     }
     return orElse();
   }
@@ -715,11 +703,11 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
 abstract class _ChangeOrderStatus implements AdminOrderEvent {
   const factory _ChangeOrderStatus(final OrderStatus status,
       {final double? totalCost,
-      final String? cancelReason}) = _$ChangeOrderStatusImpl;
+      final String? message}) = _$ChangeOrderStatusImpl;
 
   OrderStatus get status;
   double? get totalCost;
-  String? get cancelReason;
+  String? get message;
 
   /// Create a copy of AdminOrderEvent
   /// with the given fields replaced by the non-null parameter values.

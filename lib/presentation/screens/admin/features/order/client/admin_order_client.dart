@@ -57,7 +57,7 @@ Data: $json''');
     OrderStatus status, {
     required Order order,
     double? totalCost,
-    String? cancelReason,
+    String? message,
   }) async {
     if (isDevelopment) {
       final Order? mockOrder = Mock.getOrder(order.id);
@@ -77,7 +77,7 @@ Data: $json''');
         order,
         status: status,
         totalCost: totalCost,
-        cancelReason: cancelReason,
+        message: message,
       );
 
       final String path = 'orders/${order.id}';
@@ -99,7 +99,7 @@ Data: $updatedOrder''');
     Order order, {
     OrderStatus? status,
     double? totalCost,
-    String? cancelReason,
+    String? message,
   }) {
     final DateTime now = DateTime.now();
 
@@ -131,7 +131,7 @@ Data: $updatedOrder''');
               OrderStatusHistoryItem(
                 status: status,
                 dateChanged: now,
-                message: cancelReason,
+                message: message,
               ),
             ]
           : order.statusHistory,
