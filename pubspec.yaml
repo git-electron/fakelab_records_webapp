@@ -102,6 +102,7 @@ flutter:
     - assets/icons/pencil/
     - assets/icons/phone/
     - assets/icons/pin/
+    - assets/icons/plus/
     - assets/icons/qr_code/
     - assets/icons/question/
     - assets/icons/search/

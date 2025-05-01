@@ -23,7 +23,8 @@ mixin _$AdminOrderEvent {
     required TResult Function(String? message) setError,
     required TResult Function(
             OrderStatus status, double? totalCost, String? message)
-        changeOrderStatus,
+        updateOrderStatus,
+    required TResult Function(double? totalCost) updateOrderTotalCost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,7 +33,8 @@ mixin _$AdminOrderEvent {
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
     TResult? Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult? Function(double? totalCost)? updateOrderTotalCost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,7 +43,8 @@ mixin _$AdminOrderEvent {
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
     TResult Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult Function(double? totalCost)? updateOrderTotalCost,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +53,8 @@ mixin _$AdminOrderEvent {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_UpdateOrderTotalCost value) updateOrderTotalCost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,7 +62,8 @@ mixin _$AdminOrderEvent {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,7 +71,8 @@ mixin _$AdminOrderEvent {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -139,7 +145,8 @@ class _$SetLoadingImpl implements _SetLoading {
     required TResult Function(String? message) setError,
     required TResult Function(
             OrderStatus status, double? totalCost, String? message)
-        changeOrderStatus,
+        updateOrderStatus,
+    required TResult Function(double? totalCost) updateOrderTotalCost,
   }) {
     return setLoading();
   }
@@ -151,7 +158,8 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
     TResult? Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult? Function(double? totalCost)? updateOrderTotalCost,
   }) {
     return setLoading?.call();
   }
@@ -163,7 +171,8 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
     TResult Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult Function(double? totalCost)? updateOrderTotalCost,
     required TResult orElse(),
   }) {
     if (setLoading != null) {
@@ -178,7 +187,8 @@ class _$SetLoadingImpl implements _SetLoading {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_UpdateOrderTotalCost value) updateOrderTotalCost,
   }) {
     return setLoading(this);
   }
@@ -189,7 +199,8 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
   }) {
     return setLoading?.call(this);
   }
@@ -200,7 +211,8 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
     required TResult orElse(),
   }) {
     if (setLoading != null) {
@@ -299,7 +311,8 @@ class _$SetLoadedImpl implements _SetLoaded {
     required TResult Function(String? message) setError,
     required TResult Function(
             OrderStatus status, double? totalCost, String? message)
-        changeOrderStatus,
+        updateOrderStatus,
+    required TResult Function(double? totalCost) updateOrderTotalCost,
   }) {
     return setLoaded(order);
   }
@@ -311,7 +324,8 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
     TResult? Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult? Function(double? totalCost)? updateOrderTotalCost,
   }) {
     return setLoaded?.call(order);
   }
@@ -323,7 +337,8 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
     TResult Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult Function(double? totalCost)? updateOrderTotalCost,
     required TResult orElse(),
   }) {
     if (setLoaded != null) {
@@ -338,7 +353,8 @@ class _$SetLoadedImpl implements _SetLoaded {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_UpdateOrderTotalCost value) updateOrderTotalCost,
   }) {
     return setLoaded(this);
   }
@@ -349,7 +365,8 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
   }) {
     return setLoaded?.call(this);
   }
@@ -360,7 +377,8 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
     required TResult orElse(),
   }) {
     if (setLoaded != null) {
@@ -455,7 +473,8 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function(String? message) setError,
     required TResult Function(
             OrderStatus status, double? totalCost, String? message)
-        changeOrderStatus,
+        updateOrderStatus,
+    required TResult Function(double? totalCost) updateOrderTotalCost,
   }) {
     return setError(message);
   }
@@ -467,7 +486,8 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
     TResult? Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult? Function(double? totalCost)? updateOrderTotalCost,
   }) {
     return setError?.call(message);
   }
@@ -479,7 +499,8 @@ class _$SetErrorImpl implements _SetError {
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
     TResult Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult Function(double? totalCost)? updateOrderTotalCost,
     required TResult orElse(),
   }) {
     if (setError != null) {
@@ -494,7 +515,8 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_UpdateOrderTotalCost value) updateOrderTotalCost,
   }) {
     return setError(this);
   }
@@ -505,7 +527,8 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
   }) {
     return setError?.call(this);
   }
@@ -516,7 +539,8 @@ class _$SetErrorImpl implements _SetError {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
     required TResult orElse(),
   }) {
     if (setError != null) {
@@ -539,20 +563,20 @@ abstract class _SetError implements AdminOrderEvent {
 }
 
 /// @nodoc
-abstract class _$$ChangeOrderStatusImplCopyWith<$Res> {
-  factory _$$ChangeOrderStatusImplCopyWith(_$ChangeOrderStatusImpl value,
-          $Res Function(_$ChangeOrderStatusImpl) then) =
-      __$$ChangeOrderStatusImplCopyWithImpl<$Res>;
+abstract class _$$UpdateOrderStatusImplCopyWith<$Res> {
+  factory _$$UpdateOrderStatusImplCopyWith(_$UpdateOrderStatusImpl value,
+          $Res Function(_$UpdateOrderStatusImpl) then) =
+      __$$UpdateOrderStatusImplCopyWithImpl<$Res>;
   @useResult
   $Res call({OrderStatus status, double? totalCost, String? message});
 }
 
 /// @nodoc
-class __$$ChangeOrderStatusImplCopyWithImpl<$Res>
-    extends _$AdminOrderEventCopyWithImpl<$Res, _$ChangeOrderStatusImpl>
-    implements _$$ChangeOrderStatusImplCopyWith<$Res> {
-  __$$ChangeOrderStatusImplCopyWithImpl(_$ChangeOrderStatusImpl _value,
-      $Res Function(_$ChangeOrderStatusImpl) _then)
+class __$$UpdateOrderStatusImplCopyWithImpl<$Res>
+    extends _$AdminOrderEventCopyWithImpl<$Res, _$UpdateOrderStatusImpl>
+    implements _$$UpdateOrderStatusImplCopyWith<$Res> {
+  __$$UpdateOrderStatusImplCopyWithImpl(_$UpdateOrderStatusImpl _value,
+      $Res Function(_$UpdateOrderStatusImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AdminOrderEvent
@@ -564,7 +588,7 @@ class __$$ChangeOrderStatusImplCopyWithImpl<$Res>
     Object? totalCost = freezed,
     Object? message = freezed,
   }) {
-    return _then(_$ChangeOrderStatusImpl(
+    return _then(_$UpdateOrderStatusImpl(
       null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -583,8 +607,8 @@ class __$$ChangeOrderStatusImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
-  const _$ChangeOrderStatusImpl(this.status, {this.totalCost, this.message});
+class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
+  const _$UpdateOrderStatusImpl(this.status, {this.totalCost, this.message});
 
   @override
   final OrderStatus status;
@@ -595,14 +619,14 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
 
   @override
   String toString() {
-    return 'AdminOrderEvent.changeOrderStatus(status: $status, totalCost: $totalCost, message: $message)';
+    return 'AdminOrderEvent.updateOrderStatus(status: $status, totalCost: $totalCost, message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeOrderStatusImpl &&
+            other is _$UpdateOrderStatusImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.totalCost, totalCost) ||
                 other.totalCost == totalCost) &&
@@ -617,8 +641,8 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangeOrderStatusImplCopyWith<_$ChangeOrderStatusImpl> get copyWith =>
-      __$$ChangeOrderStatusImplCopyWithImpl<_$ChangeOrderStatusImpl>(
+  _$$UpdateOrderStatusImplCopyWith<_$UpdateOrderStatusImpl> get copyWith =>
+      __$$UpdateOrderStatusImplCopyWithImpl<_$UpdateOrderStatusImpl>(
           this, _$identity);
 
   @override
@@ -629,9 +653,10 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     required TResult Function(String? message) setError,
     required TResult Function(
             OrderStatus status, double? totalCost, String? message)
-        changeOrderStatus,
+        updateOrderStatus,
+    required TResult Function(double? totalCost) updateOrderTotalCost,
   }) {
-    return changeOrderStatus(status, totalCost, message);
+    return updateOrderStatus(status, totalCost, message);
   }
 
   @override
@@ -641,9 +666,10 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
     TResult? Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult? Function(double? totalCost)? updateOrderTotalCost,
   }) {
-    return changeOrderStatus?.call(status, totalCost, message);
+    return updateOrderStatus?.call(status, totalCost, message);
   }
 
   @override
@@ -653,11 +679,12 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
     TResult Function(OrderStatus status, double? totalCost, String? message)?
-        changeOrderStatus,
+        updateOrderStatus,
+    TResult Function(double? totalCost)? updateOrderTotalCost,
     required TResult orElse(),
   }) {
-    if (changeOrderStatus != null) {
-      return changeOrderStatus(status, totalCost, message);
+    if (updateOrderStatus != null) {
+      return updateOrderStatus(status, totalCost, message);
     }
     return orElse();
   }
@@ -668,9 +695,10 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_UpdateOrderTotalCost value) updateOrderTotalCost,
   }) {
-    return changeOrderStatus(this);
+    return updateOrderStatus(this);
   }
 
   @override
@@ -679,9 +707,10 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
   }) {
-    return changeOrderStatus?.call(this);
+    return updateOrderStatus?.call(this);
   }
 
   @override
@@ -690,20 +719,21 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
     required TResult orElse(),
   }) {
-    if (changeOrderStatus != null) {
-      return changeOrderStatus(this);
+    if (updateOrderStatus != null) {
+      return updateOrderStatus(this);
     }
     return orElse();
   }
 }
 
-abstract class _ChangeOrderStatus implements AdminOrderEvent {
-  const factory _ChangeOrderStatus(final OrderStatus status,
+abstract class _UpdateOrderStatus implements AdminOrderEvent {
+  const factory _UpdateOrderStatus(final OrderStatus status,
       {final double? totalCost,
-      final String? message}) = _$ChangeOrderStatusImpl;
+      final String? message}) = _$UpdateOrderStatusImpl;
 
   OrderStatus get status;
   double? get totalCost;
@@ -712,8 +742,174 @@ abstract class _ChangeOrderStatus implements AdminOrderEvent {
   /// Create a copy of AdminOrderEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ChangeOrderStatusImplCopyWith<_$ChangeOrderStatusImpl> get copyWith =>
+  _$$UpdateOrderStatusImplCopyWith<_$UpdateOrderStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateOrderTotalCostImplCopyWith<$Res> {
+  factory _$$UpdateOrderTotalCostImplCopyWith(_$UpdateOrderTotalCostImpl value,
+          $Res Function(_$UpdateOrderTotalCostImpl) then) =
+      __$$UpdateOrderTotalCostImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double? totalCost});
+}
+
+/// @nodoc
+class __$$UpdateOrderTotalCostImplCopyWithImpl<$Res>
+    extends _$AdminOrderEventCopyWithImpl<$Res, _$UpdateOrderTotalCostImpl>
+    implements _$$UpdateOrderTotalCostImplCopyWith<$Res> {
+  __$$UpdateOrderTotalCostImplCopyWithImpl(_$UpdateOrderTotalCostImpl _value,
+      $Res Function(_$UpdateOrderTotalCostImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AdminOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? totalCost = freezed,
+  }) {
+    return _then(_$UpdateOrderTotalCostImpl(
+      freezed == totalCost
+          ? _value.totalCost
+          : totalCost // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateOrderTotalCostImpl implements _UpdateOrderTotalCost {
+  const _$UpdateOrderTotalCostImpl(this.totalCost);
+
+  @override
+  final double? totalCost;
+
+  @override
+  String toString() {
+    return 'AdminOrderEvent.updateOrderTotalCost(totalCost: $totalCost)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateOrderTotalCostImpl &&
+            (identical(other.totalCost, totalCost) ||
+                other.totalCost == totalCost));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, totalCost);
+
+  /// Create a copy of AdminOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateOrderTotalCostImplCopyWith<_$UpdateOrderTotalCostImpl>
+      get copyWith =>
+          __$$UpdateOrderTotalCostImplCopyWithImpl<_$UpdateOrderTotalCostImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() setLoading,
+    required TResult Function(Order order) setLoaded,
+    required TResult Function(String? message) setError,
+    required TResult Function(
+            OrderStatus status, double? totalCost, String? message)
+        updateOrderStatus,
+    required TResult Function(double? totalCost) updateOrderTotalCost,
+  }) {
+    return updateOrderTotalCost(totalCost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setLoading,
+    TResult? Function(Order order)? setLoaded,
+    TResult? Function(String? message)? setError,
+    TResult? Function(OrderStatus status, double? totalCost, String? message)?
+        updateOrderStatus,
+    TResult? Function(double? totalCost)? updateOrderTotalCost,
+  }) {
+    return updateOrderTotalCost?.call(totalCost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setLoading,
+    TResult Function(Order order)? setLoaded,
+    TResult Function(String? message)? setError,
+    TResult Function(OrderStatus status, double? totalCost, String? message)?
+        updateOrderStatus,
+    TResult Function(double? totalCost)? updateOrderTotalCost,
+    required TResult orElse(),
+  }) {
+    if (updateOrderTotalCost != null) {
+      return updateOrderTotalCost(totalCost);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetLoading value) setLoading,
+    required TResult Function(_SetLoaded value) setLoaded,
+    required TResult Function(_SetError value) setError,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_UpdateOrderTotalCost value) updateOrderTotalCost,
+  }) {
+    return updateOrderTotalCost(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetLoading value)? setLoading,
+    TResult? Function(_SetLoaded value)? setLoaded,
+    TResult? Function(_SetError value)? setError,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
+  }) {
+    return updateOrderTotalCost?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetLoading value)? setLoading,
+    TResult Function(_SetLoaded value)? setLoaded,
+    TResult Function(_SetError value)? setError,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_UpdateOrderTotalCost value)? updateOrderTotalCost,
+    required TResult orElse(),
+  }) {
+    if (updateOrderTotalCost != null) {
+      return updateOrderTotalCost(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateOrderTotalCost implements AdminOrderEvent {
+  const factory _UpdateOrderTotalCost(final double? totalCost) =
+      _$UpdateOrderTotalCostImpl;
+
+  double? get totalCost;
+
+  /// Create a copy of AdminOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateOrderTotalCostImplCopyWith<_$UpdateOrderTotalCostImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

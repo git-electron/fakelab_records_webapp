@@ -120,7 +120,7 @@ class ActualActions extends StatelessWidget {
       BlocBuilder<AdminOrderBloc, AdminOrderState>(
         builder: (context, state) {
           final Order order = state.order!;
-          final double totalCost = order.totalCost;
+          final double totalCost = order.type.totalCost;
 
           return ExpandedWrapper(
             child: AppButton(
@@ -145,7 +145,7 @@ class ActualActions extends StatelessWidget {
                         totalCostString?.extractNumerals() ?? '');
                     if (newTotalCost != null) {
                       bloc.add(
-                        AdminOrderEvent.changeOrderStatus(
+                        AdminOrderEvent.updateOrderStatus(
                           OrderStatus.PENDING,
                           totalCost: newTotalCost,
                         ),
@@ -161,7 +161,7 @@ class ActualActions extends StatelessWidget {
                   ).then((isConfirmed) {
                     if (isConfirmed ?? false) {
                       bloc.add(
-                        const AdminOrderEvent.changeOrderStatus(
+                        const AdminOrderEvent.updateOrderStatus(
                           OrderStatus.PENDING,
                         ),
                       );
@@ -192,7 +192,7 @@ class ActualActions extends StatelessWidget {
           ).then((message) {
             if (message != null) {
               bloc.add(
-                AdminOrderEvent.changeOrderStatus(
+                AdminOrderEvent.updateOrderStatus(
                   OrderStatus.CANCELLED,
                   message: message,
                 ),
@@ -220,7 +220,7 @@ class ActualActions extends StatelessWidget {
       ).then((isConfirmed) {
         if (isConfirmed ?? false) {
           bloc.add(
-            const AdminOrderEvent.changeOrderStatus(
+            const AdminOrderEvent.updateOrderStatus(
               OrderStatus.IN_PROGRESS,
             ),
           );
@@ -243,7 +243,7 @@ class ActualActions extends StatelessWidget {
       ).then((isConfirmed) {
         if (isConfirmed ?? false) {
           bloc.add(
-            const AdminOrderEvent.changeOrderStatus(
+            const AdminOrderEvent.updateOrderStatus(
               OrderStatus.AWAITING_CONFIRMATION,
             ),
           );
@@ -269,7 +269,7 @@ class ActualActions extends StatelessWidget {
             ).then((isConfirmed) {
               if (isConfirmed ?? false) {
                 bloc.add(
-                  const AdminOrderEvent.changeOrderStatus(
+                  const AdminOrderEvent.updateOrderStatus(
                     OrderStatus.COMPLETED,
                   ),
                 );
@@ -291,7 +291,7 @@ class ActualActions extends StatelessWidget {
               description:
                   'Укажи причину возврата заказа. Она отобразится в мини-приложении заказчика',
             ).then((message) => bloc.add(
-                  AdminOrderEvent.changeOrderStatus(
+                  AdminOrderEvent.updateOrderStatus(
                     OrderStatus.IN_PROGRESS,
                     message: message,
                   ),
@@ -336,8 +336,11 @@ class AllActions extends StatelessWidget {
         ),
         BlocBuilder<AdminOrderBloc, AdminOrderState>(
           builder: (context, state) {
+            final Order order = state.order!;
+            final double totalCost = order.type.totalCost;
+
             if ([OrderStatus.COMPLETED, OrderStatus.CANCELLED]
-                .contains(state.order!.status)) {
+                .contains(order.status)) {
               return const SizedBox();
             }
 
@@ -345,9 +348,37 @@ class AllActions extends StatelessWidget {
               children: [
                 const Gap(5),
                 AppButton.primary(
-                  onTap: () {},
+                  onTap: () => AppTextFieldDialog.show(
+                    context,
+                    title: 'Изменить стоимость',
+                    hintText: 'Стоимость',
+                    keyboardType: TextInputType.number,
+                    autofillHints: [1, 1.5, 2]
+                        .map((x) => (totalCost * x).formatCurrency())
+                        .toList(),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      CurrencyTextInputFormatter(),
+                    ],
+                    description:
+                        'Укажи итоговую стоимость, на которую вы договорились с заказчиком',
+                  ).then((totalCostString) {
+                    final double? newTotalCost = double.tryParse(
+                        totalCostString?.extractNumerals() ?? '');
+                    if (newTotalCost != null) {
+                      bloc.add(
+                        AdminOrderEvent.updateOrderTotalCost(newTotalCost),
+                      );
+                    }
+                  }),
                   icon: Assets.icons.money.dark,
                   text: 'Изменить стоимость',
+                ),
+                const Gap(5),
+                AppButton.primary(
+                  onTap: () {},
+                  icon: Assets.icons.user.dark,
+                  text: 'Изменить исполнителя',
                 ),
                 const Gap(5),
                 AppButton(
@@ -366,7 +397,7 @@ class AllActions extends StatelessWidget {
 
                     if (message != null) {
                       bloc.add(
-                        AdminOrderEvent.changeOrderStatus(
+                        AdminOrderEvent.updateOrderStatus(
                           OrderStatus.CANCELLED,
                           message: message,
                         ),

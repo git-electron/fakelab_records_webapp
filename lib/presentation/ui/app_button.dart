@@ -1,3 +1,5 @@
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+
 import '../../core/extensions/color_extensions.dart';
 import '../../core/extensions/list_extensions.dart';
 import '../../core/gen/assets.gen.dart';
@@ -19,6 +21,7 @@ class AppButton extends StatelessWidget {
     this.height = 50,
     this.isEnabled = true,
     this.isLoading = false,
+    this.isExpanded = true,
     super.key,
   });
 
@@ -30,6 +33,7 @@ class AppButton extends StatelessWidget {
     double height = 50,
     bool isEnabled = true,
     bool isLoading = false,
+    bool isExpanded = true,
   }) {
     return AppButton(
       onTap: onTap,
@@ -39,6 +43,7 @@ class AppButton extends StatelessWidget {
       height: height,
       isEnabled: isEnabled,
       isLoading: isLoading,
+      isExpanded: isExpanded,
       contentColor: AppColors.background,
       backgroundColor: AppColors.onBackground,
     );
@@ -52,6 +57,7 @@ class AppButton extends StatelessWidget {
     double height = 50,
     bool isEnabled = true,
     bool isLoading = false,
+    bool isExpanded = true,
   }) {
     return AppButton(
       onTap: onTap,
@@ -61,6 +67,7 @@ class AppButton extends StatelessWidget {
       height: height,
       isEnabled: isEnabled,
       isLoading: isLoading,
+      isExpanded: isExpanded,
       contentColor: AppColors.onBackground,
       backgroundColor: AppColors.onBackground.copyWithOpacity(.1),
     );
@@ -76,6 +83,7 @@ class AppButton extends StatelessWidget {
 
   final bool isEnabled;
   final bool isLoading;
+  final bool isExpanded;
 
   final Color backgroundColor;
   final Color contentColor;
@@ -90,7 +98,8 @@ class AppButton extends StatelessWidget {
         opacity: isEnabled ? 1 : .25,
         child: Container(
           height: height,
-          width: width ?? double.infinity,
+          width: isExpanded ? width ?? double.infinity : null,
+          padding: isExpanded ? null : const Pad(horizontal: 30),
           alignment: Alignment.center,
           decoration: ShapeDecoration(
             color: backgroundColor,

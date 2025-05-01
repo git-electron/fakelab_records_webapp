@@ -4,6 +4,7 @@ import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/domain/bloc/admin_orders_filters_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/date_picker/app_date_picker_dialog.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_text_field.dart';
@@ -80,8 +81,12 @@ class AdminOrdersFilters extends StatelessWidget {
                       _orderStatusSelectedItemBuilder(context, item),
                 ),
               ),
+              if (!isMobile) const Gap(10),
+              if (!isMobile) _createManually(context),
             ],
           ),
+          if (isMobile) const Gap(10),
+          if (isMobile) _createManually(context),
         ],
       ),
     );
@@ -207,6 +212,16 @@ class AdminOrdersFilters extends StatelessWidget {
           style: context.styles.body2,
         ),
       ],
+    );
+  }
+
+  Widget _createManually(BuildContext context) {
+    return AppButton.primary(
+      onTap: () {},
+      text: 'Создать',
+      isEnabled: false,
+      isExpanded: false,
+      icon: Assets.icons.plus.dark,
     );
   }
 }

@@ -39,16 +39,10 @@ Data: $json''');
 
       if (json == null) return Result.success([]);
 
-      final List<Order> orders =
-          json.values.map((order) => Order.fromJson(order)).toList()
-            ..sort(
-              (a, b) {
-                print(a.dateCreated);
-                print(b.dateCreated);
-                print(b.dateCreated.compareTo(a.dateCreated));
-                return b.dateCreated.compareTo(a.dateCreated);
-              },
-            );
+      final List<Order> orders = json.values
+          .map((order) => Order.fromJson(order))
+          .toList()
+        ..sort((a, b) => b.dateCreated.compareTo(a.dateCreated));
 
       return Result.success(orders);
     } catch (error) {

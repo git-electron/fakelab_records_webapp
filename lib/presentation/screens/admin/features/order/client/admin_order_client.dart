@@ -53,11 +53,11 @@ Data: $json''');
     }
   }
 
-  Future<Result<Order>> changeOrderStatus(
-    OrderStatus status, {
-    required Order order,
-    double? totalCost,
+  Future<Result<Order>> updateOrder(
+    Order order, {
     String? message,
+    double? totalCost,
+    OrderStatus? status,
   }) async {
     if (isDevelopment) {
       final Order? mockOrder = Mock.getOrder(order.id);
@@ -65,10 +65,11 @@ Data: $json''');
         return Result.success(_updateOrderInfo(
           mockOrder,
           status: status,
+          message: message,
           totalCost: totalCost,
         ));
       } else {
-        return Result.error('Не удалось изменить статус');
+        return Result.error('Не удалось изменить заказ');
       }
     }
 
@@ -76,8 +77,8 @@ Data: $json''');
       final Order updatedOrder = _updateOrderInfo(
         order,
         status: status,
-        totalCost: totalCost,
         message: message,
+        totalCost: totalCost,
       );
 
       final String path = 'orders/${order.id}';
@@ -90,7 +91,7 @@ Data: $updatedOrder''');
 
       return Result.success(updatedOrder);
     } catch (error) {
-      logger.e('Failed to update order status', error: error);
+      logger.e('Failed to update order', error: error);
       return Result.error(error.toString());
     }
   }
@@ -112,12 +113,12 @@ Data: $updatedOrder''');
       totalCost: totalCost ?? order.totalCost,
       services: totalCost != null
           ? order.services.map((service) {
-              if (service.costFrom) {
+              if (service.type.costFrom) {
                 return service.copyWith(
                   costFrom: costFrom,
                   totalCost: totalCost -
                       (order.services
-                          .where((service) => !service.costFrom)
+                          .where((service) => !service.type.costFrom)
                           .map((service) => service.totalCost)
                           .sum),
                 );

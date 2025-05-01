@@ -105,6 +105,9 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/pin
   $AssetsIconsPinGen get pin => const $AssetsIconsPinGen();
 
+  /// Directory path: assets/icons/plus
+  $AssetsIconsPlusGen get plus => const $AssetsIconsPlusGen();
+
   /// Directory path: assets/icons/qr_code
   $AssetsIconsQrCodeGen get qrCode => const $AssetsIconsQrCodeGen();
 
@@ -553,6 +556,19 @@ class $AssetsIconsPinGen {
 
   /// File path: assets/icons/pin/light.svg
   SvgGenImage get light => const SvgGenImage('assets/icons/pin/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, light];
+}
+
+class $AssetsIconsPlusGen {
+  const $AssetsIconsPlusGen();
+
+  /// File path: assets/icons/plus/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/plus/dark.svg');
+
+  /// File path: assets/icons/plus/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/plus/light.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [dark, light];

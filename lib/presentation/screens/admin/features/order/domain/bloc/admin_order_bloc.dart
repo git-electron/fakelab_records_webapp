@@ -23,7 +23,8 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);
 
-    on<_ChangeOrderStatus>(_onChangeOrderStatus);
+    on<_UpdateOrderStatus>(_onUpdateOrderStatus);
+    on<_UpdateOrderTotalCost>(_onUpdateOrderTotalCost);
 
     tryOrNullAsync(_getOrder);
   }
@@ -53,15 +54,22 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
     return emit(AdminOrderState.error(event.message));
   }
 
-  Future<void> _onChangeOrderStatus(
-    _ChangeOrderStatus event,
+  Future<void> _onUpdateOrderStatus(
+    _UpdateOrderStatus event,
     Emitter<AdminOrderState> emit,
   ) async {
-    tryOrNullAsync(() => _changeOrderStatus(
-          event.status,
+    tryOrNullAsync(() => _updateOrder(
+          status: event.status,
           message: event.message,
           totalCost: event.totalCost,
         ));
+  }
+
+  Future<void> _onUpdateOrderTotalCost(
+    _UpdateOrderTotalCost event,
+    Emitter<AdminOrderState> emit,
+  ) async {
+    tryOrNullAsync(() => _updateOrder(totalCost: event.totalCost));
   }
 
   Future<void> _getOrder() async {
@@ -73,15 +81,15 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
     );
   }
 
-  Future<void> _changeOrderStatus(
-    OrderStatus status, {
+  Future<void> _updateOrder({
+    OrderStatus? status,
     double? totalCost,
     String? message,
   }) async {
     add(const AdminOrderEvent.setLoading());
-    final Result<Order> result = await adminOrderClient.changeOrderStatus(
-      status,
-      order: state.order!,
+    final Result<Order> result = await adminOrderClient.updateOrder(
+      state.order!,
+      status: status,
       totalCost: totalCost,
       message: message,
     );
