@@ -6,6 +6,7 @@ import 'package:fakelab_records_webapp/presentation/ui/logo/logo.dart';
 
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class AdminAppBarMobile extends StatelessWidget {
   const AdminAppBarMobile({super.key});
@@ -89,14 +90,16 @@ class AdminAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
+                  width: double.infinity,
                   height: meta.totalSafeAreaInset.top,
-                  padding: Pad(left: toolbarHeight),
+                  padding: Pad(left: meta.totalSafeAreaInset.top),
                   alignment: Alignment.centerLeft,
                   child: Logo(
                     type: LogoType.recordsAdmin,
                     height: meta.totalSafeAreaInset.top * .4,
                   ),
                 ),
+                const Gap(10),
                 const AdminScreenTabBar(),
               ],
             ),
