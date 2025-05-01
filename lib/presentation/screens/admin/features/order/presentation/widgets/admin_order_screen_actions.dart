@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
@@ -9,6 +11,8 @@ import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/or
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_confirmation_dialog/app_confirmation_dialog.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_button.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_dialog/app_dropdown_dialog.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_text_field_dialog/app_text_field_dialog.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -327,63 +331,132 @@ class AllActions extends StatelessWidget {
   Widget build(BuildContext context) {
     final AdminOrderBloc bloc = context.read();
 
-    return Column(
-      children: [
-        AppButton.primary(
-          onTap: () {},
-          icon: Assets.icons.pencil.dark,
-          text: 'Изменить статус',
-        ),
-        BlocBuilder<AdminOrderBloc, AdminOrderState>(
-          builder: (context, state) {
-            final Order order = state.order!;
-            final double totalCost = order.type.totalCost;
+    return BlocBuilder<AdminOrderBloc, AdminOrderState>(
+      builder: (context, state) {
+        final Order order = state.order!;
+        final double totalCost = order.type.totalCost;
 
+        return Column(
+          children: [
+            AppButton.primary(
+              onTap: () => AppDropdownDialog.show(
+                context,
+                title: 'Изменить статус',
+                hintText: 'Статус заказа',
+                description: 'Укажи новый статус заказа',
+                initialValue: order.status,
+                menuItemBuilder: (item) =>
+                    _orderStatusMenuItemBuilder(context, item),
+                selectedItemBuilder: (item) =>
+                    _orderStatusSelectedItemBuilder(context, item),
+                items: OrderStatus.values
+                    .map((status) => DropdownButtonItem(
+                          title: status.title,
+                          value: status,
+                        ))
+                    .toList(),
+              ).then((status) {
+                print(status);
+                if (status != null && status != order.status) {
+                  if (order.costFrom && status != OrderStatus.CANCELLED) {
+                    return AppTextFieldDialog.show(
+                      context,
+                      title: 'Уточни стоимость',
+                      hintText: 'Стоимость',
+                      keyboardType: TextInputType.number,
+                      autofillHints: [1, 1.5, 2]
+                          .map((x) => (totalCost * x).formatCurrency())
+                          .toList(),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        CurrencyTextInputFormatter(),
+                      ],
+                      description:
+                          'Укажи итоговую стоимость, на которую вы договорились с заказчиком',
+                    ).then((totalCostString) {
+                      final double? newTotalCost = double.tryParse(
+                          totalCostString?.extractNumerals() ?? '');
+                      if (newTotalCost != null) {
+                        bloc.add(AdminOrderEvent.updateOrderStatus(
+                          status,
+                          totalCost: newTotalCost,
+                        ));
+                      }
+                    });
+                  }
+                  if (status == OrderStatus.CANCELLED) {
+                    return AppTextFieldDialog.show(
+                      context,
+                      title: 'Уточни причину',
+                      hintText: 'Причина отмены',
+                      autofillHints: [
+                        'По желанию заказчика',
+                        'Не удалось связаться с заказчиком',
+                      ],
+                      description:
+                          'Укажи причину отмены заказа. Она отобразится в боте и мини-приложении заказчика',
+                    ).then((message) {
+                      if (message != null) {
+                        bloc.add(
+                          AdminOrderEvent.updateOrderStatus(
+                            status,
+                            message: message,
+                          ),
+                        );
+                      }
+                    });
+                  }
+                  bloc.add(
+                    AdminOrderEvent.updateOrderStatus(status),
+                  );
+                }
+              }),
+              icon: Assets.icons.pencil.dark,
+              text: 'Изменить статус',
+            ),
             if ([OrderStatus.COMPLETED, OrderStatus.CANCELLED]
-                .contains(order.status)) {
-              return const SizedBox();
-            }
-
-            return Column(
-              children: [
-                const Gap(5),
-                AppButton.primary(
-                  onTap: () => AppTextFieldDialog.show(
-                    context,
-                    title: 'Изменить стоимость',
-                    hintText: 'Стоимость',
-                    keyboardType: TextInputType.number,
-                    autofillHints: [1, 1.5, 2]
-                        .map((x) => (totalCost * x).formatCurrency())
-                        .toList(),
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      CurrencyTextInputFormatter(),
-                    ],
-                    description:
-                        'Укажи итоговую стоимость, на которую вы договорились с заказчиком',
-                  ).then((totalCostString) {
-                    final double? newTotalCost = double.tryParse(
-                        totalCostString?.extractNumerals() ?? '');
-                    if (newTotalCost != null) {
-                      bloc.add(
-                        AdminOrderEvent.updateOrderTotalCost(newTotalCost),
-                      );
-                    }
-                  }),
-                  icon: Assets.icons.money.dark,
-                  text: 'Изменить стоимость',
-                ),
-                const Gap(5),
-                AppButton.primary(
-                  onTap: () {},
-                  icon: Assets.icons.user.dark,
-                  text: 'Изменить исполнителя',
-                ),
-                const Gap(5),
-                AppButton(
-                  onTap: () async {
-                    final String? message = await AppTextFieldDialog.show(
+                .contains(order.status))
+              const SizedBox()
+            else
+              Column(
+                children: [
+                  const Gap(5),
+                  AppButton.primary(
+                    onTap: () => AppTextFieldDialog.show(
+                      context,
+                      title: 'Изменить стоимость',
+                      hintText: 'Стоимость',
+                      keyboardType: TextInputType.number,
+                      autofillHints: [1, 1.5, 2]
+                          .map((x) => (totalCost * x).formatCurrency())
+                          .toList(),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        CurrencyTextInputFormatter(),
+                      ],
+                      description:
+                          'Укажи итоговую стоимость, на которую вы договорились с заказчиком',
+                    ).then((totalCostString) {
+                      final double? newTotalCost = double.tryParse(
+                          totalCostString?.extractNumerals() ?? '');
+                      if (newTotalCost != null) {
+                        bloc.add(
+                          AdminOrderEvent.updateOrderTotalCost(newTotalCost),
+                        );
+                      }
+                    }),
+                    icon: Assets.icons.money.dark,
+                    text: 'Изменить стоимость',
+                  ),
+                  const Gap(5),
+                  AppButton.primary(
+                    onTap: () {},
+                    icon: Assets.icons.user.dark,
+                    text: 'Изменить исполнителя',
+                  ),
+                  const Gap(5),
+                  AppButton(
+                    onTap: () => AppTextFieldDialog.show(
                       context,
                       title: 'Отменить заказ',
                       hintText: 'Причина отмены',
@@ -393,24 +466,71 @@ class AllActions extends StatelessWidget {
                       ],
                       description:
                           'Укажи причину отмены заказа. Она отобразится в боте и мини-приложении заказчика',
-                    );
+                    ).then((message) {
+                      if (message != null) {
+                        bloc.add(
+                          AdminOrderEvent.updateOrderStatus(
+                            OrderStatus.CANCELLED,
+                            message: message,
+                          ),
+                        );
+                      }
+                    }),
+                    text: 'Отменить',
+                    backgroundColor: context.colors.primary,
+                    contentColor: context.colors.onBackground,
+                  ),
+                ],
+              ),
+          ],
+        );
+      },
+    );
+  }
 
-                    if (message != null) {
-                      bloc.add(
-                        AdminOrderEvent.updateOrderStatus(
-                          OrderStatus.CANCELLED,
-                          message: message,
-                        ),
-                      );
-                    }
-                  },
-                  text: 'Отменить',
-                  backgroundColor: context.colors.primary,
-                  contentColor: context.colors.onBackground,
-                ),
-              ],
-            );
-          },
+  Widget _orderStatusMenuItemBuilder(
+    BuildContext context,
+    DropdownButtonItem<OrderStatus> item,
+  ) {
+    return Row(
+      children: [
+        Container(
+          height: 15,
+          width: 15,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: item.value.color,
+          ),
+        ),
+        const Gap(10),
+        Text(
+          item.title,
+          style: context.styles.footer1.copyWith(
+            color: context.colors.onBackground,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _orderStatusSelectedItemBuilder(
+    BuildContext context,
+    DropdownButtonItem<OrderStatus> item,
+  ) {
+    return Row(
+      children: [
+        Container(
+          height: 20,
+          width: 20,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: item.value.color,
+          ),
+        ),
+        const Gap(10),
+        Text(
+          item.title,
+          style: context.styles.body2,
         ),
       ],
     );
