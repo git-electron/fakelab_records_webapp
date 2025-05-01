@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:fakelab_records_webapp/core/constants/mock.dart';
 import 'package:fakelab_records_webapp/core/constants/types.dart';
 import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
@@ -55,31 +56,27 @@ Data: $json''');
   Future<Result<Order>> changeOrderStatus(
     OrderStatus status, {
     required Order order,
+    double? totalCost,
+    String? cancelReason,
   }) async {
-    // if (isDevelopment) {
-    //   final Order? mockOrder = Mock.getOrder(order.id);
-    //   if (mockOrder != null) {
-    //     return Result.success(mockOrder.copyWith(status: status));
-    //   } else {
-    //     return Result.error('Не удалось изменить статус');
-    //   }
-    // }
+    if (isDevelopment) {
+      final Order? mockOrder = Mock.getOrder(order.id);
+      if (mockOrder != null) {
+        return Result.success(_updateOrderInfo(
+          mockOrder,
+          status: status,
+          totalCost: totalCost,
+        ));
+      } else {
+        return Result.error('Не удалось изменить статус');
+      }
+    }
 
     try {
-      final DateTime now = DateTime.now();
-      final Order updatedOrder = order.copyWith(
+      final Order updatedOrder = _updateOrderInfo(
+        order,
         status: status,
-        statusHistory: [
-          ...order.statusHistory,
-          OrderStatusHistoryItem(status: status, dateChanged: now),
-        ],
-        dateChanged: now,
-        filters: OrderFilters(
-          userIdStatusType: order.filters.userIdStatusType.replaceFirst(
-            order.status.name,
-            status.name,
-          ),
-        ),
+        totalCost: totalCost,
       );
 
       final String path = 'orders/${order.id}';
@@ -95,5 +92,56 @@ Data: $updatedOrder''');
       logger.e('Failed to update order status', error: error);
       return Result.error(error.toString());
     }
+  }
+
+  Order _updateOrderInfo(
+    Order order, {
+    OrderStatus? status,
+    double? totalCost,
+    String? cancelReason,
+  }) {
+    final DateTime now = DateTime.now();
+
+    final bool costFrom = totalCost != null ? false : order.costFrom;
+
+    return order.copyWith(
+      status: status ?? order.status,
+      dateChanged: now,
+      costFrom: costFrom,
+      totalCost: totalCost ?? order.totalCost,
+      services: totalCost != null
+          ? order.services.map((service) {
+              if (service.costFrom) {
+                return service.copyWith(
+                  costFrom: costFrom,
+                  totalCost: totalCost -
+                      (order.services
+                          .where((service) => !service.costFrom)
+                          .map((service) => service.totalCost)
+                          .sum),
+                );
+              }
+              return service;
+            }).toList()
+          : order.services,
+      statusHistory: status != null
+          ? [
+              ...order.statusHistory,
+              OrderStatusHistoryItem(
+                status: status,
+                dateChanged: now,
+                message: cancelReason,
+              ),
+            ]
+          : order.statusHistory,
+      filters: OrderFilters(
+        userIdStatusType: status != null
+            ? order.filters.userIdStatusType.replaceFirst(
+                order.status.name,
+                status.name,
+              )
+            : order.filters.userIdStatusType,
+      ),
+    );
   }
 }

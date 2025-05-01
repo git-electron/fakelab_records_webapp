@@ -13,3 +13,7 @@ extension ListExtensions<T> on List<T> {
     return wrapped;
   }
 }
+
+extension NullableListExtensions<T> on List<T>? {
+  bool get isNotNullAndEmpty => this != null && this!.isNotEmpty;
+}

@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import 'date_picker_button.dart';
+import 'date_picker_dialog_button.dart';
 import 'models/date_picker_result.dart';
 
-class AppDatePicker extends StatelessWidget {
-  AppDatePicker({
+class AppDatePickerDialog extends StatelessWidget {
+  AppDatePickerDialog({
     required this.selectionMode,
     this.minDate,
     this.maxDate,
@@ -25,7 +25,7 @@ class AppDatePicker extends StatelessWidget {
   final PickerDateRange? initialDateRange;
   final DateRangePickerSelectionMode selectionMode;
 
-  static Future<DatePickerResult?> showDatePicker(
+  static Future<DatePickerResult?> show(
     BuildContext context, {
     DateTime? initialDate,
     DateTime? minDate,
@@ -34,7 +34,7 @@ class AppDatePicker extends StatelessWidget {
     return await showDialog<DatePickerResult?>(
       context: context,
       builder: (context) => Dialog(
-        child: AppDatePicker(
+        child: AppDatePickerDialog(
           minDate: minDate,
           maxDate: maxDate,
           initialDate: initialDate,
@@ -44,7 +44,7 @@ class AppDatePicker extends StatelessWidget {
     );
   }
 
-  static Future<DatePickerRangeResult?> showDateRangePicker(
+  static Future<DatePickerRangeResult?> showRange(
     BuildContext context, {
     PickerDateRange? initialDateRange,
     DateTime? minDate,
@@ -53,7 +53,7 @@ class AppDatePicker extends StatelessWidget {
     return await showDialog<DatePickerRangeResult?>(
       context: context,
       builder: (context) => Dialog(
-        child: AppDatePicker(
+        child: AppDatePickerDialog(
           minDate: minDate,
           maxDate: maxDate,
           initialDateRange: initialDateRange,
@@ -115,7 +115,7 @@ class AppDatePicker extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (initialDate != null || initialDateRange != null)
-                DatePickerButton(
+                DatePickerDialogButton(
                   onTap: () => switch (selectionMode) {
                     DateRangePickerSelectionMode.single =>
                       context.pop(DatePickerResult(isReset: true)),
@@ -132,7 +132,7 @@ class AppDatePicker extends StatelessWidget {
                 const SizedBox(),
               Row(
                 children: [
-                  DatePickerButton(
+                  DatePickerDialogButton(
                     onTap: context.pop,
                     text: 'Отменить',
                     textColor: context.colors.onBackground,
@@ -140,7 +140,7 @@ class AppDatePicker extends StatelessWidget {
                         context.colors.onBackground.copyWithOpacity(.1),
                   ),
                   const Gap(5),
-                  DatePickerButton(
+                  DatePickerDialogButton(
                     onTap: () => switch (selectionMode) {
                       DateRangePickerSelectionMode.single =>
                         context.pop(DatePickerResult(

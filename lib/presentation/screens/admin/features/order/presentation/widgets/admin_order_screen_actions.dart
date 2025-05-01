@@ -1,11 +1,17 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
+import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:fakelab_records_webapp/core/formatters/currency_input_formatter.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_text_field_dialog/app_text_field_dialog.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
@@ -110,20 +116,72 @@ class ActualActions extends StatelessWidget {
     final bool isMobile = size.width < 1000;
 
     List<Widget> actions = [
-      ExpandedWrapper(
-        child: AppButton(
-          onTap: () => bloc.add(
-            const AdminOrderEvent.changeOrderStatus(OrderStatus.PENDING),
-          ),
-          text: 'Принять',
-          backgroundColor: context.colors.statuses.completed,
-          contentColor: context.colors.background,
-        ),
+      BlocBuilder<AdminOrderBloc, AdminOrderState>(
+        builder: (context, state) {
+          final Order order = state.order!;
+          final double totalCost = order.totalCost;
+
+          return ExpandedWrapper(
+            child: AppButton(
+              onTap: () async {
+                final String? totalCostString = await AppTextFieldDialog.show(
+                  context,
+                  title: 'Принять заказ',
+                  hintText: 'Стоимость',
+                  keyboardType: TextInputType.number,
+                  autofillHints: [1, 1.5, 2]
+                      .map((x) => (totalCost * x).formatCurrency())
+                      .toList(),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    CurrencyTextInputFormatter(),
+                  ],
+                  description:
+                      'Укажи итоговую стоимость, на которую вы договорились с заказчиком',
+                );
+                final double? newTotalCost =
+                    double.tryParse(totalCostString?.extractNumerals() ?? '');
+                if (newTotalCost != null) {
+                  bloc.add(
+                    AdminOrderEvent.changeOrderStatus(
+                      OrderStatus.PENDING,
+                      totalCost: newTotalCost,
+                    ),
+                  );
+                }
+              },
+              text: 'Принять',
+              backgroundColor: context.colors.statuses.pending,
+              contentColor: context.colors.background,
+            ),
+          );
+        },
       ),
       const Gap(5),
       ExpandedWrapper(
         child: AppButton(
-          onTap: () {}, //TODO
+          onTap: () async {
+            final String? cancelReason = await AppTextFieldDialog.show(
+              context,
+              title: 'Отменить заказ',
+              hintText: 'Причина отмены',
+              autofillHints: [
+                'По желанию заказчика',
+                'Не удалось связаться с заказчиком',
+              ],
+              description:
+                  'Укажи причину отмены заказа. Она отобразится в боте и мини-приложении заказчика',
+            );
+
+            if (cancelReason != null) {
+              bloc.add(
+                AdminOrderEvent.changeOrderStatus(
+                  OrderStatus.CANCELLED,
+                  cancelReason: cancelReason,
+                ),
+              );
+            }
+          },
           text: 'Отменить',
           backgroundColor: context.colors.primary,
           contentColor: context.colors.onBackground,
@@ -142,7 +200,7 @@ class ActualActions extends StatelessWidget {
         const AdminOrderEvent.changeOrderStatus(OrderStatus.IN_PROGRESS),
       ),
       text: 'Взять в работу',
-      backgroundColor: context.colors.statuses.completed,
+      backgroundColor: context.colors.statuses.inProgress,
       contentColor: context.colors.background,
     );
   }
@@ -157,7 +215,7 @@ class ActualActions extends StatelessWidget {
         ),
       ),
       text: 'На проверку клиентом',
-      backgroundColor: context.colors.statuses.pending,
+      backgroundColor: context.colors.statuses.awaitingConfirmation,
       contentColor: context.colors.background,
     );
   }
@@ -212,6 +270,8 @@ class AllActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AdminOrderBloc bloc = context.read();
+    
     return Column(
       children: [
         AppButton.primary(
@@ -227,7 +287,28 @@ class AllActions extends StatelessWidget {
         ),
         const Gap(5),
         AppButton(
-          onTap: () {},
+          onTap: () async {
+            final String? cancelReason = await AppTextFieldDialog.show(
+              context,
+              title: 'Отменить заказ',
+              hintText: 'Причина отмены',
+              autofillHints: [
+                'По желанию заказчика',
+                'Не удалось связаться с заказчиком',
+              ],
+              description:
+                  'Укажи причину отмены заказа. Она отобразится в боте и мини-приложении заказчика',
+            );
+
+            if (cancelReason != null) {
+              bloc.add(
+                AdminOrderEvent.changeOrderStatus(
+                  OrderStatus.CANCELLED,
+                  cancelReason: cancelReason,
+                ),
+              );
+            }
+          },
           text: 'Отменить',
           backgroundColor: context.colors.primary,
           contentColor: context.colors.onBackground,

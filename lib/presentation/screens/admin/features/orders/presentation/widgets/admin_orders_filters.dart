@@ -4,7 +4,7 @@ import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/domain/bloc/admin_orders_filters_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/ui/date_picker/app_date_picker.dart';
+import 'package:fakelab_records_webapp/presentation/ui/date_picker/app_date_picker_dialog.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_text_field.dart';
 import 'package:fakelab_records_webapp/presentation/ui/date_picker/models/date_picker_result.dart';
@@ -111,7 +111,7 @@ class AdminOrdersFilters extends StatelessWidget {
         return Tappable(
           onTap: () async {
             final DatePickerRangeResult? result =
-                await AppDatePicker.showDateRangePicker(
+                await AppDatePickerDialog.showRange(
               context,
               maxDate: DateTime.now(),
               initialDateRange: state.dateRange,

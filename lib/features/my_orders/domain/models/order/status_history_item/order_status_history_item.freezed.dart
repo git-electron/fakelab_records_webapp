@@ -24,6 +24,7 @@ mixin _$OrderStatusHistoryItem {
   OrderStatus get status => throw _privateConstructorUsedError;
   @DateTimeConverter()
   DateTime get dateChanged => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
 
   /// Serializes this OrderStatusHistoryItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +42,10 @@ abstract class $OrderStatusHistoryItemCopyWith<$Res> {
           $Res Function(OrderStatusHistoryItem) then) =
       _$OrderStatusHistoryItemCopyWithImpl<$Res, OrderStatusHistoryItem>;
   @useResult
-  $Res call({OrderStatus status, @DateTimeConverter() DateTime dateChanged});
+  $Res call(
+      {OrderStatus status,
+      @DateTimeConverter() DateTime dateChanged,
+      String? message});
 }
 
 /// @nodoc
@@ -62,6 +66,7 @@ class _$OrderStatusHistoryItemCopyWithImpl<$Res,
   $Res call({
     Object? status = null,
     Object? dateChanged = null,
+    Object? message = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -72,6 +77,10 @@ class _$OrderStatusHistoryItemCopyWithImpl<$Res,
           ? _value.dateChanged
           : dateChanged // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -85,7 +94,10 @@ abstract class _$$OrderStatusHistoryItemImplCopyWith<$Res>
       __$$OrderStatusHistoryItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({OrderStatus status, @DateTimeConverter() DateTime dateChanged});
+  $Res call(
+      {OrderStatus status,
+      @DateTimeConverter() DateTime dateChanged,
+      String? message});
 }
 
 /// @nodoc
@@ -105,6 +117,7 @@ class __$$OrderStatusHistoryItemImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? dateChanged = null,
+    Object? message = freezed,
   }) {
     return _then(_$OrderStatusHistoryItemImpl(
       status: null == status
@@ -115,6 +128,10 @@ class __$$OrderStatusHistoryItemImplCopyWithImpl<$Res>
           ? _value.dateChanged
           : dateChanged // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -123,7 +140,9 @@ class __$$OrderStatusHistoryItemImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OrderStatusHistoryItemImpl implements _OrderStatusHistoryItem {
   _$OrderStatusHistoryItemImpl(
-      {required this.status, @DateTimeConverter() required this.dateChanged});
+      {required this.status,
+      @DateTimeConverter() required this.dateChanged,
+      this.message});
 
   factory _$OrderStatusHistoryItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderStatusHistoryItemImplFromJson(json);
@@ -133,10 +152,12 @@ class _$OrderStatusHistoryItemImpl implements _OrderStatusHistoryItem {
   @override
   @DateTimeConverter()
   final DateTime dateChanged;
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'OrderStatusHistoryItem(status: $status, dateChanged: $dateChanged)';
+    return 'OrderStatusHistoryItem(status: $status, dateChanged: $dateChanged, message: $message)';
   }
 
   @override
@@ -146,12 +167,13 @@ class _$OrderStatusHistoryItemImpl implements _OrderStatusHistoryItem {
             other is _$OrderStatusHistoryItemImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.dateChanged, dateChanged) ||
-                other.dateChanged == dateChanged));
+                other.dateChanged == dateChanged) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, status, dateChanged);
+  int get hashCode => Object.hash(runtimeType, status, dateChanged, message);
 
   /// Create a copy of OrderStatusHistoryItem
   /// with the given fields replaced by the non-null parameter values.
@@ -172,9 +194,9 @@ class _$OrderStatusHistoryItemImpl implements _OrderStatusHistoryItem {
 
 abstract class _OrderStatusHistoryItem implements OrderStatusHistoryItem {
   factory _OrderStatusHistoryItem(
-          {required final OrderStatus status,
-          @DateTimeConverter() required final DateTime dateChanged}) =
-      _$OrderStatusHistoryItemImpl;
+      {required final OrderStatus status,
+      @DateTimeConverter() required final DateTime dateChanged,
+      final String? message}) = _$OrderStatusHistoryItemImpl;
 
   factory _OrderStatusHistoryItem.fromJson(Map<String, dynamic> json) =
       _$OrderStatusHistoryItemImpl.fromJson;
@@ -184,6 +206,8 @@ abstract class _OrderStatusHistoryItem implements OrderStatusHistoryItem {
   @override
   @DateTimeConverter()
   DateTime get dateChanged;
+  @override
+  String? get message;
 
   /// Create a copy of OrderStatusHistoryItem
   /// with the given fields replaced by the non-null parameter values.

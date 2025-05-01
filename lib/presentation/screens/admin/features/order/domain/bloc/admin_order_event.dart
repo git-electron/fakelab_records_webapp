@@ -8,6 +8,9 @@ class AdminOrderEvent with _$AdminOrderEvent {
 
   const factory AdminOrderEvent.setError(String? message) = _SetError;
 
-  const factory AdminOrderEvent.changeOrderStatus(OrderStatus status) =
-      _ChangeOrderStatus;
+  const factory AdminOrderEvent.changeOrderStatus(
+    OrderStatus status, {
+    double? totalCost,
+    String? cancelReason,
+  }) = _ChangeOrderStatus;
 }

@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   js: ^0.7.1
   gap: ^3.0.1
@@ -41,10 +43,8 @@ dependencies:
   theme_tailor_annotation: ^3.0.2
   assorted_layout_widgets: ^11.0.0
   flutter_widget_from_html: ^0.16.0
-  syncfusion_flutter_datepicker: ^29.1.38
   syncfusion_localizations: ^29.1.38
-  flutter_localizations:
-    sdk: flutter
+  syncfusion_flutter_datepicker: ^29.1.38
 
 dev_dependencies:
   flutter_test:

@@ -5,6 +5,7 @@ import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 
 class AppTextField extends StatelessWidget {
@@ -13,14 +14,20 @@ class AppTextField extends StatelessWidget {
     this.hintText,
     this.onChanged,
     this.prefixIcon,
+    this.keyboardType,
+    this.inputFormatters,
+    this.shouldAutofocus = false,
     TextEditingController? controller,
   }) {
     _controller = controller ?? TextEditingController();
   }
 
   final String? hintText;
+  final bool shouldAutofocus;
   final SvgGenImage? prefixIcon;
+  final TextInputType? keyboardType;
   final void Function(String value)? onChanged;
+  final List<TextInputFormatter>? inputFormatters;
 
   late final TextEditingController _controller;
 
@@ -46,11 +53,14 @@ class AppTextField extends StatelessWidget {
           if (prefixIcon != null) const Gap(10),
           Expanded(
             child: TextField(
-              controller: _controller,
-              style: context.styles.body2,
-              cursorColor: context.colors.onBackground,
+              autofocus: shouldAutofocus,
               cursorWidth: 1.5,
               onChanged: onChanged,
+              controller: _controller,
+              keyboardType: keyboardType,
+              style: context.styles.body2,
+              inputFormatters: inputFormatters,
+              cursorColor: context.colors.onBackground,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: hintText,
