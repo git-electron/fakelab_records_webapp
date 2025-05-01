@@ -30,7 +30,7 @@ class AdminOrderScreenInfo extends StatelessWidget {
                 children: [
                   OrderStatusChip(order.status),
                   const Gap(10),
-                  const NewChip(),
+                  if (order.status == OrderStatus.REQUEST) const NewChip(),
                 ],
               ),
               const Gap(20),

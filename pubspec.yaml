@@ -99,6 +99,7 @@ flutter:
     - assets/icons/logo/
     - assets/icons/map/
     - assets/icons/money/
+    - assets/icons/pencil/
     - assets/icons/phone/
     - assets/icons/pin/
     - assets/icons/qr_code/

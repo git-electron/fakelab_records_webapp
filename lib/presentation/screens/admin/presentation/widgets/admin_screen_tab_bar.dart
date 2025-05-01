@@ -34,7 +34,7 @@ class AdminScreenTabBar extends StatelessWidget {
               itemBuilder: (context, index) {
                 final AdminTab tab = tabs[index];
                 final bool isSelected = state.isSelected(tab);
-          
+
                 return Padding(
                   padding: Pad(
                     left: index == 0 ? 20 : 0,
@@ -44,9 +44,10 @@ class AdminScreenTabBar extends StatelessWidget {
                     onTap: () {
                       bloc.add(AdminEvent.tabChabged(tab));
                       bloc.tabsController.animateTo(
-                        index == tabs.length - 1
-                            ? bloc.tabsController.position.maxScrollExtent
-                            : 100.0 * (index - 1),
+                        (80.0 * index).clamp(
+                          bloc.tabsController.position.minScrollExtent,
+                          bloc.tabsController.position.maxScrollExtent,
+                        ),
                         duration: kAnimationDuration,
                         curve: kAnimationCurve,
                       );

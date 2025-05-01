@@ -118,7 +118,7 @@ class TotalCostWarning extends StatelessWidget {
             const Gap(10),
             Expanded(
               child: Text(
-                'Точная стоимость заказа станет известна после подтверждения менеджером',
+                'Точная стоимость заказа станет известна после подтверждения',
                 style: context.styles.footer2,
               ),
             ),

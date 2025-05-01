@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/widgets/admin_order_screen_actions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/widgets/admin_order_screen_app_bar.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/widgets/admin_order_screen_customer_info.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
@@ -60,21 +61,27 @@ class AdminOrderScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: context.colors.background,
-      padding: const Pad(top: 20, horizontal: 20),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AdminOrderScreenInfo(),
-          Gap(10),
-          AdminOrderScreenCustomerInfo(),
-          Gap(10),
-          AdminOrderScreenServices(),
-          Gap(10),
-          AdminOrderScreenStatusHistory(),
-          Gap(40),
-        ],
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Container(
+        color: context.colors.background,
+        constraints: const BoxConstraints(maxWidth: 1500),
+        padding: const Pad(top: 20, horizontal: 20),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AdminOrderScreenInfo(),
+            Gap(10),
+            AdminOrderScreenCustomerInfo(),
+            Gap(10),
+            AdminOrderScreenServices(),
+            Gap(10),
+            AdminOrderScreenActions(),
+            Gap(10),
+            AdminOrderScreenStatusHistory(),
+            Gap(40),
+          ],
+        ),
       ),
     );
   }

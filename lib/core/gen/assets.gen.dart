@@ -96,6 +96,9 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/money
   $AssetsIconsMoneyGen get money => const $AssetsIconsMoneyGen();
 
+  /// Directory path: assets/icons/pencil
+  $AssetsIconsPencilGen get pencil => const $AssetsIconsPencilGen();
+
   /// Directory path: assets/icons/phone
   $AssetsIconsPhoneGen get phone => const $AssetsIconsPhoneGen();
 
@@ -514,6 +517,19 @@ class $AssetsIconsMoneyGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [dark, gray, light];
+}
+
+class $AssetsIconsPencilGen {
+  const $AssetsIconsPencilGen();
+
+  /// File path: assets/icons/pencil/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/pencil/dark.svg');
+
+  /// File path: assets/icons/pencil/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/pencil/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, light];
 }
 
 class $AssetsIconsPhoneGen {
