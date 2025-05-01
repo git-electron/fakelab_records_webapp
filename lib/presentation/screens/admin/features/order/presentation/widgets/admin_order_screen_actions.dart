@@ -104,13 +104,17 @@ class ActualActions extends StatelessWidget {
   }
 
   Widget _requestActions(BuildContext context) {
+    final AdminOrderBloc bloc = context.read();
+
     final Size size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1000;
 
     List<Widget> actions = [
       ExpandedWrapper(
         child: AppButton(
-          onTap: () {},
+          onTap: () => bloc.add(
+            const AdminOrderEvent.changeOrderStatus(OrderStatus.PENDING),
+          ),
           text: 'Принять',
           backgroundColor: context.colors.statuses.completed,
           contentColor: context.colors.background,
@@ -119,7 +123,7 @@ class ActualActions extends StatelessWidget {
       const Gap(5),
       ExpandedWrapper(
         child: AppButton(
-          onTap: () {},
+          onTap: () {}, //TODO
           text: 'Отменить',
           backgroundColor: context.colors.primary,
           contentColor: context.colors.onBackground,
@@ -131,8 +135,12 @@ class ActualActions extends StatelessWidget {
   }
 
   Widget _pendingActions(BuildContext context) {
+    final AdminOrderBloc bloc = context.read();
+
     return AppButton(
-      onTap: () {},
+      onTap: () => bloc.add(
+        const AdminOrderEvent.changeOrderStatus(OrderStatus.IN_PROGRESS),
+      ),
       text: 'Взять в работу',
       backgroundColor: context.colors.statuses.completed,
       contentColor: context.colors.background,
@@ -140,8 +148,14 @@ class ActualActions extends StatelessWidget {
   }
 
   Widget _inProgressActions(BuildContext context) {
+    final AdminOrderBloc bloc = context.read();
+
     return AppButton(
-      onTap: () {},
+      onTap: () => bloc.add(
+        const AdminOrderEvent.changeOrderStatus(
+          OrderStatus.AWAITING_CONFIRMATION,
+        ),
+      ),
       text: 'На проверку клиентом',
       backgroundColor: context.colors.statuses.pending,
       contentColor: context.colors.background,
@@ -149,11 +163,15 @@ class ActualActions extends StatelessWidget {
   }
 
   Widget _awaitingConfirmationActions(BuildContext context) {
+    final AdminOrderBloc bloc = context.read();
+
     return Row(
       children: [
         ExpandedWrapper(
           child: AppButton(
-            onTap: () {},
+            onTap: () => bloc.add(
+              const AdminOrderEvent.changeOrderStatus(OrderStatus.COMPLETED),
+            ),
             text: 'Заказ готов',
             backgroundColor: context.colors.statuses.completed,
             contentColor: context.colors.background,
@@ -162,7 +180,9 @@ class ActualActions extends StatelessWidget {
         const Gap(5),
         ExpandedWrapper(
           child: AppButton(
-            onTap: () {},
+            onTap: () => bloc.add(
+              const AdminOrderEvent.changeOrderStatus(OrderStatus.IN_PROGRESS),
+            ),
             text: 'Вернуть в работу',
             backgroundColor: context.colors.statuses.inProgress,
             contentColor: context.colors.background,

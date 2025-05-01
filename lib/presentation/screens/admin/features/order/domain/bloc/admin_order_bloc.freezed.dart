@@ -21,6 +21,7 @@ mixin _$AdminOrderEvent {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
+    required TResult Function(OrderStatus status) changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$AdminOrderEvent {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
+    TResult? Function(OrderStatus status)? changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$AdminOrderEvent {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
+    TResult Function(OrderStatus status)? changeOrderStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$AdminOrderEvent {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$AdminOrderEvent {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$AdminOrderEvent {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$SetLoadingImpl implements _SetLoading {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
+    required TResult Function(OrderStatus status) changeOrderStatus,
   }) {
     return setLoading();
   }
@@ -137,6 +144,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
+    TResult? Function(OrderStatus status)? changeOrderStatus,
   }) {
     return setLoading?.call();
   }
@@ -147,6 +155,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
+    TResult Function(OrderStatus status)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (setLoading != null) {
@@ -161,6 +170,7 @@ class _$SetLoadingImpl implements _SetLoading {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
   }) {
     return setLoading(this);
   }
@@ -171,6 +181,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
   }) {
     return setLoading?.call(this);
   }
@@ -181,6 +192,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (setLoading != null) {
@@ -277,6 +289,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
+    required TResult Function(OrderStatus status) changeOrderStatus,
   }) {
     return setLoaded(order);
   }
@@ -287,6 +300,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
+    TResult? Function(OrderStatus status)? changeOrderStatus,
   }) {
     return setLoaded?.call(order);
   }
@@ -297,6 +311,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
+    TResult Function(OrderStatus status)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (setLoaded != null) {
@@ -311,6 +326,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
   }) {
     return setLoaded(this);
   }
@@ -321,6 +337,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
   }) {
     return setLoaded?.call(this);
   }
@@ -331,6 +348,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (setLoaded != null) {
@@ -423,6 +441,7 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
+    required TResult Function(OrderStatus status) changeOrderStatus,
   }) {
     return setError(message);
   }
@@ -433,6 +452,7 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
+    TResult? Function(OrderStatus status)? changeOrderStatus,
   }) {
     return setError?.call(message);
   }
@@ -443,6 +463,7 @@ class _$SetErrorImpl implements _SetError {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
+    TResult Function(OrderStatus status)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (setError != null) {
@@ -457,6 +478,7 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
   }) {
     return setError(this);
   }
@@ -467,6 +489,7 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
   }) {
     return setError?.call(this);
   }
@@ -477,6 +500,7 @@ class _$SetErrorImpl implements _SetError {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (setError != null) {
@@ -495,6 +519,160 @@ abstract class _SetError implements AdminOrderEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetErrorImplCopyWith<_$SetErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeOrderStatusImplCopyWith<$Res> {
+  factory _$$ChangeOrderStatusImplCopyWith(_$ChangeOrderStatusImpl value,
+          $Res Function(_$ChangeOrderStatusImpl) then) =
+      __$$ChangeOrderStatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({OrderStatus status});
+}
+
+/// @nodoc
+class __$$ChangeOrderStatusImplCopyWithImpl<$Res>
+    extends _$AdminOrderEventCopyWithImpl<$Res, _$ChangeOrderStatusImpl>
+    implements _$$ChangeOrderStatusImplCopyWith<$Res> {
+  __$$ChangeOrderStatusImplCopyWithImpl(_$ChangeOrderStatusImpl _value,
+      $Res Function(_$ChangeOrderStatusImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AdminOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$ChangeOrderStatusImpl(
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OrderStatus,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
+  const _$ChangeOrderStatusImpl(this.status);
+
+  @override
+  final OrderStatus status;
+
+  @override
+  String toString() {
+    return 'AdminOrderEvent.changeOrderStatus(status: $status)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeOrderStatusImpl &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status);
+
+  /// Create a copy of AdminOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeOrderStatusImplCopyWith<_$ChangeOrderStatusImpl> get copyWith =>
+      __$$ChangeOrderStatusImplCopyWithImpl<_$ChangeOrderStatusImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() setLoading,
+    required TResult Function(Order order) setLoaded,
+    required TResult Function(String? message) setError,
+    required TResult Function(OrderStatus status) changeOrderStatus,
+  }) {
+    return changeOrderStatus(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setLoading,
+    TResult? Function(Order order)? setLoaded,
+    TResult? Function(String? message)? setError,
+    TResult? Function(OrderStatus status)? changeOrderStatus,
+  }) {
+    return changeOrderStatus?.call(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setLoading,
+    TResult Function(Order order)? setLoaded,
+    TResult Function(String? message)? setError,
+    TResult Function(OrderStatus status)? changeOrderStatus,
+    required TResult orElse(),
+  }) {
+    if (changeOrderStatus != null) {
+      return changeOrderStatus(status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetLoading value) setLoading,
+    required TResult Function(_SetLoaded value) setLoaded,
+    required TResult Function(_SetError value) setError,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+  }) {
+    return changeOrderStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetLoading value)? setLoading,
+    TResult? Function(_SetLoaded value)? setLoaded,
+    TResult? Function(_SetError value)? setError,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+  }) {
+    return changeOrderStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetLoading value)? setLoading,
+    TResult Function(_SetLoaded value)? setLoaded,
+    TResult Function(_SetError value)? setError,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    required TResult orElse(),
+  }) {
+    if (changeOrderStatus != null) {
+      return changeOrderStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeOrderStatus implements AdminOrderEvent {
+  const factory _ChangeOrderStatus(final OrderStatus status) =
+      _$ChangeOrderStatusImpl;
+
+  OrderStatus get status;
+
+  /// Create a copy of AdminOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeOrderStatusImplCopyWith<_$ChangeOrderStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

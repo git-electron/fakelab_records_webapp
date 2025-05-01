@@ -76,7 +76,7 @@ class OrderStatusHistoryItemInfo extends StatelessWidget {
         final Order order = state.order!;
 
         return Opacity(
-          opacity: order.isCurrentStatus(item.status) ? 1 : .25,
+          opacity: order.isCurrentStatusHistoryItem(item) ? 1 : .25,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,

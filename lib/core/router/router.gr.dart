@@ -10,6 +10,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i10;
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart'
+    as _i11;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/admin_order_screen.dart'
     as _i1;
 import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/admin_screen.dart'
@@ -28,18 +30,23 @@ import 'package:fakelab_records_webapp/presentation/screens/my_orders/presentati
     as _i8;
 import 'package:fakelab_records_webapp/presentation/screens/unsupported/unsupported_screen.dart'
     as _i9;
-import 'package:flutter/material.dart' as _i11;
+import 'package:flutter/material.dart' as _i12;
 
 /// generated route for
 /// [_i1.AdminOrderScreen]
 class AdminOrderRoute extends _i10.PageRouteInfo<AdminOrderRouteArgs> {
   AdminOrderRoute({
     required String orderId,
-    _i11.Key? key,
+    required _i11.AdminOrdersBloc adminOrdersBloc,
+    _i12.Key? key,
     List<_i10.PageRouteInfo>? children,
   }) : super(
          AdminOrderRoute.name,
-         args: AdminOrderRouteArgs(orderId: orderId, key: key),
+         args: AdminOrderRouteArgs(
+           orderId: orderId,
+           adminOrdersBloc: adminOrdersBloc,
+           key: key,
+         ),
          rawPathParams: {'id': orderId},
          initialChildren: children,
        );
@@ -49,25 +56,32 @@ class AdminOrderRoute extends _i10.PageRouteInfo<AdminOrderRouteArgs> {
   static _i10.PageInfo page = _i10.PageInfo(
     name,
     builder: (data) {
-      final pathParams = data.inheritedPathParams;
-      final args = data.argsAs<AdminOrderRouteArgs>(
-        orElse: () => AdminOrderRouteArgs(orderId: pathParams.getString('id')),
+      final args = data.argsAs<AdminOrderRouteArgs>();
+      return _i1.AdminOrderScreen(
+        orderId: args.orderId,
+        adminOrdersBloc: args.adminOrdersBloc,
+        key: args.key,
       );
-      return _i1.AdminOrderScreen(orderId: args.orderId, key: args.key);
     },
   );
 }
 
 class AdminOrderRouteArgs {
-  const AdminOrderRouteArgs({required this.orderId, this.key});
+  const AdminOrderRouteArgs({
+    required this.orderId,
+    required this.adminOrdersBloc,
+    this.key,
+  });
 
   final String orderId;
 
-  final _i11.Key? key;
+  final _i11.AdminOrdersBloc adminOrdersBloc;
+
+  final _i12.Key? key;
 
   @override
   String toString() {
-    return 'AdminOrderRouteArgs{orderId: $orderId, key: $key}';
+    return 'AdminOrderRouteArgs{orderId: $orderId, adminOrdersBloc: $adminOrdersBloc, key: $key}';
   }
 }
 
@@ -126,7 +140,7 @@ class ImagesViewerRoute extends _i10.PageRouteInfo<ImagesViewerRouteArgs> {
     required List<String> images,
     required int initialIndex,
     _i5.ImageSource source = _i5.ImageSource.network,
-    _i11.Key? key,
+    _i12.Key? key,
     List<_i10.PageRouteInfo>? children,
   }) : super(
          ImagesViewerRoute.name,
@@ -169,7 +183,7 @@ class ImagesViewerRouteArgs {
 
   final _i5.ImageSource source;
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -198,7 +212,7 @@ class LoyaltyRoute extends _i10.PageRouteInfo<void> {
 class MyOrderRoute extends _i10.PageRouteInfo<MyOrderRouteArgs> {
   MyOrderRoute({
     required String orderId,
-    _i11.Key? key,
+    _i12.Key? key,
     List<_i10.PageRouteInfo>? children,
   }) : super(
          MyOrderRoute.name,
@@ -226,7 +240,7 @@ class MyOrderRouteArgs {
 
   final String orderId;
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
