@@ -92,7 +92,7 @@ class AdminAppBar extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: meta.totalSafeAreaInset.top,
-                  padding: Pad(left: meta.totalSafeAreaInset.top),
+                  padding: Pad(left: meta.totalSafeAreaInset.top + 10),
                   alignment: Alignment.centerLeft,
                   child: Logo(
                     type: LogoType.recordsAdmin,
