@@ -10,6 +10,7 @@ part 'staff_member.g.dart';
 @freezed
 class StaffMember with _$StaffMember {
   factory StaffMember({
+    String? photoUrl,
     required String id,
     required String firstName,
     required String? lastName,

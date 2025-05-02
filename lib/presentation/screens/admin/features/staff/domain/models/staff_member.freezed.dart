@@ -20,6 +20,7 @@ StaffMember _$StaffMemberFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StaffMember {
+  String? get photoUrl => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
@@ -44,7 +45,8 @@ abstract class $StaffMemberCopyWith<$Res> {
       _$StaffMemberCopyWithImpl<$Res, StaffMember>;
   @useResult
   $Res call(
-      {String id,
+      {String? photoUrl,
+      String id,
       String firstName,
       String? lastName,
       String? username,
@@ -67,6 +69,7 @@ class _$StaffMemberCopyWithImpl<$Res, $Val extends StaffMember>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? photoUrl = freezed,
     Object? id = null,
     Object? firstName = null,
     Object? lastName = freezed,
@@ -75,6 +78,10 @@ class _$StaffMemberCopyWithImpl<$Res, $Val extends StaffMember>
     Object? services = null,
   }) {
     return _then(_value.copyWith(
+      photoUrl: freezed == photoUrl
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -112,7 +119,8 @@ abstract class _$$StaffMemberImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {String? photoUrl,
+      String id,
       String firstName,
       String? lastName,
       String? username,
@@ -133,6 +141,7 @@ class __$$StaffMemberImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? photoUrl = freezed,
     Object? id = null,
     Object? firstName = null,
     Object? lastName = freezed,
@@ -141,6 +150,10 @@ class __$$StaffMemberImplCopyWithImpl<$Res>
     Object? services = null,
   }) {
     return _then(_$StaffMemberImpl(
+      photoUrl: freezed == photoUrl
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -173,7 +186,8 @@ class __$$StaffMemberImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$StaffMemberImpl extends _StaffMember {
   _$StaffMemberImpl(
-      {required this.id,
+      {this.photoUrl,
+      required this.id,
       required this.firstName,
       required this.lastName,
       required this.username,
@@ -186,6 +200,8 @@ class _$StaffMemberImpl extends _StaffMember {
   factory _$StaffMemberImpl.fromJson(Map<String, dynamic> json) =>
       _$$StaffMemberImplFromJson(json);
 
+  @override
+  final String? photoUrl;
   @override
   final String id;
   @override
@@ -212,7 +228,7 @@ class _$StaffMemberImpl extends _StaffMember {
 
   @override
   String toString() {
-    return 'StaffMember(id: $id, firstName: $firstName, lastName: $lastName, username: $username, activities: $activities, services: $services)';
+    return 'StaffMember(photoUrl: $photoUrl, id: $id, firstName: $firstName, lastName: $lastName, username: $username, activities: $activities, services: $services)';
   }
 
   @override
@@ -220,6 +236,8 @@ class _$StaffMemberImpl extends _StaffMember {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StaffMemberImpl &&
+            (identical(other.photoUrl, photoUrl) ||
+                other.photoUrl == photoUrl) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
@@ -236,6 +254,7 @@ class _$StaffMemberImpl extends _StaffMember {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      photoUrl,
       id,
       firstName,
       lastName,
@@ -261,7 +280,8 @@ class _$StaffMemberImpl extends _StaffMember {
 
 abstract class _StaffMember extends StaffMember {
   factory _StaffMember(
-      {required final String id,
+      {final String? photoUrl,
+      required final String id,
       required final String firstName,
       required final String? lastName,
       required final String? username,
@@ -272,6 +292,8 @@ abstract class _StaffMember extends StaffMember {
   factory _StaffMember.fromJson(Map<String, dynamic> json) =
       _$StaffMemberImpl.fromJson;
 
+  @override
+  String? get photoUrl;
   @override
   String get id;
   @override

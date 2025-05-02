@@ -1,8 +1,8 @@
 enum StaffServiceType {
-  MIX('Сведение'),
   RECORDING('Запись'),
-  BEAT('Кастомный бит'),
-  MASTERING('Мастеринг');
+  MIX('Сведение'),
+  MASTERING('Мастеринг'),
+  BEAT('Кастомный бит');
 
   const StaffServiceType(this.title);
 
