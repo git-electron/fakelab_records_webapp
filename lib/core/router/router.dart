@@ -77,6 +77,14 @@ Args: ${resolver.route.args}''');
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
         if (isMobile) AutoRoute(page: AdminRoute.page, path: '/admin'),
         AutoRoute(page: AdminOrderRoute.page, path: '/admin/orders/:id'),
+        // AutoRoute(
+        //   page: AdminCreateStaffMemberRoute.page,
+        //   path: '/admin/staff/edit/:id',
+        // ),
+        AutoRoute(
+          page: AdminCreateStaffMemberRoute.page,
+          path: '/admin/staff/create',
+        ),
         ...redirections,
       ];
 

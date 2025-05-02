@@ -37,14 +37,14 @@ Map<String, dynamic> _$$StaffMemberImplToJson(_$StaffMemberImpl instance) =>
 const _$StaffActivityEnumMap = {
   StaffActivity.ARTIST: 'ARTIST',
   StaffActivity.PRODUCER: 'PRODUCER',
-  StaffActivity.MIX_ENGINEER: 'MIX_ENGINEER',
   StaffActivity.SOUND_ENGINEER: 'SOUND_ENGINEER',
+  StaffActivity.MIX_ENGINEER: 'MIX_ENGINEER',
   StaffActivity.MASTERING_ENGINEER: 'MASTERING_ENGINEER',
 };
 
 const _$StaffServiceTypeEnumMap = {
-  StaffServiceType.MIX: 'MIX',
   StaffServiceType.RECORDING: 'RECORDING',
-  StaffServiceType.BEAT: 'BEAT',
+  StaffServiceType.MIX: 'MIX',
   StaffServiceType.MASTERING: 'MASTERING',
+  StaffServiceType.BEAT: 'BEAT',
 };

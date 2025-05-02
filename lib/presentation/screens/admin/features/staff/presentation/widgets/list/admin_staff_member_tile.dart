@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/ui/avatar/avatar.dart';
@@ -20,7 +21,7 @@ class AdminStaffMemberTile extends StatelessWidget {
     final bool isMobile = size.width < 1000;
 
     return Tappable(
-      onTap: () {}, //TODO
+      onTap: () {},
       child: Stack(
         alignment: Alignment.topRight,
         children: [
@@ -50,20 +51,26 @@ class AdminStaffMemberTile extends StatelessWidget {
                           photoUrl: staffMember.photoUrl!,
                         ),
                       ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          staffMember.fullName,
-                          style: _body(context, isMobile: isMobile),
-                        ),
-                        if (staffMember.username.isNotNullAndEmpty)
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Text(
-                            staffMember.username!,
-                            style: _footer(context, isMobile: isMobile),
+                            staffMember.fullName,
+                            style: _body(context, isMobile: isMobile),
                           ),
-                      ],
+                          if (staffMember.username.isNotNullAndEmpty)
+                            Text(
+                              staffMember.username!,
+                              style: _footer(context, isMobile: isMobile),
+                            ),
+                        ],
+                      ),
+                    ),
+                    Tappable(
+                      onTap: () {},
+                      child: Assets.icons.pencil.light.svg(),
                     ),
                   ],
                 ),

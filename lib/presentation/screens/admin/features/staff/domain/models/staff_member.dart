@@ -24,6 +24,8 @@ class StaffMember with _$StaffMember {
 
   StaffMember._();
 
+  String get idShort => '#${id.substring(id.length - 5)}';
+
   String get fullName {
     return '$firstName${lastName.isNotNullAndEmpty ? ' $lastName' : ''}';
   }

@@ -35,6 +35,8 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/ad
     as _i522;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart'
     as _i330;
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart'
+    as _i81;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/client/admin_order_client.dart'
     as _i310;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart'
@@ -181,6 +183,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i255.AdminStaffClient>(),
         ));
+    gh.factory<_i81.AdminCreateStaffMemberBloc>(
+        () => _i81.AdminCreateStaffMemberBloc(gh<_i330.AdminStaffBloc>()));
     gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,
       _,
