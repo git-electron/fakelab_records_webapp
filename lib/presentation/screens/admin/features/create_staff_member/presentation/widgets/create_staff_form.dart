@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-class AdminCreateStaffForm extends StatelessWidget {
-  const AdminCreateStaffForm({super.key});
+class CreateStaffForm extends StatelessWidget {
+  const CreateStaffForm({super.key});
 
   @override
   Widget build(BuildContext context) {

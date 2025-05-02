@@ -3,15 +3,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/presentation/widgets/admin_create_staff_avatar.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/presentation/widgets/admin_create_staff_form.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-import 'widgets/admin_create_staff_member_button.dart';
-import 'widgets/admin_create_staff_member_screen_app_bar.dart';
+import 'widgets/create_staff_avatar.dart';
+import 'widgets/create_staff_form.dart';
+import 'widgets/create_staff_member_button.dart';
+import 'widgets/create_staff_member_screen_app_bar.dart';
 
 @RoutePage()
 class AdminCreateStaffMemberScreen extends StatelessWidget {
@@ -26,7 +26,7 @@ class AdminCreateStaffMemberScreen extends StatelessWidget {
           slivers: [
             TelegramMetaWrapper(builder: (context, meta) {
               if (meta.isMobile) {
-                return const AdminCreateStaffMemberScreenAppBarMobile();
+                return const CreateStaffMemberScreenAppBarMobile();
               }
               return const SliverToBoxAdapter();
             }),
@@ -58,6 +58,7 @@ class AdminCreateStaffMemberScreenBody extends StatelessWidget {
             CreateStaffMemberHeader(),
             Gap(20),
             CreateStaffMemberAdaptiveForm(),
+            Gap(20),
             Gap(20),
             CreateStaffMemberButton(),
           ],
@@ -98,11 +99,11 @@ class CreateStaffMemberAdaptiveForm extends StatelessWidget {
         children: [
           BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
             builder: (context, state) {
-              return AdminCreateStaffAvatar(photoUrl: state.avatarFileUrl);
+              return CreateStaffAvatar(photoUrl: state.avatarFileUrl);
             },
           ),
           const Gap(20),
-          const AdminCreateStaffForm(),
+          const CreateStaffForm(),
         ],
       );
     }
@@ -110,7 +111,7 @@ class CreateStaffMemberAdaptiveForm extends StatelessWidget {
       children: [
         BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
           builder: (context, state) {
-            return AdminCreateStaffAvatar(
+            return CreateStaffAvatar(
               height: 150,
               width: 150,
               photoUrl: state.avatarFileUrl,
@@ -118,7 +119,7 @@ class CreateStaffMemberAdaptiveForm extends StatelessWidget {
           },
         ),
         const Gap(20),
-        const Expanded(child: AdminCreateStaffForm()),
+        const Expanded(child: CreateStaffForm()),
       ],
     );
   }

@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 
-class AdminCreateStaffAvatar extends StatefulWidget {
-  const AdminCreateStaffAvatar({
+class CreateStaffAvatar extends StatefulWidget {
+  const CreateStaffAvatar({
     this.height = 200,
     this.width,
     this.photoUrl,
@@ -25,10 +25,10 @@ class AdminCreateStaffAvatar extends StatefulWidget {
   final String? photoUrl;
 
   @override
-  State<AdminCreateStaffAvatar> createState() => _AdminCreateStaffAvatarState();
+  State<CreateStaffAvatar> createState() => _CreateStaffAvatarState();
 }
 
-class _AdminCreateStaffAvatarState extends State<AdminCreateStaffAvatar>
+class _CreateStaffAvatarState extends State<CreateStaffAvatar>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;

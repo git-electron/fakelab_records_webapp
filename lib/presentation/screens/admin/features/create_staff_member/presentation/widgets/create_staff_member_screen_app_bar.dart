@@ -5,8 +5,8 @@ import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegra
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
-class AdminCreateStaffMemberScreenAppBarMobile extends StatelessWidget {
-  const AdminCreateStaffMemberScreenAppBarMobile({super.key});
+class CreateStaffMemberScreenAppBarMobile extends StatelessWidget {
+  const CreateStaffMemberScreenAppBarMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
