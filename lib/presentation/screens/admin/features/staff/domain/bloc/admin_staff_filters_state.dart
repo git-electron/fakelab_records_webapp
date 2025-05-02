@@ -4,7 +4,7 @@ part of 'admin_staff_filters_bloc.dart';
 class AdminStaffFiltersState with _$AdminStaffFiltersState {
   const factory AdminStaffFiltersState({
     String? searchQuery,
-    OrderServiceType? serviceType,
+    StaffServiceType? serviceType,
   }) = _AdminStaffFiltersState;
 
   const AdminStaffFiltersState._();

@@ -8,7 +8,7 @@ part of 'staff_member.dart';
 
 _$StaffMemberImpl _$$StaffMemberImplFromJson(Map<String, dynamic> json) =>
     _$StaffMemberImpl(
-      id: (json['id'] as num).toInt(),
+      id: json['id'] as String,
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String?,
       username: json['username'] as String?,
@@ -16,7 +16,7 @@ _$StaffMemberImpl _$$StaffMemberImplFromJson(Map<String, dynamic> json) =>
           .map((e) => $enumDecode(_$StaffActivityEnumMap, e))
           .toList(),
       services: (json['services'] as List<dynamic>)
-          .map((e) => $enumDecode(_$OrderServiceTypeEnumMap, e))
+          .map((e) => $enumDecode(_$StaffServiceTypeEnumMap, e))
           .toList(),
     );
 
@@ -29,18 +29,20 @@ Map<String, dynamic> _$$StaffMemberImplToJson(_$StaffMemberImpl instance) =>
       'activities':
           instance.activities.map((e) => _$StaffActivityEnumMap[e]!).toList(),
       'services':
-          instance.services.map((e) => _$OrderServiceTypeEnumMap[e]!).toList(),
+          instance.services.map((e) => _$StaffServiceTypeEnumMap[e]!).toList(),
     };
 
 const _$StaffActivityEnumMap = {
   StaffActivity.ARTIST: 'ARTIST',
   StaffActivity.PRODUCER: 'PRODUCER',
-  StaffActivity.MIXING_ENGINEER: 'MIXING_ENGINEER',
+  StaffActivity.MIX_ENGINEER: 'MIX_ENGINEER',
+  StaffActivity.SOUND_ENGINEER: 'SOUND_ENGINEER',
   StaffActivity.MASTERING_ENGINEER: 'MASTERING_ENGINEER',
 };
 
-const _$OrderServiceTypeEnumMap = {
-  OrderServiceType.MIX: 'MIX',
-  OrderServiceType.BEAT: 'BEAT',
-  OrderServiceType.MASTERING: 'MASTERING',
+const _$StaffServiceTypeEnumMap = {
+  StaffServiceType.MIX: 'MIX',
+  StaffServiceType.RECORDING: 'RECORDING',
+  StaffServiceType.BEAT: 'BEAT',
+  StaffServiceType.MASTERING: 'MASTERING',
 };

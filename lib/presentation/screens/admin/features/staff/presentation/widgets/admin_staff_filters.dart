@@ -1,7 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/service/order_service_type.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/bloc/admin_staff_filters_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_text_field.dart';
@@ -35,7 +35,7 @@ class AdminStaffFilters extends StatelessWidget {
               if (!isMobile) const Gap(10),
               Expanded(
                 child: AppDropdownButton(
-                  items: OrderServiceType.values
+                  items: StaffServiceType.values
                       .map((status) => DropdownButtonItem(
                             title: status.title,
                             value: status,

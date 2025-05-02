@@ -19,20 +19,20 @@ mixin _$AdminStaffFiltersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? query) searchQueryChanged,
-    required TResult Function(OrderServiceType? serviceType)
+    required TResult Function(StaffServiceType? serviceType)
         serviceTypeFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? query)? searchQueryChanged,
-    TResult? Function(OrderServiceType? serviceType)? serviceTypeFilterChanged,
+    TResult? Function(StaffServiceType? serviceType)? serviceTypeFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? query)? searchQueryChanged,
-    TResult Function(OrderServiceType? serviceType)? serviceTypeFilterChanged,
+    TResult Function(StaffServiceType? serviceType)? serviceTypeFilterChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -151,7 +151,7 @@ class _$SearchQueryChangedImpl implements _SearchQueryChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? query) searchQueryChanged,
-    required TResult Function(OrderServiceType? serviceType)
+    required TResult Function(StaffServiceType? serviceType)
         serviceTypeFilterChanged,
   }) {
     return searchQueryChanged(query);
@@ -161,7 +161,7 @@ class _$SearchQueryChangedImpl implements _SearchQueryChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? query)? searchQueryChanged,
-    TResult? Function(OrderServiceType? serviceType)? serviceTypeFilterChanged,
+    TResult? Function(StaffServiceType? serviceType)? serviceTypeFilterChanged,
   }) {
     return searchQueryChanged?.call(query);
   }
@@ -170,7 +170,7 @@ class _$SearchQueryChangedImpl implements _SearchQueryChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? query)? searchQueryChanged,
-    TResult Function(OrderServiceType? serviceType)? serviceTypeFilterChanged,
+    TResult Function(StaffServiceType? serviceType)? serviceTypeFilterChanged,
     required TResult orElse(),
   }) {
     if (searchQueryChanged != null) {
@@ -233,7 +233,7 @@ abstract class _$$ServiceTypeFilterChangedImplCopyWith<$Res> {
           $Res Function(_$ServiceTypeFilterChangedImpl) then) =
       __$$ServiceTypeFilterChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OrderServiceType? serviceType});
+  $Res call({StaffServiceType? serviceType});
 }
 
 /// @nodoc
@@ -257,7 +257,7 @@ class __$$ServiceTypeFilterChangedImplCopyWithImpl<$Res>
       freezed == serviceType
           ? _value.serviceType
           : serviceType // ignore: cast_nullable_to_non_nullable
-              as OrderServiceType?,
+              as StaffServiceType?,
     ));
   }
 }
@@ -268,7 +268,7 @@ class _$ServiceTypeFilterChangedImpl implements _ServiceTypeFilterChanged {
   const _$ServiceTypeFilterChangedImpl(this.serviceType);
 
   @override
-  final OrderServiceType? serviceType;
+  final StaffServiceType? serviceType;
 
   @override
   String toString() {
@@ -300,7 +300,7 @@ class _$ServiceTypeFilterChangedImpl implements _ServiceTypeFilterChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? query) searchQueryChanged,
-    required TResult Function(OrderServiceType? serviceType)
+    required TResult Function(StaffServiceType? serviceType)
         serviceTypeFilterChanged,
   }) {
     return serviceTypeFilterChanged(serviceType);
@@ -310,7 +310,7 @@ class _$ServiceTypeFilterChangedImpl implements _ServiceTypeFilterChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? query)? searchQueryChanged,
-    TResult? Function(OrderServiceType? serviceType)? serviceTypeFilterChanged,
+    TResult? Function(StaffServiceType? serviceType)? serviceTypeFilterChanged,
   }) {
     return serviceTypeFilterChanged?.call(serviceType);
   }
@@ -319,7 +319,7 @@ class _$ServiceTypeFilterChangedImpl implements _ServiceTypeFilterChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? query)? searchQueryChanged,
-    TResult Function(OrderServiceType? serviceType)? serviceTypeFilterChanged,
+    TResult Function(StaffServiceType? serviceType)? serviceTypeFilterChanged,
     required TResult orElse(),
   }) {
     if (serviceTypeFilterChanged != null) {
@@ -363,10 +363,10 @@ class _$ServiceTypeFilterChangedImpl implements _ServiceTypeFilterChanged {
 }
 
 abstract class _ServiceTypeFilterChanged implements AdminStaffFiltersEvent {
-  const factory _ServiceTypeFilterChanged(final OrderServiceType? serviceType) =
+  const factory _ServiceTypeFilterChanged(final StaffServiceType? serviceType) =
       _$ServiceTypeFilterChangedImpl;
 
-  OrderServiceType? get serviceType;
+  StaffServiceType? get serviceType;
 
   /// Create a copy of AdminStaffFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -378,7 +378,7 @@ abstract class _ServiceTypeFilterChanged implements AdminStaffFiltersEvent {
 /// @nodoc
 mixin _$AdminStaffFiltersState {
   String? get searchQuery => throw _privateConstructorUsedError;
-  OrderServiceType? get serviceType => throw _privateConstructorUsedError;
+  StaffServiceType? get serviceType => throw _privateConstructorUsedError;
 
   /// Create a copy of AdminStaffFiltersState
   /// with the given fields replaced by the non-null parameter values.
@@ -393,7 +393,7 @@ abstract class $AdminStaffFiltersStateCopyWith<$Res> {
           $Res Function(AdminStaffFiltersState) then) =
       _$AdminStaffFiltersStateCopyWithImpl<$Res, AdminStaffFiltersState>;
   @useResult
-  $Res call({String? searchQuery, OrderServiceType? serviceType});
+  $Res call({String? searchQuery, StaffServiceType? serviceType});
 }
 
 /// @nodoc
@@ -423,7 +423,7 @@ class _$AdminStaffFiltersStateCopyWithImpl<$Res,
       serviceType: freezed == serviceType
           ? _value.serviceType
           : serviceType // ignore: cast_nullable_to_non_nullable
-              as OrderServiceType?,
+              as StaffServiceType?,
     ) as $Val);
   }
 }
@@ -437,7 +437,7 @@ abstract class _$$AdminStaffFiltersStateImplCopyWith<$Res>
       __$$AdminStaffFiltersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? searchQuery, OrderServiceType? serviceType});
+  $Res call({String? searchQuery, StaffServiceType? serviceType});
 }
 
 /// @nodoc
@@ -466,7 +466,7 @@ class __$$AdminStaffFiltersStateImplCopyWithImpl<$Res>
       serviceType: freezed == serviceType
           ? _value.serviceType
           : serviceType // ignore: cast_nullable_to_non_nullable
-              as OrderServiceType?,
+              as StaffServiceType?,
     ));
   }
 }
@@ -480,7 +480,7 @@ class _$AdminStaffFiltersStateImpl extends _AdminStaffFiltersState {
   @override
   final String? searchQuery;
   @override
-  final OrderServiceType? serviceType;
+  final StaffServiceType? serviceType;
 
   @override
   String toString() {
@@ -514,13 +514,13 @@ class _$AdminStaffFiltersStateImpl extends _AdminStaffFiltersState {
 abstract class _AdminStaffFiltersState extends AdminStaffFiltersState {
   const factory _AdminStaffFiltersState(
       {final String? searchQuery,
-      final OrderServiceType? serviceType}) = _$AdminStaffFiltersStateImpl;
+      final StaffServiceType? serviceType}) = _$AdminStaffFiltersStateImpl;
   const _AdminStaffFiltersState._() : super._();
 
   @override
   String? get searchQuery;
   @override
-  OrderServiceType? get serviceType;
+  StaffServiceType? get serviceType;
 
   /// Create a copy of AdminStaffFiltersState
   /// with the given fields replaced by the non-null parameter values.

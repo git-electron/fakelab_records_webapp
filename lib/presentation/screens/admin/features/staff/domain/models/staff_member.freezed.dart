@@ -20,12 +20,12 @@ StaffMember _$StaffMemberFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StaffMember {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
   List<StaffActivity> get activities => throw _privateConstructorUsedError;
-  List<OrderServiceType> get services => throw _privateConstructorUsedError;
+  List<StaffServiceType> get services => throw _privateConstructorUsedError;
 
   /// Serializes this StaffMember to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,12 +44,12 @@ abstract class $StaffMemberCopyWith<$Res> {
       _$StaffMemberCopyWithImpl<$Res, StaffMember>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String firstName,
       String? lastName,
       String? username,
       List<StaffActivity> activities,
-      List<OrderServiceType> services});
+      List<StaffServiceType> services});
 }
 
 /// @nodoc
@@ -78,7 +78,7 @@ class _$StaffMemberCopyWithImpl<$Res, $Val extends StaffMember>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -98,7 +98,7 @@ class _$StaffMemberCopyWithImpl<$Res, $Val extends StaffMember>
       services: null == services
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
-              as List<OrderServiceType>,
+              as List<StaffServiceType>,
     ) as $Val);
   }
 }
@@ -112,12 +112,12 @@ abstract class _$$StaffMemberImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String firstName,
       String? lastName,
       String? username,
       List<StaffActivity> activities,
-      List<OrderServiceType> services});
+      List<StaffServiceType> services});
 }
 
 /// @nodoc
@@ -144,7 +144,7 @@ class __$$StaffMemberImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -164,7 +164,7 @@ class __$$StaffMemberImplCopyWithImpl<$Res>
       services: null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
-              as List<OrderServiceType>,
+              as List<StaffServiceType>,
     ));
   }
 }
@@ -178,7 +178,7 @@ class _$StaffMemberImpl extends _StaffMember {
       required this.lastName,
       required this.username,
       required final List<StaffActivity> activities,
-      required final List<OrderServiceType> services})
+      required final List<StaffServiceType> services})
       : _activities = activities,
         _services = services,
         super._();
@@ -187,7 +187,7 @@ class _$StaffMemberImpl extends _StaffMember {
       _$$StaffMemberImplFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String firstName;
   @override
@@ -202,9 +202,9 @@ class _$StaffMemberImpl extends _StaffMember {
     return EqualUnmodifiableListView(_activities);
   }
 
-  final List<OrderServiceType> _services;
+  final List<StaffServiceType> _services;
   @override
-  List<OrderServiceType> get services {
+  List<StaffServiceType> get services {
     if (_services is EqualUnmodifiableListView) return _services;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_services);
@@ -261,19 +261,19 @@ class _$StaffMemberImpl extends _StaffMember {
 
 abstract class _StaffMember extends StaffMember {
   factory _StaffMember(
-      {required final int id,
+      {required final String id,
       required final String firstName,
       required final String? lastName,
       required final String? username,
       required final List<StaffActivity> activities,
-      required final List<OrderServiceType> services}) = _$StaffMemberImpl;
+      required final List<StaffServiceType> services}) = _$StaffMemberImpl;
   _StaffMember._() : super._();
 
   factory _StaffMember.fromJson(Map<String, dynamic> json) =
       _$StaffMemberImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get firstName;
   @override
@@ -283,7 +283,7 @@ abstract class _StaffMember extends StaffMember {
   @override
   List<StaffActivity> get activities;
   @override
-  List<OrderServiceType> get services;
+  List<StaffServiceType> get services;
 
   /// Create a copy of StaffMember
   /// with the given fields replaced by the non-null parameter values.

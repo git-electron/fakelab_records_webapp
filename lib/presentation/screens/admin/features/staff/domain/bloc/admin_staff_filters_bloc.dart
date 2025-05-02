@@ -1,6 +1,6 @@
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/service/order_service_type.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

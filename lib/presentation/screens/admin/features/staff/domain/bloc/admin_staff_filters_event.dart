@@ -7,6 +7,6 @@ class AdminStaffFiltersEvent with _$AdminStaffFiltersEvent {
   ) = _SearchQueryChanged;
   
   const factory AdminStaffFiltersEvent.serviceTypeFilterChanged(
-    OrderServiceType? serviceType,
+    StaffServiceType? serviceType,
   ) = _ServiceTypeFilterChanged;
 }
