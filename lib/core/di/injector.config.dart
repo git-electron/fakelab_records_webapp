@@ -10,6 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:assets_audio_player/assets_audio_player.dart' as _i842;
+import 'package:cloudinary_url_gen/cloudinary.dart' as _i751;
 import 'package:fakelab_records_webapp/core/data/client/user_client.dart'
     as _i415;
 import 'package:fakelab_records_webapp/core/di/locator.dart' as _i103;
@@ -32,6 +33,8 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/ad
     as _i869;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart'
     as _i522;
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart'
+    as _i330;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/client/admin_order_client.dart'
     as _i310;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart'
@@ -65,10 +68,10 @@ import 'package:logger/logger.dart' as _i974;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
-  _i174.GetIt init({
+  Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
-  }) {
+  }) async {
     final gh = _i526.GetItHelper(
       this,
       environment,
@@ -78,13 +81,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i842.AssetsAudioPlayer>(() => locator.assetsAudioPlayer);
     gh.factory<_i345.FirebaseDatabase>(() => locator.database);
     gh.factory<_i345.DatabaseReference>(() => locator.ref);
+    await gh.factoryAsync<_i751.Cloudinary>(
+      () => locator.cloudinary,
+      preResolve: true,
+    );
     gh.factory<_i974.Logger>(() => locator.logger);
     gh.factory<_i435.TelegramService>(() => _i435.TelegramService());
     gh.factory<_i718.AdminOrdersFiltersBloc>(
         () => _i718.AdminOrdersFiltersBloc());
-    gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
+    gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
@@ -108,11 +115,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i562.AdminPanelClient>(() => _i562.AdminPanelClient(
-          gh<_i345.DatabaseReference>(),
-          gh<_i974.Logger>(),
-        ));
-    gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
+    gh.factory<_i255.AdminStaffClient>(() => _i255.AdminStaffClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
@@ -120,7 +123,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i255.AdminStaffClient>(() => _i255.AdminStaffClient(
+    gh.factory<_i562.AdminPanelClient>(() => _i562.AdminPanelClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
@@ -169,6 +176,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i481.AdminPanelBloc>(() => _i481.AdminPanelBloc(
           gh<_i109.UserBloc>(),
           gh<_i562.AdminPanelClient>(),
+        ));
+    gh.factory<_i330.AdminStaffBloc>(() => _i330.AdminStaffBloc(
+          gh<_i109.UserBloc>(),
+          gh<_i255.AdminStaffClient>(),
         ));
     gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,

@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 
 import '../domain/bloc/admin_staff_filters_bloc.dart';
 import 'widgets/admin_staff_filters.dart';
+import 'widgets/list/admin_staff_members_list.dart';
 
 class AdminStaffScreen extends StatelessWidget {
   const AdminStaffScreen({super.key});
@@ -18,7 +19,7 @@ class AdminStaffScreen extends StatelessWidget {
         children: [
           AdminStaffFilters(),
           Gap(20),
-          // AdminOrdersList(),
+          AdminStaffMembersList(),
           Gap(100),
         ],
       ),

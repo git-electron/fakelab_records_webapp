@@ -5,11 +5,13 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/client/admin_s
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'admin_staff_event.dart';
 part 'admin_staff_state.dart';
 part 'admin_staff_bloc.freezed.dart';
 
+@injectable
 class AdminStaffBloc extends Bloc<AdminStaffEvent, AdminStaffState> {
   AdminStaffBloc(this.userBloc, this.adminStaffClient)
       : super(const _Loading()) {

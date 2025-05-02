@@ -11,8 +11,8 @@ import 'package:gap/gap.dart';
 
 import 'admin_staff_member_tile.dart';
 
-class AdminStaffList extends StatelessWidget {
-  const AdminStaffList({super.key});
+class AdminStaffMembersList extends StatelessWidget {
+  const AdminStaffMembersList({super.key});
 
   @override
   Widget build(BuildContext context) {
