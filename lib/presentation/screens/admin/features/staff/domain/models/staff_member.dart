@@ -4,24 +4,24 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'staff_activity.dart';
 
-part 'staff_user.freezed.dart';
-part 'staff_user.g.dart';
+part 'staff_member.freezed.dart';
+part 'staff_member.g.dart';
 
 @freezed
-class StaffUser with _$StaffUser {
-  factory StaffUser({
+class StaffMember with _$StaffMember {
+  factory StaffMember({
     required int id,
     required String firstName,
     required String? lastName,
     required String? username,
     required List<StaffActivity> activities,
     required List<OrderServiceType> services,
-  }) = _StaffUser;
+  }) = _StaffMember;
 
-  factory StaffUser.fromJson(Map<String, dynamic> json) =>
-      _$StaffUserFromJson(json);
+  factory StaffMember.fromJson(Map<String, dynamic> json) =>
+      _$StaffMemberFromJson(json);
 
-  StaffUser._();
+  StaffMember._();
 
   String get fullName {
     return '$firstName${lastName.isNotNullAndEmpty ? ' $lastName' : ''}';

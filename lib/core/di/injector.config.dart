@@ -26,6 +26,8 @@ import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_
     as _i790;
 import 'package:fakelab_records_webapp/presentation/screens/admin/client/admin_orders_client.dart'
     as _i9;
+import 'package:fakelab_records_webapp/presentation/screens/admin/client/admin_staff_client.dart'
+    as _i255;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc/admin_bloc.dart'
     as _i869;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart'
@@ -115,6 +117,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i974.Logger>(),
         ));
     gh.factory<_i310.AdminOrderClient>(() => _i310.AdminOrderClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.factory<_i255.AdminStaffClient>(() => _i255.AdminStaffClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));

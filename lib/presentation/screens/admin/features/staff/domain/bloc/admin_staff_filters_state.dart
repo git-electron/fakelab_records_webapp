@@ -9,20 +9,20 @@ class AdminStaffFiltersState with _$AdminStaffFiltersState {
 
   const AdminStaffFiltersState._();
 
-  List<StaffUser> filteredUsers(List<StaffUser>? staffUsers) {
-    final List<StaffUser>? filtered = staffUsers?.where((staffUser) {
+  List<StaffMember> filteredStaffMembers(List<StaffMember>? staffMembers) {
+    final List<StaffMember>? filtered = staffMembers?.where((staffMember) {
       bool isProperServiceType = true;
       bool isProperSearchQuery = true;
 
       if (serviceType != null) {
-        isProperServiceType = staffUser.services.contains(serviceType);
+        isProperServiceType = staffMember.services.contains(serviceType);
       }
       if (searchQuery.isNotNullAndEmpty) {
-        final bool isProperFullName = staffUser.fullName
+        final bool isProperFullName = staffMember.fullName
             .toLowerCase()
             .contains(searchQuery!.toLowerCase());
 
-        final bool isProperUsername = staffUser.username
+        final bool isProperUsername = staffMember.username
                 ?.toLowerCase()
                 .contains(searchQuery!.toLowerCase()) ??
             false;
@@ -33,6 +33,6 @@ class AdminStaffFiltersState with _$AdminStaffFiltersState {
       return isProperServiceType && isProperSearchQuery;
     }).toList();
 
-    return filtered ?? staffUsers ?? [];
+    return filtered ?? staffMembers ?? [];
   }
 }

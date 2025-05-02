@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'staff_user.dart';
+part of 'staff_member.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StaffUserImpl _$$StaffUserImplFromJson(Map<String, dynamic> json) =>
-    _$StaffUserImpl(
+_$StaffMemberImpl _$$StaffMemberImplFromJson(Map<String, dynamic> json) =>
+    _$StaffMemberImpl(
       id: (json['id'] as num).toInt(),
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String?,
@@ -20,7 +20,7 @@ _$StaffUserImpl _$$StaffUserImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$StaffUserImplToJson(_$StaffUserImpl instance) =>
+Map<String, dynamic> _$$StaffMemberImplToJson(_$StaffMemberImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'firstName': instance.firstName,

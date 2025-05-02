@@ -1,4 +1,5 @@
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_filters.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 
 import '../domain/models/rating/rating.dart';
 import '../domain/models/user/user.dart';
@@ -320,4 +321,6 @@ class Mock {
 
   static Order? getOrder(String orderId) =>
       tryOrNull(() => orders.firstWhere((order) => order.id == orderId));
+
+  static List<StaffMember> staffMembers = <StaffMember>[];
 }
