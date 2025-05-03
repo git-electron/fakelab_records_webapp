@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/presentation/widgets/edit_staff_properties.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
@@ -20,16 +21,21 @@ class AdminEditStaffMemberScreen extends StatelessWidget {
   const AdminEditStaffMemberScreen({
     @PathParam('id') required this.id,
     required this.staffMember,
+    required this.adminStaffBloc,
     super.key,
   });
 
   final String id;
   final StaffMember staffMember;
+  final AdminStaffBloc adminStaffBloc;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => $<AdminEditStaffMemberBloc>(param1: staffMember),
+      create: (context) => $<AdminEditStaffMemberBloc>(
+        param1: staffMember,
+        param2: adminStaffBloc,
+      ),
       child: Scaffold(
         body: CustomScrollView(
           slivers: [

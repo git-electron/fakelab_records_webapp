@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/presentation/widgets/create_staff_properties.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
@@ -16,12 +17,19 @@ import 'widgets/create_staff_member_screen_app_bar.dart';
 
 @RoutePage()
 class AdminCreateStaffMemberScreen extends StatelessWidget {
-  const AdminCreateStaffMemberScreen({super.key});
+  const AdminCreateStaffMemberScreen({
+    required this.adminStaffBloc,
+    super.key,
+  });
+
+  final AdminStaffBloc adminStaffBloc;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => $<AdminCreateStaffMemberBloc>(),
+      create: (context) => $<AdminCreateStaffMemberBloc>(
+        param1: adminStaffBloc,
+      ),
       child: Scaffold(
         body: CustomScrollView(
           slivers: [

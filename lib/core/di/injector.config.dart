@@ -144,8 +144,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i993.AdminEditStaffMemberClient>(
-        () => _i993.AdminEditStaffMemberClient(
+    gh.factory<_i993.AdminCreateStaffMemberClient>(
+        () => _i993.AdminCreateStaffMemberClient(
               gh<_i345.DatabaseReference>(),
               gh<_i974.Logger>(),
             ));
@@ -196,6 +196,18 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i133.TelegramDataBloc>(),
         ));
+    gh.factoryParam<_i81.AdminCreateStaffMemberBloc, _i330.AdminStaffBloc,
+        dynamic>((
+      adminStaffBloc,
+      _,
+    ) =>
+        _i81.AdminCreateStaffMemberBloc(
+          adminStaffBloc,
+          gh<_i352.AppRouter>(),
+          gh<_i751.Cloudinary>(),
+          gh<_i610.IdGenerator>(),
+          gh<_i993.AdminCreateStaffMemberClient>(),
+        ));
     gh.factory<_i481.AdminPanelBloc>(() => _i481.AdminPanelBloc(
           gh<_i109.UserBloc>(),
           gh<_i562.AdminPanelClient>(),
@@ -225,26 +237,18 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i9.AdminOrdersClient>(),
         ));
     gh.factoryParam<_i899.AdminEditStaffMemberBloc, _i1021.StaffMember,
-        dynamic>((
+        _i330.AdminStaffBloc>((
       staffMember,
-      _,
+      adminStaffBloc,
     ) =>
         _i899.AdminEditStaffMemberBloc(
           staffMember,
+          adminStaffBloc,
           gh<_i352.AppRouter>(),
           gh<_i751.Cloudinary>(),
           gh<_i610.IdGenerator>(),
-          gh<_i330.AdminStaffBloc>(),
-          gh<_i993.AdminEditStaffMemberClient>(),
+          gh<_i363.AdminEditStaffMemberClient>(),
         ));
-    gh.factory<_i81.AdminCreateStaffMemberBloc>(
-        () => _i81.AdminCreateStaffMemberBloc(
-              gh<_i352.AppRouter>(),
-              gh<_i751.Cloudinary>(),
-              gh<_i610.IdGenerator>(),
-              gh<_i330.AdminStaffBloc>(),
-              gh<_i993.AdminEditStaffMemberClient>(),
-            ));
     return this;
   }
 }

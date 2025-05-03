@@ -25,10 +25,10 @@ part 'admin_create_staff_member_bloc.freezed.dart';
 class AdminCreateStaffMemberBloc
     extends Bloc<AdminCreateStaffMemberEvent, AdminCreateStaffMemberState> {
   AdminCreateStaffMemberBloc(
+    @factoryParam this.adminStaffBloc,
     this.router,
     this.cloudinary,
     this.idGenerator,
-    this.adminStaffBloc,
     this.adminCreateStaffMemberClient,
   ) : super(const _AdminCreateStaffMemberState()) {
     on<_FirstNameChanged>(_onFirstNameChanged);
@@ -46,7 +46,7 @@ class AdminCreateStaffMemberBloc
   final Cloudinary cloudinary;
   final IdGenerator idGenerator;
   final AdminStaffBloc adminStaffBloc;
-  final AdminEditStaffMemberClient adminCreateStaffMemberClient;
+  final AdminCreateStaffMemberClient adminCreateStaffMemberClient;
 
   Future<void> _onFirstNameChanged(
     _FirstNameChanged event,
@@ -131,10 +131,10 @@ class AdminCreateStaffMemberBloc
           ];
 
           adminStaffBloc.add(AdminStaffEvent.setLoaded(updatedStaffMembers));
+          router.pop();
         }
       },
       error: (message) => emit(state.copyWith(isLoading: false)),
     );
-    router.pop();
   }
 }

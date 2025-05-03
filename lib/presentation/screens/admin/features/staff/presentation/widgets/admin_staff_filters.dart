@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/bloc/admin_staff_filters_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
@@ -73,8 +74,12 @@ class AdminStaffFilters extends StatelessWidget {
   }
 
   Widget _addStaffMember(BuildContext context) {
+    final AdminStaffBloc bloc = context.read();
+
     return AppButton.primary(
-      onTap: () => context.pushRoute(const AdminCreateStaffMemberRoute()),
+      onTap: () => context.pushRoute(
+        AdminCreateStaffMemberRoute(adminStaffBloc: bloc),
+      ),
       text: 'Добавить',
       isExpanded: false,
       icon: Assets.icons.plus.dark,

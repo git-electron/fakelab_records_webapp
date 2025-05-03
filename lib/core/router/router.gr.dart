@@ -11,7 +11,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i12;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart'
-    as _i15;
+    as _i16;
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart'
+    as _i13;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/presentation/admin_create_staff_member_screen.dart'
     as _i1;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/presentation/admin_edit_staff_member_screen.dart'
@@ -19,7 +21,7 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/admin_order_screen.dart'
     as _i3;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart'
-    as _i13;
+    as _i15;
 import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/admin_screen.dart'
     as _i4;
 import 'package:fakelab_records_webapp/presentation/screens/base/base_screen.dart'
@@ -40,18 +42,49 @@ import 'package:flutter/material.dart' as _i14;
 
 /// generated route for
 /// [_i1.AdminCreateStaffMemberScreen]
-class AdminCreateStaffMemberRoute extends _i12.PageRouteInfo<void> {
-  const AdminCreateStaffMemberRoute({List<_i12.PageRouteInfo>? children})
-    : super(AdminCreateStaffMemberRoute.name, initialChildren: children);
+class AdminCreateStaffMemberRoute
+    extends _i12.PageRouteInfo<AdminCreateStaffMemberRouteArgs> {
+  AdminCreateStaffMemberRoute({
+    required _i13.AdminStaffBloc adminStaffBloc,
+    _i14.Key? key,
+    List<_i12.PageRouteInfo>? children,
+  }) : super(
+         AdminCreateStaffMemberRoute.name,
+         args: AdminCreateStaffMemberRouteArgs(
+           adminStaffBloc: adminStaffBloc,
+           key: key,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'AdminCreateStaffMemberRoute';
 
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i1.AdminCreateStaffMemberScreen();
+      final args = data.argsAs<AdminCreateStaffMemberRouteArgs>();
+      return _i1.AdminCreateStaffMemberScreen(
+        adminStaffBloc: args.adminStaffBloc,
+        key: args.key,
+      );
     },
   );
+}
+
+class AdminCreateStaffMemberRouteArgs {
+  const AdminCreateStaffMemberRouteArgs({
+    required this.adminStaffBloc,
+    this.key,
+  });
+
+  final _i13.AdminStaffBloc adminStaffBloc;
+
+  final _i14.Key? key;
+
+  @override
+  String toString() {
+    return 'AdminCreateStaffMemberRouteArgs{adminStaffBloc: $adminStaffBloc, key: $key}';
+  }
 }
 
 /// generated route for
@@ -60,7 +93,8 @@ class AdminEditStaffMemberRoute
     extends _i12.PageRouteInfo<AdminEditStaffMemberRouteArgs> {
   AdminEditStaffMemberRoute({
     required String id,
-    required _i13.StaffMember staffMember,
+    required _i15.StaffMember staffMember,
+    required _i13.AdminStaffBloc adminStaffBloc,
     _i14.Key? key,
     List<_i12.PageRouteInfo>? children,
   }) : super(
@@ -68,6 +102,7 @@ class AdminEditStaffMemberRoute
          args: AdminEditStaffMemberRouteArgs(
            id: id,
            staffMember: staffMember,
+           adminStaffBloc: adminStaffBloc,
            key: key,
          ),
          rawPathParams: {'id': id},
@@ -83,6 +118,7 @@ class AdminEditStaffMemberRoute
       return _i2.AdminEditStaffMemberScreen(
         id: args.id,
         staffMember: args.staffMember,
+        adminStaffBloc: args.adminStaffBloc,
         key: args.key,
       );
     },
@@ -93,18 +129,21 @@ class AdminEditStaffMemberRouteArgs {
   const AdminEditStaffMemberRouteArgs({
     required this.id,
     required this.staffMember,
+    required this.adminStaffBloc,
     this.key,
   });
 
   final String id;
 
-  final _i13.StaffMember staffMember;
+  final _i15.StaffMember staffMember;
+
+  final _i13.AdminStaffBloc adminStaffBloc;
 
   final _i14.Key? key;
 
   @override
   String toString() {
-    return 'AdminEditStaffMemberRouteArgs{id: $id, staffMember: $staffMember, key: $key}';
+    return 'AdminEditStaffMemberRouteArgs{id: $id, staffMember: $staffMember, adminStaffBloc: $adminStaffBloc, key: $key}';
   }
 }
 
@@ -113,7 +152,7 @@ class AdminEditStaffMemberRouteArgs {
 class AdminOrderRoute extends _i12.PageRouteInfo<AdminOrderRouteArgs> {
   AdminOrderRoute({
     required String orderId,
-    required _i15.AdminOrdersBloc adminOrdersBloc,
+    required _i16.AdminOrdersBloc adminOrdersBloc,
     _i14.Key? key,
     List<_i12.PageRouteInfo>? children,
   }) : super(
@@ -151,7 +190,7 @@ class AdminOrderRouteArgs {
 
   final String orderId;
 
-  final _i15.AdminOrdersBloc adminOrdersBloc;
+  final _i16.AdminOrdersBloc adminOrdersBloc;
 
   final _i14.Key? key;
 

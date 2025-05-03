@@ -5,11 +5,13 @@ import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/ui/avatar/avatar.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class AdminStaffMemberTile extends StatelessWidget {
@@ -19,12 +21,15 @@ class AdminStaffMemberTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AdminStaffBloc bloc = context.read();
+
     final Size size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1000;
 
     return Tappable(
       onTap: () => context.pushRoute(AdminEditStaffMemberRoute(
         id: staffMember.id,
+        adminStaffBloc: bloc,
         staffMember: staffMember,
       )),
       child: Stack(
@@ -76,6 +81,7 @@ class AdminStaffMemberTile extends StatelessWidget {
                     Tappable(
                       onTap: () => context.pushRoute(AdminEditStaffMemberRoute(
                         id: staffMember.id,
+                        adminStaffBloc: bloc,
                         staffMember: staffMember,
                       )),
                       child: Assets.icons.pencil.light.svg(),

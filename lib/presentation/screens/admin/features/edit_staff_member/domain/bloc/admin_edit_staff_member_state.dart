@@ -38,12 +38,10 @@ class AdminEditStaffMemberState with _$AdminEditStaffMemberState {
   bool isServiceSelected(StaffServiceType service) =>
       services.contains(service);
 
-  Future<StaffMember> staffMember({
-    required IdGenerator idGenerator,
+  Future<StaffMember> updatedStaffMember(
+    StaffMember staffMember, {
     required Cloudinary cloudinary,
   }) async {
-    final String id = idGenerator.generate();
-
     final String? photoUrl;
     if (avatarFileContent != null) {
       final String fileContentEncoded = base64.encode(avatarFileContent!);
@@ -52,7 +50,7 @@ class AdminEditStaffMemberState with _$AdminEditStaffMemberState {
       final result = await cloudinary.uploader().upload(
             uploadData,
             params: UploadParams(
-              publicId: id,
+              publicId: staffMember.id,
               uniqueFilename: false,
               overwrite: true,
             ),
@@ -62,14 +60,13 @@ class AdminEditStaffMemberState with _$AdminEditStaffMemberState {
       photoUrl = null;
     }
 
-    return StaffMember(
-      id: id,
-      firstName: firstName ?? '',
-      lastName: lastName,
-      username: username,
-      activities: activities,
-      services: services,
-      photoUrl: photoUrl,
+    return staffMember.copyWith(
+      firstName: firstName ?? staffMember.firstName,
+      lastName: lastName ?? staffMember.lastName,
+      username: username ?? staffMember.username,
+      photoUrl: photoUrl ?? staffMember.photoUrl,
+      activities: activities.isNotEmpty ? activities : staffMember.activities,
+      services: services.isNotEmpty ? services : staffMember.services,
     );
   }
 }

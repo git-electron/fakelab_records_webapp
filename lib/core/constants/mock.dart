@@ -349,4 +349,9 @@ class Mock {
       ],
     ),
   ];
+
+  static StaffMember? getStaffMember(String staffMemberId) =>
+      tryOrNull(() => staffMembers.firstWhere(
+            (staffMember) => staffMember.id == staffMemberId,
+          ));
 }
