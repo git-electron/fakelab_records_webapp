@@ -40,4 +40,20 @@ Data: $json''');
       return Result.error(error.toString());
     }
   }
+
+  Future<Result<bool>> deleteStaffMember(String staffMemberId) async {
+    try {
+      final String path = 'staff/$staffMemberId';
+
+      logger.i('''Realtime Database delete request:
+Path: $path''');
+
+      await ref.child(path).remove();
+
+      return Result.success(true);
+    } catch (error) {
+      logger.e('Failed to delete staff member', error: error);
+      return Result.error();
+    }
+  }
 }

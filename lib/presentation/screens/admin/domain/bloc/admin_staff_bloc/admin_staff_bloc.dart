@@ -18,6 +18,7 @@ class AdminStaffBloc extends Bloc<AdminStaffEvent, AdminStaffState> {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);
+    on<_DeleteStaffMember>(_onDeleteStaffMember);
 
     tryOrNullAsync(_getStaffMembers);
   }
@@ -46,6 +47,13 @@ class AdminStaffBloc extends Bloc<AdminStaffEvent, AdminStaffState> {
     emit(AdminStaffState.error(event.message));
   }
 
+  Future<void> _onDeleteStaffMember(
+    _DeleteStaffMember event,
+    Emitter<AdminStaffState> emit,
+  ) async {
+    _deleteStaffMember(event.staffMemberId);
+  }
+
   Future<void> _getStaffMembers() async {
     if (!userBloc.state.user!.isAdmin) return;
 
@@ -54,6 +62,23 @@ class AdminStaffBloc extends Bloc<AdminStaffEvent, AdminStaffState> {
         await adminStaffClient.getStaffMembers();
     result.when(
       success: (staffMembers) => add(AdminStaffEvent.setLoaded(staffMembers)),
+      error: (message) => add(AdminStaffEvent.setError(message)),
+    );
+  }
+
+  Future<void> _deleteStaffMember(String staffMemberId) async {
+    if (!userBloc.state.user!.isAdmin) return;
+
+    add(const AdminStaffEvent.setLoading());
+    final Result<bool> result =
+        await adminStaffClient.deleteStaffMember(staffMemberId);
+    result.when(
+      success: (_) {
+        final List<StaffMember> staffMembers = state.staffMembers!
+            .where((staffMember) => staffMember.id != staffMemberId)
+            .toList();
+        add(AdminStaffEvent.setLoaded(staffMembers));
+      },
       error: (message) => add(AdminStaffEvent.setError(message)),
     );
   }
