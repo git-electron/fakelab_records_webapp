@@ -4,6 +4,7 @@ import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc/admin_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/widgets/admin_screen_content.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class AdminScreen extends StatelessWidget {
           create: (context) => $<AdminBloc>(),
         ),
         BlocProvider(create: (context) => $<AdminOrdersBloc>()),
+        BlocProvider(create: (context) => $<AdminStaffBloc>()),
       ],
       child: Scaffold(
         backgroundColor: context.colors.background,

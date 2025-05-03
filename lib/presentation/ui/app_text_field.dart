@@ -14,15 +14,18 @@ class AppTextField extends StatelessWidget {
     this.hintText,
     this.onChanged,
     this.prefixIcon,
+    this.initialValue,
     this.keyboardType,
     this.inputFormatters,
     this.shouldAutofocus = false,
     TextEditingController? controller,
   }) {
-    _controller = controller ?? TextEditingController();
+    _controller = controller ?? TextEditingController()
+      ..text = initialValue ?? '';
   }
 
   final String? hintText;
+  final String? initialValue;
   final bool shouldAutofocus;
   final SvgGenImage? prefixIcon;
   final TextInputType? keyboardType;

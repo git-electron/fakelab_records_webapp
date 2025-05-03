@@ -30,7 +30,6 @@ class AdminOrdersState with _$AdminOrdersState {
         error: (_) => true,
         orElse: () => false,
       );
-
   String? get message => whenOrNull(error: (message) => message);
 
   int get requestCount => _ordersByStatusCount(OrderStatus.REQUEST);
