@@ -2,7 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:blur/blur.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import '../../../ui/logo/logo.dart';
-import '../../../ui/user_avatar/user_avatar.dart';
+import '../../../ui/avatar/user_avatar.dart';
 import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 

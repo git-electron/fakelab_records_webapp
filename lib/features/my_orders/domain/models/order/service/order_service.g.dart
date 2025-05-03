@@ -22,6 +22,6 @@ Map<String, dynamic> _$$OrderServiceImplToJson(_$OrderServiceImpl instance) =>
 
 const _$OrderServiceTypeEnumMap = {
   OrderServiceType.MIX: 'MIX',
-  OrderServiceType.MASTERING: 'MASTERING',
   OrderServiceType.BEAT: 'BEAT',
+  OrderServiceType.MASTERING: 'MASTERING',
 };
