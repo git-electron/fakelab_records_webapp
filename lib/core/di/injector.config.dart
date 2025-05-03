@@ -41,6 +41,10 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/creat
     as _i993;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart'
     as _i81;
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/client/admin_edit_staff_member_client.dart'
+    as _i363;
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart'
+    as _i899;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/client/admin_order_client.dart'
     as _i310;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart'
@@ -138,8 +142,13 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i993.AdminCreateStaffMemberClient>(
-        () => _i993.AdminCreateStaffMemberClient(
+    gh.factory<_i993.AdminEditStaffMemberClient>(
+        () => _i993.AdminEditStaffMemberClient(
+              gh<_i345.DatabaseReference>(),
+              gh<_i974.Logger>(),
+            ));
+    gh.factory<_i363.AdminEditStaffMemberClient>(
+        () => _i363.AdminEditStaffMemberClient(
               gh<_i345.DatabaseReference>(),
               gh<_i974.Logger>(),
             ));
@@ -193,6 +202,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i255.AdminStaffClient>(),
         ));
+    gh.factory<_i899.AdminEditStaffMemberBloc>(
+        () => _i899.AdminEditStaffMemberBloc(
+              gh<_i352.AppRouter>(),
+              gh<_i751.Cloudinary>(),
+              gh<_i610.IdGenerator>(),
+              gh<_i330.AdminStaffBloc>(),
+              gh<_i993.AdminEditStaffMemberClient>(),
+            ));
     gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,
       _,
@@ -219,7 +236,7 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i751.Cloudinary>(),
               gh<_i610.IdGenerator>(),
               gh<_i330.AdminStaffBloc>(),
-              gh<_i993.AdminCreateStaffMemberClient>(),
+              gh<_i993.AdminEditStaffMemberClient>(),
             ));
     return this;
   }

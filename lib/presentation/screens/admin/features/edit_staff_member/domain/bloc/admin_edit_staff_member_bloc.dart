@@ -17,20 +17,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'admin_create_staff_member_event.dart';
-part 'admin_create_staff_member_state.dart';
-part 'admin_create_staff_member_bloc.freezed.dart';
+part 'admin_edit_staff_member_event.dart';
+part 'admin_edit_staff_member_state.dart';
+part 'admin_edit_staff_member_bloc.freezed.dart';
 
 @injectable
-class AdminCreateStaffMemberBloc
-    extends Bloc<AdminCreateStaffMemberEvent, AdminCreateStaffMemberState> {
-  AdminCreateStaffMemberBloc(
+class AdminEditStaffMemberBloc
+    extends Bloc<AdminEditStaffMemberEvent, AdminEditStaffMemberState> {
+  AdminEditStaffMemberBloc(
     this.router,
     this.cloudinary,
     this.idGenerator,
     this.adminStaffBloc,
-    this.adminCreateStaffMemberClient,
-  ) : super(const _AdminCreateStaffMemberState()) {
+    this.adminEditStaffMemberClient,
+  ) : super(const _AdminEditStaffMemberState()) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
     on<_UsernameChanged>(_onUsernameChanged);
@@ -46,46 +46,46 @@ class AdminCreateStaffMemberBloc
   final Cloudinary cloudinary;
   final IdGenerator idGenerator;
   final AdminStaffBloc adminStaffBloc;
-  final AdminEditStaffMemberClient adminCreateStaffMemberClient;
+  final AdminEditStaffMemberClient adminEditStaffMemberClient;
 
   Future<void> _onFirstNameChanged(
     _FirstNameChanged event,
-    Emitter<AdminCreateStaffMemberState> emit,
+    Emitter<AdminEditStaffMemberState> emit,
   ) async {
     emit(state.copyWith(firstName: event.firstName));
   }
 
   Future<void> _onLastNameChanged(
     _LastNameChanged event,
-    Emitter<AdminCreateStaffMemberState> emit,
+    Emitter<AdminEditStaffMemberState> emit,
   ) async {
     emit(state.copyWith(lastName: event.lastName));
   }
 
   Future<void> _onUsernameChanged(
     _UsernameChanged event,
-    Emitter<AdminCreateStaffMemberState> emit,
+    Emitter<AdminEditStaffMemberState> emit,
   ) async {
     emit(state.copyWith(username: event.username));
   }
 
   Future<void> _onAvatarChanged(
     _AvatarChanged event,
-    Emitter<AdminCreateStaffMemberState> emit,
+    Emitter<AdminEditStaffMemberState> emit,
   ) async {
     emit(state.copyWith(avatarFileUrl: event.fileUrl));
   }
 
   Future<void> _onAvatarContentChanged(
     _AvatarContentChanged event,
-    Emitter<AdminCreateStaffMemberState> emit,
+    Emitter<AdminEditStaffMemberState> emit,
   ) async {
     emit(state.copyWith(avatarFileContent: event.fileContent));
   }
 
   Future<void> _onActivitySelected(
     _ActivitySelected event,
-    Emitter<AdminCreateStaffMemberState> emit,
+    Emitter<AdminEditStaffMemberState> emit,
   ) async {
     final bool isSelected = state.isActivitySelected(event.activity);
     final List<StaffActivity> newActivities = isSelected
@@ -99,7 +99,7 @@ class AdminCreateStaffMemberBloc
 
   Future<void> _onServiceSelected(
     _ServiceSelected event,
-    Emitter<AdminCreateStaffMemberState> emit,
+    Emitter<AdminEditStaffMemberState> emit,
   ) async {
     final bool isSelected = state.isServiceSelected(event.service);
     final List<StaffServiceType> newServices = isSelected
@@ -111,7 +111,7 @@ class AdminCreateStaffMemberBloc
 
   Future<void> _onCreateButtonPressed(
     _CreateButtonPressed event,
-    Emitter<AdminCreateStaffMemberState> emit,
+    Emitter<AdminEditStaffMemberState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
     final StaffMember staffMember = await state.staffMember(
@@ -120,15 +120,17 @@ class AdminCreateStaffMemberBloc
     );
 
     final Result<StaffMember> result =
-        await adminCreateStaffMemberClient.createStaffMember(staffMember);
+        await adminEditStaffMemberClient.createStaffMember(staffMember);
     result.when(
-      success: (staffMember) {
+      success: (updatedStaffMember) {
         emit(state.copyWith(isLoading: false));
         if (adminStaffBloc.state.isLoaded) {
-          final List<StaffMember> updatedStaffMembers = [
-            ...adminStaffBloc.state.staffMembers!,
-            staffMember,
-          ];
+          final List<StaffMember> updatedStaffMembers =
+              adminStaffBloc.state.staffMembers!.map((staffMember) {
+            return staffMember.id == updatedStaffMember.id
+                ? updatedStaffMember
+                : staffMember;
+          }).toList();
 
           adminStaffBloc.add(AdminStaffEvent.setLoaded(updatedStaffMembers));
         }

@@ -1,7 +1,9 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/ui/avatar/avatar.dart';
@@ -21,7 +23,7 @@ class AdminStaffMemberTile extends StatelessWidget {
     final bool isMobile = size.width < 1000;
 
     return Tappable(
-      onTap: () {},
+      onTap: () => context.pushRoute(const AdminEditStaffMemberRoute()),
       child: Stack(
         alignment: Alignment.topRight,
         children: [
@@ -69,7 +71,9 @@ class AdminStaffMemberTile extends StatelessWidget {
                       ),
                     ),
                     Tappable(
-                      onTap: () {},
+                      onTap: () => context.pushRoute(
+                        const AdminEditStaffMemberRoute(),
+                      ),
                       child: Assets.icons.pencil.light.svg(),
                     ),
                   ],
