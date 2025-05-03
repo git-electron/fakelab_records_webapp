@@ -23,7 +23,10 @@ class AdminStaffMemberTile extends StatelessWidget {
     final bool isMobile = size.width < 1000;
 
     return Tappable(
-      onTap: () => context.pushRoute(const AdminEditStaffMemberRoute()),
+      onTap: () => context.pushRoute(AdminEditStaffMemberRoute(
+        id: staffMember.id,
+        staffMember: staffMember,
+      )),
       child: Stack(
         alignment: Alignment.topRight,
         children: [
@@ -71,9 +74,10 @@ class AdminStaffMemberTile extends StatelessWidget {
                       ),
                     ),
                     Tappable(
-                      onTap: () => context.pushRoute(
-                        const AdminEditStaffMemberRoute(),
-                      ),
+                      onTap: () => context.pushRoute(AdminEditStaffMemberRoute(
+                        id: staffMember.id,
+                        staffMember: staffMember,
+                      )),
                       child: Assets.icons.pencil.light.svg(),
                     ),
                   ],

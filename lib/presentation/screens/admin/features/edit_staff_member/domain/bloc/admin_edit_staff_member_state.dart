@@ -15,6 +15,17 @@ class AdminEditStaffMemberState with _$AdminEditStaffMemberState {
 
   const AdminEditStaffMemberState._();
 
+  static AdminEditStaffMemberState fromStaffMember(StaffMember staffMember) {
+    return _AdminEditStaffMemberState(
+      firstName: staffMember.firstName,
+      lastName: staffMember.lastName,
+      username: staffMember.username,
+      avatarFileUrl: staffMember.photoUrl,
+      activities: staffMember.activities,
+      services: staffMember.services,
+    );
+  }
+
   bool get canProceed =>
       firstName.isNotNullAndEmpty &&
       lastName.isNotNullAndEmpty &&

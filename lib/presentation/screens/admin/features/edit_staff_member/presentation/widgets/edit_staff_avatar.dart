@@ -6,7 +6,7 @@ import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/gen/colors.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/avatar/avatar.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +62,7 @@ class _EditStaffAvatarState extends State<EditStaffAvatar>
 
   @override
   Widget build(BuildContext context) {
-    final AdminCreateStaffMemberBloc bloc = context.read();
+    final AdminEditStaffMemberBloc bloc = context.read();
 
     return Container(
       height: widget.height,
@@ -76,10 +76,10 @@ class _EditStaffAvatarState extends State<EditStaffAvatar>
           final file = files.first;
           _animationController.forward();
           final String fileUrl = await _controller.createFileUrl(file);
-          bloc.add(AdminCreateStaffMemberEvent.avatarChanged(fileUrl));
+          bloc.add(AdminEditStaffMemberEvent.avatarChanged(fileUrl));
           final Uint8List fileContent = await _controller.getFileData(file);
           bloc.add(
-            AdminCreateStaffMemberEvent.avatarContentChanged(fileContent),
+            AdminEditStaffMemberEvent.avatarContentChanged(fileContent),
           );
         },
         child: Stack(
@@ -99,7 +99,7 @@ class _EditStaffAvatarState extends State<EditStaffAvatar>
                 onDropFile: (file) async {
                   _animationController.forward();
                   final String fileUrl = await _controller.createFileUrl(file);
-                  bloc.add(AdminCreateStaffMemberEvent.avatarChanged(fileUrl));
+                  bloc.add(AdminEditStaffMemberEvent.avatarChanged(fileUrl));
                 },
               ),
             ),
@@ -153,7 +153,7 @@ class _EditStaffAvatarState extends State<EditStaffAvatar>
                 alignment: Alignment.topRight,
                 child: Tappable(
                   onTap: () => bloc.add(
-                    const AdminCreateStaffMemberEvent.avatarChanged(null),
+                    const AdminEditStaffMemberEvent.avatarChanged(null),
                   ),
                   child: Container(
                     height: 30,

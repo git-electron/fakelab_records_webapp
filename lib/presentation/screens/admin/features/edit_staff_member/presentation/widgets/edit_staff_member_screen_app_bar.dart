@@ -1,6 +1,6 @@
 import 'package:blur/blur.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +10,11 @@ class EditStaffMemberScreenAppBarMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AdminEditStaffMemberBloc bloc = context.read();
+
     return TelegramMetaWrapper(
       builder: (context, meta) {
-        return BlocBuilder<AdminCreateStaffMemberBloc,
-            AdminCreateStaffMemberState>(
+        return BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
           builder: (context, state) {
             return SliverAppBar(
               toolbarHeight: meta.totalSafeAreaInset.top,
@@ -38,7 +39,7 @@ class EditStaffMemberScreenAppBarMobile extends StatelessWidget {
                         alignment: Alignment.center,
                         height: meta.contentSafeAreaInset.top,
                         child: Text(
-                          'Добавить',
+                          bloc.staffMember.idShort,
                           style: context.styles.body1,
                         ),
                       ),

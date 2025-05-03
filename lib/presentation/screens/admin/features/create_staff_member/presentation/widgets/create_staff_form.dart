@@ -33,7 +33,6 @@ class CreateStaffForm extends StatelessWidget {
                 initialValue: bloc.state.lastName,
                 onChanged: (value) => bloc
                     .add(AdminCreateStaffMemberEvent.lastNameChanged(value)),
-                shouldAutofocus: true,
                 hintText: 'Фамилия',
                 keyboardType: TextInputType.name,
               ),
@@ -45,7 +44,6 @@ class CreateStaffForm extends StatelessWidget {
           initialValue: bloc.state.username,
           onChanged: (value) =>
               bloc.add(AdminCreateStaffMemberEvent.usernameChanged(value)),
-          shouldAutofocus: true,
           hintText: 'Псевдоним артиста',
           keyboardType: TextInputType.name,
         ),

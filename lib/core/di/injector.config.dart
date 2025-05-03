@@ -53,6 +53,8 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/order
     as _i718;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/bloc/admin_staff_filters_bloc.dart'
     as _i565;
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart'
+    as _i1021;
 import 'package:fakelab_records_webapp/presentation/screens/home/data/client/admin_panel_client.dart'
     as _i562;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/admin_panel_bloc/admin_panel_bloc.dart'
@@ -202,14 +204,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i255.AdminStaffClient>(),
         ));
-    gh.factory<_i899.AdminEditStaffMemberBloc>(
-        () => _i899.AdminEditStaffMemberBloc(
-              gh<_i352.AppRouter>(),
-              gh<_i751.Cloudinary>(),
-              gh<_i610.IdGenerator>(),
-              gh<_i330.AdminStaffBloc>(),
-              gh<_i993.AdminEditStaffMemberClient>(),
-            ));
     gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,
       _,
@@ -229,6 +223,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i522.AdminOrdersBloc>(() => _i522.AdminOrdersBloc(
           gh<_i109.UserBloc>(),
           gh<_i9.AdminOrdersClient>(),
+        ));
+    gh.factoryParam<_i899.AdminEditStaffMemberBloc, _i1021.StaffMember,
+        dynamic>((
+      staffMember,
+      _,
+    ) =>
+        _i899.AdminEditStaffMemberBloc(
+          staffMember,
+          gh<_i352.AppRouter>(),
+          gh<_i751.Cloudinary>(),
+          gh<_i610.IdGenerator>(),
+          gh<_i330.AdminStaffBloc>(),
+          gh<_i993.AdminEditStaffMemberClient>(),
         ));
     gh.factory<_i81.AdminCreateStaffMemberBloc>(
         () => _i81.AdminCreateStaffMemberBloc(

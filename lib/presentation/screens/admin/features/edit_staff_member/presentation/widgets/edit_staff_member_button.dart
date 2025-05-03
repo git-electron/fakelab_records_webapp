@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,17 +8,17 @@ class EditStaffMemberButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AdminCreateStaffMemberBloc bloc = context.read();
+    final AdminEditStaffMemberBloc bloc = context.read();
 
-    return BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
+    return BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
       builder: (context, state) {
         return AppButton.primary(
           onTap: () {
-            bloc.add(const AdminCreateStaffMemberEvent.createButtonPressed());
+            bloc.add(const AdminEditStaffMemberEvent.createButtonPressed());
           },
           isEnabled: state.canProceed,
           isLoading: state.isLoading,
-          text: 'Создать',
+          text: 'Подтвердить',
         );
       },
     );

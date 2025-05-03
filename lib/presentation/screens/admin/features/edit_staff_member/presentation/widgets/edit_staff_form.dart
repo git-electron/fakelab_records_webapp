@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +9,7 @@ class EditStaffForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AdminCreateStaffMemberBloc bloc = context.read();
+    final AdminEditStaffMemberBloc bloc = context.read();
 
     return Column(
       children: [
@@ -19,9 +19,8 @@ class EditStaffForm extends StatelessWidget {
               flex: 3,
               child: AppTextField(
                 initialValue: bloc.state.firstName,
-                onChanged: (value) => bloc
-                    .add(AdminCreateStaffMemberEvent.firstNameChanged(value)),
-                shouldAutofocus: true,
+                onChanged: (value) =>
+                    bloc.add(AdminEditStaffMemberEvent.firstNameChanged(value)),
                 hintText: 'Имя',
                 keyboardType: TextInputType.name,
               ),
@@ -31,9 +30,8 @@ class EditStaffForm extends StatelessWidget {
               flex: 4,
               child: AppTextField(
                 initialValue: bloc.state.lastName,
-                onChanged: (value) => bloc
-                    .add(AdminCreateStaffMemberEvent.lastNameChanged(value)),
-                shouldAutofocus: true,
+                onChanged: (value) =>
+                    bloc.add(AdminEditStaffMemberEvent.lastNameChanged(value)),
                 hintText: 'Фамилия',
                 keyboardType: TextInputType.name,
               ),
@@ -44,8 +42,7 @@ class EditStaffForm extends StatelessWidget {
         AppTextField(
           initialValue: bloc.state.username,
           onChanged: (value) =>
-              bloc.add(AdminCreateStaffMemberEvent.usernameChanged(value)),
-          shouldAutofocus: true,
+              bloc.add(AdminEditStaffMemberEvent.usernameChanged(value)),
           hintText: 'Псевдоним артиста',
           keyboardType: TextInputType.name,
         ),

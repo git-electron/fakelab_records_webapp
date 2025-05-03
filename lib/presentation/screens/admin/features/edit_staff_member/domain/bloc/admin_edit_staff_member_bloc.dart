@@ -25,12 +25,13 @@ part 'admin_edit_staff_member_bloc.freezed.dart';
 class AdminEditStaffMemberBloc
     extends Bloc<AdminEditStaffMemberEvent, AdminEditStaffMemberState> {
   AdminEditStaffMemberBloc(
+    @factoryParam this.staffMember,
     this.router,
     this.cloudinary,
     this.idGenerator,
     this.adminStaffBloc,
     this.adminEditStaffMemberClient,
-  ) : super(const _AdminEditStaffMemberState()) {
+  ) : super(AdminEditStaffMemberState.fromStaffMember(staffMember)) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
     on<_UsernameChanged>(_onUsernameChanged);
@@ -41,6 +42,8 @@ class AdminEditStaffMemberBloc
 
     on<_CreateButtonPressed>(_onCreateButtonPressed);
   }
+
+  final StaffMember staffMember;
 
   final AppRouter router;
   final Cloudinary cloudinary;

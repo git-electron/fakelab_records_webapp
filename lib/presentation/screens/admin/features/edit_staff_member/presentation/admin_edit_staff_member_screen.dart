@@ -2,13 +2,14 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/presentation/widgets/create_staff_properties.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/presentation/widgets/edit_staff_properties.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
+import '../domain/bloc/admin_edit_staff_member_bloc.dart';
 import 'widgets/edit_staff_avatar.dart';
 import 'widgets/edit_staff_form.dart';
 import 'widgets/edit_staff_member_button.dart';
@@ -16,12 +17,19 @@ import 'widgets/edit_staff_member_screen_app_bar.dart';
 
 @RoutePage()
 class AdminEditStaffMemberScreen extends StatelessWidget {
-  const AdminEditStaffMemberScreen({super.key});
+  const AdminEditStaffMemberScreen({
+    @PathParam('id') required this.id,
+    required this.staffMember,
+    super.key,
+  });
+
+  final String id;
+  final StaffMember staffMember;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => $<AdminCreateStaffMemberBloc>(),
+      create: (context) => $<AdminEditStaffMemberBloc>(param1: staffMember),
       child: Scaffold(
         body: CustomScrollView(
           slivers: [
@@ -60,7 +68,7 @@ class AdminEditStaffMemberScreenBody extends StatelessWidget {
             Gap(20),
             EditStaffMemberAdaptiveForm(),
             Gap(20),
-            CreateStaffProperties(),
+            EditStaffProperties(),
             Gap(20),
             EditStaffMemberButton(),
           ],
@@ -99,7 +107,7 @@ class EditStaffMemberAdaptiveForm extends StatelessWidget {
     if (isMobile) {
       return Column(
         children: [
-          BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
+          BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
             builder: (context, state) {
               return EditStaffAvatar(photoUrl: state.avatarFileUrl);
             },
@@ -111,7 +119,7 @@ class EditStaffMemberAdaptiveForm extends StatelessWidget {
     }
     return Row(
       children: [
-        BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
+        BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
           builder: (context, state) {
             return EditStaffAvatar(
               height: 150,

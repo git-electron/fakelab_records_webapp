@@ -1,6 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
@@ -33,18 +33,17 @@ class EditStaffProperties extends StatelessWidget {
   }
 
   List<Widget> _activities(BuildContext context) {
-    final AdminCreateStaffMemberBloc bloc = context.read();
+    final AdminEditStaffMemberBloc bloc = context.read();
 
     final Size size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1000;
 
     return StaffActivity.values.map((activity) {
-      return BlocBuilder<AdminCreateStaffMemberBloc,
-          AdminCreateStaffMemberState>(
+      return BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
         builder: (context, state) {
           return Tappable(
             onTap: () => bloc.add(
-              AdminCreateStaffMemberEvent.activitySelected(activity),
+              AdminEditStaffMemberEvent.activitySelected(activity),
             ),
             child: Container(
               padding: Pad(
@@ -78,18 +77,17 @@ class EditStaffProperties extends StatelessWidget {
   }
 
   List<Widget> _serviceTypes(BuildContext context) {
-    final AdminCreateStaffMemberBloc bloc = context.read();
+    final AdminEditStaffMemberBloc bloc = context.read();
 
     final Size size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1000;
 
     return StaffServiceType.values.map((service) {
-      return BlocBuilder<AdminCreateStaffMemberBloc,
-          AdminCreateStaffMemberState>(
+      return BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
         builder: (context, state) {
           return Tappable(
             onTap: () => bloc.add(
-              AdminCreateStaffMemberEvent.serviceSelected(service),
+              AdminEditStaffMemberEvent.serviceSelected(service),
             ),
             child: Container(
               padding: Pad(
