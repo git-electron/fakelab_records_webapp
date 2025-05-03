@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc/admin_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/widgets/admin_screen_content.dart';
@@ -24,8 +25,9 @@ class AdminScreen extends StatelessWidget {
           lazy: false,
           create: (context) => $<AdminBloc>(),
         ),
-        BlocProvider(create: (context) => $<AdminOrdersBloc>()),
         BlocProvider(create: (context) => $<AdminStaffBloc>()),
+        BlocProvider(create: (context) => $<AdminOrdersBloc>()),
+        BlocProvider(create: (context) => $<AdminClientsBloc>()),
       ],
       child: Scaffold(
         backgroundColor: context.colors.background,

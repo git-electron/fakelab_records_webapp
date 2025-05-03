@@ -1,6 +1,7 @@
 import 'package:fakelab_records_webapp/core/constants/constants.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_bloc/admin_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/models/admin_tab.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/presentation/admin_clients_screen.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/general/admin_general_screen.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/presentation/admin_orders_screen.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/presentation/admin_staff_screen.dart';
@@ -25,6 +26,7 @@ class AdminScreenContent extends StatelessWidget {
             key: ValueKey(selectedTab),
             child: switch (selectedTab) {
               AdminTab.general => const AdminGeneralScreen(),
+              AdminTab.clients => const AdminClientsScreen(),
               AdminTab.orders => const AdminOrdersScreen(),
               AdminTab.staff => const AdminStaffScreen(),
               _ => InDevelopmentPage(selectedTab.name, height: 500),

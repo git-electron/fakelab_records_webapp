@@ -4,7 +4,8 @@ part of 'admin_staff_bloc.dart';
 class AdminStaffState with _$AdminStaffState {
   const factory AdminStaffState.loading() = _Loading;
 
-  const factory AdminStaffState.loaded(List<StaffMember> staffMembers) = _Loaded;
+  const factory AdminStaffState.loaded(List<StaffMember> staffMembers) =
+      _Loaded;
 
   const factory AdminStaffState.error(String? message) = _Error;
 
@@ -20,7 +21,7 @@ class AdminStaffState with _$AdminStaffState {
         orElse: () => false,
       );
 
-  bool get hasOrders => maybeWhen(
+  bool get hasStaffMembers => maybeWhen(
         loaded: (staffMembers) => staffMembers.isNotEmpty,
         orElse: () => false,
       );
