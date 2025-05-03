@@ -152,6 +152,7 @@ class AdminEditStaffMemberRouteArgs {
 class AdminOrderRoute extends _i12.PageRouteInfo<AdminOrderRouteArgs> {
   AdminOrderRoute({
     required String orderId,
+    required _i13.AdminStaffBloc adminStaffBloc,
     required _i16.AdminOrdersBloc adminOrdersBloc,
     _i14.Key? key,
     List<_i12.PageRouteInfo>? children,
@@ -159,6 +160,7 @@ class AdminOrderRoute extends _i12.PageRouteInfo<AdminOrderRouteArgs> {
          AdminOrderRoute.name,
          args: AdminOrderRouteArgs(
            orderId: orderId,
+           adminStaffBloc: adminStaffBloc,
            adminOrdersBloc: adminOrdersBloc,
            key: key,
          ),
@@ -174,6 +176,7 @@ class AdminOrderRoute extends _i12.PageRouteInfo<AdminOrderRouteArgs> {
       final args = data.argsAs<AdminOrderRouteArgs>();
       return _i3.AdminOrderScreen(
         orderId: args.orderId,
+        adminStaffBloc: args.adminStaffBloc,
         adminOrdersBloc: args.adminOrdersBloc,
         key: args.key,
       );
@@ -184,11 +187,14 @@ class AdminOrderRoute extends _i12.PageRouteInfo<AdminOrderRouteArgs> {
 class AdminOrderRouteArgs {
   const AdminOrderRouteArgs({
     required this.orderId,
+    required this.adminStaffBloc,
     required this.adminOrdersBloc,
     this.key,
   });
 
   final String orderId;
+
+  final _i13.AdminStaffBloc adminStaffBloc;
 
   final _i16.AdminOrdersBloc adminOrdersBloc;
 
@@ -196,7 +202,7 @@ class AdminOrderRouteArgs {
 
   @override
   String toString() {
-    return 'AdminOrderRouteArgs{orderId: $orderId, adminOrdersBloc: $adminOrdersBloc, key: $key}';
+    return 'AdminOrderRouteArgs{orderId: $orderId, adminStaffBloc: $adminStaffBloc, adminOrdersBloc: $adminOrdersBloc, key: $key}';
   }
 }
 

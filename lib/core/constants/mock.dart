@@ -125,6 +125,7 @@ class Mock {
       dateChanged: _now.subtract(const Duration(days: 2, hours: 20)),
       totalCost: 4000,
       costFrom: false,
+      assignee: getStaffMember('5528559284548329'),
       services: [
         OrderService(
           type: OrderServiceType.MIX,
@@ -160,6 +161,7 @@ class Mock {
       dateChanged: _now.subtract(const Duration(days: 4)),
       totalCost: 3000,
       costFrom: false,
+      assignee: getStaffMember('5528559284548329'),
       services: [
         OrderService(
           type: OrderServiceType.MIX,
@@ -223,6 +225,7 @@ class Mock {
           costFrom: false,
         ),
       ],
+      assignee: getStaffMember('5528559284548329'),
       rating: Rating(
         rating: 5,
         comment: 'Заебись!!!',
@@ -251,6 +254,7 @@ class Mock {
       dateChanged: _now.subtract(const Duration(days: 28, hours: 23)),
       totalCost: 10000,
       costFrom: false,
+      assignee: getStaffMember('5588028127449327'),
       services: [
         OrderService(
           type: OrderServiceType.BEAT,
@@ -314,6 +318,7 @@ class Mock {
           costFrom: false,
         ),
       ],
+      assignee: getStaffMember('5528559284548329'),
       rating: Rating(
         rating: 3,
         comment: 'Ну такое',
@@ -332,6 +337,8 @@ class Mock {
       username: 'raimee',
       activities: StaffActivity.values,
       services: StaffServiceType.values,
+      photoUrl:
+          'https://res.cloudinary.com/dnuyv9y5b/image/upload/v1746295149/5511812453545000.jpg',
     ),
     StaffMember(
       id: '5588028127449327',

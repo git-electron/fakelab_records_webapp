@@ -16,8 +16,11 @@ class AppDropdownDialog<T> extends StatelessWidget {
     this.description,
     this.initialValue,
     required this.items,
+    this.searchHintText,
+    this.searchMatchFn,
     this.menuItemBuilder,
     this.selectedItemBuilder,
+    this.isSearchEnabled = false,
     super.key,
   });
 
@@ -25,10 +28,13 @@ class AppDropdownDialog<T> extends StatelessWidget {
   final T? initialValue;
   final String? hintText;
   final String? description;
+  final bool isSearchEnabled;
+  final String? searchHintText;
 
   final List<DropdownButtonItem<T>> items;
   final Widget Function(DropdownButtonItem<T>)? menuItemBuilder;
   final Widget Function(DropdownButtonItem<T>)? selectedItemBuilder;
+  final bool Function(DropdownMenuItem<T>, String)? searchMatchFn;
 
   static Future<T?> show<T>(
     BuildContext context, {
@@ -37,8 +43,11 @@ class AppDropdownDialog<T> extends StatelessWidget {
     T? initialValue,
     String? hintText,
     String? description,
+    String? searchHintText,
+    bool isSearchEnabled = false,
     Widget Function(DropdownButtonItem<T>)? menuItemBuilder,
     Widget Function(DropdownButtonItem<T>)? selectedItemBuilder,
+    bool Function(DropdownMenuItem<T>, String)? searchMatchFn,
   }) async {
     return await showDialog<T?>(
       context: context,
@@ -49,7 +58,10 @@ class AppDropdownDialog<T> extends StatelessWidget {
           hintText: hintText,
           description: description,
           initialValue: initialValue,
+          searchHintText: searchHintText,
+          searchMatchFn: searchMatchFn,
           menuItemBuilder: menuItemBuilder,
+          isSearchEnabled: isSearchEnabled,
           selectedItemBuilder: selectedItemBuilder,
         ),
       ),
@@ -88,6 +100,9 @@ class AppDropdownDialog<T> extends StatelessWidget {
             items: items,
             hintText: hintText,
             initialValue: initialValue,
+            searchHintText: searchHintText,
+            isSearchEnabled: isSearchEnabled,
+            searchMatchFn: searchMatchFn,
             onChanged: (value) => _selectedItem.value = value,
             menuItemBuilder: menuItemBuilder,
             selectedItemBuilder: selectedItemBuilder,

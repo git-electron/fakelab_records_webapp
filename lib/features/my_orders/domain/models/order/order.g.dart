@@ -28,6 +28,9 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       rating: json['rating'] == null
           ? null
           : Rating.fromJson(json['rating'] as Map<String, dynamic>),
+      assignee: json['assignee'] == null
+          ? null
+          : StaffMember.fromJson(json['assignee'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
@@ -44,6 +47,7 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
       'filters': instance.filters.toJson(),
       'services': instance.services.map((e) => e.toJson()).toList(),
       'rating': instance.rating?.toJson(),
+      'assignee': instance.assignee?.toJson(),
     };
 
 const _$OrderTypeEnumMap = {

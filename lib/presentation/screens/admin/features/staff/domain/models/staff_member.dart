@@ -1,4 +1,5 @@
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'staff_activity.dart';
@@ -28,5 +29,11 @@ class StaffMember with _$StaffMember {
 
   String get fullName {
     return '$firstName${lastName.isNotNullAndEmpty ? ' $lastName' : ''}';
+  }
+
+  bool canAssign(Order order) {
+    return order.services.every(
+      (service) => services.map((s) => s.type).contains(service.type),
+    );
   }
 }

@@ -17,6 +17,7 @@ class AppTextField extends StatelessWidget {
     this.initialValue,
     this.keyboardType,
     this.inputFormatters,
+    this.backgroundColor,
     this.shouldAutofocus = false,
     TextEditingController? controller,
   }) {
@@ -27,6 +28,7 @@ class AppTextField extends StatelessWidget {
   final String? hintText;
   final String? initialValue;
   final bool shouldAutofocus;
+  final Color? backgroundColor;
   final SvgGenImage? prefixIcon;
   final TextInputType? keyboardType;
   final void Function(String value)? onChanged;
@@ -41,7 +43,7 @@ class AppTextField extends StatelessWidget {
       width: double.maxFinite,
       padding: const Pad(horizontal: 15),
       decoration: ShapeDecoration(
-        color: context.colors.card,
+        color: backgroundColor ?? context.colors.card,
         shape: SmoothRectangleBorder(
           borderRadius: SmoothBorderRadius(
             cornerSmoothing: 0.6,

@@ -9,7 +9,6 @@ import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -23,15 +22,14 @@ class AdminOrderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AdminOrdersBloc bloc = context.read();
-
     final Size size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1000;
 
     return Tappable(
       onTap: () => context.pushRoute(AdminOrderRoute(
         orderId: order.id,
-        adminOrdersBloc: bloc,
+        adminStaffBloc: context.read(),
+        adminOrdersBloc: context.read(),
       )),
       child: Stack(
         clipBehavior: Clip.none,

@@ -1,4 +1,5 @@
 import 'package:fakelab_records_webapp/core/converters/date_time_converter.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/domain/models/rating/rating.dart';
@@ -27,6 +28,7 @@ class Order with _$Order {
     required OrderFilters filters,
     required List<OrderService> services,
     Rating? rating,
+    StaffMember? assignee,
   }) = _Order;
 
   Order._();
