@@ -21,6 +21,8 @@ import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart
 import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart'
     as _i435;
 import 'package:fakelab_records_webapp/core/router/router.dart' as _i352;
+import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart'
+    as _i610;
 import 'package:fakelab_records_webapp/features/my_orders/data/client/orders_client.dart'
     as _i652;
 import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart'
@@ -35,6 +37,8 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/ad
     as _i522;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart'
     as _i330;
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/client/admin_create_staff_member_client.dart'
+    as _i993;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart'
     as _i81;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/client/admin_order_client.dart'
@@ -94,6 +98,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
+    gh.factory<_i610.IdGenerator>(() => _i610.IdGenerator());
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
@@ -133,6 +138,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
+    gh.factory<_i993.AdminCreateStaffMemberClient>(
+        () => _i993.AdminCreateStaffMemberClient(
+              gh<_i345.DatabaseReference>(),
+              gh<_i974.Logger>(),
+            ));
     gh.factory<_i869.AdminBloc>(() => _i869.AdminBloc(
           gh<_i435.TelegramService>(),
           gh<_i133.TelegramDataBloc>(),
@@ -183,8 +193,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i255.AdminStaffClient>(),
         ));
-    gh.factory<_i81.AdminCreateStaffMemberBloc>(
-        () => _i81.AdminCreateStaffMemberBloc(gh<_i330.AdminStaffBloc>()));
     gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,
       _,
@@ -205,6 +213,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i9.AdminOrdersClient>(),
         ));
+    gh.factory<_i81.AdminCreateStaffMemberBloc>(
+        () => _i81.AdminCreateStaffMemberBloc(
+              gh<_i352.AppRouter>(),
+              gh<_i751.Cloudinary>(),
+              gh<_i610.IdGenerator>(),
+              gh<_i330.AdminStaffBloc>(),
+              gh<_i993.AdminCreateStaffMemberClient>(),
+            ));
     return this;
   }
 }

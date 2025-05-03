@@ -8,10 +8,14 @@ class CreateStaffMemberButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AdminCreateStaffMemberBloc bloc = context.read();
+
     return BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
       builder: (context, state) {
         return AppButton.primary(
-          onTap: () {},
+          onTap: () {
+            bloc.add(const AdminCreateStaffMemberEvent.createButtonPressed());
+          },
           isEnabled: state.canProceed,
           isLoading: state.isLoading,
           text: 'Создать',

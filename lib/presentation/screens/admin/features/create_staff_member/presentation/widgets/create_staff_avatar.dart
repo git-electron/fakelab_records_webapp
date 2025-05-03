@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
@@ -70,11 +72,15 @@ class _CreateStaffAvatarState extends State<CreateStaffAvatar>
         onTap: () async {
           final List files = await _controller.pickFiles();
           if (files.isEmpty) return;
-          
+
           final file = files.first;
           _animationController.forward();
           final String fileUrl = await _controller.createFileUrl(file);
           bloc.add(AdminCreateStaffMemberEvent.avatarChanged(fileUrl));
+          final Uint8List fileContent = await _controller.getFileData(file);
+          bloc.add(
+            AdminCreateStaffMemberEvent.avatarContentChanged(fileContent),
+          );
         },
         child: Stack(
           alignment: Alignment.center,

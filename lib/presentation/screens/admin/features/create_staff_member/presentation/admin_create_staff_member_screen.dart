@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/presentation/widgets/create_staff_properties.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,6 +60,7 @@ class AdminCreateStaffMemberScreenBody extends StatelessWidget {
             Gap(20),
             CreateStaffMemberAdaptiveForm(),
             Gap(20),
+            CreateStaffProperties(),
             Gap(20),
             CreateStaffMemberButton(),
           ],
