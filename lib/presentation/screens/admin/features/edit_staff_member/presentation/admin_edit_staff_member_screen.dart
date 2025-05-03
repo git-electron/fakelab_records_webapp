@@ -93,7 +93,7 @@ class EditStaffMemberHeader extends StatelessWidget {
       width: double.maxFinite,
       color: context.colors.background,
       child: Text(
-        'Ретактировать сотрудника',
+        'Редактировать сотрудника',
         style: context.styles.subtitle1.copyWith(
           color: context.colors.title,
         ),
@@ -123,20 +123,23 @@ class EditStaffMemberAdaptiveForm extends StatelessWidget {
         ],
       );
     }
-    return Row(
-      children: [
-        BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
-          builder: (context, state) {
-            return EditStaffAvatar(
-              height: 150,
-              width: 150,
-              photoUrl: state.avatarFileUrl,
-            );
-          },
-        ),
-        const Gap(20),
-        const Expanded(child: EditStaffForm()),
-      ],
+    return Padding(
+      padding: const Pad(top: 60),
+      child: Row(
+        children: [
+          BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
+            builder: (context, state) {
+              return EditStaffAvatar(
+                height: 150,
+                width: 150,
+                photoUrl: state.avatarFileUrl,
+              );
+            },
+          ),
+          const Gap(20),
+          const Expanded(child: EditStaffForm()),
+        ],
+      ),
     );
   }
 }

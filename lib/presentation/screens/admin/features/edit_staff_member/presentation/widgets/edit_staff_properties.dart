@@ -17,11 +17,16 @@ class EditStaffProperties extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const Gap(20),
+        Text('Род деятельности', style: context.styles.subtitle3),
+        const Gap(20),
         Wrap(
           spacing: 5,
           runSpacing: 5,
           children: _activities(context),
         ),
+        const Gap(20),
+        Text('Услуги', style: context.styles.subtitle3),
         const Gap(20),
         Wrap(
           spacing: 5,
