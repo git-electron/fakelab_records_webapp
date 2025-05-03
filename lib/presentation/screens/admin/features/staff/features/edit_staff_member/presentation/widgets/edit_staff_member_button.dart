@@ -1,6 +1,6 @@
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_confirmation_dialog/app_confirmation_dialog.dart';
 import 'package:flutter/material.dart';

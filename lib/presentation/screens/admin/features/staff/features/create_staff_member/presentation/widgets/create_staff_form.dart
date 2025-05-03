@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

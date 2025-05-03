@@ -14,9 +14,9 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/ad
     as _i16;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart'
     as _i13;
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/presentation/admin_create_staff_member_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/create_staff_member/presentation/admin_create_staff_member_screen.dart'
     as _i1;
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/presentation/admin_edit_staff_member_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/presentation/admin_edit_staff_member_screen.dart'
     as _i2;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/presentation/admin_order_screen.dart'
     as _i3;

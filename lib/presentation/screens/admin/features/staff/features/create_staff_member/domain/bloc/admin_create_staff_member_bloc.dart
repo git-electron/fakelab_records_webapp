@@ -7,7 +7,7 @@ import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:fakelab_records_webapp/core/router/router.dart';
 import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/client/admin_create_staff_member_client.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/create_staff_member/client/admin_create_staff_member_client.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';

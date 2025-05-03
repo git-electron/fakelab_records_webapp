@@ -3,44 +3,50 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/presentation/widgets/create_staff_properties.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/presentation/widgets/edit_staff_properties.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-import 'widgets/create_staff_avatar.dart';
-import 'widgets/create_staff_form.dart';
-import 'widgets/create_staff_member_button.dart';
-import 'widgets/create_staff_member_screen_app_bar.dart';
+import '../domain/bloc/admin_edit_staff_member_bloc.dart';
+import 'widgets/edit_staff_avatar.dart';
+import 'widgets/edit_staff_form.dart';
+import 'widgets/edit_staff_member_button.dart';
+import 'widgets/edit_staff_member_screen_app_bar.dart';
 
 @RoutePage()
-class AdminCreateStaffMemberScreen extends StatelessWidget {
-  const AdminCreateStaffMemberScreen({
+class AdminEditStaffMemberScreen extends StatelessWidget {
+  const AdminEditStaffMemberScreen({
+    @PathParam('id') required this.id,
+    required this.staffMember,
     required this.adminStaffBloc,
     super.key,
   });
 
+  final String id;
+  final StaffMember staffMember;
   final AdminStaffBloc adminStaffBloc;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => $<AdminCreateStaffMemberBloc>(
-        param1: adminStaffBloc,
+      create: (context) => $<AdminEditStaffMemberBloc>(
+        param1: staffMember,
+        param2: adminStaffBloc,
       ),
       child: Scaffold(
         body: CustomScrollView(
           slivers: [
             TelegramMetaWrapper(builder: (context, meta) {
               if (meta.isMobile) {
-                return const CreateStaffMemberScreenAppBarMobile();
+                return const EditStaffMemberScreenAppBarMobile();
               }
               return const SliverToBoxAdapter();
             }),
             const SliverToBoxAdapter(
-              child: AdminCreateStaffMemberScreenBody(),
+              child: AdminEditStaffMemberScreenBody(),
             ),
           ],
         ),
@@ -49,8 +55,8 @@ class AdminCreateStaffMemberScreen extends StatelessWidget {
   }
 }
 
-class AdminCreateStaffMemberScreenBody extends StatelessWidget {
-  const AdminCreateStaffMemberScreenBody({super.key});
+class AdminEditStaffMemberScreenBody extends StatelessWidget {
+  const AdminEditStaffMemberScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,13 +70,13 @@ class AdminCreateStaffMemberScreenBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Gap(20),
-            CreateStaffMemberHeader(),
+            EditStaffMemberHeader(),
             Gap(20),
-            CreateStaffMemberAdaptiveForm(),
+            EditStaffMemberAdaptiveForm(),
             Gap(20),
-            CreateStaffProperties(),
+            EditStaffProperties(),
             Gap(20),
-            CreateStaffMemberButton(),
+            EditStaffMemberButtons(),
           ],
         ),
       ),
@@ -78,8 +84,8 @@ class AdminCreateStaffMemberScreenBody extends StatelessWidget {
   }
 }
 
-class CreateStaffMemberHeader extends StatelessWidget {
-  const CreateStaffMemberHeader({super.key});
+class EditStaffMemberHeader extends StatelessWidget {
+  const EditStaffMemberHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +93,7 @@ class CreateStaffMemberHeader extends StatelessWidget {
       width: double.maxFinite,
       color: context.colors.background,
       child: Text(
-        'Добавить сотрудника',
+        'Редактировать сотрудника',
         style: context.styles.subtitle1.copyWith(
           color: context.colors.title,
         ),
@@ -96,8 +102,8 @@ class CreateStaffMemberHeader extends StatelessWidget {
   }
 }
 
-class CreateStaffMemberAdaptiveForm extends StatelessWidget {
-  const CreateStaffMemberAdaptiveForm({super.key});
+class EditStaffMemberAdaptiveForm extends StatelessWidget {
+  const EditStaffMemberAdaptiveForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -107,13 +113,13 @@ class CreateStaffMemberAdaptiveForm extends StatelessWidget {
     if (isMobile) {
       return Column(
         children: [
-          BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
+          BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
             builder: (context, state) {
-              return CreateStaffAvatar(photoUrl: state.avatarFileUrl);
+              return EditStaffAvatar(photoUrl: state.avatarFileUrl);
             },
           ),
           const Gap(20),
-          const CreateStaffForm(),
+          const EditStaffForm(),
         ],
       );
     }
@@ -121,9 +127,9 @@ class CreateStaffMemberAdaptiveForm extends StatelessWidget {
       padding: const Pad(top: 60),
       child: Row(
         children: [
-          BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
+          BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
             builder: (context, state) {
-              return CreateStaffAvatar(
+              return EditStaffAvatar(
                 height: 150,
                 width: 150,
                 photoUrl: state.avatarFileUrl,
@@ -131,7 +137,7 @@ class CreateStaffMemberAdaptiveForm extends StatelessWidget {
             },
           ),
           const Gap(20),
-          const Expanded(child: CreateStaffForm()),
+          const Expanded(child: EditStaffForm()),
         ],
       ),
     );

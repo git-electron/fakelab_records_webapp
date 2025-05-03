@@ -37,13 +37,13 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/ad
     as _i522;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart'
     as _i330;
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/client/admin_create_staff_member_client.dart'
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/create_staff_member/client/admin_create_staff_member_client.dart'
     as _i993;
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart'
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart'
     as _i81;
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/client/admin_edit_staff_member_client.dart'
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/client/admin_edit_staff_member_client.dart'
     as _i363;
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart'
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart'
     as _i899;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/client/admin_order_client.dart'
     as _i310;
