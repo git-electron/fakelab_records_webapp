@@ -314,7 +314,7 @@ class __$$AdminStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AdminStateImpl extends _AdminState {
-  const _$AdminStateImpl({this.selectedTab = AdminTab.staff}) : super._();
+  const _$AdminStateImpl({this.selectedTab = AdminTab.general}) : super._();
 
   @override
   @JsonKey()
