@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:collection/collection.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fakelab_records_webapp/core/constants/constants.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_text_field.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import '../../core/extensions/color_extensions.dart';
 import '../../core/gen/assets.gen.dart';
@@ -14,15 +15,21 @@ class AppDropdownButton<T> extends StatefulWidget {
     required this.onChanged,
     this.hintText,
     this.initialValue,
+    this.searchMatchFn,
+    this.searchHintText,
     this.menuItemBuilder,
     this.selectedItemBuilder,
+    this.isSearchEnabled = false,
     super.key,
   });
 
   final T? initialValue;
   final String? hintText;
+  final bool isSearchEnabled;
+  final String? searchHintText;
   final List<DropdownButtonItem<T>> items;
   final void Function(T? value) onChanged;
+  final bool Function(DropdownMenuItem<T>, String)? searchMatchFn;
   final Widget Function(DropdownButtonItem<T> item)? menuItemBuilder;
   final Widget Function(DropdownButtonItem<T> item)? selectedItemBuilder;
 
@@ -35,6 +42,7 @@ class _AppDropdownButtonState<T> extends State<AppDropdownButton<T>>
   late DropdownButtonItem<T>? _selectedItem = widget.items
       .firstWhereOrNull((item) => item.value == widget.initialValue);
 
+  late final TextEditingController _controller = TextEditingController();
   late final AnimationController _arrowAnimationController =
       AnimationController(
     vsync: this,
@@ -58,11 +66,33 @@ class _AppDropdownButtonState<T> extends State<AppDropdownButton<T>>
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
-      child: DropdownButton2(
+      child: DropdownButton2<T>(
         isDense: true,
         enableFeedback: false,
         items: _buildItems(widget.items, _selectedItem),
-        value: _selectedItem?.title,
+        value: _selectedItem?.value,
+        dropdownSearchData: widget.isSearchEnabled
+            ? DropdownSearchData<T>(
+                searchInnerWidgetHeight: 50,
+                searchController: _controller,
+                searchInnerWidget: Padding(
+                  padding: const Pad(all: 15),
+                  child: AppTextField(
+                    controller: _controller,
+                    hintText: widget.searchHintText,
+                    prefixIcon: Assets.icons.search.light,
+                    backgroundColor: context.colors.background,
+                  ),
+                ),
+                searchMatchFn: widget.searchMatchFn ??
+                    (item, searchValue) {
+                      return item.value
+                          .toString()
+                          .toLowerCase()
+                          .contains(searchValue.toLowerCase());
+                    },
+              )
+            : null,
 
         // buttons
         customButton: Tappable(
@@ -147,7 +177,7 @@ class _AppDropdownButtonState<T> extends State<AppDropdownButton<T>>
         // on
         onChanged: (value) {
           final item = widget.items.firstWhereOrNull(
-            (e) => e.title == value,
+            (e) => e.value == value,
           );
           widget.onChanged(item?.value);
           setState(() => _selectedItem = item);
@@ -164,13 +194,13 @@ class _AppDropdownButtonState<T> extends State<AppDropdownButton<T>>
     );
   }
 
-  List<DropdownMenuItem<String>> _buildItems(
+  List<DropdownMenuItem<T>> _buildItems(
     List<DropdownButtonItem<T>> items,
     DropdownButtonItem<T>? selectedValue,
   ) {
     return items.map((item) {
-      return DropdownMenuItem<String>(
-          value: item.title,
+      return DropdownMenuItem<T>(
+          value: item.value,
           child: Tappable(
             shouldIgnoreIfOnTapIsNull: false,
             child: Container(

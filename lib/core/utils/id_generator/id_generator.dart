@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -7,6 +9,6 @@ class IdGenerator {
     final DateTime now = DateTime.now();
 
     final int microseconds = future.difference(now).inMicroseconds;
-    return '$microseconds';
+    return '${microseconds + Random().nextInt(1000)}';
   }
 }

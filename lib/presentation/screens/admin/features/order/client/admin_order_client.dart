@@ -8,6 +8,7 @@ import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/or
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
 import 'package:fakelab_records_webapp/main.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart' hide Order;
@@ -58,6 +59,7 @@ Data: $json''');
     String? message,
     double? totalCost,
     OrderStatus? status,
+    StaffMember? assignee,
   }) async {
     if (isDevelopment) {
       final Order? mockOrder = Mock.getOrder(order.id);
@@ -66,6 +68,7 @@ Data: $json''');
           mockOrder,
           status: status,
           message: message,
+          assignee: assignee,
           totalCost: totalCost,
         ));
       } else {
@@ -78,6 +81,7 @@ Data: $json''');
         order,
         status: status,
         message: message,
+        assignee: assignee,
         totalCost: totalCost,
       );
 
@@ -98,9 +102,10 @@ Data: $updatedOrder''');
 
   Order _updateOrderInfo(
     Order order, {
-    OrderStatus? status,
-    double? totalCost,
     String? message,
+    double? totalCost,
+    OrderStatus? status,
+    StaffMember? assignee,
   }) {
     final DateTime now = DateTime.now();
 
@@ -111,6 +116,7 @@ Data: $updatedOrder''');
       dateChanged: now,
       costFrom: costFrom,
       totalCost: totalCost ?? order.totalCost,
+      assignee: assignee ?? order.assignee,
       services: totalCost != null
           ? order.services.map((service) {
               if (service.type.costFrom) {

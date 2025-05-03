@@ -4,6 +4,7 @@ import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/or
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/client/admin_order_client.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart' hide Order;
@@ -24,6 +25,7 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
     on<_SetError>(_onSetError);
 
     on<_UpdateOrderStatus>(_onUpdateOrderStatus);
+    on<_UpdateOrderAssignee>(_onUpdateOrderAssignee);
     on<_UpdateOrderTotalCost>(_onUpdateOrderTotalCost);
 
     tryOrNullAsync(_getOrder);
@@ -65,6 +67,13 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
         ));
   }
 
+  Future<void> _onUpdateOrderAssignee(
+    _UpdateOrderAssignee event,
+    Emitter<AdminOrderState> emit,
+  ) async {
+    tryOrNullAsync(() => _updateOrder(assignee: event.assignee));
+  }
+
   Future<void> _onUpdateOrderTotalCost(
     _UpdateOrderTotalCost event,
     Emitter<AdminOrderState> emit,
@@ -82,16 +91,18 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
   }
 
   Future<void> _updateOrder({
-    OrderStatus? status,
-    double? totalCost,
     String? message,
+    double? totalCost,
+    OrderStatus? status,
+    StaffMember? assignee,
   }) async {
     add(const AdminOrderEvent.setLoading());
     final Result<Order> result = await adminOrderClient.updateOrder(
       state.order!,
       status: status,
-      totalCost: totalCost,
       message: message,
+      assignee: assignee,
+      totalCost: totalCost,
     );
     result.when(
       success: (updatedOrder) {

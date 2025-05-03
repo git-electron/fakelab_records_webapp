@@ -8,12 +8,15 @@ import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_confirmation_dialog/app_confirmation_dialog.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_dialog/app_dropdown_dialog.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_text_field_dialog/app_text_field_dialog.dart';
+import 'package:fakelab_records_webapp/presentation/ui/avatar/avatar.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -448,10 +451,56 @@ class AllActions extends StatelessWidget {
                     text: 'Изменить стоимость',
                   ),
                   const Gap(5),
-                  AppButton.primary(
-                    onTap: () {},
-                    icon: Assets.icons.user.dark,
-                    text: 'Изменить исполнителя',
+                  BlocBuilder<AdminStaffBloc, AdminStaffState>(
+                    builder: (context, state) {
+                      return AppButton.primary(
+                        onTap: () => AppDropdownDialog.show<StaffMember>(
+                          context,
+                          title: 'Изменить исполнителя',
+                          hintText: 'Исполнитель заказа',
+                          description: 'Укажи нового исполнителя заказа',
+                          isSearchEnabled: true,
+                          searchHintText: 'Поиск по имени / псевдониму',
+                          initialValue: order.assignee,
+                          menuItemBuilder: (item) =>
+                              _orderAssigneeMenuItemBuilder(context, item),
+                          selectedItemBuilder: (item) =>
+                              _orderAssigneeSelectedItemBuilder(context, item),
+                          searchMatchFn: (item, searchQuery) {
+                            bool isProperFullName = true;
+                            bool isProperUsername = true;
+
+                            if (item.value != null) {
+                              isProperFullName = item.value!.fullName
+                                  .toLowerCase()
+                                  .contains(searchQuery.toLowerCase());
+
+                              isProperUsername = item.value!.username
+                                      ?.toLowerCase()
+                                      .contains(searchQuery.toLowerCase()) ??
+                                  false;
+                            }
+
+                            return isProperFullName || isProperUsername;
+                          },
+                          items: state.staffMembers!
+                              .map((staffMember) => DropdownButtonItem(
+                                    title: staffMember.fullName,
+                                    value: staffMember,
+                                  ))
+                              .toList(),
+                        ).then((staffMember) {
+                          if (staffMember != null &&
+                              staffMember != order.assignee) {
+                            bloc.add(
+                              AdminOrderEvent.updateOrderAssignee(staffMember),
+                            );
+                          }
+                        }),
+                        icon: Assets.icons.user.dark,
+                        text: 'Изменить исполнителя',
+                      );
+                    },
                   ),
                   const Gap(5),
                   AppButton(
@@ -527,6 +576,52 @@ class AllActions extends StatelessWidget {
           ),
         ),
         const Gap(10),
+        Text(
+          item.title,
+          style: context.styles.body2,
+        ),
+      ],
+    );
+  }
+
+  Widget _orderAssigneeMenuItemBuilder(
+    BuildContext context,
+    DropdownButtonItem<StaffMember> item,
+  ) {
+    return Row(
+      children: [
+        if (item.value.photoUrl.isNotNullAndEmpty)
+          Padding(
+            padding: const Pad(right: 10),
+            child: Avatar(
+              photoUrl: item.value.photoUrl!,
+              size: 30,
+            ),
+          ),
+        Text(
+          item.title,
+          style: context.styles.footer1.copyWith(
+            color: context.colors.onBackground,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _orderAssigneeSelectedItemBuilder(
+    BuildContext context,
+    DropdownButtonItem<StaffMember> item,
+  ) {
+    return Row(
+      children: [
+        if (item.value.photoUrl.isNotNullAndEmpty)
+          Padding(
+            padding: const Pad(right: 10),
+            child: Avatar(
+              photoUrl: item.value.photoUrl!,
+              size: 30,
+            ),
+          ),
         Text(
           item.title,
           style: context.styles.body2,

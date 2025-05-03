@@ -65,7 +65,7 @@ class AdminStaffFilters extends StatelessWidget {
     final AdminStaffFiltersBloc bloc = context.read();
 
     return AppTextField(
-      hintText: 'Поиск по имени / юзернейму',
+      hintText: 'Поиск по имени / псевдониму',
       prefixIcon: Assets.icons.search.light,
       onChanged: (value) => bloc.add(
         AdminStaffFiltersEvent.searchQueryChanged(value),

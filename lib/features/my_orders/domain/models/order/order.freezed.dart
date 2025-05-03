@@ -35,6 +35,7 @@ mixin _$Order {
   OrderFilters get filters => throw _privateConstructorUsedError;
   List<OrderService> get services => throw _privateConstructorUsedError;
   Rating? get rating => throw _privateConstructorUsedError;
+  StaffMember? get assignee => throw _privateConstructorUsedError;
 
   /// Serializes this Order to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -62,11 +63,13 @@ abstract class $OrderCopyWith<$Res> {
       bool costFrom,
       OrderFilters filters,
       List<OrderService> services,
-      Rating? rating});
+      Rating? rating,
+      StaffMember? assignee});
 
   $UserCopyWith<$Res> get customer;
   $OrderFiltersCopyWith<$Res> get filters;
   $RatingCopyWith<$Res>? get rating;
+  $StaffMemberCopyWith<$Res>? get assignee;
 }
 
 /// @nodoc
@@ -96,6 +99,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? filters = null,
     Object? services = null,
     Object? rating = freezed,
+    Object? assignee = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -146,6 +150,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as Rating?,
+      assignee: freezed == assignee
+          ? _value.assignee
+          : assignee // ignore: cast_nullable_to_non_nullable
+              as StaffMember?,
     ) as $Val);
   }
 
@@ -182,6 +190,20 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       return _then(_value.copyWith(rating: value) as $Val);
     });
   }
+
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StaffMemberCopyWith<$Res>? get assignee {
+    if (_value.assignee == null) {
+      return null;
+    }
+
+    return $StaffMemberCopyWith<$Res>(_value.assignee!, (value) {
+      return _then(_value.copyWith(assignee: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -203,7 +225,8 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       bool costFrom,
       OrderFilters filters,
       List<OrderService> services,
-      Rating? rating});
+      Rating? rating,
+      StaffMember? assignee});
 
   @override
   $UserCopyWith<$Res> get customer;
@@ -211,6 +234,8 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
   $OrderFiltersCopyWith<$Res> get filters;
   @override
   $RatingCopyWith<$Res>? get rating;
+  @override
+  $StaffMemberCopyWith<$Res>? get assignee;
 }
 
 /// @nodoc
@@ -238,6 +263,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? filters = null,
     Object? services = null,
     Object? rating = freezed,
+    Object? assignee = freezed,
   }) {
     return _then(_$OrderImpl(
       id: null == id
@@ -288,6 +314,10 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as Rating?,
+      assignee: freezed == assignee
+          ? _value.assignee
+          : assignee // ignore: cast_nullable_to_non_nullable
+              as StaffMember?,
     ));
   }
 }
@@ -307,7 +337,8 @@ class _$OrderImpl extends _Order {
       required this.costFrom,
       required this.filters,
       required final List<OrderService> services,
-      this.rating})
+      this.rating,
+      this.assignee})
       : _statusHistory = statusHistory,
         _services = services,
         super._();
@@ -353,10 +384,12 @@ class _$OrderImpl extends _Order {
 
   @override
   final Rating? rating;
+  @override
+  final StaffMember? assignee;
 
   @override
   String toString() {
-    return 'Order(id: $id, customer: $customer, type: $type, status: $status, statusHistory: $statusHistory, dateCreated: $dateCreated, dateChanged: $dateChanged, totalCost: $totalCost, costFrom: $costFrom, filters: $filters, services: $services, rating: $rating)';
+    return 'Order(id: $id, customer: $customer, type: $type, status: $status, statusHistory: $statusHistory, dateCreated: $dateCreated, dateChanged: $dateChanged, totalCost: $totalCost, costFrom: $costFrom, filters: $filters, services: $services, rating: $rating, assignee: $assignee)';
   }
 
   @override
@@ -381,7 +414,9 @@ class _$OrderImpl extends _Order {
                 other.costFrom == costFrom) &&
             (identical(other.filters, filters) || other.filters == filters) &&
             const DeepCollectionEquality().equals(other._services, _services) &&
-            (identical(other.rating, rating) || other.rating == rating));
+            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.assignee, assignee) ||
+                other.assignee == assignee));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -399,7 +434,8 @@ class _$OrderImpl extends _Order {
       costFrom,
       filters,
       const DeepCollectionEquality().hash(_services),
-      rating);
+      rating,
+      assignee);
 
   /// Create a copy of Order
   /// with the given fields replaced by the non-null parameter values.
@@ -430,7 +466,8 @@ abstract class _Order extends Order {
       required final bool costFrom,
       required final OrderFilters filters,
       required final List<OrderService> services,
-      final Rating? rating}) = _$OrderImpl;
+      final Rating? rating,
+      final StaffMember? assignee}) = _$OrderImpl;
   _Order._() : super._();
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
@@ -461,6 +498,8 @@ abstract class _Order extends Order {
   List<OrderService> get services;
   @override
   Rating? get rating;
+  @override
+  StaffMember? get assignee;
 
   /// Create a copy of Order
   /// with the given fields replaced by the non-null parameter values.
