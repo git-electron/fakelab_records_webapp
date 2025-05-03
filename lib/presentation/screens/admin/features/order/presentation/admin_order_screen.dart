@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
+import 'widgets/admin_order_screen_assignee_info.dart';
 import 'widgets/admin_order_screen_info.dart';
 import 'widgets/admin_order_screen_services.dart';
 import 'widgets/admin_order_screen_status_history.dart';
@@ -87,6 +88,7 @@ class AdminOrderScreenBody extends StatelessWidget {
             AdminOrderScreenInfo(),
             Gap(10),
             AdminOrderScreenCustomerInfo(),
+            AdminOrderScreenAssigneeInfo(),
             Gap(10),
             AdminOrderScreenServices(),
             Gap(10),

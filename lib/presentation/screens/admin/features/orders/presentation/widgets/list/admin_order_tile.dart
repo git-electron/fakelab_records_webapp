@@ -9,6 +9,8 @@ import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
+import 'package:fakelab_records_webapp/presentation/ui/avatar/avatar.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -79,6 +81,7 @@ class AdminOrderTile extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    OrderTileAssignee(order.assignee),
                     const Gap(15),
                     Expanded(
                       child: OrderTilePropertyTextSpan(
@@ -240,6 +243,65 @@ class OrderTilePropertyTextSpan extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  TextStyle _footer(BuildContext context, {required bool isMobile}) =>
+      isMobile ? context.styles.footer3 : context.styles.footer1;
+}
+
+class OrderTileAssignee extends StatelessWidget {
+  const OrderTileAssignee(
+    this.assignee, {
+    super.key,
+  });
+
+  final StaffMember? assignee;
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final bool isMobile = size.width < 1000;
+
+    if (isMobile) return const SizedBox();
+    if (assignee == null) return const Expanded(child: SizedBox());
+
+    return Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          if (assignee!.photoUrl.isNotNullAndEmpty)
+            Padding(
+              padding: const Pad(right: 10),
+              child: Avatar(
+                photoUrl: assignee!.photoUrl!,
+                size: isMobile ? 20 : 30,
+              ),
+            ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  assignee!.fullName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: _footer(context, isMobile: isMobile)
+                      .copyWith(color: context.colors.body),
+                ),
+                if (assignee!.username.isNotNullAndEmpty)
+                  Text(
+                    assignee!.username!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: _footer(context, isMobile: isMobile),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

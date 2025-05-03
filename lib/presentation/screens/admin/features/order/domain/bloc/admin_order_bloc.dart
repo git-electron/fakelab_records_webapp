@@ -63,6 +63,7 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
     tryOrNullAsync(() => _updateOrder(
           status: event.status,
           message: event.message,
+          assignee: event.assignee,
           totalCost: event.totalCost,
         ));
   }

@@ -21,8 +21,8 @@ mixin _$AdminOrderEvent {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(
-            OrderStatus status, double? totalCost, String? message)
+    required TResult Function(OrderStatus status, double? totalCost,
+            String? message, StaffMember? assignee)
         updateOrderStatus,
     required TResult Function(double? totalCost) updateOrderTotalCost,
     required TResult Function(StaffMember? assignee) updateOrderAssignee,
@@ -33,7 +33,8 @@ mixin _$AdminOrderEvent {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(OrderStatus status, double? totalCost, String? message)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult? Function(double? totalCost)? updateOrderTotalCost,
     TResult? Function(StaffMember? assignee)? updateOrderAssignee,
@@ -44,7 +45,8 @@ mixin _$AdminOrderEvent {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(OrderStatus status, double? totalCost, String? message)?
+    TResult Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult Function(double? totalCost)? updateOrderTotalCost,
     TResult Function(StaffMember? assignee)? updateOrderAssignee,
@@ -149,8 +151,8 @@ class _$SetLoadingImpl implements _SetLoading {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(
-            OrderStatus status, double? totalCost, String? message)
+    required TResult Function(OrderStatus status, double? totalCost,
+            String? message, StaffMember? assignee)
         updateOrderStatus,
     required TResult Function(double? totalCost) updateOrderTotalCost,
     required TResult Function(StaffMember? assignee) updateOrderAssignee,
@@ -164,7 +166,8 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(OrderStatus status, double? totalCost, String? message)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult? Function(double? totalCost)? updateOrderTotalCost,
     TResult? Function(StaffMember? assignee)? updateOrderAssignee,
@@ -178,7 +181,8 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(OrderStatus status, double? totalCost, String? message)?
+    TResult Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult Function(double? totalCost)? updateOrderTotalCost,
     TResult Function(StaffMember? assignee)? updateOrderAssignee,
@@ -321,8 +325,8 @@ class _$SetLoadedImpl implements _SetLoaded {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(
-            OrderStatus status, double? totalCost, String? message)
+    required TResult Function(OrderStatus status, double? totalCost,
+            String? message, StaffMember? assignee)
         updateOrderStatus,
     required TResult Function(double? totalCost) updateOrderTotalCost,
     required TResult Function(StaffMember? assignee) updateOrderAssignee,
@@ -336,7 +340,8 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(OrderStatus status, double? totalCost, String? message)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult? Function(double? totalCost)? updateOrderTotalCost,
     TResult? Function(StaffMember? assignee)? updateOrderAssignee,
@@ -350,7 +355,8 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(OrderStatus status, double? totalCost, String? message)?
+    TResult Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult Function(double? totalCost)? updateOrderTotalCost,
     TResult Function(StaffMember? assignee)? updateOrderAssignee,
@@ -489,8 +495,8 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(
-            OrderStatus status, double? totalCost, String? message)
+    required TResult Function(OrderStatus status, double? totalCost,
+            String? message, StaffMember? assignee)
         updateOrderStatus,
     required TResult Function(double? totalCost) updateOrderTotalCost,
     required TResult Function(StaffMember? assignee) updateOrderAssignee,
@@ -504,7 +510,8 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(OrderStatus status, double? totalCost, String? message)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult? Function(double? totalCost)? updateOrderTotalCost,
     TResult? Function(StaffMember? assignee)? updateOrderAssignee,
@@ -518,7 +525,8 @@ class _$SetErrorImpl implements _SetError {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(OrderStatus status, double? totalCost, String? message)?
+    TResult Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult Function(double? totalCost)? updateOrderTotalCost,
     TResult Function(StaffMember? assignee)? updateOrderAssignee,
@@ -592,7 +600,13 @@ abstract class _$$UpdateOrderStatusImplCopyWith<$Res> {
           $Res Function(_$UpdateOrderStatusImpl) then) =
       __$$UpdateOrderStatusImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OrderStatus status, double? totalCost, String? message});
+  $Res call(
+      {OrderStatus status,
+      double? totalCost,
+      String? message,
+      StaffMember? assignee});
+
+  $StaffMemberCopyWith<$Res>? get assignee;
 }
 
 /// @nodoc
@@ -611,6 +625,7 @@ class __$$UpdateOrderStatusImplCopyWithImpl<$Res>
     Object? status = null,
     Object? totalCost = freezed,
     Object? message = freezed,
+    Object? assignee = freezed,
   }) {
     return _then(_$UpdateOrderStatusImpl(
       null == status
@@ -625,14 +640,33 @@ class __$$UpdateOrderStatusImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      assignee: freezed == assignee
+          ? _value.assignee
+          : assignee // ignore: cast_nullable_to_non_nullable
+              as StaffMember?,
     ));
+  }
+
+  /// Create a copy of AdminOrderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StaffMemberCopyWith<$Res>? get assignee {
+    if (_value.assignee == null) {
+      return null;
+    }
+
+    return $StaffMemberCopyWith<$Res>(_value.assignee!, (value) {
+      return _then(_value.copyWith(assignee: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
-  const _$UpdateOrderStatusImpl(this.status, {this.totalCost, this.message});
+  const _$UpdateOrderStatusImpl(this.status,
+      {this.totalCost, this.message, this.assignee});
 
   @override
   final OrderStatus status;
@@ -640,10 +674,12 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   final double? totalCost;
   @override
   final String? message;
+  @override
+  final StaffMember? assignee;
 
   @override
   String toString() {
-    return 'AdminOrderEvent.updateOrderStatus(status: $status, totalCost: $totalCost, message: $message)';
+    return 'AdminOrderEvent.updateOrderStatus(status: $status, totalCost: $totalCost, message: $message, assignee: $assignee)';
   }
 
   @override
@@ -654,11 +690,14 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.totalCost, totalCost) ||
                 other.totalCost == totalCost) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.assignee, assignee) ||
+                other.assignee == assignee));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, totalCost, message);
+  int get hashCode =>
+      Object.hash(runtimeType, status, totalCost, message, assignee);
 
   /// Create a copy of AdminOrderEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -675,13 +714,13 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(
-            OrderStatus status, double? totalCost, String? message)
+    required TResult Function(OrderStatus status, double? totalCost,
+            String? message, StaffMember? assignee)
         updateOrderStatus,
     required TResult Function(double? totalCost) updateOrderTotalCost,
     required TResult Function(StaffMember? assignee) updateOrderAssignee,
   }) {
-    return updateOrderStatus(status, totalCost, message);
+    return updateOrderStatus(status, totalCost, message, assignee);
   }
 
   @override
@@ -690,12 +729,13 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(OrderStatus status, double? totalCost, String? message)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult? Function(double? totalCost)? updateOrderTotalCost,
     TResult? Function(StaffMember? assignee)? updateOrderAssignee,
   }) {
-    return updateOrderStatus?.call(status, totalCost, message);
+    return updateOrderStatus?.call(status, totalCost, message, assignee);
   }
 
   @override
@@ -704,14 +744,15 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(OrderStatus status, double? totalCost, String? message)?
+    TResult Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult Function(double? totalCost)? updateOrderTotalCost,
     TResult Function(StaffMember? assignee)? updateOrderAssignee,
     required TResult orElse(),
   }) {
     if (updateOrderStatus != null) {
-      return updateOrderStatus(status, totalCost, message);
+      return updateOrderStatus(status, totalCost, message, assignee);
     }
     return orElse();
   }
@@ -763,11 +804,13 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
 abstract class _UpdateOrderStatus implements AdminOrderEvent {
   const factory _UpdateOrderStatus(final OrderStatus status,
       {final double? totalCost,
-      final String? message}) = _$UpdateOrderStatusImpl;
+      final String? message,
+      final StaffMember? assignee}) = _$UpdateOrderStatusImpl;
 
   OrderStatus get status;
   double? get totalCost;
   String? get message;
+  StaffMember? get assignee;
 
   /// Create a copy of AdminOrderEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -850,8 +893,8 @@ class _$UpdateOrderTotalCostImpl implements _UpdateOrderTotalCost {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(
-            OrderStatus status, double? totalCost, String? message)
+    required TResult Function(OrderStatus status, double? totalCost,
+            String? message, StaffMember? assignee)
         updateOrderStatus,
     required TResult Function(double? totalCost) updateOrderTotalCost,
     required TResult Function(StaffMember? assignee) updateOrderAssignee,
@@ -865,7 +908,8 @@ class _$UpdateOrderTotalCostImpl implements _UpdateOrderTotalCost {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(OrderStatus status, double? totalCost, String? message)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult? Function(double? totalCost)? updateOrderTotalCost,
     TResult? Function(StaffMember? assignee)? updateOrderAssignee,
@@ -879,7 +923,8 @@ class _$UpdateOrderTotalCostImpl implements _UpdateOrderTotalCost {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(OrderStatus status, double? totalCost, String? message)?
+    TResult Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult Function(double? totalCost)? updateOrderTotalCost,
     TResult Function(StaffMember? assignee)? updateOrderAssignee,
@@ -1037,8 +1082,8 @@ class _$UpdateOrderAssigneeImpl implements _UpdateOrderAssignee {
     required TResult Function() setLoading,
     required TResult Function(Order order) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(
-            OrderStatus status, double? totalCost, String? message)
+    required TResult Function(OrderStatus status, double? totalCost,
+            String? message, StaffMember? assignee)
         updateOrderStatus,
     required TResult Function(double? totalCost) updateOrderTotalCost,
     required TResult Function(StaffMember? assignee) updateOrderAssignee,
@@ -1052,7 +1097,8 @@ class _$UpdateOrderAssigneeImpl implements _UpdateOrderAssignee {
     TResult? Function()? setLoading,
     TResult? Function(Order order)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(OrderStatus status, double? totalCost, String? message)?
+    TResult? Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult? Function(double? totalCost)? updateOrderTotalCost,
     TResult? Function(StaffMember? assignee)? updateOrderAssignee,
@@ -1066,7 +1112,8 @@ class _$UpdateOrderAssigneeImpl implements _UpdateOrderAssignee {
     TResult Function()? setLoading,
     TResult Function(Order order)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(OrderStatus status, double? totalCost, String? message)?
+    TResult Function(OrderStatus status, double? totalCost, String? message,
+            StaffMember? assignee)?
         updateOrderStatus,
     TResult Function(double? totalCost)? updateOrderTotalCost,
     TResult Function(StaffMember? assignee)? updateOrderAssignee,

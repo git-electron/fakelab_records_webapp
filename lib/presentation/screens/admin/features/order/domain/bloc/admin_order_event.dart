@@ -12,6 +12,7 @@ class AdminOrderEvent with _$AdminOrderEvent {
     OrderStatus status, {
     double? totalCost,
     String? message,
+    StaffMember? assignee,
   }) = _UpdateOrderStatus;
 
   const factory AdminOrderEvent.updateOrderTotalCost(double? totalCost) =
