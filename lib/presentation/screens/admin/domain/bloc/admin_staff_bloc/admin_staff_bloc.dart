@@ -69,15 +69,17 @@ class AdminStaffBloc extends Bloc<AdminStaffEvent, AdminStaffState> {
   Future<void> _deleteStaffMember(String staffMemberId) async {
     if (!userBloc.state.user!.isAdmin) return;
 
+    final List<StaffMember> staffMembers = state.staffMembers ?? [];
+
     add(const AdminStaffEvent.setLoading());
     final Result<bool> result =
         await adminStaffClient.deleteStaffMember(staffMemberId);
     result.when(
       success: (_) {
-        final List<StaffMember> staffMembers = state.staffMembers!
+        final List<StaffMember> updatedStaffMembers = staffMembers
             .where((staffMember) => staffMember.id != staffMemberId)
             .toList();
-        add(AdminStaffEvent.setLoaded(staffMembers));
+        add(AdminStaffEvent.setLoaded(updatedStaffMembers));
       },
       error: (message) => add(AdminStaffEvent.setError(message)),
     );
