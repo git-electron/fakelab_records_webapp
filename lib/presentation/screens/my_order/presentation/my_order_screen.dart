@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
+import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/widgets/my_order_screen_assignee_info.dart';
 import '../../../../core/di/injector.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import '../domain/bloc/my_order_bloc.dart';
@@ -63,6 +64,7 @@ class MyOrderScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyOrderScreenInfo(),
+          MyOrderScreenAssigneeInfo(),
           Gap(10),
           MyOrderScreenServices(),
           Gap(10),
