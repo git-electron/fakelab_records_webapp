@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AdminEditStaffMemberEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() createButtonPressed,
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String username) usernameChanged,
@@ -30,7 +31,8 @@ mixin _$AdminEditStaffMemberEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createButtonPressed,
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
     TResult? Function(String firstName)? firstNameChanged,
     TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String username)? usernameChanged,
@@ -42,7 +44,8 @@ mixin _$AdminEditStaffMemberEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createButtonPressed,
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function(String username)? usernameChanged,
@@ -55,7 +58,8 @@ mixin _$AdminEditStaffMemberEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CreateButtonPressed value) createButtonPressed,
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
@@ -67,7 +71,8 @@ mixin _$AdminEditStaffMemberEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
@@ -79,7 +84,8 @@ mixin _$AdminEditStaffMemberEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
@@ -115,19 +121,19 @@ class _$AdminEditStaffMemberEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$CreateButtonPressedImplCopyWith<$Res> {
-  factory _$$CreateButtonPressedImplCopyWith(_$CreateButtonPressedImpl value,
-          $Res Function(_$CreateButtonPressedImpl) then) =
-      __$$CreateButtonPressedImplCopyWithImpl<$Res>;
+abstract class _$$ConfirmButtonPressedImplCopyWith<$Res> {
+  factory _$$ConfirmButtonPressedImplCopyWith(_$ConfirmButtonPressedImpl value,
+          $Res Function(_$ConfirmButtonPressedImpl) then) =
+      __$$ConfirmButtonPressedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CreateButtonPressedImplCopyWithImpl<$Res>
+class __$$ConfirmButtonPressedImplCopyWithImpl<$Res>
     extends _$AdminEditStaffMemberEventCopyWithImpl<$Res,
-        _$CreateButtonPressedImpl>
-    implements _$$CreateButtonPressedImplCopyWith<$Res> {
-  __$$CreateButtonPressedImplCopyWithImpl(_$CreateButtonPressedImpl _value,
-      $Res Function(_$CreateButtonPressedImpl) _then)
+        _$ConfirmButtonPressedImpl>
+    implements _$$ConfirmButtonPressedImplCopyWith<$Res> {
+  __$$ConfirmButtonPressedImplCopyWithImpl(_$ConfirmButtonPressedImpl _value,
+      $Res Function(_$ConfirmButtonPressedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AdminEditStaffMemberEvent
@@ -136,19 +142,19 @@ class __$$CreateButtonPressedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreateButtonPressedImpl implements _CreateButtonPressed {
-  const _$CreateButtonPressedImpl();
+class _$ConfirmButtonPressedImpl implements _ConfirmButtonPressed {
+  const _$ConfirmButtonPressedImpl();
 
   @override
   String toString() {
-    return 'AdminEditStaffMemberEvent.createButtonPressed()';
+    return 'AdminEditStaffMemberEvent.confirmButtonPressed()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateButtonPressedImpl);
+            other is _$ConfirmButtonPressedImpl);
   }
 
   @override
@@ -157,7 +163,8 @@ class _$CreateButtonPressedImpl implements _CreateButtonPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() createButtonPressed,
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String username) usernameChanged,
@@ -166,13 +173,14 @@ class _$CreateButtonPressedImpl implements _CreateButtonPressed {
     required TResult Function(StaffActivity activity) activitySelected,
     required TResult Function(StaffServiceType service) serviceSelected,
   }) {
-    return createButtonPressed();
+    return confirmButtonPressed();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createButtonPressed,
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
     TResult? Function(String firstName)? firstNameChanged,
     TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String username)? usernameChanged,
@@ -181,13 +189,14 @@ class _$CreateButtonPressedImpl implements _CreateButtonPressed {
     TResult? Function(StaffActivity activity)? activitySelected,
     TResult? Function(StaffServiceType service)? serviceSelected,
   }) {
-    return createButtonPressed?.call();
+    return confirmButtonPressed?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createButtonPressed,
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function(String username)? usernameChanged,
@@ -197,8 +206,8 @@ class _$CreateButtonPressedImpl implements _CreateButtonPressed {
     TResult Function(StaffServiceType service)? serviceSelected,
     required TResult orElse(),
   }) {
-    if (createButtonPressed != null) {
-      return createButtonPressed();
+    if (confirmButtonPressed != null) {
+      return confirmButtonPressed();
     }
     return orElse();
   }
@@ -206,7 +215,8 @@ class _$CreateButtonPressedImpl implements _CreateButtonPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CreateButtonPressed value) createButtonPressed,
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
@@ -215,13 +225,14 @@ class _$CreateButtonPressedImpl implements _CreateButtonPressed {
     required TResult Function(_ActivitySelected value) activitySelected,
     required TResult Function(_ServiceSelected value) serviceSelected,
   }) {
-    return createButtonPressed(this);
+    return confirmButtonPressed(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
@@ -230,13 +241,14 @@ class _$CreateButtonPressedImpl implements _CreateButtonPressed {
     TResult? Function(_ActivitySelected value)? activitySelected,
     TResult? Function(_ServiceSelected value)? serviceSelected,
   }) {
-    return createButtonPressed?.call(this);
+    return confirmButtonPressed?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
@@ -246,15 +258,164 @@ class _$CreateButtonPressedImpl implements _CreateButtonPressed {
     TResult Function(_ServiceSelected value)? serviceSelected,
     required TResult orElse(),
   }) {
-    if (createButtonPressed != null) {
-      return createButtonPressed(this);
+    if (confirmButtonPressed != null) {
+      return confirmButtonPressed(this);
     }
     return orElse();
   }
 }
 
-abstract class _CreateButtonPressed implements AdminEditStaffMemberEvent {
-  const factory _CreateButtonPressed() = _$CreateButtonPressedImpl;
+abstract class _ConfirmButtonPressed implements AdminEditStaffMemberEvent {
+  const factory _ConfirmButtonPressed() = _$ConfirmButtonPressedImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteButtonPressedImplCopyWith<$Res> {
+  factory _$$DeleteButtonPressedImplCopyWith(_$DeleteButtonPressedImpl value,
+          $Res Function(_$DeleteButtonPressedImpl) then) =
+      __$$DeleteButtonPressedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteButtonPressedImplCopyWithImpl<$Res>
+    extends _$AdminEditStaffMemberEventCopyWithImpl<$Res,
+        _$DeleteButtonPressedImpl>
+    implements _$$DeleteButtonPressedImplCopyWith<$Res> {
+  __$$DeleteButtonPressedImplCopyWithImpl(_$DeleteButtonPressedImpl _value,
+      $Res Function(_$DeleteButtonPressedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AdminEditStaffMemberEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$DeleteButtonPressedImpl implements _DeleteButtonPressed {
+  const _$DeleteButtonPressedImpl();
+
+  @override
+  String toString() {
+    return 'AdminEditStaffMemberEvent.deleteButtonPressed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteButtonPressedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String lastName) lastNameChanged,
+    required TResult Function(String username) usernameChanged,
+    required TResult Function(String? fileUrl) avatarChanged,
+    required TResult Function(Uint8List? fileContent) avatarContentChanged,
+    required TResult Function(StaffActivity activity) activitySelected,
+    required TResult Function(StaffServiceType service) serviceSelected,
+  }) {
+    return deleteButtonPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String lastName)? lastNameChanged,
+    TResult? Function(String username)? usernameChanged,
+    TResult? Function(String? fileUrl)? avatarChanged,
+    TResult? Function(Uint8List? fileContent)? avatarContentChanged,
+    TResult? Function(StaffActivity activity)? activitySelected,
+    TResult? Function(StaffServiceType service)? serviceSelected,
+  }) {
+    return deleteButtonPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
+    TResult Function(String username)? usernameChanged,
+    TResult Function(String? fileUrl)? avatarChanged,
+    TResult Function(Uint8List? fileContent)? avatarContentChanged,
+    TResult Function(StaffActivity activity)? activitySelected,
+    TResult Function(StaffServiceType service)? serviceSelected,
+    required TResult orElse(),
+  }) {
+    if (deleteButtonPressed != null) {
+      return deleteButtonPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
+    required TResult Function(_AvatarChanged value) avatarChanged,
+    required TResult Function(_AvatarContentChanged value) avatarContentChanged,
+    required TResult Function(_ActivitySelected value) activitySelected,
+    required TResult Function(_ServiceSelected value) serviceSelected,
+  }) {
+    return deleteButtonPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
+    TResult? Function(_AvatarChanged value)? avatarChanged,
+    TResult? Function(_AvatarContentChanged value)? avatarContentChanged,
+    TResult? Function(_ActivitySelected value)? activitySelected,
+    TResult? Function(_ServiceSelected value)? serviceSelected,
+  }) {
+    return deleteButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
+    TResult Function(_AvatarChanged value)? avatarChanged,
+    TResult Function(_AvatarContentChanged value)? avatarContentChanged,
+    TResult Function(_ActivitySelected value)? activitySelected,
+    TResult Function(_ServiceSelected value)? serviceSelected,
+    required TResult orElse(),
+  }) {
+    if (deleteButtonPressed != null) {
+      return deleteButtonPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteButtonPressed implements AdminEditStaffMemberEvent {
+  const factory _DeleteButtonPressed() = _$DeleteButtonPressedImpl;
 }
 
 /// @nodoc
@@ -328,7 +489,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() createButtonPressed,
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String username) usernameChanged,
@@ -343,7 +505,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createButtonPressed,
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
     TResult? Function(String firstName)? firstNameChanged,
     TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String username)? usernameChanged,
@@ -358,7 +521,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createButtonPressed,
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function(String username)? usernameChanged,
@@ -377,7 +541,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CreateButtonPressed value) createButtonPressed,
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
@@ -392,7 +557,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
@@ -407,7 +573,8 @@ class _$FirstNameChangedImpl implements _FirstNameChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
@@ -507,7 +674,8 @@ class _$LastNameChangedImpl implements _LastNameChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() createButtonPressed,
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String username) usernameChanged,
@@ -522,7 +690,8 @@ class _$LastNameChangedImpl implements _LastNameChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createButtonPressed,
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
     TResult? Function(String firstName)? firstNameChanged,
     TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String username)? usernameChanged,
@@ -537,7 +706,8 @@ class _$LastNameChangedImpl implements _LastNameChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createButtonPressed,
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function(String username)? usernameChanged,
@@ -556,7 +726,8 @@ class _$LastNameChangedImpl implements _LastNameChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CreateButtonPressed value) createButtonPressed,
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
@@ -571,7 +742,8 @@ class _$LastNameChangedImpl implements _LastNameChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
@@ -586,7 +758,8 @@ class _$LastNameChangedImpl implements _LastNameChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
@@ -685,7 +858,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() createButtonPressed,
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String username) usernameChanged,
@@ -700,7 +874,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createButtonPressed,
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
     TResult? Function(String firstName)? firstNameChanged,
     TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String username)? usernameChanged,
@@ -715,7 +890,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createButtonPressed,
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function(String username)? usernameChanged,
@@ -734,7 +910,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CreateButtonPressed value) createButtonPressed,
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
@@ -749,7 +926,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
@@ -764,7 +942,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
@@ -861,7 +1040,8 @@ class _$AvatarChangedImpl implements _AvatarChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() createButtonPressed,
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String username) usernameChanged,
@@ -876,7 +1056,8 @@ class _$AvatarChangedImpl implements _AvatarChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createButtonPressed,
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
     TResult? Function(String firstName)? firstNameChanged,
     TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String username)? usernameChanged,
@@ -891,7 +1072,8 @@ class _$AvatarChangedImpl implements _AvatarChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createButtonPressed,
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function(String username)? usernameChanged,
@@ -910,7 +1092,8 @@ class _$AvatarChangedImpl implements _AvatarChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CreateButtonPressed value) createButtonPressed,
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
@@ -925,7 +1108,8 @@ class _$AvatarChangedImpl implements _AvatarChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
@@ -940,7 +1124,8 @@ class _$AvatarChangedImpl implements _AvatarChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
@@ -1042,7 +1227,8 @@ class _$AvatarContentChangedImpl implements _AvatarContentChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() createButtonPressed,
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String username) usernameChanged,
@@ -1057,7 +1243,8 @@ class _$AvatarContentChangedImpl implements _AvatarContentChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createButtonPressed,
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
     TResult? Function(String firstName)? firstNameChanged,
     TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String username)? usernameChanged,
@@ -1072,7 +1259,8 @@ class _$AvatarContentChangedImpl implements _AvatarContentChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createButtonPressed,
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function(String username)? usernameChanged,
@@ -1091,7 +1279,8 @@ class _$AvatarContentChangedImpl implements _AvatarContentChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CreateButtonPressed value) createButtonPressed,
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
@@ -1106,7 +1295,8 @@ class _$AvatarContentChangedImpl implements _AvatarContentChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
@@ -1121,7 +1311,8 @@ class _$AvatarContentChangedImpl implements _AvatarContentChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
@@ -1222,7 +1413,8 @@ class _$ActivitySelectedImpl implements _ActivitySelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() createButtonPressed,
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String username) usernameChanged,
@@ -1237,7 +1429,8 @@ class _$ActivitySelectedImpl implements _ActivitySelected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createButtonPressed,
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
     TResult? Function(String firstName)? firstNameChanged,
     TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String username)? usernameChanged,
@@ -1252,7 +1445,8 @@ class _$ActivitySelectedImpl implements _ActivitySelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createButtonPressed,
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function(String username)? usernameChanged,
@@ -1271,7 +1465,8 @@ class _$ActivitySelectedImpl implements _ActivitySelected {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CreateButtonPressed value) createButtonPressed,
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
@@ -1286,7 +1481,8 @@ class _$ActivitySelectedImpl implements _ActivitySelected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
@@ -1301,7 +1497,8 @@ class _$ActivitySelectedImpl implements _ActivitySelected {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
@@ -1400,7 +1597,8 @@ class _$ServiceSelectedImpl implements _ServiceSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() createButtonPressed,
+    required TResult Function() confirmButtonPressed,
+    required TResult Function() deleteButtonPressed,
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String username) usernameChanged,
@@ -1415,7 +1613,8 @@ class _$ServiceSelectedImpl implements _ServiceSelected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createButtonPressed,
+    TResult? Function()? confirmButtonPressed,
+    TResult? Function()? deleteButtonPressed,
     TResult? Function(String firstName)? firstNameChanged,
     TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String username)? usernameChanged,
@@ -1430,7 +1629,8 @@ class _$ServiceSelectedImpl implements _ServiceSelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createButtonPressed,
+    TResult Function()? confirmButtonPressed,
+    TResult Function()? deleteButtonPressed,
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function(String username)? usernameChanged,
@@ -1449,7 +1649,8 @@ class _$ServiceSelectedImpl implements _ServiceSelected {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CreateButtonPressed value) createButtonPressed,
+    required TResult Function(_ConfirmButtonPressed value) confirmButtonPressed,
+    required TResult Function(_DeleteButtonPressed value) deleteButtonPressed,
     required TResult Function(_FirstNameChanged value) firstNameChanged,
     required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
@@ -1464,7 +1665,8 @@ class _$ServiceSelectedImpl implements _ServiceSelected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult? Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult? Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult? Function(_FirstNameChanged value)? firstNameChanged,
     TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
@@ -1479,7 +1681,8 @@ class _$ServiceSelectedImpl implements _ServiceSelected {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CreateButtonPressed value)? createButtonPressed,
+    TResult Function(_ConfirmButtonPressed value)? confirmButtonPressed,
+    TResult Function(_DeleteButtonPressed value)? deleteButtonPressed,
     TResult Function(_FirstNameChanged value)? firstNameChanged,
     TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,

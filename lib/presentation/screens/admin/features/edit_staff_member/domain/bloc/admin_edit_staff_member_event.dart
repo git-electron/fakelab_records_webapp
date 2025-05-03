@@ -2,8 +2,11 @@ part of 'admin_edit_staff_member_bloc.dart';
 
 @freezed
 class AdminEditStaffMemberEvent with _$AdminEditStaffMemberEvent {
-  const factory AdminEditStaffMemberEvent.createButtonPressed() =
-      _CreateButtonPressed;
+  const factory AdminEditStaffMemberEvent.confirmButtonPressed() =
+      _ConfirmButtonPressed;
+
+  const factory AdminEditStaffMemberEvent.deleteButtonPressed() =
+      _DeleteButtonPressed;
 
   const factory AdminEditStaffMemberEvent.firstNameChanged(
     String firstName,
