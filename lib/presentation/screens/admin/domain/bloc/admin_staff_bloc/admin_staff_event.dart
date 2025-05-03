@@ -8,4 +8,7 @@ class AdminStaffEvent with _$AdminStaffEvent {
       _SetLoaded;
 
   const factory AdminStaffEvent.setError(String? message) = _SetError;
+
+  const factory AdminStaffEvent.deleteStaffMember(String staffMemberId) =
+      _DeleteStaffMember;
 }

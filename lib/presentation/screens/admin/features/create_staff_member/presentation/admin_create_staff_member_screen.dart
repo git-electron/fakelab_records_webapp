@@ -117,20 +117,23 @@ class CreateStaffMemberAdaptiveForm extends StatelessWidget {
         ],
       );
     }
-    return Row(
-      children: [
-        BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
-          builder: (context, state) {
-            return CreateStaffAvatar(
-              height: 150,
-              width: 150,
-              photoUrl: state.avatarFileUrl,
-            );
-          },
-        ),
-        const Gap(20),
-        const Expanded(child: CreateStaffForm()),
-      ],
+    return Padding(
+      padding: const Pad(top: 60),
+      child: Row(
+        children: [
+          BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
+            builder: (context, state) {
+              return CreateStaffAvatar(
+                height: 150,
+                width: 150,
+                photoUrl: state.avatarFileUrl,
+              );
+            },
+          ),
+          const Gap(20),
+          const Expanded(child: CreateStaffForm()),
+        ],
+      ),
     );
   }
 }

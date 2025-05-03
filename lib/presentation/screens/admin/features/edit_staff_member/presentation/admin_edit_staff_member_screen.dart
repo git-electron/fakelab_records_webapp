@@ -76,7 +76,7 @@ class AdminEditStaffMemberScreenBody extends StatelessWidget {
             Gap(20),
             EditStaffProperties(),
             Gap(20),
-            EditStaffMemberButton(),
+            EditStaffMemberButtons(),
           ],
         ),
       ),

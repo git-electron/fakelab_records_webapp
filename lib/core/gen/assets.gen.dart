@@ -55,6 +55,9 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/cross
   $AssetsIconsCrossGen get cross => const $AssetsIconsCrossGen();
 
+  /// Directory path: assets/icons/delete
+  $AssetsIconsDeleteGen get delete => const $AssetsIconsDeleteGen();
+
   /// Directory path: assets/icons/double_check
   $AssetsIconsDoubleCheckGen get doubleCheck =>
       const $AssetsIconsDoubleCheckGen();
@@ -324,6 +327,23 @@ class $AssetsIconsCrossGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [dark, light];
+}
+
+class $AssetsIconsDeleteGen {
+  const $AssetsIconsDeleteGen();
+
+  /// File path: assets/icons/delete/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/delete/dark.svg');
+
+  /// File path: assets/icons/delete/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/delete/light.svg');
+
+  /// File path: assets/icons/delete/primary.svg
+  SvgGenImage get primary =>
+      const SvgGenImage('assets/icons/delete/primary.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, light, primary];
 }
 
 class $AssetsIconsDoubleCheckGen {

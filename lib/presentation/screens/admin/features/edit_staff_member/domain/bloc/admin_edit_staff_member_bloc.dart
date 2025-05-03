@@ -40,7 +40,8 @@ class AdminEditStaffMemberBloc
     on<_ActivitySelected>(_onActivitySelected);
     on<_ServiceSelected>(_onServiceSelected);
 
-    on<_CreateButtonPressed>(_onCreateButtonPressed);
+    on<_ConfirmButtonPressed>(_onConfirmButtonPressed);
+    on<_DeleteButtonPressed>(_onDeleteButtonPressed);
   }
 
   final StaffMember staffMember;
@@ -112,8 +113,8 @@ class AdminEditStaffMemberBloc
     emit(state.copyWith(services: newServices));
   }
 
-  Future<void> _onCreateButtonPressed(
-    _CreateButtonPressed event,
+  Future<void> _onConfirmButtonPressed(
+    _ConfirmButtonPressed event,
     Emitter<AdminEditStaffMemberState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
@@ -140,5 +141,13 @@ class AdminEditStaffMemberBloc
       },
       error: (message) => emit(state.copyWith(isLoading: false)),
     );
+  }
+
+  Future<void> _onDeleteButtonPressed(
+    _DeleteButtonPressed event,
+    Emitter<AdminEditStaffMemberState> emit,
+  ) async {
+    router.pop();
+    adminStaffBloc.add(AdminStaffEvent.deleteStaffMember(staffMember.id));
   }
 }

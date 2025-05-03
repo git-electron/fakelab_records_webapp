@@ -7,6 +7,7 @@ import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_confirmation_dialog/app_confirmation_dialog.dart';
 import 'package:fakelab_records_webapp/presentation/ui/avatar/avatar.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:figma_squircle/figma_squircle.dart';
@@ -85,6 +86,22 @@ class AdminStaffMemberTile extends StatelessWidget {
                         staffMember: staffMember,
                       )),
                       child: Assets.icons.pencil.light.svg(),
+                    ),
+                    const Gap(5),
+                    Tappable(
+                      onTap: () => AppConfirmationDialog.show(
+                        context,
+                        title: 'Подтверждение',
+                        description:
+                            'Ты точно хочешь удалить этого сотрудника?',
+                      ).then((isConfirmed) {
+                        if (isConfirmed ?? false) {
+                          bloc.add(
+                            AdminStaffEvent.deleteStaffMember(staffMember.id),
+                          );
+                        }
+                      }),
+                      child: Assets.icons.delete.primary.svg(),
                     ),
                   ],
                 ),
