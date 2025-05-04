@@ -26,5 +26,6 @@ const String yandexMapsIFrame = '''
 
 const List<int> adminAccountIds = [
   265685890, // @raimeeee
+  1052462488, // @lilPharaohh
   7452326346, // @fakelab_records_support
 ];
