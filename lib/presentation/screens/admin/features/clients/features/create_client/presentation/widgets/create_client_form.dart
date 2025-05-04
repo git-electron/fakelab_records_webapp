@@ -1,3 +1,4 @@
+import 'package:fakelab_records_webapp/core/formatters/phone_number_formatter.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/features/create_client/domain/bloc/admin_create_client_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_text_field.dart';
@@ -54,10 +55,13 @@ class CreateClientForm extends StatelessWidget {
         ),
         const Gap(10),
         AppTextField(
-          initialValue: bloc.state.username,
+          initialValue: phoneNumberFormatter.maskText(
+            bloc.state.phoneNumber ?? '',
+          ),
           onChanged: (value) => bloc.add(
             AdminCreateClientEvent.usernameChanged(value),
           ),
+          inputFormatters: [phoneNumberFormatter],
           prefixIcon: Assets.icons.phone.light,
           hintText: 'Номер телефона',
           keyboardType: TextInputType.name,

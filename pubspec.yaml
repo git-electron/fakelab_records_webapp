@@ -49,6 +49,7 @@ dependencies:
   flutter_widget_from_html: ^0.16.0
   syncfusion_localizations: ^29.1.38
   syncfusion_flutter_datepicker: ^29.1.38
+  mask_text_input_formatter: ^2.9.0
 
 dev_dependencies:
   flutter_test:
