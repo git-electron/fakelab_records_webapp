@@ -78,6 +78,10 @@ Args: ${resolver.route.args}''');
         if (isMobile) AutoRoute(page: AdminRoute.page, path: '/admin'),
         AutoRoute(page: AdminOrderRoute.page, path: '/admin/orders/:id'),
         AutoRoute(
+          page: AdminCreateOrderRoute.page,
+          path: '/admin/orders/create',
+        ),
+        AutoRoute(
           page: AdminCreateStaffMemberRoute.page,
           path: '/admin/staff/create',
         ),

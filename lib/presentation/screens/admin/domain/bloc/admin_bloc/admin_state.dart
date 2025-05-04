@@ -3,7 +3,7 @@ part of 'admin_bloc.dart';
 @freezed
 class AdminState with _$AdminState {
   const factory AdminState({
-    @Default(AdminTab.clients) AdminTab selectedTab,
+    @Default(AdminTab.orders) AdminTab selectedTab,
   }) = _AdminState;
 
   const AdminState._();
