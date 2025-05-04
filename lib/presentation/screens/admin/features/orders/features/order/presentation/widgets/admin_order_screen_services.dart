@@ -5,7 +5,7 @@ import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/service/order_service.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/domain/bloc/admin_order_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/features/order/domain/bloc/admin_order_bloc.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

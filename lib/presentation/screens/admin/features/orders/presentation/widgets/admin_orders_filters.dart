@@ -1,5 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
@@ -217,9 +219,11 @@ class AdminOrdersFilters extends StatelessWidget {
 
   Widget _createManually(BuildContext context) {
     return AppButton.primary(
-      onTap: () {},
+      onTap: () => context.pushRoute(AdminCreateOrderRoute(
+        adminOrdersBloc: context.read(),
+        adminClientsBloc: context.read(),
+      )),
       text: 'Создать',
-      isEnabled: false,
       isExpanded: false,
       icon: Assets.icons.plus.dark,
     );

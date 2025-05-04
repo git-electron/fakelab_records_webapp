@@ -3,7 +3,7 @@ import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/order/client/admin_order_client.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/features/order/client/admin_order_client.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
