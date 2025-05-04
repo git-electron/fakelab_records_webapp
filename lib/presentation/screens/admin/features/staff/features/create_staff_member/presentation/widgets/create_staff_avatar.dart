@@ -100,6 +100,13 @@ class _CreateStaffAvatarState extends State<CreateStaffAvatar>
                   _animationController.forward();
                   final String fileUrl = await _controller.createFileUrl(file);
                   bloc.add(AdminCreateStaffMemberEvent.avatarChanged(fileUrl));
+                  final Uint8List fileContent =
+                      await _controller.getFileData(file);
+                  bloc.add(
+                    AdminCreateStaffMemberEvent.avatarContentChanged(
+                      fileContent,
+                    ),
+                  );
                 },
               ),
             ),
