@@ -85,6 +85,14 @@ Args: ${resolver.route.args}''');
           page: AdminEditStaffMemberRoute.page,
           path: '/admin/staff/edit/:id',
         ),
+        AutoRoute(
+          page: AdminCreateClientRoute.page,
+          path: '/admin/clients/create',
+        ),
+        // AutoRoute(
+        //   page: AdminEditClientRoute.page,
+        //   path: '/admin/clients/edit/:id',
+        // ),
         ...redirections,
       ];
 

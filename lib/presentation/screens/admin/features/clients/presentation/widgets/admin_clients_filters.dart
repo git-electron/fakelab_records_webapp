@@ -1,5 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/domain/bloc/admin_clients_filters_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
@@ -41,10 +43,9 @@ class AdminClientsFilters extends StatelessWidget {
     final AdminClientsBloc bloc = context.read();
 
     return AppButton.primary(
-      // onTap: () => context.pushRoute(
-      //   AdminCreateClientRoute(adminClientsBloc: bloc),
-      // ),
-      onTap: () {},
+      onTap: () => context.pushRoute(
+        AdminCreateClientRoute(adminClientsBloc: bloc),
+      ),
       text: 'Добавить',
       isExpanded: false,
       icon: Assets.icons.plus.dark,

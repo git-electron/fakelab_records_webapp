@@ -60,7 +60,7 @@ class AdminAppBar extends StatelessWidget {
       builder: (context, meta) {
         final double toolbarHeight = meta.totalSafeAreaInset.top + 70;
 
-        return Container(
+        return SizedBox(
           height: toolbarHeight,
           width: double.maxFinite,
           child: Blur(
