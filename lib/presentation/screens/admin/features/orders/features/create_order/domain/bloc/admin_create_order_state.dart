@@ -11,4 +11,31 @@ class AdminCreateOrderState with _$AdminCreateOrderState {
   const AdminCreateOrderState._();
 
   bool get canProceed => customer != null && orderType != null;
+
+  Order order(IdGenerator idGenerator) {
+    final String id = idGenerator.generate();
+    final DateTime now = DateTime.now();
+
+    return Order(
+      id: id,
+      customer: customer!,
+      type: orderType!,
+      status: OrderStatus.REQUEST,
+      statusHistory: [
+        OrderStatusHistoryItem(
+          status: OrderStatus.REQUEST,
+          dateChanged: now,
+        ),
+      ],
+      dateCreated: now,
+      dateChanged: now,
+      totalCost: orderType!.totalCost,
+      costFrom: orderType!.costFrom,
+      filters: OrderFilters(
+        userIdStatusType:
+            '${customer!.id}-${OrderStatus.REQUEST.name}-${orderType!.name}',
+      ),
+      services: orderType!.services,
+    );
+  }
 }
