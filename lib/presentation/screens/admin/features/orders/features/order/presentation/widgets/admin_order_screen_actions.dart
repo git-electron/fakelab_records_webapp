@@ -352,51 +352,54 @@ class ActualActions extends StatelessWidget {
   Widget _awaitingConfirmationActions(BuildContext context) {
     final AdminOrderBloc bloc = context.read();
 
-    return Row(
-      children: [
-        ExpandedWrapper(
-          child: AppButton(
-            onTap: () => AppConfirmationDialog.show(
-              context,
-              title: 'Подтверждение',
-              description: 'Заказчик оплатил заказ и подтвердил готовность?',
-            ).then((isConfirmed) {
-              if (isConfirmed ?? false) {
-                bloc.add(
-                  const AdminOrderEvent.updateOrderStatus(
-                    OrderStatus.COMPLETED,
-                  ),
-                );
-              }
-            }),
-            text: 'Заказ готов',
-            backgroundColor: context.colors.statuses.completed,
-            contentColor: context.colors.background,
-          ),
+    final Size size = MediaQuery.of(context).size;
+    final bool isMobile = size.width < 1000;
+
+    List<Widget> actions = [
+      ExpandedWrapper(
+        child: AppButton(
+          onTap: () => AppConfirmationDialog.show(
+            context,
+            title: 'Подтверждение',
+            description: 'Заказчик оплатил заказ и подтвердил готовность?',
+          ).then((isConfirmed) {
+            if (isConfirmed ?? false) {
+              bloc.add(
+                const AdminOrderEvent.updateOrderStatus(
+                  OrderStatus.COMPLETED,
+                ),
+              );
+            }
+          }),
+          text: 'Заказ готов',
+          backgroundColor: context.colors.statuses.completed,
+          contentColor: context.colors.background,
         ),
-        const Gap(5),
-        ExpandedWrapper(
-          child: AppButton(
-            onTap: () => AppTextFieldDialog.show(
-              context,
-              title: 'Вернуть в работу',
-              hintText: 'Причина возврата',
-              autofillHints: ['Правки от заказчика'],
-              description:
-                  'Укажи причину возврата заказа. Она отобразится в мини-приложении заказчика',
-            ).then((message) => bloc.add(
-                  AdminOrderEvent.updateOrderStatus(
-                    OrderStatus.IN_PROGRESS,
-                    message: message,
-                  ),
-                )),
-            text: 'Вернуть в работу',
-            backgroundColor: context.colors.statuses.inProgress,
-            contentColor: context.colors.background,
-          ),
+      ),
+      const Gap(5),
+      ExpandedWrapper(
+        child: AppButton(
+          onTap: () => AppTextFieldDialog.show(
+            context,
+            title: 'Вернуть в работу',
+            hintText: 'Причина возврата',
+            autofillHints: ['Правки от заказчика'],
+            description:
+                'Укажи причину возврата заказа. Она отобразится в мини-приложении заказчика',
+          ).then((message) => bloc.add(
+                AdminOrderEvent.updateOrderStatus(
+                  OrderStatus.IN_PROGRESS,
+                  message: message,
+                ),
+              )),
+          text: 'Вернуть в работу',
+          backgroundColor: context.colors.statuses.inProgress,
+          contentColor: context.colors.background,
         ),
-      ],
-    );
+      ),
+    ];
+
+    return isMobile ? Row(children: actions) : Column(children: actions);
   }
 }
 
