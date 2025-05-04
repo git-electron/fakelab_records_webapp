@@ -13,7 +13,7 @@ import 'package:gap/gap.dart';
 import '../domain/bloc/admin_edit_staff_member_bloc.dart';
 import 'widgets/edit_staff_avatar.dart';
 import 'widgets/edit_staff_form.dart';
-import 'widgets/edit_staff_member_button.dart';
+import 'widgets/edit_staff_member_buttons.dart';
 import 'widgets/edit_staff_member_screen_app_bar.dart';
 
 @RoutePage()

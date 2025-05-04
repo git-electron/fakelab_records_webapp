@@ -25,4 +25,6 @@ class User with _$User {
   String get fullName {
     return '$firstName${lastName.isNotNullAndEmpty ? ' $lastName' : ''}';
   }
+
+  String get idShort => '#${id.toString().substring(id.toString().length - 5)}';
 }

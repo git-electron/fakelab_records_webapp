@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-import 'admin_client_member_tile.dart';
+import 'admin_client_tile.dart';
 
 class AdminClientsList extends StatelessWidget {
   const AdminClientsList({super.key});
@@ -39,7 +39,7 @@ class AdminClientsList extends StatelessWidget {
 
                   final User client = clients[index];
 
-                  return AdminClientMemberTile(client);
+                  return AdminClientTile(client);
                 },
                 separatorBuilder: (context, index) => const Gap(5),
               );

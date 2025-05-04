@@ -372,4 +372,8 @@ class Mock {
       phoneNumber: '+79999999999',
     ),
   );
+
+  static User? getClient(int clientId) => tryOrNull(() => clients.firstWhere(
+        (client) => client.id == clientId,
+      ));
 }

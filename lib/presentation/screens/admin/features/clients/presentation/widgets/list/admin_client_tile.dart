@@ -1,8 +1,11 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
 import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:fakelab_records_webapp/core/formatters/phone_number_formatter.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_confirmation_dialog/app_confirmation_dialog.dart';
@@ -14,8 +17,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class AdminClientMemberTile extends StatelessWidget {
-  const AdminClientMemberTile(this.client, {super.key});
+class AdminClientTile extends StatelessWidget {
+  const AdminClientTile(this.client, {super.key});
 
   final User client;
 
@@ -27,11 +30,11 @@ class AdminClientMemberTile extends StatelessWidget {
     final bool isMobile = size.width < 1000;
 
     return Tappable(
-      // onTap: () => context.pushRoute(AdminEditStaffMemberRoute(
-      //   id: client.id,
-      //   adminStaffBloc: bloc,
-      //   staffMember: client,
-      // )),
+      onTap: () => context.pushRoute(AdminEditClientRoute(
+        client: client,
+        adminClientsBloc: bloc,
+        id: client.id.toString(),
+      )),
       child: Container(
         padding: Pad(all: isMobile ? 15 : 20),
         decoration: ShapeDecoration(
@@ -67,11 +70,11 @@ class AdminClientMemberTile extends StatelessWidget {
                   ),
                 ),
                 Tappable(
-                  // onTap: () => context.pushRoute(AdminEditStaffMemberRoute(
-                  //   id: client.id,
-                  //   adminStaffBloc: bloc,
-                  //   staffMember: client,
-                  // )),
+                  onTap: () => context.pushRoute(AdminEditClientRoute(
+                    client: client,
+                    adminClientsBloc: bloc,
+                    id: client.id.toString(),
+                  )),
                   child: Assets.icons.pencil.light.svg(),
                 ),
                 const Gap(5),
@@ -127,7 +130,7 @@ class AdminClientMemberTile extends StatelessWidget {
           ),
         if (client.phoneNumber.isNotNullAndEmpty)
           ContactItem(
-            text: client.phoneNumber,
+            text: phoneNumberFormatter.maskText(client.phoneNumber),
             icon: Assets.icons.phone.light,
             shouldDisplayCallButton: true,
           ),

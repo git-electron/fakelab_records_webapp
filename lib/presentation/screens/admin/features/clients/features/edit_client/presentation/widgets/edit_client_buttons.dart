@@ -1,27 +1,27 @@
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/features/edit_client/domain/bloc/admin_edit_client_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:fakelab_records_webapp/presentation/ui/app_confirmation_dialog/app_confirmation_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-class EditStaffMemberButtons extends StatelessWidget {
-  const EditStaffMemberButtons({super.key});
+class EditClientButtons extends StatelessWidget {
+  const EditClientButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AdminEditStaffMemberBloc bloc = context.read();
+    final AdminEditClientBloc bloc = context.read();
 
-    return BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
+    return BlocBuilder<AdminEditClientBloc, AdminEditClientState>(
       builder: (context, state) {
         return Column(
           children: [
             AppButton.primary(
               onTap: () {
                 bloc.add(
-                  const AdminEditStaffMemberEvent.confirmButtonPressed(),
+                  const AdminEditClientEvent.confirmButtonPressed(),
                 );
               },
               isEnabled: state.canProceed,
@@ -33,11 +33,11 @@ class EditStaffMemberButtons extends StatelessWidget {
               onTap: () => AppConfirmationDialog.show(
                 context,
                 title: 'Подтверждение',
-                description: 'Ты точно хочешь удалить этого сотрудника?',
+                description: 'Ты точно хочешь удалить этого клиента?',
               ).then((isConfirmed) {
                 if (isConfirmed ?? false) {
                   bloc.add(
-                    const AdminEditStaffMemberEvent.deleteButtonPressed(),
+                    const AdminEditClientEvent.deleteButtonPressed(),
                   );
                 }
               }),
@@ -46,7 +46,7 @@ class EditStaffMemberButtons extends StatelessWidget {
               isEnabled: state.canProceed,
               isLoading: state.isLoading,
               icon: Assets.icons.delete.light,
-              text: 'Удалить сотрудника',
+              text: 'Удалить клиента',
             ),
           ],
         );

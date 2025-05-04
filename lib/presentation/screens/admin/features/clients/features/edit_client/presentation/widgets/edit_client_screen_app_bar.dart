@@ -1,20 +1,20 @@
 import 'package:blur/blur.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/features/edit_client/domain/bloc/admin_edit_client_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
-class EditStaffMemberScreenAppBarMobile extends StatelessWidget {
-  const EditStaffMemberScreenAppBarMobile({super.key});
+class EditClientScreenAppBarMobile extends StatelessWidget {
+  const EditClientScreenAppBarMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AdminEditStaffMemberBloc bloc = context.read();
+    final AdminEditClientBloc bloc = context.read();
 
     return TelegramMetaWrapper(
       builder: (context, meta) {
-        return BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
+        return BlocBuilder<AdminEditClientBloc, AdminEditClientState>(
           builder: (context, state) {
             return SliverAppBar(
               toolbarHeight: meta.totalSafeAreaInset.top,
@@ -39,7 +39,7 @@ class EditStaffMemberScreenAppBarMobile extends StatelessWidget {
                         alignment: Alignment.center,
                         height: meta.contentSafeAreaInset.top,
                         child: Text(
-                          bloc.staffMember.idShort,
+                          bloc.client.idShort,
                           style: context.styles.body1,
                         ),
                       ),

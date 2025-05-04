@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:fakelab_records_webapp/core/formatters/phone_number_formatter.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
@@ -97,7 +98,7 @@ class AdminOrderScreenCustomerInfo extends StatelessWidget {
           Padding(
             padding: const Pad(top: 5),
             child: ContactItem(
-              text: order.customer.phoneNumber,
+              text: phoneNumberFormatter.maskText(order.customer.phoneNumber),
               icon: Assets.icons.phone.light,
               shouldDisplayCallButton: true,
             ),

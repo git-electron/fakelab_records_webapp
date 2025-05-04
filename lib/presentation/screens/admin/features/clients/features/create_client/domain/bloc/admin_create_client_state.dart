@@ -24,7 +24,7 @@ class AdminCreateClientState with _$AdminCreateClientState {
       firstName: firstName ?? '',
       lastName: lastName,
       username: username,
-      phoneNumber: phoneNumber ?? '',
+      phoneNumber: phoneNumberFormatter.unmaskText(phoneNumber ?? ''),
     );
   }
 }
