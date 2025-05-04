@@ -43,8 +43,6 @@ class EditStaffMemberButtons extends StatelessWidget {
               }),
               backgroundColor: context.colors.primary,
               contentColor: context.colors.onBackground,
-              isEnabled: state.canProceed,
-              isLoading: state.isLoading,
               icon: Assets.icons.delete.light,
               text: 'Удалить сотрудника',
             ),
