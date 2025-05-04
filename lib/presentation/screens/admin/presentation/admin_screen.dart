@@ -33,15 +33,13 @@ class AdminScreen extends StatelessWidget {
         backgroundColor: context.colors.background,
         body: BlocBuilder<AdminBloc, AdminState>(
           builder: (context, state) {
-            return CustomScrollView(
-              slivers: [
+            return Column(
+              children: [
                 TelegramMetaWrapper(builder: (context, meta) {
                   if (meta.isMobile) return const AdminAppBarMobile();
                   return const AdminAppBar();
                 }),
-                const SliverToBoxAdapter(
-                  child: AdminScreenBody(),
-                ),
+                const Expanded(child: AdminScreenBody()),
               ],
             );
           },

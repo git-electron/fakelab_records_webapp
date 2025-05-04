@@ -33,11 +33,10 @@ class AdminOrdersList extends StatelessWidget {
               if (orders.isEmpty) return const EmptyPage(height: 500);
 
               return ListView.separated(
-                clipBehavior: Clip.none,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: orders.length,
+                itemCount: orders.length + 1,
                 itemBuilder: (context, index) {
+                  if (index == orders.length) return const Gap(20);
+
                   final Order order = orders[index];
 
                   return AdminOrderTile(order);

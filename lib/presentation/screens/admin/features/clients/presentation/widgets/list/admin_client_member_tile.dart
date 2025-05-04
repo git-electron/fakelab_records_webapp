@@ -19,6 +19,8 @@ class AdminClientMemberTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AdminClientsBloc bloc = context.read();
+
     final Size size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1000;
 
@@ -79,13 +81,10 @@ class AdminClientMemberTile extends StatelessWidget {
                       onTap: () => AppConfirmationDialog.show(
                         context,
                         title: 'Подтверждение',
-                        description:
-                            'Ты точно хочешь удалить этого сотрудника?',
+                        description: 'Ты точно хочешь удалить этого клиента?',
                       ).then((isConfirmed) {
                         if (isConfirmed ?? false) {
-                          // bloc.add(
-                          //   AdminClientsEvent.deleteClient(client.id),
-                          // );
+                          bloc.add(AdminClientsEvent.deleteClient(client.id));
                         }
                       }),
                       child: Assets.icons.delete.primary.svg(),

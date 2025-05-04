@@ -361,4 +361,15 @@ class Mock {
       tryOrNull(() => staffMembers.firstWhere(
             (staffMember) => staffMember.id == staffMemberId,
           ));
+
+  static List<User> clients = List.generate(
+    50,
+    (index) => User(
+      id: index,
+      firstName: 'Test$index',
+      lastName: 'Testovich$index',
+      username: 'test_username_$index',
+      phoneNumber: '+79999999999',
+    ),
+  );
 }

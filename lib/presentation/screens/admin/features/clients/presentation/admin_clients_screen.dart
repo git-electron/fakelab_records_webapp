@@ -19,8 +19,7 @@ class AdminClientsScreen extends StatelessWidget {
         children: [
           AdminClientsFilters(),
           Gap(20),
-          AdminClientsList(),
-          Gap(100),
+          Expanded(child: AdminClientsList()),
         ],
       ),
     );

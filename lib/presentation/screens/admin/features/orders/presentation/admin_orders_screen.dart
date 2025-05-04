@@ -18,8 +18,7 @@ class AdminOrdersScreen extends StatelessWidget {
         children: [
           AdminOrdersFilters(),
           Gap(20),
-          AdminOrdersList(),
-          Gap(100),
+          Expanded(child: AdminOrdersList()),
         ],
       ),
     );

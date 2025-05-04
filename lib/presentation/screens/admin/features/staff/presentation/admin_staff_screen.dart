@@ -19,8 +19,7 @@ class AdminStaffScreen extends StatelessWidget {
         children: [
           AdminStaffFilters(),
           Gap(20),
-          AdminStaffMembersList(),
-          Gap(100),
+          Expanded(child: AdminStaffMembersList()),
         ],
       ),
     );

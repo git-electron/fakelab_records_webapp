@@ -33,11 +33,10 @@ class AdminStaffMembersList extends StatelessWidget {
               if (staffMembers.isEmpty) return const EmptyPage(height: 500);
 
               return ListView.separated(
-                clipBehavior: Clip.none,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: staffMembers.length,
+                itemCount: staffMembers.length + 1,
                 itemBuilder: (context, index) {
+                  if (index == staffMembers.length) return const Gap(20);
+
                   final StaffMember staffMember = staffMembers[index];
 
                   return AdminStaffMemberTile(staffMember);

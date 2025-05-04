@@ -16,7 +16,7 @@ class AdminClientsClient {
   final DatabaseReference ref;
 
   Future<Result<List<User>>> getClients() async {
-    if (isDevelopment) return Result.success([Mock.user]);
+    if (isDevelopment) return Result.success(Mock.clients);
 
     try {
       const String path = 'users';

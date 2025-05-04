@@ -21,7 +21,7 @@ mixin _$AdminClientsEvent {
     required TResult Function() setLoading,
     required TResult Function(List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(int clientId) deleteStaffMember,
+    required TResult Function(int clientId) deleteClient,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$AdminClientsEvent {
     TResult? Function()? setLoading,
     TResult? Function(List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(int clientId)? deleteStaffMember,
+    TResult? Function(int clientId)? deleteClient,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$AdminClientsEvent {
     TResult Function()? setLoading,
     TResult Function(List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(int clientId)? deleteStaffMember,
+    TResult Function(int clientId)? deleteClient,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ mixin _$AdminClientsEvent {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_DeleteClient value) deleteStaffMember,
+    required TResult Function(_DeleteClient value) deleteClient,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +54,7 @@ mixin _$AdminClientsEvent {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_DeleteClient value)? deleteStaffMember,
+    TResult? Function(_DeleteClient value)? deleteClient,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +62,7 @@ mixin _$AdminClientsEvent {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_DeleteClient value)? deleteStaffMember,
+    TResult Function(_DeleteClient value)? deleteClient,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,7 +133,7 @@ class _$SetLoadingImpl implements _SetLoading {
     required TResult Function() setLoading,
     required TResult Function(List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(int clientId) deleteStaffMember,
+    required TResult Function(int clientId) deleteClient,
   }) {
     return setLoading();
   }
@@ -144,7 +144,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult? Function()? setLoading,
     TResult? Function(List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(int clientId)? deleteStaffMember,
+    TResult? Function(int clientId)? deleteClient,
   }) {
     return setLoading?.call();
   }
@@ -155,7 +155,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult Function()? setLoading,
     TResult Function(List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(int clientId)? deleteStaffMember,
+    TResult Function(int clientId)? deleteClient,
     required TResult orElse(),
   }) {
     if (setLoading != null) {
@@ -170,7 +170,7 @@ class _$SetLoadingImpl implements _SetLoading {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_DeleteClient value) deleteStaffMember,
+    required TResult Function(_DeleteClient value) deleteClient,
   }) {
     return setLoading(this);
   }
@@ -181,7 +181,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_DeleteClient value)? deleteStaffMember,
+    TResult? Function(_DeleteClient value)? deleteClient,
   }) {
     return setLoading?.call(this);
   }
@@ -192,7 +192,7 @@ class _$SetLoadingImpl implements _SetLoading {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_DeleteClient value)? deleteStaffMember,
+    TResult Function(_DeleteClient value)? deleteClient,
     required TResult orElse(),
   }) {
     if (setLoading != null) {
@@ -283,7 +283,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     required TResult Function() setLoading,
     required TResult Function(List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(int clientId) deleteStaffMember,
+    required TResult Function(int clientId) deleteClient,
   }) {
     return setLoaded(clients);
   }
@@ -294,7 +294,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult? Function()? setLoading,
     TResult? Function(List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(int clientId)? deleteStaffMember,
+    TResult? Function(int clientId)? deleteClient,
   }) {
     return setLoaded?.call(clients);
   }
@@ -305,7 +305,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult Function()? setLoading,
     TResult Function(List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(int clientId)? deleteStaffMember,
+    TResult Function(int clientId)? deleteClient,
     required TResult orElse(),
   }) {
     if (setLoaded != null) {
@@ -320,7 +320,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_DeleteClient value) deleteStaffMember,
+    required TResult Function(_DeleteClient value) deleteClient,
   }) {
     return setLoaded(this);
   }
@@ -331,7 +331,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_DeleteClient value)? deleteStaffMember,
+    TResult? Function(_DeleteClient value)? deleteClient,
   }) {
     return setLoaded?.call(this);
   }
@@ -342,7 +342,7 @@ class _$SetLoadedImpl implements _SetLoaded {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_DeleteClient value)? deleteStaffMember,
+    TResult Function(_DeleteClient value)? deleteClient,
     required TResult orElse(),
   }) {
     if (setLoaded != null) {
@@ -435,7 +435,7 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function() setLoading,
     required TResult Function(List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(int clientId) deleteStaffMember,
+    required TResult Function(int clientId) deleteClient,
   }) {
     return setError(message);
   }
@@ -446,7 +446,7 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function()? setLoading,
     TResult? Function(List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(int clientId)? deleteStaffMember,
+    TResult? Function(int clientId)? deleteClient,
   }) {
     return setError?.call(message);
   }
@@ -457,7 +457,7 @@ class _$SetErrorImpl implements _SetError {
     TResult Function()? setLoading,
     TResult Function(List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(int clientId)? deleteStaffMember,
+    TResult Function(int clientId)? deleteClient,
     required TResult orElse(),
   }) {
     if (setError != null) {
@@ -472,7 +472,7 @@ class _$SetErrorImpl implements _SetError {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_DeleteClient value) deleteStaffMember,
+    required TResult Function(_DeleteClient value) deleteClient,
   }) {
     return setError(this);
   }
@@ -483,7 +483,7 @@ class _$SetErrorImpl implements _SetError {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_DeleteClient value)? deleteStaffMember,
+    TResult? Function(_DeleteClient value)? deleteClient,
   }) {
     return setError?.call(this);
   }
@@ -494,7 +494,7 @@ class _$SetErrorImpl implements _SetError {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_DeleteClient value)? deleteStaffMember,
+    TResult Function(_DeleteClient value)? deleteClient,
     required TResult orElse(),
   }) {
     if (setError != null) {
@@ -559,7 +559,7 @@ class _$DeleteClientImpl implements _DeleteClient {
 
   @override
   String toString() {
-    return 'AdminClientsEvent.deleteStaffMember(clientId: $clientId)';
+    return 'AdminClientsEvent.deleteClient(clientId: $clientId)';
   }
 
   @override
@@ -588,9 +588,9 @@ class _$DeleteClientImpl implements _DeleteClient {
     required TResult Function() setLoading,
     required TResult Function(List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
-    required TResult Function(int clientId) deleteStaffMember,
+    required TResult Function(int clientId) deleteClient,
   }) {
-    return deleteStaffMember(clientId);
+    return deleteClient(clientId);
   }
 
   @override
@@ -599,9 +599,9 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult? Function()? setLoading,
     TResult? Function(List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
-    TResult? Function(int clientId)? deleteStaffMember,
+    TResult? Function(int clientId)? deleteClient,
   }) {
-    return deleteStaffMember?.call(clientId);
+    return deleteClient?.call(clientId);
   }
 
   @override
@@ -610,11 +610,11 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult Function()? setLoading,
     TResult Function(List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
-    TResult Function(int clientId)? deleteStaffMember,
+    TResult Function(int clientId)? deleteClient,
     required TResult orElse(),
   }) {
-    if (deleteStaffMember != null) {
-      return deleteStaffMember(clientId);
+    if (deleteClient != null) {
+      return deleteClient(clientId);
     }
     return orElse();
   }
@@ -625,9 +625,9 @@ class _$DeleteClientImpl implements _DeleteClient {
     required TResult Function(_SetLoading value) setLoading,
     required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
-    required TResult Function(_DeleteClient value) deleteStaffMember,
+    required TResult Function(_DeleteClient value) deleteClient,
   }) {
-    return deleteStaffMember(this);
+    return deleteClient(this);
   }
 
   @override
@@ -636,9 +636,9 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult? Function(_SetLoading value)? setLoading,
     TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
-    TResult? Function(_DeleteClient value)? deleteStaffMember,
+    TResult? Function(_DeleteClient value)? deleteClient,
   }) {
-    return deleteStaffMember?.call(this);
+    return deleteClient?.call(this);
   }
 
   @override
@@ -647,11 +647,11 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult Function(_SetLoading value)? setLoading,
     TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
-    TResult Function(_DeleteClient value)? deleteStaffMember,
+    TResult Function(_DeleteClient value)? deleteClient,
     required TResult orElse(),
   }) {
-    if (deleteStaffMember != null) {
-      return deleteStaffMember(this);
+    if (deleteClient != null) {
+      return deleteClient(this);
     }
     return orElse();
   }

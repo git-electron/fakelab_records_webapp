@@ -33,11 +33,10 @@ class AdminClientsList extends StatelessWidget {
               if (clients.isEmpty) return const EmptyPage(height: 500);
 
               return ListView.separated(
-                clipBehavior: Clip.none,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: clients.length,
+                itemCount: clients.length + 1,
                 itemBuilder: (context, index) {
+                  if (index == clients.length) return const Gap(20);
+
                   final User client = clients[index];
 
                   return AdminClientMemberTile(client);

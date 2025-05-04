@@ -13,27 +13,13 @@ class AdminClientsFilters extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final bool isMobile = size.width < 1000;
-
     return Padding(
       padding: const Pad(horizontal: 20),
-      child: Column(
+      child: Row(
         children: [
-          if (isMobile) _searchTextField(context),
-          if (isMobile) const Gap(10),
-          Row(
-            children: [
-              if (!isMobile)
-                Expanded(
-                  flex: 3,
-                  child: _searchTextField(context),
-                ),
-              if (!isMobile) const Gap(10),
-              const Gap(10),
-              _addClient(context),
-            ],
-          ),
+          Expanded(child: _searchTextField(context)),
+          const Gap(10),
+          _addClient(context),
         ],
       ),
     );
