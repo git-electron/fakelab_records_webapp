@@ -56,9 +56,8 @@ class AdminOrderScreenActions extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: _actualActions(context)),
-                const Gap(20),
-                Expanded(child: _allActions(context)),
+                _actualActions(context),
+                _allActions(context),
               ],
             ),
         ],
@@ -74,25 +73,34 @@ class AdminOrderScreenActions extends StatelessWidget {
         if ([OrderStatus.COMPLETED, OrderStatus.CANCELLED].contains(status)) {
           return const SizedBox();
         }
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Актуальное', style: context.styles.footer1),
-            const Gap(10),
-            const ActualActions(),
-          ],
+        return ExpandedWrapper(
+          isReversed: true,
+          child: Padding(
+            padding: const Pad(right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Актуальное', style: context.styles.footer1),
+                const Gap(10),
+                const ActualActions(),
+              ],
+            ),
+          ),
         );
       },
     );
   }
 
-  Widget _allActions(BuildContext context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Все действия', style: context.styles.footer1),
-          const Gap(10),
-          const AllActions(),
-        ],
+  Widget _allActions(BuildContext context) => ExpandedWrapper(
+        isReversed: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Все действия', style: context.styles.footer1),
+            const Gap(10),
+            const AllActions(),
+          ],
+        ),
       );
 }
 
@@ -404,16 +412,22 @@ class ActualActions extends StatelessWidget {
 }
 
 class ExpandedWrapper extends StatelessWidget {
-  const ExpandedWrapper({required this.child, super.key});
+  const ExpandedWrapper({
+    required this.child,
+    this.isReversed = false,
+    super.key,
+  });
 
   final Widget child;
+  final bool isReversed;
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final bool isMobile = size.width < 1000;
+    final bool shouldExpand = isReversed ? !isMobile : isMobile;
 
-    return isMobile ? Expanded(child: child) : child;
+    return shouldExpand ? Expanded(child: child) : child;
   }
 }
 
