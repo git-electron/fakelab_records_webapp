@@ -44,10 +44,9 @@ class AdminScreenTabBar extends StatelessWidget {
                     onTap: () {
                       bloc.add(AdminEvent.tabChabged(tab));
                       bloc.tabsController.animateTo(
-                        (80.0 * index).clamp(
-                          bloc.tabsController.position.minScrollExtent,
-                          bloc.tabsController.position.maxScrollExtent,
-                        ),
+                        bloc.tabsController.position.maxScrollExtent /
+                            (tabs.length - 1) *
+                            index,
                         duration: kAnimationDuration,
                         curve: kAnimationCurve,
                       );

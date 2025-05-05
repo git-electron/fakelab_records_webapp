@@ -10,18 +10,20 @@ class AdminGeneralScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GeneralHeader('Статистика'),
-        Gap(20),
-        AdminGeneralStats(),
-        Gap(40),
-        GeneralHeader('Заказы'),
-        Gap(20),
-        AdminGeneralOrders(),
-        Gap(100),
-      ],
+    return const SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GeneralHeader('Статистика'),
+          Gap(20),
+          AdminGeneralStats(),
+          Gap(40),
+          GeneralHeader('Заказы'),
+          Gap(20),
+          AdminGeneralOrders(),
+          Gap(100),
+        ],
+      ),
     );
   }
 }
