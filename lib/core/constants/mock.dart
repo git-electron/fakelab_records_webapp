@@ -337,8 +337,6 @@ class Mock {
       username: 'raimee',
       activities: StaffActivity.values,
       services: StaffServiceType.values,
-      photoUrl:
-          'https://res.cloudinary.com/dnuyv9y5b/image/upload/v1746295149/5511812453545000.jpg',
     ),
     StaffMember(
       id: '5588028127449327',
