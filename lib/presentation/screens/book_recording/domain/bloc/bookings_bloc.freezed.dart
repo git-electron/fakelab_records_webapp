@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'book_recording_bloc.dart';
+part of 'bookings_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$BookRecordingEvent {
+mixin _$BookingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
@@ -63,23 +63,23 @@ mixin _$BookRecordingEvent {
 }
 
 /// @nodoc
-abstract class $BookRecordingEventCopyWith<$Res> {
-  factory $BookRecordingEventCopyWith(
-          BookRecordingEvent value, $Res Function(BookRecordingEvent) then) =
-      _$BookRecordingEventCopyWithImpl<$Res, BookRecordingEvent>;
+abstract class $BookingsEventCopyWith<$Res> {
+  factory $BookingsEventCopyWith(
+          BookingsEvent value, $Res Function(BookingsEvent) then) =
+      _$BookingsEventCopyWithImpl<$Res, BookingsEvent>;
 }
 
 /// @nodoc
-class _$BookRecordingEventCopyWithImpl<$Res, $Val extends BookRecordingEvent>
-    implements $BookRecordingEventCopyWith<$Res> {
-  _$BookRecordingEventCopyWithImpl(this._value, this._then);
+class _$BookingsEventCopyWithImpl<$Res, $Val extends BookingsEvent>
+    implements $BookingsEventCopyWith<$Res> {
+  _$BookingsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of BookRecordingEvent
+  /// Create a copy of BookingsEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -92,13 +92,13 @@ abstract class _$$SetLoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SetLoadingImplCopyWithImpl<$Res>
-    extends _$BookRecordingEventCopyWithImpl<$Res, _$SetLoadingImpl>
+    extends _$BookingsEventCopyWithImpl<$Res, _$SetLoadingImpl>
     implements _$$SetLoadingImplCopyWith<$Res> {
   __$$SetLoadingImplCopyWithImpl(
       _$SetLoadingImpl _value, $Res Function(_$SetLoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BookRecordingEvent
+  /// Create a copy of BookingsEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -109,14 +109,13 @@ class _$SetLoadingImpl with DiagnosticableTreeMixin implements _SetLoading {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BookRecordingEvent.setLoading()';
+    return 'BookingsEvent.setLoading()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'BookRecordingEvent.setLoading'));
+    properties..add(DiagnosticsProperty('type', 'BookingsEvent.setLoading'));
   }
 
   @override
@@ -197,7 +196,7 @@ class _$SetLoadingImpl with DiagnosticableTreeMixin implements _SetLoading {
   }
 }
 
-abstract class _SetLoading implements BookRecordingEvent {
+abstract class _SetLoading implements BookingsEvent {
   const factory _SetLoading() = _$SetLoadingImpl;
 }
 
@@ -212,13 +211,13 @@ abstract class _$$SetLoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SetLoadedImplCopyWithImpl<$Res>
-    extends _$BookRecordingEventCopyWithImpl<$Res, _$SetLoadedImpl>
+    extends _$BookingsEventCopyWithImpl<$Res, _$SetLoadedImpl>
     implements _$$SetLoadedImplCopyWith<$Res> {
   __$$SetLoadedImplCopyWithImpl(
       _$SetLoadedImpl _value, $Res Function(_$SetLoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BookRecordingEvent
+  /// Create a copy of BookingsEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -249,14 +248,14 @@ class _$SetLoadedImpl with DiagnosticableTreeMixin implements _SetLoaded {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BookRecordingEvent.setLoaded(bookings: $bookings)';
+    return 'BookingsEvent.setLoaded(bookings: $bookings)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'BookRecordingEvent.setLoaded'))
+      ..add(DiagnosticsProperty('type', 'BookingsEvent.setLoaded'))
       ..add(DiagnosticsProperty('bookings', bookings));
   }
 
@@ -272,7 +271,7 @@ class _$SetLoadedImpl with DiagnosticableTreeMixin implements _SetLoaded {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_bookings));
 
-  /// Create a copy of BookRecordingEvent
+  /// Create a copy of BookingsEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -349,12 +348,12 @@ class _$SetLoadedImpl with DiagnosticableTreeMixin implements _SetLoaded {
   }
 }
 
-abstract class _SetLoaded implements BookRecordingEvent {
+abstract class _SetLoaded implements BookingsEvent {
   const factory _SetLoaded(final List<Booking> bookings) = _$SetLoadedImpl;
 
   List<Booking> get bookings;
 
-  /// Create a copy of BookRecordingEvent
+  /// Create a copy of BookingsEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetLoadedImplCopyWith<_$SetLoadedImpl> get copyWith =>
@@ -372,13 +371,13 @@ abstract class _$$SetErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SetErrorImplCopyWithImpl<$Res>
-    extends _$BookRecordingEventCopyWithImpl<$Res, _$SetErrorImpl>
+    extends _$BookingsEventCopyWithImpl<$Res, _$SetErrorImpl>
     implements _$$SetErrorImplCopyWith<$Res> {
   __$$SetErrorImplCopyWithImpl(
       _$SetErrorImpl _value, $Res Function(_$SetErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BookRecordingEvent
+  /// Create a copy of BookingsEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -404,14 +403,14 @@ class _$SetErrorImpl with DiagnosticableTreeMixin implements _SetError {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BookRecordingEvent.setError(message: $message)';
+    return 'BookingsEvent.setError(message: $message)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'BookRecordingEvent.setError'))
+      ..add(DiagnosticsProperty('type', 'BookingsEvent.setError'))
       ..add(DiagnosticsProperty('message', message));
   }
 
@@ -426,7 +425,7 @@ class _$SetErrorImpl with DiagnosticableTreeMixin implements _SetError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of BookRecordingEvent
+  /// Create a copy of BookingsEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -503,12 +502,12 @@ class _$SetErrorImpl with DiagnosticableTreeMixin implements _SetError {
   }
 }
 
-abstract class _SetError implements BookRecordingEvent {
+abstract class _SetError implements BookingsEvent {
   const factory _SetError(final String? message) = _$SetErrorImpl;
 
   String? get message;
 
-  /// Create a copy of BookRecordingEvent
+  /// Create a copy of BookingsEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetErrorImplCopyWith<_$SetErrorImpl> get copyWith =>
@@ -516,7 +515,7 @@ abstract class _SetError implements BookRecordingEvent {
 }
 
 /// @nodoc
-mixin _$BookRecordingState {
+mixin _$BookingsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
@@ -564,23 +563,23 @@ mixin _$BookRecordingState {
 }
 
 /// @nodoc
-abstract class $BookRecordingStateCopyWith<$Res> {
-  factory $BookRecordingStateCopyWith(
-          BookRecordingState value, $Res Function(BookRecordingState) then) =
-      _$BookRecordingStateCopyWithImpl<$Res, BookRecordingState>;
+abstract class $BookingsStateCopyWith<$Res> {
+  factory $BookingsStateCopyWith(
+          BookingsState value, $Res Function(BookingsState) then) =
+      _$BookingsStateCopyWithImpl<$Res, BookingsState>;
 }
 
 /// @nodoc
-class _$BookRecordingStateCopyWithImpl<$Res, $Val extends BookRecordingState>
-    implements $BookRecordingStateCopyWith<$Res> {
-  _$BookRecordingStateCopyWithImpl(this._value, this._then);
+class _$BookingsStateCopyWithImpl<$Res, $Val extends BookingsState>
+    implements $BookingsStateCopyWith<$Res> {
+  _$BookingsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of BookRecordingState
+  /// Create a copy of BookingsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -593,13 +592,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$BookRecordingStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$BookingsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BookRecordingState
+  /// Create a copy of BookingsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -610,13 +609,13 @@ class _$LoadingImpl extends _Loading with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BookRecordingState.loading()';
+    return 'BookingsState.loading()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'BookRecordingState.loading'));
+    properties..add(DiagnosticsProperty('type', 'BookingsState.loading'));
   }
 
   @override
@@ -697,7 +696,7 @@ class _$LoadingImpl extends _Loading with DiagnosticableTreeMixin {
   }
 }
 
-abstract class _Loading extends BookRecordingState {
+abstract class _Loading extends BookingsState {
   const factory _Loading() = _$LoadingImpl;
   const _Loading._() : super._();
 }
@@ -713,13 +712,13 @@ abstract class _$$LoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$BookRecordingStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$BookingsStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BookRecordingState
+  /// Create a copy of BookingsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -752,14 +751,14 @@ class _$LoadedImpl extends _Loaded with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BookRecordingState.loaded(bookings: $bookings)';
+    return 'BookingsState.loaded(bookings: $bookings)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'BookRecordingState.loaded'))
+      ..add(DiagnosticsProperty('type', 'BookingsState.loaded'))
       ..add(DiagnosticsProperty('bookings', bookings));
   }
 
@@ -775,7 +774,7 @@ class _$LoadedImpl extends _Loaded with DiagnosticableTreeMixin {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_bookings));
 
-  /// Create a copy of BookRecordingState
+  /// Create a copy of BookingsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -852,13 +851,13 @@ class _$LoadedImpl extends _Loaded with DiagnosticableTreeMixin {
   }
 }
 
-abstract class _Loaded extends BookRecordingState {
+abstract class _Loaded extends BookingsState {
   const factory _Loaded(final List<Booking> bookings) = _$LoadedImpl;
   const _Loaded._() : super._();
 
   List<Booking> get bookings;
 
-  /// Create a copy of BookRecordingState
+  /// Create a copy of BookingsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -876,13 +875,13 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$BookRecordingStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$BookingsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BookRecordingState
+  /// Create a copy of BookingsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -908,14 +907,14 @@ class _$ErrorImpl extends _Error with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BookRecordingState.error(message: $message)';
+    return 'BookingsState.error(message: $message)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'BookRecordingState.error'))
+      ..add(DiagnosticsProperty('type', 'BookingsState.error'))
       ..add(DiagnosticsProperty('message', message));
   }
 
@@ -930,7 +929,7 @@ class _$ErrorImpl extends _Error with DiagnosticableTreeMixin {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of BookRecordingState
+  /// Create a copy of BookingsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -1007,13 +1006,13 @@ class _$ErrorImpl extends _Error with DiagnosticableTreeMixin {
   }
 }
 
-abstract class _Error extends BookRecordingState {
+abstract class _Error extends BookingsState {
   const factory _Error(final String? message) = _$ErrorImpl;
   const _Error._() : super._();
 
   String? get message;
 
-  /// Create a copy of BookRecordingState
+  /// Create a copy of BookingsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>

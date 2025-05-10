@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 extension DateTimeExtensions on DateTime {
   String toDDmmYYYY({
     String separator = '.',
@@ -26,6 +28,11 @@ extension DateTimeExtensions on DateTime {
   String toHHmm({bool shoudApplyPaddingToHours = false}) {
     return '${shoudApplyPaddingToHours ? _pad(hour) : hour}:${_pad(minute)}';
   }
+
+  String toYmmmm() => DateFormat.MMMM('ru').format(this);
+
+  String toAbbrWeekday() =>
+      DateFormat(DateFormat.ABBR_WEEKDAY, 'ru').format(this);
 
   String? _word(DateTime value) {
     final today = DateTime(_now.year, _now.month, _now.day);

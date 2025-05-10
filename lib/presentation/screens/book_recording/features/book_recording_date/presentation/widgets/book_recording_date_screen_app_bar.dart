@@ -4,10 +4,10 @@ import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
 
-const double _toolbarHeight = 90;
+const double _toolbarHeight = 70;
 
-class BookRecordingScreenAppBarMobile extends StatelessWidget {
-  const BookRecordingScreenAppBarMobile({super.key});
+class BookRecordingDateScreenAppBarMobile extends StatelessWidget {
+  const BookRecordingDateScreenAppBarMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +54,8 @@ class BookRecordingScreenAppBarMobile extends StatelessWidget {
   }
 }
 
-class BookRecordingScreenAppBar extends StatelessWidget {
-  const BookRecordingScreenAppBar({super.key});
+class BookRecordingDateScreenAppBar extends StatelessWidget {
+  const BookRecordingDateScreenAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class BookRecordingScreenAppBar extends StatelessWidget {
           height: _toolbarHeight,
           width: double.maxFinite,
           padding: const Pad(horizontal: 20),
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           child: Text(
             'Выбрать дату',
             style: context.styles.body1,

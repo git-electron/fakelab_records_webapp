@@ -10,8 +10,8 @@ import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
 
 @injectable
-class BookRecordingClient {
-  BookRecordingClient(this.ref, this.logger);
+class BookingsClient {
+  BookingsClient(this.ref, this.logger);
 
   final Logger logger;
   final DatabaseReference ref;

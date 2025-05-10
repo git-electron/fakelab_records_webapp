@@ -75,10 +75,14 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff
     as _i532;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart'
     as _i775;
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/book_recording_client.dart'
-    as _i761;
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/book_recording_bloc.dart'
-    as _i368;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/bookings_client.dart'
+    as _i511;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc.dart'
+    as _i763;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_date/domain/bloc/book_recording_date_bloc.dart'
+    as _i206;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_time/domain/bloc/book_recording_time_bloc.dart'
+    as _i140;
 import 'package:fakelab_records_webapp/presentation/screens/home/data/client/admin_panel_client.dart'
     as _i562;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/admin_panel_bloc/admin_panel_bloc.dart'
@@ -131,8 +135,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
+    gh.factory<_i206.BookRecordingDateBloc>(
+        () => _i206.BookRecordingDateBloc());
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
+    gh.factoryParam<_i140.BookRecordingTimeBloc, DateTime, dynamic>((
+      selectedDay,
+      _,
+    ) =>
+        _i140.BookRecordingTimeBloc(selectedDay));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
       images,
       initialIndex,
@@ -197,12 +208,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i761.BookRecordingClient>(() => _i761.BookRecordingClient(
+    gh.factory<_i511.BookingsClient>(() => _i511.BookingsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i368.BookRecordingBloc>(
-        () => _i368.BookRecordingBloc(gh<_i761.BookRecordingClient>()));
+    gh.factory<_i763.BookingsBloc>(
+        () => _i763.BookingsBloc(gh<_i511.BookingsClient>()));
     gh.factoryParam<_i514.AdminOrderBloc, String, _i522.AdminOrdersBloc>((
       orderId,
       adminOrdersBloc,

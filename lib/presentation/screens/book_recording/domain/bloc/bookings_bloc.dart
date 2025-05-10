@@ -2,20 +2,20 @@ import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
 import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/book_recording_client.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/bookings_client.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'book_recording_event.dart';
-part 'book_recording_state.dart';
-part 'book_recording_bloc.freezed.dart';
+part 'bookings_event.dart';
+part 'bookings_state.dart';
+part 'bookings_bloc.freezed.dart';
 
 @injectable
-class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
-  BookRecordingBloc(this.bookRecordingClient) : super(const _Loading()) {
+class BookingsBloc extends Bloc<BookingsEvent, BookingsState> {
+  BookingsBloc(this.bookingsClient) : super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);
@@ -23,36 +23,35 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
     tryOrNullAsync(_getBookings);
   }
 
-  final BookRecordingClient bookRecordingClient;
+  final BookingsClient bookingsClient;
 
   Future<void> _onSetLoading(
     _SetLoading event,
-    Emitter<BookRecordingState> emit,
+    Emitter<BookingsState> emit,
   ) async {
-    emit(const BookRecordingState.loading());
+    emit(const BookingsState.loading());
   }
 
   Future<void> _onSetLoaded(
     _SetLoaded event,
-    Emitter<BookRecordingState> emit,
+    Emitter<BookingsState> emit,
   ) async {
-    emit(BookRecordingState.loaded(event.bookings));
+    emit(BookingsState.loaded(event.bookings));
   }
 
   Future<void> _onSetError(
     _SetError event,
-    Emitter<BookRecordingState> emit,
+    Emitter<BookingsState> emit,
   ) async {
-    emit(BookRecordingState.error(event.message));
+    emit(BookingsState.error(event.message));
   }
 
   Future<void> _getBookings() async {
-    add(const BookRecordingEvent.setLoading());
-    final Result<List<Booking>> result =
-        await bookRecordingClient.getBookings();
+    add(const BookingsEvent.setLoading());
+    final Result<List<Booking>> result = await bookingsClient.getBookings();
     result.when(
-      success: (orders) => add(BookRecordingEvent.setLoaded(orders)),
-      error: (message) => add(BookRecordingEvent.setError(message)),
+      success: (orders) => add(BookingsEvent.setLoaded(orders)),
+      error: (message) => add(BookingsEvent.setError(message)),
     );
   }
 }

@@ -16,7 +16,7 @@ class HomeScreenButtons extends StatelessWidget {
       child: Column(
         children: [
           AppButton.primary(
-            onTap: () => context.pushRoute(const BookRecordingRoute()),
+            onTap: () => context.pushRoute(const BookRecordingDateRoute()),
             text: 'Забронировать запись',
             icon: Assets.icons.calendar.dark,
           ),

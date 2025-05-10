@@ -4,7 +4,6 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking_status.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/status_history_item/booking_status_history_item.dart';
 
 import '../domain/models/rating/rating.dart';
 import '../domain/models/user/user.dart';
@@ -44,7 +43,7 @@ class Mock {
     phoneNumber: '+79312882004',
   );
 
-  static final DateTime _now = DateTime.now();
+  static final DateTime _now = DateTime.now().toUtc();
   static final List<Order> orders = <Order>[
     Order(
       id: '5528550526019438',
@@ -337,24 +336,11 @@ class Mock {
       id: '5528550544544851',
       customer: user,
       status: BookingStatus.COMPLETED,
-      statusHistory: [
-        BookingStatusHistoryItem(
-          status: BookingStatus.REQUEST,
-          dateChanged: _now.subtract(const Duration(days: 1)),
-        ),
-        BookingStatusHistoryItem(
-          status: BookingStatus.PENDING,
-          dateChanged: _now.subtract(const Duration(hours: 18)),
-        ),
-        BookingStatusHistoryItem(
-          status: BookingStatus.COMPLETED,
-          dateChanged: _now,
-        ),
-      ],
+      statusHistory: [],
       dateCreated: _now.subtract(const Duration(days: 1)),
-      dateChanged: _now,
+      dateChanged: _now.subtract(const Duration(days: 1)),
       assignee: getStaffMember('5528559284548329'),
-      date: _now.subtract(const Duration(hours: 3)),
+      date: DateTime(_now.year, _now.month, _now.day, 12).toUtc(),
       totalCost: 2500,
       duration: const Duration(hours: 2, minutes: 30),
       rating: Rating(
@@ -366,22 +352,25 @@ class Mock {
       id: '5528550544589537',
       customer: user,
       status: BookingStatus.PENDING,
-      statusHistory: [
-        BookingStatusHistoryItem(
-          status: BookingStatus.REQUEST,
-          dateChanged: _now.subtract(const Duration(days: 1)),
-        ),
-        BookingStatusHistoryItem(
-          status: BookingStatus.PENDING,
-          dateChanged: _now.subtract(const Duration(hours: 18)),
-        ),
-      ],
+      statusHistory: [],
       dateCreated: _now.subtract(const Duration(days: 1)),
-      dateChanged: _now,
+      dateChanged: _now.subtract(const Duration(days: 1)),
       assignee: getStaffMember('5528559284548329'),
-      date: _now.add(const Duration(hours: 3)),
+      date: DateTime(_now.year, _now.month, _now.day, 18).toUtc(),
       totalCost: 2500,
       duration: const Duration(hours: 3),
+    ),
+    Booking(
+      id: '5528550544559483',
+      customer: user,
+      status: BookingStatus.PENDING,
+      statusHistory: [],
+      dateCreated: _now.subtract(const Duration(days: 1)),
+      dateChanged: _now.subtract(const Duration(days: 1)),
+      assignee: getStaffMember('5528559284548329'),
+      date: DateTime(_now.year, _now.month, _now.day + 3, 8).toUtc(),
+      totalCost: 2500,
+      duration: const Duration(hours: 15),
     ),
   ];
 
