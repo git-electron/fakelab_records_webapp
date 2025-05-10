@@ -2,6 +2,7 @@ import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/or
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking.dart';
 
 import '../domain/models/rating/rating.dart';
 import '../domain/models/user/user.dart';
@@ -328,6 +329,11 @@ class Mock {
 
   static Order? getOrder(String orderId) =>
       tryOrNull(() => orders.firstWhere((order) => order.id == orderId));
+
+  static final List<Booking> bookings = <Booking>[];
+
+  static Booking? getBooking(String bookingId) => tryOrNull(
+      () => bookings.firstWhere((booking) => booking.id == bookingId));
 
   static List<StaffMember> staffMembers = <StaffMember>[
     StaffMember(

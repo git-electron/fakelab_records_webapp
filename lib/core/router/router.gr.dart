@@ -9,15 +9,15 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i15;
+import 'package:auto_route/auto_route.dart' as _i16;
 import 'package:fakelab_records_webapp/core/domain/models/user/user.dart'
-    as _i20;
+    as _i21;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_clients_bloc/admin_clients_bloc.dart'
-    as _i16;
+    as _i17;
 import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart'
-    as _i18;
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart'
     as _i19;
+import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart'
+    as _i20;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/features/create_client/presentation/admin_create_client_screen.dart'
     as _i1;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/features/edit_client/presentation/admin_edit_client_screen.dart'
@@ -27,7 +27,7 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/order
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/features/order/presentation/admin_order_screen.dart'
     as _i6;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart'
-    as _i21;
+    as _i22;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/create_staff_member/presentation/admin_create_staff_member_screen.dart'
     as _i3;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/presentation/admin_edit_staff_member_screen.dart'
@@ -36,28 +36,30 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/a
     as _i7;
 import 'package:fakelab_records_webapp/presentation/screens/base/base_screen.dart'
     as _i8;
-import 'package:fakelab_records_webapp/presentation/screens/home/presentation/home_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/presentation/book_recording_screen.dart'
     as _i9;
-import 'package:fakelab_records_webapp/presentation/screens/images_viewer/presentation/images_viewer_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/home/presentation/home_screen.dart'
     as _i10;
-import 'package:fakelab_records_webapp/presentation/screens/loyalty/loyalty_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/images_viewer/presentation/images_viewer_screen.dart'
     as _i11;
-import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/my_order_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/loyalty/loyalty_screen.dart'
     as _i12;
-import 'package:fakelab_records_webapp/presentation/screens/my_orders/presentation/my_orders_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/my_order_screen.dart'
     as _i13;
-import 'package:fakelab_records_webapp/presentation/screens/unsupported/unsupported_screen.dart'
+import 'package:fakelab_records_webapp/presentation/screens/my_orders/presentation/my_orders_screen.dart'
     as _i14;
-import 'package:flutter/material.dart' as _i17;
+import 'package:fakelab_records_webapp/presentation/screens/unsupported/unsupported_screen.dart'
+    as _i15;
+import 'package:flutter/material.dart' as _i18;
 
 /// generated route for
 /// [_i1.AdminCreateClientScreen]
 class AdminCreateClientRoute
-    extends _i15.PageRouteInfo<AdminCreateClientRouteArgs> {
+    extends _i16.PageRouteInfo<AdminCreateClientRouteArgs> {
   AdminCreateClientRoute({
-    required _i16.AdminClientsBloc adminClientsBloc,
-    _i17.Key? key,
-    List<_i15.PageRouteInfo>? children,
+    required _i17.AdminClientsBloc adminClientsBloc,
+    _i18.Key? key,
+    List<_i16.PageRouteInfo>? children,
   }) : super(
          AdminCreateClientRoute.name,
          args: AdminCreateClientRouteArgs(
@@ -69,7 +71,7 @@ class AdminCreateClientRoute
 
   static const String name = 'AdminCreateClientRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AdminCreateClientRouteArgs>();
@@ -84,9 +86,9 @@ class AdminCreateClientRoute
 class AdminCreateClientRouteArgs {
   const AdminCreateClientRouteArgs({required this.adminClientsBloc, this.key});
 
-  final _i16.AdminClientsBloc adminClientsBloc;
+  final _i17.AdminClientsBloc adminClientsBloc;
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -97,12 +99,12 @@ class AdminCreateClientRouteArgs {
 /// generated route for
 /// [_i2.AdminCreateOrderScreen]
 class AdminCreateOrderRoute
-    extends _i15.PageRouteInfo<AdminCreateOrderRouteArgs> {
+    extends _i16.PageRouteInfo<AdminCreateOrderRouteArgs> {
   AdminCreateOrderRoute({
-    required _i18.AdminOrdersBloc adminOrdersBloc,
-    required _i16.AdminClientsBloc adminClientsBloc,
-    _i17.Key? key,
-    List<_i15.PageRouteInfo>? children,
+    required _i19.AdminOrdersBloc adminOrdersBloc,
+    required _i17.AdminClientsBloc adminClientsBloc,
+    _i18.Key? key,
+    List<_i16.PageRouteInfo>? children,
   }) : super(
          AdminCreateOrderRoute.name,
          args: AdminCreateOrderRouteArgs(
@@ -115,7 +117,7 @@ class AdminCreateOrderRoute
 
   static const String name = 'AdminCreateOrderRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AdminCreateOrderRouteArgs>();
@@ -135,11 +137,11 @@ class AdminCreateOrderRouteArgs {
     this.key,
   });
 
-  final _i18.AdminOrdersBloc adminOrdersBloc;
+  final _i19.AdminOrdersBloc adminOrdersBloc;
 
-  final _i16.AdminClientsBloc adminClientsBloc;
+  final _i17.AdminClientsBloc adminClientsBloc;
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -150,11 +152,11 @@ class AdminCreateOrderRouteArgs {
 /// generated route for
 /// [_i3.AdminCreateStaffMemberScreen]
 class AdminCreateStaffMemberRoute
-    extends _i15.PageRouteInfo<AdminCreateStaffMemberRouteArgs> {
+    extends _i16.PageRouteInfo<AdminCreateStaffMemberRouteArgs> {
   AdminCreateStaffMemberRoute({
-    required _i19.AdminStaffBloc adminStaffBloc,
-    _i17.Key? key,
-    List<_i15.PageRouteInfo>? children,
+    required _i20.AdminStaffBloc adminStaffBloc,
+    _i18.Key? key,
+    List<_i16.PageRouteInfo>? children,
   }) : super(
          AdminCreateStaffMemberRoute.name,
          args: AdminCreateStaffMemberRouteArgs(
@@ -166,7 +168,7 @@ class AdminCreateStaffMemberRoute
 
   static const String name = 'AdminCreateStaffMemberRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AdminCreateStaffMemberRouteArgs>();
@@ -184,9 +186,9 @@ class AdminCreateStaffMemberRouteArgs {
     this.key,
   });
 
-  final _i19.AdminStaffBloc adminStaffBloc;
+  final _i20.AdminStaffBloc adminStaffBloc;
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -197,13 +199,13 @@ class AdminCreateStaffMemberRouteArgs {
 /// generated route for
 /// [_i4.AdminEditClientScreen]
 class AdminEditClientRoute
-    extends _i15.PageRouteInfo<AdminEditClientRouteArgs> {
+    extends _i16.PageRouteInfo<AdminEditClientRouteArgs> {
   AdminEditClientRoute({
     required String id,
-    required _i20.User client,
-    required _i16.AdminClientsBloc adminClientsBloc,
-    _i17.Key? key,
-    List<_i15.PageRouteInfo>? children,
+    required _i21.User client,
+    required _i17.AdminClientsBloc adminClientsBloc,
+    _i18.Key? key,
+    List<_i16.PageRouteInfo>? children,
   }) : super(
          AdminEditClientRoute.name,
          args: AdminEditClientRouteArgs(
@@ -218,7 +220,7 @@ class AdminEditClientRoute
 
   static const String name = 'AdminEditClientRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AdminEditClientRouteArgs>();
@@ -242,11 +244,11 @@ class AdminEditClientRouteArgs {
 
   final String id;
 
-  final _i20.User client;
+  final _i21.User client;
 
-  final _i16.AdminClientsBloc adminClientsBloc;
+  final _i17.AdminClientsBloc adminClientsBloc;
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -257,13 +259,13 @@ class AdminEditClientRouteArgs {
 /// generated route for
 /// [_i5.AdminEditStaffMemberScreen]
 class AdminEditStaffMemberRoute
-    extends _i15.PageRouteInfo<AdminEditStaffMemberRouteArgs> {
+    extends _i16.PageRouteInfo<AdminEditStaffMemberRouteArgs> {
   AdminEditStaffMemberRoute({
     required String id,
-    required _i21.StaffMember staffMember,
-    required _i19.AdminStaffBloc adminStaffBloc,
-    _i17.Key? key,
-    List<_i15.PageRouteInfo>? children,
+    required _i22.StaffMember staffMember,
+    required _i20.AdminStaffBloc adminStaffBloc,
+    _i18.Key? key,
+    List<_i16.PageRouteInfo>? children,
   }) : super(
          AdminEditStaffMemberRoute.name,
          args: AdminEditStaffMemberRouteArgs(
@@ -278,7 +280,7 @@ class AdminEditStaffMemberRoute
 
   static const String name = 'AdminEditStaffMemberRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AdminEditStaffMemberRouteArgs>();
@@ -302,11 +304,11 @@ class AdminEditStaffMemberRouteArgs {
 
   final String id;
 
-  final _i21.StaffMember staffMember;
+  final _i22.StaffMember staffMember;
 
-  final _i19.AdminStaffBloc adminStaffBloc;
+  final _i20.AdminStaffBloc adminStaffBloc;
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -316,13 +318,13 @@ class AdminEditStaffMemberRouteArgs {
 
 /// generated route for
 /// [_i6.AdminOrderScreen]
-class AdminOrderRoute extends _i15.PageRouteInfo<AdminOrderRouteArgs> {
+class AdminOrderRoute extends _i16.PageRouteInfo<AdminOrderRouteArgs> {
   AdminOrderRoute({
     required String orderId,
-    required _i19.AdminStaffBloc adminStaffBloc,
-    required _i18.AdminOrdersBloc adminOrdersBloc,
-    _i17.Key? key,
-    List<_i15.PageRouteInfo>? children,
+    required _i20.AdminStaffBloc adminStaffBloc,
+    required _i19.AdminOrdersBloc adminOrdersBloc,
+    _i18.Key? key,
+    List<_i16.PageRouteInfo>? children,
   }) : super(
          AdminOrderRoute.name,
          args: AdminOrderRouteArgs(
@@ -337,7 +339,7 @@ class AdminOrderRoute extends _i15.PageRouteInfo<AdminOrderRouteArgs> {
 
   static const String name = 'AdminOrderRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AdminOrderRouteArgs>();
@@ -361,11 +363,11 @@ class AdminOrderRouteArgs {
 
   final String orderId;
 
-  final _i19.AdminStaffBloc adminStaffBloc;
+  final _i20.AdminStaffBloc adminStaffBloc;
 
-  final _i18.AdminOrdersBloc adminOrdersBloc;
+  final _i19.AdminOrdersBloc adminOrdersBloc;
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -375,13 +377,13 @@ class AdminOrderRouteArgs {
 
 /// generated route for
 /// [_i7.AdminScreen]
-class AdminRoute extends _i15.PageRouteInfo<void> {
-  const AdminRoute({List<_i15.PageRouteInfo>? children})
+class AdminRoute extends _i16.PageRouteInfo<void> {
+  const AdminRoute({List<_i16.PageRouteInfo>? children})
     : super(AdminRoute.name, initialChildren: children);
 
   static const String name = 'AdminRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       return const _i7.AdminScreen();
@@ -391,13 +393,13 @@ class AdminRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.BaseScreen]
-class BaseRoute extends _i15.PageRouteInfo<void> {
-  const BaseRoute({List<_i15.PageRouteInfo>? children})
+class BaseRoute extends _i16.PageRouteInfo<void> {
+  const BaseRoute({List<_i16.PageRouteInfo>? children})
     : super(BaseRoute.name, initialChildren: children);
 
   static const String name = 'BaseRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       return const _i8.BaseScreen();
@@ -406,30 +408,46 @@ class BaseRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.HomeScreen]
-class HomeRoute extends _i15.PageRouteInfo<void> {
-  const HomeRoute({List<_i15.PageRouteInfo>? children})
-    : super(HomeRoute.name, initialChildren: children);
+/// [_i9.BookRecordingScreen]
+class BookRecordingRoute extends _i16.PageRouteInfo<void> {
+  const BookRecordingRoute({List<_i16.PageRouteInfo>? children})
+    : super(BookRecordingRoute.name, initialChildren: children);
 
-  static const String name = 'HomeRoute';
+  static const String name = 'BookRecordingRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
-      return const _i9.HomeScreen();
+      return const _i9.BookRecordingScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i10.ImagesViewerScreen]
-class ImagesViewerRoute extends _i15.PageRouteInfo<ImagesViewerRouteArgs> {
+/// [_i10.HomeScreen]
+class HomeRoute extends _i16.PageRouteInfo<void> {
+  const HomeRoute({List<_i16.PageRouteInfo>? children})
+    : super(HomeRoute.name, initialChildren: children);
+
+  static const String name = 'HomeRoute';
+
+  static _i16.PageInfo page = _i16.PageInfo(
+    name,
+    builder: (data) {
+      return const _i10.HomeScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [_i11.ImagesViewerScreen]
+class ImagesViewerRoute extends _i16.PageRouteInfo<ImagesViewerRouteArgs> {
   ImagesViewerRoute({
     required List<String> images,
     required int initialIndex,
-    _i10.ImageSource source = _i10.ImageSource.network,
-    _i17.Key? key,
-    List<_i15.PageRouteInfo>? children,
+    _i11.ImageSource source = _i11.ImageSource.network,
+    _i18.Key? key,
+    List<_i16.PageRouteInfo>? children,
   }) : super(
          ImagesViewerRoute.name,
          args: ImagesViewerRouteArgs(
@@ -443,11 +461,11 @@ class ImagesViewerRoute extends _i15.PageRouteInfo<ImagesViewerRouteArgs> {
 
   static const String name = 'ImagesViewerRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ImagesViewerRouteArgs>();
-      return _i10.ImagesViewerScreen(
+      return _i11.ImagesViewerScreen(
         images: args.images,
         initialIndex: args.initialIndex,
         source: args.source,
@@ -461,7 +479,7 @@ class ImagesViewerRouteArgs {
   const ImagesViewerRouteArgs({
     required this.images,
     required this.initialIndex,
-    this.source = _i10.ImageSource.network,
+    this.source = _i11.ImageSource.network,
     this.key,
   });
 
@@ -469,9 +487,9 @@ class ImagesViewerRouteArgs {
 
   final int initialIndex;
 
-  final _i10.ImageSource source;
+  final _i11.ImageSource source;
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -480,28 +498,28 @@ class ImagesViewerRouteArgs {
 }
 
 /// generated route for
-/// [_i11.LoyaltyScreen]
-class LoyaltyRoute extends _i15.PageRouteInfo<void> {
-  const LoyaltyRoute({List<_i15.PageRouteInfo>? children})
+/// [_i12.LoyaltyScreen]
+class LoyaltyRoute extends _i16.PageRouteInfo<void> {
+  const LoyaltyRoute({List<_i16.PageRouteInfo>? children})
     : super(LoyaltyRoute.name, initialChildren: children);
 
   static const String name = 'LoyaltyRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
-      return const _i11.LoyaltyScreen();
+      return const _i12.LoyaltyScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i12.MyOrderScreen]
-class MyOrderRoute extends _i15.PageRouteInfo<MyOrderRouteArgs> {
+/// [_i13.MyOrderScreen]
+class MyOrderRoute extends _i16.PageRouteInfo<MyOrderRouteArgs> {
   MyOrderRoute({
     required String orderId,
-    _i17.Key? key,
-    List<_i15.PageRouteInfo>? children,
+    _i18.Key? key,
+    List<_i16.PageRouteInfo>? children,
   }) : super(
          MyOrderRoute.name,
          args: MyOrderRouteArgs(orderId: orderId, key: key),
@@ -511,14 +529,14 @@ class MyOrderRoute extends _i15.PageRouteInfo<MyOrderRouteArgs> {
 
   static const String name = 'MyOrderRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
       final pathParams = data.inheritedPathParams;
       final args = data.argsAs<MyOrderRouteArgs>(
         orElse: () => MyOrderRouteArgs(orderId: pathParams.getString('id')),
       );
-      return _i12.MyOrderScreen(orderId: args.orderId, key: args.key);
+      return _i13.MyOrderScreen(orderId: args.orderId, key: args.key);
     },
   );
 }
@@ -528,7 +546,7 @@ class MyOrderRouteArgs {
 
   final String orderId;
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -537,33 +555,33 @@ class MyOrderRouteArgs {
 }
 
 /// generated route for
-/// [_i13.MyOrdersScreen]
-class MyOrdersRoute extends _i15.PageRouteInfo<void> {
-  const MyOrdersRoute({List<_i15.PageRouteInfo>? children})
+/// [_i14.MyOrdersScreen]
+class MyOrdersRoute extends _i16.PageRouteInfo<void> {
+  const MyOrdersRoute({List<_i16.PageRouteInfo>? children})
     : super(MyOrdersRoute.name, initialChildren: children);
 
   static const String name = 'MyOrdersRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
-      return const _i13.MyOrdersScreen();
+      return const _i14.MyOrdersScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i14.UnsupportedScreen]
-class UnsupportedRoute extends _i15.PageRouteInfo<void> {
-  const UnsupportedRoute({List<_i15.PageRouteInfo>? children})
+/// [_i15.UnsupportedScreen]
+class UnsupportedRoute extends _i16.PageRouteInfo<void> {
+  const UnsupportedRoute({List<_i16.PageRouteInfo>? children})
     : super(UnsupportedRoute.name, initialChildren: children);
 
   static const String name = 'UnsupportedRoute';
 
-  static _i15.PageInfo page = _i15.PageInfo(
+  static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
-      return const _i14.UnsupportedScreen();
+      return const _i15.UnsupportedScreen();
     },
   );
 }

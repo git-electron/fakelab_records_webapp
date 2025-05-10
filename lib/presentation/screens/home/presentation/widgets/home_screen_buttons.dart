@@ -1,4 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import '../../../../../core/gen/assets.gen.dart';
 import '../../../../ui/app_button.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +16,7 @@ class HomeScreenButtons extends StatelessWidget {
       child: Column(
         children: [
           AppButton.primary(
-            onTap: () {},
-            isEnabled: false,
+            onTap: () => context.pushRoute(const BookRecordingRoute()),
             text: 'Забронировать запись',
             icon: Assets.icons.calendar.dark,
           ),

@@ -73,30 +73,16 @@ Args: ${resolver.route.args}''');
           ],
         ),
         AutoRoute(page: MyOrderRoute.page, path: '/orders/:id'),
+        AutoRoute(page: BookRecordingRoute.page, path: '/book'),
         AutoRoute(page: ImagesViewerRoute.page, path: '/images'),
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
         if (isMobile) AutoRoute(page: AdminRoute.page, path: '/admin'),
         AutoRoute(page: AdminOrderRoute.page, path: '/admin/orders/:id'),
-        AutoRoute(
-          page: AdminCreateOrderRoute.page,
-          path: '/admin/orders/create',
-        ),
-        AutoRoute(
-          page: AdminCreateStaffMemberRoute.page,
-          path: '/admin/staff/create',
-        ),
-        AutoRoute(
-          page: AdminEditStaffMemberRoute.page,
-          path: '/admin/staff/edit/:id',
-        ),
-        AutoRoute(
-          page: AdminCreateClientRoute.page,
-          path: '/admin/clients/create',
-        ),
-        AutoRoute(
-          page: AdminEditClientRoute.page,
-          path: '/admin/clients/edit/:id',
-        ),
+        AutoRoute(page: AdminCreateOrderRoute.page, path: '/admin/orders/create'),
+        AutoRoute(page: AdminCreateClientRoute.page, path: '/admin/clients/create'),
+        AutoRoute(page: AdminEditClientRoute.page, path: '/admin/clients/edit/:id'),
+        AutoRoute(page: AdminCreateStaffMemberRoute.page, path: '/admin/staff/create'),
+        AutoRoute(page: AdminEditStaffMemberRoute.page, path: '/admin/staff/edit/:id'),
         ...redirections,
       ];
 

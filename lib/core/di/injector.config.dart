@@ -75,6 +75,10 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff
     as _i532;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/domain/bloc/admin_edit_staff_member_bloc.dart'
     as _i775;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/book_recording_client.dart'
+    as _i761;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/book_recording_bloc.dart'
+    as _i368;
 import 'package:fakelab_records_webapp/presentation/screens/home/data/client/admin_panel_client.dart'
     as _i562;
 import 'package:fakelab_records_webapp/presentation/screens/home/domain/bloc/admin_panel_bloc/admin_panel_bloc.dart'
@@ -127,6 +131,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
+    gh.factory<_i368.BookRecordingBloc>(() => _i368.BookRecordingBloc());
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
@@ -167,6 +172,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
+    gh.factory<_i742.AdminCreateOrderClient>(() => _i742.AdminCreateOrderClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.factory<_i150.AdminOrderClient>(() => _i150.AdminOrderClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
     gh.factory<_i89.AdminCreateStaffMemberClient>(
         () => _i89.AdminCreateStaffMemberClient(
               gh<_i345.DatabaseReference>(),
@@ -185,11 +198,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i150.AdminOrderClient>(() => _i150.AdminOrderClient(
-          gh<_i345.DatabaseReference>(),
-          gh<_i974.Logger>(),
-        ));
-    gh.factory<_i742.AdminCreateOrderClient>(() => _i742.AdminCreateOrderClient(
+    gh.factory<_i761.AdminBookingsClient>(() => _i761.AdminBookingsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
