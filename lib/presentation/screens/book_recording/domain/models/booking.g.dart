@@ -19,9 +19,9 @@ _$BookingImpl _$$BookingImplFromJson(Map<String, dynamic> json) =>
           const DateTimeConverter().fromJson(json['dateCreated'] as String),
       dateChanged:
           const DateTimeConverter().fromJson(json['dateChanged'] as String),
+      date: const DateTimeConverter().fromJson(json['date'] as String),
       totalCost: (json['totalCost'] as num).toDouble(),
-      startTime: DateTime.parse(json['startTime'] as String),
-      endTime: DateTime.parse(json['endTime'] as String),
+      duration: Duration(microseconds: (json['duration'] as num).toInt()),
       assignee: json['assignee'] == null
           ? null
           : StaffMember.fromJson(json['assignee'] as Map<String, dynamic>),
@@ -38,9 +38,9 @@ Map<String, dynamic> _$$BookingImplToJson(_$BookingImpl instance) =>
       'statusHistory': instance.statusHistory.map((e) => e.toJson()).toList(),
       'dateCreated': const DateTimeConverter().toJson(instance.dateCreated),
       'dateChanged': const DateTimeConverter().toJson(instance.dateChanged),
+      'date': const DateTimeConverter().toJson(instance.date),
       'totalCost': instance.totalCost,
-      'startTime': instance.startTime.toIso8601String(),
-      'endTime': instance.endTime.toIso8601String(),
+      'duration': instance.duration.inMicroseconds,
       'assignee': instance.assignee?.toJson(),
       'rating': instance.rating?.toJson(),
     };

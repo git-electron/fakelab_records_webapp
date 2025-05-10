@@ -104,12 +104,19 @@ class __$$SetLoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SetLoadingImpl implements _SetLoading {
+class _$SetLoadingImpl with DiagnosticableTreeMixin implements _SetLoading {
   const _$SetLoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'BookRecordingEvent.setLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'BookRecordingEvent.setLoading'));
   }
 
   @override
@@ -229,7 +236,7 @@ class __$$SetLoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SetLoadedImpl implements _SetLoaded {
+class _$SetLoadedImpl with DiagnosticableTreeMixin implements _SetLoaded {
   const _$SetLoadedImpl(final List<Booking> bookings) : _bookings = bookings;
 
   final List<Booking> _bookings;
@@ -241,8 +248,16 @@ class _$SetLoadedImpl implements _SetLoaded {
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'BookRecordingEvent.setLoaded(bookings: $bookings)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'BookRecordingEvent.setLoaded'))
+      ..add(DiagnosticsProperty('bookings', bookings));
   }
 
   @override
@@ -381,15 +396,23 @@ class __$$SetErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SetErrorImpl implements _SetError {
+class _$SetErrorImpl with DiagnosticableTreeMixin implements _SetError {
   const _$SetErrorImpl(this.message);
 
   @override
   final String? message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'BookRecordingEvent.setError(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'BookRecordingEvent.setError'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -582,12 +605,18 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl extends _Loading {
+class _$LoadingImpl extends _Loading with DiagnosticableTreeMixin {
   const _$LoadingImpl() : super._();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'BookRecordingState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'BookRecordingState.loading'));
   }
 
   @override
@@ -708,7 +737,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadedImpl extends _Loaded {
+class _$LoadedImpl extends _Loaded with DiagnosticableTreeMixin {
   const _$LoadedImpl(final List<Booking> bookings)
       : _bookings = bookings,
         super._();
@@ -722,8 +751,16 @@ class _$LoadedImpl extends _Loaded {
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'BookRecordingState.loaded(bookings: $bookings)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'BookRecordingState.loaded'))
+      ..add(DiagnosticsProperty('bookings', bookings));
   }
 
   @override
@@ -863,15 +900,23 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl extends _Error {
+class _$ErrorImpl extends _Error with DiagnosticableTreeMixin {
   const _$ErrorImpl(this.message) : super._();
 
   @override
   final String? message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'BookRecordingState.error(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'BookRecordingState.error'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override

@@ -29,9 +29,10 @@ mixin _$Booking {
   DateTime get dateCreated => throw _privateConstructorUsedError;
   @DateTimeConverter()
   DateTime get dateChanged => throw _privateConstructorUsedError;
+  @DateTimeConverter()
+  DateTime get date => throw _privateConstructorUsedError;
   double get totalCost => throw _privateConstructorUsedError;
-  DateTime get startTime => throw _privateConstructorUsedError;
-  DateTime get endTime => throw _privateConstructorUsedError;
+  Duration get duration => throw _privateConstructorUsedError;
   StaffMember? get assignee => throw _privateConstructorUsedError;
   Rating? get rating => throw _privateConstructorUsedError;
 
@@ -56,9 +57,9 @@ abstract class $BookingCopyWith<$Res> {
       List<BookingStatusHistoryItem> statusHistory,
       @DateTimeConverter() DateTime dateCreated,
       @DateTimeConverter() DateTime dateChanged,
+      @DateTimeConverter() DateTime date,
       double totalCost,
-      DateTime startTime,
-      DateTime endTime,
+      Duration duration,
       StaffMember? assignee,
       Rating? rating});
 
@@ -88,9 +89,9 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
     Object? statusHistory = null,
     Object? dateCreated = null,
     Object? dateChanged = null,
+    Object? date = null,
     Object? totalCost = null,
-    Object? startTime = null,
-    Object? endTime = null,
+    Object? duration = null,
     Object? assignee = freezed,
     Object? rating = freezed,
   }) {
@@ -119,18 +120,18 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
           ? _value.dateChanged
           : dateChanged // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       totalCost: null == totalCost
           ? _value.totalCost
           : totalCost // ignore: cast_nullable_to_non_nullable
               as double,
-      startTime: null == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endTime: null == endTime
-          ? _value.endTime
-          : endTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
       assignee: freezed == assignee
           ? _value.assignee
           : assignee // ignore: cast_nullable_to_non_nullable
@@ -195,9 +196,9 @@ abstract class _$$BookingImplCopyWith<$Res> implements $BookingCopyWith<$Res> {
       List<BookingStatusHistoryItem> statusHistory,
       @DateTimeConverter() DateTime dateCreated,
       @DateTimeConverter() DateTime dateChanged,
+      @DateTimeConverter() DateTime date,
       double totalCost,
-      DateTime startTime,
-      DateTime endTime,
+      Duration duration,
       StaffMember? assignee,
       Rating? rating});
 
@@ -228,9 +229,9 @@ class __$$BookingImplCopyWithImpl<$Res>
     Object? statusHistory = null,
     Object? dateCreated = null,
     Object? dateChanged = null,
+    Object? date = null,
     Object? totalCost = null,
-    Object? startTime = null,
-    Object? endTime = null,
+    Object? duration = null,
     Object? assignee = freezed,
     Object? rating = freezed,
   }) {
@@ -259,18 +260,18 @@ class __$$BookingImplCopyWithImpl<$Res>
           ? _value.dateChanged
           : dateChanged // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       totalCost: null == totalCost
           ? _value.totalCost
           : totalCost // ignore: cast_nullable_to_non_nullable
               as double,
-      startTime: null == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endTime: null == endTime
-          ? _value.endTime
-          : endTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
       assignee: freezed == assignee
           ? _value.assignee
           : assignee // ignore: cast_nullable_to_non_nullable
@@ -285,7 +286,7 @@ class __$$BookingImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$BookingImpl implements _Booking {
+class _$BookingImpl extends _Booking {
   _$BookingImpl(
       {required this.id,
       required this.customer,
@@ -293,12 +294,13 @@ class _$BookingImpl implements _Booking {
       required final List<BookingStatusHistoryItem> statusHistory,
       @DateTimeConverter() required this.dateCreated,
       @DateTimeConverter() required this.dateChanged,
+      @DateTimeConverter() required this.date,
       required this.totalCost,
-      required this.startTime,
-      required this.endTime,
+      required this.duration,
       this.assignee,
       this.rating})
-      : _statusHistory = statusHistory;
+      : _statusHistory = statusHistory,
+        super._();
 
   factory _$BookingImpl.fromJson(Map<String, dynamic> json) =>
       _$$BookingImplFromJson(json);
@@ -324,11 +326,12 @@ class _$BookingImpl implements _Booking {
   @DateTimeConverter()
   final DateTime dateChanged;
   @override
+  @DateTimeConverter()
+  final DateTime date;
+  @override
   final double totalCost;
   @override
-  final DateTime startTime;
-  @override
-  final DateTime endTime;
+  final Duration duration;
   @override
   final StaffMember? assignee;
   @override
@@ -336,7 +339,7 @@ class _$BookingImpl implements _Booking {
 
   @override
   String toString() {
-    return 'Booking(id: $id, customer: $customer, status: $status, statusHistory: $statusHistory, dateCreated: $dateCreated, dateChanged: $dateChanged, totalCost: $totalCost, startTime: $startTime, endTime: $endTime, assignee: $assignee, rating: $rating)';
+    return 'Booking(id: $id, customer: $customer, status: $status, statusHistory: $statusHistory, dateCreated: $dateCreated, dateChanged: $dateChanged, date: $date, totalCost: $totalCost, duration: $duration, assignee: $assignee, rating: $rating)';
   }
 
   @override
@@ -354,11 +357,11 @@ class _$BookingImpl implements _Booking {
                 other.dateCreated == dateCreated) &&
             (identical(other.dateChanged, dateChanged) ||
                 other.dateChanged == dateChanged) &&
+            (identical(other.date, date) || other.date == date) &&
             (identical(other.totalCost, totalCost) ||
                 other.totalCost == totalCost) &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
-            (identical(other.endTime, endTime) || other.endTime == endTime) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
             (identical(other.assignee, assignee) ||
                 other.assignee == assignee) &&
             (identical(other.rating, rating) || other.rating == rating));
@@ -374,9 +377,9 @@ class _$BookingImpl implements _Booking {
       const DeepCollectionEquality().hash(_statusHistory),
       dateCreated,
       dateChanged,
+      date,
       totalCost,
-      startTime,
-      endTime,
+      duration,
       assignee,
       rating);
 
@@ -396,7 +399,7 @@ class _$BookingImpl implements _Booking {
   }
 }
 
-abstract class _Booking implements Booking {
+abstract class _Booking extends Booking {
   factory _Booking(
       {required final String id,
       required final User customer,
@@ -404,11 +407,12 @@ abstract class _Booking implements Booking {
       required final List<BookingStatusHistoryItem> statusHistory,
       @DateTimeConverter() required final DateTime dateCreated,
       @DateTimeConverter() required final DateTime dateChanged,
+      @DateTimeConverter() required final DateTime date,
       required final double totalCost,
-      required final DateTime startTime,
-      required final DateTime endTime,
+      required final Duration duration,
       final StaffMember? assignee,
       final Rating? rating}) = _$BookingImpl;
+  _Booking._() : super._();
 
   factory _Booking.fromJson(Map<String, dynamic> json) = _$BookingImpl.fromJson;
 
@@ -427,11 +431,12 @@ abstract class _Booking implements Booking {
   @DateTimeConverter()
   DateTime get dateChanged;
   @override
+  @DateTimeConverter()
+  DateTime get date;
+  @override
   double get totalCost;
   @override
-  DateTime get startTime;
-  @override
-  DateTime get endTime;
+  Duration get duration;
   @override
   StaffMember? get assignee;
   @override

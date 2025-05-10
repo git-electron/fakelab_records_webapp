@@ -3,6 +3,8 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking_status.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/status_history_item/booking_status_history_item.dart';
 
 import '../domain/models/rating/rating.dart';
 import '../domain/models/user/user.dart';
@@ -330,7 +332,58 @@ class Mock {
   static Order? getOrder(String orderId) =>
       tryOrNull(() => orders.firstWhere((order) => order.id == orderId));
 
-  static final List<Booking> bookings = <Booking>[];
+  static final List<Booking> bookings = <Booking>[
+    Booking(
+      id: '5528550544544851',
+      customer: user,
+      status: BookingStatus.COMPLETED,
+      statusHistory: [
+        BookingStatusHistoryItem(
+          status: BookingStatus.REQUEST,
+          dateChanged: _now.subtract(const Duration(days: 1)),
+        ),
+        BookingStatusHistoryItem(
+          status: BookingStatus.PENDING,
+          dateChanged: _now.subtract(const Duration(hours: 18)),
+        ),
+        BookingStatusHistoryItem(
+          status: BookingStatus.COMPLETED,
+          dateChanged: _now,
+        ),
+      ],
+      dateCreated: _now.subtract(const Duration(days: 1)),
+      dateChanged: _now,
+      assignee: getStaffMember('5528559284548329'),
+      date: _now.subtract(const Duration(hours: 3)),
+      totalCost: 2500,
+      duration: const Duration(hours: 2, minutes: 30),
+      rating: Rating(
+        rating: 3,
+        comment: 'Ну такое',
+      ),
+    ),
+    Booking(
+      id: '5528550544589537',
+      customer: user,
+      status: BookingStatus.PENDING,
+      statusHistory: [
+        BookingStatusHistoryItem(
+          status: BookingStatus.REQUEST,
+          dateChanged: _now.subtract(const Duration(days: 1)),
+        ),
+        BookingStatusHistoryItem(
+          status: BookingStatus.PENDING,
+          dateChanged: _now.subtract(const Duration(hours: 18)),
+        ),
+      ],
+      dateCreated: _now.subtract(const Duration(days: 1)),
+      dateChanged: _now,
+      assignee: getStaffMember('5528559284548329'),
+      date: _now.add(const Duration(hours: 3)),
+      totalCost: 2500,
+      duration: const Duration(hours: 3),
+    ),
+  ];
 
   static Booking? getBooking(String bookingId) => tryOrNull(
       () => bookings.firstWhere((booking) => booking.id == bookingId));

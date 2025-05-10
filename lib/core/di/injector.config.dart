@@ -131,7 +131,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
-    gh.factory<_i368.BookRecordingBloc>(() => _i368.BookRecordingBloc());
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
@@ -198,10 +197,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i761.AdminBookingsClient>(() => _i761.AdminBookingsClient(
+    gh.factory<_i761.BookRecordingClient>(() => _i761.BookRecordingClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
+    gh.factory<_i368.BookRecordingBloc>(
+        () => _i368.BookRecordingBloc(gh<_i761.BookRecordingClient>()));
     gh.factoryParam<_i514.AdminOrderBloc, String, _i522.AdminOrdersBloc>((
       orderId,
       adminOrdersBloc,

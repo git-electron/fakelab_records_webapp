@@ -10,8 +10,8 @@ import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
 
 @injectable
-class AdminBookingsClient {
-  AdminBookingsClient(this.ref, this.logger);
+class BookRecordingClient {
+  BookRecordingClient(this.ref, this.logger);
 
   final Logger logger;
   final DatabaseReference ref;
@@ -22,14 +22,14 @@ class AdminBookingsClient {
 
     if (isDevelopment) {
       return Result.success(Mock.bookings
-          .where((booking) => booking.startTime.isAfterOrAtSameMomentAs(today))
+          .where((booking) => booking.date.isAfterOrAtSameMomentAs(today))
           .toList());
     }
 
     try {
       const String path = 'bookings';
       final DataSnapshot snapshot =
-          await ref.child(path).orderByChild('startTime').startAt(today).get();
+          await ref.child(path).orderByChild('date').startAt(today).get();
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
@@ -42,7 +42,7 @@ Data: $json''');
       final List<Booking> bookings = json.values
           .map((booking) => Booking.fromJson(booking))
           .toList()
-        ..sort((a, b) => b.startTime.compareTo(a.startTime));
+        ..sort((a, b) => b.date.compareTo(a.date));
 
       return Result.success(bookings);
     } catch (error) {

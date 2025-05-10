@@ -19,13 +19,18 @@ class Booking with _$Booking {
     required List<BookingStatusHistoryItem> statusHistory,
     @DateTimeConverter() required DateTime dateCreated,
     @DateTimeConverter() required DateTime dateChanged,
+    @DateTimeConverter() required DateTime date,
     required double totalCost,
-    required DateTime startTime,
-    required DateTime endTime,
+    required Duration duration,
     StaffMember? assignee,
     Rating? rating,
   }) = _Booking;
 
   factory Booking.fromJson(Map<String, dynamic> json) =>
       _$BookingFromJson(json);
+
+  Booking._();
+
+  DateTime get startDate => date;
+  DateTime get endDate => date.add(duration);
 }
