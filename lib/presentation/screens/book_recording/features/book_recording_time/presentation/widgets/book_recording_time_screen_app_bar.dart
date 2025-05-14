@@ -20,43 +20,30 @@ class BookRecordingTimeScreenAppBarMobile extends StatelessWidget {
       builder: (context, state) {
         return TelegramMetaWrapper(
           builder: (context, meta) {
-            return SliverAppBar(
-              toolbarHeight: meta.totalSafeAreaInset.top,
-              automaticallyImplyLeading: false,
-              backgroundColor: context.colors.transparent,
-              surfaceTintColor: context.colors.transparent,
-              elevation: 0,
-              scrolledUnderElevation: 0,
-              pinned: true,
-              floating: true,
-              forceElevated: false,
-              flexibleSpace: LayoutBuilder(
-                builder: (context, constraints) {
-                  return Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Blur(
-                      blur: 10,
-                      blurColor: context.colors.background,
-                      alignment: Alignment.bottomCenter,
-                      overlay: Container(
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        height: meta.contentSafeAreaInset.top,
-                        child: Text(
-                          bloc.selectedDay.toDDmmYYYYwithMonths(
-                            withWords: true,
-                            isShort: false,
-                          ),
-                          style: context.styles.body1,
-                        ),
-                      ),
-                      child: const SizedBox(
-                        height: double.infinity,
-                        width: double.infinity,
-                      ),
+            return Container(
+              height: meta.totalSafeAreaInset.top,
+              width: double.maxFinite,
+              alignment: Alignment.bottomCenter,
+              child: Blur(
+                blur: 10,
+                blurColor: context.colors.background,
+                alignment: Alignment.bottomCenter,
+                overlay: Container(
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  height: meta.contentSafeAreaInset.top,
+                  child: Text(
+                    bloc.selectedDay.toDDmmYYYYwithMonths(
+                      withWords: true,
+                      isShort: false,
                     ),
-                  );
-                },
+                    style: context.styles.body1,
+                  ),
+                ),
+                child: const SizedBox(
+                  height: double.infinity,
+                  width: double.infinity,
+                ),
               ),
             );
           },
@@ -73,16 +60,10 @@ class BookRecordingTimeScreenAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final BookRecordingTimeBloc bloc = context.read();
 
-    return SliverAppBar(
-      pinned: true,
-      toolbarHeight: _toolbarHeight,
-      automaticallyImplyLeading: false,
-      backgroundColor: context.colors.transparent,
-      surfaceTintColor: context.colors.transparent,
-      elevation: 0,
-      scrolledUnderElevation: 0,
-      forceElevated: false,
-      flexibleSpace: Blur(
+    return SizedBox(
+      height: _toolbarHeight,
+      width: double.maxFinite,
+      child: Blur(
         blur: 30,
         blurColor: context.colors.background,
         alignment: Alignment.bottomCenter,

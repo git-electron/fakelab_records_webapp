@@ -28,6 +28,6 @@ class BookRecordingTimeBloc
     _DurationSelected event,
     Emitter<BookRecordingTimeState> emit,
   ) async {
-    emit(BookRecordingTimeState(selectedDuration: event.selectedDuration));
+    emit(state.copyWith(selectedDuration: event.selectedDuration));
   }
 }

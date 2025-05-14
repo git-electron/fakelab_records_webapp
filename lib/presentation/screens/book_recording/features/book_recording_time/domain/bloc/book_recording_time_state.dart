@@ -9,6 +9,8 @@ class BookRecordingTimeState with _$BookRecordingTimeState {
 
   const BookRecordingTimeState._();
 
-  bool isTimeSelected(DateTime time) =>
+  bool isSelected(DateTime time) =>
       selectedTime?.isAtSameMomentAs(time) ?? false;
+
+  bool get canProceed => selectedTime != null;
 }

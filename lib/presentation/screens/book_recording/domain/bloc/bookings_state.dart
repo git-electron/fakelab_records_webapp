@@ -29,6 +29,8 @@ class BookingsState with _$BookingsState {
           booking.date.year == date.year &&
           booking.date.month == date.month &&
           booking.date.day == date.day)
+      .where((booking) => [BookingStatus.PENDING, BookingStatus.COMPLETED]
+          .contains(booking.status))
       .toList();
 
   bool get hasError => maybeWhen(
@@ -67,6 +69,24 @@ class BookingsState with _$BookingsState {
     final DateTime endDate = date.add(duration);
 
     if (startDate.isBeforeOrAtSameMomentAs(now)) return false;
+    if (startDate.isBefore(
+          DateTime(
+            date.year,
+            date.month,
+            date.day,
+            AvailabilityType.morning.startHour,
+          ).toUtc(),
+        ) ||
+        endDate.isAfter(
+          DateTime(
+            date.year,
+            date.month,
+            date.day,
+            AvailabilityType.evening.endHour,
+          ).toUtc(),
+        )) {
+      return false;
+    }
 
     final List<Booking>? dateBookings = getDateBookings(date);
 

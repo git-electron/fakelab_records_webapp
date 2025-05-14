@@ -62,7 +62,6 @@ class BookRecordingScreenBody extends StatelessWidget {
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Gap(55),
           BookRecordingCalendar(),
           Gap(20),
         ],

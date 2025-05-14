@@ -4,6 +4,8 @@ import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/bookings_client.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking_status.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_time/presentation/widgets/availability/widgets/availability_wrap.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

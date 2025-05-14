@@ -23,6 +23,9 @@ enum AvailabilityType {
   final String title;
   final int startHour;
   final int endHour;
+
+  bool isAvailable(DateTime time) =>
+      time.hour >= startHour && time.hour < endHour;
 }
 
 class AvailabilityWrap extends StatelessWidget {
@@ -36,39 +39,55 @@ class AvailabilityWrap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final BookRecordingTimeBloc bloc = context.read();
-    final List<DateTime> availableTimes = List.generate(15, (index) {
-      return DateTime(
-        bloc.selectedDay.year,
-        bloc.selectedDay.month,
-        bloc.selectedDay.day,
-        8 + index,
-      );
-    }).where((time) {
-      return time.hour >= type.startHour && time.hour < type.endHour;
-    }).toList();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          type.title,
-          style: context.styles.title3.copyWith(fontSize: 20),
-        ),
-        const Gap(10),
-        BlocBuilder<BookingsBloc, BookingsState>(
-          builder: (context, state) {
-            return Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: availableTimes
-                  .where((time) => state.isTimeAvailable(time))
-                  .map((DateTime time) => TimeButton(time))
-                  .toList(),
-            );
-          },
-        ),
-      ],
+    return BlocBuilder<BookingsBloc, BookingsState>(
+      builder: (context, state) {
+        final List<DateTime> availableTimes = _getAvailableTimes(
+          bloc.selectedDay,
+          state.isTimeAvailable,
+        );
+
+        if (availableTimes.isEmpty) return const SizedBox();
+
+        return Padding(
+          padding: const Pad(bottom: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                type.title,
+                style: context.styles.title3.copyWith(fontSize: 20),
+              ),
+              const Gap(10),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: availableTimes
+                    .map((DateTime time) => TimeButton(time))
+                    .toList(),
+              ),
+            ],
+          ),
+        );
+      },
     );
+  }
+
+  List<DateTime> _getAvailableTimes(
+    DateTime selectedDay,
+    bool Function(DateTime) isTimeAvailable,
+  ) {
+    return List.generate(
+      AvailabilityType.evening.endHour - AvailabilityType.morning.startHour,
+      (index) {
+        return DateTime(
+          selectedDay.year,
+          selectedDay.month,
+          selectedDay.day,
+          8 + index,
+        );
+      },
+    ).where(type.isAvailable).where(isTimeAvailable).toList();
   }
 }
 
@@ -88,14 +107,14 @@ class TimeButton extends StatelessWidget {
             BookRecordingTimeEvent.timeSelected(time),
           ),
           child: Container(
-            padding: const Pad(vertical: 8, horizontal: 16),
+            padding: const Pad(vertical: 10, horizontal: 20),
             decoration: ShapeDecoration(
-              color: state.isTimeSelected(time)
+              color: state.isSelected(time)
                   ? context.colors.onBackground
                   : context.colors.card,
               shape: SmoothRectangleBorder(
                 borderRadius: SmoothBorderRadius(
-                  cornerRadius: 8,
+                  cornerRadius: 10,
                   cornerSmoothing: 0.6,
                 ),
               ),
@@ -103,7 +122,8 @@ class TimeButton extends StatelessWidget {
             child: Text(
               time.toHHmm(),
               style: context.styles.footer1.copyWith(
-                color: state.isTimeSelected(time)
+                fontSize: 14,
+                color: state.isSelected(time)
                     ? context.colors.background
                     : context.colors.onBackground,
               ),
