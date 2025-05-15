@@ -76,7 +76,7 @@ class BookRecordingScreenBody extends StatelessWidget {
           Expanded(child: BookRecordingTimeAvailability()),
           Gap(20),
           DurationSlider(),
-          Gap(20),
+          Gap(30),
           ProceedButton(),
           Gap(40),
         ],

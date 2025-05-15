@@ -30,53 +30,87 @@ class DurationSlider extends StatelessWidget {
               ),
             );
 
-            if (availableDurations.length <= 1) return const SizedBox();
-
             return Padding(
               padding: const Pad(horizontal: 10),
-              child: Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: SliderTheme(
-                      data: SliderThemeData(
-                        trackHeight: 15,
-                        thumbColor: context.colors.white,
-                        overlayColor: context.colors.white,
-                        activeTrackColor: context.colors.white,
-                        inactiveTrackColor: context.colors.card,
-                        activeTickMarkColor: context.colors.transparent,
-                        inactiveTickMarkColor: context.colors.transparent,
-                        thumbShape: const RoundSliderThumbShape(
-                          enabledThumbRadius: 7.5,
-                          elevation: 0,
-                          pressedElevation: 0,
-                        ),
-                        overlayShape: const RoundSliderOverlayShape(
-                          overlayRadius: 12.5,
-                        ),
-                      ),
-                      child: Slider(
-                        min: 0,
-                        max: availableDurations.length - 1,
-                        value: availableDurations
-                            .indexOf(state.selectedDuration)
-                            .toDouble(),
-                        divisions: availableDurations.length - 1,
-                        onChanged: (value) {
-                          final int index = value.toInt();
-                          bloc.add(BookRecordingTimeEvent.durationSelected(
-                            availableDurations[index],
-                          ));
-                        },
-                      ),
+                  Padding(
+                    padding: const Pad(horizontal: 20),
+                    child: Text(
+                      'Длительность',
+                      style: context.styles.title3.copyWith(fontSize: 16),
                     ),
                   ),
                   const Gap(10),
-                  Text(
-                    state.selectedDuration.toHHplural(withMinutes: false),
-                    style: context.styles.title3.copyWith(fontSize: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SliderTheme(
+                          data: SliderThemeData(
+                            trackHeight: 30,
+                            thumbColor: context.colors.white,
+                            overlayColor: context.colors.white,
+                            activeTrackColor: context.colors.white,
+                            inactiveTrackColor: context.colors.card,
+                            activeTickMarkColor: context.colors.transparent,
+                            inactiveTickMarkColor: context.colors.transparent,
+                            thumbShape: const RoundSliderThumbShape(
+                              enabledThumbRadius: 7.5,
+                              elevation: 0,
+                              pressedElevation: 0,
+                            ),
+                            overlayShape: const RoundSliderOverlayShape(
+                              overlayRadius: 12.5,
+                            ),
+                          ),
+                          child: Opacity(
+                            opacity: availableDurations.length <= 1 ? .25 : 1,
+                            child: Slider(
+                              min: 0,
+                              max: availableDurations.length <= 1
+                                  ? 1
+                                  : availableDurations.length - 1,
+                              value: availableDurations.length <= 1
+                                  ? 1
+                                  : availableDurations
+                                      .indexOf(state.selectedDuration)
+                                      .toDouble(),
+                              divisions: availableDurations.length <= 1
+                                  ? null
+                                  : availableDurations.length - 1,
+                              onChanged: (value) {
+                                if (availableDurations.length <= 1) return;
+
+                                final int index = value.toInt();
+                                bloc.add(
+                                    BookRecordingTimeEvent.durationSelected(
+                                  availableDurations[index],
+                                ));
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Gap(10),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            state.selectedDuration
+                                .toHHplural(withMinutes: false),
+                            style: context.styles.title3.copyWith(fontSize: 16),
+                          ),
+                          Text(
+                            'Макс. ${availableDurations.last.toHHplural(withMinutes: false)}',
+                            style: context.styles.footer1,
+                          ),
+                        ],
+                      ),
+                      const Gap(10),
+                    ],
                   ),
-                  const Gap(10),
                 ],
               ),
             );
