@@ -22,6 +22,7 @@ _$BookingImpl _$$BookingImplFromJson(Map<String, dynamic> json) =>
       date: const DateTimeConverter().fromJson(json['date'] as String),
       totalCost: (json['totalCost'] as num).toDouble(),
       duration: Duration(microseconds: (json['duration'] as num).toInt()),
+      filters: BookingFilters.fromJson(json['filters'] as Map<String, dynamic>),
       assignee: json['assignee'] == null
           ? null
           : StaffMember.fromJson(json['assignee'] as Map<String, dynamic>),
@@ -41,6 +42,7 @@ Map<String, dynamic> _$$BookingImplToJson(_$BookingImpl instance) =>
       'date': const DateTimeConverter().toJson(instance.date),
       'totalCost': instance.totalCost,
       'duration': instance.duration.inMicroseconds,
+      'filters': instance.filters.toJson(),
       'assignee': instance.assignee?.toJson(),
       'rating': instance.rating?.toJson(),
     };

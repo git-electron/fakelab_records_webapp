@@ -33,6 +33,7 @@ mixin _$Booking {
   DateTime get date => throw _privateConstructorUsedError;
   double get totalCost => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
+  BookingFilters get filters => throw _privateConstructorUsedError;
   StaffMember? get assignee => throw _privateConstructorUsedError;
   Rating? get rating => throw _privateConstructorUsedError;
 
@@ -60,10 +61,12 @@ abstract class $BookingCopyWith<$Res> {
       @DateTimeConverter() DateTime date,
       double totalCost,
       Duration duration,
+      BookingFilters filters,
       StaffMember? assignee,
       Rating? rating});
 
   $UserCopyWith<$Res> get customer;
+  $BookingFiltersCopyWith<$Res> get filters;
   $StaffMemberCopyWith<$Res>? get assignee;
   $RatingCopyWith<$Res>? get rating;
 }
@@ -92,6 +95,7 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
     Object? date = null,
     Object? totalCost = null,
     Object? duration = null,
+    Object? filters = null,
     Object? assignee = freezed,
     Object? rating = freezed,
   }) {
@@ -132,6 +136,10 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as BookingFilters,
       assignee: freezed == assignee
           ? _value.assignee
           : assignee // ignore: cast_nullable_to_non_nullable
@@ -150,6 +158,16 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
   $UserCopyWith<$Res> get customer {
     return $UserCopyWith<$Res>(_value.customer, (value) {
       return _then(_value.copyWith(customer: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Booking
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BookingFiltersCopyWith<$Res> get filters {
+    return $BookingFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value) as $Val);
     });
   }
 
@@ -199,11 +217,14 @@ abstract class _$$BookingImplCopyWith<$Res> implements $BookingCopyWith<$Res> {
       @DateTimeConverter() DateTime date,
       double totalCost,
       Duration duration,
+      BookingFilters filters,
       StaffMember? assignee,
       Rating? rating});
 
   @override
   $UserCopyWith<$Res> get customer;
+  @override
+  $BookingFiltersCopyWith<$Res> get filters;
   @override
   $StaffMemberCopyWith<$Res>? get assignee;
   @override
@@ -232,6 +253,7 @@ class __$$BookingImplCopyWithImpl<$Res>
     Object? date = null,
     Object? totalCost = null,
     Object? duration = null,
+    Object? filters = null,
     Object? assignee = freezed,
     Object? rating = freezed,
   }) {
@@ -272,6 +294,10 @@ class __$$BookingImplCopyWithImpl<$Res>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as BookingFilters,
       assignee: freezed == assignee
           ? _value.assignee
           : assignee // ignore: cast_nullable_to_non_nullable
@@ -297,6 +323,7 @@ class _$BookingImpl extends _Booking {
       @DateTimeConverter() required this.date,
       required this.totalCost,
       required this.duration,
+      required this.filters,
       this.assignee,
       this.rating})
       : _statusHistory = statusHistory,
@@ -333,13 +360,15 @@ class _$BookingImpl extends _Booking {
   @override
   final Duration duration;
   @override
+  final BookingFilters filters;
+  @override
   final StaffMember? assignee;
   @override
   final Rating? rating;
 
   @override
   String toString() {
-    return 'Booking(id: $id, customer: $customer, status: $status, statusHistory: $statusHistory, dateCreated: $dateCreated, dateChanged: $dateChanged, date: $date, totalCost: $totalCost, duration: $duration, assignee: $assignee, rating: $rating)';
+    return 'Booking(id: $id, customer: $customer, status: $status, statusHistory: $statusHistory, dateCreated: $dateCreated, dateChanged: $dateChanged, date: $date, totalCost: $totalCost, duration: $duration, filters: $filters, assignee: $assignee, rating: $rating)';
   }
 
   @override
@@ -362,6 +391,7 @@ class _$BookingImpl extends _Booking {
                 other.totalCost == totalCost) &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
+            (identical(other.filters, filters) || other.filters == filters) &&
             (identical(other.assignee, assignee) ||
                 other.assignee == assignee) &&
             (identical(other.rating, rating) || other.rating == rating));
@@ -380,6 +410,7 @@ class _$BookingImpl extends _Booking {
       date,
       totalCost,
       duration,
+      filters,
       assignee,
       rating);
 
@@ -410,6 +441,7 @@ abstract class _Booking extends Booking {
       @DateTimeConverter() required final DateTime date,
       required final double totalCost,
       required final Duration duration,
+      required final BookingFilters filters,
       final StaffMember? assignee,
       final Rating? rating}) = _$BookingImpl;
   _Booking._() : super._();
@@ -437,6 +469,8 @@ abstract class _Booking extends Booking {
   double get totalCost;
   @override
   Duration get duration;
+  @override
+  BookingFilters get filters;
   @override
   StaffMember? get assignee;
   @override

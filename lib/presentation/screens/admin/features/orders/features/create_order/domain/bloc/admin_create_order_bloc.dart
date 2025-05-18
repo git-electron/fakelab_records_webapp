@@ -3,7 +3,7 @@ import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
 import 'package:fakelab_records_webapp/core/router/router.dart';
 import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_filters.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/filters/order_filters.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';

@@ -4,7 +4,7 @@ import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
 import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/object_extensions.dart';
 import 'package:fakelab_records_webapp/main.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';

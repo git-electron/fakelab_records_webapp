@@ -1,9 +1,10 @@
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_filters.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/filters/order_filters.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking_status.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking_status.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/filters/booking_filters.dart';
 
 import '../domain/models/rating/rating.dart';
 import '../domain/models/user/user.dart';
@@ -343,6 +344,9 @@ class Mock {
       date: DateTime(_now.year, _now.month, _now.day, 12).toUtc(),
       totalCost: 2500,
       duration: const Duration(hours: 2, minutes: 30),
+      filters: BookingFilters(
+        userIdStatus: '${user.id}-${BookingStatus.COMPLETED.name}',
+      ),
       rating: Rating(
         rating: 3,
         comment: 'Ну такое',
@@ -359,6 +363,9 @@ class Mock {
       date: DateTime(_now.year, _now.month, _now.day, 18).toUtc(),
       totalCost: 2500,
       duration: const Duration(hours: 3),
+      filters: BookingFilters(
+        userIdStatus: '${user.id}-${BookingStatus.PENDING.name}',
+      ),
     ),
     Booking(
       id: '5528550544559483',
@@ -371,6 +378,9 @@ class Mock {
       date: DateTime(_now.year, _now.month, _now.day + 3, 8).toUtc(),
       totalCost: 2500,
       duration: const Duration(hours: 15),
+      filters: BookingFilters(
+        userIdStatus: '${user.id}-${BookingStatus.PENDING.name}',
+      ),
     ),
   ];
 

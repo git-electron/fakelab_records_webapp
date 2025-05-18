@@ -5,7 +5,7 @@ import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_time/domain/bloc/book_recording_time_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_time/presentation/widgets/availability/book_recording_time_availability.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_time/presentation/widgets/availability/duration_slider.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_time/presentation/widgets/duration_slider.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/pages/loading_page.dart';
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-import 'widgets/availability/proceed_button.dart';
+import 'widgets/proceed_button.dart';
 import 'widgets/book_recording_time_screen_app_bar.dart';
 
 @RoutePage()
@@ -75,6 +75,8 @@ class BookRecordingScreenBody extends StatelessWidget {
           Gap(20),
           Expanded(child: BookRecordingTimeAvailability()),
           Gap(20),
+          DurationSlider(),
+          Gap(30),
           DurationSlider(),
           Gap(30),
           ProceedButton(),

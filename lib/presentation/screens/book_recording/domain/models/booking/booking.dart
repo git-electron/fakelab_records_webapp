@@ -2,6 +2,7 @@ import 'package:fakelab_records_webapp/core/converters/date_time_converter.dart'
 import 'package:fakelab_records_webapp/core/domain/models/rating/rating.dart';
 import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/filters/booking_filters.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'booking_status.dart';
@@ -22,6 +23,7 @@ class Booking with _$Booking {
     @DateTimeConverter() required DateTime date,
     required double totalCost,
     required Duration duration,
+    required BookingFilters filters,
     StaffMember? assignee,
     Rating? rating,
   }) = _Booking;
