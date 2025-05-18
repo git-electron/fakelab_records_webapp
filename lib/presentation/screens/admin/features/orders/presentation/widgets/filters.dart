@@ -1,24 +1,7 @@
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
-import 'package:fakelab_records_webapp/core/router/router.gr.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/domain/bloc/admin_orders_filters_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
-import 'package:fakelab_records_webapp/presentation/ui/date_picker/app_date_picker_dialog.dart';
-import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_button.dart';
-import 'package:fakelab_records_webapp/presentation/ui/app_text_field.dart';
-import 'package:fakelab_records_webapp/presentation/ui/date_picker/models/date_picker_result.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
-import 'package:figma_squircle/figma_squircle.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
-import 'package:flutter/material.dart';
+part of '../admin_orders_screen.dart';
 
-class AdminOrdersFilters extends StatelessWidget {
-  const AdminOrdersFilters({super.key});
+class _Filters extends StatelessWidget {
+  const _Filters();
 
   @override
   Widget build(BuildContext context) {
@@ -139,12 +122,7 @@ class AdminOrdersFilters extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: ShapeDecoration(
                   color: context.colors.card,
-                  shape: SmoothRectangleBorder(
-                    borderRadius: SmoothBorderRadius(
-                      cornerSmoothing: 0.6,
-                      cornerRadius: 15,
-                    ),
-                  ),
+                  shape: BorderRadius.circular(15).smoothShape(),
                 ),
                 child: Assets.icons.calendar.light.svg(),
               ),
