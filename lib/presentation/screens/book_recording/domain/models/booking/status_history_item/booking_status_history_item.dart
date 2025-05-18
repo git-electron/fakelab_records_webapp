@@ -1,6 +1,7 @@
-import 'package:fakelab_records_webapp/core/converters/date_time_converter.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../../../../../core/converters/date_time_converter.dart';
+import '../booking_status.dart';
 
 part 'booking_status_history_item.freezed.dart';
 part 'booking_status_history_item.g.dart';

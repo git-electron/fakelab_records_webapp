@@ -1,7 +1,8 @@
-import '../../../../core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
-import '../../../../core/domain/models/telegram/telegram_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
+import '../../../../core/domain/models/telegram/telegram_data.dart';
 
 class TelegramWrapper extends StatelessWidget {
   const TelegramWrapper({required this.builder, super.key});

@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/widgets.dart';
+
+import 'telegram/telegram_meta_wrapper.dart';
 
 class SafeAreaWrapper extends StatelessWidget {
   const SafeAreaWrapper({

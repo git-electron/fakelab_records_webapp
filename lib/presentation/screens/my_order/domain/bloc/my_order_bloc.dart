@@ -1,29 +1,29 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart' hide Order;
+
 import '../../../../../core/domain/models/result/result.dart';
 import '../../../../../core/domain/service/telegram_service.dart';
 import '../../../../../core/utils/try_or/try_or_null.dart';
 import '../../../../../features/my_orders/domain/models/order/order.dart';
 import '../../data/client/my_order_client.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart' hide Order;
 
+part 'my_order_bloc.freezed.dart';
 part 'my_order_event.dart';
 part 'my_order_state.dart';
-part 'my_order_bloc.freezed.dart';
 
 @injectable
 class MyOrderBloc extends Bloc<MyOrderEvent, MyOrderState> {
   MyOrderBloc(
-    @factoryParam this.orderId,
     this.myOrderClient,
     this.telegramService,
+    @factoryParam this.orderId,
   ) : super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);
 
     tryOrNullAsync(_getOrder);
-
     telegramService.showBackButton();
   }
 

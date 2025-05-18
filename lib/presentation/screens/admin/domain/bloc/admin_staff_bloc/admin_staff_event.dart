@@ -4,11 +4,15 @@ part of 'admin_staff_bloc.dart';
 class AdminStaffEvent with _$AdminStaffEvent {
   const factory AdminStaffEvent.setLoading() = _SetLoading;
 
-  const factory AdminStaffEvent.setLoaded(List<StaffMember> staffMembers) =
-      _SetLoaded;
+  const factory AdminStaffEvent.setError(
+    String? message,
+  ) = _SetError;
 
-  const factory AdminStaffEvent.setError(String? message) = _SetError;
+  const factory AdminStaffEvent.setLoaded(
+    List<StaffMember> staffMembers,
+  ) = _SetLoaded;
 
-  const factory AdminStaffEvent.deleteStaffMember(String staffMemberId) =
-      _DeleteStaffMember;
+  const factory AdminStaffEvent.deleteStaffMember(
+    String staffMemberId,
+  ) = _DeleteStaffMember;
 }

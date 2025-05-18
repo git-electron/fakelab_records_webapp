@@ -1,19 +1,45 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
-import 'package:fakelab_records_webapp/presentation/screens/my_order/presentation/widgets/my_order_screen_assignee_info.dart';
-import '../../../../core/di/injector.dart';
-import '../../../../core/theme/theme_extensions.dart';
-import '../domain/bloc/my_order_bloc.dart';
-import 'widgets/my_order_screen_app_bar.dart';
-import 'widgets/my_order_screen_info.dart';
-import 'widgets/my_order_screen_services.dart';
-import 'widgets/my_order_screen_status_history.dart';
-import '../../../ui/pages/error_page.dart';
-import '../../../ui/pages/loading_page.dart';
-import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../core/di/injector.dart';
+import '../../../../core/extensions/border_radius_extensions.dart';
+import '../../../../core/extensions/color_extensions.dart';
+import '../../../../core/extensions/datetime_extensions.dart';
+import '../../../../core/extensions/list_extensions.dart';
+import '../../../../core/extensions/num_extensions.dart';
+import '../../../../core/extensions/string_extensions.dart';
+import '../../../../core/gen/assets.gen.dart';
+import '../../../../core/theme/theme_extensions.dart';
+import '../../../../features/my_orders/domain/models/order/order.dart';
+import '../../../../features/my_orders/domain/models/order/order_status.dart';
+import '../../../../features/my_orders/domain/models/order/service/order_service.dart';
+import '../../../../features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
+import '../../../ui/avatar/avatar.dart';
+import '../../../ui/pages/error_page.dart';
+import '../../../ui/pages/loading_page.dart';
+import '../../../ui/wrappers/tappable.dart';
+import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import '../../admin/features/staff/domain/models/staff_member.dart';
+import '../domain/bloc/my_order_bloc.dart';
+
+part 'widgets/app_bar.dart';
+part 'widgets/assignee/assignee.dart';
+part 'widgets/assignee/widgets/activities.dart';
+part 'widgets/assignee/widgets/profile.dart';
+part 'widgets/header/header.dart';
+part 'widgets/header/widgets/id.dart';
+part 'widgets/header/widgets/status.dart';
+part 'widgets/header/widgets/title.dart';
+part 'widgets/services/services.dart';
+part 'widgets/services/widgets/cost_warning.dart';
+part 'widgets/services/widgets/info.dart';
+part 'widgets/status_history/item.dart';
+part 'widgets/status_history/status_history.dart';
 
 @RoutePage()
 class MyOrderScreen extends StatelessWidget {
@@ -34,15 +60,10 @@ class MyOrderScreen extends StatelessWidget {
             if (state.isLoading) return const LoadingPage();
             if (state.hasError) return ErrorPage(message: state.message);
 
-            return CustomScrollView(
+            return const CustomScrollView(
               slivers: [
-                TelegramMetaWrapper(builder: (context, meta) {
-                  if (meta.isMobile) return const MyOrderScreenAppBarMobile();
-                  return const SliverToBoxAdapter();
-                }),
-                const SliverToBoxAdapter(
-                  child: MyOrderScreenBody(),
-                ),
+                _AppBar(),
+                _Body(),
               ],
             );
           },
@@ -52,25 +73,26 @@ class MyOrderScreen extends StatelessWidget {
   }
 }
 
-class MyOrderScreenBody extends StatelessWidget {
-  const MyOrderScreenBody({super.key});
+class _Body extends StatelessWidget {
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: context.colors.background,
-      padding: const Pad(top: 20, horizontal: 20),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          MyOrderScreenInfo(),
-          MyOrderScreenAssigneeInfo(),
-          Gap(10),
-          MyOrderScreenServices(),
-          Gap(10),
-          MyOrderScreenStatusHistory(),
-          Gap(40),
-        ],
+    return SliverToBoxAdapter(
+      child: Container(
+        color: context.colors.background,
+        padding: const Pad(all: 20, bottom: 20),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _Header(),
+            _Assignee(),
+            Gap(10),
+            _Services(),
+            Gap(10),
+            _StatusHistory(),
+          ],
+        ),
       ),
     );
   }

@@ -1,15 +1,7 @@
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/extensions/duration_extensions.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_time/domain/bloc/book_recording_time_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_time/presentation/widgets/availability/widgets/availability_wrap.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
+part of '../book_recording_time_screen.dart';
 
-class DurationSlider extends StatelessWidget {
-  const DurationSlider({super.key});
+class _DurationSlider extends StatelessWidget {
+  const _DurationSlider();
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +11,13 @@ class DurationSlider extends StatelessWidget {
       builder: (context, bookingsState) {
         return BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
           builder: (context, state) {
-            final List<Duration> availableDurations = _getAvailableDurations(
-              bloc.selectedDay,
-              state.selectedTime ??
+            final List<Duration> availableDurations =
+                bookingsState.getAvailableDurations(
+              date: bloc.selectedDay,
+              time: state.selectedTime ??
                   bloc.selectedDay.toLocal().copyWith(
                         hour: AvailabilityType.morning.startHour,
                       ),
-              (time, duration) => bookingsState.isTimeAvailable(
-                time,
-                duration: duration,
-              ),
             );
 
             return Opacity(
@@ -120,16 +109,5 @@ class DurationSlider extends StatelessWidget {
         );
       },
     );
-  }
-
-  List<Duration> _getAvailableDurations(
-    DateTime selectedDay,
-    DateTime selectedTime,
-    bool Function(DateTime, Duration) isTimeAvailable,
-  ) {
-    return List.generate(
-      AvailabilityType.evening.endHour - AvailabilityType.morning.startHour,
-      (index) => Duration(hours: index + 1),
-    ).where((duration) => isTimeAvailable(selectedTime, duration)).toList();
   }
 }

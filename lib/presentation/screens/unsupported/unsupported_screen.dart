@@ -10,10 +10,14 @@ class UnsupportedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: ErrorPage(
-        title: 'Ой, это устройство не поддерживается',
-        message:
-            'Возможно ты пытаешься зайти сюда не через мини-приложение в Telegram',
+        title: _title,
+        message: _message,
       ),
     );
   }
+
+  static const String _title = 'Ой, это устройство не поддерживается';
+
+  static const String _message =
+      'Возможно ты пытаешься зайти сюда не через мини-приложение в Telegram';
 }

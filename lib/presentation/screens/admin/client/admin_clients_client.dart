@@ -1,12 +1,13 @@
-import 'package:fakelab_records_webapp/core/constants/mock.dart';
-import 'package:fakelab_records_webapp/core/constants/types.dart';
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
-import 'package:fakelab_records_webapp/core/extensions/object_extensions.dart';
-import 'package:fakelab_records_webapp/main.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
+
+import '../../../../core/constants/mock.dart';
+import '../../../../core/constants/types.dart';
+import '../../../../core/domain/models/result/result.dart';
+import '../../../../core/domain/models/user/user.dart';
+import '../../../../core/extensions/object_extensions.dart';
+import '../../../../main.dart';
 
 @injectable
 class AdminClientsClient {
@@ -15,11 +16,14 @@ class AdminClientsClient {
   final Logger logger;
   final DatabaseReference ref;
 
+  static const String _clientsErrorMessage = 'Failed to get clients';
+
   Future<Result<List<User>>> getClients() async {
     if (isDevelopment) return Result.success(Mock.clients);
 
     try {
       const String path = 'users';
+
       final DataSnapshot snapshot = await ref.child(path).get();
 
       final Json? json = snapshot.value.firebaseResponseToJson();
@@ -30,15 +34,16 @@ Data: $json''');
 
       if (json == null) return Result.success([]);
 
-      final List<User> clients =
-          json.values.map((client) => User.fromJson(client)).toList();
+      final List<User> clients = json.values.map(User.maybeFromJson).toList();
 
       return Result.success(clients);
     } catch (error) {
-      logger.e('Failed to get clients', error: error);
+      logger.e(_clientsErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }
+
+  static const String _deletelientErrorMessage = 'Failed to delete client';
 
   Future<Result<bool>> deleteClient(int clientId) async {
     try {
@@ -51,7 +56,7 @@ Path: $path''');
 
       return Result.success(true);
     } catch (error) {
-      logger.e('Failed to delete client', error: error);
+      logger.e(_deletelientErrorMessage, error: error);
       return Result.error();
     }
   }

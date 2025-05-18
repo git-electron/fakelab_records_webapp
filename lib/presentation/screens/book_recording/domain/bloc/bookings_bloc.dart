@@ -1,19 +1,22 @@
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
-import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
-import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/bookings_client.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking_status.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_time/presentation/widgets/availability/widgets/availability_wrap.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:table_calendar/table_calendar.dart';
 
+import '../../../../../core/domain/models/result/result.dart';
+import '../../../../../core/extensions/datetime_extensions.dart';
+import '../../../../../core/extensions/list_extensions.dart';
+import '../../../../../core/utils/try_or/try_or_null.dart';
+import '../../client/bookings_client.dart';
+import '../models/availability_type/availability_type.dart';
+import '../models/booking/booking.dart';
+
+part 'bookings_bloc.freezed.dart';
 part 'bookings_event.dart';
 part 'bookings_state.dart';
-part 'bookings_bloc.freezed.dart';
+part 'extensions/boolean_getters_extensions.dart';
+part 'extensions/filtered_data_extensions.dart';
 
 @injectable
 class BookingsBloc extends Bloc<BookingsEvent, BookingsState> {

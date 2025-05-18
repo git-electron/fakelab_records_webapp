@@ -1,7 +1,8 @@
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../constants/constants.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../constants/types.dart';
+import '../../../extensions/string_extensions.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';
@@ -16,7 +17,9 @@ class User with _$User {
     required String phoneNumber,
   }) = _User;
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory User.fromJson(Json json) => _$UserFromJson(json);
+
+  factory User.maybeFromJson(dynamic json) => _$UserFromJson(json);
 
   User._();
 

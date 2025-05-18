@@ -1,5 +1,6 @@
-import '../../../core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/gen/assets.gen.dart';
 
 enum LogoType {
   recordsCompact,

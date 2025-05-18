@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
 import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
+import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
 import 'package:fakelab_records_webapp/presentation/screens/home/data/client/admin_panel_client.dart';
@@ -42,7 +43,7 @@ class AdminPanelBloc extends Bloc<AdminPanelEvent, AdminPanelState> {
     _SetLoaded event,
     Emitter<AdminPanelState> emit,
   ) async {
-    emit(AdminPanelState.loaded(event.orders));
+    emit(AdminPanelState.loaded(orders: event.orders, clients: event.clients));
   }
 
   Future<void> _onSetError(
@@ -61,7 +62,16 @@ class AdminPanelBloc extends Bloc<AdminPanelEvent, AdminPanelState> {
     add(const AdminPanelEvent.setLoading());
     final Result<List<Order>> result = await adminPanelClient.getOrders();
     result.when(
-      success: (orders) => add(AdminPanelEvent.setLoaded(orders)),
+      success: (orders) async {
+        final Result<List<User>> result = await adminPanelClient.getClients();
+        result.when(
+          success: (clients) => add(AdminPanelEvent.setLoaded(
+            orders: orders,
+            clients: clients,
+          )),
+          error: (message) => add(AdminPanelEvent.setError(message)),
+        );
+      },
       error: (message) => add(AdminPanelEvent.setError(message)),
     );
   }

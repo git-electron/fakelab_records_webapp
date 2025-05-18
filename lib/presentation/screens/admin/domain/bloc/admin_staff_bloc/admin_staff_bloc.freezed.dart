@@ -19,24 +19,24 @@ mixin _$AdminStaffEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
-    required TResult Function(List<StaffMember> staffMembers) setLoaded,
     required TResult Function(String? message) setError,
+    required TResult Function(List<StaffMember> staffMembers) setLoaded,
     required TResult Function(String staffMemberId) deleteStaffMember,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setLoading,
-    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
     TResult? Function(String? message)? setError,
+    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
     TResult? Function(String staffMemberId)? deleteStaffMember,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setLoading,
-    TResult Function(List<StaffMember> staffMembers)? setLoaded,
     TResult Function(String? message)? setError,
+    TResult Function(List<StaffMember> staffMembers)? setLoaded,
     TResult Function(String staffMemberId)? deleteStaffMember,
     required TResult orElse(),
   }) =>
@@ -44,24 +44,24 @@ mixin _$AdminStaffEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SetLoading value) setLoading,
-    required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_DeleteStaffMember value) deleteStaffMember,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SetLoading value)? setLoading,
-    TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_DeleteStaffMember value)? deleteStaffMember,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SetLoading value)? setLoading,
-    TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_DeleteStaffMember value)? deleteStaffMember,
     required TResult orElse(),
   }) =>
@@ -131,8 +131,8 @@ class _$SetLoadingImpl implements _SetLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
-    required TResult Function(List<StaffMember> staffMembers) setLoaded,
     required TResult Function(String? message) setError,
+    required TResult Function(List<StaffMember> staffMembers) setLoaded,
     required TResult Function(String staffMemberId) deleteStaffMember,
   }) {
     return setLoading();
@@ -142,8 +142,8 @@ class _$SetLoadingImpl implements _SetLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setLoading,
-    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
     TResult? Function(String? message)? setError,
+    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
     TResult? Function(String staffMemberId)? deleteStaffMember,
   }) {
     return setLoading?.call();
@@ -153,8 +153,8 @@ class _$SetLoadingImpl implements _SetLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setLoading,
-    TResult Function(List<StaffMember> staffMembers)? setLoaded,
     TResult Function(String? message)? setError,
+    TResult Function(List<StaffMember> staffMembers)? setLoaded,
     TResult Function(String staffMemberId)? deleteStaffMember,
     required TResult orElse(),
   }) {
@@ -168,8 +168,8 @@ class _$SetLoadingImpl implements _SetLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SetLoading value) setLoading,
-    required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_DeleteStaffMember value) deleteStaffMember,
   }) {
     return setLoading(this);
@@ -179,8 +179,8 @@ class _$SetLoadingImpl implements _SetLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SetLoading value)? setLoading,
-    TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_DeleteStaffMember value)? deleteStaffMember,
   }) {
     return setLoading?.call(this);
@@ -190,8 +190,8 @@ class _$SetLoadingImpl implements _SetLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SetLoading value)? setLoading,
-    TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_DeleteStaffMember value)? deleteStaffMember,
     required TResult orElse(),
   }) {
@@ -204,6 +204,158 @@ class _$SetLoadingImpl implements _SetLoading {
 
 abstract class _SetLoading implements AdminStaffEvent {
   const factory _SetLoading() = _$SetLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$SetErrorImplCopyWith<$Res> {
+  factory _$$SetErrorImplCopyWith(
+          _$SetErrorImpl value, $Res Function(_$SetErrorImpl) then) =
+      __$$SetErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$SetErrorImplCopyWithImpl<$Res>
+    extends _$AdminStaffEventCopyWithImpl<$Res, _$SetErrorImpl>
+    implements _$$SetErrorImplCopyWith<$Res> {
+  __$$SetErrorImplCopyWithImpl(
+      _$SetErrorImpl _value, $Res Function(_$SetErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AdminStaffEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$SetErrorImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetErrorImpl implements _SetError {
+  const _$SetErrorImpl(this.message);
+
+  @override
+  final String? message;
+
+  @override
+  String toString() {
+    return 'AdminStaffEvent.setError(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AdminStaffEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetErrorImplCopyWith<_$SetErrorImpl> get copyWith =>
+      __$$SetErrorImplCopyWithImpl<_$SetErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() setLoading,
+    required TResult Function(String? message) setError,
+    required TResult Function(List<StaffMember> staffMembers) setLoaded,
+    required TResult Function(String staffMemberId) deleteStaffMember,
+  }) {
+    return setError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? setLoading,
+    TResult? Function(String? message)? setError,
+    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
+    TResult? Function(String staffMemberId)? deleteStaffMember,
+  }) {
+    return setError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? setLoading,
+    TResult Function(String? message)? setError,
+    TResult Function(List<StaffMember> staffMembers)? setLoaded,
+    TResult Function(String staffMemberId)? deleteStaffMember,
+    required TResult orElse(),
+  }) {
+    if (setError != null) {
+      return setError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetLoading value) setLoading,
+    required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoaded value) setLoaded,
+    required TResult Function(_DeleteStaffMember value) deleteStaffMember,
+  }) {
+    return setError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetLoading value)? setLoading,
+    TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoaded value)? setLoaded,
+    TResult? Function(_DeleteStaffMember value)? deleteStaffMember,
+  }) {
+    return setError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetLoading value)? setLoading,
+    TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoaded value)? setLoaded,
+    TResult Function(_DeleteStaffMember value)? deleteStaffMember,
+    required TResult orElse(),
+  }) {
+    if (setError != null) {
+      return setError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetError implements AdminStaffEvent {
+  const factory _SetError(final String? message) = _$SetErrorImpl;
+
+  String? get message;
+
+  /// Create a copy of AdminStaffEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetErrorImplCopyWith<_$SetErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -283,8 +435,8 @@ class _$SetLoadedImpl implements _SetLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
-    required TResult Function(List<StaffMember> staffMembers) setLoaded,
     required TResult Function(String? message) setError,
+    required TResult Function(List<StaffMember> staffMembers) setLoaded,
     required TResult Function(String staffMemberId) deleteStaffMember,
   }) {
     return setLoaded(staffMembers);
@@ -294,8 +446,8 @@ class _$SetLoadedImpl implements _SetLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setLoading,
-    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
     TResult? Function(String? message)? setError,
+    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
     TResult? Function(String staffMemberId)? deleteStaffMember,
   }) {
     return setLoaded?.call(staffMembers);
@@ -305,8 +457,8 @@ class _$SetLoadedImpl implements _SetLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setLoading,
-    TResult Function(List<StaffMember> staffMembers)? setLoaded,
     TResult Function(String? message)? setError,
+    TResult Function(List<StaffMember> staffMembers)? setLoaded,
     TResult Function(String staffMemberId)? deleteStaffMember,
     required TResult orElse(),
   }) {
@@ -320,8 +472,8 @@ class _$SetLoadedImpl implements _SetLoaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SetLoading value) setLoading,
-    required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_DeleteStaffMember value) deleteStaffMember,
   }) {
     return setLoaded(this);
@@ -331,8 +483,8 @@ class _$SetLoadedImpl implements _SetLoaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SetLoading value)? setLoading,
-    TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_DeleteStaffMember value)? deleteStaffMember,
   }) {
     return setLoaded?.call(this);
@@ -342,8 +494,8 @@ class _$SetLoadedImpl implements _SetLoaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SetLoading value)? setLoading,
-    TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_DeleteStaffMember value)? deleteStaffMember,
     required TResult orElse(),
   }) {
@@ -364,158 +516,6 @@ abstract class _SetLoaded implements AdminStaffEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetLoadedImplCopyWith<_$SetLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SetErrorImplCopyWith<$Res> {
-  factory _$$SetErrorImplCopyWith(
-          _$SetErrorImpl value, $Res Function(_$SetErrorImpl) then) =
-      __$$SetErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? message});
-}
-
-/// @nodoc
-class __$$SetErrorImplCopyWithImpl<$Res>
-    extends _$AdminStaffEventCopyWithImpl<$Res, _$SetErrorImpl>
-    implements _$$SetErrorImplCopyWith<$Res> {
-  __$$SetErrorImplCopyWithImpl(
-      _$SetErrorImpl _value, $Res Function(_$SetErrorImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AdminStaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(_$SetErrorImpl(
-      freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SetErrorImpl implements _SetError {
-  const _$SetErrorImpl(this.message);
-
-  @override
-  final String? message;
-
-  @override
-  String toString() {
-    return 'AdminStaffEvent.setError(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SetErrorImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of AdminStaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SetErrorImplCopyWith<_$SetErrorImpl> get copyWith =>
-      __$$SetErrorImplCopyWithImpl<_$SetErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() setLoading,
-    required TResult Function(List<StaffMember> staffMembers) setLoaded,
-    required TResult Function(String? message) setError,
-    required TResult Function(String staffMemberId) deleteStaffMember,
-  }) {
-    return setError(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? setLoading,
-    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
-    TResult? Function(String? message)? setError,
-    TResult? Function(String staffMemberId)? deleteStaffMember,
-  }) {
-    return setError?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? setLoading,
-    TResult Function(List<StaffMember> staffMembers)? setLoaded,
-    TResult Function(String? message)? setError,
-    TResult Function(String staffMemberId)? deleteStaffMember,
-    required TResult orElse(),
-  }) {
-    if (setError != null) {
-      return setError(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SetLoading value) setLoading,
-    required TResult Function(_SetLoaded value) setLoaded,
-    required TResult Function(_SetError value) setError,
-    required TResult Function(_DeleteStaffMember value) deleteStaffMember,
-  }) {
-    return setError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetLoading value)? setLoading,
-    TResult? Function(_SetLoaded value)? setLoaded,
-    TResult? Function(_SetError value)? setError,
-    TResult? Function(_DeleteStaffMember value)? deleteStaffMember,
-  }) {
-    return setError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetLoading value)? setLoading,
-    TResult Function(_SetLoaded value)? setLoaded,
-    TResult Function(_SetError value)? setError,
-    TResult Function(_DeleteStaffMember value)? deleteStaffMember,
-    required TResult orElse(),
-  }) {
-    if (setError != null) {
-      return setError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SetError implements AdminStaffEvent {
-  const factory _SetError(final String? message) = _$SetErrorImpl;
-
-  String? get message;
-
-  /// Create a copy of AdminStaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SetErrorImplCopyWith<_$SetErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -590,8 +590,8 @@ class _$DeleteStaffMemberImpl implements _DeleteStaffMember {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() setLoading,
-    required TResult Function(List<StaffMember> staffMembers) setLoaded,
     required TResult Function(String? message) setError,
+    required TResult Function(List<StaffMember> staffMembers) setLoaded,
     required TResult Function(String staffMemberId) deleteStaffMember,
   }) {
     return deleteStaffMember(staffMemberId);
@@ -601,8 +601,8 @@ class _$DeleteStaffMemberImpl implements _DeleteStaffMember {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setLoading,
-    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
     TResult? Function(String? message)? setError,
+    TResult? Function(List<StaffMember> staffMembers)? setLoaded,
     TResult? Function(String staffMemberId)? deleteStaffMember,
   }) {
     return deleteStaffMember?.call(staffMemberId);
@@ -612,8 +612,8 @@ class _$DeleteStaffMemberImpl implements _DeleteStaffMember {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setLoading,
-    TResult Function(List<StaffMember> staffMembers)? setLoaded,
     TResult Function(String? message)? setError,
+    TResult Function(List<StaffMember> staffMembers)? setLoaded,
     TResult Function(String staffMemberId)? deleteStaffMember,
     required TResult orElse(),
   }) {
@@ -627,8 +627,8 @@ class _$DeleteStaffMemberImpl implements _DeleteStaffMember {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SetLoading value) setLoading,
-    required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_SetError value) setError,
+    required TResult Function(_SetLoaded value) setLoaded,
     required TResult Function(_DeleteStaffMember value) deleteStaffMember,
   }) {
     return deleteStaffMember(this);
@@ -638,8 +638,8 @@ class _$DeleteStaffMemberImpl implements _DeleteStaffMember {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SetLoading value)? setLoading,
-    TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_SetError value)? setError,
+    TResult? Function(_SetLoaded value)? setLoaded,
     TResult? Function(_DeleteStaffMember value)? deleteStaffMember,
   }) {
     return deleteStaffMember?.call(this);
@@ -649,8 +649,8 @@ class _$DeleteStaffMemberImpl implements _DeleteStaffMember {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SetLoading value)? setLoading,
-    TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_SetError value)? setError,
+    TResult Function(_SetLoaded value)? setLoaded,
     TResult Function(_DeleteStaffMember value)? deleteStaffMember,
     required TResult orElse(),
   }) {

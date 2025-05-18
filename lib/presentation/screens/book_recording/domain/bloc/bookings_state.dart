@@ -24,86 +24,9 @@ class BookingsState with _$BookingsState {
         loaded: (bookings) => bookings,
       );
 
-  List<Booking>? getDateBookings(DateTime date) => bookings
-      ?.where((booking) =>
-          booking.date.year == date.year &&
-          booking.date.month == date.month &&
-          booking.date.day == date.day)
-      .where((booking) => [BookingStatus.PENDING, BookingStatus.COMPLETED]
-          .contains(booking.status))
-      .toList();
-
   bool get hasError => maybeWhen(
         error: (_) => true,
         orElse: () => false,
       );
   String? get message => whenOrNull(error: (message) => message);
-
-  bool isDayAvailable(DateTime date) {
-    final List<Booking>? dateBookings = getDateBookings(date);
-
-    if (dateBookings.isNullOrEmpty) return true;
-    dateBookings as List<Booking>;
-
-    final List<Duration> durations = List.generate(
-      15,
-      (index) => Duration(hours: 8 + index),
-    );
-
-    final bool isAvailable = durations.any(
-      (duration) => isTimeAvailable(
-        DateTime(date.year, date.month, date.day).toUtc().add(duration),
-      ),
-    );
-
-    return isAvailable;
-  }
-
-  bool isTimeAvailable(
-    DateTime date, {
-    Duration duration = const Duration(hours: 1),
-  }) {
-    final DateTime now = DateTime.now();
-
-    final DateTime startDate = date;
-    final DateTime endDate = date.add(duration);
-
-    if (startDate.isBeforeOrAtSameMomentAs(now)) return false;
-    if (startDate.isBefore(
-          DateTime(
-            date.year,
-            date.month,
-            date.day,
-            AvailabilityType.morning.startHour,
-          ).toUtc(),
-        ) ||
-        endDate.isAfter(
-          DateTime(
-            date.year,
-            date.month,
-            date.day,
-            AvailabilityType.evening.endHour,
-          ).toUtc(),
-        )) {
-      return false;
-    }
-
-    final List<Booking>? dateBookings = getDateBookings(date);
-
-    if (dateBookings.isNullOrEmpty) return true;
-    dateBookings as List<Booking>;
-
-    final bool isAvailable = dateBookings.every((booking) {
-      return (startDate.isAfterOrAtSameMomentAs(booking.startDate) &&
-              startDate.isAfterOrAtSameMomentAs(booking.endDate) &&
-              endDate.isAfter(booking.startDate) &&
-              endDate.isAfter(booking.endDate)) ||
-          (startDate.isBefore(booking.startDate) &&
-              startDate.isBefore(booking.endDate) &&
-              endDate.isBeforeOrAtSameMomentAs(booking.startDate) &&
-              endDate.isBeforeOrAtSameMomentAs(booking.endDate));
-    });
-
-    return isAvailable;
-  }
 }

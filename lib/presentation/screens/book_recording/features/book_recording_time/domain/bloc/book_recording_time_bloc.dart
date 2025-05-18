@@ -2,9 +2,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+part 'book_recording_time_bloc.freezed.dart';
 part 'book_recording_time_event.dart';
 part 'book_recording_time_state.dart';
-part 'book_recording_time_bloc.freezed.dart';
 
 @injectable
 class BookRecordingTimeBloc

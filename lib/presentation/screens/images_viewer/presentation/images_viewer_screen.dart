@@ -1,13 +1,16 @@
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_view/photo_view.dart';
 
 import '../../../../core/di/injector.dart';
+import '../../../../core/extensions/color_extensions.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../domain/images_viewer_bloc.dart';
-import 'widgets/images_viewer_screen_app_bar.dart';
+
+part 'widgets/app_bar.dart';
 
 enum ImageSource { asset, network }
 
@@ -22,7 +25,6 @@ class ImagesViewerScreen extends StatefulWidget {
 
   final int initialIndex;
   final List<String> images;
-
   final ImageSource source;
 
   @override
@@ -94,18 +96,7 @@ class _ImagesViewerScreenState extends State<ImagesViewerScreen> {
                       },
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: TelegramMetaWrapper(
-                      builder: (context, meta) {
-                        if (meta.isMobile) {
-                          return const ImagesViewerScreenAppBarMobile();
-                        }
-
-                        return const ImagesViewerScreenAppBar();
-                      },
-                    ),
-                  ),
+                  const _AppBar(),
                 ],
               ),
             ),

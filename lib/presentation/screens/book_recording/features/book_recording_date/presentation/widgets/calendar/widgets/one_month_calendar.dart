@@ -1,10 +1,4 @@
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:figma_squircle/figma_squircle.dart';
-import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
+part of '../../../book_recording_date_screen.dart';
 
 class OneMonthCalendar extends StatelessWidget {
   const OneMonthCalendar({
@@ -61,24 +55,16 @@ class OneMonthCalendar extends StatelessWidget {
         markerSize: width / 7 - 10,
         markersAlignment: Alignment.center,
         markerDecoration: ShapeDecoration(
-          shape: SmoothRectangleBorder(
+          shape: BorderRadius.circular(20).smoothShape(
             side: BorderSide(color: context.colors.onBackground, width: 1.5),
-            borderRadius: SmoothBorderRadius(
-              cornerSmoothing: .6,
-              cornerRadius: 20,
-            ),
           ),
         ),
         markersAutoAligned: false,
         outsideDaysVisible: false,
         todayDecoration: ShapeDecoration(
           color: context.colors.onBackground,
-          shape: SmoothRectangleBorder(
+          shape: BorderRadius.circular(20).smoothShape(
             side: BorderSide(color: context.colors.onBackground, width: 1.5),
-            borderRadius: SmoothBorderRadius(
-              cornerSmoothing: .6,
-              cornerRadius: 20,
-            ),
           ),
         ),
         todayTextStyle: context.styles.title3.copyWith(
@@ -87,12 +73,8 @@ class OneMonthCalendar extends StatelessWidget {
         ),
         selectedDecoration: ShapeDecoration(
           color: context.colors.primary,
-          shape: SmoothRectangleBorder(
+          shape: BorderRadius.circular(20).smoothShape(
             side: BorderSide(color: context.colors.primary, width: 1.5),
-            borderRadius: SmoothBorderRadius(
-              cornerSmoothing: .6,
-              cornerRadius: 20,
-            ),
           ),
         ),
         selectedTextStyle: context.styles.title3.copyWith(fontSize: 12),

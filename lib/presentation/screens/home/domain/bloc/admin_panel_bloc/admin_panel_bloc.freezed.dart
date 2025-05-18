@@ -20,7 +20,7 @@ mixin _$AdminPanelEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() setExpanded,
     required TResult Function() setLoading,
-    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(List<Order> orders, List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$AdminPanelEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setExpanded,
     TResult? Function()? setLoading,
-    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$AdminPanelEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setExpanded,
     TResult Function()? setLoading,
-    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
     required TResult orElse(),
   }) =>
@@ -132,7 +132,7 @@ class _$SetExpandedImpl implements _SetExpanded {
   TResult when<TResult extends Object?>({
     required TResult Function() setExpanded,
     required TResult Function() setLoading,
-    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(List<Order> orders, List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
   }) {
     return setExpanded();
@@ -143,7 +143,7 @@ class _$SetExpandedImpl implements _SetExpanded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setExpanded,
     TResult? Function()? setLoading,
-    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
   }) {
     return setExpanded?.call();
@@ -154,7 +154,7 @@ class _$SetExpandedImpl implements _SetExpanded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setExpanded,
     TResult Function()? setLoading,
-    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
     required TResult orElse(),
   }) {
@@ -249,7 +249,7 @@ class _$SetLoadingImpl implements _SetLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() setExpanded,
     required TResult Function() setLoading,
-    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(List<Order> orders, List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
   }) {
     return setLoading();
@@ -260,7 +260,7 @@ class _$SetLoadingImpl implements _SetLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setExpanded,
     TResult? Function()? setLoading,
-    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
   }) {
     return setLoading?.call();
@@ -271,7 +271,7 @@ class _$SetLoadingImpl implements _SetLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setExpanded,
     TResult Function()? setLoading,
-    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
     required TResult orElse(),
   }) {
@@ -329,7 +329,7 @@ abstract class _$$SetLoadedImplCopyWith<$Res> {
           _$SetLoadedImpl value, $Res Function(_$SetLoadedImpl) then) =
       __$$SetLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Order> orders});
+  $Res call({List<Order> orders, List<User> clients});
 }
 
 /// @nodoc
@@ -346,12 +346,17 @@ class __$$SetLoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? orders = null,
+    Object? clients = null,
   }) {
     return _then(_$SetLoadedImpl(
-      null == orders
+      orders: null == orders
           ? _value._orders
           : orders // ignore: cast_nullable_to_non_nullable
               as List<Order>,
+      clients: null == clients
+          ? _value._clients
+          : clients // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ));
   }
 }
@@ -359,7 +364,10 @@ class __$$SetLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SetLoadedImpl implements _SetLoaded {
-  const _$SetLoadedImpl(final List<Order> orders) : _orders = orders;
+  const _$SetLoadedImpl(
+      {required final List<Order> orders, required final List<User> clients})
+      : _orders = orders,
+        _clients = clients;
 
   final List<Order> _orders;
   @override
@@ -369,9 +377,17 @@ class _$SetLoadedImpl implements _SetLoaded {
     return EqualUnmodifiableListView(_orders);
   }
 
+  final List<User> _clients;
+  @override
+  List<User> get clients {
+    if (_clients is EqualUnmodifiableListView) return _clients;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_clients);
+  }
+
   @override
   String toString() {
-    return 'AdminPanelEvent.setLoaded(orders: $orders)';
+    return 'AdminPanelEvent.setLoaded(orders: $orders, clients: $clients)';
   }
 
   @override
@@ -379,12 +395,15 @@ class _$SetLoadedImpl implements _SetLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetLoadedImpl &&
-            const DeepCollectionEquality().equals(other._orders, _orders));
+            const DeepCollectionEquality().equals(other._orders, _orders) &&
+            const DeepCollectionEquality().equals(other._clients, _clients));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_orders),
+      const DeepCollectionEquality().hash(_clients));
 
   /// Create a copy of AdminPanelEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -399,10 +418,10 @@ class _$SetLoadedImpl implements _SetLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() setExpanded,
     required TResult Function() setLoading,
-    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(List<Order> orders, List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
   }) {
-    return setLoaded(orders);
+    return setLoaded(orders, clients);
   }
 
   @override
@@ -410,10 +429,10 @@ class _$SetLoadedImpl implements _SetLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setExpanded,
     TResult? Function()? setLoading,
-    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
   }) {
-    return setLoaded?.call(orders);
+    return setLoaded?.call(orders, clients);
   }
 
   @override
@@ -421,12 +440,12 @@ class _$SetLoadedImpl implements _SetLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setExpanded,
     TResult Function()? setLoading,
-    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
     required TResult orElse(),
   }) {
     if (setLoaded != null) {
-      return setLoaded(orders);
+      return setLoaded(orders, clients);
     }
     return orElse();
   }
@@ -470,9 +489,12 @@ class _$SetLoadedImpl implements _SetLoaded {
 }
 
 abstract class _SetLoaded implements AdminPanelEvent {
-  const factory _SetLoaded(final List<Order> orders) = _$SetLoadedImpl;
+  const factory _SetLoaded(
+      {required final List<Order> orders,
+      required final List<User> clients}) = _$SetLoadedImpl;
 
   List<Order> get orders;
+  List<User> get clients;
 
   /// Create a copy of AdminPanelEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -551,7 +573,7 @@ class _$SetErrorImpl implements _SetError {
   TResult when<TResult extends Object?>({
     required TResult Function() setExpanded,
     required TResult Function() setLoading,
-    required TResult Function(List<Order> orders) setLoaded,
+    required TResult Function(List<Order> orders, List<User> clients) setLoaded,
     required TResult Function(String? message) setError,
   }) {
     return setError(message);
@@ -562,7 +584,7 @@ class _$SetErrorImpl implements _SetError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? setExpanded,
     TResult? Function()? setLoading,
-    TResult? Function(List<Order> orders)? setLoaded,
+    TResult? Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult? Function(String? message)? setError,
   }) {
     return setError?.call(message);
@@ -573,7 +595,7 @@ class _$SetErrorImpl implements _SetError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? setExpanded,
     TResult Function()? setLoading,
-    TResult Function(List<Order> orders)? setLoaded,
+    TResult Function(List<Order> orders, List<User> clients)? setLoaded,
     TResult Function(String? message)? setError,
     required TResult orElse(),
   }) {
@@ -639,7 +661,7 @@ mixin _$AdminPanelState {
   TResult when<TResult extends Object?>({
     required TResult Function() collapsed,
     required TResult Function() loading,
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, List<User> clients) loaded,
     required TResult Function(String? message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -647,7 +669,7 @@ mixin _$AdminPanelState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? collapsed,
     TResult? Function()? loading,
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, List<User> clients)? loaded,
     TResult? Function(String? message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -655,7 +677,7 @@ mixin _$AdminPanelState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? collapsed,
     TResult Function()? loading,
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, List<User> clients)? loaded,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) =>
@@ -751,7 +773,7 @@ class _$CollapsedImpl extends _Collapsed {
   TResult when<TResult extends Object?>({
     required TResult Function() collapsed,
     required TResult Function() loading,
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, List<User> clients) loaded,
     required TResult Function(String? message) error,
   }) {
     return collapsed();
@@ -762,7 +784,7 @@ class _$CollapsedImpl extends _Collapsed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? collapsed,
     TResult? Function()? loading,
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, List<User> clients)? loaded,
     TResult? Function(String? message)? error,
   }) {
     return collapsed?.call();
@@ -773,7 +795,7 @@ class _$CollapsedImpl extends _Collapsed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? collapsed,
     TResult Function()? loading,
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, List<User> clients)? loaded,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
@@ -869,7 +891,7 @@ class _$LoadingImpl extends _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() collapsed,
     required TResult Function() loading,
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, List<User> clients) loaded,
     required TResult Function(String? message) error,
   }) {
     return loading();
@@ -880,7 +902,7 @@ class _$LoadingImpl extends _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? collapsed,
     TResult? Function()? loading,
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, List<User> clients)? loaded,
     TResult? Function(String? message)? error,
   }) {
     return loading?.call();
@@ -891,7 +913,7 @@ class _$LoadingImpl extends _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? collapsed,
     TResult Function()? loading,
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, List<User> clients)? loaded,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
@@ -950,7 +972,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Order> orders});
+  $Res call({List<Order> orders, List<User> clients});
 }
 
 /// @nodoc
@@ -967,12 +989,17 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? orders = null,
+    Object? clients = null,
   }) {
     return _then(_$LoadedImpl(
-      null == orders
+      orders: null == orders
           ? _value._orders
           : orders // ignore: cast_nullable_to_non_nullable
               as List<Order>,
+      clients: null == clients
+          ? _value._clients
+          : clients // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ));
   }
 }
@@ -980,8 +1007,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl extends _Loaded {
-  const _$LoadedImpl(final List<Order> orders)
+  const _$LoadedImpl(
+      {required final List<Order> orders, required final List<User> clients})
       : _orders = orders,
+        _clients = clients,
         super._();
 
   final List<Order> _orders;
@@ -992,9 +1021,17 @@ class _$LoadedImpl extends _Loaded {
     return EqualUnmodifiableListView(_orders);
   }
 
+  final List<User> _clients;
+  @override
+  List<User> get clients {
+    if (_clients is EqualUnmodifiableListView) return _clients;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_clients);
+  }
+
   @override
   String toString() {
-    return 'AdminPanelState.loaded(orders: $orders)';
+    return 'AdminPanelState.loaded(orders: $orders, clients: $clients)';
   }
 
   @override
@@ -1002,12 +1039,15 @@ class _$LoadedImpl extends _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._orders, _orders));
+            const DeepCollectionEquality().equals(other._orders, _orders) &&
+            const DeepCollectionEquality().equals(other._clients, _clients));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_orders),
+      const DeepCollectionEquality().hash(_clients));
 
   /// Create a copy of AdminPanelState
   /// with the given fields replaced by the non-null parameter values.
@@ -1022,10 +1062,10 @@ class _$LoadedImpl extends _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() collapsed,
     required TResult Function() loading,
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, List<User> clients) loaded,
     required TResult Function(String? message) error,
   }) {
-    return loaded(orders);
+    return loaded(orders, clients);
   }
 
   @override
@@ -1033,10 +1073,10 @@ class _$LoadedImpl extends _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? collapsed,
     TResult? Function()? loading,
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, List<User> clients)? loaded,
     TResult? Function(String? message)? error,
   }) {
-    return loaded?.call(orders);
+    return loaded?.call(orders, clients);
   }
 
   @override
@@ -1044,12 +1084,12 @@ class _$LoadedImpl extends _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? collapsed,
     TResult Function()? loading,
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, List<User> clients)? loaded,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(orders);
+      return loaded(orders, clients);
     }
     return orElse();
   }
@@ -1093,10 +1133,13 @@ class _$LoadedImpl extends _Loaded {
 }
 
 abstract class _Loaded extends AdminPanelState {
-  const factory _Loaded(final List<Order> orders) = _$LoadedImpl;
+  const factory _Loaded(
+      {required final List<Order> orders,
+      required final List<User> clients}) = _$LoadedImpl;
   const _Loaded._() : super._();
 
   List<Order> get orders;
+  List<User> get clients;
 
   /// Create a copy of AdminPanelState
   /// with the given fields replaced by the non-null parameter values.
@@ -1175,7 +1218,7 @@ class _$ErrorImpl extends _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() collapsed,
     required TResult Function() loading,
-    required TResult Function(List<Order> orders) loaded,
+    required TResult Function(List<Order> orders, List<User> clients) loaded,
     required TResult Function(String? message) error,
   }) {
     return error(message);
@@ -1186,7 +1229,7 @@ class _$ErrorImpl extends _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? collapsed,
     TResult? Function()? loading,
-    TResult? Function(List<Order> orders)? loaded,
+    TResult? Function(List<Order> orders, List<User> clients)? loaded,
     TResult? Function(String? message)? error,
   }) {
     return error?.call(message);
@@ -1197,7 +1240,7 @@ class _$ErrorImpl extends _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? collapsed,
     TResult Function()? loading,
-    TResult Function(List<Order> orders)? loaded,
+    TResult Function(List<Order> orders, List<User> clients)? loaded,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {

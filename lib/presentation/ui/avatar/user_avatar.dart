@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import '../../../core/theme/theme_extensions.dart';
 import '../wrappers/tappable.dart';
 import '../wrappers/telegram/telegram_user_wrapper.dart';
-import 'package:flutter/material.dart';
 
 class UserAvatar extends StatelessWidget {
   const UserAvatar({

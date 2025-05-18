@@ -1,13 +1,16 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/app_dropdown_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import 'dropdown_dialog_button.dart';
+import '../../../core/extensions/border_radius_extensions.dart';
+import '../../../core/extensions/color_extensions.dart';
+import '../../../core/extensions/string_extensions.dart';
+import '../../../core/theme/theme_extensions.dart';
+import '../app_dropdown_button.dart';
+import '../wrappers/tappable.dart';
+
+part 'button.dart';
 
 class AppDropdownDialog<T> extends StatelessWidget {
   AppDropdownDialog({
@@ -109,21 +112,21 @@ class AppDropdownDialog<T> extends StatelessWidget {
           ),
           const Gap(20),
           Row(
+            spacing: 5,
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              DropdownDialogButton(
+              _Button(
                 onTap: context.pop,
                 text: 'Отменить',
                 textColor: context.colors.onBackground,
                 backgroundColor:
                     context.colors.onBackground.copyWithOpacity(.1),
               ),
-              const Gap(5),
               ValueListenableBuilder(
                   valueListenable: _selectedItem,
                   builder: (context, value, child) {
-                    return DropdownDialogButton(
+                    return _Button(
                       onTap: () => context.pop(_selectedItem.value),
                       isEnabled: _selectedItem.value != null,
                       text: 'Подтвердить',

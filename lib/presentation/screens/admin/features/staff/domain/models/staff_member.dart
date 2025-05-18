@@ -23,6 +23,9 @@ class StaffMember with _$StaffMember {
   factory StaffMember.fromJson(Map<String, dynamic> json) =>
       _$StaffMemberFromJson(json);
 
+  factory StaffMember.maybeFromJson(dynamic json) =>
+      _$StaffMemberFromJson(json);
+
   StaffMember._();
 
   String get idShort => '#${id.substring(id.length - 5)}';

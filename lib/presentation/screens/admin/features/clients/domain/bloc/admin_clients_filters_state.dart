@@ -2,8 +2,9 @@ part of 'admin_clients_filters_bloc.dart';
 
 @freezed
 class AdminClientsFiltersState with _$AdminClientsFiltersState {
-  const factory AdminClientsFiltersState({String? searchQuery}) =
-      _AdminClientsFiltersState;
+  const factory AdminClientsFiltersState({
+    String? searchQuery,
+  }) = _AdminClientsFiltersState;
 
   const AdminClientsFiltersState._();
 

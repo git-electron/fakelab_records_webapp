@@ -1,13 +1,13 @@
-import 'package:fakelab_records_webapp/main.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
 
+import '../../../main.dart';
 import '../../constants/mock.dart';
 import '../../constants/types.dart';
 import '../../domain/models/result/result.dart';
 import '../../domain/models/user/user.dart';
 import '../../extensions/object_extensions.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
 
 @injectable
 class UserClient {
@@ -16,16 +16,20 @@ class UserClient {
   final Logger logger;
   final DatabaseReference ref;
 
+  final Result<User> _notFoundResult = Result.error('Пользователь не найден');
+  static const String _errorMessage = 'Failed to get user';
+
   Future<Result<User>> getUser(int userId) async {
     if (isDevelopment) return Result.success(Mock.user);
 
     try {
       final String path = 'users/$userId';
+
       final DatabaseEvent event = await ref.child(path).once();
       final DataSnapshot snapshot = event.snapshot;
       final bool isExists = snapshot.exists;
 
-      if (!isExists) return Result.error('Пользователь не найден');
+      if (!isExists) return _notFoundResult;
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
@@ -33,12 +37,12 @@ class UserClient {
 Path: $path
 Data: $json''');
 
-      if (json == null) return Result.error('Пользователь не найден');
+      if (json == null) return _notFoundResult;
 
       final User user = User.fromJson(json);
       return Result.success(user);
     } catch (error) {
-      logger.e('Failed to get user', error: error);
+      logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
-import '../domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
-import 'package:logger/logger.dart';
-import 'router.gr.dart';
 import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
+
+import '../domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
+import '../domain/bloc/user_bloc/user_bloc.dart';
+import 'router.gr.dart';
 
 @singleton
 @AutoRouterConfig()

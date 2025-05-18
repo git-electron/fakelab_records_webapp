@@ -1,5 +1,6 @@
-import '../../../extensions/string_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../extensions/string_extensions.dart';
 
 part 'result.freezed.dart';
 

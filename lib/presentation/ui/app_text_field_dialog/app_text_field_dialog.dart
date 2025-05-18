@@ -1,15 +1,18 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
-import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/app_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 
-import 'text_field_dialog_button.dart';
+import '../../../core/extensions/border_radius_extensions.dart';
+import '../../../core/extensions/color_extensions.dart';
+import '../../../core/extensions/list_extensions.dart';
+import '../../../core/extensions/string_extensions.dart';
+import '../../../core/theme/theme_extensions.dart';
+import '../app_text_field.dart';
+import '../wrappers/tappable.dart';
+
+part 'button.dart';
 
 class AppTextFieldDialog extends StatelessWidget {
   AppTextFieldDialog({
@@ -100,7 +103,7 @@ class AppTextFieldDialog extends StatelessWidget {
                 runSpacing: 5,
                 children: autofillHints!
                     .map(
-                      (hint) => TextFieldDialogButton(
+                      (hint) => _Button(
                         onTap: () => _controller.text = hint,
                         text: hint,
                         textColor: context.colors.onBackground,
@@ -115,7 +118,7 @@ class AppTextFieldDialog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TextFieldDialogButton(
+              _Button(
                 onTap: context.pop,
                 text: 'Отменить',
                 textColor: context.colors.onBackground,
@@ -126,7 +129,7 @@ class AppTextFieldDialog extends StatelessWidget {
               ValueListenableBuilder(
                   valueListenable: _controller,
                   builder: (context, value, child) {
-                    return TextFieldDialogButton(
+                    return _Button(
                       onTap: () => context.pop(_controller.text),
                       isEnabled: _controller.text.isNotEmpty,
                       text: 'Подтвердить',

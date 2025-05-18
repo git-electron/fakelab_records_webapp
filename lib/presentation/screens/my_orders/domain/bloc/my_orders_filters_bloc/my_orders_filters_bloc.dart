@@ -1,13 +1,14 @@
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart' hide Order;
 
+import '../../../../../../features/my_orders/domain/models/order/order.dart';
+import '../../../../../../features/my_orders/domain/models/order/order_status.dart';
+import '../../../../../../features/my_orders/domain/models/order/order_type.dart';
+
+part 'my_orders_filters_bloc.freezed.dart';
 part 'my_orders_filters_event.dart';
 part 'my_orders_filters_state.dart';
-part 'my_orders_filters_bloc.freezed.dart';
 
 @injectable
 class MyOrdersFiltersBloc

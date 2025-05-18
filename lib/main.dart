@@ -1,19 +1,17 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
-import 'core/domain/bloc/user_bloc/user_bloc.dart';
-
 import 'core/di/injector.dart';
 import 'core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
+import 'core/domain/bloc/user_bloc/user_bloc.dart';
 import 'core/router/router.dart';
 import 'core/theme/app_theme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:firebase_core/firebase_core.dart';
-
 import 'firebase_options.dart';
 
 const bool isDevelopment = kDebugMode && true;

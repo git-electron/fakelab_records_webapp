@@ -10,9 +10,11 @@ class AudioPlayerEvent with _$AudioPlayerEvent {
 
   const factory AudioPlayerEvent.setLoading(bool isLoading) = _SetLoading;
 
-  const factory AudioPlayerEvent.playButtonPressed(String filePath) =
-      _PlayButtonPressed;
+  const factory AudioPlayerEvent.playButtonPressed(
+    String filePath,
+  ) = _PlayButtonPressed;
 
-  const factory AudioPlayerEvent.isPlayingStateChanged(bool isPlaying) =
-      _IsPlayingStateChanged;
+  const factory AudioPlayerEvent.isPlayingStateChanged(
+    bool isPlaying,
+  ) = _IsPlayingStateChanged;
 }

@@ -1,15 +1,16 @@
-import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
-import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/client/admin_clients_client.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
+import '../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../core/domain/models/user/user.dart';
+import '../../../../../../core/utils/try_or/try_or_null.dart';
+import '../../../client/admin_clients_client.dart';
+
+part 'admin_clients_bloc.freezed.dart';
 part 'admin_clients_event.dart';
 part 'admin_clients_state.dart';
-part 'admin_clients_bloc.freezed.dart';
 
 @injectable
 class AdminClientsBloc extends Bloc<AdminClientsEvent, AdminClientsState> {
