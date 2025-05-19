@@ -31,7 +31,11 @@ import '../../../domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import '../../staff/domain/models/staff_member.dart';
 import '../domain/bloc/admin_orders_filters_bloc.dart';
 
-part 'widgets/filters.dart';
+part 'widgets/filters/filters.dart';
+part 'widgets/filters/widgets/search_field.dart';
+part 'widgets/filters/widgets/date_range_button.dart';
+part 'widgets/filters/widgets/status_filter.dart';
+part 'widgets/filters/widgets/type_filter.dart';
 part 'widgets/list.dart';
 part 'widgets/tile/tile.dart';
 part 'widgets/tile/widgets/header/header.dart';
