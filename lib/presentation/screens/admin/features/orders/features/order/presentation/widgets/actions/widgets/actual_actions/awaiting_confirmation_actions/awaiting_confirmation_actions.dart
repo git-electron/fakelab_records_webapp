@@ -1,4 +1,4 @@
-part of '../../../../../../admin_order_screen.dart';
+part of '../../../../../admin_order_screen.dart';
 
 class _AwaitingConfirmationActions extends StatelessWidget {
   const _AwaitingConfirmationActions(this.order);

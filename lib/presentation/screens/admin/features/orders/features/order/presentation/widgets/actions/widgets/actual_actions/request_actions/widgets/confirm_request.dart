@@ -1,6 +1,10 @@
-part of '../../../../../../../admin_order_screen.dart';
+part of '../../../../../../admin_order_screen.dart';
 
-class _ConfirmRequest extends StatelessWidget with RequestDialogsMixin {
+class _ConfirmRequest extends StatelessWidget
+    with
+        ConfirmationDialogMixin,
+        SetTotalCostDialogMixin,
+        SetAssigneeDialogMixin {
   const _ConfirmRequest(this.order);
 
   @override
@@ -28,9 +32,18 @@ class _ConfirmRequest extends StatelessWidget with RequestDialogsMixin {
   }) async {
     final AdminOrderBloc bloc = context.read();
 
-    double? newTotalCost = await showCostDialog(context);
+    late double? totalCost;
+    late bool? isConfirmed;
 
-    if (newTotalCost == null) return;
+    if (order.costFrom) {
+      totalCost = await showSetTotalCostDialog(context);
+      if (totalCost == null) return;
+    } else {
+      isConfirmed = await showConfirmationDialog(context);
+      if (isConfirmed == null) return;
+      if (!isConfirmed) return;
+    }
+
     if (!context.mounted) return;
 
     StaffMember? assignee = await showAssigneeDialog(context, state: state);
@@ -40,7 +53,7 @@ class _ConfirmRequest extends StatelessWidget with RequestDialogsMixin {
     return bloc.add(
       AdminOrderEvent.updateOrderStatus(
         OrderStatus.PENDING,
-        totalCost: newTotalCost,
+        totalCost: totalCost,
         assignee: assignee,
       ),
     );

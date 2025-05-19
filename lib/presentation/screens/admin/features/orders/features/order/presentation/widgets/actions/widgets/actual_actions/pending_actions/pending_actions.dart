@@ -1,6 +1,6 @@
-part of '../../../../../../admin_order_screen.dart';
+part of '../../../../../admin_order_screen.dart';
 
-class _PendingActions extends StatelessWidget with PendingDialogsMixin {
+class _PendingActions extends StatelessWidget with ConfirmationDialogMixin {
   const _PendingActions(this.order);
 
   @override

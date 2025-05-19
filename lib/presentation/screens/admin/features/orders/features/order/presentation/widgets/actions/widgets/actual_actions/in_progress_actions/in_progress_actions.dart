@@ -1,6 +1,6 @@
-part of '../../../../../../admin_order_screen.dart';
+part of '../../../../../admin_order_screen.dart';
 
-class _InProgressActions extends StatelessWidget with InProgressDialogsMixin {
+class _InProgressActions extends StatelessWidget with ConfirmationDialogMixin {
   const _InProgressActions(this.order);
 
   @override

@@ -1,4 +1,4 @@
-part of '../../../../../../admin_order_screen.dart';
+part of '../../../../../admin_order_screen.dart';
 
 class _RequestActions extends StatelessWidget {
   const _RequestActions(this.order);

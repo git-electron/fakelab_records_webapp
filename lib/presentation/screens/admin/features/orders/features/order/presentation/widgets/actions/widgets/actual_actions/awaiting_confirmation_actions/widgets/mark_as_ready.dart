@@ -1,7 +1,6 @@
-part of '../../../../../../../admin_order_screen.dart';
+part of '../../../../../../admin_order_screen.dart';
 
-class _MarkAsReady extends StatelessWidget
-    with AwaitingConfirmationDialogsMixin {
+class _MarkAsReady extends StatelessWidget with ConfirmationDialogMixin {
   const _MarkAsReady(this.order);
 
   @override

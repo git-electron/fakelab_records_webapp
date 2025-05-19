@@ -1,8 +1,7 @@
-part of '../../../../../../../admin_order_screen.dart';
+part of '../../../../../../admin_order_screen.dart';
 
-class _ReturnToWork extends StatelessWidget
-    with AwaitingConfirmationDialogsMixin {
-  const _ReturnToWork(this.order);
+class _CancelRequest extends StatelessWidget with CancelDialogMixin {
+  const _CancelRequest(this.order);
 
   @override
   final Order order;
@@ -11,10 +10,10 @@ class _ReturnToWork extends StatelessWidget
   Widget build(BuildContext context) {
     return _ExpandedWrapper.mobile(
       child: AppButton(
-        text: 'Вернуть в работу',
+        text: 'Отменить',
         onTap: () => _onTap(context),
-        backgroundColor: context.colors.statuses.inProgress,
-        contentColor: context.colors.background,
+        backgroundColor: context.colors.primary,
+        contentColor: context.colors.onBackground,
       ),
     );
   }
@@ -22,13 +21,13 @@ class _ReturnToWork extends StatelessWidget
   Future<void> _onTap(BuildContext context) async {
     final AdminOrderBloc bloc = context.read();
 
-    final String? message = await showReturnToWorkDialog(context);
+    final String? message = await showCancelDialog(context);
 
     if (message == null) return;
 
     bloc.add(
       AdminOrderEvent.updateOrderStatus(
-        OrderStatus.IN_PROGRESS,
+        OrderStatus.CANCELLED,
         message: message,
       ),
     );
