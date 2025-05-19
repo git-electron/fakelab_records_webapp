@@ -6,7 +6,10 @@ class AdminPanelState with _$AdminPanelState {
 
   const factory AdminPanelState.loading() = _Loading;
 
-  const factory AdminPanelState.loaded(List<Order> orders) = _Loaded;
+  const factory AdminPanelState.loaded({
+    required List<Order> orders,
+    required List<User> clients,
+  }) = _Loaded;
 
   const factory AdminPanelState.error(String? message) = _Error;
 
@@ -22,12 +25,13 @@ class AdminPanelState with _$AdminPanelState {
         orElse: () => false,
       );
 
-  bool get isLoaded => maybeWhen(
+  bool get isLoaded => maybeMap(
         loaded: (_) => true,
         orElse: () => false,
       );
 
-  List<Order>? get orders => whenOrNull(loaded: (orders) => orders);
+  List<Order>? get orders => mapOrNull(loaded: (loaded) => loaded.orders);
+  List<User>? get clients => mapOrNull(loaded: (loaded) => loaded.clients);
 
   bool get hasError => maybeWhen(
         error: (_) => true,
@@ -41,16 +45,25 @@ class AdminPanelState with _$AdminPanelState {
   int get inProgressCount => _ordersByStatusCount(OrderStatus.IN_PROGRESS);
 
   int _ordersByStatusCount(OrderStatus status) {
-    return maybeWhen(
-      loaded: (orders) {
-        return orders.where((order) => order.status == status).length;
+    return maybeMap(
+      loaded: (loaded) {
+        return loaded.orders.where((order) => order.status == status).length;
       },
       orElse: () => 0,
     );
   }
 
-  double get totalIncome => maybeWhen(
-        loaded: (orders) => orders
+  int get clientsCount => _clientsCount();
+
+  int _clientsCount() {
+    return maybeMap(
+      loaded: (loaded) => loaded.clients.length,
+      orElse: () => 0,
+    );
+  }
+
+  double get totalIncome => maybeMap(
+        loaded: (loaded) => loaded.orders
             .where((order) => order.status == OrderStatus.COMPLETED)
             .map((order) => order.totalCost)
             .sum,

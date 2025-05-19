@@ -1,27 +1,28 @@
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import 'package:fakelab_records_webapp/core/formatters/phone_number_formatter.dart';
-import 'package:fakelab_records_webapp/core/router/router.dart';
-import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/features/create_client/client/admin_create_client_client.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../../../../core/domain/models/user/user.dart';
+import '../../../../../../../../../core/extensions/string_extensions.dart';
+import '../../../../../../../../../core/formatters/phone_number_formatter.dart';
+import '../../../../../../../../../core/router/router.dart';
+import '../../../../../../../../../core/utils/id_generator/id_generator.dart';
+import '../../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
+import '../../client/admin_create_client_client.dart';
+
+part 'admin_create_client_bloc.freezed.dart';
 part 'admin_create_client_event.dart';
 part 'admin_create_client_state.dart';
-part 'admin_create_client_bloc.freezed.dart';
 
 @injectable
 class AdminCreateClientBloc
     extends Bloc<AdminCreateClientEvent, AdminCreateClientState> {
   AdminCreateClientBloc(
-    @factoryParam this.adminClientsBloc,
     this.router,
     this.idGenerator,
     this.adminCreateClientClient,
+    @factoryParam this.adminClientsBloc,
   ) : super(const _AdminCreateClientState()) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);

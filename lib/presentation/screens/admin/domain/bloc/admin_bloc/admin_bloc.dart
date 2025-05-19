@@ -1,15 +1,16 @@
-import 'package:fakelab_records_webapp/core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
-import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart';
-import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/models/admin_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../../core/domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
+import '../../../../../../core/domain/service/telegram_service.dart';
+import '../../../../../../core/utils/try_or/try_or_null.dart';
+import '../../models/admin_tab.dart';
+
+part 'admin_bloc.freezed.dart';
 part 'admin_event.dart';
 part 'admin_state.dart';
-part 'admin_bloc.freezed.dart';
 
 @injectable
 class AdminBloc extends Bloc<AdminEvent, AdminState> {

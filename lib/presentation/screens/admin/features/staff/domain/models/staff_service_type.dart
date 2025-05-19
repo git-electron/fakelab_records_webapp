@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/service/order_service_type.dart';
+import '../../../../../../../features/my_orders/domain/models/order/service/order_service_type.dart';
 
 enum StaffServiceType {
   RECORDING('Запись'),

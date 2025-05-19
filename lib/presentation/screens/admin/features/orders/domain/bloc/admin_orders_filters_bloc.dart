@@ -1,16 +1,17 @@
-import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_type.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
+import '../../../../../../../core/extensions/datetime_extensions.dart';
+import '../../../../../../../core/extensions/string_extensions.dart';
+import '../../../../../../../features/my_orders/domain/models/order/order.dart';
+import '../../../../../../../features/my_orders/domain/models/order/order_status.dart';
+import '../../../../../../../features/my_orders/domain/models/order/order_type.dart';
+
+part 'admin_orders_filters_bloc.freezed.dart';
 part 'admin_orders_filters_event.dart';
 part 'admin_orders_filters_state.dart';
-part 'admin_orders_filters_bloc.freezed.dart';
 
 @injectable
 class AdminOrdersFiltersBloc

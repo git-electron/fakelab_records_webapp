@@ -1,17 +1,18 @@
 import 'package:collection/collection.dart';
-import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/client/admin_orders_client.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart' hide Order;
 
+import '../../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
+import '../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../core/utils/try_or/try_or_null.dart';
+import '../../../../../../features/my_orders/domain/models/order/order.dart';
+import '../../../../../../features/my_orders/domain/models/order/order_status.dart';
+import '../../../client/admin_orders_client.dart';
+
+part 'admin_orders_bloc.freezed.dart';
 part 'admin_orders_event.dart';
 part 'admin_orders_state.dart';
-part 'admin_orders_bloc.freezed.dart';
 
 @injectable
 class AdminOrdersBloc extends Bloc<AdminOrdersEvent, AdminOrdersState> {

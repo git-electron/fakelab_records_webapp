@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:fakelab_records_webapp/core/constants/types.dart';
+import '../../constants/types.dart';
 
 class Debouncer {
   Debouncer();

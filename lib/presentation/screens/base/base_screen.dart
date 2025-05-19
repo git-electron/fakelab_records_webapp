@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+
 import '../../../core/router/router.gr.dart';
 import '../../ui/bottom_nav_bar.dart';
-import 'package:flutter/material.dart';
 
 @RoutePage()
 class BaseScreen extends StatelessWidget {

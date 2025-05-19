@@ -1,8 +1,9 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import '../../../core/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import '../../../core/extensions/string_extensions.dart';
+import '../../../core/theme/theme_extensions.dart';
 
 class InDevelopmentPage extends StatelessWidget {
   const InDevelopmentPage(

@@ -1,18 +1,19 @@
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import 'package:fakelab_records_webapp/core/formatters/phone_number_formatter.dart';
-import 'package:fakelab_records_webapp/core/router/router.dart';
-import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/features/edit_client/client/admin_edit_client_client.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../../../../core/domain/models/user/user.dart';
+import '../../../../../../../../../core/extensions/string_extensions.dart';
+import '../../../../../../../../../core/formatters/phone_number_formatter.dart';
+import '../../../../../../../../../core/router/router.dart';
+import '../../../../../../../../../core/utils/id_generator/id_generator.dart';
+import '../../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
+import '../../client/admin_edit_client_client.dart';
+
+part 'admin_edit_client_bloc.freezed.dart';
 part 'admin_edit_client_event.dart';
 part 'admin_edit_client_state.dart';
-part 'admin_edit_client_bloc.freezed.dart';
 
 @injectable
 class AdminEditClientBloc

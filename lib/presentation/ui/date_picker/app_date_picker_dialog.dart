@@ -1,13 +1,16 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import 'date_picker_dialog_button.dart';
+import '../../../core/extensions/border_radius_extensions.dart';
+import '../../../core/extensions/color_extensions.dart';
+import '../../../core/theme/theme_extensions.dart';
+import '../wrappers/tappable.dart';
 import 'models/date_picker_result.dart';
+
+part 'button.dart';
 
 class AppDatePickerDialog extends StatelessWidget {
   AppDatePickerDialog({
@@ -115,7 +118,7 @@ class AppDatePickerDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (initialDate != null || initialDateRange != null)
-                DatePickerDialogButton(
+                _Button(
                   onTap: () => switch (selectionMode) {
                     DateRangePickerSelectionMode.single =>
                       context.pop(DatePickerResult(isReset: true)),
@@ -132,7 +135,7 @@ class AppDatePickerDialog extends StatelessWidget {
                 const SizedBox(),
               Row(
                 children: [
-                  DatePickerDialogButton(
+                  _Button(
                     onTap: context.pop,
                     text: 'Отменить',
                     textColor: context.colors.onBackground,
@@ -140,7 +143,7 @@ class AppDatePickerDialog extends StatelessWidget {
                         context.colors.onBackground.copyWithOpacity(.1),
                   ),
                   const Gap(5),
-                  DatePickerDialogButton(
+                  _Button(
                     onTap: () => switch (selectionMode) {
                       DateRangePickerSelectionMode.single =>
                         context.pop(DatePickerResult(

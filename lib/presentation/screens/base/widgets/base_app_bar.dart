@@ -1,15 +1,28 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:blur/blur.dart';
-import '../../../../core/theme/theme_extensions.dart';
-import '../../../ui/logo/logo.dart';
-import '../../../ui/avatar/user_avatar.dart';
-import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/theme/theme_extensions.dart';
+import '../../../ui/avatar/user_avatar.dart';
+import '../../../ui/logo/logo.dart';
+import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 
 const double _toolbarHeight = 90;
 
-class BaseAppBarMobile extends StatelessWidget {
-  const BaseAppBarMobile({super.key});
+class BaseAppBar extends StatelessWidget {
+  const BaseAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TelegramMetaWrapper(builder: (context, meta) {
+      if (meta.isMobile) return const _Mobile();
+      return const _Desktop();
+    });
+  }
+}
+
+class _Mobile extends StatelessWidget {
+  const _Mobile();
 
   @override
   Widget build(BuildContext context) {
@@ -146,8 +159,8 @@ class BaseAppBarMobile extends StatelessWidget {
   }
 }
 
-class BaseAppBar extends StatelessWidget {
-  const BaseAppBar({super.key});
+class _Desktop extends StatelessWidget {
+  const _Desktop();
 
   @override
   Widget build(BuildContext context) {

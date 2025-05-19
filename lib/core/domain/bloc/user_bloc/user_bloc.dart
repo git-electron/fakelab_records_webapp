@@ -1,15 +1,16 @@
-import '../../../data/client/user_client.dart';
-import '../telegram_data_bloc/telegram_data_bloc.dart';
-import '../../models/result/result.dart';
-import '../../models/user/user.dart';
-import '../../../utils/try_or/try_or_null.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../data/client/user_client.dart';
+import '../../../utils/try_or/try_or_null.dart';
+import '../../models/result/result.dart';
+import '../../models/user/user.dart';
+import '../telegram_data_bloc/telegram_data_bloc.dart';
+
+part 'user_bloc.freezed.dart';
 part 'user_event.dart';
 part 'user_state.dart';
-part 'user_bloc.freezed.dart';
 
 @singleton
 class UserBloc extends Bloc<UserEvent, UserState> {
@@ -21,7 +22,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<_SetUnauthorized>(_onSetUnauthorized);
 
     tryOrNullAsync(_getUser);
-    telegramDataBloc.stream.listen(_onTelegramDataStateEvent);
+    telegramDataBloc.stream.listen(_telegramDataStateListener);
   }
 
   final UserClient userClient;
@@ -55,10 +56,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     emit(const UserState.unauthorized());
   }
 
-  void _onTelegramDataStateEvent(TelegramDataState telegramDataState) {
-    if (telegramDataState.isLoaded) _getUser();
-  }
-
   Future<void> _getUser() async {
     final int userId = telegramDataBloc.state.telegramData!.user.id;
     add(const UserEvent.setLoading());
@@ -67,5 +64,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       success: (user) => add(UserEvent.setAuthorized(user)),
       error: (message) => add(UserEvent.setError(message)),
     );
+  }
+
+  void _telegramDataStateListener(TelegramDataState telegramDataState) {
+    if (telegramDataState.isLoaded) _getUser();
   }
 }

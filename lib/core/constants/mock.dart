@@ -1,21 +1,22 @@
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_filters.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
-
-import '../domain/models/rating/rating.dart';
-import '../domain/models/user/user.dart';
-import '../utils/try_or/try_or_null.dart';
+import '../../features/my_orders/domain/models/order/filters/order_filters.dart';
 import '../../features/my_orders/domain/models/order/order.dart';
 import '../../features/my_orders/domain/models/order/order_status.dart';
 import '../../features/my_orders/domain/models/order/order_type.dart';
 import '../../features/my_orders/domain/models/order/service/order_service.dart';
 import '../../features/my_orders/domain/models/order/service/order_service_type.dart';
 import '../../features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
-
+import '../../presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
+import '../../presentation/screens/admin/features/staff/domain/models/staff_member.dart';
+import '../../presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
+import '../../presentation/screens/book_recording/domain/models/booking/booking.dart';
+import '../../presentation/screens/book_recording/domain/models/booking/booking_status.dart';
+import '../../presentation/screens/book_recording/domain/models/booking/filters/booking_filters.dart';
+import '../domain/models/rating/rating.dart';
 import '../domain/models/telegram/safe_area_inset.dart';
 import '../domain/models/telegram/telegram_meta.dart';
 import '../domain/models/telegram/telegram_user.dart';
+import '../domain/models/user/user.dart';
+import '../utils/try_or/try_or_null.dart';
 
 class Mock {
   static const _photoFileName = 'QzaYKj8gtRiq3RqEWaoFAjlqDoTTcLn5DvXKCosQsfE';
@@ -41,7 +42,7 @@ class Mock {
     phoneNumber: '+79312882004',
   );
 
-  static final DateTime _now = DateTime.now();
+  static final DateTime _now = DateTime.now().toUtc();
   static final List<Order> orders = <Order>[
     Order(
       id: '5528550526019438',
@@ -329,6 +330,61 @@ class Mock {
   static Order? getOrder(String orderId) =>
       tryOrNull(() => orders.firstWhere((order) => order.id == orderId));
 
+  static final List<Booking> bookings = <Booking>[
+    Booking(
+      id: '5528550544544851',
+      customer: user,
+      status: BookingStatus.COMPLETED,
+      statusHistory: [],
+      dateCreated: _now.subtract(const Duration(days: 1)),
+      dateChanged: _now.subtract(const Duration(days: 1)),
+      assignee: getStaffMember('5528559284548329'),
+      date: DateTime(_now.year, _now.month, _now.day, 12).toUtc(),
+      totalCost: 2500,
+      duration: const Duration(hours: 2, minutes: 30),
+      filters: BookingFilters(
+        userIdStatus: '${user.id}-${BookingStatus.COMPLETED.name}',
+      ),
+      rating: Rating(
+        rating: 3,
+        comment: 'Ну такое',
+      ),
+    ),
+    Booking(
+      id: '5528550544589537',
+      customer: user,
+      status: BookingStatus.PENDING,
+      statusHistory: [],
+      dateCreated: _now.subtract(const Duration(days: 1)),
+      dateChanged: _now.subtract(const Duration(days: 1)),
+      assignee: getStaffMember('5528559284548329'),
+      date: DateTime(_now.year, _now.month, _now.day, 18).toUtc(),
+      totalCost: 2500,
+      duration: const Duration(hours: 3),
+      filters: BookingFilters(
+        userIdStatus: '${user.id}-${BookingStatus.PENDING.name}',
+      ),
+    ),
+    Booking(
+      id: '5528550544559483',
+      customer: user,
+      status: BookingStatus.PENDING,
+      statusHistory: [],
+      dateCreated: _now.subtract(const Duration(days: 1)),
+      dateChanged: _now.subtract(const Duration(days: 1)),
+      assignee: getStaffMember('5528559284548329'),
+      date: DateTime(_now.year, _now.month, _now.day + 3, 8).toUtc(),
+      totalCost: 2500,
+      duration: const Duration(hours: 15),
+      filters: BookingFilters(
+        userIdStatus: '${user.id}-${BookingStatus.PENDING.name}',
+      ),
+    ),
+  ];
+
+  static Booking? getBooking(String bookingId) => tryOrNull(
+      () => bookings.firstWhere((booking) => booking.id == bookingId));
+
   static List<StaffMember> staffMembers = <StaffMember>[
     StaffMember(
       id: '5528559284548329',
@@ -337,8 +393,6 @@ class Mock {
       username: 'raimee',
       activities: StaffActivity.values,
       services: StaffServiceType.values,
-      photoUrl:
-          'https://res.cloudinary.com/dnuyv9y5b/image/upload/v1746295149/5511812453545000.jpg',
     ),
     StaffMember(
       id: '5588028127449327',

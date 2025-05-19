@@ -9,8 +9,8 @@ class MyOrdersFiltersState with _$MyOrdersFiltersState {
 
   const MyOrdersFiltersState._();
 
-  List<Order> filteredOrders(List<Order>? orders) {
-    final List<Order>? filtered = orders?.where((order) {
+  List<Order> filterOrders(List<Order>? orders) {
+    final List<Order>? filteredOrders = orders?.where((order) {
       bool isProperOrderType = true;
       bool isProperOrderStatus = true;
 
@@ -24,6 +24,6 @@ class MyOrdersFiltersState with _$MyOrdersFiltersState {
       return isProperOrderType && isProperOrderStatus;
     }).toList();
 
-    return filtered ?? orders ?? [];
+    return filteredOrders ?? orders ?? [];
   }
 }

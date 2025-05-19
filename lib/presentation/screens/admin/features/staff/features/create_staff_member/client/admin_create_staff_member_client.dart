@@ -1,9 +1,11 @@
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
+
+import '../../../../../../../../core/constants/mock.dart';
+import '../../../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../../../main.dart';
+import '../../../domain/models/staff_member.dart';
 
 @injectable
 class AdminCreateStaffMemberClient {
@@ -12,7 +14,14 @@ class AdminCreateStaffMemberClient {
   final Logger logger;
   final DatabaseReference ref;
 
+  static const String _errorMessage = 'Failed to create staff member';
+
   Future<Result<StaffMember>> createStaffMember(StaffMember staffMember) async {
+    if (isDevelopment) {
+      Mock.staffMembers.add(staffMember);
+      return Result.success(staffMember);
+    }
+
     try {
       final String path = 'staff/${staffMember.id}';
 
@@ -24,7 +33,7 @@ Data: $staffMember''');
 
       return Result.success(staffMember);
     } catch (error) {
-      logger.e('Failed to create staff member', error: error);
+      logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

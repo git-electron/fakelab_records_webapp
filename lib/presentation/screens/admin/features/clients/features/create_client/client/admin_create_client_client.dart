@@ -1,9 +1,9 @@
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/domain/models/user/user.dart';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
+
+import '../../../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../../../core/domain/models/user/user.dart';
 
 @injectable
 class AdminCreateClientClient {
@@ -11,6 +11,8 @@ class AdminCreateClientClient {
 
   final Logger logger;
   final DatabaseReference ref;
+
+  static const String _errorMessage = 'Failed to create client';
 
   Future<Result<User>> createClient(User client) async {
     try {
@@ -24,7 +26,7 @@ Data: $client''');
 
       return Result.success(client);
     } catch (error) {
-      logger.e('Failed to create client', error: error);
+      logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

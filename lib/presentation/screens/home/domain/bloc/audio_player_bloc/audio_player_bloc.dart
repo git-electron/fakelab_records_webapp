@@ -1,12 +1,13 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
-import '../../../../../../core/constants/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../../core/constants/constants.dart';
+
+part 'audio_player_bloc.freezed.dart';
 part 'audio_player_event.dart';
 part 'audio_player_state.dart';
-part 'audio_player_bloc.freezed.dart';
 
 @injectable
 class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
@@ -18,17 +19,8 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     on<_PlayButtonPressed>(_onPlayButtonPressed);
     on<_IsPlayingStateChanged>(_onIsPlayingStateChanged);
 
-    audioPlayer.currentPosition.listen((Duration currentPosition) {
-      if (currentPosition.inMilliseconds != 0) {
-        add(const AudioPlayerEvent.setLoading(false));
-      }
-    });
-
-    audioPlayer.isPlaying.listen((bool isPlaying) {
-      if (isPlaying != state.isPlaying) {
-        add(AudioPlayerEvent.isPlayingStateChanged(isPlaying));
-      }
-    });
+    audioPlayer.isPlaying.listen(_isPlayingListener);
+    audioPlayer.currentPosition.listen(_currentPositionListener);
   }
 
   @override
@@ -98,10 +90,22 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
 
   String _getFilePath(String filePath) => '$baseUrl/assets/$filePath';
 
+  Duration get currentDuration => audioPlayer.currentPosition.value;
+  double get currentDurationInMs => currentDuration.inMilliseconds.toDouble();
+
   Duration get totalDuration =>
       audioPlayer.current.value?.audio.duration ?? const Duration();
   double get totalDurationInMs => totalDuration.inMilliseconds.toDouble();
 
-  Duration get currentDuration => audioPlayer.currentPosition.value;
-  double get currentDurationInMs => currentDuration.inMilliseconds.toDouble();
+  void _isPlayingListener(bool isPlaying) {
+    if (isPlaying != state.isPlaying) {
+      add(AudioPlayerEvent.isPlayingStateChanged(isPlaying));
+    }
+  }
+
+  void _currentPositionListener(Duration currentPosition) {
+    if (currentPosition.inMilliseconds != 0) {
+      add(const AudioPlayerEvent.setLoading(false));
+    }
+  }
 }

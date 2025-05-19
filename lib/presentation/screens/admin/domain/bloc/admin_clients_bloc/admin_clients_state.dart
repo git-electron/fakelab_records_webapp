@@ -33,4 +33,13 @@ class AdminClientsState with _$AdminClientsState {
         orElse: () => false,
       );
   String? get message => whenOrNull(error: (message) => message);
+
+  int get clientsCount => _clientsCount();
+
+  int _clientsCount() {
+    return maybeWhen(
+      loaded: (clients) => clients.length,
+      orElse: () => 0,
+    );
+  }
 }

@@ -1,6 +1,6 @@
-import 'package:fakelab_records_webapp/core/converters/date_time_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../../../core/converters/date_time_converter.dart';
 import '../order_status.dart';
 
 part 'order_status_history_item.freezed.dart';

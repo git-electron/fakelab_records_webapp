@@ -1,13 +1,14 @@
-import '../../models/telegram/telegram_data.dart';
-import '../../service/telegram_service.dart';
-import '../../../utils/try_or/try_or_null.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../utils/try_or/try_or_null.dart';
+import '../../models/telegram/telegram_data.dart';
+import '../../service/telegram_service.dart';
+
+part 'telegram_data_bloc.freezed.dart';
 part 'telegram_data_event.dart';
 part 'telegram_data_state.dart';
-part 'telegram_data_bloc.freezed.dart';
 
 @singleton
 class TelegramDataBloc extends Bloc<TelegramDataEvent, TelegramDataState> {

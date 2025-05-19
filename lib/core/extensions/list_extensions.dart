@@ -16,4 +16,6 @@ extension ListExtensions<T> on List<T> {
 
 extension NullableListExtensions<T> on List<T>? {
   bool get isNotNullAndEmpty => this != null && this!.isNotEmpty;
+
+  bool get isNullOrEmpty => !isNotNullAndEmpty;
 }

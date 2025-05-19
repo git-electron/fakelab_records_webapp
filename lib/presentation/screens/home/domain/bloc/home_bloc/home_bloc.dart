@@ -1,12 +1,13 @@
-import '../../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
-import '../../../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
+import '../../../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
+
+part 'home_bloc.freezed.dart';
 part 'home_event.dart';
 part 'home_state.dart';
-part 'home_bloc.freezed.dart';
 
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -17,12 +18,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<_UserStateChanged>(_onUserStateChanged);
     on<_MyOrdersFeatureStateChanged>(_onMyOrdersFeatureStateChanged);
 
-    userBloc.stream.listen(
-      (state) => add(HomeEvent.userStateChanged(state)),
-    );
-    myOrdersFeatureBloc.stream.listen(
-      (state) => add(HomeEvent.myOrdersFeatureStateChanged(state)),
-    );
+    userBloc.stream.listen(_userStateListener);
+    myOrdersFeatureBloc.stream.listen(_myOrdersFeatureStateListener);
   }
 
   final UserBloc userBloc;
@@ -41,4 +38,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     emit(state.copyWith(myOrdersFeatureState: event.state));
   }
+
+  void _userStateListener(UserState state) =>
+      add(HomeEvent.userStateChanged(state));
+
+  void _myOrdersFeatureStateListener(MyOrdersFeatureState state) =>
+      add(HomeEvent.myOrdersFeatureStateChanged(state));
 }

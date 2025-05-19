@@ -1,11 +1,11 @@
-import 'package:fakelab_records_webapp/core/constants/mock.dart';
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/main.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
+
+import '../../../../../../../../core/constants/mock.dart';
+import '../../../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../../../main.dart';
+import '../../../domain/models/staff_member.dart';
 
 @injectable
 class AdminEditStaffMemberClient {
@@ -13,6 +13,8 @@ class AdminEditStaffMemberClient {
 
   final Logger logger;
   final DatabaseReference ref;
+
+  static const String _errorMessage = 'Failed to update staff member';
 
   Future<Result<StaffMember>> updateStaffMember(StaffMember staffMember) async {
     if (isDevelopment) {
@@ -35,7 +37,7 @@ Data: $staffMember''');
 
       return Result.success(staffMember);
     } catch (error) {
-      logger.e('Failed to update staff member', error: error);
+      logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

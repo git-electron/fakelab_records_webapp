@@ -1,5 +1,6 @@
-import 'theme_extensions.dart';
 import 'package:flutter/material.dart';
+
+import 'theme_extensions.dart';
 
 class AppTheme {
   static ThemeData get primary {

@@ -6,7 +6,10 @@ class AdminPanelEvent with _$AdminPanelEvent {
 
   const factory AdminPanelEvent.setLoading() = _SetLoading;
 
-  const factory AdminPanelEvent.setLoaded(List<Order> orders) = _SetLoaded;
+  const factory AdminPanelEvent.setLoaded({
+    required List<Order> orders,
+    required List<User> clients,
+  }) = _SetLoaded;
 
   const factory AdminPanelEvent.setError(String? message) = _SetError;
 }

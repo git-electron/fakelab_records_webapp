@@ -1,19 +1,37 @@
+import 'dart:typed_data';
+
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/di/injector.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/create_staff_member/presentation/widgets/create_staff_properties.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import 'package:blur/blur.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
+import 'package:flutter_dropzone/flutter_dropzone.dart';
 
-import 'widgets/create_staff_avatar.dart';
-import 'widgets/create_staff_form.dart';
-import 'widgets/create_staff_member_button.dart';
-import 'widgets/create_staff_member_screen_app_bar.dart';
+import '../../../../../../../../core/di/injector.dart';
+import '../../../../../../../../core/extensions/border_radius_extensions.dart';
+import '../../../../../../../../core/extensions/string_extensions.dart';
+import '../../../../../../../../core/gen/assets.gen.dart';
+import '../../../../../../../../core/gen/colors.gen.dart';
+import '../../../../../../../../core/theme/theme_extensions.dart';
+import '../../../../../../../ui/app_button.dart';
+import '../../../../../../../ui/app_text_field.dart';
+import '../../../../../../../ui/avatar/avatar.dart';
+import '../../../../../../../ui/wrappers/tappable.dart';
+import '../../../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import '../../../../../domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
+import '../../../domain/models/staff_activity.dart';
+import '../../../domain/models/staff_service_type.dart';
+import '../domain/bloc/admin_create_staff_member_bloc.dart';
+
+part 'widgets/app_bar.dart';
+part 'widgets/avatar_and_form/avatar_and_form.dart';
+part 'widgets/avatar_and_form/widgets/avatar.dart';
+part 'widgets/avatar_and_form/widgets/form.dart';
+part 'widgets/create_button.dart';
+part 'widgets/header.dart';
+part 'widgets/properties/properties.dart';
+part 'widgets/properties/widgets/property_item.dart';
 
 @RoutePage()
 class AdminCreateStaffMemberScreen extends StatelessWidget {
@@ -30,18 +48,11 @@ class AdminCreateStaffMemberScreen extends StatelessWidget {
       create: (context) => $<AdminCreateStaffMemberBloc>(
         param1: adminStaffBloc,
       ),
-      child: Scaffold(
+      child: const Scaffold(
         body: CustomScrollView(
           slivers: [
-            TelegramMetaWrapper(builder: (context, meta) {
-              if (meta.isMobile) {
-                return const CreateStaffMemberScreenAppBarMobile();
-              }
-              return const SliverToBoxAdapter();
-            }),
-            const SliverToBoxAdapter(
-              child: AdminCreateStaffMemberScreenBody(),
-            ),
+            _AppBar(),
+            _Body(),
           ],
         ),
       ),
@@ -49,90 +60,29 @@ class AdminCreateStaffMemberScreen extends StatelessWidget {
   }
 }
 
-class AdminCreateStaffMemberScreenBody extends StatelessWidget {
-  const AdminCreateStaffMemberScreenBody({super.key});
+class _Body extends StatelessWidget {
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        color: context.colors.background,
-        constraints: const BoxConstraints(maxWidth: 1500),
-        padding: const Pad(top: 20, horizontal: 20),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gap(20),
-            CreateStaffMemberHeader(),
-            Gap(20),
-            CreateStaffMemberAdaptiveForm(),
-            Gap(20),
-            CreateStaffProperties(),
-            Gap(20),
-            CreateStaffMemberButton(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CreateStaffMemberHeader extends StatelessWidget {
-  const CreateStaffMemberHeader({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      color: context.colors.background,
-      child: Text(
-        'Добавить сотрудника',
-        style: context.styles.subtitle1.copyWith(
-          color: context.colors.title,
-        ),
-      ),
-    );
-  }
-}
-
-class CreateStaffMemberAdaptiveForm extends StatelessWidget {
-  const CreateStaffMemberAdaptiveForm({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final bool isMobile = size.width < 1000;
-
-    if (isMobile) {
-      return Column(
-        children: [
-          BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
-            builder: (context, state) {
-              return CreateStaffAvatar(photoUrl: state.avatarFileUrl);
-            },
+    return SliverToBoxAdapter(
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Container(
+          color: context.colors.background,
+          constraints: const BoxConstraints(maxWidth: 1500),
+          padding: const Pad(all: 20, vertical: 20),
+          child: const Column(
+            spacing: 20,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _Header(),
+              _AvatarAndForm(),
+              CreateStaffProperties(),
+              _CreateButton(),
+            ],
           ),
-          const Gap(20),
-          const CreateStaffForm(),
-        ],
-      );
-    }
-    return Padding(
-      padding: const Pad(top: 60),
-      child: Row(
-        children: [
-          BlocBuilder<AdminCreateStaffMemberBloc, AdminCreateStaffMemberState>(
-            builder: (context, state) {
-              return CreateStaffAvatar(
-                height: 150,
-                width: 150,
-                photoUrl: state.avatarFileUrl,
-              );
-            },
-          ),
-          const Gap(20),
-          const Expanded(child: CreateStaffForm()),
-        ],
+        ),
       ),
     );
   }

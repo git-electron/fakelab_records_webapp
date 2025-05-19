@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart';
-import '../domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
-import 'package:logger/logger.dart';
-import 'router.gr.dart';
 import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
+
+import '../domain/bloc/telegram_data_bloc/telegram_data_bloc.dart';
+import '../domain/bloc/user_bloc/user_bloc.dart';
+import 'router.gr.dart';
 
 @singleton
 @AutoRouterConfig()
@@ -76,27 +77,14 @@ Args: ${resolver.route.args}''');
         AutoRoute(page: ImagesViewerRoute.page, path: '/images'),
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
         if (isMobile) AutoRoute(page: AdminRoute.page, path: '/admin'),
+        AutoRoute(page: BookRecordingDateRoute.page, path: '/book/date'),
+        AutoRoute(page: BookRecordingTimeRoute.page, path: '/book/time'),
         AutoRoute(page: AdminOrderRoute.page, path: '/admin/orders/:id'),
-        AutoRoute(
-          page: AdminCreateOrderRoute.page,
-          path: '/admin/orders/create',
-        ),
-        AutoRoute(
-          page: AdminCreateStaffMemberRoute.page,
-          path: '/admin/staff/create',
-        ),
-        AutoRoute(
-          page: AdminEditStaffMemberRoute.page,
-          path: '/admin/staff/edit/:id',
-        ),
-        AutoRoute(
-          page: AdminCreateClientRoute.page,
-          path: '/admin/clients/create',
-        ),
-        AutoRoute(
-          page: AdminEditClientRoute.page,
-          path: '/admin/clients/edit/:id',
-        ),
+        AutoRoute(page: AdminCreateOrderRoute.page, path: '/admin/orders/create'),
+        AutoRoute(page: AdminCreateClientRoute.page, path: '/admin/clients/create'),
+        AutoRoute(page: AdminEditClientRoute.page, path: '/admin/clients/edit/:id'),
+        AutoRoute(page: AdminCreateStaffMemberRoute.page, path: '/admin/staff/create'),
+        AutoRoute(page: AdminEditStaffMemberRoute.page, path: '/admin/staff/edit/:id'),
         ...redirections,
       ];
 

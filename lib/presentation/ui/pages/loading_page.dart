@@ -1,5 +1,6 @@
-import '../../../core/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/theme/theme_extensions.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({

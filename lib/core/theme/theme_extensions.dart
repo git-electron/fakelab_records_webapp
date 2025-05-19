@@ -1,12 +1,12 @@
-import '../gen/colors.gen.dart';
-import '../gen/fonts.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 
-part 'theme_colors.dart';
-part 'theme_styles.dart';
+import '../gen/colors.gen.dart';
+import '../gen/fonts.gen.dart';
 
+part 'theme_colors.dart';
 part 'theme_extensions.tailor.dart';
+part 'theme_styles.dart';
 
 @TailorMixin(themeGetter: ThemeGetter.onBuildContext)
 class Colors extends ThemeExtension<Colors> with _$ColorsTailorMixin {

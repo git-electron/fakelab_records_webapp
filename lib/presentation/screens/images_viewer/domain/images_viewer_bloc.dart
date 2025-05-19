@@ -1,19 +1,20 @@
-import '../../../../core/domain/service/telegram_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/domain/service/telegram_service.dart';
+
+part 'images_viewer_bloc.freezed.dart';
 part 'images_viewer_event.dart';
 part 'images_viewer_state.dart';
-part 'images_viewer_bloc.freezed.dart';
 
 @injectable
 class ImagesViewerBloc extends Bloc<ImagesViewerEvent, ImagesViewerState> {
   ImagesViewerBloc({
+    required this.telegramService,
     @factoryParam required this.images,
     @factoryParam required this.initialIndex,
-    required this.telegramService,
   }) : super(const _ImagesViewerState()) {
     on<_SetPositionYDelta>(_setPositionYDelta);
     on<_SetInitialYPosition>(_setInitialYPosition);
@@ -24,7 +25,6 @@ class ImagesViewerBloc extends Bloc<ImagesViewerEvent, ImagesViewerState> {
       initialPage: initialIndex,
       viewportFraction: 1.02,
     );
-
     telegramService.showBackButton();
   }
 
@@ -44,24 +44,28 @@ class ImagesViewerBloc extends Bloc<ImagesViewerEvent, ImagesViewerState> {
   Future<void> _setPositionYDelta(
     _SetPositionYDelta event,
     Emitter<ImagesViewerState> emit,
-  ) async =>
-      emit(state.copyWith(positionYDelta: event.positionYDelta));
+  ) async {
+    emit(state.copyWith(positionYDelta: event.positionYDelta));
+  }
 
   Future<void> _setInitialYPosition(
     _SetInitialYPosition event,
     Emitter<ImagesViewerState> emit,
-  ) async =>
-      emit(state.copyWith(initialYPosition: event.initialYPosition));
+  ) async {
+    emit(state.copyWith(initialYPosition: event.initialYPosition));
+  }
 
   Future<void> _setCurrentYPosition(
     _SetCurrentYPosition event,
     Emitter<ImagesViewerState> emit,
-  ) async =>
-      emit(state.copyWith(currentYPosition: event.currentYPosition));
+  ) async {
+    emit(state.copyWith(currentYPosition: event.currentYPosition));
+  }
 
   Future<void> _setAnimationDuration(
     _SetAnimationDuration event,
     Emitter<ImagesViewerState> emit,
-  ) async =>
-      emit(state.copyWith(animationDuration: event.animationDuration));
+  ) async {
+    emit(state.copyWith(animationDuration: event.animationDuration));
+  }
 }

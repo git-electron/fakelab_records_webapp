@@ -1,4 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:figma_squircle/figma_squircle.dart';
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../core/extensions/color_extensions.dart';
 import '../../core/extensions/list_extensions.dart';
@@ -6,9 +9,6 @@ import '../../core/gen/assets.gen.dart';
 import '../../core/gen/colors.gen.dart';
 import '../../core/theme/theme_extensions.dart';
 import 'wrappers/tappable.dart';
-import 'package:figma_squircle/figma_squircle.dart';
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({

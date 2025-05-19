@@ -1,5 +1,6 @@
-import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:flutter/services.dart';
+
+import '../extensions/num_extensions.dart';
 
 class CurrencyTextInputFormatter extends TextInputFormatter {
   CurrencyTextInputFormatter({

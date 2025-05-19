@@ -1,17 +1,23 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/di/injector.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/clients/features/create_client/domain/bloc/admin_create_client_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
-import 'widgets/create_client_form.dart';
-import 'widgets/create_client_button.dart';
-import 'widgets/create_client_screen_app_bar.dart';
+import '../../../../../../../../core/di/injector.dart';
+import '../../../../../../../../core/formatters/phone_number_formatter.dart';
+import '../../../../../../../../core/gen/assets.gen.dart';
+import '../../../../../../../../core/theme/theme_extensions.dart';
+import '../../../../../../../ui/app_button.dart';
+import '../../../../../../../ui/app_text_field.dart';
+import '../../../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import '../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
+import '../domain/bloc/admin_create_client_bloc.dart';
+
+part 'widgets/app_bar.dart';
+part 'widgets/create_button.dart';
+part 'widgets/form.dart';
+part 'widgets/header.dart';
 
 @RoutePage()
 class AdminCreateClientScreen extends StatelessWidget {
@@ -28,18 +34,11 @@ class AdminCreateClientScreen extends StatelessWidget {
       create: (context) => $<AdminCreateClientBloc>(
         param1: adminClientsBloc,
       ),
-      child: Scaffold(
+      child: const Scaffold(
         body: CustomScrollView(
           slivers: [
-            TelegramMetaWrapper(builder: (context, meta) {
-              if (meta.isMobile) {
-                return const CreateClientScreenAppBarMobile();
-              }
-              return const SliverToBoxAdapter();
-            }),
-            const SliverToBoxAdapter(
-              child: AdminCreateClientScreenBody(),
-            ),
+            _AppBar(),
+            _Body(),
           ],
         ),
       ),
@@ -47,45 +46,27 @@ class AdminCreateClientScreen extends StatelessWidget {
   }
 }
 
-class AdminCreateClientScreenBody extends StatelessWidget {
-  const AdminCreateClientScreenBody({super.key});
+class _Body extends StatelessWidget {
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        color: context.colors.background,
-        constraints: const BoxConstraints(maxWidth: 1500),
-        padding: const Pad(top: 20, horizontal: 20),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gap(20),
-            CreateClientHeader(),
-            Gap(20),
-            CreateClientForm(),
-            Gap(20),
-            CreateClientButton(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CreateClientHeader extends StatelessWidget {
-  const CreateClientHeader({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      color: context.colors.background,
-      child: Text(
-        'Добавить клиента',
-        style: context.styles.subtitle1.copyWith(
-          color: context.colors.title,
+    return SliverToBoxAdapter(
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Container(
+          color: context.colors.background,
+          constraints: const BoxConstraints(maxWidth: 1500),
+          padding: const Pad(all: 20, vertical: 20),
+          child: const Column(
+            spacing: 20,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _Header(),
+              _Form(),
+              _CreateButton(),
+            ],
+          ),
         ),
       ),
     );

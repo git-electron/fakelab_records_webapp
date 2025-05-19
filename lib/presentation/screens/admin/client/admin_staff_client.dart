@@ -1,12 +1,13 @@
-import 'package:fakelab_records_webapp/core/constants/mock.dart';
-import 'package:fakelab_records_webapp/core/constants/types.dart';
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/extensions/object_extensions.dart';
-import 'package:fakelab_records_webapp/main.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
+
+import '../../../../core/constants/mock.dart';
+import '../../../../core/constants/types.dart';
+import '../../../../core/domain/models/result/result.dart';
+import '../../../../core/extensions/object_extensions.dart';
+import '../../../../main.dart';
+import '../features/staff/domain/models/staff_member.dart';
 
 @injectable
 class AdminStaffClient {
@@ -15,11 +16,14 @@ class AdminStaffClient {
   final Logger logger;
   final DatabaseReference ref;
 
+  static const String _staffMembersErrorMessage = 'Failed to get staff members';
+
   Future<Result<List<StaffMember>>> getStaffMembers() async {
     if (isDevelopment) return Result.success(Mock.staffMembers);
 
     try {
       const String path = 'staff';
+
       final DataSnapshot snapshot = await ref.child(path).get();
 
       final Json? json = snapshot.value.firebaseResponseToJson();
@@ -30,16 +34,18 @@ Data: $json''');
 
       if (json == null) return Result.success([]);
 
-      final List<StaffMember> staffMembers = json.values
-          .map((staffMember) => StaffMember.fromJson(staffMember))
-          .toList();
+      final List<StaffMember> staffMembers =
+          json.values.map(StaffMember.maybeFromJson).toList();
 
       return Result.success(staffMembers);
     } catch (error) {
-      logger.e('Failed to get staff members', error: error);
+      logger.e(_staffMembersErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }
+
+  static const String _deleteStaffMemberErrorMessage =
+      'Failed to delete staff member';
 
   Future<Result<bool>> deleteStaffMember(String staffMemberId) async {
     try {
@@ -52,7 +58,7 @@ Path: $path''');
 
       return Result.success(true);
     } catch (error) {
-      logger.e('Failed to delete staff member', error: error);
+      logger.e(_deleteStaffMemberErrorMessage, error: error);
       return Result.error();
     }
   }
