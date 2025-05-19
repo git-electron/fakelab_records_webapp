@@ -9,7 +9,6 @@ class _Avatar extends StatefulWidget {
 
   final double height;
   final double? width;
-
   final String? photoUrl;
 
   @override
