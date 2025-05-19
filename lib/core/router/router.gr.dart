@@ -265,17 +265,17 @@ class AdminEditClientRouteArgs {
 class AdminEditStaffMemberRoute
     extends _i17.PageRouteInfo<AdminEditStaffMemberRouteArgs> {
   AdminEditStaffMemberRoute({
-    required String id,
     required _i23.StaffMember staffMember,
     required _i21.AdminStaffBloc adminStaffBloc,
+    required String id,
     _i19.Key? key,
     List<_i17.PageRouteInfo>? children,
   }) : super(
          AdminEditStaffMemberRoute.name,
          args: AdminEditStaffMemberRouteArgs(
-           id: id,
            staffMember: staffMember,
            adminStaffBloc: adminStaffBloc,
+           id: id,
            key: key,
          ),
          rawPathParams: {'id': id},
@@ -289,9 +289,9 @@ class AdminEditStaffMemberRoute
     builder: (data) {
       final args = data.argsAs<AdminEditStaffMemberRouteArgs>();
       return _i5.AdminEditStaffMemberScreen(
-        id: args.id,
         staffMember: args.staffMember,
         adminStaffBloc: args.adminStaffBloc,
+        id: args.id,
         key: args.key,
       );
     },
@@ -300,23 +300,23 @@ class AdminEditStaffMemberRoute
 
 class AdminEditStaffMemberRouteArgs {
   const AdminEditStaffMemberRouteArgs({
-    required this.id,
     required this.staffMember,
     required this.adminStaffBloc,
+    required this.id,
     this.key,
   });
-
-  final String id;
 
   final _i23.StaffMember staffMember;
 
   final _i21.AdminStaffBloc adminStaffBloc;
 
+  final String id;
+
   final _i19.Key? key;
 
   @override
   String toString() {
-    return 'AdminEditStaffMemberRouteArgs{id: $id, staffMember: $staffMember, adminStaffBloc: $adminStaffBloc, key: $key}';
+    return 'AdminEditStaffMemberRouteArgs{staffMember: $staffMember, adminStaffBloc: $adminStaffBloc, id: $id, key: $key}';
   }
 }
 

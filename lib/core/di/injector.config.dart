@@ -261,6 +261,17 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i255.AdminStaffClient>(),
         ));
+    gh.factoryParam<_i1030.AdminCreateOrderBloc, _i522.AdminOrdersBloc,
+        dynamic>((
+      adminOrdersBloc,
+      _,
+    ) =>
+        _i1030.AdminCreateOrderBloc(
+          gh<_i352.AppRouter>(),
+          gh<_i610.IdGenerator>(),
+          gh<_i742.AdminCreateOrderClient>(),
+          adminOrdersBloc,
+        ));
     gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,
       _,
@@ -326,17 +337,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i352.AppRouter>(),
           gh<_i610.IdGenerator>(),
           gh<_i1061.AdminEditClientClient>(),
-        ));
-    gh.factoryParam<_i1030.AdminCreateOrderBloc, _i522.AdminOrdersBloc,
-        dynamic>((
-      adminOrdersBloc,
-      _,
-    ) =>
-        _i1030.AdminCreateOrderBloc(
-          adminOrdersBloc,
-          gh<_i352.AppRouter>(),
-          gh<_i610.IdGenerator>(),
-          gh<_i742.AdminCreateOrderClient>(),
         ));
     gh.factoryParam<_i672.AdminCreateStaffMemberBloc, _i330.AdminStaffBloc,
         dynamic>((

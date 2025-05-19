@@ -1,20 +1,30 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/di/injector.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/features/create_order/domain/bloc/admin_create_order_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
-import 'widgets/create_order_button.dart';
-import 'widgets/create_order_form.dart';
-import 'widgets/create_order_screen_app_bar.dart';
+import '../../../../../../../../core/di/injector.dart';
+import '../../../../../../../../core/domain/models/user/user.dart';
+import '../../../../../../../../core/extensions/string_extensions.dart';
+import '../../../../../../../../core/formatters/phone_number_formatter.dart';
+import '../../../../../../../../core/theme/theme_extensions.dart';
+import '../../../../../../../../features/my_orders/domain/models/order/order_type.dart';
+import '../../../../../../../ui/app_dropdown_button.dart';
+import '../../../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import '../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
+import '../../../../../domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
+import '../domain/bloc/admin_create_order_bloc.dart';
 
-// TODO: REFACTOR!!!
+part 'widgets/app_bar.dart';
+part 'widgets/create_button.dart';
+part 'widgets/description.dart';
+part 'widgets/form/form.dart';
+part 'widgets/form/widgets/customer.dart';
+part 'widgets/form/widgets/type.dart';
+part 'widgets/header.dart';
+
 @RoutePage()
 class AdminCreateOrderScreen extends StatelessWidget {
   const AdminCreateOrderScreen({
@@ -37,18 +47,11 @@ class AdminCreateOrderScreen extends StatelessWidget {
         ),
         BlocProvider.value(value: adminClientsBloc),
       ],
-      child: Scaffold(
+      child: const Scaffold(
         body: CustomScrollView(
           slivers: [
-            TelegramMetaWrapper(builder: (context, meta) {
-              if (meta.isMobile) {
-                return const CreateOrderScreenAppBarMobile();
-              }
-              return const SliverToBoxAdapter();
-            }),
-            const SliverToBoxAdapter(
-              child: AdminCreateOrderScreenBody(),
-            ),
+            _AppBar(),
+            _Body(),
           ],
         ),
       ),
@@ -56,64 +59,29 @@ class AdminCreateOrderScreen extends StatelessWidget {
   }
 }
 
-class AdminCreateOrderScreenBody extends StatelessWidget {
-  const AdminCreateOrderScreenBody({super.key});
+class _Body extends StatelessWidget {
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        color: context.colors.background,
-        constraints: const BoxConstraints(maxWidth: 1500),
-        padding: const Pad(top: 20, horizontal: 20),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gap(20),
-            CreateOrderHeader(),
-            Gap(20),
-            CreateOrderDescription(),
-            Gap(40),
-            CreateOrderForm(),
-            Gap(20),
-            CreateOrderButton(),
-          ],
+    return SliverToBoxAdapter(
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Container(
+          color: context.colors.background,
+          constraints: const BoxConstraints(maxWidth: 1500),
+          padding: const Pad(all: 20, vertical: 20),
+          child: const Column(
+            spacing: 20,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _Header(),
+              _Description(),
+              _Form(),
+              _CreateButton(),
+            ],
+          ),
         ),
-      ),
-    );
-  }
-}
-
-class CreateOrderHeader extends StatelessWidget {
-  const CreateOrderHeader({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      color: context.colors.background,
-      child: Text(
-        'Создать заказ',
-        style: context.styles.subtitle1.copyWith(
-          color: context.colors.title,
-        ),
-      ),
-    );
-  }
-}
-
-class CreateOrderDescription extends StatelessWidget {
-  const CreateOrderDescription({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      color: context.colors.background,
-      child: Text(
-        'Прежде чем добавлять заказ вручную, предложи заказчику зарегистрироваться в телеграм-боте',
-        style: context.styles.body3,
       ),
     );
   }
