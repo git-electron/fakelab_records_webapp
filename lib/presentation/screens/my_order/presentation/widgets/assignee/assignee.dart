@@ -26,7 +26,6 @@ class _Assignee extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Исполнитель', style: context.styles.body1),
-              const Gap(10),
               _Profile(assignee),
               _Activities(assignee),
             ],

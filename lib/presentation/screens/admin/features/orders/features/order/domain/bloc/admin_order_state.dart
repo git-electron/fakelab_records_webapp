@@ -28,4 +28,9 @@ class AdminOrderState with _$AdminOrderState {
   Order? get order => whenOrNull(loaded: (order) => order);
 
   String? get message => whenOrNull(error: (message) => message);
+
+  bool get hasActualActions => !_isOrderCompleted && !_isOrderCancelled;
+
+  bool get _isOrderCompleted => order?.isCompleted ?? false;
+  bool get _isOrderCancelled => order?.isCancelled ?? false;
 }

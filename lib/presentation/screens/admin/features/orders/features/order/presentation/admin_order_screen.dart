@@ -1,32 +1,85 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/di/injector.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/features/order/domain/bloc/admin_order_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/features/order/presentation/widgets/admin_order_screen_actions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/features/order/presentation/widgets/admin_order_screen_app_bar.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/features/order/presentation/widgets/admin_order_screen_customer_info.dart';
-import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
-import 'package:fakelab_records_webapp/presentation/ui/pages/loading_page.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/orders/features/order/presentation/widgets/actions/widgets/actual_actions/widgets/awaiting_confirmation_actions/mixins/awaiting_confirmation_dialogs_mixin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
-import 'widgets/admin_order_screen_assignee_info.dart';
-import 'widgets/admin_order_screen_info.dart';
-import 'widgets/admin_order_screen_services.dart';
-import 'widgets/admin_order_screen_status_history.dart';
+import '../../../../../../../../core/di/injector.dart';
+import '../../../../../../../../core/domain/models/user/user.dart';
+import '../../../../../../../../core/extensions/border_radius_extensions.dart';
+import '../../../../../../../../core/extensions/color_extensions.dart';
+import '../../../../../../../../core/extensions/datetime_extensions.dart';
+import '../../../../../../../../core/extensions/list_extensions.dart';
+import '../../../../../../../../core/extensions/num_extensions.dart';
+import '../../../../../../../../core/extensions/string_extensions.dart';
+import '../../../../../../../../core/formatters/currency_input_formatter.dart';
+import '../../../../../../../../core/formatters/phone_number_formatter.dart';
+import '../../../../../../../../core/gen/assets.gen.dart';
+import '../../../../../../../../core/gen/colors.gen.dart';
+import '../../../../../../../../core/theme/theme_extensions.dart';
+import '../../../../../../../../features/my_orders/domain/models/order/order.dart';
+import '../../../../../../../../features/my_orders/domain/models/order/order_status.dart';
+import '../../../../../../../../features/my_orders/domain/models/order/service/order_service.dart';
+import '../../../../../../../../features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
+import '../../../../../../../ui/app_button.dart';
+import '../../../../../../../ui/app_confirmation_dialog/app_confirmation_dialog.dart';
+import '../../../../../../../ui/app_dropdown_button.dart';
+import '../../../../../../../ui/app_dropdown_dialog/app_dropdown_dialog.dart';
+import '../../../../../../../ui/app_text_field_dialog/app_text_field_dialog.dart';
+import '../../../../../../../ui/avatar/avatar.dart';
+import '../../../../../../../ui/pages/error_page.dart';
+import '../../../../../../../ui/pages/loading_page.dart';
+import '../../../../../../../ui/wrappers/tappable.dart';
+import '../../../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import '../../../../../domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
+import '../../../../../domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
+import '../../../../staff/domain/models/staff_member.dart';
+import '../domain/bloc/admin_order_bloc.dart';
+import 'widgets/actions/widgets/actual_actions/widgets/in_progress_actions/mixins/in_progress_dialogs_mixin.dart';
+import 'widgets/actions/widgets/actual_actions/widgets/pending_actions/mixins/pending_dialogs_mixin.dart';
+import 'widgets/actions/widgets/actual_actions/widgets/request_actions/mixins/request_dialogs_mixin.dart';
 
-// TODO: REFACTOR!!!
+part 'widgets/actions/actions.dart';
+part 'widgets/actions/widgets/actual_actions/actual_actions.dart';
+part 'widgets/actions/widgets/actual_actions/widgets/awaiting_confirmation_actions/awaiting_confirmation_actions.dart';
+part 'widgets/actions/widgets/actual_actions/widgets/awaiting_confirmation_actions/widgets/mark_as_ready.dart';
+part 'widgets/actions/widgets/actual_actions/widgets/awaiting_confirmation_actions/widgets/return_to_work.dart';
+part 'widgets/actions/widgets/actual_actions/widgets/in_progress_actions/in_progress_actions.dart';
+part 'widgets/actions/widgets/actual_actions/widgets/pending_actions/pending_actions.dart';
+part 'widgets/actions/widgets/actual_actions/widgets/request_actions/request_actions.dart';
+part 'widgets/actions/widgets/actual_actions/widgets/request_actions/widgets/cancel_request.dart';
+part 'widgets/actions/widgets/actual_actions/widgets/request_actions/widgets/confirm_request.dart';
+part 'widgets/actions/widgets/all_actions/all_actions.dart';
+part 'widgets/app_bar.dart';
+part 'widgets/assignee/assignee.dart';
+part 'widgets/assignee/widgets/activities.dart';
+part 'widgets/assignee/widgets/profile.dart';
+part 'widgets/customer/customer.dart';
+part 'widgets/customer/widgets/contacts/contacts.dart';
+part 'widgets/customer/widgets/contacts/widgets/button.dart';
+part 'widgets/customer/widgets/contacts/widgets/contact_item.dart';
+part 'widgets/customer/widgets/header.dart';
+part 'widgets/header/header.dart';
+part 'widgets/header/widgets/chip.dart';
+part 'widgets/header/widgets/id.dart';
+part 'widgets/header/widgets/status.dart';
+part 'widgets/header/widgets/title.dart';
+part 'widgets/services/services.dart';
+part 'widgets/services/widgets/cost_warning.dart';
+part 'widgets/services/widgets/info.dart';
+part 'widgets/status_history/status_history.dart';
+part 'widgets/status_history/widgets/item.dart';
+
 @RoutePage()
 class AdminOrderScreen extends StatelessWidget {
   const AdminOrderScreen({
-    @PathParam('id') required this.orderId,
     required this.adminStaffBloc,
     required this.adminOrdersBloc,
+    @PathParam('id') required this.orderId,
     super.key,
   });
 
@@ -52,17 +105,10 @@ class AdminOrderScreen extends StatelessWidget {
             if (state.isLoading) return const LoadingPage();
             if (state.hasError) return ErrorPage(message: state.message);
 
-            return CustomScrollView(
+            return const CustomScrollView(
               slivers: [
-                TelegramMetaWrapper(builder: (context, meta) {
-                  if (meta.isMobile) {
-                    return const AdminOrderScreenAppBarMobile();
-                  }
-                  return const SliverToBoxAdapter();
-                }),
-                const SliverToBoxAdapter(
-                  child: AdminOrderScreenBody(),
-                ),
+                _AppBar(),
+                _Body(),
               ],
             );
           },
@@ -72,32 +118,33 @@ class AdminOrderScreen extends StatelessWidget {
   }
 }
 
-class AdminOrderScreenBody extends StatelessWidget {
-  const AdminOrderScreenBody({super.key});
+class _Body extends StatelessWidget {
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        color: context.colors.background,
-        constraints: const BoxConstraints(maxWidth: 1500),
-        padding: const Pad(top: 20, horizontal: 20),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AdminOrderScreenInfo(),
-            Gap(10),
-            AdminOrderScreenCustomerInfo(),
-            AdminOrderScreenAssigneeInfo(),
-            Gap(10),
-            AdminOrderScreenServices(),
-            Gap(10),
-            AdminOrderScreenActions(),
-            Gap(10),
-            AdminOrderScreenStatusHistory(),
-            Gap(40),
-          ],
+    return SliverToBoxAdapter(
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Container(
+          color: context.colors.background,
+          constraints: const BoxConstraints(maxWidth: 1500),
+          padding: const Pad(all: 20, vertical: 20),
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _Header(),
+              Gap(10),
+              _Customer(),
+              _Assignee(),
+              Gap(10),
+              _Services(),
+              Gap(10),
+              _Actions(),
+              Gap(10),
+              _StatusHistory(),
+            ],
+          ),
         ),
       ),
     );

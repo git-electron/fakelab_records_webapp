@@ -15,9 +15,11 @@ class AdminOrderEvent with _$AdminOrderEvent {
     StaffMember? assignee,
   }) = _UpdateOrderStatus;
 
-  const factory AdminOrderEvent.updateOrderTotalCost(double? totalCost) =
-      _UpdateOrderTotalCost;
+  const factory AdminOrderEvent.updateOrderTotalCost(
+    double? totalCost,
+  ) = _UpdateOrderTotalCost;
 
-  const factory AdminOrderEvent.updateOrderAssignee(StaffMember? assignee) =
-      _UpdateOrderAssignee;
+  const factory AdminOrderEvent.updateOrderAssignee(
+    StaffMember? assignee,
+  ) = _UpdateOrderAssignee;
 }

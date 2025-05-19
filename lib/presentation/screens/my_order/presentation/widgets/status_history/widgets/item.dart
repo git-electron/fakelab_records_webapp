@@ -1,7 +1,7 @@
-part of '../../my_order_screen.dart';
+part of '../../../my_order_screen.dart';
 
 class _Item extends StatelessWidget {
-  const _Item.info(this.item, {super.key});
+  const _Item.info(this.item);
 
   final OrderStatusHistoryItem item;
 

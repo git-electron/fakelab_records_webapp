@@ -38,7 +38,7 @@ part 'widgets/header/widgets/title.dart';
 part 'widgets/services/services.dart';
 part 'widgets/services/widgets/cost_warning.dart';
 part 'widgets/services/widgets/info.dart';
-part 'widgets/status_history/item.dart';
+part 'widgets/status_history/widgets/item.dart';
 part 'widgets/status_history/status_history.dart';
 
 @RoutePage()

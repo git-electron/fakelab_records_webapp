@@ -1,4 +1,4 @@
-part of '../../../my_order_screen.dart';
+part of '../../../admin_order_screen.dart';
 
 class _CostWarning extends StatelessWidget {
   const _CostWarning(this.order);

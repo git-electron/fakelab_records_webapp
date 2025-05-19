@@ -225,21 +225,21 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i435.TelegramService>(),
           orderId,
         ));
-    gh.factoryParam<_i514.AdminOrderBloc, String, _i522.AdminOrdersBloc>((
-      orderId,
-      adminOrdersBloc,
-    ) =>
-        _i514.AdminOrderBloc(
-          orderId,
-          adminOrdersBloc,
-          gh<_i150.AdminOrderClient>(),
-        ));
     gh.factory<_i869.AdminBloc>(() => _i869.AdminBloc(
           gh<_i435.TelegramService>(),
           gh<_i133.TelegramDataBloc>(),
         ));
     gh.factory<_i29.AudioPlayerBloc>(
         () => _i29.AudioPlayerBloc(gh<_i842.AssetsAudioPlayer>()));
+    gh.factoryParam<_i514.AdminOrderBloc, String, _i522.AdminOrdersBloc>((
+      orderId,
+      adminOrdersBloc,
+    ) =>
+        _i514.AdminOrderBloc(
+          gh<_i150.AdminOrderClient>(),
+          orderId,
+          adminOrdersBloc,
+        ));
     gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
           gh<_i415.UserClient>(),
           gh<_i133.TelegramDataBloc>(),

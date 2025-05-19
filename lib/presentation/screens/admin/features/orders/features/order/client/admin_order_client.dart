@@ -1,18 +1,18 @@
 import 'package:collection/collection.dart';
-import 'package:fakelab_records_webapp/core/constants/mock.dart';
-import 'package:fakelab_records_webapp/core/constants/types.dart';
-import 'package:fakelab_records_webapp/core/domain/models/result/result.dart';
-import 'package:fakelab_records_webapp/core/extensions/object_extensions.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/filters/order_filters.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
-import 'package:fakelab_records_webapp/main.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
+
+import '../../../../../../../../core/constants/mock.dart';
+import '../../../../../../../../core/constants/types.dart';
+import '../../../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../../../core/extensions/object_extensions.dart';
+import '../../../../../../../../features/my_orders/domain/models/order/filters/order_filters.dart';
+import '../../../../../../../../features/my_orders/domain/models/order/order.dart';
+import '../../../../../../../../features/my_orders/domain/models/order/order_status.dart';
+import '../../../../../../../../features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
+import '../../../../../../../../main.dart';
+import '../../../../staff/domain/models/staff_member.dart';
 
 @injectable
 class AdminOrderClient {
@@ -21,13 +21,16 @@ class AdminOrderClient {
   final Logger logger;
   final DatabaseReference ref;
 
+  final Result<Order> _orderNotFountResult = Result.error('Заказ не найден');
+  static const String _orderErrorMessage = 'Failed to get order';
+
   Future<Result<Order>> getOrder(String orderId) async {
     if (isDevelopment) {
       final Order? mockOrder = Mock.getOrder(orderId);
       if (mockOrder != null) {
         return Result.success(mockOrder);
       } else {
-        return Result.error('Заказ не найден');
+        return _orderNotFountResult;
       }
     }
 
@@ -36,7 +39,7 @@ class AdminOrderClient {
       final DataSnapshot snapshot = await ref.child(path).get();
       final bool isExists = snapshot.exists;
 
-      if (!isExists) return Result.error('Заказ не найден');
+      if (!isExists) return _orderNotFountResult;
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
@@ -44,15 +47,17 @@ class AdminOrderClient {
 Path: $path
 Data: $json''');
 
-      if (json == null) return Result.error('Заказ не найден');
+      if (json == null) return _orderNotFountResult;
 
       final Order order = Order.fromJson(json);
       return Result.success(order);
     } catch (error) {
-      logger.e('Failed to get order', error: error);
+      logger.e(_orderErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }
+
+  static const String _updateOrderErrorMessage = 'Failed to get order';
 
   Future<Result<Order>> updateOrder(
     Order order, {
@@ -95,7 +100,7 @@ Data: $updatedOrder''');
 
       return Result.success(updatedOrder);
     } catch (error) {
-      logger.e('Failed to update order', error: error);
+      logger.e(_updateOrderErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }
