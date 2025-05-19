@@ -8,6 +8,8 @@ class _ExampleProperties extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
+      spacing: 5,
+      runSpacing: 5,
       children: [
         ..._genres(context),
         ..._services(context),

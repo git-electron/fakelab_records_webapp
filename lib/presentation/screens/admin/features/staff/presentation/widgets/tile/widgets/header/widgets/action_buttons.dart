@@ -1,14 +1,15 @@
-part of '../../../../../admin_clients_screen.dart';
+part of '../../../../../admin_staff_screen.dart';
 
 class _ActionButtons extends StatelessWidget {
-  const _ActionButtons(this.client);
+  const _ActionButtons(this.staffMember);
 
-  final User client;
+  final StaffMember staffMember;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       spacing: 5,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Tappable(
           onTap: () => _onEditButtonTap(context),
@@ -23,25 +24,25 @@ class _ActionButtons extends StatelessWidget {
   }
 
   Future<void> _onEditButtonTap(BuildContext context) {
-    final AdminClientsBloc bloc = context.read();
+    final AdminStaffBloc bloc = context.read();
 
-    return context.pushRoute(AdminEditClientRoute(
-      client: client,
-      adminClientsBloc: bloc,
-      id: client.id.toString(),
+    return context.pushRoute(AdminEditStaffMemberRoute(
+      id: staffMember.id,
+      adminStaffBloc: bloc,
+      staffMember: staffMember,
     ));
   }
 
   Future<void> _onDeleteButtonTap(BuildContext context) {
-    final AdminClientsBloc bloc = context.read();
+    final AdminStaffBloc bloc = context.read();
 
     return AppConfirmationDialog.show(
       context,
       title: 'Подтверждение',
-      description: 'Ты точно хочешь удалить этого клиента?',
+      description: 'Ты точно хочешь удалить этого сотрудника?',
     ).then((isConfirmed) {
       if (isConfirmed ?? false) {
-        bloc.add(AdminClientsEvent.deleteClient(client.id));
+        bloc.add(AdminStaffEvent.deleteStaffMember(staffMember.id));
       }
     });
   }

@@ -1,13 +1,43 @@
-import 'package:fakelab_records_webapp/core/di/injector.dart';
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:fakelab_records_webapp/core/extensions/border_radius_extensions.dart';
+import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
+import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_confirmation_dialog/app_confirmation_dialog.dart';
+import 'package:fakelab_records_webapp/presentation/ui/avatar/avatar.dart';
+import 'package:fakelab_records_webapp/presentation/ui/pages/empty_page.dart';
+import 'package:fakelab_records_webapp/presentation/ui/pages/error_page.dart';
+import 'package:fakelab_records_webapp/presentation/ui/pages/loading_page.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../../core/di/injector.dart';
+import '../../../../../../core/gen/assets.gen.dart';
+import '../../../../../../core/router/router.gr.dart';
+import '../../../../../ui/app_button.dart';
+import '../../../../../ui/app_dropdown_button.dart';
+import '../../../../../ui/app_text_field.dart';
+import '../../../domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import '../domain/bloc/admin_staff_filters_bloc.dart';
-import 'widgets/admin_staff_filters.dart';
-import 'widgets/list/admin_staff_members_list.dart';
+import '../domain/models/staff_service_type.dart';
 
-// TODO: REFACTOR!!!
+part 'widgets/filters/filters.dart';
+part 'widgets/filters/widgets/add_staff_member_button.dart';
+part 'widgets/filters/widgets/search_field.dart';
+part 'widgets/filters/widgets/service_filter.dart';
+part 'widgets/list.dart';
+part 'widgets/tile/tile.dart';
+part 'widgets/tile/widgets/header/header.dart';
+part 'widgets/tile/widgets/header/widgets/avatar.dart';
+part 'widgets/tile/widgets/header/widgets/details.dart';
+part 'widgets/tile/widgets/header/widgets/action_buttons.dart';
+part 'widgets/tile/widgets/properties/properties.dart';
+part 'widgets/tile/widgets/properties/widgets/property_item.dart';
+
 class AdminStaffScreen extends StatelessWidget {
   const AdminStaffScreen({super.key});
 
@@ -16,11 +46,11 @@ class AdminStaffScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => $<AdminStaffFiltersBloc>(),
       child: const Column(
+        spacing: 20,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AdminStaffFilters(),
-          Gap(20),
-          Expanded(child: AdminStaffMembersList()),
+          _Filters(),
+          _List(),
         ],
       ),
     );

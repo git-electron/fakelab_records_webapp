@@ -19,7 +19,6 @@ class _ExamplePropertyItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const Pad(vertical: 5, horizontal: 10),
-      margin: const Pad(right: 5, bottom: 5),
       decoration: ShapeDecoration(
         color: switch (type) {
           _PropertyItemType.genre => context.colors.card,

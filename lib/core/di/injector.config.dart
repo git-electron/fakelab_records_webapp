@@ -261,19 +261,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i255.AdminStaffClient>(),
         ));
-    gh.factoryParam<_i775.AdminEditStaffMemberBloc, _i1021.StaffMember,
-        _i330.AdminStaffBloc>((
-      staffMember,
-      adminStaffBloc,
-    ) =>
-        _i775.AdminEditStaffMemberBloc(
-          staffMember,
-          adminStaffBloc,
-          gh<_i352.AppRouter>(),
-          gh<_i751.Cloudinary>(),
-          gh<_i610.IdGenerator>(),
-          gh<_i532.AdminEditStaffMemberClient>(),
-        ));
     gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,
       _,
@@ -303,6 +290,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i522.AdminOrdersBloc>(() => _i522.AdminOrdersBloc(
           gh<_i109.UserBloc>(),
           gh<_i9.AdminOrdersClient>(),
+        ));
+    gh.factoryParam<_i775.AdminEditStaffMemberBloc, _i1021.StaffMember,
+        _i330.AdminStaffBloc>((
+      staffMember,
+      adminStaffBloc,
+    ) =>
+        _i775.AdminEditStaffMemberBloc(
+          gh<_i352.AppRouter>(),
+          gh<_i751.Cloudinary>(),
+          gh<_i610.IdGenerator>(),
+          staffMember,
+          gh<_i532.AdminEditStaffMemberClient>(),
+          adminStaffBloc,
         ));
     gh.factoryParam<_i39.AdminCreateClientBloc, _i515.AdminClientsBloc,
         dynamic>((
@@ -344,10 +344,10 @@ extension GetItInjectableX on _i174.GetIt {
       _,
     ) =>
         _i672.AdminCreateStaffMemberBloc(
-          adminStaffBloc,
           gh<_i352.AppRouter>(),
           gh<_i751.Cloudinary>(),
           gh<_i610.IdGenerator>(),
+          adminStaffBloc,
           gh<_i89.AdminCreateStaffMemberClient>(),
         ));
     return this;

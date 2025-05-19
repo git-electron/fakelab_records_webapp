@@ -205,17 +205,17 @@ class AdminCreateStaffMemberRouteArgs {
 class AdminEditClientRoute
     extends _i17.PageRouteInfo<AdminEditClientRouteArgs> {
   AdminEditClientRoute({
-    required String id,
     required _i22.User client,
     required _i18.AdminClientsBloc adminClientsBloc,
+    required String id,
     _i19.Key? key,
     List<_i17.PageRouteInfo>? children,
   }) : super(
          AdminEditClientRoute.name,
          args: AdminEditClientRouteArgs(
-           id: id,
            client: client,
            adminClientsBloc: adminClientsBloc,
+           id: id,
            key: key,
          ),
          rawPathParams: {'id': id},
@@ -229,9 +229,9 @@ class AdminEditClientRoute
     builder: (data) {
       final args = data.argsAs<AdminEditClientRouteArgs>();
       return _i4.AdminEditClientScreen(
-        id: args.id,
         client: args.client,
         adminClientsBloc: args.adminClientsBloc,
+        id: args.id,
         key: args.key,
       );
     },
@@ -240,23 +240,23 @@ class AdminEditClientRoute
 
 class AdminEditClientRouteArgs {
   const AdminEditClientRouteArgs({
-    required this.id,
     required this.client,
     required this.adminClientsBloc,
+    required this.id,
     this.key,
   });
-
-  final String id;
 
   final _i22.User client;
 
   final _i18.AdminClientsBloc adminClientsBloc;
 
+  final String id;
+
   final _i19.Key? key;
 
   @override
   String toString() {
-    return 'AdminEditClientRouteArgs{id: $id, client: $client, adminClientsBloc: $adminClientsBloc, key: $key}';
+    return 'AdminEditClientRouteArgs{client: $client, adminClientsBloc: $adminClientsBloc, id: $id, key: $key}';
   }
 }
 

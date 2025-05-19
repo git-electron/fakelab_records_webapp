@@ -1,24 +1,10 @@
-import 'dart:typed_data';
+part of '../../../admin_create_staff_member_screen.dart';
 
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:dotted_border/dotted_border.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
-import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
-import 'package:fakelab_records_webapp/core/gen/colors.gen.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/create_staff_member/domain/bloc/admin_create_staff_member_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/ui/avatar/avatar.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dropzone/flutter_dropzone.dart';
-
-class CreateStaffAvatar extends StatefulWidget {
-  const CreateStaffAvatar({
+class _Avatar extends StatefulWidget {
+  const _Avatar({
     this.height = 200,
     this.width,
     this.photoUrl,
-    super.key,
   });
 
   final double height;
@@ -27,10 +13,10 @@ class CreateStaffAvatar extends StatefulWidget {
   final String? photoUrl;
 
   @override
-  State<CreateStaffAvatar> createState() => _CreateStaffAvatarState();
+  State<_Avatar> createState() => _AvatarState();
 }
 
-class _CreateStaffAvatarState extends State<CreateStaffAvatar>
+class _AvatarState extends State<_Avatar>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;

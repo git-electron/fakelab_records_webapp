@@ -1,28 +1,46 @@
+import 'dart:typed_data';
+
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/di/injector.dart';
-import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/presentation/widgets/edit_staff_properties.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import 'package:blur/blur.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
+import 'package:flutter_dropzone/flutter_dropzone.dart';
 
+import '../../../../../../../../core/di/injector.dart';
+import '../../../../../../../../core/extensions/border_radius_extensions.dart';
+import '../../../../../../../../core/extensions/string_extensions.dart';
+import '../../../../../../../../core/gen/assets.gen.dart';
+import '../../../../../../../../core/gen/colors.gen.dart';
+import '../../../../../../../../core/theme/theme_extensions.dart';
+import '../../../../../../../ui/app_button.dart';
+import '../../../../../../../ui/app_confirmation_dialog/app_confirmation_dialog.dart';
+import '../../../../../../../ui/app_text_field.dart';
+import '../../../../../../../ui/avatar/avatar.dart';
+import '../../../../../../../ui/wrappers/tappable.dart';
+import '../../../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
+import '../../../../../domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
+import '../../../domain/models/staff_activity.dart';
+import '../../../domain/models/staff_member.dart';
+import '../../../domain/models/staff_service_type.dart';
 import '../domain/bloc/admin_edit_staff_member_bloc.dart';
-import 'widgets/edit_staff_avatar.dart';
-import 'widgets/edit_staff_form.dart';
-import 'widgets/edit_staff_member_buttons.dart';
-import 'widgets/edit_staff_member_screen_app_bar.dart';
 
-// TODO: REFACTOR!!!
+part 'widgets/app_bar.dart';
+part 'widgets/avatar_and_form/avatar_and_form.dart';
+part 'widgets/avatar_and_form/widgets/avatar.dart';
+part 'widgets/avatar_and_form/widgets/form.dart';
+part 'widgets/buttons.dart';
+part 'widgets/header.dart';
+part 'widgets/properties/properties.dart';
+part 'widgets/properties/widgets/property_item.dart';
+
 @RoutePage()
 class AdminEditStaffMemberScreen extends StatelessWidget {
   const AdminEditStaffMemberScreen({
-    @PathParam('id') required this.id,
     required this.staffMember,
     required this.adminStaffBloc,
+    @PathParam('id') required this.id,
     super.key,
   });
 
@@ -37,18 +55,11 @@ class AdminEditStaffMemberScreen extends StatelessWidget {
         param1: staffMember,
         param2: adminStaffBloc,
       ),
-      child: Scaffold(
+      child: const Scaffold(
         body: CustomScrollView(
           slivers: [
-            TelegramMetaWrapper(builder: (context, meta) {
-              if (meta.isMobile) {
-                return const EditStaffMemberScreenAppBarMobile();
-              }
-              return const SliverToBoxAdapter();
-            }),
-            const SliverToBoxAdapter(
-              child: AdminEditStaffMemberScreenBody(),
-            ),
+            _AppBar(),
+            _Body(),
           ],
         ),
       ),
@@ -56,90 +67,29 @@ class AdminEditStaffMemberScreen extends StatelessWidget {
   }
 }
 
-class AdminEditStaffMemberScreenBody extends StatelessWidget {
-  const AdminEditStaffMemberScreenBody({super.key});
+class _Body extends StatelessWidget {
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        color: context.colors.background,
-        constraints: const BoxConstraints(maxWidth: 1500),
-        padding: const Pad(top: 20, horizontal: 20),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gap(20),
-            EditStaffMemberHeader(),
-            Gap(20),
-            EditStaffMemberAdaptiveForm(),
-            Gap(20),
-            EditStaffProperties(),
-            Gap(20),
-            EditStaffMemberButtons(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class EditStaffMemberHeader extends StatelessWidget {
-  const EditStaffMemberHeader({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      color: context.colors.background,
-      child: Text(
-        'Редактировать сотрудника',
-        style: context.styles.subtitle1.copyWith(
-          color: context.colors.title,
-        ),
-      ),
-    );
-  }
-}
-
-class EditStaffMemberAdaptiveForm extends StatelessWidget {
-  const EditStaffMemberAdaptiveForm({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final bool isMobile = size.width < 1000;
-
-    if (isMobile) {
-      return Column(
-        children: [
-          BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
-            builder: (context, state) {
-              return EditStaffAvatar(photoUrl: state.avatarFileUrl);
-            },
+    return SliverToBoxAdapter(
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Container(
+          color: context.colors.background,
+          constraints: const BoxConstraints(maxWidth: 1500),
+          padding: const Pad(all: 20, vertical: 20),
+          child: const Column(
+            spacing: 20,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _Header(),
+              _AvatarAndForm(),
+              _Properties(),
+              _Buttons(),
+            ],
           ),
-          const Gap(20),
-          const EditStaffForm(),
-        ],
-      );
-    }
-    return Padding(
-      padding: const Pad(top: 60),
-      child: Row(
-        children: [
-          BlocBuilder<AdminEditStaffMemberBloc, AdminEditStaffMemberState>(
-            builder: (context, state) {
-              return EditStaffAvatar(
-                height: 150,
-                width: 150,
-                photoUrl: state.avatarFileUrl,
-              );
-            },
-          ),
-          const Gap(20),
-          const Expanded(child: EditStaffForm()),
-        ],
+        ),
       ),
     );
   }
