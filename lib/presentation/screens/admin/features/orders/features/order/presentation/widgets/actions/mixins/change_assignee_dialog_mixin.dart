@@ -1,22 +1,23 @@
+import 'package:flutter/material.dart';
+
 import '../../../../../../../../../../../core/extensions/string_extensions.dart';
 import '../../../../../../../../../../../core/theme/theme_extensions.dart';
 import '../../../../../../../../../../../features/my_orders/domain/models/order/order.dart';
-import '../../../../../../../../domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
-import '../../../../../../../staff/domain/models/staff_member.dart';
 import '../../../../../../../../../../ui/app_dropdown_button.dart';
 import '../../../../../../../../../../ui/app_dropdown_dialog/app_dropdown_dialog.dart';
 import '../../../../../../../../../../ui/avatar/avatar.dart';
-import 'package:flutter/material.dart';
+import '../../../../../../../../domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
+import '../../../../../../../staff/domain/models/staff_member.dart';
 
-mixin SetAssigneeDialogMixin {
+mixin ChangeAssigneeDialogMixin {
   Order get order;
 
-  static const String _title = 'Указать исполнителя';
+  static const String _title = 'Изменить исполнителя';
   static const String _hintText = 'Исполнитель заказа';
-  static const String _description = 'Укажи исполнителя заказа';
+  static const String _description = 'Укажи нового исполнителя заказа';
   static const String _searchHintText = 'Поиск по имени / псевдониму';
 
-  Future<StaffMember?> showSetAssigneeDialog(
+  Future<StaffMember?> showChangeAssigneeDialog(
     BuildContext context, {
     required AdminStaffState state,
   }) async {

@@ -1,7 +1,7 @@
-import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/presentation/ui/app_confirmation_dialog/app_confirmation_dialog.dart';
+import '../../../../../../../../../../../core/extensions/num_extensions.dart';
+import '../../../../../../../../../../../features/my_orders/domain/models/order/order.dart';
+import '../../../../../../../../../../../features/my_orders/domain/models/order/order_status.dart';
+import '../../../../../../../../../../ui/app_confirmation_dialog/app_confirmation_dialog.dart';
 import 'package:flutter/material.dart';
 
 mixin ConfirmationDialogMixin {

@@ -13,13 +13,13 @@ class _ActualActions extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Актуальное', style: context.styles.footer1),
-          _buildActions(order),
+          _actions,
         ],
       ),
     );
   }
 
-  Widget _buildActions(Order order) => switch (order.status) {
+  Widget get _actions => switch (order.status) {
         OrderStatus.REQUEST => _RequestActions(order),
         OrderStatus.PENDING => _PendingActions(order),
         OrderStatus.IN_PROGRESS => _InProgressActions(order),

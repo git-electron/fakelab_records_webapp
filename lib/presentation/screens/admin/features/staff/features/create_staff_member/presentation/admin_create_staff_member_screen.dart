@@ -4,14 +4,12 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:fakelab_records_webapp/core/extensions/border_radius_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 
 import '../../../../../../../../core/di/injector.dart';
+import '../../../../../../../../core/extensions/border_radius_extensions.dart';
 import '../../../../../../../../core/extensions/string_extensions.dart';
 import '../../../../../../../../core/gen/assets.gen.dart';
 import '../../../../../../../../core/gen/colors.gen.dart';
@@ -22,6 +20,8 @@ import '../../../../../../../ui/avatar/avatar.dart';
 import '../../../../../../../ui/wrappers/tappable.dart';
 import '../../../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../../../../domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
+import '../../../domain/models/staff_activity.dart';
+import '../../../domain/models/staff_service_type.dart';
 import '../domain/bloc/admin_create_staff_member_bloc.dart';
 
 part 'widgets/app_bar.dart';

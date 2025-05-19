@@ -1,6 +1,5 @@
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/service/order_service_type.dart';
-
 import 'service/order_service.dart';
+import 'service/order_service_type.dart';
 
 enum OrderType {
   MIX('Сведение', totalCost: 2500),

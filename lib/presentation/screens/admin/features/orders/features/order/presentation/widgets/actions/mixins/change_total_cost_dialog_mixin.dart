@@ -6,10 +6,10 @@ import '../../../../../../../../../../ui/app_text_field_dialog/app_text_field_di
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-mixin SetTotalCostDialogMixin {
+mixin ChangeTotalCostDialogMixin {
   Order get order;
 
-  static const String _title = 'Принять заказ';
+  static const String _title = 'Изменить стоимость';
   static const String _hintText = 'Стоимость';
   static const String _description =
       'Укажи итоговую стоимость, на которую вы договорились с заказчиком';
@@ -17,7 +17,7 @@ mixin SetTotalCostDialogMixin {
       .map((x) => (order.type.totalCost * x).formatCurrency())
       .toList();
 
-  Future<double?> showSetTotalCostDialog(BuildContext context) async {
+  Future<double?> showChangeTotalCostDialog(BuildContext context) async {
     final String? totalCost = await AppTextFieldDialog.show(
       context,
       title: _title,

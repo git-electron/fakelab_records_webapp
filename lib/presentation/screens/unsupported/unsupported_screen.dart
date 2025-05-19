@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import '../../ui/pages/error_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../ui/pages/error_page.dart';
 
 @RoutePage()
 class UnsupportedScreen extends StatelessWidget {

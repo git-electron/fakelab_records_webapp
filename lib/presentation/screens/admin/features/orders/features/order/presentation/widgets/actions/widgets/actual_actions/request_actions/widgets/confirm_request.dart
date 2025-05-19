@@ -46,7 +46,7 @@ class _ConfirmRequest extends StatelessWidget
 
     if (!context.mounted) return;
 
-    StaffMember? assignee = await showAssigneeDialog(context, state: state);
+    StaffMember? assignee = await showSetAssigneeDialog(context, state: state);
 
     if (assignee == null) return;
 

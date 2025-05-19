@@ -1,24 +1,22 @@
-import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/filters/order_filters.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_member.dart';
-import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking_status.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/filters/booking_filters.dart';
-
-import '../domain/models/rating/rating.dart';
-import '../domain/models/user/user.dart';
-import '../utils/try_or/try_or_null.dart';
+import '../../features/my_orders/domain/models/order/filters/order_filters.dart';
 import '../../features/my_orders/domain/models/order/order.dart';
 import '../../features/my_orders/domain/models/order/order_status.dart';
 import '../../features/my_orders/domain/models/order/order_type.dart';
 import '../../features/my_orders/domain/models/order/service/order_service.dart';
 import '../../features/my_orders/domain/models/order/service/order_service_type.dart';
 import '../../features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
-
+import '../../presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
+import '../../presentation/screens/admin/features/staff/domain/models/staff_member.dart';
+import '../../presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
+import '../../presentation/screens/book_recording/domain/models/booking/booking.dart';
+import '../../presentation/screens/book_recording/domain/models/booking/booking_status.dart';
+import '../../presentation/screens/book_recording/domain/models/booking/filters/booking_filters.dart';
+import '../domain/models/rating/rating.dart';
 import '../domain/models/telegram/safe_area_inset.dart';
 import '../domain/models/telegram/telegram_meta.dart';
 import '../domain/models/telegram/telegram_user.dart';
+import '../domain/models/user/user.dart';
+import '../utils/try_or/try_or_null.dart';
 
 class Mock {
   static const _photoFileName = 'QzaYKj8gtRiq3RqEWaoFAjlqDoTTcLn5DvXKCosQsfE';

@@ -1,14 +1,14 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
-import 'package:fakelab_records_webapp/core/extensions/border_radius_extensions.dart';
-import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
-import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../../../core/di/injector.dart';
+import '../../../../../../core/extensions/border_radius_extensions.dart';
+import '../../../../../../core/extensions/datetime_extensions.dart';
+import '../../../../../../core/extensions/string_extensions.dart';
 import '../../../../../../core/router/router.gr.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
 import '../../../../../ui/pages/error_page.dart';

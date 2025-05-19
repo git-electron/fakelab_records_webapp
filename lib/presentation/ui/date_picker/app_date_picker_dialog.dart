@@ -1,13 +1,13 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fakelab_records_webapp/core/extensions/border_radius_extensions.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
+import '../../../core/extensions/border_radius_extensions.dart';
 import '../../../core/extensions/color_extensions.dart';
 import '../../../core/theme/theme_extensions.dart';
+import '../wrappers/tappable.dart';
 import 'models/date_picker_result.dart';
 
 part 'button.dart';
