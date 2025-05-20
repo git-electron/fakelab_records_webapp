@@ -1,6 +1,9 @@
 part of '../bookings_bloc.dart';
 
 extension BooleanExtensions on BookingsState {
+  Duration get kHourDuration => _kHourDuration;
+  static const Duration _kHourDuration = Duration(hours: 1);
+
   bool isDayAvailable(DateTime date) {
     final List<Booking>? dateBookings = getDateBookings(date);
 
@@ -21,7 +24,7 @@ extension BooleanExtensions on BookingsState {
 
   bool isTimeAvailable(
     DateTime time, {
-    Duration duration = const Duration(hours: 1),
+    Duration duration = _kHourDuration,
   }) {
     final DateTime startTime = time;
     final DateTime endTime = time.add(duration);
@@ -32,9 +35,18 @@ extension BooleanExtensions on BookingsState {
     return _hasNoInterceptionsWithOtherBookings(startTime, endTime);
   }
 
+  bool canBeGreater(
+    DateTime time, {
+    Duration duration = _kHourDuration,
+  }) {
+    return isTimeAvailable(time, duration: duration + _kHourDuration);
+  }
+
   bool _isRunningLate(DateTime startTime) {
     final DateTime now = DateTime.now();
-    return startTime.isBeforeOrAtSameMomentAs(now);
+    const Duration oneHour = _kHourDuration;
+
+    return startTime.isBeforeOrAtSameMomentAs(now.add(oneHour));
   }
 
   bool _isNotInWorkingHours(DateTime startTime, DateTime endTime) {

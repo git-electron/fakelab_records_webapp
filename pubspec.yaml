@@ -105,6 +105,7 @@ flutter:
     - assets/icons/keyboard_arrow_up/
     - assets/icons/logo/
     - assets/icons/map/
+    - assets/icons/minus/
     - assets/icons/money/
     - assets/icons/pencil/
     - assets/icons/phone/
@@ -121,6 +122,7 @@ flutter:
     - assets/images/
     - assets/images/coin/
     - assets/images/about/
+    - assets/images/services/
     
     - assets/audio/
     - assets/audio/examples/

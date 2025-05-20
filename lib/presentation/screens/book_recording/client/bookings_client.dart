@@ -32,8 +32,11 @@ class BookingsClient {
     try {
       const String path = 'bookings';
 
-      final DataSnapshot snapshot =
-          await ref.child(path).orderByChild('date').startAt(today).get();
+      final DataSnapshot snapshot = await ref
+          .child(path)
+          .orderByChild('date')
+          .startAt(today.toIso8601String())
+          .get();
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 

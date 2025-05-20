@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -24,30 +25,33 @@ part 'widgets/availability/availability.dart';
 part 'widgets/availability/widgets/time_button.dart';
 part 'widgets/availability/widgets/wrap.dart';
 part 'widgets/button.dart';
-part 'widgets/duration_slider.dart';
+part 'widgets/card/card.dart';
+part 'widgets/card/widgets/cover.dart';
+part 'widgets/card/widgets/content/content.dart';
+part 'widgets/card/widgets/content/widgets/info.dart';
+part 'widgets/card/widgets/content/widgets/title.dart';
+part 'widgets/card/widgets/content/widgets/duration_buttons.dart';
 
 @RoutePage()
 class BookRecordingTimeScreen extends StatelessWidget {
   const BookRecordingTimeScreen({
-    required this.selectedDay,
+    required this.selectedDate,
     required this.bookingsBloc,
     super.key,
   });
 
-  final DateTime selectedDay;
+  final DateTime selectedDate;
   final BookingsBloc bookingsBloc;
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider.value(value: bookingsBloc),
-        BlocProvider(
-          create: (context) => $<BookRecordingTimeBloc>(param1: selectedDay),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => $<BookRecordingTimeBloc>(
+        param1: selectedDate,
+        param2: bookingsBloc,
+      ),
       child: Scaffold(
-        body: BlocBuilder<BookingsBloc, BookingsState>(
+        body: BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
           builder: (context, state) {
             if (state.isLoading) return const LoadingPage();
             if (state.hasError) return ErrorPage(message: state.message);
@@ -80,7 +84,7 @@ class _Body extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Availability(),
-            _DurationSlider(),
+            _Card(),
             _Button(),
           ],
         ),

@@ -150,11 +150,14 @@ extension GetItInjectableX on _i174.GetIt {
           images: images,
           initialIndex: initialIndex,
         ));
-    gh.factoryParam<_i140.BookRecordingTimeBloc, DateTime, dynamic>((
-      selectedDay,
-      _,
+    gh.factoryParam<_i140.BookRecordingTimeBloc, DateTime, _i763.BookingsBloc>((
+      selectedDate,
+      bookingsBloc,
     ) =>
-        _i140.BookRecordingTimeBloc(selectedDay));
+        _i140.BookRecordingTimeBloc(
+          selectedDate,
+          bookingsBloc,
+        ));
     gh.factory<_i415.UserClient>(() => _i415.UserClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),

@@ -96,6 +96,9 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/map
   $AssetsIconsMapGen get map => const $AssetsIconsMapGen();
 
+  /// Directory path: assets/icons/minus
+  $AssetsIconsMinusGen get minus => const $AssetsIconsMinusGen();
+
   /// Directory path: assets/icons/money
   $AssetsIconsMoneyGen get money => const $AssetsIconsMoneyGen();
 
@@ -145,6 +148,9 @@ class $AssetsImagesGen {
 
   /// Directory path: assets/images/coin
   $AssetsImagesCoinGen get coin => const $AssetsImagesCoinGen();
+
+  /// Directory path: assets/images/services
+  $AssetsImagesServicesGen get services => const $AssetsImagesServicesGen();
 
   /// List of all assets
   List<AssetGenImage> get values => [cardBackground];
@@ -526,6 +532,19 @@ class $AssetsIconsMapGen {
   List<SvgGenImage> get values => [dark, light];
 }
 
+class $AssetsIconsMinusGen {
+  const $AssetsIconsMinusGen();
+
+  /// File path: assets/icons/minus/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/minus/dark.svg');
+
+  /// File path: assets/icons/minus/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/minus/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, light];
+}
+
 class $AssetsIconsMoneyGen {
   const $AssetsIconsMoneyGen();
 
@@ -755,6 +774,39 @@ class $AssetsImagesCoinGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [big, small];
+}
+
+class $AssetsImagesServicesGen {
+  const $AssetsImagesServicesGen();
+
+  /// File path: assets/images/services/custom_beat.png
+  AssetGenImage get customBeat =>
+      const AssetGenImage('assets/images/services/custom_beat.png');
+
+  /// File path: assets/images/services/mastering.png
+  AssetGenImage get mastering =>
+      const AssetGenImage('assets/images/services/mastering.png');
+
+  /// File path: assets/images/services/mix.png
+  AssetGenImage get mix =>
+      const AssetGenImage('assets/images/services/mix.png');
+
+  /// File path: assets/images/services/mix_premium.png
+  AssetGenImage get mixPremium =>
+      const AssetGenImage('assets/images/services/mix_premium.png');
+
+  /// File path: assets/images/services/recording.png
+  AssetGenImage get recording =>
+      const AssetGenImage('assets/images/services/recording.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    customBeat,
+    mastering,
+    mix,
+    mixPremium,
+    recording,
+  ];
 }
 
 class $AssetsIconsLogoFakelabGen {

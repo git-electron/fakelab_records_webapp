@@ -9,4 +9,8 @@ class BookRecordingTimeEvent with _$BookRecordingTimeEvent {
   const factory BookRecordingTimeEvent.durationSelected(
     Duration selectedDuration,
   ) = _DurationSelected;
+
+  const factory BookRecordingTimeEvent.bookingsStateChanged(
+    BookingsState bookingsState,
+  ) = _BookingsStateChanged;
 }
