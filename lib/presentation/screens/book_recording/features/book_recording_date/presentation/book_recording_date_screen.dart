@@ -8,7 +8,6 @@ import 'package:fakelab_records_webapp/presentation/screens/book_recording/featu
 import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../../../core/di/injector.dart';
 import '../../../../../../core/extensions/border_radius_extensions.dart';
