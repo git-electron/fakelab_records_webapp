@@ -8,18 +8,36 @@
             "name": "fakelab_records_webapp",
             "request": "launch",
             "type": "dart",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "html",
+            ]
         },
         {
             "name": "fakelab_records_webapp (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "html",
+            ]
         },
         {
             "name": "fakelab_records_webapp (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "html",
+            ]
         }
     ]
 }
