@@ -24,7 +24,6 @@ class UserAvatar extends StatelessWidget {
             child: user.photoUrl != null
                 ? Image.network(
                     user.photoUrl!,
-                    webHtmlElementStrategy: WebHtmlElementStrategy.prefer,
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, imageChunkEvent) {
                       if (imageChunkEvent == null) return child;
