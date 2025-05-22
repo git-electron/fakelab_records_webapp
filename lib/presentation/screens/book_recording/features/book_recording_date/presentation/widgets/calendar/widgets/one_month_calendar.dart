@@ -20,7 +20,7 @@ class OneMonthCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final double width = size.width - 40;
+    final double width = size.width - 20;
 
     return TableCalendar(
       availableGestures: AvailableGestures.none,
@@ -50,12 +50,12 @@ class OneMonthCalendar extends StatelessWidget {
       eventLoader: eventLoader,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
-        tablePadding: const Pad(horizontal: 20),
+        tablePadding: const Pad(horizontal: 10),
         markersMaxCount: 1,
         markerSize: width / 7 - 10,
         markersAlignment: Alignment.center,
         markerDecoration: ShapeDecoration(
-          shape: BorderRadius.circular(20).smoothShape(
+          shape: BorderRadius.circular(10).smoothShape(
             side: BorderSide(color: context.colors.onBackground, width: 1.5),
           ),
         ),
@@ -63,7 +63,7 @@ class OneMonthCalendar extends StatelessWidget {
         outsideDaysVisible: false,
         todayDecoration: ShapeDecoration(
           color: context.colors.onBackground,
-          shape: BorderRadius.circular(20).smoothShape(
+          shape: BorderRadius.circular(10).smoothShape(
             side: BorderSide(color: context.colors.onBackground, width: 1.5),
           ),
         ),
@@ -73,7 +73,7 @@ class OneMonthCalendar extends StatelessWidget {
         ),
         selectedDecoration: ShapeDecoration(
           color: context.colors.primary,
-          shape: BorderRadius.circular(20).smoothShape(
+          shape: BorderRadius.circular(10).smoothShape(
             side: BorderSide(color: context.colors.primary, width: 1.5),
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/features/status_history/status_history_feature.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,18 +12,15 @@ import '../../../../../../../../core/di/injector.dart';
 import '../../../../../../../../core/domain/models/user/user.dart';
 import '../../../../../../../../core/extensions/border_radius_extensions.dart';
 import '../../../../../../../../core/extensions/color_extensions.dart';
-import '../../../../../../../../core/extensions/datetime_extensions.dart';
-import '../../../../../../../../core/extensions/list_extensions.dart';
 import '../../../../../../../../core/extensions/string_extensions.dart';
 import '../../../../../../../../core/formatters/phone_number_formatter.dart';
 import '../../../../../../../../core/gen/assets.gen.dart';
 import '../../../../../../../../core/gen/colors.gen.dart';
 import '../../../../../../../../core/theme/theme_extensions.dart';
-import '../../../../../../../../features/my_orders/checkout/domain/models/checkout_hint.dart';
-import '../../../../../../../../features/my_orders/checkout/presentation/checkout_feature.dart';
+import '../../../../../../../../features/checkout/domain/models/checkout_hint.dart';
+import '../../../../../../../../features/checkout/presentation/checkout_feature.dart';
 import '../../../../../../../../features/my_orders/domain/models/order/order.dart';
 import '../../../../../../../../features/my_orders/domain/models/order/order_status.dart';
-import '../../../../../../../../features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
 import '../../../../../../../ui/app_button.dart';
 import '../../../../../../../ui/avatar/avatar.dart';
 import '../../../../../../../ui/pages/error_page.dart';
@@ -72,8 +70,7 @@ part 'widgets/header/widgets/id.dart';
 part 'widgets/header/widgets/status.dart';
 part 'widgets/header/widgets/title.dart';
 part 'widgets/services.dart';
-part 'widgets/status_history/status_history.dart';
-part 'widgets/status_history/widgets/item.dart';
+part 'widgets/status_history.dart';
 
 @RoutePage()
 class AdminOrderScreen extends StatelessWidget {

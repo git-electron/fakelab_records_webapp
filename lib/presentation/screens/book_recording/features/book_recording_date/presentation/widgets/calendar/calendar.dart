@@ -29,14 +29,15 @@ class _Calendar extends StatelessWidget {
                   focusedDay: focusedDay,
                   lastDay: now.add(const Duration(days: 30 * 3)),
                   selectedDay: selectedDay,
-                  eventLoader: (DateTime dateTime) {
-                    return [
-                      if (state.isDayAvailable(dateTime) &&
-                          !isSameDay(dateTime, now) &&
-                          !isSameDay(dateTime, selectedDay))
-                        dateTime
-                    ];
-                  },
+                  eventLoader: (dateTime) => [dateTime],
+                  // eventLoader: (DateTime dateTime) {
+                  //   return [
+                  //     if (state.isDayAvailable(dateTime) &&
+                  //         !isSameDay(dateTime, now) &&
+                  //         !isSameDay(dateTime, selectedDay))
+                  //       dateTime
+                  //   ];
+                  // },
                   onDaySelected: (selectedDate, _) {
                     if (!state.isDayAvailable(selectedDate)) return;
                     bloc.add(BookRecordingDateEvent.daySelected(selectedDate));
