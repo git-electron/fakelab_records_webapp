@@ -1,16 +1,17 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/core/extensions/color_extensions.dart';
+import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
+import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
+import 'package:fakelab_records_webapp/core/utils/is_same_day/is_same_day.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_date/presentation/widgets/calendar/one_month_calendar/utils/dates_grid_generator.dart';
+import 'package:fakelab_records_webapp/presentation/ui/wrappers/tappable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../../../core/di/injector.dart';
 import '../../../../../../core/extensions/border_radius_extensions.dart';
-import '../../../../../../core/extensions/datetime_extensions.dart';
-import '../../../../../../core/extensions/string_extensions.dart';
-import '../../../../../../core/router/router.gr.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
 import '../../../../../ui/pages/error_page.dart';
 import '../../../../../ui/pages/loading_page.dart';
@@ -20,8 +21,11 @@ import '../domain/bloc/book_recording_date_bloc.dart';
 
 part 'widgets/app_bar.dart';
 part 'widgets/calendar/calendar.dart';
-part 'widgets/calendar/widgets/one_month_calendar.dart';
-part 'widgets/calendar/widgets/one_month_calendar2.dart';
+part 'widgets/calendar/one_month_calendar/one_month_calendar.dart';
+part 'widgets/calendar/one_month_calendar/widgets/weekdays_header.dart';
+part 'widgets/calendar/one_month_calendar/widgets/month_title.dart';
+part 'widgets/calendar/one_month_calendar/widgets/dates_grid.dart';
+part 'widgets/calendar/one_month_calendar/widgets/date_item.dart';
 
 @RoutePage()
 class BookRecordingDateScreen extends StatelessWidget {
@@ -32,10 +36,14 @@ class BookRecordingDateScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => $<BookingsBloc>()),
-        BlocProvider(create: (context) => $<BookRecordingDateBloc>()),
+        BlocProvider(
+          create: (context) => $<BookRecordingDateBloc>(
+            param1: context.read<BookingsBloc>(),
+          ),
+        ),
       ],
       child: Scaffold(
-        body: BlocBuilder<BookingsBloc, BookingsState>(
+        body: BlocBuilder<BookRecordingDateBloc, BookRecordingDateState>(
           builder: (context, state) {
             if (state.isLoading) return const LoadingPage();
             if (state.hasError) return ErrorPage(message: state.message);

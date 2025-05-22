@@ -35,7 +35,6 @@ dependencies:
   figma_squircle: ^0.6.3
   firebase_core: ^3.13.0
   cloudinary_api: ^1.1.0
-  table_calendar: ^3.1.3
   cupertino_icons: ^1.0.8
   json_annotation: ^4.9.0
   dio_smart_retry: ^7.0.1

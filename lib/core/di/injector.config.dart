@@ -137,8 +137,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
-    gh.factory<_i206.BookRecordingDateBloc>(
-        () => _i206.BookRecordingDateBloc());
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
@@ -158,6 +156,11 @@ extension GetItInjectableX on _i174.GetIt {
           selectedDate,
           bookingsBloc,
         ));
+    gh.factoryParam<_i206.BookRecordingDateBloc, _i763.BookingsBloc, dynamic>((
+      bookingsBloc,
+      _,
+    ) =>
+        _i206.BookRecordingDateBloc(bookingsBloc));
     gh.factory<_i415.UserClient>(() => _i415.UserClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
