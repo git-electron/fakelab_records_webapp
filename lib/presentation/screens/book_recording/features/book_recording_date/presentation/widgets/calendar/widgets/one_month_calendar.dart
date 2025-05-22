@@ -1,7 +1,7 @@
 part of '../../../book_recording_date_screen.dart';
 
-class OneMonthCalendar extends StatelessWidget {
-  const OneMonthCalendar({
+class _OneMonthCalendar extends StatelessWidget {
+  const _OneMonthCalendar({
     required this.firstDay,
     required this.lastDay,
     required this.focusedDay,
