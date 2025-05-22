@@ -54,4 +54,16 @@ class BookRecordingTimeState with _$BookRecordingTimeState {
   }
 
   bool get canBeLower => selectedDuration > kHourDuration;
+
+  int get selectedHours => selectedDuration.inHours.remainder(24).abs();
+
+  double get totalCost => kBookingCostPerHour * selectedHours;
+
+  String get selectedDurationString =>
+      '${selectedDuration.toHHplural(withMinutes: false)} записи на студии';
+
+  List<CheckoutItem> get checkoutItems => [
+        CheckoutItem(title: selectedDurationString, totalCost: totalCost),
+        CheckoutItem(title: 'Предоплата 25%', totalCost: totalCost * .25),
+      ];
 }

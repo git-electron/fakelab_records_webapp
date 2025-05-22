@@ -174,14 +174,11 @@ class $AssetsAudioExamplesGen {
   /// File path: assets/audio/examples/tired.mp3
   String get tired => 'assets/audio/examples/tired.mp3';
 
-  /// File path: assets/audio/examples/today.mp3
-  String get today => 'assets/audio/examples/today.mp3';
-
   /// File path: assets/audio/examples/tuff.mp3
   String get tuff => 'assets/audio/examples/tuff.mp3';
 
   /// List of all assets
-  List<String> get values => [brave, cats, damn, inmyneon, tired, today, tuff];
+  List<String> get values => [brave, cats, damn, inmyneon, tired, tuff];
 }
 
 class $AssetsIconsArrowDownGen {
