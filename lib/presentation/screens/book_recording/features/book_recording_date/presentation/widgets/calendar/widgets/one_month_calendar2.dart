@@ -1,9 +1,13 @@
 part of '../../../book_recording_date_screen.dart';
 
 class _OneMonthCalendar2 extends StatelessWidget {
-  const _OneMonthCalendar2(this.month);
+  const _OneMonthCalendar2({
+    required this.month,
+    required this.isAvailablePredicate,
+  });
 
   final DateTime month;
+  final bool Function(DateTime) isAvailablePredicate;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,7 @@ class _OneMonthCalendar2 extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(4.0),
               child: CircleAvatar(
-                backgroundColor: isCurrentMonth
+                backgroundColor: isCurrentMonth && isAvailablePredicate(date)
                     ? context.colors.white
                     : context.colors.transparent,
                 child: Text(
@@ -42,7 +46,7 @@ class _OneMonthCalendar2 extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
-                    color: isCurrentMonth
+                    color: isCurrentMonth && isAvailablePredicate(date)
                         ? context.colors.black
                         : context.colors.white,
                   ),
@@ -57,7 +61,7 @@ class _OneMonthCalendar2 extends StatelessWidget {
 
   List<DateTime> _generateDatesGrid(DateTime month) {
     int numDays = DateTime(month.year, month.month + 1, 0).day;
-    int firstWeekday = DateTime(month.year, month.month, 1).weekday % 7;
+    int firstWeekday = (DateTime(month.year, month.month, 1).weekday - 1) % 7;
     List<DateTime> dates = [];
 
     // Fill previous month's dates
@@ -74,8 +78,12 @@ class _OneMonthCalendar2 extends StatelessWidget {
       dates.add(DateTime(month.year, month.month, day));
     }
 
+    print(month);
+    print(42 - dates.length);
+    print((42 - dates.length) % 7);
+
     // Fill next month's dates
-    int remainingBoxes = 35 - dates.length; // 6 weeks * 7 days
+    int remainingBoxes = (42 - dates.length) % 7; // 6 weeks * 7 days
     for (int day = 1; day <= remainingBoxes; day++) {
       dates.add(DateTime(month.year, month.month + 1, day));
     }
