@@ -1,21 +1,20 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
-import 'package:fakelab_records_webapp/core/constants/constants.dart';
-import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
-import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
-import 'package:fakelab_records_webapp/features/my_orders/checkout/domain/models/checkout_hint.dart';
-import 'package:fakelab_records_webapp/features/my_orders/checkout/presentation/checkout_feature.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../../core/constants/constants.dart';
 import '../../../../../../core/di/injector.dart';
 import '../../../../../../core/extensions/border_radius_extensions.dart';
 import '../../../../../../core/extensions/datetime_extensions.dart';
 import '../../../../../../core/extensions/duration_extensions.dart';
+import '../../../../../../core/extensions/num_extensions.dart';
+import '../../../../../../core/gen/assets.gen.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
+import '../../../../../../features/my_orders/checkout/domain/models/checkout_hint.dart';
+import '../../../../../../features/my_orders/checkout/presentation/checkout_feature.dart';
 import '../../../../../ui/app_button.dart';
 import '../../../../../ui/pages/error_page.dart';
 import '../../../../../ui/pages/loading_page.dart';
@@ -23,6 +22,7 @@ import '../../../../../ui/wrappers/tappable.dart';
 import '../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../../domain/bloc/bookings_bloc.dart';
 import '../../../domain/models/availability_type/availability_type.dart';
+import '../../../domain/models/booking/booking.dart';
 import '../domain/bloc/book_recording_time_bloc.dart';
 
 part 'widgets/app_bar.dart';
@@ -30,15 +30,15 @@ part 'widgets/availability/availability.dart';
 part 'widgets/availability/widgets/time_button.dart';
 part 'widgets/availability/widgets/wrap.dart';
 part 'widgets/button.dart';
-part 'widgets/card_and_checkout/card_and_checkout.dart';
-part 'widgets/card_and_checkout/checkout/checkout.dart';
 part 'widgets/card_and_checkout/card/card.dart';
-part 'widgets/card_and_checkout/card/widgets/cover.dart';
 part 'widgets/card_and_checkout/card/widgets/content/content.dart';
+part 'widgets/card_and_checkout/card/widgets/content/widgets/cost_per_hour.dart';
+part 'widgets/card_and_checkout/card/widgets/content/widgets/duration_buttons.dart';
 part 'widgets/card_and_checkout/card/widgets/content/widgets/info.dart';
 part 'widgets/card_and_checkout/card/widgets/content/widgets/title.dart';
-part 'widgets/card_and_checkout/card/widgets/content/widgets/duration_buttons.dart';
-part 'widgets/card_and_checkout/card/widgets/content/widgets/cost_per_hour.dart';
+part 'widgets/card_and_checkout/card/widgets/cover.dart';
+part 'widgets/card_and_checkout/card_and_checkout.dart';
+part 'widgets/card_and_checkout/checkout/checkout.dart';
 
 @RoutePage()
 class BookRecordingTimeScreen extends StatelessWidget {
