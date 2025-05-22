@@ -47,4 +47,7 @@ class Booking with _$Booking {
   bool get isCompleted => status == BookingStatus.COMPLETED;
 
   bool get isCancelled => status == BookingStatus.CANCELLED;
+
+  bool isCurrentStatusHistoryItem(BookingStatusHistoryItem item) =>
+      statusHistory.last == item;
 }

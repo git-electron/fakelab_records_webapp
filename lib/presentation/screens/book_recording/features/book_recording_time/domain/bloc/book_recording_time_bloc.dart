@@ -1,5 +1,5 @@
 import 'package:fakelab_records_webapp/core/extensions/duration_extensions.dart';
-import 'package:fakelab_records_webapp/features/my_orders/checkout/domain/models/checkout_item.dart';
+import 'package:fakelab_records_webapp/features/checkout/domain/models/checkout_item.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/availability_type/availability_type.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking.dart';
