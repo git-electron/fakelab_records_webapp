@@ -17,6 +17,7 @@ part 'bookings_event.dart';
 part 'bookings_state.dart';
 part 'extensions/boolean_getters_extensions.dart';
 part 'extensions/filtered_data_extensions.dart';
+part 'extensions/argument_data_extensions.dart';
 
 @injectable
 class BookingsBloc extends Bloc<BookingsEvent, BookingsState> {

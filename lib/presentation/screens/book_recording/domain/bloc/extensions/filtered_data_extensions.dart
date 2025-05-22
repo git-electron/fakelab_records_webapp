@@ -6,20 +6,23 @@ extension FilteredDataExtensions on BookingsState {
       .where((booking) => booking.isPending || booking.isCompleted)
       .toList();
 
-  List<DateTime> getAvailableTimes({
-    required DateTime date,
-    required AvailabilityType type,
+  List<DateTime> getAvailableTimes(
+    DateTime date, {
+    AvailabilityType? type,
   }) {
     return List.generate(
       AvailabilityType.maxDuration,
       (index) => DateTime(date.year, date.month, date.day, 8 + index),
-    ).where(type.isAvailable).where(isTimeAvailable).toList();
+    )
+        .where((time) {
+          if (type != null) return type.isAvailable(time);
+          return true;
+        })
+        .where(isTimeAvailable)
+        .toList();
   }
 
-  List<Duration> getAvailableDurations({
-    required DateTime date,
-    required DateTime time,
-  }) {
+  List<Duration> getAvailableDurations(DateTime time) {
     return List.generate(
       AvailabilityType.maxDuration,
       (index) => Duration(hours: index + 1),

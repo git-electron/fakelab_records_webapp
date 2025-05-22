@@ -38,7 +38,7 @@ class _Mobile extends StatelessWidget {
                   alignment: Alignment.center,
                   height: meta.contentSafeAreaInset.top,
                   child: Text(
-                    bloc.selectedDay.toDDmmYYYYwithMonths(
+                    bloc.selectedDate.toDDmmYYYYwithMonths(
                       withWords: true,
                       isShort: false,
                     ),
@@ -78,7 +78,7 @@ class _Desktop extends StatelessWidget {
           padding: const Pad(horizontal: 20),
           alignment: Alignment.center,
           child: Text(
-            bloc.selectedDay.toDDmmYYYYwithMonths(
+            bloc.selectedDate.toDDmmYYYYwithMonths(
               withWords: true,
               isShort: false,
             ),

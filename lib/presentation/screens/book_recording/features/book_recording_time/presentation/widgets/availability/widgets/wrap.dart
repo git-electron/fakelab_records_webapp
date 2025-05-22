@@ -7,14 +7,9 @@ class _Wrap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final BookRecordingTimeBloc bloc = context.read();
-
-    return BlocBuilder<BookingsBloc, BookingsState>(
+    return BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
       builder: (context, state) {
-        final List<DateTime> availableTimes = state.getAvailableTimes(
-          date: bloc.selectedDay,
-          type: type,
-        );
+        final List<DateTime> availableTimes = state.getAvailableTimes(type);
 
         if (availableTimes.isEmpty) return const SizedBox();
 

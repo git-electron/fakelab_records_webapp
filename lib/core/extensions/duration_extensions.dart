@@ -14,10 +14,11 @@ extension DurationExtensions on Duration {
     return '${shoudApplyPaddingToHours ? _pad(hours) : hours}:${_pad(minutes)}:${_pad(seconds)}';
   }
 
-  String toHHplural({bool withMinutes = true}) {
+  String toHHplural({bool withMinutes = true, bool isCompact = false}) {
     int hours = inHours.remainder(24).abs();
     int minutes = inMinutes.remainder(60).abs();
 
+    if (isCompact) return '$hoursч${withMinutes ? ' $minutesм' : ''}';
     return '$hours ${_hoursPlural(hours)}${withMinutes ? ' $minutes ${_minutesPlural(minutes)}' : ''}';
   }
 

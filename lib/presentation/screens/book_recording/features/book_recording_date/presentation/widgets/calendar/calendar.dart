@@ -37,11 +37,11 @@ class _Calendar extends StatelessWidget {
                         dateTime
                     ];
                   },
-                  onDaySelected: (selectedDay, _) {
-                    if (!state.isDayAvailable(selectedDay)) return;
-                    bloc.add(BookRecordingDateEvent.daySelected(selectedDay));
+                  onDaySelected: (selectedDate, _) {
+                    if (!state.isDayAvailable(selectedDate)) return;
+                    bloc.add(BookRecordingDateEvent.daySelected(selectedDate));
                     context.pushRoute(BookRecordingTimeRoute(
-                      selectedDay: selectedDay,
+                      selectedDate: selectedDate,
                       bookingsBloc: context.read(),
                     ));
                   },

@@ -11,6 +11,8 @@ import 'status_history_item/booking_status_history_item.dart';
 part 'booking.freezed.dart';
 part 'booking.g.dart';
 
+const double kBookingCostPerHour = 1000;
+
 @freezed
 class Booking with _$Booking {
   factory Booking({

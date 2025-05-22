@@ -5,11 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../../core/constants/constants.dart';
 import '../../../../../../core/di/injector.dart';
 import '../../../../../../core/extensions/border_radius_extensions.dart';
 import '../../../../../../core/extensions/datetime_extensions.dart';
 import '../../../../../../core/extensions/duration_extensions.dart';
+import '../../../../../../core/extensions/num_extensions.dart';
+import '../../../../../../core/gen/assets.gen.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
+import '../../../../../../features/my_orders/checkout/domain/models/checkout_hint.dart';
+import '../../../../../../features/my_orders/checkout/presentation/checkout_feature.dart';
 import '../../../../../ui/app_button.dart';
 import '../../../../../ui/pages/error_page.dart';
 import '../../../../../ui/pages/loading_page.dart';
@@ -17,6 +22,7 @@ import '../../../../../ui/wrappers/tappable.dart';
 import '../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../../domain/bloc/bookings_bloc.dart';
 import '../../../domain/models/availability_type/availability_type.dart';
+import '../../../domain/models/booking/booking.dart';
 import '../domain/bloc/book_recording_time_bloc.dart';
 
 part 'widgets/app_bar.dart';
@@ -24,30 +30,36 @@ part 'widgets/availability/availability.dart';
 part 'widgets/availability/widgets/time_button.dart';
 part 'widgets/availability/widgets/wrap.dart';
 part 'widgets/button.dart';
-part 'widgets/duration_slider.dart';
+part 'widgets/card_and_checkout/card/card.dart';
+part 'widgets/card_and_checkout/card/widgets/content/content.dart';
+part 'widgets/card_and_checkout/card/widgets/content/widgets/cost_per_hour.dart';
+part 'widgets/card_and_checkout/card/widgets/content/widgets/duration_buttons.dart';
+part 'widgets/card_and_checkout/card/widgets/content/widgets/info.dart';
+part 'widgets/card_and_checkout/card/widgets/content/widgets/title.dart';
+part 'widgets/card_and_checkout/card/widgets/cover.dart';
+part 'widgets/card_and_checkout/card_and_checkout.dart';
+part 'widgets/card_and_checkout/checkout/checkout.dart';
 
 @RoutePage()
 class BookRecordingTimeScreen extends StatelessWidget {
   const BookRecordingTimeScreen({
-    required this.selectedDay,
+    required this.selectedDate,
     required this.bookingsBloc,
     super.key,
   });
 
-  final DateTime selectedDay;
+  final DateTime selectedDate;
   final BookingsBloc bookingsBloc;
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider.value(value: bookingsBloc),
-        BlocProvider(
-          create: (context) => $<BookRecordingTimeBloc>(param1: selectedDay),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => $<BookRecordingTimeBloc>(
+        param1: selectedDate,
+        param2: bookingsBloc,
+      ),
       child: Scaffold(
-        body: BlocBuilder<BookingsBloc, BookingsState>(
+        body: BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
           builder: (context, state) {
             if (state.isLoading) return const LoadingPage();
             if (state.hasError) return ErrorPage(message: state.message);
@@ -80,7 +92,7 @@ class _Body extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Availability(),
-            _DurationSlider(),
+            _CardAndCheckout(),
             _Button(),
           ],
         ),

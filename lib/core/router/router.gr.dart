@@ -324,17 +324,17 @@ class AdminEditStaffMemberRouteArgs {
 /// [_i6.AdminOrderScreen]
 class AdminOrderRoute extends _i17.PageRouteInfo<AdminOrderRouteArgs> {
   AdminOrderRoute({
-    required String orderId,
     required _i21.AdminStaffBloc adminStaffBloc,
     required _i20.AdminOrdersBloc adminOrdersBloc,
+    required String orderId,
     _i19.Key? key,
     List<_i17.PageRouteInfo>? children,
   }) : super(
          AdminOrderRoute.name,
          args: AdminOrderRouteArgs(
-           orderId: orderId,
            adminStaffBloc: adminStaffBloc,
            adminOrdersBloc: adminOrdersBloc,
+           orderId: orderId,
            key: key,
          ),
          rawPathParams: {'id': orderId},
@@ -348,9 +348,9 @@ class AdminOrderRoute extends _i17.PageRouteInfo<AdminOrderRouteArgs> {
     builder: (data) {
       final args = data.argsAs<AdminOrderRouteArgs>();
       return _i6.AdminOrderScreen(
-        orderId: args.orderId,
         adminStaffBloc: args.adminStaffBloc,
         adminOrdersBloc: args.adminOrdersBloc,
+        orderId: args.orderId,
         key: args.key,
       );
     },
@@ -359,23 +359,23 @@ class AdminOrderRoute extends _i17.PageRouteInfo<AdminOrderRouteArgs> {
 
 class AdminOrderRouteArgs {
   const AdminOrderRouteArgs({
-    required this.orderId,
     required this.adminStaffBloc,
     required this.adminOrdersBloc,
+    required this.orderId,
     this.key,
   });
-
-  final String orderId;
 
   final _i21.AdminStaffBloc adminStaffBloc;
 
   final _i20.AdminOrdersBloc adminOrdersBloc;
 
+  final String orderId;
+
   final _i19.Key? key;
 
   @override
   String toString() {
-    return 'AdminOrderRouteArgs{orderId: $orderId, adminStaffBloc: $adminStaffBloc, adminOrdersBloc: $adminOrdersBloc, key: $key}';
+    return 'AdminOrderRouteArgs{adminStaffBloc: $adminStaffBloc, adminOrdersBloc: $adminOrdersBloc, orderId: $orderId, key: $key}';
   }
 }
 
@@ -432,14 +432,14 @@ class BookRecordingDateRoute extends _i17.PageRouteInfo<void> {
 class BookRecordingTimeRoute
     extends _i17.PageRouteInfo<BookRecordingTimeRouteArgs> {
   BookRecordingTimeRoute({
-    required DateTime selectedDay,
+    required DateTime selectedDate,
     required _i24.BookingsBloc bookingsBloc,
     _i19.Key? key,
     List<_i17.PageRouteInfo>? children,
   }) : super(
          BookRecordingTimeRoute.name,
          args: BookRecordingTimeRouteArgs(
-           selectedDay: selectedDay,
+           selectedDate: selectedDate,
            bookingsBloc: bookingsBloc,
            key: key,
          ),
@@ -453,7 +453,7 @@ class BookRecordingTimeRoute
     builder: (data) {
       final args = data.argsAs<BookRecordingTimeRouteArgs>();
       return _i10.BookRecordingTimeScreen(
-        selectedDay: args.selectedDay,
+        selectedDate: args.selectedDate,
         bookingsBloc: args.bookingsBloc,
         key: args.key,
       );
@@ -463,12 +463,12 @@ class BookRecordingTimeRoute
 
 class BookRecordingTimeRouteArgs {
   const BookRecordingTimeRouteArgs({
-    required this.selectedDay,
+    required this.selectedDate,
     required this.bookingsBloc,
     this.key,
   });
 
-  final DateTime selectedDay;
+  final DateTime selectedDate;
 
   final _i24.BookingsBloc bookingsBloc;
 
@@ -476,7 +476,7 @@ class BookRecordingTimeRouteArgs {
 
   @override
   String toString() {
-    return 'BookRecordingTimeRouteArgs{selectedDay: $selectedDay, bookingsBloc: $bookingsBloc, key: $key}';
+    return 'BookRecordingTimeRouteArgs{selectedDate: $selectedDate, bookingsBloc: $bookingsBloc, key: $key}';
   }
 }
 

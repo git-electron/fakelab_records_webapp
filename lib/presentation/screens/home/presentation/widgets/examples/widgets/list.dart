@@ -63,17 +63,6 @@ class _ExamplesList extends StatelessWidget {
           ],
           genres: const [ExampleGenre.HIP_HOP],
         ),
-        // Example(
-        //   filePath: Assets.audio.examples.today,
-        //   title: 'Здесь и сейчас',
-        //   artists: const ['Четверг'],
-        //   services: const [
-        //     ExampleServiceType.RECORDING,
-        //     ExampleServiceType.MIX,
-        //     ExampleServiceType.MASTERING,
-        //   ],
-        //   genres: const [ExampleGenre.HIP_HOP], //TODO: add after may 9
-        // ),
         Example(
           filePath: Assets.audio.examples.tired,
           title: 'Заебали ***',
