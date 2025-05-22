@@ -380,6 +380,36 @@ class Mock {
         userIdStatus: '${user.id}-${BookingStatus.PENDING.name}',
       ),
     ),
+    Booking(
+      id: '5528550544559483',
+      customer: user,
+      status: BookingStatus.PENDING,
+      statusHistory: [],
+      dateCreated: _now.subtract(const Duration(days: 1)),
+      dateChanged: _now.subtract(const Duration(days: 1)),
+      assignee: getStaffMember('5528559284548329'),
+      date: DateTime(_now.year, _now.month, _now.day + 5, 8).toUtc(),
+      totalCost: 2500,
+      duration: const Duration(hours: 15),
+      filters: BookingFilters(
+        userIdStatus: '${user.id}-${BookingStatus.PENDING.name}',
+      ),
+    ),
+    Booking(
+      id: '5528550544559483',
+      customer: user,
+      status: BookingStatus.PENDING,
+      statusHistory: [],
+      dateCreated: _now.subtract(const Duration(days: 1)),
+      dateChanged: _now.subtract(const Duration(days: 1)),
+      assignee: getStaffMember('5528559284548329'),
+      date: DateTime(_now.year, _now.month, _now.day + 6, 8).toUtc(),
+      totalCost: 2500,
+      duration: const Duration(hours: 15),
+      filters: BookingFilters(
+        userIdStatus: '${user.id}-${BookingStatus.PENDING.name}',
+      ),
+    ),
   ];
 
   static Booking? getBooking(String bookingId) => tryOrNull(
