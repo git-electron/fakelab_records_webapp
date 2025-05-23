@@ -35,7 +35,7 @@ class BookRecordingTimeBloc
     on<_ProceedButtonPressed>(_onProceedButtonPressed);
 
     tryOrNullAsync(_bookingsBloc.refreshBookings);
-    _bookingsBloc.stream.listen(_bookingsStateListener);
+    _bookingsBloc.stream.listen(_bookingsStateListener); 
   }
 
   @override
