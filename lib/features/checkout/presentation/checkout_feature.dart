@@ -1,6 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/extensions/border_radius_extensions.dart';
-import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
@@ -16,13 +15,13 @@ part 'widgets/checkout_hint.dart';
 class CheckoutFeature extends StatelessWidget {
   const CheckoutFeature({
     required this.items,
-    this.hints,
+    this.hint,
     super.key,
   });
 
   factory CheckoutFeature.order(
     Order order, {
-    List<CheckoutHint>? hints,
+    CheckoutHint? hint,
   }) {
     final List<CheckoutItem> items = order.services
         .map((service) => CheckoutItem(
@@ -32,10 +31,10 @@ class CheckoutFeature extends StatelessWidget {
             ))
         .toList();
 
-    return CheckoutFeature(items: items, hints: hints);
+    return CheckoutFeature(items: items, hint: hint);
   }
 
-  final List<CheckoutHint>? hints;
+  final CheckoutHint? hint;
   final List<CheckoutItem> items;
 
   @override
@@ -54,7 +53,7 @@ class CheckoutFeature extends StatelessWidget {
           const Gap(10),
           ...items.map(_CheckoutItem.item),
           _CheckoutItem.item(_total),
-          if (hints.isNotNullAndEmpty) ...hints!.map(_CheckoutHint.hint),
+          if (hint != null) _CheckoutHint(hint!),
         ],
       ),
     );

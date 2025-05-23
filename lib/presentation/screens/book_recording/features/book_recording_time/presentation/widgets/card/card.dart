@@ -1,18 +1,23 @@
 part of '../../book_recording_time_screen.dart';
 
-class _CardAndCheckout extends StatelessWidget {
-  const _CardAndCheckout();
+class _Card extends StatelessWidget {
+  const _Card();
 
   @override
   Widget build(BuildContext context) {
-    return const _AnimatedWrapper(
-      child: Padding(
-        padding: Pad(horizontal: 20),
-        child: Column(
-          spacing: 10,
+    return _AnimatedWrapper(
+      child: Container(
+        padding: const Pad(all: 20),
+        margin: const Pad(horizontal: 20),
+        decoration: ShapeDecoration(
+          color: context.colors.card,
+          shape: BorderRadius.circular(20).smoothShape(),
+        ),
+        child: const Row(
+          spacing: 20,
           children: [
-            _Card(),
-            _Checkout(),
+            _Cover(),
+            _Content(),
           ],
         ),
       ),

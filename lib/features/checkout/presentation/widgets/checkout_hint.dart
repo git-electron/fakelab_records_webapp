@@ -1,7 +1,7 @@
 part of '../checkout_feature.dart';
 
 class _CheckoutHint extends StatelessWidget {
-  const _CheckoutHint.hint(this.hint);
+  const _CheckoutHint(this.hint);
 
   final CheckoutHint hint;
 
@@ -20,7 +20,10 @@ class _CheckoutHint extends StatelessWidget {
         children: [
           Assets.icons.question.gray.svg(),
           Expanded(
-            child: Text(hint.text, style: context.styles.footer2),
+            child: Text(
+              hint.text,
+              style: context.styles.footer2,
+            ),
           ),
         ],
       ),

@@ -156,11 +156,6 @@ extension GetItInjectableX on _i174.GetIt {
           selectedDate,
           bookingsBloc,
         ));
-    gh.factoryParam<_i206.BookRecordingDateBloc, _i763.BookingsBloc, dynamic>((
-      bookingsBloc,
-      _,
-    ) =>
-        _i206.BookRecordingDateBloc(bookingsBloc));
     gh.factory<_i415.UserClient>(() => _i415.UserClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
@@ -208,15 +203,15 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i345.DatabaseReference>(),
               gh<_i974.Logger>(),
             ));
+    gh.factory<_i511.BookingsClient>(() => _i511.BookingsClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
     gh.factory<_i562.AdminPanelClient>(() => _i562.AdminPanelClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
     gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
-          gh<_i345.DatabaseReference>(),
-          gh<_i974.Logger>(),
-        ));
-    gh.factory<_i511.BookingsClient>(() => _i511.BookingsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
@@ -320,6 +315,14 @@ extension GetItInjectableX on _i174.GetIt {
           staffMember,
           gh<_i532.AdminEditStaffMemberClient>(),
           adminStaffBloc,
+        ));
+    gh.factoryParam<_i206.BookRecordingDateBloc, _i763.BookingsBloc, dynamic>((
+      bookingsBloc,
+      _,
+    ) =>
+        _i206.BookRecordingDateBloc(
+          gh<_i352.AppRouter>(),
+          bookingsBloc,
         ));
     gh.factoryParam<_i39.AdminCreateClientBloc, _i515.AdminClientsBloc,
         dynamic>((
