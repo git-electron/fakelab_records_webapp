@@ -11,10 +11,10 @@ import '../features/staff/domain/models/staff_member.dart';
 
 @injectable
 class AdminStaffClient {
-  AdminStaffClient(this.ref, this.logger);
+  AdminStaffClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _staffMembersErrorMessage = 'Failed to get staff members';
 
@@ -24,11 +24,11 @@ class AdminStaffClient {
     try {
       const String path = 'staff';
 
-      final DataSnapshot snapshot = await ref.child(path).get();
+      final DataSnapshot snapshot = await _ref.child(path).get();
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -39,7 +39,7 @@ Data: $json''');
 
       return Result.success(staffMembers);
     } catch (error) {
-      logger.e(_staffMembersErrorMessage, error: error);
+      _logger.e(_staffMembersErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }
@@ -51,14 +51,14 @@ Data: $json''');
     try {
       final String path = 'staff/$staffMemberId';
 
-      logger.i('''Realtime Database delete request:
+      _logger.i('''Realtime Database delete request:
 Path: $path''');
 
-      await ref.child(path).remove();
+      await _ref.child(path).remove();
 
       return Result.success(true);
     } catch (error) {
-      logger.e(_deleteStaffMemberErrorMessage, error: error);
+      _logger.e(_deleteStaffMemberErrorMessage, error: error);
       return Result.error();
     }
   }

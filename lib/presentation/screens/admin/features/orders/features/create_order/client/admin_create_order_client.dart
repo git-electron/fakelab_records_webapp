@@ -9,10 +9,10 @@ import '../../../../../../../../main.dart';
 
 @injectable
 class AdminCreateOrderClient {
-  AdminCreateOrderClient(this.ref, this.logger);
+  AdminCreateOrderClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _errorMessage = 'Failed to create order';
 
@@ -25,15 +25,15 @@ class AdminCreateOrderClient {
     try {
       final String path = 'orders/${order.id}';
 
-      logger.i('''Realtime Database create request:
+      _logger.i('''Realtime Database create request:
 Path: $path
 Data: $order''');
 
-      await ref.child(path).set(order.toJson());
+      await _ref.child(path).set(order.toJson());
 
       return Result.success(order);
     } catch (error) {
-      logger.e(_errorMessage, error: error);
+      _logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

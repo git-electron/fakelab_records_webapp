@@ -14,28 +14,28 @@ part 'admin_state.dart';
 
 @injectable
 class AdminBloc extends Bloc<AdminEvent, AdminState> {
-  AdminBloc(this.telegramService, this.telegramDataBloc)
+  AdminBloc(this._telegramService, this._telegramDataBloc)
       : super(const _AdminState()) {
     on<_TabChanged>(_onTabChanged);
 
-    telegramService.showBackButton();
-    tryOrNull(telegramService.requestFullscreen);
+    _telegramService.showBackButton();
+    tryOrNull(_telegramService.requestFullscreen);
     tryOrNullAsync(_updateTelegramData);
   }
 
   @override
   Future<void> close() {
     tabsController.dispose();
-    telegramService.hideBackButton();
-    if (!telegramDataBloc.state.isMobile) {
-      tryOrNull(telegramService.exitFullscreen);
+    _telegramService.hideBackButton();
+    if (!_telegramDataBloc.state.isMobile) {
+      tryOrNull(_telegramService.exitFullscreen);
       tryOrNullAsync(_updateTelegramData);
     }
     return super.close();
   }
 
-  final TelegramService telegramService;
-  final TelegramDataBloc telegramDataBloc;
+  final TelegramService _telegramService;
+  final TelegramDataBloc _telegramDataBloc;
 
   final ScrollController tabsController = ScrollController();
 
@@ -47,13 +47,13 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
   }
 
   Future<void> _updateTelegramData() async {
-    telegramDataBloc.add(TelegramDataEvent.setData(
-      telegramService.getTelegramData()!,
+    _telegramDataBloc.add(TelegramDataEvent.setData(
+      _telegramService.getTelegramData()!,
     ));
     await Future.delayed(const Duration(milliseconds: 100));
     tryOrNull(
-      () => telegramDataBloc.add(TelegramDataEvent.setData(
-        telegramService.getTelegramData()!,
+      () => _telegramDataBloc.add(TelegramDataEvent.setData(
+        _telegramService.getTelegramData()!,
       )),
     );
   }

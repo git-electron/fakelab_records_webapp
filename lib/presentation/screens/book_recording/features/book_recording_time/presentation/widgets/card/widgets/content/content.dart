@@ -14,7 +14,7 @@ class _Content extends StatelessWidget {
           _Title(),
           _Info(),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _DurationButtons(),

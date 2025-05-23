@@ -11,7 +11,6 @@ import 'package:injectable/injectable.dart';
 import '../../../../../../../../../core/domain/models/result/result.dart';
 import '../../../../../../../../../core/extensions/string_extensions.dart';
 import '../../../../../../../../../core/router/router.dart';
-import '../../../../../../../../../core/utils/id_generator/id_generator.dart';
 import '../../../../../../domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import '../../../../domain/models/staff_activity.dart';
 import '../../../../domain/models/staff_member.dart';
@@ -26,12 +25,11 @@ part 'admin_edit_staff_member_state.dart';
 class AdminEditStaffMemberBloc
     extends Bloc<AdminEditStaffMemberEvent, AdminEditStaffMemberState> {
   AdminEditStaffMemberBloc(
-    this.router,
-    this.cloudinary,
-    this.idGenerator,
+    this._router,
+    this._cloudinary,
     @factoryParam this.staffMember,
-    this.adminEditStaffMemberClient,
-    @factoryParam this.adminStaffBloc,
+    this._adminEditStaffMemberClient,
+    @factoryParam this._adminStaffBloc,
   ) : super(AdminEditStaffMemberState.fromStaffMember(staffMember)) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
@@ -47,11 +45,10 @@ class AdminEditStaffMemberBloc
 
   final StaffMember staffMember;
 
-  final AppRouter router;
-  final Cloudinary cloudinary;
-  final IdGenerator idGenerator;
-  final AdminStaffBloc adminStaffBloc;
-  final AdminEditStaffMemberClient adminEditStaffMemberClient;
+  final AppRouter _router;
+  final Cloudinary _cloudinary;
+  final AdminStaffBloc _adminStaffBloc;
+  final AdminEditStaffMemberClient _adminEditStaffMemberClient;
 
   Future<void> _onFirstNameChanged(
     _FirstNameChanged event,
@@ -120,24 +117,24 @@ class AdminEditStaffMemberBloc
   ) async {
     emit(state.copyWith(isLoading: true));
     final StaffMember updatedStaffMember =
-        await state.updatedStaffMember(staffMember, cloudinary: cloudinary);
+        await state.updatedStaffMember(staffMember, cloudinary: _cloudinary);
 
     final Result<StaffMember> result =
-        await adminEditStaffMemberClient.updateStaffMember(updatedStaffMember);
+        await _adminEditStaffMemberClient.updateStaffMember(updatedStaffMember);
     result.when(
       success: (updatedStaffMember) {
         emit(state.copyWith(isLoading: false));
-        if (adminStaffBloc.state.isLoaded) {
+        if (_adminStaffBloc.state.isLoaded) {
           final List<StaffMember> updatedStaffMembers =
-              adminStaffBloc.state.staffMembers!.map((staffMember) {
+              _adminStaffBloc.state.staffMembers!.map((staffMember) {
             if (staffMember.id == updatedStaffMember.id) {}
             return staffMember.id == updatedStaffMember.id
                 ? updatedStaffMember
                 : staffMember;
           }).toList();
 
-          adminStaffBloc.add(AdminStaffEvent.setLoaded(updatedStaffMembers));
-          router.pop();
+          _adminStaffBloc.add(AdminStaffEvent.setLoaded(updatedStaffMembers));
+          _router.pop();
         }
       },
       error: (message) => emit(state.copyWith(isLoading: false)),
@@ -148,7 +145,7 @@ class AdminEditStaffMemberBloc
     _DeleteButtonPressed event,
     Emitter<AdminEditStaffMemberState> emit,
   ) async {
-    router.pop();
-    adminStaffBloc.add(AdminStaffEvent.deleteStaffMember(staffMember.id));
+    _router.pop();
+    _adminStaffBloc.add(AdminStaffEvent.deleteStaffMember(staffMember.id));
   }
 }

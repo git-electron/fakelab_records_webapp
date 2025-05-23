@@ -12,17 +12,17 @@ part 'home_state.dart';
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(
-    this.userBloc,
+    this._userBloc,
     @factoryParam this.myOrdersFeatureBloc,
   ) : super(const _HomeState()) {
     on<_UserStateChanged>(_onUserStateChanged);
     on<_MyOrdersFeatureStateChanged>(_onMyOrdersFeatureStateChanged);
 
-    userBloc.stream.listen(_userStateListener);
+    _userBloc.stream.listen(_userStateListener);
     myOrdersFeatureBloc.stream.listen(_myOrdersFeatureStateListener);
   }
 
-  final UserBloc userBloc;
+  final UserBloc _userBloc;
   final MyOrdersFeatureBloc myOrdersFeatureBloc;
 
   Future<void> _onUserStateChanged(

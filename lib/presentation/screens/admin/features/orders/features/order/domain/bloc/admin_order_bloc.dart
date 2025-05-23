@@ -17,9 +17,9 @@ part 'admin_order_state.dart';
 @injectable
 class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
   AdminOrderBloc(
-    this.adminOrderClient,
+    this._adminOrderClient,
     @factoryParam this.orderId,
-    @factoryParam this.adminOrdersBloc,
+    @factoryParam this._adminOrdersBloc,
   ) : super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
@@ -33,8 +33,8 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
   }
 
   final String orderId;
-  final AdminOrdersBloc adminOrdersBloc;
-  final AdminOrderClient adminOrderClient;
+  final AdminOrdersBloc _adminOrdersBloc;
+  final AdminOrderClient _adminOrderClient;
 
   Future<void> _onSetLoading(
     _SetLoading event,
@@ -85,7 +85,7 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
 
   Future<void> _getOrder() async {
     add(const AdminOrderEvent.setLoading());
-    final Result<Order> result = await adminOrderClient.getOrder(orderId);
+    final Result<Order> result = await _adminOrderClient.getOrder(orderId);
     result.when(
       success: (order) => add(AdminOrderEvent.setLoaded(order)),
       error: (message) => add(AdminOrderEvent.setError(message)),
@@ -99,7 +99,7 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
     StaffMember? assignee,
   }) async {
     add(const AdminOrderEvent.setLoading());
-    final Result<Order> result = await adminOrderClient.updateOrder(
+    final Result<Order> result = await _adminOrderClient.updateOrder(
       state.order!,
       status: status,
       message: message,
@@ -109,13 +109,13 @@ class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
     result.when(
       success: (updatedOrder) {
         add(AdminOrderEvent.setLoaded(updatedOrder));
-        if (adminOrdersBloc.state.isLoaded) {
+        if (_adminOrdersBloc.state.isLoaded) {
           final List<Order> updatedOrders =
-              adminOrdersBloc.state.orders!.map((order) {
+              _adminOrdersBloc.state.orders!.map((order) {
             return order.id == updatedOrder.id ? updatedOrder : order;
           }).toList();
 
-          adminOrdersBloc.add(AdminOrdersEvent.setLoaded(updatedOrders));
+          _adminOrdersBloc.add(AdminOrdersEvent.setLoaded(updatedOrders));
         }
       },
       error: (message) => add(AdminOrderEvent.setError(message)),

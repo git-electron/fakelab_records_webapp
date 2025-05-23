@@ -17,13 +17,16 @@ part 'admin_panel_state.dart';
 
 @injectable
 class AdminPanelBloc extends Bloc<AdminPanelEvent, AdminPanelState> {
-  AdminPanelBloc(this.userBloc, this.adminPanelClient)
+  AdminPanelBloc(this._userBloc, this._adminPanelClient)
       : super(const _Collapsed()) {
     on<_SetExpanded>(_onSetExpanded);
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);
   }
+
+  final UserBloc _userBloc;
+  final AdminPanelClient _adminPanelClient;
 
   Future<void> _onSetExpanded(
     _SetExpanded event,
@@ -54,17 +57,14 @@ class AdminPanelBloc extends Bloc<AdminPanelEvent, AdminPanelState> {
     emit(AdminPanelState.error(event.message));
   }
 
-  final UserBloc userBloc;
-  final AdminPanelClient adminPanelClient;
-
   Future<void> _getOrders() async {
-    if (!userBloc.state.user!.isAdmin) return;
+    if (!_userBloc.state.user!.isAdmin) return;
 
     add(const AdminPanelEvent.setLoading());
-    final Result<List<Order>> result = await adminPanelClient.getOrders();
+    final Result<List<Order>> result = await _adminPanelClient.getOrders();
     result.when(
       success: (orders) async {
-        final Result<List<User>> result = await adminPanelClient.getClients();
+        final Result<List<User>> result = await _adminPanelClient.getClients();
         result.when(
           success: (clients) => add(AdminPanelEvent.setLoaded(
             orders: orders,

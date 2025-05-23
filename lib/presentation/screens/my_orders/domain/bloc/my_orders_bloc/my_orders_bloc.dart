@@ -12,17 +12,17 @@ part 'my_orders_state.dart';
 @injectable
 class MyOrdersBloc extends Bloc<MyOrdersEvent, MyOrdersState> {
   MyOrdersBloc(
-    this.userBloc,
+    this._userBloc,
     @factoryParam this.myOrdersFeatureBloc,
   ) : super(const _MyOrdersState()) {
     on<_UserStateChanged>(_onUserStateChanged);
     on<_MyOrdersFeatureStateChanged>(_onMyOrdersFeatureStateChanged);
 
-    userBloc.stream.listen(_userStateListener);
+    _userBloc.stream.listen(_userStateListener);
     myOrdersFeatureBloc.stream.listen(_myOrdersFeatureStateListener);
   }
 
-  final UserBloc userBloc;
+  final UserBloc _userBloc;
   final MyOrdersFeatureBloc myOrdersFeatureBloc;
 
   Future<void> _onUserStateChanged(

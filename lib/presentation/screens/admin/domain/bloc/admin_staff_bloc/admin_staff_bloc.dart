@@ -14,7 +14,7 @@ part 'admin_staff_state.dart';
 
 @injectable
 class AdminStaffBloc extends Bloc<AdminStaffEvent, AdminStaffState> {
-  AdminStaffBloc(this.userBloc, this.adminStaffClient)
+  AdminStaffBloc(this._userBloc, this._adminStaffClient)
       : super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
@@ -24,8 +24,8 @@ class AdminStaffBloc extends Bloc<AdminStaffEvent, AdminStaffState> {
     tryOrNullAsync(_getStaffMembers);
   }
 
-  final UserBloc userBloc;
-  final AdminStaffClient adminStaffClient;
+  final UserBloc _userBloc;
+  final AdminStaffClient _adminStaffClient;
 
   Future<void> _onSetLoading(
     _SetLoading event,
@@ -56,11 +56,11 @@ class AdminStaffBloc extends Bloc<AdminStaffEvent, AdminStaffState> {
   }
 
   Future<void> _getStaffMembers() async {
-    if (!userBloc.state.user!.isAdmin) return;
+    if (!_userBloc.state.user!.isAdmin) return;
 
     add(const AdminStaffEvent.setLoading());
     final Result<List<StaffMember>> result =
-        await adminStaffClient.getStaffMembers();
+        await _adminStaffClient.getStaffMembers();
     result.when(
       success: (staffMembers) => add(AdminStaffEvent.setLoaded(staffMembers)),
       error: (message) => add(AdminStaffEvent.setError(message)),
@@ -68,13 +68,13 @@ class AdminStaffBloc extends Bloc<AdminStaffEvent, AdminStaffState> {
   }
 
   Future<void> _deleteStaffMember(String staffMemberId) async {
-    if (!userBloc.state.user!.isAdmin) return;
+    if (!_userBloc.state.user!.isAdmin) return;
 
     final List<StaffMember> staffMembers = state.staffMembers ?? [];
 
     add(const AdminStaffEvent.setLoading());
     final Result<bool> result =
-        await adminStaffClient.deleteStaffMember(staffMemberId);
+        await _adminStaffClient.deleteStaffMember(staffMemberId);
     result.when(
       success: (_) {
         final List<StaffMember> updatedStaffMembers = staffMembers

@@ -5,9 +5,11 @@ class _Cover extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double dimension = MediaQuery.of(context).size.width * .2;
+
     return Container(
-      width: 100,
-      height: 100,
+      width: dimension,
+      height: dimension,
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
         shape: BorderRadius.circular(10).smoothShape(),

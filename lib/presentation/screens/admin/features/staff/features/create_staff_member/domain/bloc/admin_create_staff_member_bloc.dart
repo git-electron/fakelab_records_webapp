@@ -26,11 +26,11 @@ part 'admin_create_staff_member_state.dart';
 class AdminCreateStaffMemberBloc
     extends Bloc<AdminCreateStaffMemberEvent, AdminCreateStaffMemberState> {
   AdminCreateStaffMemberBloc(
-    this.router,
-    this.cloudinary,
-    this.idGenerator,
-    @factoryParam this.adminStaffBloc,
-    this.adminCreateStaffMemberClient,
+    this._router,
+    this._cloudinary,
+    this._idGenerator,
+    @factoryParam this._adminStaffBloc,
+    this._adminCreateStaffMemberClient,
   ) : super(const _AdminCreateStaffMemberState()) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
@@ -43,11 +43,11 @@ class AdminCreateStaffMemberBloc
     on<_CreateButtonPressed>(_onCreateButtonPressed);
   }
 
-  final AppRouter router;
-  final Cloudinary cloudinary;
-  final IdGenerator idGenerator;
-  final AdminStaffBloc adminStaffBloc;
-  final AdminCreateStaffMemberClient adminCreateStaffMemberClient;
+  final AppRouter _router;
+  final Cloudinary _cloudinary;
+  final IdGenerator _idGenerator;
+  final AdminStaffBloc _adminStaffBloc;
+  final AdminCreateStaffMemberClient _adminCreateStaffMemberClient;
 
   Future<void> _onFirstNameChanged(
     _FirstNameChanged event,
@@ -116,23 +116,23 @@ class AdminCreateStaffMemberBloc
   ) async {
     emit(state.copyWith(isLoading: true));
     final StaffMember staffMember = await state.staffMember(
-      idGenerator: idGenerator,
-      cloudinary: cloudinary,
+      idGenerator: _idGenerator,
+      cloudinary: _cloudinary,
     );
 
     final Result<StaffMember> result =
-        await adminCreateStaffMemberClient.createStaffMember(staffMember);
+        await _adminCreateStaffMemberClient.createStaffMember(staffMember);
     result.when(
       success: (staffMember) {
         emit(state.copyWith(isLoading: false));
-        if (adminStaffBloc.state.isLoaded) {
+        if (_adminStaffBloc.state.isLoaded) {
           final List<StaffMember> updatedStaffMembers = [
-            ...adminStaffBloc.state.staffMembers!,
+            ..._adminStaffBloc.state.staffMembers!,
             staffMember,
           ];
 
-          adminStaffBloc.add(AdminStaffEvent.setLoaded(updatedStaffMembers));
-          router.pop();
+          _adminStaffBloc.add(AdminStaffEvent.setLoaded(updatedStaffMembers));
+          _router.pop();
         }
       },
       error: (message) => emit(state.copyWith(isLoading: false)),

@@ -11,10 +11,10 @@ import '../../../../../main.dart';
 
 @injectable
 class MyOrderClient {
-  MyOrderClient(this.ref, this.logger);
+  MyOrderClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _errorMessage = 'Failed to get order';
   final Result<Order> _notFoundResult = Result.error('Заказ не найден');
@@ -32,14 +32,14 @@ class MyOrderClient {
     try {
       final String path = 'orders/$orderId';
 
-      final DataSnapshot snapshot = await ref.child(path).get();
+      final DataSnapshot snapshot = await _ref.child(path).get();
       final bool isExists = snapshot.exists;
 
       if (!isExists) return _notFoundResult;
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -48,7 +48,7 @@ Data: $json''');
       final Order order = Order.fromJson(json);
       return Result.success(order);
     } catch (error) {
-      logger.e(_errorMessage, error: error);
+      _logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

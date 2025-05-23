@@ -12,10 +12,10 @@ import '../../../../../main.dart';
 
 @injectable
 class AdminPanelClient {
-  AdminPanelClient(this.ref, this.logger);
+  AdminPanelClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _ordersErrorMessage = 'Failed to get orders';
 
@@ -32,7 +32,7 @@ class AdminPanelClient {
     try {
       const String path = 'orders';
 
-      final DataSnapshot snapshot = await ref
+      final DataSnapshot snapshot = await _ref
           .child(path)
           .orderByChild('dateChanged')
           .startAt(twoMonthsAgo.toIso8601String())
@@ -40,7 +40,7 @@ class AdminPanelClient {
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -49,7 +49,7 @@ Data: $json''');
       final List<Order> orders = json.values.map(Order.maybeFromJson).toList();
       return Result.success(orders);
     } catch (error) {
-      logger.e(_ordersErrorMessage, error: error);
+      _logger.e(_ordersErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }
@@ -61,11 +61,11 @@ Data: $json''');
 
     try {
       const String path = 'users';
-      final DataSnapshot snapshot = await ref.child(path).get();
+      final DataSnapshot snapshot = await _ref.child(path).get();
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -75,7 +75,7 @@ Data: $json''');
 
       return Result.success(clients);
     } catch (error) {
-      logger.e(_clientsErrorMessage, error: error);
+      _logger.e(_clientsErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }

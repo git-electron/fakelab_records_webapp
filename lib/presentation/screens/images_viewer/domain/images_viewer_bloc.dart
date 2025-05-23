@@ -12,10 +12,10 @@ part 'images_viewer_state.dart';
 @injectable
 class ImagesViewerBloc extends Bloc<ImagesViewerEvent, ImagesViewerState> {
   ImagesViewerBloc({
-    required this.telegramService,
+    required TelegramService telegramService,
     @factoryParam required this.images,
     @factoryParam required this.initialIndex,
-  }) : super(const _ImagesViewerState()) {
+  }) : _telegramService = telegramService, super(const _ImagesViewerState()) {
     on<_SetPositionYDelta>(_setPositionYDelta);
     on<_SetInitialYPosition>(_setInitialYPosition);
     on<_SetCurrentYPosition>(_setCurrentYPosition);
@@ -25,19 +25,19 @@ class ImagesViewerBloc extends Bloc<ImagesViewerEvent, ImagesViewerState> {
       initialPage: initialIndex,
       viewportFraction: 1.02,
     );
-    telegramService.showBackButton();
+    _telegramService.showBackButton();
   }
 
   @override
   Future<void> close() {
     controller.dispose();
-    telegramService.hideBackButton();
+    _telegramService.hideBackButton();
     return super.close();
   }
 
   final int initialIndex;
   final List<String> images;
-  final TelegramService telegramService;
+  final TelegramService _telegramService;
 
   late final PageController controller;
 

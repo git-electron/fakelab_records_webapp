@@ -18,21 +18,21 @@ part 'my_orders_feature_state.dart';
 class MyOrdersFeatureBloc
     extends Bloc<MyOrdersFeatureEvent, MyOrdersFeatureState> {
   MyOrdersFeatureBloc(
-    this.userBloc,
-    this.ordersClient,
-    @factoryParam this.limit,
+    this._userBloc,
+    this._ordersClient,
+    @factoryParam this._limit,
   ) : super(const _Loading()) {
     on<_SetError>(_onSetError);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetLoading>(_onSetLoading);
 
     tryOrNullAsync(_getOrders);
-    userBloc.stream.listen(_onUserStateEvent);
+    _userBloc.stream.listen(_onUserStateEvent);
   }
 
-  final UserBloc userBloc;
-  final OrdersClient ordersClient;
-  final MyOrdersLimitPolicy limit;
+  final UserBloc _userBloc;
+  final OrdersClient _ordersClient;
+  final MyOrdersLimitPolicy _limit;
 
   Future<void> _onSetLoading(
     _SetLoading event,
@@ -60,11 +60,11 @@ class MyOrdersFeatureBloc
   }
 
   Future<void> _getOrders() async {
-    final int userId = userBloc.state.user!.id;
+    final int userId = _userBloc.state.user!.id;
     add(const MyOrdersFeatureEvent.setLoading());
-    final Result<List<Order>> result = await ordersClient.getOrders(
+    final Result<List<Order>> result = await _ordersClient.getOrders(
       userId,
-      hasLimit: limit.hasLimit,
+      hasLimit: _limit.hasLimit,
     );
     result.when(
       success: (orders) => add(MyOrdersFeatureEvent.setLoaded(orders)),

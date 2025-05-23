@@ -1,3 +1,4 @@
+import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart';
 import 'package:fakelab_records_webapp/core/utils/is_same_day/is_same_day.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,15 +22,24 @@ part 'extensions/argument_data_extensions.dart';
 
 @injectable
 class BookingsBloc extends Bloc<BookingsEvent, BookingsState> {
-  BookingsBloc(this.bookingsClient) : super(const _Loading()) {
+  BookingsBloc(this._bookingsClient, this._telegramService)
+      : super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);
 
     tryOrNullAsync(_getBookings);
+    _telegramService.showBackButton();
   }
 
-  final BookingsClient bookingsClient;
+  @override
+  Future<void> close() {
+    _telegramService.hideBackButton();
+    return super.close();
+  }
+
+  final BookingsClient _bookingsClient;
+  final TelegramService _telegramService;
 
   Future<void> _onSetLoading(
     _SetLoading event,
@@ -52,9 +62,11 @@ class BookingsBloc extends Bloc<BookingsEvent, BookingsState> {
     emit(BookingsState.error(event.message));
   }
 
+  Future<void> refreshBookings() async => _getBookings();
+
   Future<void> _getBookings() async {
     add(const BookingsEvent.setLoading());
-    final Result<List<Booking>> result = await bookingsClient.getBookings();
+    final Result<List<Booking>> result = await _bookingsClient.getBookings();
     result.when(
       success: (orders) => add(BookingsEvent.setLoaded(orders)),
       error: (message) => add(BookingsEvent.setError(message)),

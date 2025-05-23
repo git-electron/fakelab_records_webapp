@@ -19,10 +19,10 @@ part 'admin_create_client_state.dart';
 class AdminCreateClientBloc
     extends Bloc<AdminCreateClientEvent, AdminCreateClientState> {
   AdminCreateClientBloc(
-    this.router,
-    this.idGenerator,
-    this.adminCreateClientClient,
-    @factoryParam this.adminClientsBloc,
+    this._router,
+    this._idGenerator,
+    this._adminCreateClientClient,
+    @factoryParam this._adminClientsBloc,
   ) : super(const _AdminCreateClientState()) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
@@ -32,10 +32,10 @@ class AdminCreateClientBloc
     on<_CreateButtonPressed>(_onCreateButtonPressed);
   }
 
-  final AppRouter router;
-  final IdGenerator idGenerator;
-  final AdminClientsBloc adminClientsBloc;
-  final AdminCreateClientClient adminCreateClientClient;
+  final AppRouter _router;
+  final IdGenerator _idGenerator;
+  final AdminClientsBloc _adminClientsBloc;
+  final AdminCreateClientClient _adminCreateClientClient;
 
   Future<void> _onFirstNameChanged(
     _FirstNameChanged event,
@@ -70,21 +70,21 @@ class AdminCreateClientBloc
     Emitter<AdminCreateClientState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
-    final User client = await state.client(idGenerator: idGenerator);
+    final User client = await state.client(idGenerator: _idGenerator);
 
     final Result<User> result =
-        await adminCreateClientClient.createClient(client);
+        await _adminCreateClientClient.createClient(client);
     result.when(
       success: (client) {
         emit(state.copyWith(isLoading: false));
-        if (adminClientsBloc.state.isLoaded) {
+        if (_adminClientsBloc.state.isLoaded) {
           final List<User> updatedClients = [
-            ...adminClientsBloc.state.clients!,
+            ..._adminClientsBloc.state.clients!,
             client,
           ];
 
-          adminClientsBloc.add(AdminClientsEvent.setLoaded(updatedClients));
-          router.pop();
+          _adminClientsBloc.add(AdminClientsEvent.setLoaded(updatedClients));
+          _router.pop();
         }
       },
       error: (message) => emit(state.copyWith(isLoading: false)),

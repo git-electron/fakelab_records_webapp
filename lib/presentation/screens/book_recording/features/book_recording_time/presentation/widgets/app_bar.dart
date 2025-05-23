@@ -19,39 +19,37 @@ class _Mobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final BookRecordingTimeBloc bloc = context.read();
-
-    return BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
-      builder: (context, state) {
-        return TelegramMetaWrapper(
-          builder: (context, meta) {
-            return Container(
-              height: meta.totalSafeAreaInset.top,
-              width: double.maxFinite,
-              alignment: Alignment.bottomCenter,
-              child: Blur(
-                blur: 10,
-                blurColor: context.colors.background,
-                alignment: Alignment.bottomCenter,
-                overlay: Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  height: meta.contentSafeAreaInset.top,
-                  child: Text(
-                    bloc.selectedDate.toDDmmYYYYwithMonths(
+    return TelegramMetaWrapper(
+      builder: (context, meta) {
+        return Container(
+          height: meta.totalSafeAreaInset.top,
+          width: double.maxFinite,
+          alignment: Alignment.bottomCenter,
+          child: Blur(
+            blur: 10,
+            blurColor: context.colors.background,
+            alignment: Alignment.bottomCenter,
+            overlay: Container(
+              width: double.infinity,
+              alignment: Alignment.center,
+              height: meta.contentSafeAreaInset.top,
+              child: BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
+                builder: (context, state) {
+                  return Text(
+                    state.selectedDate.toDDmmYYYYwithMonths(
                       withWords: true,
                       isShort: false,
                     ),
                     style: context.styles.body1,
-                  ),
-                ),
-                child: const SizedBox(
-                  height: double.infinity,
-                  width: double.infinity,
-                ),
+                  );
+                },
               ),
-            );
-          },
+            ),
+            child: const SizedBox(
+              height: double.infinity,
+              width: double.infinity,
+            ),
+          ),
         );
       },
     );
@@ -63,8 +61,6 @@ class _Desktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final BookRecordingTimeBloc bloc = context.read();
-
     return SizedBox(
       height: _toolbarHeight,
       width: double.maxFinite,
@@ -77,12 +73,16 @@ class _Desktop extends StatelessWidget {
           width: double.maxFinite,
           padding: const Pad(horizontal: 20),
           alignment: Alignment.center,
-          child: Text(
-            bloc.selectedDate.toDDmmYYYYwithMonths(
-              withWords: true,
-              isShort: false,
-            ),
-            style: context.styles.body1,
+          child: BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
+            builder: (context, state) {
+              return Text(
+                state.selectedDate.toDDmmYYYYwithMonths(
+                  withWords: true,
+                  isShort: false,
+                ),
+                style: context.styles.body1,
+              );
+            },
           ),
         ),
         child: const SizedBox(

@@ -12,7 +12,7 @@ class _Button extends StatelessWidget {
           return AppButton.primary(
             onTap: () {},
             isEnabled: state.canProceed,
-            text: 'Продолжить',
+            text: 'К оформлению',
           );
         },
       ),

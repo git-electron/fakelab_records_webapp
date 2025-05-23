@@ -22,20 +22,20 @@ part 'admin_create_order_state.dart';
 class AdminCreateOrderBloc
     extends Bloc<AdminCreateOrderEvent, AdminCreateOrderState> {
   AdminCreateOrderBloc(
-    this.router,
-    this.idGenerator,
-    this.adminCreateOrderClient,
-    @factoryParam this.adminOrdersBloc,
+    this._router,
+    this._idGenerator,
+    this._adminCreateOrderClient,
+    @factoryParam this._adminOrdersBloc,
   ) : super(const _AdminCreateOrderState()) {
     on<_CustomerSelected>(_onCustomerSelected);
     on<_OrderTypeSelected>(_onOrderTypeSelected);
     on<_CreateButtonPressed>(_onCreateButtonPressed);
   }
 
-  final AppRouter router;
-  final IdGenerator idGenerator;
-  final AdminOrdersBloc adminOrdersBloc;
-  final AdminCreateOrderClient adminCreateOrderClient;
+  final AppRouter _router;
+  final IdGenerator _idGenerator;
+  final AdminOrdersBloc _adminOrdersBloc;
+  final AdminCreateOrderClient _adminCreateOrderClient;
 
   Future<void> _onCustomerSelected(
     _CustomerSelected event,
@@ -56,21 +56,21 @@ class AdminCreateOrderBloc
     Emitter<AdminCreateOrderState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
-    final Order order = state.order(idGenerator);
+    final Order order = state.order(_idGenerator);
 
     final Result<Order> result =
-        await adminCreateOrderClient.createOrder(order);
+        await _adminCreateOrderClient.createOrder(order);
     result.when(
       success: (order) {
         emit(state.copyWith(isLoading: false));
-        if (adminOrdersBloc.state.isLoaded) {
+        if (_adminOrdersBloc.state.isLoaded) {
           final List<Order> updatedOrders = [
             order,
-            ...adminOrdersBloc.state.orders!,
+            ..._adminOrdersBloc.state.orders!,
           ];
 
-          adminOrdersBloc.add(AdminOrdersEvent.setLoaded(updatedOrders));
-          router.pop();
+          _adminOrdersBloc.add(AdminOrdersEvent.setLoaded(updatedOrders));
+          _router.pop();
         }
       },
       error: (message) => emit(state.copyWith(isLoading: false)),

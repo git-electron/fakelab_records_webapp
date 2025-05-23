@@ -5,29 +5,26 @@ class _Info extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final BookRecordingTimeBloc bloc = context.read();
+    return BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
+      builder: (context, state) {
+        final DateTime? selectedTime = state.selectedTime;
+        final Duration selectedDuration = state.selectedDuration;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _InfoItem(
-          icon: Assets.icons.calendar.light,
-          text: _date(bloc.selectedDate),
-        ),
-        BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
-          builder: (context, state) {
-            final DateTime? selectedTime = state.selectedTime;
-            final Duration selectedDuration = state.selectedDuration;
-
-            if (selectedTime == null) return const SizedBox();
-
-            return _InfoItem(
-              icon: Assets.icons.clock.light,
-              text: _timeInterval(selectedTime, selectedDuration),
-            );
-          },
-        ),
-      ],
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _InfoItem(
+              icon: Assets.icons.calendar.light,
+              text: _date(state.selectedDate),
+            ),
+            if (selectedTime != null)
+              _InfoItem(
+                icon: Assets.icons.clock.light,
+                text: _timeInterval(selectedTime, selectedDuration),
+              ),
+          ],
+        );
+      },
     );
   }
 

@@ -7,7 +7,6 @@ import '../../../../../../../../../core/domain/models/user/user.dart';
 import '../../../../../../../../../core/extensions/string_extensions.dart';
 import '../../../../../../../../../core/formatters/phone_number_formatter.dart';
 import '../../../../../../../../../core/router/router.dart';
-import '../../../../../../../../../core/utils/id_generator/id_generator.dart';
 import '../../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
 import '../../client/admin_edit_client_client.dart';
 
@@ -20,10 +19,9 @@ class AdminEditClientBloc
     extends Bloc<AdminEditClientEvent, AdminEditClientState> {
   AdminEditClientBloc(
     @factoryParam this.client,
-    @factoryParam this.adminClientsBloc,
-    this.router,
-    this.idGenerator,
-    this.adminEditClientClient,
+    @factoryParam this._adminClientsBloc,
+    this._router,
+    this._adminEditClientClient,
   ) : super(AdminEditClientState.fromClient(client)) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
@@ -36,10 +34,9 @@ class AdminEditClientBloc
 
   final User client;
 
-  final AppRouter router;
-  final IdGenerator idGenerator;
-  final AdminClientsBloc adminClientsBloc;
-  final AdminEditClientClient adminEditClientClient;
+  final AppRouter _router;
+  final AdminClientsBloc _adminClientsBloc;
+  final AdminEditClientClient _adminEditClientClient;
 
   Future<void> _onFirstNameChanged(
     _FirstNameChanged event,
@@ -77,19 +74,19 @@ class AdminEditClientBloc
     final User updatedClient = await state.updatedClient(client);
 
     final Result<User> result =
-        await adminEditClientClient.updateClient(updatedClient);
+        await _adminEditClientClient.updateClient(updatedClient);
     result.when(
       success: (updatedClient) {
         emit(state.copyWith(isLoading: false));
-        if (adminClientsBloc.state.isLoaded) {
+        if (_adminClientsBloc.state.isLoaded) {
           final List<User> updatedClients =
-              adminClientsBloc.state.clients!.map((client) {
+              _adminClientsBloc.state.clients!.map((client) {
             if (client.id == updatedClient.id) {}
             return client.id == updatedClient.id ? updatedClient : client;
           }).toList();
 
-          adminClientsBloc.add(AdminClientsEvent.setLoaded(updatedClients));
-          router.pop();
+          _adminClientsBloc.add(AdminClientsEvent.setLoaded(updatedClients));
+          _router.pop();
         }
       },
       error: (message) => emit(state.copyWith(isLoading: false)),
@@ -100,7 +97,7 @@ class AdminEditClientBloc
     _DeleteButtonPressed event,
     Emitter<AdminEditClientState> emit,
   ) async {
-    router.pop();
-    adminClientsBloc.add(AdminClientsEvent.deleteClient(client.id));
+    _router.pop();
+    _adminClientsBloc.add(AdminClientsEvent.deleteClient(client.id));
   }
 }

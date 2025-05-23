@@ -137,33 +137,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
-    gh.singleton<_i133.TelegramDataBloc>(
-        () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
-    gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
-      images,
-      initialIndex,
-    ) =>
-        _i15.ImagesViewerBloc(
-          telegramService: gh<_i435.TelegramService>(),
-          images: images,
-          initialIndex: initialIndex,
-        ));
-    gh.factoryParam<_i140.BookRecordingTimeBloc, DateTime, _i763.BookingsBloc>((
-      selectedDate,
-      bookingsBloc,
-    ) =>
-        _i140.BookRecordingTimeBloc(
-          selectedDate,
-          bookingsBloc,
-        ));
-    gh.factory<_i415.UserClient>(() => _i415.UserClient(
-          gh<_i345.DatabaseReference>(),
-          gh<_i974.Logger>(),
-        ));
-    gh.factory<_i652.OrdersClient>(() => _i652.OrdersClient(
-          gh<_i345.DatabaseReference>(),
-          gh<_i974.Logger>(),
-        ));
     gh.factory<_i415.AdminClientsClient>(() => _i415.AdminClientsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
@@ -215,8 +188,30 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i763.BookingsBloc>(
-        () => _i763.BookingsBloc(gh<_i511.BookingsClient>()));
+    gh.singleton<_i133.TelegramDataBloc>(
+        () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
+    gh.factoryParam<_i514.AdminOrderBloc, String, _i522.AdminOrdersBloc>((
+      orderId,
+      _adminOrdersBloc,
+    ) =>
+        _i514.AdminOrderBloc(
+          gh<_i150.AdminOrderClient>(),
+          orderId,
+          _adminOrdersBloc,
+        ));
+    gh.factory<_i763.BookingsBloc>(() => _i763.BookingsBloc(
+          gh<_i511.BookingsClient>(),
+          gh<_i435.TelegramService>(),
+        ));
+    gh.factoryParam<_i15.ImagesViewerBloc, List<String>, int>((
+      images,
+      initialIndex,
+    ) =>
+        _i15.ImagesViewerBloc(
+          telegramService: gh<_i435.TelegramService>(),
+          images: images,
+          initialIndex: initialIndex,
+        ));
     gh.factoryParam<_i843.MyOrderBloc, String, dynamic>((
       orderId,
       _,
@@ -226,52 +221,39 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i435.TelegramService>(),
           orderId,
         ));
+    gh.factory<_i415.UserClient>(() => _i415.UserClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.factory<_i652.OrdersClient>(() => _i652.OrdersClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.factoryParam<_i140.BookRecordingTimeBloc, DateTime, _i763.BookingsBloc>((
+      selectedDate,
+      _bookingsBloc,
+    ) =>
+        _i140.BookRecordingTimeBloc(
+          selectedDate,
+          _bookingsBloc,
+        ));
     gh.factory<_i869.AdminBloc>(() => _i869.AdminBloc(
           gh<_i435.TelegramService>(),
           gh<_i133.TelegramDataBloc>(),
         ));
     gh.factory<_i29.AudioPlayerBloc>(
         () => _i29.AudioPlayerBloc(gh<_i842.AssetsAudioPlayer>()));
-    gh.factoryParam<_i514.AdminOrderBloc, String, _i522.AdminOrdersBloc>((
-      orderId,
-      adminOrdersBloc,
-    ) =>
-        _i514.AdminOrderBloc(
-          gh<_i150.AdminOrderClient>(),
-          orderId,
-          adminOrdersBloc,
-        ));
     gh.singleton<_i109.UserBloc>(() => _i109.UserBloc(
           gh<_i415.UserClient>(),
           gh<_i133.TelegramDataBloc>(),
         ));
-    gh.factory<_i515.AdminClientsBloc>(() => _i515.AdminClientsBloc(
+    gh.factory<_i522.AdminOrdersBloc>(() => _i522.AdminOrdersBloc(
           gh<_i109.UserBloc>(),
-          gh<_i415.AdminClientsClient>(),
-        ));
-    gh.singleton<_i352.AppRouter>(() => _i352.AppRouter(
-          gh<_i974.Logger>(),
-          gh<_i109.UserBloc>(),
-          gh<_i133.TelegramDataBloc>(),
+          gh<_i9.AdminOrdersClient>(),
         ));
     gh.factory<_i481.AdminPanelBloc>(() => _i481.AdminPanelBloc(
           gh<_i109.UserBloc>(),
           gh<_i562.AdminPanelClient>(),
-        ));
-    gh.factory<_i330.AdminStaffBloc>(() => _i330.AdminStaffBloc(
-          gh<_i109.UserBloc>(),
-          gh<_i255.AdminStaffClient>(),
-        ));
-    gh.factoryParam<_i1030.AdminCreateOrderBloc, _i522.AdminOrdersBloc,
-        dynamic>((
-      adminOrdersBloc,
-      _,
-    ) =>
-        _i1030.AdminCreateOrderBloc(
-          gh<_i352.AppRouter>(),
-          gh<_i610.IdGenerator>(),
-          gh<_i742.AdminCreateOrderClient>(),
-          adminOrdersBloc,
         ));
     gh.factoryParam<_i19.HomeBloc, _i790.MyOrdersFeatureBloc, dynamic>((
       myOrdersFeatureBloc,
@@ -289,74 +271,92 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           myOrdersFeatureBloc,
         ));
+    gh.singleton<_i352.AppRouter>(() => _i352.AppRouter(
+          gh<_i974.Logger>(),
+          gh<_i109.UserBloc>(),
+          gh<_i133.TelegramDataBloc>(),
+        ));
+    gh.factoryParam<_i775.AdminEditStaffMemberBloc, _i1021.StaffMember,
+        _i330.AdminStaffBloc>((
+      staffMember,
+      _adminStaffBloc,
+    ) =>
+        _i775.AdminEditStaffMemberBloc(
+          gh<_i352.AppRouter>(),
+          gh<_i751.Cloudinary>(),
+          staffMember,
+          gh<_i532.AdminEditStaffMemberClient>(),
+          _adminStaffBloc,
+        ));
     gh.factoryParam<_i790.MyOrdersFeatureBloc, _i34.MyOrdersLimitPolicy,
         dynamic>((
-      limit,
+      _limit,
       _,
     ) =>
         _i790.MyOrdersFeatureBloc(
           gh<_i109.UserBloc>(),
           gh<_i652.OrdersClient>(),
-          limit,
+          _limit,
         ));
-    gh.factory<_i522.AdminOrdersBloc>(() => _i522.AdminOrdersBloc(
+    gh.factory<_i330.AdminStaffBloc>(() => _i330.AdminStaffBloc(
           gh<_i109.UserBloc>(),
-          gh<_i9.AdminOrdersClient>(),
+          gh<_i255.AdminStaffClient>(),
         ));
-    gh.factoryParam<_i775.AdminEditStaffMemberBloc, _i1021.StaffMember,
-        _i330.AdminStaffBloc>((
-      staffMember,
-      adminStaffBloc,
+    gh.factory<_i515.AdminClientsBloc>(() => _i515.AdminClientsBloc(
+          gh<_i109.UserBloc>(),
+          gh<_i415.AdminClientsClient>(),
+        ));
+    gh.factoryParam<_i1028.AdminEditClientBloc, _i107.User,
+        _i515.AdminClientsBloc>((
+      client,
+      _adminClientsBloc,
     ) =>
-        _i775.AdminEditStaffMemberBloc(
+        _i1028.AdminEditClientBloc(
+          client,
+          _adminClientsBloc,
           gh<_i352.AppRouter>(),
-          gh<_i751.Cloudinary>(),
-          gh<_i610.IdGenerator>(),
-          staffMember,
-          gh<_i532.AdminEditStaffMemberClient>(),
-          adminStaffBloc,
+          gh<_i1061.AdminEditClientClient>(),
         ));
     gh.factoryParam<_i206.BookRecordingDateBloc, _i763.BookingsBloc, dynamic>((
-      bookingsBloc,
+      _bookingsBloc,
       _,
     ) =>
         _i206.BookRecordingDateBloc(
           gh<_i352.AppRouter>(),
-          bookingsBloc,
+          _bookingsBloc,
         ));
     gh.factoryParam<_i39.AdminCreateClientBloc, _i515.AdminClientsBloc,
         dynamic>((
-      adminClientsBloc,
+      _adminClientsBloc,
       _,
     ) =>
         _i39.AdminCreateClientBloc(
           gh<_i352.AppRouter>(),
           gh<_i610.IdGenerator>(),
           gh<_i980.AdminCreateClientClient>(),
-          adminClientsBloc,
+          _adminClientsBloc,
         ));
-    gh.factoryParam<_i1028.AdminEditClientBloc, _i107.User,
-        _i515.AdminClientsBloc>((
-      client,
-      adminClientsBloc,
+    gh.factoryParam<_i1030.AdminCreateOrderBloc, _i522.AdminOrdersBloc,
+        dynamic>((
+      _adminOrdersBloc,
+      _,
     ) =>
-        _i1028.AdminEditClientBloc(
-          client,
-          adminClientsBloc,
+        _i1030.AdminCreateOrderBloc(
           gh<_i352.AppRouter>(),
           gh<_i610.IdGenerator>(),
-          gh<_i1061.AdminEditClientClient>(),
+          gh<_i742.AdminCreateOrderClient>(),
+          _adminOrdersBloc,
         ));
     gh.factoryParam<_i672.AdminCreateStaffMemberBloc, _i330.AdminStaffBloc,
         dynamic>((
-      adminStaffBloc,
+      _adminStaffBloc,
       _,
     ) =>
         _i672.AdminCreateStaffMemberBloc(
           gh<_i352.AppRouter>(),
           gh<_i751.Cloudinary>(),
           gh<_i610.IdGenerator>(),
-          adminStaffBloc,
+          _adminStaffBloc,
           gh<_i89.AdminCreateStaffMemberClient>(),
         ));
     return this;

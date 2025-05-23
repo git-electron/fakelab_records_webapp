@@ -12,10 +12,10 @@ import '../domain/models/booking/booking.dart';
 
 @injectable
 class BookingsClient {
-  BookingsClient(this.ref, this.logger);
+  BookingsClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _errorMessage = 'Failed to get bookings';
 
@@ -32,7 +32,7 @@ class BookingsClient {
     try {
       const String path = 'bookings';
 
-      final DataSnapshot snapshot = await ref
+      final DataSnapshot snapshot = await _ref
           .child(path)
           .orderByChild('date')
           .startAt(today.toIso8601String())
@@ -40,7 +40,7 @@ class BookingsClient {
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -53,7 +53,7 @@ Data: $json''');
 
       return Result.success(bookings);
     } catch (error) {
-      logger.e(_errorMessage, error: error);
+      _logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

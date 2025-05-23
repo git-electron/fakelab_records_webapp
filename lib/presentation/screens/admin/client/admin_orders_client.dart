@@ -11,10 +11,10 @@ import '../../../../main.dart';
 
 @injectable
 class AdminOrdersClient {
-  AdminOrdersClient(this.ref, this.logger);
+  AdminOrdersClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _errorMessage = 'Failed to get orders';
 
@@ -31,7 +31,7 @@ class AdminOrdersClient {
     try {
       const String path = 'orders';
       
-      final DataSnapshot snapshot = await ref
+      final DataSnapshot snapshot = await _ref
           .child(path)
           .orderByChild('dateChanged')
           .startAt(twoMonthsAgo.toIso8601String())
@@ -39,7 +39,7 @@ class AdminOrdersClient {
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -50,7 +50,7 @@ Data: $json''');
 
       return Result.success(orders);
     } catch (error) {
-      logger.e(_errorMessage, error: error);
+      _logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }
