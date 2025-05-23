@@ -9,10 +9,10 @@ import '../../../../../../../../main.dart';
 
 @injectable
 class AdminEditClientClient {
-  AdminEditClientClient(this.ref, this.logger);
+  AdminEditClientClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   Future<Result<User>> updateClient(User client) async {
     if (isDevelopment) {
@@ -27,15 +27,15 @@ class AdminEditClientClient {
     try {
       final String path = 'users/${client.id}';
 
-      logger.i('''Realtime Database update request:
+      _logger.i('''Realtime Database update request:
 Path: $path
 Data: $client''');
 
-      await ref.child(path).update(client.toJson());
+      await _ref.child(path).update(client.toJson());
 
       return Result.success(client);
     } catch (error) {
-      logger.e('Failed to update client', error: error);
+      _logger.e('Failed to update client', error: error);
       return Result.error(error.toString());
     }
   }

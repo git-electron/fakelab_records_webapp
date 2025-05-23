@@ -11,10 +11,10 @@ import '../../../../main.dart';
 
 @injectable
 class AdminClientsClient {
-  AdminClientsClient(this.ref, this.logger);
+  AdminClientsClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _clientsErrorMessage = 'Failed to get clients';
 
@@ -24,11 +24,11 @@ class AdminClientsClient {
     try {
       const String path = 'users';
 
-      final DataSnapshot snapshot = await ref.child(path).get();
+      final DataSnapshot snapshot = await _ref.child(path).get();
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -38,7 +38,7 @@ Data: $json''');
 
       return Result.success(clients);
     } catch (error) {
-      logger.e(_clientsErrorMessage, error: error);
+      _logger.e(_clientsErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }
@@ -49,14 +49,14 @@ Data: $json''');
     try {
       final String path = 'users/$clientId';
 
-      logger.i('''Realtime Database delete request:
+      _logger.i('''Realtime Database delete request:
 Path: $path''');
 
-      await ref.child(path).remove();
+      await _ref.child(path).remove();
 
       return Result.success(true);
     } catch (error) {
-      logger.e(_deletelientErrorMessage, error: error);
+      _logger.e(_deletelientErrorMessage, error: error);
       return Result.error();
     }
   }

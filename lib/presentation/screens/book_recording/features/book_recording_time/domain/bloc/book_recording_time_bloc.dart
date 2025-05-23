@@ -15,21 +15,20 @@ part 'book_recording_time_state.dart';
 class BookRecordingTimeBloc
     extends Bloc<BookRecordingTimeEvent, BookRecordingTimeState> {
   BookRecordingTimeBloc(
-    @factoryParam this.selectedDate,
-    @factoryParam this.bookingsBloc,
+    @factoryParam DateTime selectedDate,
+    @factoryParam this._bookingsBloc,
   ) : super(_BookRecordingTimeState(
           selectedDate: selectedDate,
-          bookingsState: bookingsBloc.state,
+          bookingsState: _bookingsBloc.state,
         )) {
     on<_TimeSelected>(_onTimeSelected);
     on<_DurationSelected>(_onDurationSelected);
     on<_BookingsStateChanged>(_onBookingsStateChanged);
 
-    bookingsBloc.stream.listen(_bookingsStateListener);
+    _bookingsBloc.stream.listen(_bookingsStateListener);
   }
 
-  final DateTime selectedDate;
-  final BookingsBloc bookingsBloc;
+  final BookingsBloc _bookingsBloc;
 
   Future<void> _onTimeSelected(
     _TimeSelected event,

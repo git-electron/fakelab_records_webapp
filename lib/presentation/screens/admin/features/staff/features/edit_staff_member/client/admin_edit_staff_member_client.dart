@@ -9,10 +9,10 @@ import '../../../domain/models/staff_member.dart';
 
 @injectable
 class AdminEditStaffMemberClient {
-  AdminEditStaffMemberClient(this.ref, this.logger);
+  AdminEditStaffMemberClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _errorMessage = 'Failed to update staff member';
 
@@ -29,15 +29,15 @@ class AdminEditStaffMemberClient {
     try {
       final String path = 'staff/${staffMember.id}';
 
-      logger.i('''Realtime Database update request:
+      _logger.i('''Realtime Database update request:
 Path: $path
 Data: $staffMember''');
 
-      await ref.child(path).update(staffMember.toJson());
+      await _ref.child(path).update(staffMember.toJson());
 
       return Result.success(staffMember);
     } catch (error) {
-      logger.e(_errorMessage, error: error);
+      _logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

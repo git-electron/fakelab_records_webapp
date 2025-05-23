@@ -15,8 +15,8 @@ part 'my_order_state.dart';
 @injectable
 class MyOrderBloc extends Bloc<MyOrderEvent, MyOrderState> {
   MyOrderBloc(
-    this.myOrderClient,
-    this.telegramService,
+    this._myOrderClient,
+    this._telegramService,
     @factoryParam this.orderId,
   ) : super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
@@ -24,18 +24,18 @@ class MyOrderBloc extends Bloc<MyOrderEvent, MyOrderState> {
     on<_SetError>(_onSetError);
 
     tryOrNullAsync(_getOrder);
-    telegramService.showBackButton();
+    _telegramService.showBackButton();
   }
 
   @override
   Future<void> close() {
-    telegramService.hideBackButton();
+    _telegramService.hideBackButton();
     return super.close();
   }
 
   final String orderId;
-  final MyOrderClient myOrderClient;
-  final TelegramService telegramService;
+  final MyOrderClient _myOrderClient;
+  final TelegramService _telegramService;
 
   Future<void> _onSetLoading(
     _SetLoading event,
@@ -60,7 +60,7 @@ class MyOrderBloc extends Bloc<MyOrderEvent, MyOrderState> {
 
   Future<void> _getOrder() async {
     add(const MyOrderEvent.setLoading());
-    final Result<Order> result = await myOrderClient.getOrder(orderId);
+    final Result<Order> result = await _myOrderClient.getOrder(orderId);
     result.when(
       success: (order) => add(MyOrderEvent.setLoaded(order)),
       error: (message) => add(MyOrderEvent.setError(message)),

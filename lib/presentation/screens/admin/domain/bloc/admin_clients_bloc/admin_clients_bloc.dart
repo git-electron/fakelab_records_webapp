@@ -14,7 +14,7 @@ part 'admin_clients_state.dart';
 
 @injectable
 class AdminClientsBloc extends Bloc<AdminClientsEvent, AdminClientsState> {
-  AdminClientsBloc(this.userBloc, this.adminClientsClient)
+  AdminClientsBloc(this._userBloc, this._adminClientsClient)
       : super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
@@ -24,8 +24,8 @@ class AdminClientsBloc extends Bloc<AdminClientsEvent, AdminClientsState> {
     tryOrNullAsync(_getClients);
   }
 
-  final UserBloc userBloc;
-  final AdminClientsClient adminClientsClient;
+  final UserBloc _userBloc;
+  final AdminClientsClient _adminClientsClient;
 
   Future<void> _onSetLoading(
     _SetLoading event,
@@ -56,10 +56,10 @@ class AdminClientsBloc extends Bloc<AdminClientsEvent, AdminClientsState> {
   }
 
   Future<void> _getClients() async {
-    if (!userBloc.state.user!.isAdmin) return;
+    if (!_userBloc.state.user!.isAdmin) return;
 
     add(const AdminClientsEvent.setLoading());
-    final Result<List<User>> result = await adminClientsClient.getClients();
+    final Result<List<User>> result = await _adminClientsClient.getClients();
     result.when(
       success: (clients) => add(AdminClientsEvent.setLoaded(clients)),
       error: (message) => add(AdminClientsEvent.setError(message)),
@@ -67,12 +67,12 @@ class AdminClientsBloc extends Bloc<AdminClientsEvent, AdminClientsState> {
   }
 
   Future<void> _deleteClient(int clientId) async {
-    if (!userBloc.state.user!.isAdmin) return;
+    if (!_userBloc.state.user!.isAdmin) return;
 
     final List<User> clients = state.clients ?? [];
 
     add(const AdminClientsEvent.setLoading());
-    final Result<bool> result = await adminClientsClient.deleteClient(clientId);
+    final Result<bool> result = await _adminClientsClient.deleteClient(clientId);
     result.when(
       success: (_) {
         final List<User> updatedClients =

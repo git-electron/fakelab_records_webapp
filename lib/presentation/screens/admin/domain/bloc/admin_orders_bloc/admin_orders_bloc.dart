@@ -16,7 +16,7 @@ part 'admin_orders_state.dart';
 
 @injectable
 class AdminOrdersBloc extends Bloc<AdminOrdersEvent, AdminOrdersState> {
-  AdminOrdersBloc(this.userBloc, this.adminOrdersClient)
+  AdminOrdersBloc(this._userBloc, this._adminOrdersClient)
       : super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
@@ -25,8 +25,8 @@ class AdminOrdersBloc extends Bloc<AdminOrdersEvent, AdminOrdersState> {
     tryOrNullAsync(_getOrders);
   }
 
-  final UserBloc userBloc;
-  final AdminOrdersClient adminOrdersClient;
+  final UserBloc _userBloc;
+  final AdminOrdersClient _adminOrdersClient;
 
   Future<void> _onSetLoading(
     _SetLoading event,
@@ -50,10 +50,10 @@ class AdminOrdersBloc extends Bloc<AdminOrdersEvent, AdminOrdersState> {
   }
 
   Future<void> _getOrders() async {
-    if (!userBloc.state.user!.isAdmin) return;
+    if (!_userBloc.state.user!.isAdmin) return;
 
     add(const AdminOrdersEvent.setLoading());
-    final Result<List<Order>> result = await adminOrdersClient.getOrders();
+    final Result<List<Order>> result = await _adminOrdersClient.getOrders();
     result.when(
       success: (orders) => add(AdminOrdersEvent.setLoaded(orders)),
       error: (message) => add(AdminOrdersEvent.setError(message)),

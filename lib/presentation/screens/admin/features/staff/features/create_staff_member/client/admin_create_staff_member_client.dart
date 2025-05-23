@@ -9,10 +9,10 @@ import '../../../domain/models/staff_member.dart';
 
 @injectable
 class AdminCreateStaffMemberClient {
-  AdminCreateStaffMemberClient(this.ref, this.logger);
+  AdminCreateStaffMemberClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _errorMessage = 'Failed to create staff member';
 
@@ -25,15 +25,15 @@ class AdminCreateStaffMemberClient {
     try {
       final String path = 'staff/${staffMember.id}';
 
-      logger.i('''Realtime Database create request:
+      _logger.i('''Realtime Database create request:
 Path: $path
 Data: $staffMember''');
 
-      await ref.child(path).set(staffMember.toJson());
+      await _ref.child(path).set(staffMember.toJson());
 
       return Result.success(staffMember);
     } catch (error) {
-      logger.e(_errorMessage, error: error);
+      _logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

@@ -7,10 +7,10 @@ import '../../../../../../../../core/domain/models/user/user.dart';
 
 @injectable
 class AdminCreateClientClient {
-  AdminCreateClientClient(this.ref, this.logger);
+  AdminCreateClientClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _errorMessage = 'Failed to create client';
 
@@ -18,15 +18,15 @@ class AdminCreateClientClient {
     try {
       final String path = 'users/${client.id}';
 
-      logger.i('''Realtime Database create request:
+      _logger.i('''Realtime Database create request:
 Path: $path
 Data: $client''');
 
-      await ref.child(path).set(client.toJson());
+      await _ref.child(path).set(client.toJson());
 
       return Result.success(client);
     } catch (error) {
-      logger.e(_errorMessage, error: error);
+      _logger.e(_errorMessage, error: error);
       return Result.error(error.toString());
     }
   }

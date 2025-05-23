@@ -16,10 +16,10 @@ import '../../../../staff/domain/models/staff_member.dart';
 
 @injectable
 class AdminOrderClient {
-  AdminOrderClient(this.ref, this.logger);
+  AdminOrderClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   final Result<Order> _orderNotFountResult = Result.error('Заказ не найден');
   static const String _orderErrorMessage = 'Failed to get order';
@@ -36,14 +36,14 @@ class AdminOrderClient {
 
     try {
       final String path = 'orders/$orderId';
-      final DataSnapshot snapshot = await ref.child(path).get();
+      final DataSnapshot snapshot = await _ref.child(path).get();
       final bool isExists = snapshot.exists;
 
       if (!isExists) return _orderNotFountResult;
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -52,7 +52,7 @@ Data: $json''');
       final Order order = Order.fromJson(json);
       return Result.success(order);
     } catch (error) {
-      logger.e(_orderErrorMessage, error: error);
+      _logger.e(_orderErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }
@@ -92,15 +92,15 @@ Data: $json''');
 
       final String path = 'orders/${order.id}';
 
-      logger.i('''Realtime Database update request:
+      _logger.i('''Realtime Database update request:
 Path: $path
 Data: $updatedOrder''');
 
-      await ref.child(path).update(updatedOrder.toJson());
+      await _ref.child(path).update(updatedOrder.toJson());
 
       return Result.success(updatedOrder);
     } catch (error) {
-      logger.e(_updateOrderErrorMessage, error: error);
+      _logger.e(_updateOrderErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }

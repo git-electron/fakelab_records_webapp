@@ -1,4 +1,3 @@
-import 'package:fakelab_records_webapp/core/constants/constants.dart';
 import 'package:fakelab_records_webapp/core/router/router.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc.dart';
@@ -14,26 +13,25 @@ part 'book_recording_date_state.dart';
 @injectable
 class BookRecordingDateBloc
     extends Bloc<BookRecordingDateEvent, BookRecordingDateState> {
-  BookRecordingDateBloc(this.router, @factoryParam this.bookingsBloc)
-      : super(_BookRecordingDateState(bookingsState: bookingsBloc.state)) {
+  BookRecordingDateBloc(this._router, @factoryParam this._bookingsBloc)
+      : super(_BookRecordingDateState(bookingsState: _bookingsBloc.state)) {
     on<_DateSelected>(_onDateSelected);
     on<_BookingsStateChanged>(_onBookingsStateChanged);
 
-    bookingsBloc.stream.listen(_bookingsStateListener);
+    _bookingsBloc.stream.listen(_bookingsStateListener);
   }
 
-  final AppRouter router;
-  final BookingsBloc bookingsBloc;
+  final AppRouter _router;
+  final BookingsBloc _bookingsBloc;
 
   Future<void> _onDateSelected(
     _DateSelected event,
     Emitter<BookRecordingDateState> emit,
   ) async {
     emit(state.copyWith(selectedDate: event.selectedDate));
-    await Future.delayed(kAnimationDuration);
-    router.push(BookRecordingTimeRoute(
+    _router.push(BookRecordingTimeRoute(
       selectedDate: event.selectedDate,
-      bookingsBloc: bookingsBloc,
+      bookingsBloc: _bookingsBloc,
     ));
   }
 
