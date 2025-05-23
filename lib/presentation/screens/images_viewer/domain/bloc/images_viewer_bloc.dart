@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/domain/service/telegram_service.dart';
+import '../../../../../core/domain/service/telegram_service.dart';
+import '../models/images_viewer_bloc_data.dart';
 
 part 'images_viewer_bloc.freezed.dart';
 part 'images_viewer_event.dart';
@@ -11,11 +12,12 @@ part 'images_viewer_state.dart';
 
 @injectable
 class ImagesViewerBloc extends Bloc<ImagesViewerEvent, ImagesViewerState> {
-  ImagesViewerBloc({
-    required TelegramService telegramService,
-    @factoryParam required this.images,
-    @factoryParam required this.initialIndex,
-  }) : _telegramService = telegramService, super(const _ImagesViewerState()) {
+  ImagesViewerBloc(
+    this._telegramService,
+    @factoryParam ImagesViewerBlocData data,
+  )   : images = data.images,
+        initialIndex = data.initialIndex,
+        super(const _ImagesViewerState()) {
     on<_SetPositionYDelta>(_setPositionYDelta);
     on<_SetInitialYPosition>(_setInitialYPosition);
     on<_SetCurrentYPosition>(_setCurrentYPosition);

@@ -13,6 +13,7 @@ import '../../../../../../../ui/app_text_field.dart';
 import '../../../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
 import '../domain/bloc/admin_create_client_bloc.dart';
+import '../domain/models/admin_create_client_bloc_data.dart';
 
 part 'widgets/app_bar.dart';
 part 'widgets/create_button.dart';
@@ -32,7 +33,7 @@ class AdminCreateClientScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => $<AdminCreateClientBloc>(
-        param1: adminClientsBloc,
+        param1: AdminCreateClientBlocData(adminClientsBloc: adminClientsBloc),
       ),
       child: const Scaffold(
         body: CustomScrollView(

@@ -16,6 +16,7 @@ import '../../../../domain/models/staff_activity.dart';
 import '../../../../domain/models/staff_member.dart';
 import '../../../../domain/models/staff_service_type.dart';
 import '../../client/admin_edit_staff_member_client.dart';
+import '../models/admin_edit_staff_member_bloc_data.dart';
 
 part 'admin_edit_staff_member_bloc.freezed.dart';
 part 'admin_edit_staff_member_event.dart';
@@ -27,10 +28,11 @@ class AdminEditStaffMemberBloc
   AdminEditStaffMemberBloc(
     this._router,
     this._cloudinary,
-    @factoryParam this.staffMember,
     this._adminEditStaffMemberClient,
-    @factoryParam this._adminStaffBloc,
-  ) : super(AdminEditStaffMemberState.fromStaffMember(staffMember)) {
+    @factoryParam AdminEditStaffMemberBlocData data,
+  )   : staffMember = data.staffMember,
+        _adminStaffBloc = data.adminStaffBloc,
+        super(AdminEditStaffMemberState.fromStaffMember(data.staffMember)) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
     on<_UsernameChanged>(_onUsernameChanged);

@@ -16,6 +16,7 @@ import '../../../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
 import '../../../../../domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import '../domain/bloc/admin_create_order_bloc.dart';
+import '../domain/models/admin_create_order_bloc_data.dart';
 
 part 'widgets/app_bar.dart';
 part 'widgets/create_button.dart';
@@ -42,7 +43,7 @@ class AdminCreateOrderScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => $<AdminCreateOrderBloc>(
-            param1: adminOrdersBloc,
+            param1: AdminCreateOrderBlocData(adminOrdersBloc: adminOrdersBloc),
           ),
         ),
         BlocProvider.value(value: adminClientsBloc),

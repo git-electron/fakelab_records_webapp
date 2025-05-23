@@ -23,6 +23,7 @@ import '../../../../../domain/bloc/admin_staff_bloc/admin_staff_bloc.dart';
 import '../../../domain/models/staff_activity.dart';
 import '../../../domain/models/staff_service_type.dart';
 import '../domain/bloc/admin_create_staff_member_bloc.dart';
+import '../domain/models/admin_create_staff_member_bloc_data.dart';
 
 part 'widgets/app_bar.dart';
 part 'widgets/avatar_and_form/avatar_and_form.dart';
@@ -46,7 +47,7 @@ class AdminCreateStaffMemberScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => $<AdminCreateStaffMemberBloc>(
-        param1: adminStaffBloc,
+        param1: AdminCreateStaffMemberBlocData(adminStaffBloc: adminStaffBloc),
       ),
       child: const Scaffold(
         body: CustomScrollView(

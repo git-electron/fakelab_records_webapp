@@ -7,6 +7,7 @@ import '../../../../../core/domain/service/telegram_service.dart';
 import '../../../../../core/utils/try_or/try_or_null.dart';
 import '../../../../../features/my_orders/domain/models/order/order.dart';
 import '../../data/client/my_order_client.dart';
+import '../models/my_order_bloc_data.dart';
 
 part 'my_order_bloc.freezed.dart';
 part 'my_order_event.dart';
@@ -17,8 +18,9 @@ class MyOrderBloc extends Bloc<MyOrderEvent, MyOrderState> {
   MyOrderBloc(
     this._myOrderClient,
     this._telegramService,
-    @factoryParam this.orderId,
-  ) : super(const _Loading()) {
+    @factoryParam MyOrderBlocData data,
+  )   : orderId = data.orderId,
+        super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);

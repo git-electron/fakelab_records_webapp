@@ -20,6 +20,7 @@ import '../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../../domain/bloc/bookings_bloc.dart';
 import '../../../domain/models/availability_type/availability_type.dart';
 import '../domain/bloc/book_recording_time_bloc.dart';
+import '../domain/models/book_recording_time_bloc_data.dart';
 
 part 'widgets/app_bar.dart';
 part 'widgets/availability/availability.dart';
@@ -48,8 +49,10 @@ class BookRecordingTimeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => $<BookRecordingTimeBloc>(
-        param1: selectedDate,
-        param2: bookingsBloc,
+        param1: BookRecordingTimeBlocData(
+          selectedDate: selectedDate,
+          bookingsBloc: bookingsBloc,
+        ),
       ),
       child: Scaffold(
         body: BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(

@@ -8,7 +8,8 @@ import '../../../../core/di/injector.dart';
 import '../../../../core/extensions/color_extensions.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
-import '../domain/images_viewer_bloc.dart';
+import '../domain/bloc/images_viewer_bloc.dart';
+import '../domain/models/images_viewer_bloc_data.dart';
 
 part 'widgets/app_bar.dart';
 
@@ -40,8 +41,10 @@ class _ImagesViewerScreenState extends State<ImagesViewerScreen> {
 
     return BlocProvider<ImagesViewerBloc>(
       create: (_) => $<ImagesViewerBloc>(
-        param1: widget.images,
-        param2: widget.initialIndex,
+        param1: ImagesViewerBlocData(
+          images: widget.images,
+          initialIndex: widget.initialIndex,
+        ),
       ),
       child: BlocBuilder<ImagesViewerBloc, ImagesViewerState>(
         builder: (BuildContext context, ImagesViewerState state) {

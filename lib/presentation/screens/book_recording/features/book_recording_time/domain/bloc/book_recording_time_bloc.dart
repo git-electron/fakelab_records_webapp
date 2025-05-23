@@ -9,6 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../models/book_recording_time_bloc_data.dart';
+
 part 'book_recording_time_bloc.freezed.dart';
 part 'book_recording_time_event.dart';
 part 'book_recording_time_state.dart';
@@ -17,11 +19,11 @@ part 'book_recording_time_state.dart';
 class BookRecordingTimeBloc
     extends Bloc<BookRecordingTimeEvent, BookRecordingTimeState> {
   BookRecordingTimeBloc(
-    @factoryParam DateTime selectedDate,
-    @factoryParam this._bookingsBloc,
-  ) : super(_BookRecordingTimeState(
-          selectedDate: selectedDate,
-          bookingsState: _bookingsBloc.state,
+    @factoryParam BookRecordingTimeBlocData data,
+  )   : _bookingsBloc = data.bookingsBloc,
+        super(_BookRecordingTimeState(
+          selectedDate: data.selectedDate,
+          bookingsState: data.bookingsBloc.state,
         )) {
     on<_TimeSelected>(_onTimeSelected);
     on<_DurationSelected>(_onDurationSelected);

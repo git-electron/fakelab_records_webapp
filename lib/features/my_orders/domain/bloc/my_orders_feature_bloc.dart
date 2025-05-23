@@ -7,12 +7,12 @@ import '../../../../core/domain/models/result/result.dart';
 import '../../../../core/utils/try_or/try_or_null.dart';
 import '../../data/client/orders_client.dart';
 import '../models/limit_policy/limit_policy.dart';
+import '../models/my_orders_feature_bloc_data/my_orders_feature_bloc_data.dart';
 import '../models/order/order.dart';
 
 part 'my_orders_feature_bloc.freezed.dart';
 part 'my_orders_feature_event.dart';
 part 'my_orders_feature_state.dart';
-
 
 @injectable
 class MyOrdersFeatureBloc
@@ -20,8 +20,9 @@ class MyOrdersFeatureBloc
   MyOrdersFeatureBloc(
     this._userBloc,
     this._ordersClient,
-    @factoryParam this._limit,
-  ) : super(const _Loading()) {
+    @factoryParam MyOrdersFeatureBlocData data,
+  )   : _limitPolicy = data.limitPolicy,
+        super(const _Loading()) {
     on<_SetError>(_onSetError);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetLoading>(_onSetLoading);
@@ -32,7 +33,7 @@ class MyOrdersFeatureBloc
 
   final UserBloc _userBloc;
   final OrdersClient _ordersClient;
-  final MyOrdersLimitPolicy _limit;
+  final MyOrdersLimitPolicy _limitPolicy;
 
   Future<void> _onSetLoading(
     _SetLoading event,
@@ -64,7 +65,7 @@ class MyOrdersFeatureBloc
     add(const MyOrdersFeatureEvent.setLoading());
     final Result<List<Order>> result = await _ordersClient.getOrders(
       userId,
-      hasLimit: _limit.hasLimit,
+      hasLimit: _limitPolicy.hasLimit,
     );
     result.when(
       success: (orders) => add(MyOrdersFeatureEvent.setLoaded(orders)),

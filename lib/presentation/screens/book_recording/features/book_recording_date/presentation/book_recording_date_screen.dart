@@ -17,6 +17,7 @@ import '../../../../../ui/wrappers/tappable.dart';
 import '../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../../domain/bloc/bookings_bloc.dart';
 import '../domain/bloc/book_recording_date_bloc.dart';
+import '../domain/models/book_recording_date_bloc_data.dart';
 import 'widgets/calendar/one_month_calendar/utils/dates_grid_generator.dart';
 
 part 'widgets/app_bar.dart';
@@ -37,9 +38,13 @@ class BookRecordingDateScreen extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => $<BookingsBloc>()),
         BlocProvider(
-          create: (context) => $<BookRecordingDateBloc>(
-            param1: context.read<BookingsBloc>(),
-          ),
+          create: (context) {
+            final BookingsBloc bookingsBloc = context.read();
+
+            return $<BookRecordingDateBloc>(
+              param1: BookRecordingDateBlocData(bookingsBloc: bookingsBloc),
+            );
+          },
         ),
       ],
       child: Scaffold(
