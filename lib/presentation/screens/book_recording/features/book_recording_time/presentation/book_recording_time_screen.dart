@@ -13,8 +13,6 @@ import '../../../../../../core/extensions/duration_extensions.dart';
 import '../../../../../../core/extensions/num_extensions.dart';
 import '../../../../../../core/gen/assets.gen.dart';
 import '../../../../../../core/theme/theme_extensions.dart';
-import '../../../../../../features/checkout/domain/models/checkout_hint.dart';
-import '../../../../../../features/checkout/presentation/checkout_feature.dart';
 import '../../../../../ui/app_button.dart';
 import '../../../../../ui/pages/error_page.dart';
 import '../../../../../ui/pages/loading_page.dart';
@@ -30,15 +28,13 @@ part 'widgets/availability/availability.dart';
 part 'widgets/availability/widgets/time_button.dart';
 part 'widgets/availability/widgets/wrap.dart';
 part 'widgets/button.dart';
-part 'widgets/card_and_checkout/card/card.dart';
-part 'widgets/card_and_checkout/card/widgets/content/content.dart';
-part 'widgets/card_and_checkout/card/widgets/content/widgets/cost_per_hour.dart';
-part 'widgets/card_and_checkout/card/widgets/content/widgets/duration_buttons.dart';
-part 'widgets/card_and_checkout/card/widgets/content/widgets/info.dart';
-part 'widgets/card_and_checkout/card/widgets/content/widgets/title.dart';
-part 'widgets/card_and_checkout/card/widgets/cover.dart';
-part 'widgets/card_and_checkout/card_and_checkout.dart';
-part 'widgets/card_and_checkout/checkout/checkout.dart';
+part 'widgets/card/card.dart';
+part 'widgets/card/widgets/content/content.dart';
+part 'widgets/card/widgets/content/widgets/cost_per_hour.dart';
+part 'widgets/card/widgets/content/widgets/duration_buttons.dart';
+part 'widgets/card/widgets/content/widgets/info.dart';
+part 'widgets/card/widgets/content/widgets/title.dart';
+part 'widgets/card/widgets/cover.dart';
 
 @RoutePage()
 class BookRecordingTimeScreen extends StatelessWidget {
@@ -92,7 +88,7 @@ class _Body extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Availability(),
-            _CardAndCheckout(),
+            _Card(),
             _Button(),
           ],
         ),

@@ -8,15 +8,13 @@ class _Services extends StatelessWidget {
     return BlocBuilder<AdminOrderBloc, AdminOrderState>(
       builder: (context, state) {
         final Order order = state.order!;
-
-        return CheckoutFeature.order(
-          order,
-          hints: [
-            if (order.costFrom && !order.isCancelled)
-              CheckoutHint.costFromAdmin,
-          ],
-        );
+        return CheckoutFeature.order(order, hint: _hint(order));
       },
     );
+  }
+
+  CheckoutHint? _hint(Order order) {
+    if (!order.costFrom || order.isCancelled) return null;
+    return CheckoutHint.costFromAdmin;
   }
 }

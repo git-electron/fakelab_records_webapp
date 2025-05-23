@@ -8,12 +8,13 @@ class _Services extends StatelessWidget {
     return BlocBuilder<MyOrderBloc, MyOrderState>(
       builder: (context, state) {
         final Order order = state.order!;
-
-        return CheckoutFeature.order(
-          order,
-          hints: [if (order.costFrom) CheckoutHint.costFrom],
-        );
+        return CheckoutFeature.order(order, hint: _hint(order));
       },
     );
+  }
+
+  CheckoutHint? _hint(Order order) {
+    if (!order.costFrom) return null;
+    return CheckoutHint.costFrom;
   }
 }

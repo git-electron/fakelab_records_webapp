@@ -1,4 +1,4 @@
-part of '../../../../../../book_recording_time_screen.dart';
+part of '../../../../../book_recording_time_screen.dart';
 
 class _DurationButtons extends StatelessWidget {
   const _DurationButtons();
