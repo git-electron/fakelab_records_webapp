@@ -5,10 +5,14 @@ class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final BookRecordingTimeBloc bloc = context.read();
+
     return BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
       builder: (context, state) {
         return AppButton.primary(
-          onTap: () {},
+          onTap: () {
+            bloc.add(const BookRecordingTimeEvent.proceedButtonPressed());
+          },
           isEnabled: state.canProceed,
           text: 'К оформлению',
         );

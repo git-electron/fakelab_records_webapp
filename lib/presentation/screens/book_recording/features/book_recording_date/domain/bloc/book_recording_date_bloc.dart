@@ -1,6 +1,6 @@
 import 'package:fakelab_records_webapp/core/router/router.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc/bookings_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

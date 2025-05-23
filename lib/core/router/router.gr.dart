@@ -36,7 +36,7 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/presentation/a
     as _i7;
 import 'package:fakelab_records_webapp/presentation/screens/base/base_screen.dart'
     as _i8;
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc.dart'
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc/bookings_bloc.dart'
     as _i25;
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_date/presentation/book_recording_date_screen.dart'
     as _i9;

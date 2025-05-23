@@ -1,7 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
-import 'package:fakelab_records_webapp/presentation/ui/wrappers/measure_size_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,9 +14,10 @@ import '../../../../../../core/theme/theme_extensions.dart';
 import '../../../../../ui/app_button.dart';
 import '../../../../../ui/pages/error_page.dart';
 import '../../../../../ui/pages/loading_page.dart';
+import '../../../../../ui/wrappers/measure_size_wrapper.dart';
 import '../../../../../ui/wrappers/tappable.dart';
 import '../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
-import '../../../domain/bloc/bookings_bloc.dart';
+import '../../../domain/bloc/bookings_bloc/bookings_bloc.dart';
 import '../../../domain/models/availability_type/availability_type.dart';
 import '../domain/bloc/book_recording_time_bloc.dart';
 import '../domain/models/book_recording_time_bloc_data.dart';

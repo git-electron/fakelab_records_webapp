@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:injectable/injectable.dart';
+
 import '../../constants/types.dart';
 
+@injectable
 class Debouncer {
   Debouncer();
 

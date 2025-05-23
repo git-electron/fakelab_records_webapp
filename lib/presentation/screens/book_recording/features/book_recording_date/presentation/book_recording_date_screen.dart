@@ -15,7 +15,7 @@ import '../../../../../ui/pages/error_page.dart';
 import '../../../../../ui/pages/loading_page.dart';
 import '../../../../../ui/wrappers/tappable.dart';
 import '../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
-import '../../../domain/bloc/bookings_bloc.dart';
+import '../../../domain/bloc/bookings_bloc/bookings_bloc.dart';
 import '../domain/bloc/book_recording_date_bloc.dart';
 import '../domain/models/book_recording_date_bloc_data.dart';
 import 'widgets/calendar/one_month_calendar/utils/dates_grid_generator.dart';

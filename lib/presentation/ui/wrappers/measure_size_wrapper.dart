@@ -1,4 +1,7 @@
+import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/utils/debouncer/debouncer.dart';
 
 class MeasureSizeWrapper extends StatefulWidget {
   const MeasureSizeWrapper({
@@ -20,11 +23,19 @@ class _MeasureSizeWrapperState extends State<MeasureSizeWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPersistentFrameCallback(_measureSize);
-    return widget.builder(context, _size);
+    WidgetsBinding.instance.addPostFrameCallback(_callback);
+    return NotificationListener(
+      onNotification: (notification) {
+        $<Debouncer>().run(_measureSize);
+        return true;
+      },
+      child: widget.builder(context, _size),
+    );
   }
 
-  void _measureSize(Duration _) {
+  void _callback(Duration _) => _measureSize();
+
+  void _measureSize() {
     Size? size = context.size;
     if (_isSizeMeasured && widget.shouldMeasureOnce) return;
     if (size == null) return;

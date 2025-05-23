@@ -22,7 +22,7 @@ const String businessAddress =
     '$businessZipCode, $businessCity, $businessStreetAddress';
 
 const String yandexMapsUrl =
-    'https://yandex.ru/maps/?from=mapframe&ll=30.369747%2C59.954633&poi%5Bpoint%5D=30.369747&poi%5Bpoint%5D=59.954633&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D64952203819&source=mapframe&utm_source=mapframe&z=12';
+    'https://yandex.ru/maps/org/fakelab_records/64952203819';
 const String yandexMapsIFrame = '''
 <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=64952203819" width="100%" height="180" frameborder="0"></iframe>
 ''';

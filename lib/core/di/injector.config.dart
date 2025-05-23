@@ -87,8 +87,12 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff
     as _i317;
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/bookings_client.dart'
     as _i511;
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc.dart'
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/book_recording_bloc/book_recording_bloc.dart'
+    as _i108;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc/bookings_bloc.dart'
     as _i763;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/book_recording_bloc_data/book_recording_bloc_data.dart'
+    as _i227;
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_date/domain/bloc/book_recording_date_bloc.dart'
     as _i206;
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/features/book_recording_date/domain/models/book_recording_date_bloc_data.dart'
@@ -157,6 +161,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
+    gh.factoryParam<_i108.BookRecordingBloc, _i227.BookRecordingBlocData,
+        dynamic>((
+      data,
+      _,
+    ) =>
+        _i108.BookRecordingBloc(data));
     gh.factory<_i415.AdminClientsClient>(() => _i415.AdminClientsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
@@ -214,12 +224,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i511.BookingsClient>(),
           gh<_i435.TelegramService>(),
         ));
-    gh.factoryParam<_i140.BookRecordingTimeBloc,
-        _i756.BookRecordingTimeBlocData, dynamic>((
-      data,
-      _,
-    ) =>
-        _i140.BookRecordingTimeBloc(data));
     gh.factoryParam<_i1021.ImagesViewerBloc, _i465.ImagesViewerBlocData,
         dynamic>((
       data,
@@ -283,6 +287,15 @@ extension GetItInjectableX on _i174.GetIt {
     ) =>
         _i19.HomeBloc(
           gh<_i109.UserBloc>(),
+          data,
+        ));
+    gh.factoryParam<_i140.BookRecordingTimeBloc,
+        _i756.BookRecordingTimeBlocData, dynamic>((
+      data,
+      _,
+    ) =>
+        _i140.BookRecordingTimeBloc(
+          gh<_i352.AppRouter>(),
           data,
         ));
     gh.factoryParam<_i768.MyOrdersBloc, _i933.MyOrdersBlocData, dynamic>((

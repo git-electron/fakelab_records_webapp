@@ -13,4 +13,7 @@ class BookRecordingTimeEvent with _$BookRecordingTimeEvent {
   const factory BookRecordingTimeEvent.bookingsStateChanged(
     BookingsState bookingsState,
   ) = _BookingsStateChanged;
+
+  const factory BookRecordingTimeEvent.proceedButtonPressed() =
+      _ProceedButtonPressed;
 }

@@ -21,6 +21,7 @@ mixin _$BookRecordingTimeEvent {
     required TResult Function(DateTime selectedTime) timeSelected,
     required TResult Function(Duration selectedDuration) durationSelected,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
+    required TResult Function() proceedButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$BookRecordingTimeEvent {
     TResult? Function(DateTime selectedTime)? timeSelected,
     TResult? Function(Duration selectedDuration)? durationSelected,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult? Function()? proceedButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$BookRecordingTimeEvent {
     TResult Function(DateTime selectedTime)? timeSelected,
     TResult Function(Duration selectedDuration)? durationSelected,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult Function()? proceedButtonPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$BookRecordingTimeEvent {
     required TResult Function(_TimeSelected value) timeSelected,
     required TResult Function(_DurationSelected value) durationSelected,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
+    required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$BookRecordingTimeEvent {
     TResult? Function(_TimeSelected value)? timeSelected,
     TResult? Function(_DurationSelected value)? durationSelected,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$BookRecordingTimeEvent {
     TResult Function(_TimeSelected value)? timeSelected,
     TResult Function(_DurationSelected value)? durationSelected,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,6 +162,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
     required TResult Function(DateTime selectedTime) timeSelected,
     required TResult Function(Duration selectedDuration) durationSelected,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
+    required TResult Function() proceedButtonPressed,
   }) {
     return timeSelected(selectedTime);
   }
@@ -166,6 +173,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
     TResult? Function(DateTime selectedTime)? timeSelected,
     TResult? Function(Duration selectedDuration)? durationSelected,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult? Function()? proceedButtonPressed,
   }) {
     return timeSelected?.call(selectedTime);
   }
@@ -176,6 +184,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
     TResult Function(DateTime selectedTime)? timeSelected,
     TResult Function(Duration selectedDuration)? durationSelected,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult Function()? proceedButtonPressed,
     required TResult orElse(),
   }) {
     if (timeSelected != null) {
@@ -190,6 +199,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
     required TResult Function(_TimeSelected value) timeSelected,
     required TResult Function(_DurationSelected value) durationSelected,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
+    required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
   }) {
     return timeSelected(this);
   }
@@ -200,6 +210,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
     TResult? Function(_TimeSelected value)? timeSelected,
     TResult? Function(_DurationSelected value)? durationSelected,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
   }) {
     return timeSelected?.call(this);
   }
@@ -210,6 +221,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
     TResult Function(_TimeSelected value)? timeSelected,
     TResult Function(_DurationSelected value)? durationSelected,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
     required TResult orElse(),
   }) {
     if (timeSelected != null) {
@@ -304,6 +316,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
     required TResult Function(DateTime selectedTime) timeSelected,
     required TResult Function(Duration selectedDuration) durationSelected,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
+    required TResult Function() proceedButtonPressed,
   }) {
     return durationSelected(selectedDuration);
   }
@@ -314,6 +327,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
     TResult? Function(DateTime selectedTime)? timeSelected,
     TResult? Function(Duration selectedDuration)? durationSelected,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult? Function()? proceedButtonPressed,
   }) {
     return durationSelected?.call(selectedDuration);
   }
@@ -324,6 +338,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
     TResult Function(DateTime selectedTime)? timeSelected,
     TResult Function(Duration selectedDuration)? durationSelected,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult Function()? proceedButtonPressed,
     required TResult orElse(),
   }) {
     if (durationSelected != null) {
@@ -338,6 +353,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
     required TResult Function(_TimeSelected value) timeSelected,
     required TResult Function(_DurationSelected value) durationSelected,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
+    required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
   }) {
     return durationSelected(this);
   }
@@ -348,6 +364,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
     TResult? Function(_TimeSelected value)? timeSelected,
     TResult? Function(_DurationSelected value)? durationSelected,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
   }) {
     return durationSelected?.call(this);
   }
@@ -358,6 +375,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
     TResult Function(_TimeSelected value)? timeSelected,
     TResult Function(_DurationSelected value)? durationSelected,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
     required TResult orElse(),
   }) {
     if (durationSelected != null) {
@@ -467,6 +485,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
     required TResult Function(DateTime selectedTime) timeSelected,
     required TResult Function(Duration selectedDuration) durationSelected,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
+    required TResult Function() proceedButtonPressed,
   }) {
     return bookingsStateChanged(bookingsState);
   }
@@ -477,6 +496,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
     TResult? Function(DateTime selectedTime)? timeSelected,
     TResult? Function(Duration selectedDuration)? durationSelected,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult? Function()? proceedButtonPressed,
   }) {
     return bookingsStateChanged?.call(bookingsState);
   }
@@ -487,6 +507,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
     TResult Function(DateTime selectedTime)? timeSelected,
     TResult Function(Duration selectedDuration)? durationSelected,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult Function()? proceedButtonPressed,
     required TResult orElse(),
   }) {
     if (bookingsStateChanged != null) {
@@ -501,6 +522,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
     required TResult Function(_TimeSelected value) timeSelected,
     required TResult Function(_DurationSelected value) durationSelected,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
+    required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
   }) {
     return bookingsStateChanged(this);
   }
@@ -511,6 +533,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
     TResult? Function(_TimeSelected value)? timeSelected,
     TResult? Function(_DurationSelected value)? durationSelected,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
   }) {
     return bookingsStateChanged?.call(this);
   }
@@ -521,6 +544,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
     TResult Function(_TimeSelected value)? timeSelected,
     TResult Function(_DurationSelected value)? durationSelected,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
     required TResult orElse(),
   }) {
     if (bookingsStateChanged != null) {
@@ -541,6 +565,125 @@ abstract class _BookingsStateChanged implements BookRecordingTimeEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BookingsStateChangedImplCopyWith<_$BookingsStateChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ProceedButtonPressedImplCopyWith<$Res> {
+  factory _$$ProceedButtonPressedImplCopyWith(_$ProceedButtonPressedImpl value,
+          $Res Function(_$ProceedButtonPressedImpl) then) =
+      __$$ProceedButtonPressedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ProceedButtonPressedImplCopyWithImpl<$Res>
+    extends _$BookRecordingTimeEventCopyWithImpl<$Res,
+        _$ProceedButtonPressedImpl>
+    implements _$$ProceedButtonPressedImplCopyWith<$Res> {
+  __$$ProceedButtonPressedImplCopyWithImpl(_$ProceedButtonPressedImpl _value,
+      $Res Function(_$ProceedButtonPressedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BookRecordingTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ProceedButtonPressedImpl implements _ProceedButtonPressed {
+  const _$ProceedButtonPressedImpl();
+
+  @override
+  String toString() {
+    return 'BookRecordingTimeEvent.proceedButtonPressed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProceedButtonPressedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime selectedTime) timeSelected,
+    required TResult Function(Duration selectedDuration) durationSelected,
+    required TResult Function(BookingsState bookingsState) bookingsStateChanged,
+    required TResult Function() proceedButtonPressed,
+  }) {
+    return proceedButtonPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime selectedTime)? timeSelected,
+    TResult? Function(Duration selectedDuration)? durationSelected,
+    TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult? Function()? proceedButtonPressed,
+  }) {
+    return proceedButtonPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime selectedTime)? timeSelected,
+    TResult Function(Duration selectedDuration)? durationSelected,
+    TResult Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult Function()? proceedButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (proceedButtonPressed != null) {
+      return proceedButtonPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TimeSelected value) timeSelected,
+    required TResult Function(_DurationSelected value) durationSelected,
+    required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
+    required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
+  }) {
+    return proceedButtonPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_TimeSelected value)? timeSelected,
+    TResult? Function(_DurationSelected value)? durationSelected,
+    TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
+  }) {
+    return proceedButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TimeSelected value)? timeSelected,
+    TResult Function(_DurationSelected value)? durationSelected,
+    TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (proceedButtonPressed != null) {
+      return proceedButtonPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ProceedButtonPressed implements BookRecordingTimeEvent {
+  const factory _ProceedButtonPressed() = _$ProceedButtonPressedImpl;
 }
 
 /// @nodoc
