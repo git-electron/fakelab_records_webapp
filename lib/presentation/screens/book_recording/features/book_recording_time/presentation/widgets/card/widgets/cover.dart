@@ -1,15 +1,17 @@
 part of '../../../book_recording_time_screen.dart';
 
 class _Cover extends StatelessWidget {
-  const _Cover();
+  const _Cover(this.size);
+
+  final Size size;
 
   @override
   Widget build(BuildContext context) {
-    final double dimension = MediaQuery.of(context).size.width * .2;
+    final double dimension = size.height - (_Card.padding * 2);
 
     return Container(
-      width: dimension,
-      height: dimension,
+      height: dimension.clamp(0, double.infinity),
+      width: dimension.clamp(0, double.infinity),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
         shape: BorderRadius.circular(10).smoothShape(),

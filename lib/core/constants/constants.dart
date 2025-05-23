@@ -15,8 +15,11 @@ const String businessEmailAddress = 'records@fakelab.media';
 const String businessName = 'Fakelab';
 const String businessOwner = 'ИП Мядзюта Егор Константинович';
 const String businessTIN = '784803454288';
+const String businessZipCode = '195009';
+const String businessCity = 'Санкт-Петербург';
+const String businessStreetAddress = 'ул. Комсомола, д.2, офис 14';
 const String businessAddress =
-    '195009, Санкт-Петербург, ул. Комсомола, д.2, офис 14';
+    '$businessZipCode, $businessCity, $businessStreetAddress';
 
 const String yandexMapsUrl =
     'https://yandex.ru/maps/?from=mapframe&ll=30.369747%2C59.954633&poi%5Bpoint%5D=30.369747&poi%5Bpoint%5D=59.954633&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D64952203819&source=mapframe&utm_source=mapframe&z=12';
