@@ -3,7 +3,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
 import '../../../../../../core/constants/constants.dart';
 import '../../../../../../core/di/injector.dart';
@@ -82,7 +81,7 @@ class _Body extends StatelessWidget {
       child: Container(
         width: double.maxFinite,
         color: context.colors.background,
-        padding: const Pad(vertical: 40),
+        padding: const Pad(all: 20, bottom: 20),
         child: const Column(
           spacing: 20,
           crossAxisAlignment: CrossAxisAlignment.start,

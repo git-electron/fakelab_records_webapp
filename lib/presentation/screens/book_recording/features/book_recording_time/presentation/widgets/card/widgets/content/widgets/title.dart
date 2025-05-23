@@ -9,7 +9,7 @@ class _Title extends StatelessWidget {
       builder: (context, state) {
         return Text(
           '${_duration(state.selectedDuration)} записи на студии',
-          style: context.styles.title3.copyWith(fontSize: 14),
+          style: context.styles.title3.copyWith(fontSize: 12),
         );
       },
     );

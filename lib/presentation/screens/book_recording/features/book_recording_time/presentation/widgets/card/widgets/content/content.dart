@@ -7,7 +7,7 @@ class _Content extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Expanded(
       child: Column(
-        spacing: 5,
+        spacing: 8,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -69,7 +69,7 @@ class _Body extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Container(
         color: context.colors.background,
-        padding: const Pad(vertical: 20, bottom: 40),
+        padding: const Pad(all: 20, bottom: 20),
         child: const _Calendar(),
       ),
     );
