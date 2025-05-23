@@ -13,12 +13,12 @@ enum LogoType {
 class Logo extends StatelessWidget {
   const Logo({
     super.key,
-    this.height,
+    this.height = 25,
     this.width,
     this.type = LogoType.recordsCompact,
   });
 
-  final double? height;
+  final double height;
   final double? width;
   final LogoType type;
 
@@ -32,7 +32,7 @@ class Logo extends StatelessWidget {
       LogoType.recordsAdmin => Assets.icons.logo.records.admin,
     }
         .svg(
-      height: height ?? 25,
+      height: height,
       width: width,
       clipBehavior: Clip.none,
     );

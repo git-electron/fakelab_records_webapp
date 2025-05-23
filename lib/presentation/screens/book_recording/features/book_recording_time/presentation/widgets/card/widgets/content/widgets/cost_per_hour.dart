@@ -8,7 +8,7 @@ class _CostPerHour extends StatelessWidget {
     return Text(
       kBookingCostPerHour.formatCurrency(symbol: '₽/час'),
       textAlign: TextAlign.end,
-      style: context.styles.title1.copyWith(fontSize: 12),
+      style: context.styles.title1.copyWith(fontSize: 10),
     );
   }
 }

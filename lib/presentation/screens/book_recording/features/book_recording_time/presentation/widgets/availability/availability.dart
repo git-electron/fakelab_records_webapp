@@ -5,10 +5,13 @@ class _Availability extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    final BookRecordingTimeBloc bloc = context.read();
+
+    return Expanded(
       child: SingleChildScrollView(
+        controller: bloc.availabilityController,
         clipBehavior: Clip.none,
-        child: SizedBox(
+        child: const SizedBox(
           width: double.maxFinite,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

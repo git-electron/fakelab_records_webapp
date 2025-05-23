@@ -6,7 +6,7 @@ import '../wrappers/telegram/telegram_user_wrapper.dart';
 
 class UserAvatar extends StatelessWidget {
   const UserAvatar({
-    this.size,
+    this.size = 60,
     super.key,
   });
 
@@ -20,7 +20,7 @@ class UserAvatar extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: SizedBox.square(
-            dimension: size ?? 60,
+            dimension: size,
             child: user.photoUrl != null
                 ? Image.network(
                     user.photoUrl!,

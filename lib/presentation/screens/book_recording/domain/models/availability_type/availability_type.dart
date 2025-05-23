@@ -1,3 +1,5 @@
+import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
+
 enum AvailabilityType {
   morning(title: 'Утро', endHour: 12),
   afternoon(title: 'День', startHour: 12, endHour: 18),
@@ -12,6 +14,15 @@ enum AvailabilityType {
   final String title;
   final int startHour;
   final int endHour;
+
+  static AvailabilityType fromTime(DateTime time) {
+    final DateTime startTime = DateTime(time.year, time.month, time.day);
+    return AvailabilityType.values.lastWhere((type) {
+      return time.isAfterOrAtSameMomentAs(
+        startTime.copyWith(hour: type.startHour),
+      );
+    });
+  }
 
   bool isAvailable(DateTime time) =>
       time.hour >= startHour && time.hour < endHour;

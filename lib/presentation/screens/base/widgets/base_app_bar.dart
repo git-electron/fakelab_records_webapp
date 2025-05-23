@@ -7,7 +7,8 @@ import '../../../ui/avatar/user_avatar.dart';
 import '../../../ui/logo/logo.dart';
 import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 
-const double _toolbarHeight = 90;
+const double _toolbarHeightExpanded = 90;
+const double _toolbarHeightCollapsed = 50;
 
 class BaseAppBar extends StatelessWidget {
   const BaseAppBar({super.key});
@@ -41,14 +42,14 @@ class _Mobile extends StatelessWidget {
         return SliverAppBar(
           expandedHeight: expandedHeight,
           collapsedHeight: collapsedHeight,
-          toolbarHeight: _toolbarHeight,
+          toolbarHeight: _toolbarHeightExpanded,
           automaticallyImplyLeading: false,
           backgroundColor: context.colors.transparent,
           surfaceTintColor: context.colors.transparent,
           elevation: 0,
           scrolledUnderElevation: 0,
           pinned: true,
-          floating: true,
+          floating: false,
           forceElevated: false,
           flexibleSpace: LayoutBuilder(
             builder: (context, constraints) {
@@ -78,7 +79,7 @@ class _Mobile extends StatelessWidget {
                     height: _animate(
                       animation,
                       valueWhenCollapsed: meta.contentSafeAreaInset.top,
-                      valueWhenExpanded: _toolbarHeight,
+                      valueWhenExpanded: _toolbarHeightExpanded,
                     ),
                     child: Padding(
                       padding: const Pad(horizontal: 20),
@@ -141,11 +142,11 @@ class _Mobile extends StatelessWidget {
       ).evaluate(animation);
 
   double _expandedHeightByInsets(double inset, double contentInset) =>
-      (_toolbarHeight + inset + contentInset)
-          .clamp(_toolbarHeight, double.infinity);
+      (_toolbarHeightExpanded + inset + contentInset)
+          .clamp(_toolbarHeightExpanded, double.infinity);
 
   double _collapsedHeightByInsets(double inset, double contentInset) =>
-      (inset + contentInset).clamp(_toolbarHeight, double.infinity);
+      (inset + contentInset).clamp(_toolbarHeightExpanded, double.infinity);
 
   double _calculateExpandRatio(
     BoxConstraints constraints, {
@@ -165,37 +166,84 @@ class _Desktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      pinned: true,
-      toolbarHeight: _toolbarHeight,
+      expandedHeight: _toolbarHeightExpanded,
+      collapsedHeight: _toolbarHeightCollapsed,
+      toolbarHeight: _toolbarHeightCollapsed,
       automaticallyImplyLeading: false,
       backgroundColor: context.colors.transparent,
       surfaceTintColor: context.colors.transparent,
       elevation: 0,
-      scrolledUnderElevation: 0,
+      pinned: true,
+      floating: false,
       forceElevated: false,
-      flexibleSpace: Blur(
-        blur: 30,
-        blurColor: context.colors.background,
-        alignment: Alignment.bottomCenter,
-        overlay: const SizedBox(
-          height: _toolbarHeight,
-          child: Padding(
-            padding: Pad(horizontal: 20),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Logo(),
-                UserAvatar(),
-              ],
+      scrolledUnderElevation: 0,
+      flexibleSpace: LayoutBuilder(
+        builder: (context, constraints) {
+          final expandRatio = _calculateExpandRatio(
+            constraints,
+            expandedHeight: _toolbarHeightExpanded,
+            collapsedHeight: _toolbarHeightCollapsed,
+          );
+          final animation = AlwaysStoppedAnimation(expandRatio);
+
+          return Blur(
+            blur: 30,
+            blurColor: context.colors.background,
+            alignment: Alignment.bottomCenter,
+            overlay: SizedBox(
+              height: _toolbarHeightExpanded,
+              child: Padding(
+                padding: const Pad(horizontal: 20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Logo(
+                      height: _animate(
+                        animation,
+                        valueWhenCollapsed: 15,
+                        valueWhenExpanded: 25,
+                      ),
+                    ),
+                    UserAvatar(
+                      size: _animate(
+                        animation,
+                        valueWhenCollapsed: 35,
+                        valueWhenExpanded: 60,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-        child: const SizedBox(
-          height: _toolbarHeight,
-          width: double.infinity,
-        ),
+            child: const SizedBox(
+              height: _toolbarHeightExpanded,
+              width: double.infinity,
+            ),
+          );
+        },
       ),
     );
+  }
+
+  T _animate<T>(
+    AlwaysStoppedAnimation<double> animation, {
+    required T valueWhenCollapsed,
+    required T valueWhenExpanded,
+  }) =>
+      Tween<T>(
+        begin: valueWhenCollapsed,
+        end: valueWhenExpanded,
+      ).evaluate(animation);
+
+  double _calculateExpandRatio(
+    BoxConstraints constraints, {
+    required double expandedHeight,
+    required double collapsedHeight,
+  }) {
+    final double expandRatio = (constraints.maxHeight - collapsedHeight) /
+        (expandedHeight - collapsedHeight);
+
+    return expandRatio.clamp(0, 1);
   }
 }
