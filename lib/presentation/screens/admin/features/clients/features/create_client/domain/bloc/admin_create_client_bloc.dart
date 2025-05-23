@@ -10,6 +10,7 @@ import '../../../../../../../../../core/router/router.dart';
 import '../../../../../../../../../core/utils/id_generator/id_generator.dart';
 import '../../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
 import '../../client/admin_create_client_client.dart';
+import '../models/admin_create_client_bloc_data.dart';
 
 part 'admin_create_client_bloc.freezed.dart';
 part 'admin_create_client_event.dart';
@@ -22,8 +23,9 @@ class AdminCreateClientBloc
     this._router,
     this._idGenerator,
     this._adminCreateClientClient,
-    @factoryParam this._adminClientsBloc,
-  ) : super(const _AdminCreateClientState()) {
+    @factoryParam AdminCreateClientBlocData data,
+  )   : _adminClientsBloc = data.adminClientsBloc,
+        super(const _AdminCreateClientState()) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
     on<_UsernameChanged>(_onUsernameChanged);

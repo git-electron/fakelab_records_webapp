@@ -9,6 +9,7 @@ import '../../../../../../../../../core/formatters/phone_number_formatter.dart';
 import '../../../../../../../../../core/router/router.dart';
 import '../../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
 import '../../client/admin_edit_client_client.dart';
+import '../models/admin_edit_client_bloc_data.dart';
 
 part 'admin_edit_client_bloc.freezed.dart';
 part 'admin_edit_client_event.dart';
@@ -18,11 +19,12 @@ part 'admin_edit_client_state.dart';
 class AdminEditClientBloc
     extends Bloc<AdminEditClientEvent, AdminEditClientState> {
   AdminEditClientBloc(
-    @factoryParam this.client,
-    @factoryParam this._adminClientsBloc,
     this._router,
     this._adminEditClientClient,
-  ) : super(AdminEditClientState.fromClient(client)) {
+    @factoryParam AdminEditClientBlocData data,
+  )   : client = data.client,
+        _adminClientsBloc = data.adminClientsBloc,
+        super(AdminEditClientState.fromClient(data.client)) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
     on<_UsernameChanged>(_onUsernameChanged);

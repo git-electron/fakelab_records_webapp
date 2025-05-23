@@ -9,6 +9,7 @@ import '../../../../../../../../../features/my_orders/domain/models/order/order_
 import '../../../../../../domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import '../../../../../staff/domain/models/staff_member.dart';
 import '../../client/admin_order_client.dart';
+import '../models/admin_order_bloc_data.dart';
 
 part 'admin_order_bloc.freezed.dart';
 part 'admin_order_event.dart';
@@ -18,9 +19,10 @@ part 'admin_order_state.dart';
 class AdminOrderBloc extends Bloc<AdminOrderEvent, AdminOrderState> {
   AdminOrderBloc(
     this._adminOrderClient,
-    @factoryParam this.orderId,
-    @factoryParam this._adminOrdersBloc,
-  ) : super(const _Loading()) {
+    @factoryParam AdminOrderBlocData data,
+  )   : orderId = data.orderId,
+        _adminOrdersBloc = data.adminOrdersBloc,
+        super(const _Loading()) {
     on<_SetLoading>(_onSetLoading);
     on<_SetLoaded>(_onSetLoaded);
     on<_SetError>(_onSetError);

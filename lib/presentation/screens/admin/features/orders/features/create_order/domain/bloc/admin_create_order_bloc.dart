@@ -13,6 +13,7 @@ import '../../../../../../../../../features/my_orders/domain/models/order/order_
 import '../../../../../../../../../features/my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
 import '../../../../../../domain/bloc/admin_orders_bloc/admin_orders_bloc.dart';
 import '../../client/admin_create_order_client.dart';
+import '../models/admin_create_order_bloc_data.dart';
 
 part 'admin_create_order_bloc.freezed.dart';
 part 'admin_create_order_event.dart';
@@ -25,8 +26,9 @@ class AdminCreateOrderBloc
     this._router,
     this._idGenerator,
     this._adminCreateOrderClient,
-    @factoryParam this._adminOrdersBloc,
-  ) : super(const _AdminCreateOrderState()) {
+    @factoryParam AdminCreateOrderBlocData data,
+  )   : _adminOrdersBloc = data.adminOrdersBloc,
+        super(const _AdminCreateOrderState()) {
     on<_CustomerSelected>(_onCustomerSelected);
     on<_OrderTypeSelected>(_onOrderTypeSelected);
     on<_CreateButtonPressed>(_onCreateButtonPressed);

@@ -7,11 +7,14 @@ class _Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
       builder: (context, state) {
-        return FittedBox(
-          fit: BoxFit.fitWidth,
-          child: Text(
-            '${_duration(state.selectedDuration)} записи на студии',
-            style: context.styles.title3.copyWith(fontSize: 14),
+        return SizedBox(
+          height: 14,
+          child: FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Text(
+              '${_duration(state.selectedDuration)} записи на студии',
+              style: context.styles.title3.copyWith(fontSize: 14),
+            ),
           ),
         );
       },

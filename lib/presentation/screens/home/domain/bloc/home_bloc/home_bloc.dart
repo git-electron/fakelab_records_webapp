@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
 import '../../../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
+import '../../models/home_bloc_data/home_bloc_data.dart';
 
 part 'home_bloc.freezed.dart';
 part 'home_event.dart';
@@ -13,8 +14,9 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(
     this._userBloc,
-    @factoryParam this.myOrdersFeatureBloc,
-  ) : super(const _HomeState()) {
+    @factoryParam HomeBlocData data,
+  )   : myOrdersFeatureBloc = data.myOrdersFeatureBloc,
+        super(const _HomeState()) {
     on<_UserStateChanged>(_onUserStateChanged);
     on<_MyOrdersFeatureStateChanged>(_onMyOrdersFeatureStateChanged);
 

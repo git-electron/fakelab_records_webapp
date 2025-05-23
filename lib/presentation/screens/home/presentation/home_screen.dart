@@ -21,6 +21,7 @@ import '../../../../core/router/router.gr.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import '../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import '../../../../features/my_orders/domain/models/limit_policy/limit_policy.dart';
+import '../../../../features/my_orders/domain/models/my_orders_feature_bloc_data/my_orders_feature_bloc_data.dart';
 import '../../../../features/my_orders/my_orders_feature.dart';
 import '../../../../main.dart';
 import '../../../ui/app_button.dart';
@@ -38,6 +39,7 @@ import '../domain/bloc/home_bloc/home_bloc.dart';
 import '../domain/models/example.dart';
 import '../domain/models/example_genre.dart';
 import '../domain/models/example_service_type.dart';
+import '../domain/models/home_bloc_data/home_bloc_data.dart';
 
 part 'widgets/about/about.dart';
 part 'widgets/about/widgets/button.dart';
@@ -88,8 +90,12 @@ class HomeScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => $<HomeBloc>(
-            param1: $<MyOrdersFeatureBloc>(
-              param1: MyOrdersLimitPolicy.limited,
+            param1: HomeBlocData(
+              myOrdersFeatureBloc: $<MyOrdersFeatureBloc>(
+                param1: const MyOrdersFeatureBlocData(
+                  limitPolicy: MyOrdersLimitPolicy.limited,
+                ),
+              ),
             ),
           ),
         ),

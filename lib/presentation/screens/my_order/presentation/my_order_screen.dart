@@ -23,6 +23,7 @@ import '../../../ui/wrappers/tappable.dart';
 import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../admin/features/staff/domain/models/staff_member.dart';
 import '../domain/bloc/my_order_bloc.dart';
+import '../domain/models/my_order_bloc_data.dart';
 
 part 'widgets/app_bar.dart';
 part 'widgets/assignee/assignee.dart';
@@ -47,7 +48,9 @@ class MyOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => $<MyOrderBloc>(param1: orderId),
+      create: (context) => $<MyOrderBloc>(
+        param1: MyOrderBlocData(orderId: orderId),
+      ),
       child: Scaffold(
         body: BlocBuilder<MyOrderBloc, MyOrderState>(
           builder: (context, state) {

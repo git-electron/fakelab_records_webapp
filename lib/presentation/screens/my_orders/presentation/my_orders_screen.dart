@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:fakelab_records_webapp/features/my_orders/domain/models/my_orders_feature_bloc_data/my_orders_feature_bloc_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -17,6 +18,7 @@ import '../../../ui/pages/loading_page.dart';
 import '../../base/widgets/base_app_bar.dart';
 import '../domain/bloc/my_orders_bloc/my_orders_bloc.dart';
 import '../domain/bloc/my_orders_filters_bloc/my_orders_filters_bloc.dart';
+import '../domain/models/my_orders_bloc_data.dart';
 
 part 'widgets/filters/filters.dart';
 part 'widgets/filters/widgets/status_filter.dart';
@@ -34,8 +36,12 @@ class MyOrdersScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => $<MyOrdersBloc>(
-            param1: $<MyOrdersFeatureBloc>(
-              param1: MyOrdersLimitPolicy.unlimited,
+            param1: MyOrdersBlocData(
+              myOrdersFeatureBloc: $<MyOrdersFeatureBloc>(
+                param1: const MyOrdersFeatureBlocData(
+                  limitPolicy: MyOrdersLimitPolicy.unlimited,
+                ),
+              ),
             ),
           ),
         ),

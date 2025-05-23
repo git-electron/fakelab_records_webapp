@@ -15,6 +15,7 @@ import '../../../../../../../ui/app_text_field.dart';
 import '../../../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../../../../domain/bloc/admin_clients_bloc/admin_clients_bloc.dart';
 import '../domain/bloc/admin_edit_client_bloc.dart';
+import '../domain/models/admin_edit_client_bloc_data.dart';
 
 part 'widgets/app_bar.dart';
 part 'widgets/edit_buttons.dart';
@@ -38,8 +39,10 @@ class AdminEditClientScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => $<AdminEditClientBloc>(
-        param1: client,
-        param2: adminClientsBloc,
+        param1: AdminEditClientBlocData(
+          client: client,
+          adminClientsBloc: adminClientsBloc,
+        ),
       ),
       child: const Scaffold(
         body: CustomScrollView(

@@ -17,6 +17,7 @@ import '../../../../domain/models/staff_activity.dart';
 import '../../../../domain/models/staff_member.dart';
 import '../../../../domain/models/staff_service_type.dart';
 import '../../client/admin_create_staff_member_client.dart';
+import '../models/admin_create_staff_member_bloc_data.dart';
 
 part 'admin_create_staff_member_bloc.freezed.dart';
 part 'admin_create_staff_member_event.dart';
@@ -29,9 +30,10 @@ class AdminCreateStaffMemberBloc
     this._router,
     this._cloudinary,
     this._idGenerator,
-    @factoryParam this._adminStaffBloc,
+    @factoryParam AdminCreateStaffMemberBlocData data,
     this._adminCreateStaffMemberClient,
-  ) : super(const _AdminCreateStaffMemberState()) {
+  )   : _adminStaffBloc = data.adminStaffBloc,
+        super(const _AdminCreateStaffMemberState()) {
     on<_FirstNameChanged>(_onFirstNameChanged);
     on<_LastNameChanged>(_onLastNameChanged);
     on<_UsernameChanged>(_onUsernameChanged);
