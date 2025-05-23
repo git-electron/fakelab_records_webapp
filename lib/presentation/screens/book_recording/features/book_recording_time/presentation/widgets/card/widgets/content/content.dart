@@ -13,13 +13,16 @@ class _Content extends StatelessWidget {
         children: [
           _Title(),
           _Info(),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _DurationButtons(),
-              _CostPerHour(),
-            ],
+          Padding(
+            padding: Pad(top: 5),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _DurationButtons(),
+                _CostPerHour(),
+              ],
+            ),
           ),
         ],
       ),

@@ -3,7 +3,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
 import '../../../../../../core/constants/constants.dart';
 import '../../../../../../core/di/injector.dart';

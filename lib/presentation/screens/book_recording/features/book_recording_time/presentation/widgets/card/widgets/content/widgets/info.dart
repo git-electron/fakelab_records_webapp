@@ -60,7 +60,7 @@ class _InfoItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         icon.svg(height: 15),
-        Text(text, style: context.styles.footer1),
+        Text(text, style: context.styles.footer2),
       ],
     );
   }

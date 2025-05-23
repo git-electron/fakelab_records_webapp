@@ -14,7 +14,7 @@ class _Card extends StatelessWidget {
           shape: BorderRadius.circular(20).smoothShape(),
         ),
         child: const Row(
-          spacing: 20,
+          spacing: 10,
           children: [
             _Cover(),
             _Content(),

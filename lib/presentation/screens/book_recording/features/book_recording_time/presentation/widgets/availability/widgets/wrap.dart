@@ -16,16 +16,16 @@ class _Wrap extends StatelessWidget {
         return Padding(
           padding: const Pad(bottom: 20),
           child: Column(
+            spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 type.title,
                 style: context.styles.title3.copyWith(fontSize: 20),
               ),
-              const Gap(10),
               Wrap(
-                spacing: 10,
-                runSpacing: 10,
+                spacing: 5,
+                runSpacing: 5,
                 children: availableTimes.map(_Time.button).toList(),
               ),
             ],
