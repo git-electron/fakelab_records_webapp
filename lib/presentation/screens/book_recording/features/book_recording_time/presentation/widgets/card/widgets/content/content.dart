@@ -7,19 +7,22 @@ class _Content extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Expanded(
       child: Column(
-        spacing: 8,
+        spacing: 5,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _Title(),
           _Info(),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _DurationButtons(),
-              _CostPerHour(),
-            ],
+          Padding(
+            padding: Pad(top: 5),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _DurationButtons(),
+                _CostPerHour(),
+              ],
+            ),
           ),
         ],
       ),

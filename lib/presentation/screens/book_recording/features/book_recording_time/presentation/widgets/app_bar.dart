@@ -1,6 +1,6 @@
 part of '../book_recording_time_screen.dart';
 
-const double _toolbarHeight = 70;
+const double _toolbarHeight = 40;
 
 class _AppBar extends StatelessWidget {
   const _AppBar();

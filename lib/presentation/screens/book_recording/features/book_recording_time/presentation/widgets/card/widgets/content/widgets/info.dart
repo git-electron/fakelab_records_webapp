@@ -10,8 +10,8 @@ class _Info extends StatelessWidget {
         final DateTime? selectedTime = state.selectedTime;
         final Duration selectedDuration = state.selectedDuration;
 
-        return Column(
-          spacing: 2,
+        return Row(
+          spacing: 10,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _InfoItem(
@@ -57,7 +57,7 @@ class _InfoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      spacing: 10,
+      spacing: 5,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         icon.svg(height: 15),

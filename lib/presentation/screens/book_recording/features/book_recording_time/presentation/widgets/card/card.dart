@@ -7,7 +7,7 @@ class _Card extends StatelessWidget {
   Widget build(BuildContext context) {
     return _AnimatedWrapper(
       child: Container(
-        padding: const Pad(all: 20),
+        padding: const Pad(all: 15),
         decoration: ShapeDecoration(
           color: context.colors.card,
           shape: BorderRadius.circular(20).smoothShape(),
@@ -47,7 +47,10 @@ class _AnimatedWrapper extends StatelessWidget {
             child: AnimatedOpacity(
               opacity: isVisible ? 1 : 0,
               duration: kAnimationDuration,
-              child: child,
+              child: SizedBox(
+                height: isVisible ? null : 0,
+                child: child,
+              ),
             ),
           ),
         );

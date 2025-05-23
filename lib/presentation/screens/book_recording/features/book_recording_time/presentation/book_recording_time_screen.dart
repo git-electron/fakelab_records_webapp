@@ -60,9 +60,10 @@ class BookRecordingTimeScreen extends StatelessWidget {
             if (state.hasError) return ErrorPage(message: state.message);
 
             return const Column(
+              verticalDirection: VerticalDirection.up,
               children: [
-                _AppBar(),
                 _Body(),
+                _AppBar(),
               ],
             );
           },
@@ -81,11 +82,12 @@ class _Body extends StatelessWidget {
       child: Container(
         width: double.maxFinite,
         color: context.colors.background,
-        padding: const Pad(all: 20, bottom: 20),
+        padding: const Pad(horizontal: 20, bottom: 20),
         child: const Column(
           spacing: 20,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(),
             _Availability(),
             _Card(),
             _Button(),
