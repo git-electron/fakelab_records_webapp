@@ -18,13 +18,14 @@ class _DatesGrid extends StatelessWidget {
     final List<DateTime> datesGrid = DatesGridGenerator.generate(month);
 
     return GridView.builder(
+      shrinkWrap: true,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 7,
         mainAxisSpacing: 5,
         crossAxisSpacing: 5,
       ),
-      shrinkWrap: true,
       itemCount: datesGrid.length,
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         DateTime date = datesGrid[index];
         bool isCurrentMonth = date.month == month.month;
