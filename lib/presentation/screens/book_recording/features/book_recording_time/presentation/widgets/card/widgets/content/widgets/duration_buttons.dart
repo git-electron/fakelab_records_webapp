@@ -7,20 +7,23 @@ class _DurationButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
       builder: (context, state) {
-        return Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _DurationButton.minus(state),
-            Container(
-              width: 32.5,
-              alignment: Alignment.center,
-              child: Text(
-                _duration(state.selectedDuration),
-                style: context.styles.footer1,
+        return Padding(
+          padding: const Pad(top: 5),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _DurationButton.minus(state),
+              Container(
+                width: 32.5,
+                alignment: Alignment.center,
+                child: Text(
+                  _duration(state.selectedDuration),
+                  style: context.styles.footer1,
+                ),
               ),
-            ),
-            _DurationButton.plus(state),
-          ],
+              _DurationButton.plus(state),
+            ],
+          ),
         );
       },
     );

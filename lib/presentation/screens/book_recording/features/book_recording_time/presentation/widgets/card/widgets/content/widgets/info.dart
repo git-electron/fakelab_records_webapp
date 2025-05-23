@@ -10,19 +10,29 @@ class _Info extends StatelessWidget {
         final DateTime? selectedTime = state.selectedTime;
         final Duration selectedDuration = state.selectedDuration;
 
-        return Row(
-          spacing: 10,
+        return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 2,
           children: [
-            _InfoItem(
-              icon: Assets.icons.calendar.light,
-              text: _date(state.selectedDate),
+            Row(
+              spacing: 10,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _InfoItem(
+                  icon: Assets.icons.calendar.light,
+                  text: _date(state.selectedDate),
+                ),
+                if (selectedTime != null)
+                  _InfoItem(
+                    icon: Assets.icons.clock.light,
+                    text: _timeInterval(selectedTime, selectedDuration),
+                  ),
+              ],
             ),
-            if (selectedTime != null)
-              _InfoItem(
-                icon: Assets.icons.clock.light,
-                text: _timeInterval(selectedTime, selectedDuration),
-              ),
+            _InfoItem(
+              icon: Assets.icons.pin.light,
+              text: businessStreetAddress,
+            ),
           ],
         );
       },

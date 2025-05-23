@@ -3,31 +3,35 @@ part of '../../book_recording_time_screen.dart';
 class _Card extends StatelessWidget {
   const _Card();
 
+  static const double padding = 15;
+
   @override
   Widget build(BuildContext context) {
-    return _AnimatedWrapper(
-      child: Container(
-        padding: const Pad(all: 15),
-        decoration: ShapeDecoration(
-          color: context.colors.card,
-          shape: BorderRadius.circular(20).smoothShape(),
-        ),
-        child: const Row(
-          spacing: 10,
-          children: [
-            _Cover(),
-            _Content(),
-          ],
-        ),
-      ),
+    return _AnimatedBuilder(
+      builder: (context, size) {
+        return Container(
+          padding: const Pad(all: padding),
+          decoration: ShapeDecoration(
+            color: context.colors.card,
+            shape: BorderRadius.circular(20).smoothShape(),
+          ),
+          child: Row(
+            spacing: padding,
+            children: [
+              _Cover(size),
+              const _Content(),
+            ],
+          ),
+        );
+      },
     );
   }
 }
 
-class _AnimatedWrapper extends StatelessWidget {
-  const _AnimatedWrapper({required this.child});
+class _AnimatedBuilder extends StatelessWidget {
+  const _AnimatedBuilder({required this.builder});
 
-  final Widget child;
+  final Widget Function(BuildContext context, Size size) builder;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +53,11 @@ class _AnimatedWrapper extends StatelessWidget {
               duration: kAnimationDuration,
               child: SizedBox(
                 height: isVisible ? null : 0,
-                child: child,
+                child: MeasureSizeWrapper(
+                    shouldMeasureOnce: false,
+                    builder: (context, size) {
+                      return builder(context, size);
+                    }),
               ),
             ),
           ),

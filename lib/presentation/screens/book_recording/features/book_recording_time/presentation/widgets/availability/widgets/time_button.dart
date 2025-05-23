@@ -14,7 +14,7 @@ class _Time extends StatelessWidget {
         return Tappable(
           onTap: () => bloc.add(BookRecordingTimeEvent.timeSelected(time)),
           child: Container(
-            padding: const Pad(vertical: 8, horizontal: 16),
+            padding: const Pad(vertical: 10, horizontal: 20),
             decoration: ShapeDecoration(
               color: state.isSelected(time)
                   ? context.colors.onBackground
@@ -24,7 +24,7 @@ class _Time extends StatelessWidget {
             child: Text(
               time.toHHmm(),
               style: context.styles.footer1.copyWith(
-                fontSize: 12,
+                fontSize: 14,
                 color: state.isSelected(time)
                     ? context.colors.background
                     : context.colors.onBackground,
