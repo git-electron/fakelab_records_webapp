@@ -11,6 +11,7 @@ class _Info extends StatelessWidget {
         final Duration selectedDuration = state.selectedDuration;
 
         return Column(
+          spacing: 2,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _InfoItem(

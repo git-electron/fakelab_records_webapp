@@ -8,7 +8,6 @@ class _Card extends StatelessWidget {
     return _AnimatedWrapper(
       child: Container(
         padding: const Pad(all: 20),
-        margin: const Pad(horizontal: 20),
         decoration: ShapeDecoration(
           color: context.colors.card,
           shape: BorderRadius.circular(20).smoothShape(),

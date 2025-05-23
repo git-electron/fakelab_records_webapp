@@ -81,7 +81,7 @@ class _Body extends StatelessWidget {
       child: Container(
         width: double.maxFinite,
         color: context.colors.background,
-        padding: const Pad(vertical: 40),
+        padding: const Pad(all: 20, bottom: 20),
         child: const Column(
           spacing: 20,
           crossAxisAlignment: CrossAxisAlignment.start,

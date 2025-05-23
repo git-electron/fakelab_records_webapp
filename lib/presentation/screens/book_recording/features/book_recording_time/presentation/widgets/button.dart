@@ -5,17 +5,14 @@ class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const Pad(horizontal: 20),
-      child: BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
-        builder: (context, state) {
-          return AppButton.primary(
-            onTap: () {},
-            isEnabled: state.canProceed,
-            text: 'К оформлению',
-          );
-        },
-      ),
+    return BlocBuilder<BookRecordingTimeBloc, BookRecordingTimeState>(
+      builder: (context, state) {
+        return AppButton.primary(
+          onTap: () {},
+          isEnabled: state.canProceed,
+          text: 'К оформлению',
+        );
+      },
     );
   }
 }

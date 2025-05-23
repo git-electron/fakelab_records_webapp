@@ -15,22 +15,19 @@ class _OneMonthCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const Pad(horizontal: 20),
-      child: Column(
-        spacing: 10,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _MonthTitle(month),
-          const _WeekdaysHeader(),
-          _DatesGrid(
-            month: month,
-            selectedDate: selectedDate,
-            onDateSelected: onDateSelected,
-            isDateAvailablePredicate: isDateAvailablePredicate,
-          ),
-        ],
-      ),
+    return Column(
+      spacing: 10,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _MonthTitle(month),
+        const _WeekdaysHeader(),
+        _DatesGrid(
+          month: month,
+          selectedDate: selectedDate,
+          onDateSelected: onDateSelected,
+          isDateAvailablePredicate: isDateAvailablePredicate,
+        ),
+      ],
     );
   }
 }

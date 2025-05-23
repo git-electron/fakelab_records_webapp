@@ -6,20 +6,17 @@ class _Availability extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Expanded(
-      child: Padding(
-        padding: Pad(horizontal: 20),
-        child: SingleChildScrollView(
-          clipBehavior: Clip.none,
-          child: SizedBox(
-            width: double.maxFinite,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _Wrap(AvailabilityType.morning),
-                _Wrap(AvailabilityType.afternoon),
-                _Wrap(AvailabilityType.evening),
-              ],
-            ),
+      child: SingleChildScrollView(
+        clipBehavior: Clip.none,
+        child: SizedBox(
+          width: double.maxFinite,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _Wrap(AvailabilityType.morning),
+              _Wrap(AvailabilityType.afternoon),
+              _Wrap(AvailabilityType.evening),
+            ],
           ),
         ),
       ),
