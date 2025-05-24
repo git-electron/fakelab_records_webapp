@@ -1,8 +1,11 @@
+import 'package:fakelab_records_webapp/core/extensions/duration_extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../../features/checkout/domain/models/checkout_item.dart';
 import '../../models/book_recording_bloc_data/book_recording_bloc_data.dart';
+import '../../models/booking/booking.dart';
 import '../bookings_bloc/bookings_bloc.dart';
 
 part 'book_recording_event.dart';

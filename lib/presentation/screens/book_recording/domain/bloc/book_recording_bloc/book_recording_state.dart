@@ -22,4 +22,14 @@ class BookRecordingState with _$BookRecordingState {
         selectedTime,
         duration: selectedDuration,
       );
+
+  int get selectedHours => selectedDuration.inHours.remainder(24).abs();
+
+  double get totalCost => kBookingCostPerHour * selectedHours;
+
+  String get selectedDurationString =>
+      '${selectedDuration.toHHplural(withMinutes: false)} записи на студии';
+
+  CheckoutItem get checkoutItem =>
+      CheckoutItem(title: selectedDurationString, totalCost: totalCost);
 }

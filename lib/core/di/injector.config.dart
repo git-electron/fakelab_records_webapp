@@ -21,6 +21,8 @@ import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart
 import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart'
     as _i435;
 import 'package:fakelab_records_webapp/core/router/router.dart' as _i352;
+import 'package:fakelab_records_webapp/core/utils/debouncer/debouncer.dart'
+    as _i333;
 import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart'
     as _i610;
 import 'package:fakelab_records_webapp/features/my_orders/data/client/orders_client.dart'
@@ -153,6 +155,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i974.Logger>(() => locator.logger);
     gh.factory<_i435.TelegramService>(() => _i435.TelegramService());
+    gh.factory<_i333.Debouncer>(() => _i333.Debouncer());
     gh.factory<_i610.IdGenerator>(() => _i610.IdGenerator());
     gh.factory<_i689.AdminClientsFiltersBloc>(
         () => _i689.AdminClientsFiltersBloc());

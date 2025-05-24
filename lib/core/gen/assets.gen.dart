@@ -34,6 +34,9 @@ class $AssetsIconsGen {
   /// Directory path: assets/icons/arrow_up
   $AssetsIconsArrowUpGen get arrowUp => const $AssetsIconsArrowUpGen();
 
+  /// Directory path: assets/icons/bang
+  $AssetsIconsBangGen get bang => const $AssetsIconsBangGen();
+
   /// Directory path: assets/icons/box
   $AssetsIconsBoxGen get box => const $AssetsIconsBoxGen();
 
@@ -236,6 +239,19 @@ class $AssetsIconsArrowUpGen {
 
   /// File path: assets/icons/arrow_up/light.svg
   SvgGenImage get light => const SvgGenImage('assets/icons/arrow_up/light.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [dark, light];
+}
+
+class $AssetsIconsBangGen {
+  const $AssetsIconsBangGen();
+
+  /// File path: assets/icons/bang/dark.svg
+  SvgGenImage get dark => const SvgGenImage('assets/icons/bang/dark.svg');
+
+  /// File path: assets/icons/bang/light.svg
+  SvgGenImage get light => const SvgGenImage('assets/icons/bang/light.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [dark, light];

@@ -85,6 +85,7 @@ flutter:
     - assets/icons/arrow_left/
     - assets/icons/arrow_right/
     - assets/icons/arrow_up/
+    - assets/icons/bang/
     - assets/icons/box/
     - assets/icons/calendar/
     - assets/icons/cart/
