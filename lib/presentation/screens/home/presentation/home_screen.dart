@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_swipe_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart'
@@ -133,6 +134,13 @@ class _Body extends StatelessWidget {
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: Pad(horizontal: 20),
+              child: AppSwipeButton(),
+            ), //TODO: remove
+            Gap(20),
+            Gap(20),
+            Gap(20),
             _DebugPanel(),
             _Header(),
             _AdminPanel(),
