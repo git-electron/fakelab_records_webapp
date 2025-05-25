@@ -1,7 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
-import 'package:fakelab_records_webapp/presentation/ui/app_swipe_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart'
@@ -131,39 +130,29 @@ class _Body extends StatelessWidget {
       child: Container(
         color: context.colors.background,
         padding: const Pad(top: 70),
-        child: Column(
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const Pad(horizontal: 20),
-              child: AppSwipeButton.primary(
-                text: 'Button',
-                onSwiped: () => print('completed'),
-              ),
-            ), //TODO: remove
-            const Gap(20),
-            const Gap(20),
-            const Gap(20),
-            const _DebugPanel(),
-            const _Header(),
-            const _AdminPanel(),
-            const Gap(20),
-            const _MyOrders(),
-            const _Loyalty(),
-            const Gap(40),
-            const _ActionButtons(),
-            const Gap(60),
-            const _About(),
-            const Gap(60),
-            const _Equipment(),
-            const Gap(40),
-            const _Examples(),
-            const Gap(40),
-            const _PromoText(),
-            const Gap(20),
-            const _ActionButtons(),
-            const Gap(40),
-            const _Footer(),
+            _DebugPanel(),
+            _Header(),
+            _AdminPanel(),
+            Gap(20),
+            _MyOrders(),
+            _Loyalty(),
+            Gap(40),
+            _ActionButtons(),
+            Gap(60),
+            _About(),
+            Gap(60),
+            _Equipment(),
+            Gap(40),
+            _Examples(),
+            Gap(40),
+            _PromoText(),
+            Gap(20),
+            _ActionButtons(),
+            Gap(40),
+            _Footer(),
           ],
         ),
       ),

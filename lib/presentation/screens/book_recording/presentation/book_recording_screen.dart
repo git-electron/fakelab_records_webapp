@@ -1,7 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
-import 'package:fakelab_records_webapp/presentation/ui/app_swipe_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -15,6 +14,7 @@ import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import '../../../../features/checkout/domain/models/checkout_hint.dart';
 import '../../../../features/checkout/presentation/checkout_feature.dart';
+import '../../../ui/app_swipe_button.dart';
 import '../../../ui/pages/error_page.dart';
 import '../../../ui/wrappers/measure_size_wrapper.dart';
 import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
@@ -24,6 +24,7 @@ import '../domain/models/book_recording_bloc_data/book_recording_bloc_data.dart'
 
 part 'pages/time_is_unavailable_page.dart';
 part 'widgets/app_bar.dart';
+part 'widgets/button.dart';
 part 'widgets/card/card.dart';
 part 'widgets/card/widgets/content/content.dart';
 part 'widgets/card/widgets/content/widgets/info.dart';
@@ -33,7 +34,6 @@ part 'widgets/card/widgets/cover.dart';
 part 'widgets/checkout.dart';
 part 'widgets/header.dart';
 part 'widgets/refund_warning.dart';
-part 'widgets/button.dart';
 
 @RoutePage()
 class BookRecordingScreen extends StatelessWidget {
