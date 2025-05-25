@@ -23,7 +23,7 @@ class BookRecordingClient {
 
       _logger.i('''Realtime Database create request:
 Path: $path
-Data: $order''');
+Data: $booking''');
 
       await _ref.child(path).set(booking.toJson());
 
