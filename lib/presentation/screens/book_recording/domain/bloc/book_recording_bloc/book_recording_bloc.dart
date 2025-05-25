@@ -1,8 +1,11 @@
+import 'package:fakelab_records_webapp/core/extensions/duration_extensions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../../features/checkout/domain/models/checkout_item.dart';
 import '../../models/book_recording_bloc_data/book_recording_bloc_data.dart';
+import '../../models/booking/booking.dart';
 import '../bookings_bloc/bookings_bloc.dart';
 
 part 'book_recording_event.dart';
@@ -31,7 +34,9 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
     _BookButtonPressed event,
     Emitter<BookRecordingState> emit,
   ) async {
-    print('pressed');
+    emit(state.copyWith(isBookButtonLoading: true));
+    await Future.delayed(const Duration(seconds: 3));
+    emit(state.copyWith(isBookButtonLoading: false));
   }
 
   Future<void> _onBookingsStateChanged(

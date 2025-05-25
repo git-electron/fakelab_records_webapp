@@ -1,11 +1,8 @@
 import 'package:fakelab_records_webapp/core/constants/constants.dart';
-import 'package:fakelab_records_webapp/core/extensions/duration_extensions.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
-import 'package:fakelab_records_webapp/features/checkout/domain/models/checkout_item.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc/bookings_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/availability_type/availability_type.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
