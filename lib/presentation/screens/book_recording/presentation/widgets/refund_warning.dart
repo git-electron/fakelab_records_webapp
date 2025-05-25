@@ -13,10 +13,17 @@ class _RefundWarning extends StatelessWidget {
         shape: BorderRadius.circular(20).smoothShape(),
       ),
       child: Row(
-        spacing: 20,
+        spacing: 10,
         children: [
           Assets.icons.bang.light.svg(),
-          const Expanded(child: Text(_warningText)),
+          Expanded(
+            child: Text(
+              _warningText,
+              style: context.styles.footer2.copyWith(
+                color: context.colors.body,
+              ),
+            ),
+          ),
         ],
       ),
     );

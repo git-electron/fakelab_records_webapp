@@ -52,7 +52,7 @@ class _Info extends StatelessWidget {
     return '${_time(startTime)} — ${_time(endTime)}';
   }
 
-  String _time(DateTime time) => time.toHHmm(shoudApplyPaddingToHours: true);
+  String _time(DateTime time) => time.toHHmm();
 }
 
 class _InfoItem extends StatelessWidget {

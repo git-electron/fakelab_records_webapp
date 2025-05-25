@@ -13,7 +13,7 @@ class _Content extends StatelessWidget {
         children: [
           _Title(),
           _Info(),
-          _DurationButtons(),
+          _CostPerHour(),
         ],
       ),
     );
