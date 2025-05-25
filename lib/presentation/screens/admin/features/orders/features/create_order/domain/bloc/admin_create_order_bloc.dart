@@ -58,7 +58,7 @@ class AdminCreateOrderBloc
     Emitter<AdminCreateOrderState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
-    final Order order = state.order(_idGenerator);
+    final Order order = state._order(_idGenerator);
 
     final Result<Order> result =
         await _adminCreateOrderClient.createOrder(order);

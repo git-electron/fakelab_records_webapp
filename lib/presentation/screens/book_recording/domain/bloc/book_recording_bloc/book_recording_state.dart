@@ -30,4 +30,31 @@ class BookRecordingState with _$BookRecordingState {
 
   CheckoutItem get checkoutItem =>
       CheckoutItem(title: selectedDurationString, totalCost: totalCost);
+
+  Booking _booking(IdGenerator idGenerator, User customer) {
+    final String id = idGenerator.generate();
+    final DateTime now = DateTime.now();
+
+    final Booking booking = Booking(
+      id: id,
+      customer: customer,
+      status: BookingStatus.REQUEST,
+      statusHistory: [
+        BookingStatusHistoryItem(
+          status: BookingStatus.REQUEST,
+          dateChanged: now,
+        ),
+      ],
+      dateCreated: now,
+      dateChanged: now,
+      date: selectedTime,
+      totalCost: totalCost,
+      duration: selectedDuration,
+      filters: BookingFilters(
+        userIdStatus: '${customer.id}-${BookingStatus.REQUEST.name}',
+      ),
+    );
+
+    return booking;
+  }
 }

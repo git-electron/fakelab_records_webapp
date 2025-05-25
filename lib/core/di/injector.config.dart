@@ -87,6 +87,8 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff
     as _i775;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/domain/models/admin_edit_staff_member_bloc_data.dart'
     as _i317;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/book_recording_client.dart'
+    as _i761;
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/bookings_client.dart'
     as _i511;
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/book_recording_bloc/book_recording_bloc.dart'
@@ -164,12 +166,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
-    gh.factoryParam<_i108.BookRecordingBloc, _i227.BookRecordingBlocData,
-        dynamic>((
-      data,
-      _,
-    ) =>
-        _i108.BookRecordingBloc(data));
     gh.factory<_i415.AdminClientsClient>(() => _i415.AdminClientsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
@@ -218,6 +214,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i974.Logger>(),
         ));
     gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.factory<_i761.BookRecordingClient>(() => _i761.BookRecordingClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
@@ -381,6 +381,18 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i610.IdGenerator>(),
           data,
           gh<_i89.AdminCreateStaffMemberClient>(),
+        ));
+    gh.factoryParam<_i108.BookRecordingBloc, _i227.BookRecordingBlocData,
+        dynamic>((
+      data,
+      _,
+    ) =>
+        _i108.BookRecordingBloc(
+          gh<_i352.AppRouter>(),
+          gh<_i109.UserBloc>(),
+          gh<_i610.IdGenerator>(),
+          gh<_i761.BookRecordingClient>(),
+          data,
         ));
     gh.factoryParam<_i206.BookRecordingDateBloc,
         _i241.BookRecordingDateBlocData, dynamic>((
