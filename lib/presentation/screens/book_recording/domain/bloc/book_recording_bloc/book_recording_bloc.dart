@@ -34,7 +34,9 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
     _BookButtonPressed event,
     Emitter<BookRecordingState> emit,
   ) async {
-    print('pressed');
+    emit(state.copyWith(isBookButtonLoading: true));
+    await Future.delayed(const Duration(seconds: 3));
+    emit(state.copyWith(isBookButtonLoading: false));
   }
 
   Future<void> _onBookingsStateChanged(

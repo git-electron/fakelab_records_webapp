@@ -7,6 +7,7 @@ class _RefundWarning extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const Pad(all: 20),
+      margin: const Pad(horizontal: 20),
       decoration: ShapeDecoration(
         color: context.colors.card,
         shape: BorderRadius.circular(20).smoothShape(),

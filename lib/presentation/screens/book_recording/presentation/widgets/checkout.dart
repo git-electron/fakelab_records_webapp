@@ -7,10 +7,13 @@ class _Checkout extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BookRecordingBloc, BookRecordingState>(
       builder: (context, state) {
-        return CheckoutFeature.singleItem(
-          state.checkoutItem,
-          hint: CheckoutHint.prepayment,
-          prepaymentPercent: .25,
+        return Padding(
+          padding: const Pad(horizontal: 20),
+          child: CheckoutFeature.singleItem(
+            state.checkoutItem,
+            hint: CheckoutHint.prepayment,
+            prepaymentPercent: .25,
+          ),
         );
       },
     );

@@ -12,8 +12,6 @@ class BookRecordingState with _$BookRecordingState {
 
   const BookRecordingState._();
 
-  bool get isLoading => bookingsState.isLoading;
-
   bool get hasError => errorMessage != null || bookingsState.hasError;
 
   String? get message => errorMessage ?? bookingsState.message;

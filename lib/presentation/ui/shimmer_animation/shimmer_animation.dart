@@ -45,8 +45,6 @@ class ShimmerAnimation extends StatelessWidget {
 }
 
 class ShimmerDirection {
-  const ShimmerDirection(this.begin, this.end);
-
   const ShimmerDirection._fromLTtoRB({
     this.begin = Alignment.topLeft,
     this.end = Alignment.centerRight,
@@ -76,6 +74,8 @@ class ShimmerDirection {
     this.begin = Alignment.centerLeft,
     this.end = Alignment.centerRight,
   });
+
+  const factory ShimmerDirection() = ShimmerDirection._fromLeftToRight;
 
   final Alignment begin, end;
 

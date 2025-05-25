@@ -11,6 +11,7 @@ class _Card extends StatelessWidget {
       builder: (context, size) {
         return Container(
           padding: const Pad(all: padding),
+          margin: const Pad(horizontal: 20),
           decoration: ShapeDecoration(
             color: context.colors.card,
             shape: BorderRadius.circular(20).smoothShape(),

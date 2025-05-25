@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_swipe_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -15,7 +16,6 @@ import '../../../../core/theme/theme_extensions.dart';
 import '../../../../features/checkout/domain/models/checkout_hint.dart';
 import '../../../../features/checkout/presentation/checkout_feature.dart';
 import '../../../ui/pages/error_page.dart';
-import '../../../ui/pages/loading_page.dart';
 import '../../../ui/wrappers/measure_size_wrapper.dart';
 import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../domain/bloc/book_recording_bloc/book_recording_bloc.dart';
@@ -61,7 +61,6 @@ class BookRecordingScreen extends StatelessWidget {
       child: Scaffold(
         body: BlocBuilder<BookRecordingBloc, BookRecordingState>(
           builder: (context, state) {
-            if (state.isLoading) return const LoadingPage();
             if (state.hasError) return ErrorPage(message: state.message);
             if (!state.isTimeAvailable) return const _TimeIsUnavailablePage();
 
@@ -88,7 +87,7 @@ class _Body extends StatelessWidget {
       child: Container(
         width: double.maxFinite,
         color: context.colors.background,
-        padding: const Pad(all: 20, vertical: 20),
+        padding: const Pad(vertical: 40),
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [

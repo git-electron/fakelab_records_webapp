@@ -5,6 +5,18 @@ class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox();
+    final BookRecordingBloc bloc = context.read();
+
+    return BlocBuilder<BookRecordingBloc, BookRecordingState>(
+      builder: (context, state) {
+        return AppSwipeButton.primary(
+          text: 'Забронировать',
+          isLoading: state.isBookButtonLoading,
+          onSwiped: () {
+            bloc.add(const BookRecordingEvent.bookButtonPressed());
+          },
+        );
+      },
+    );
   }
 }

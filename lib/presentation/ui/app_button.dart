@@ -92,48 +92,51 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool canTap = isEnabled && !isLoading;
 
-    return Tappable(
-      onTap: canTap ? onTap : null,
-      child: Opacity(
-        opacity: isEnabled ? 1 : .25,
-        child: Container(
-          height: height,
-          width: isExpanded ? width ?? double.infinity : null,
-          padding: isExpanded ? null : const Pad(horizontal: 30),
-          alignment: Alignment.center,
-          decoration: ShapeDecoration(
-            color: backgroundColor,
-            shape: SmoothRectangleBorder(
-              borderRadius: SmoothBorderRadius(
-                cornerRadius: 20,
-                cornerSmoothing: 0.6,
+    return IgnorePointer(
+      ignoring: !canTap,
+      child: Tappable(
+        onTap: onTap,
+        child: Opacity(
+          opacity: isEnabled ? 1 : .25,
+          child: Container(
+            height: height,
+            width: isExpanded ? double.maxFinite : width,
+            padding: isExpanded ? null : const Pad(horizontal: 30),
+            alignment: Alignment.center,
+            decoration: ShapeDecoration(
+              color: backgroundColor,
+              shape: SmoothRectangleBorder(
+                borderRadius: SmoothBorderRadius(
+                  cornerRadius: 20,
+                  cornerSmoothing: 0.6,
+                ),
               ),
             ),
-          ),
-          child: !isLoading
-              ? Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    if (text != null)
-                      Text(
-                        text!,
-                        style: context.styles.body1.copyWith(
-                          color: contentColor,
+            child: !isLoading
+                ? Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      if (text != null)
+                        Text(
+                          text!,
+                          style: context.styles.body1.copyWith(
+                            color: contentColor,
+                          ),
                         ),
-                      ),
-                    if (icon != null) icon!.svg(),
-                  ].alternateWith(const Gap(10)),
-                )
-              : SizedBox.square(
-                  dimension: 20,
-                  child: CircularProgressIndicator(
-                    color: contentColor,
-                    strokeCap: StrokeCap.round,
-                    strokeWidth: 3,
+                      if (icon != null) icon!.svg(),
+                    ].alternateWith(const Gap(10)),
+                  )
+                : SizedBox.square(
+                    dimension: 20,
+                    child: CircularProgressIndicator(
+                      color: contentColor,
+                      strokeCap: StrokeCap.round,
+                      strokeWidth: 3,
+                    ),
                   ),
-                ),
+          ),
         ),
       ),
     );

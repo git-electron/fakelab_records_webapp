@@ -8,6 +8,7 @@ class _Header extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       color: context.colors.background,
+      margin: const Pad(horizontal: 20),
       child: Text(
         'Подтверждение бронирования',
         style: context.styles.subtitle1.copyWith(
