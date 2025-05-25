@@ -40,7 +40,7 @@ class _Info extends StatelessWidget {
 
   String _date(DateTime date) {
     return date.toDDmmYYYYwithMonths(
-      withWords: false,
+      withWords: true,
       isShort: false,
     );
   }
