@@ -39,9 +39,7 @@ Data: $json''');
 
       if (json == null) return Result.success([]);
 
-      final List<Order> orders = json.values
-          .map((order) => Order.fromJson(order))
-          .toList()
+      final List<Order> orders = json.values.map(Order.maybeFromJson).toList()
         ..sort((a, b) => b.dateCreated.compareTo(a.dateCreated));
 
       return Result.success(orders);
