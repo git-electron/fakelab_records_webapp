@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fakelab_records_webapp/core/router/router.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc/bookings_bloc.dart';
@@ -23,11 +25,20 @@ class BookRecordingDateBloc
     on<_DateSelected>(_onDateSelected);
     on<_BookingsStateChanged>(_onBookingsStateChanged);
 
-    _bookingsBloc.stream.listen(_bookingsStateListener);
+    _bookingsStateSubscription =
+        _bookingsBloc.stream.listen(_bookingsStateListener);
+  }
+
+  @override
+  Future<void> close() {
+    _bookingsStateSubscription.cancel();
+    return super.close();
   }
 
   final AppRouter _router;
   final BookingsBloc _bookingsBloc;
+
+  late final StreamSubscription _bookingsStateSubscription;
 
   Future<void> _onDateSelected(
     _DateSelected event,

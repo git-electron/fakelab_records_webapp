@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -22,11 +24,20 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<_SetUnauthorized>(_onSetUnauthorized);
 
     tryOrNullAsync(_getUser);
-    telegramDataBloc.stream.listen(_telegramDataStateListener);
+    _telegramDataStateSubscription =
+        telegramDataBloc.stream.listen(_telegramDataStateListener);
+  }
+
+  @override
+  Future<void> close() {
+    _telegramDataStateSubscription.cancel();
+    return super.close();
   }
 
   final UserClient userClient;
   final TelegramDataBloc telegramDataBloc;
+
+  late final StreamSubscription _telegramDataStateSubscription;
 
   Future<void> _onSetError(
     _SetError event,

@@ -1,6 +1,7 @@
+import 'dart:async';
+
 import 'package:fakelab_records_webapp/core/constants/constants.dart';
 import 'package:fakelab_records_webapp/core/router/router.gr.dart';
-import 'package:fakelab_records_webapp/core/utils/try_or/try_or_null.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/bookings_bloc/bookings_bloc.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/availability_type/availability_type.dart';
 import 'package:flutter/material.dart';
@@ -31,20 +32,22 @@ class BookRecordingTimeBloc
     on<_BookingsStateChanged>(_onBookingsStateChanged);
     on<_ProceedButtonPressed>(_onProceedButtonPressed);
 
-    tryOrNullAsync(_bookingsBloc.refreshBookings);
-    _bookingsBloc.stream.listen(_bookingsStateListener);
+    _bookingsStateSubscription =
+        _bookingsBloc.stream.listen(_bookingsStateListener);
   }
 
   @override
   Future<void> close() {
     availabilityController.dispose();
+    _bookingsStateSubscription.cancel();
     return super.close();
   }
 
   final AppRouter _router;
   final BookingsBloc _bookingsBloc;
-
   final ScrollController availabilityController = ScrollController();
+
+  late final StreamSubscription _bookingsStateSubscription;
 
   Future<void> _onTimeSelected(
     _TimeSelected event,
@@ -98,6 +101,8 @@ class BookRecordingTimeBloc
     ));
   }
 
-  void _bookingsStateListener(BookingsState bookingsState) =>
-      add(BookRecordingTimeEvent.bookingsStateChanged(bookingsState));
+  void _bookingsStateListener(BookingsState bookingsState) {
+    print('called : ${bookingsState.runtimeType}');
+    add(BookRecordingTimeEvent.bookingsStateChanged(bookingsState));
+  }
 }

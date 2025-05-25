@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fakelab_records_webapp/core/extensions/duration_extensions.dart';
 import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart';
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/book_recording_client.dart';
@@ -38,7 +40,14 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
     on<_BookButtonPressed>(_onBookButtonPressed);
     on<_BookingsStateChanged>(_onBookingsStateChanged);
 
-    _bookingsBloc.stream.listen(_bookingsStateListener);
+    _bookingsStateSubscription =
+        _bookingsBloc.stream.listen(_bookingsStateListener);
+  }
+
+  @override
+  Future<void> close() {
+    _bookingsStateSubscription.cancel();
+    return super.close();
   }
 
   final AppRouter _router;
@@ -46,6 +55,8 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
   final IdGenerator _idGenerator;
   final BookingsBloc _bookingsBloc;
   final BookRecordingClient _bookRecordingClient;
+
+  late final StreamSubscription _bookingsStateSubscription;
 
   Future<void> _onBookButtonPressed(
     _BookButtonPressed event,

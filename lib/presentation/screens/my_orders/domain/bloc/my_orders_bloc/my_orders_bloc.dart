@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -20,12 +22,23 @@ class MyOrdersBloc extends Bloc<MyOrdersEvent, MyOrdersState> {
     on<_UserStateChanged>(_onUserStateChanged);
     on<_MyOrdersFeatureStateChanged>(_onMyOrdersFeatureStateChanged);
 
-    _userBloc.stream.listen(_userStateListener);
-    myOrdersFeatureBloc.stream.listen(_myOrdersFeatureStateListener);
+    _userStateSubscription = _userBloc.stream.listen(_userStateListener);
+    _myOrdersFeatureStateSubscription =
+        myOrdersFeatureBloc.stream.listen(_myOrdersFeatureStateListener);
+  }
+
+  @override
+  Future<void> close() {
+    _userStateSubscription.cancel();
+    _myOrdersFeatureStateSubscription.cancel();
+    return super.close();
   }
 
   final UserBloc _userBloc;
   final MyOrdersFeatureBloc myOrdersFeatureBloc;
+
+  late final StreamSubscription _userStateSubscription;
+  late final StreamSubscription _myOrdersFeatureStateSubscription;
 
   Future<void> _onUserStateChanged(
     _UserStateChanged event,
