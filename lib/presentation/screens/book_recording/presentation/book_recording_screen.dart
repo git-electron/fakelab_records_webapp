@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -21,6 +22,7 @@ import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../domain/bloc/book_recording_bloc/book_recording_bloc.dart';
 import '../domain/bloc/bookings_bloc/bookings_bloc.dart';
 import '../domain/models/book_recording_bloc_data/book_recording_bloc_data.dart';
+import '../domain/models/booking/booking.dart';
 
 part 'pages/time_is_unavailable_page.dart';
 part 'widgets/app_bar.dart';
@@ -29,7 +31,7 @@ part 'widgets/card/card.dart';
 part 'widgets/card/widgets/content/content.dart';
 part 'widgets/card/widgets/content/widgets/info.dart';
 part 'widgets/card/widgets/content/widgets/title.dart';
-part 'widgets/card/widgets/content/widgets/total_cost.dart';
+part 'widgets/card/widgets/content/widgets/cost_per_hour.dart';
 part 'widgets/card/widgets/cover.dart';
 part 'widgets/checkout.dart';
 part 'widgets/header.dart';
@@ -84,23 +86,26 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        width: double.maxFinite,
-        color: context.colors.background,
-        padding: const Pad(vertical: 40),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            _Header(),
-            Gap(20),
-            _Card(),
-            Gap(10),
-            _Checkout(),
-            Gap(10),
-            _RefundWarning(),
-            Gap(20),
-            _Button(),
-          ],
+      child: SingleChildScrollView(
+        reverse: true,
+        child: Container(
+          width: double.maxFinite,
+          color: context.colors.background,
+          padding: const Pad(vertical: 40),
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              _Header(),
+              Gap(20),
+              _Card(),
+              Gap(10),
+              _Checkout(),
+              Gap(10),
+              _RefundWarning(),
+              Gap(20),
+              _Button(),
+            ],
+          ),
         ),
       ),
     );
