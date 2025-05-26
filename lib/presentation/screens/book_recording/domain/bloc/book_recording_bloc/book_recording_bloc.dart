@@ -66,6 +66,7 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
 
     emit(state.copyWith(isBookButtonLoading: true));
     await _createBooking(emit);
+    await _userBloc.refreshUser();
     emit(state.copyWith(isBookButtonLoading: false));
   }
 

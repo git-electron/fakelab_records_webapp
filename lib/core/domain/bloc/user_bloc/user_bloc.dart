@@ -67,6 +67,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     emit(const UserState.unauthorized());
   }
 
+  Future<void> refreshUser() async => _getUser();
+
   Future<void> _getUser() async {
     final int userId = telegramDataBloc.state.telegramData!.user.id;
     add(const UserEvent.setLoading());
