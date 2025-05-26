@@ -37,6 +37,10 @@ class Booking with _$Booking {
 
   Booking._();
 
+  String get title => 'БРОНИРОВАНИЕ';
+  
+  String get idShort => '#${id.substring(id.length - 5)}';
+
   DateTime get startTime => date;
   DateTime get endTime => date.add(duration);
 

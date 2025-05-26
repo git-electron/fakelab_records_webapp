@@ -7,6 +7,13 @@ class _Single extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    if (!state.hasBookings) return const SizedBox();
+
+    final Booking booking = state.booking!;
+
+    return Padding(
+      padding: const Pad(horizontal: 20, bottom: 10),
+      child: _BookingCardSmall(booking),
+    );
   }
 }
