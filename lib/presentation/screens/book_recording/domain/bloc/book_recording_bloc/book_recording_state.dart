@@ -3,6 +3,7 @@ part of 'book_recording_bloc.dart';
 @freezed
 class BookRecordingState with _$BookRecordingState {
   const factory BookRecordingState({
+    required UserState userState,
     required BookingsState bookingsState,
     required DateTime selectedTime,
     required Duration selectedDuration,
@@ -15,6 +16,11 @@ class BookRecordingState with _$BookRecordingState {
   bool get hasError => errorMessage != null || bookingsState.hasError;
 
   String? get message => errorMessage ?? bookingsState.message;
+
+  bool get canBookRecording {
+    if (!userState.isAuthorized) return false;
+    return bookingsState.canBookRecording(userState.user!);
+  }
 
   bool get isTimeAvailable => bookingsState.isTimeAvailable(
         selectedTime,

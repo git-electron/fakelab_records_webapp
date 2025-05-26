@@ -19,6 +19,7 @@ import '../../../../../ui/wrappers/tappable.dart';
 import '../../../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../../../domain/bloc/bookings_bloc/bookings_bloc.dart';
 import '../../../domain/models/availability_type/availability_type.dart';
+import '../../../presentation/pages/booking_already_exists_page.dart';
 import '../domain/bloc/book_recording_time_bloc.dart';
 import '../domain/models/book_recording_time_bloc_data.dart';
 
@@ -59,6 +60,7 @@ class BookRecordingTimeScreen extends StatelessWidget {
           builder: (context, state) {
             if (state.isLoading) return const LoadingPage();
             if (state.hasError) return ErrorPage(message: state.message);
+            if (!state.canBookRecording) return const AlreadyExistsPage();
 
             return const Column(
               verticalDirection: VerticalDirection.up,

@@ -33,19 +33,23 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
     @factoryParam BookRecordingBlocData data,
   )   : _bookingsBloc = data.bookingsBloc,
         super(_BookRecordingState(
+          userState: _userBloc.state,
           bookingsState: data.bookingsBloc.state,
           selectedTime: data.selectedTime,
           selectedDuration: data.selectedDuration,
         )) {
     on<_BookButtonPressed>(_onBookButtonPressed);
+    on<_UserStateChanged>(_onUserStateChanged);
     on<_BookingsStateChanged>(_onBookingsStateChanged);
 
+    _userStateSubscription = _userBloc.stream.listen(_userStateListener);
     _bookingsStateSubscription =
         _bookingsBloc.stream.listen(_bookingsStateListener);
   }
 
   @override
   Future<void> close() {
+    _userStateSubscription.cancel();
     _bookingsStateSubscription.cancel();
     return super.close();
   }
@@ -56,6 +60,7 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
   final BookingsBloc _bookingsBloc;
   final BookRecordingClient _bookRecordingClient;
 
+  late final StreamSubscription _userStateSubscription;
   late final StreamSubscription _bookingsStateSubscription;
 
   Future<void> _onBookButtonPressed(
@@ -66,8 +71,14 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
 
     emit(state.copyWith(isBookButtonLoading: true));
     await _createBooking(emit);
-    await _userBloc.refreshUser();
     emit(state.copyWith(isBookButtonLoading: false));
+  }
+
+  Future<void> _onUserStateChanged(
+    _UserStateChanged event,
+    Emitter<BookRecordingState> emit,
+  ) async {
+    emit(state.copyWith(userState: event.userState));
   }
 
   Future<void> _onBookingsStateChanged(
@@ -77,6 +88,9 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
     emit(state.copyWith(bookingsState: event.bookingsState));
   }
 
+  void _userStateListener(UserState userState) =>
+      add(BookRecordingEvent.userStateChanged(userState));
+
   void _bookingsStateListener(BookingsState bookingsState) =>
       add(BookRecordingEvent.bookingsStateChanged(bookingsState));
 
@@ -84,6 +98,7 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
     final bool isAvailable = await _checkAvailability();
 
     if (!isAvailable) return;
+    if (!state.canBookRecording) return;
 
     if (state.bookingsState.hasError) {
       emit(state.copyWith(errorMessage: state.bookingsState.message));
@@ -98,6 +113,7 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
 
       result.when(
         success: (booking) async {
+          await _userBloc.refreshUser();
           _router.popUntilRoot();
           await Future.delayed(const Duration());
           // TODO: _router.push(MyBookingRoute(bookingId: booking.id));

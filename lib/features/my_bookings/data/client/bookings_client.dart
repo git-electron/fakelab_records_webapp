@@ -11,10 +11,10 @@ import '../../../../main.dart';
 
 @injectable
 class BookingsClient {
-  BookingsClient(this.ref, this.logger);
+  BookingsClient(this._ref, this._logger);
 
-  final Logger logger;
-  final DatabaseReference ref;
+  final Logger _logger;
+  final DatabaseReference _ref;
 
   static const String _bookingsErrorMessage = 'Failed to get bookings';
 
@@ -24,12 +24,12 @@ class BookingsClient {
     try {
       const String path = 'bookings';
       final Query query =
-          ref.child(path).orderByChild('customer/id').equalTo(userId);
+          _ref.child(path).orderByChild('customer/id').equalTo(userId);
       final DataSnapshot snapshot = await query.get();
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -42,7 +42,7 @@ Data: $json''');
 
       return Result.success(bookings);
     } catch (error) {
-      logger.e(_bookingsErrorMessage, error: error);
+      _logger.e(_bookingsErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }
@@ -60,7 +60,7 @@ Data: $json''');
     try {
       const String path = 'bookings';
       final Query query =
-          ref.child(path).orderByChild('customer/id').equalTo(userId);
+          _ref.child(path).orderByChild('customer/id').equalTo(userId);
       final DataSnapshot snapshot = await query.limitToFirst(1).get();
       final bool isExists = snapshot.exists;
 
@@ -68,7 +68,7 @@ Data: $json''');
 
       final Json? json = snapshot.value.firebaseResponseToJson();
 
-      logger.i('''Realtime Database request:
+      _logger.i('''Realtime Database request:
 Path: $path
 Data: $json''');
 
@@ -90,7 +90,7 @@ Data: $json''');
 
       return Result.success(booking);
     } catch (error) {
-      logger.e(_upcomingBookingErrorMessage, error: error);
+      _logger.e(_upcomingBookingErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }

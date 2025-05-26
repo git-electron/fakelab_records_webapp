@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../core/domain/models/user/user.dart';
 import '../../../../../../core/extensions/datetime_extensions.dart';
 import '../../../../../../core/extensions/list_extensions.dart';
 import '../../../../../../core/utils/try_or/try_or_null.dart';

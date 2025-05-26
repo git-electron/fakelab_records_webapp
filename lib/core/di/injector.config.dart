@@ -227,6 +227,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
+    gh.factory<_i857.BookingsClient>(() => _i857.BookingsClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factory<_i763.BookingsBloc>(() => _i763.BookingsBloc(
@@ -247,10 +251,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i974.Logger>(),
         ));
     gh.factory<_i652.OrdersClient>(() => _i652.OrdersClient(
-          gh<_i345.DatabaseReference>(),
-          gh<_i974.Logger>(),
-        ));
-    gh.factory<_i857.BookingsClient>(() => _i857.BookingsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
@@ -294,14 +294,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i133.TelegramDataBloc>(),
         ));
-    gh.factoryParam<_i19.HomeBloc, _i298.HomeBlocData, dynamic>((
-      data,
-      _,
-    ) =>
-        _i19.HomeBloc(
-          gh<_i109.UserBloc>(),
-          data,
-        ));
     gh.factoryParam<_i140.BookRecordingTimeBloc,
         _i756.BookRecordingTimeBlocData, dynamic>((
       data,
@@ -309,6 +301,15 @@ extension GetItInjectableX on _i174.GetIt {
     ) =>
         _i140.BookRecordingTimeBloc(
           gh<_i352.AppRouter>(),
+          gh<_i109.UserBloc>(),
+          data,
+        ));
+    gh.factoryParam<_i19.HomeBloc, _i298.HomeBlocData, dynamic>((
+      data,
+      _,
+    ) =>
+        _i19.HomeBloc(
+          gh<_i109.UserBloc>(),
           data,
         ));
     gh.factoryParam<_i768.MyOrdersBloc, _i933.MyOrdersBlocData, dynamic>((
@@ -351,6 +352,16 @@ extension GetItInjectableX on _i174.GetIt {
         _i327.MyBookingsFeatureBloc(
           gh<_i109.UserBloc>(),
           gh<_i857.BookingsClient>(),
+          data,
+        ));
+    gh.factoryParam<_i206.BookRecordingDateBloc,
+        _i241.BookRecordingDateBlocData, dynamic>((
+      data,
+      _,
+    ) =>
+        _i206.BookRecordingDateBloc(
+          gh<_i352.AppRouter>(),
+          gh<_i109.UserBloc>(),
           data,
         ));
     gh.factory<_i515.AdminClientsBloc>(() => _i515.AdminClientsBloc(
@@ -412,15 +423,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i610.IdGenerator>(),
           gh<_i761.BookRecordingClient>(),
-          data,
-        ));
-    gh.factoryParam<_i206.BookRecordingDateBloc,
-        _i241.BookRecordingDateBlocData, dynamic>((
-      data,
-      _,
-    ) =>
-        _i206.BookRecordingDateBloc(
-          gh<_i352.AppRouter>(),
           data,
         ));
     return this;

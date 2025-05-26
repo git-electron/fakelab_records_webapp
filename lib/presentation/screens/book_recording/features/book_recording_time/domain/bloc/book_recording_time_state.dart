@@ -5,6 +5,7 @@ const Duration _kHourDuration = Duration(hours: 1);
 @freezed
 class BookRecordingTimeState with _$BookRecordingTimeState {
   const factory BookRecordingTimeState({
+    required UserState userState,
     required DateTime selectedDate,
     required BookingsState bookingsState,
     @Default(null) DateTime? selectedTime,
@@ -26,6 +27,11 @@ class BookRecordingTimeState with _$BookRecordingTimeState {
       );
 
   String? get message => bookingsState.whenOrNull(error: (message) => message);
+
+  bool get canBookRecording {
+    if (!userState.isAuthorized) return false;
+    return bookingsState.canBookRecording(userState.user!);
+  }
 
   List<DateTime> getAvailableTimes(AvailabilityType? type) =>
       bookingsState.getAvailableTimes(selectedDate, type: type);

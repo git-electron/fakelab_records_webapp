@@ -17,7 +17,7 @@ class BookingsClient {
   final Logger _logger;
   final DatabaseReference _ref;
 
-  static const String _errorMessage = 'Failed to get bookings';
+  static const String _bookingsErrorMessage = 'Failed to get bookings';
 
   Future<Result<List<Booking>>> getBookings() async {
     final DateTime now = DateTime.now().toUtc();
@@ -53,7 +53,7 @@ Data: $json''');
 
       return Result.success(bookings);
     } catch (error) {
-      _logger.e(_errorMessage, error: error);
+      _logger.e(_bookingsErrorMessage, error: error);
       return Result.error(error.toString());
     }
   }

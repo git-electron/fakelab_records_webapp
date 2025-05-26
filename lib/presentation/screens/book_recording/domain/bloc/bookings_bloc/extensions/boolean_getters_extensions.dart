@@ -4,6 +4,13 @@ extension BooleanExtensions on BookingsState {
   Duration get kHourDuration => _kHourDuration;
   static const Duration _kHourDuration = Duration(hours: 1);
 
+  bool canBookRecording(User user) =>
+      bookings?.every((booking) {
+        if (!booking.isRequest) return true;
+        return booking.customer.id != user.id;
+      }) ??
+      true;
+
   bool isDateAvailable(DateTime date) {
     final List<Booking>? dateBookings = getDateBookings(date);
 
