@@ -14,7 +14,7 @@ import 'core/router/router.dart';
 import 'core/theme/app_theme.dart';
 import 'firebase_options.dart';
 
-const bool isDevelopment = kDebugMode && true;
+const bool isDevelopment = kDebugMode && false;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
