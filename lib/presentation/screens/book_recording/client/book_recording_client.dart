@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 
 import '../../../../core/domain/models/result/result.dart';
 import '../../../../main.dart';
-import '../domain/models/booking/booking.dart';
+import '../../../../features/my_bookings/domain/models/booking/booking.dart';
 
 @injectable
 class BookRecordingClient {

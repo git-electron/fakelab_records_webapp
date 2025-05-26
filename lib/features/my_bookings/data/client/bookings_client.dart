@@ -1,4 +1,4 @@
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking.dart';
+import 'package:fakelab_records_webapp/features/my_bookings/domain/models/booking/booking.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart' hide Order;
 import 'package:logger/logger.dart';
@@ -8,7 +8,7 @@ import '../../../../core/constants/types.dart';
 import '../../../../core/domain/models/result/result.dart';
 import '../../../../core/extensions/object_extensions.dart';
 import '../../../../main.dart';
-import '../../../../presentation/screens/book_recording/domain/models/booking/booking_status.dart';
+import '../../domain/models/booking/booking_status.dart';
 
 @injectable
 class BookingsClient {

@@ -22,7 +22,7 @@ import '../../../ui/wrappers/telegram/telegram_meta_wrapper.dart';
 import '../domain/bloc/book_recording_bloc/book_recording_bloc.dart';
 import '../domain/bloc/bookings_bloc/bookings_bloc.dart';
 import '../domain/models/book_recording_bloc_data/book_recording_bloc_data.dart';
-import '../domain/models/booking/booking.dart';
+import '../../../../features/my_bookings/domain/models/booking/booking.dart';
 
 part 'pages/time_is_unavailable_page.dart';
 part 'widgets/app_bar.dart';

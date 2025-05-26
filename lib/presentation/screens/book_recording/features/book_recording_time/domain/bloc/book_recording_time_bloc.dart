@@ -101,8 +101,6 @@ class BookRecordingTimeBloc
     ));
   }
 
-  void _bookingsStateListener(BookingsState bookingsState) {
-    print('called : ${bookingsState.runtimeType}');
-    add(BookRecordingTimeEvent.bookingsStateChanged(bookingsState));
-  }
+  void _bookingsStateListener(BookingsState bookingsState) =>
+      add(BookRecordingTimeEvent.bookingsStateChanged(bookingsState));
 }

@@ -11,7 +11,7 @@ import '../../../../../../core/extensions/list_extensions.dart';
 import '../../../../../../core/utils/try_or/try_or_null.dart';
 import '../../../client/bookings_client.dart';
 import '../../models/availability_type/availability_type.dart';
-import '../../models/booking/booking.dart';
+import '../../../../../../features/my_bookings/domain/models/booking/booking.dart';
 
 part 'bookings_bloc.freezed.dart';
 part 'bookings_event.dart';

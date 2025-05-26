@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/gen/colors.gen.dart';
+import '../../../../../core/gen/colors.gen.dart';
 
 enum BookingStatus {
   REQUEST('Заявка', color: AppColors.request),

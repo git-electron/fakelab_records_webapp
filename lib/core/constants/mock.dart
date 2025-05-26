@@ -8,9 +8,9 @@ import '../../features/my_orders/domain/models/order/status_history_item/order_s
 import '../../presentation/screens/admin/features/staff/domain/models/staff_activity.dart';
 import '../../presentation/screens/admin/features/staff/domain/models/staff_member.dart';
 import '../../presentation/screens/admin/features/staff/domain/models/staff_service_type.dart';
-import '../../presentation/screens/book_recording/domain/models/booking/booking.dart';
-import '../../presentation/screens/book_recording/domain/models/booking/booking_status.dart';
-import '../../presentation/screens/book_recording/domain/models/booking/filters/booking_filters.dart';
+import '../../features/my_bookings/domain/models/booking/booking.dart';
+import '../../features/my_bookings/domain/models/booking/booking_status.dart';
+import '../../features/my_bookings/domain/models/booking/filters/booking_filters.dart';
 import '../domain/models/rating/rating.dart';
 import '../domain/models/telegram/safe_area_inset.dart';
 import '../domain/models/telegram/telegram_meta.dart';

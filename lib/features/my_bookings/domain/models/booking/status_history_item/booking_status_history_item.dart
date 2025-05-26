@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../../../core/converters/date_time_converter.dart';
+import '../../../../../../core/converters/date_time_converter.dart';
 import '../booking_status.dart';
 
 part 'booking_status_history_item.freezed.dart';
