@@ -20,6 +20,7 @@ mixin _$BookRecordingTimeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime selectedTime) timeSelected,
     required TResult Function(Duration selectedDuration) durationSelected,
+    required TResult Function(UserState userState) userStateChanged,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
     required TResult Function() proceedButtonPressed,
   }) =>
@@ -28,6 +29,7 @@ mixin _$BookRecordingTimeEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime selectedTime)? timeSelected,
     TResult? Function(Duration selectedDuration)? durationSelected,
+    TResult? Function(UserState userState)? userStateChanged,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult? Function()? proceedButtonPressed,
   }) =>
@@ -36,6 +38,7 @@ mixin _$BookRecordingTimeEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime selectedTime)? timeSelected,
     TResult Function(Duration selectedDuration)? durationSelected,
+    TResult Function(UserState userState)? userStateChanged,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult Function()? proceedButtonPressed,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$BookRecordingTimeEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_TimeSelected value) timeSelected,
     required TResult Function(_DurationSelected value) durationSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
     required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
   }) =>
@@ -53,6 +57,7 @@ mixin _$BookRecordingTimeEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TimeSelected value)? timeSelected,
     TResult? Function(_DurationSelected value)? durationSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
   }) =>
@@ -61,6 +66,7 @@ mixin _$BookRecordingTimeEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TimeSelected value)? timeSelected,
     TResult Function(_DurationSelected value)? durationSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
     required TResult orElse(),
@@ -161,6 +167,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime selectedTime) timeSelected,
     required TResult Function(Duration selectedDuration) durationSelected,
+    required TResult Function(UserState userState) userStateChanged,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
     required TResult Function() proceedButtonPressed,
   }) {
@@ -172,6 +179,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime selectedTime)? timeSelected,
     TResult? Function(Duration selectedDuration)? durationSelected,
+    TResult? Function(UserState userState)? userStateChanged,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult? Function()? proceedButtonPressed,
   }) {
@@ -183,6 +191,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime selectedTime)? timeSelected,
     TResult Function(Duration selectedDuration)? durationSelected,
+    TResult Function(UserState userState)? userStateChanged,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult Function()? proceedButtonPressed,
     required TResult orElse(),
@@ -198,6 +207,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
   TResult map<TResult extends Object?>({
     required TResult Function(_TimeSelected value) timeSelected,
     required TResult Function(_DurationSelected value) durationSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
     required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
   }) {
@@ -209,6 +219,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TimeSelected value)? timeSelected,
     TResult? Function(_DurationSelected value)? durationSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
   }) {
@@ -220,6 +231,7 @@ class _$TimeSelectedImpl implements _TimeSelected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TimeSelected value)? timeSelected,
     TResult Function(_DurationSelected value)? durationSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
     required TResult orElse(),
@@ -315,6 +327,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime selectedTime) timeSelected,
     required TResult Function(Duration selectedDuration) durationSelected,
+    required TResult Function(UserState userState) userStateChanged,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
     required TResult Function() proceedButtonPressed,
   }) {
@@ -326,6 +339,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime selectedTime)? timeSelected,
     TResult? Function(Duration selectedDuration)? durationSelected,
+    TResult? Function(UserState userState)? userStateChanged,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult? Function()? proceedButtonPressed,
   }) {
@@ -337,6 +351,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime selectedTime)? timeSelected,
     TResult Function(Duration selectedDuration)? durationSelected,
+    TResult Function(UserState userState)? userStateChanged,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult Function()? proceedButtonPressed,
     required TResult orElse(),
@@ -352,6 +367,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
   TResult map<TResult extends Object?>({
     required TResult Function(_TimeSelected value) timeSelected,
     required TResult Function(_DurationSelected value) durationSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
     required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
   }) {
@@ -363,6 +379,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TimeSelected value)? timeSelected,
     TResult? Function(_DurationSelected value)? durationSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
   }) {
@@ -374,6 +391,7 @@ class _$DurationSelectedImpl implements _DurationSelected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TimeSelected value)? timeSelected,
     TResult Function(_DurationSelected value)? durationSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
     required TResult orElse(),
@@ -395,6 +413,179 @@ abstract class _DurationSelected implements BookRecordingTimeEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DurationSelectedImplCopyWith<_$DurationSelectedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserStateChangedImplCopyWith<$Res> {
+  factory _$$UserStateChangedImplCopyWith(_$UserStateChangedImpl value,
+          $Res Function(_$UserStateChangedImpl) then) =
+      __$$UserStateChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserState userState});
+
+  $UserStateCopyWith<$Res> get userState;
+}
+
+/// @nodoc
+class __$$UserStateChangedImplCopyWithImpl<$Res>
+    extends _$BookRecordingTimeEventCopyWithImpl<$Res, _$UserStateChangedImpl>
+    implements _$$UserStateChangedImplCopyWith<$Res> {
+  __$$UserStateChangedImplCopyWithImpl(_$UserStateChangedImpl _value,
+      $Res Function(_$UserStateChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BookRecordingTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userState = null,
+  }) {
+    return _then(_$UserStateChangedImpl(
+      null == userState
+          ? _value.userState
+          : userState // ignore: cast_nullable_to_non_nullable
+              as UserState,
+    ));
+  }
+
+  /// Create a copy of BookRecordingTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserStateCopyWith<$Res> get userState {
+    return $UserStateCopyWith<$Res>(_value.userState, (value) {
+      return _then(_value.copyWith(userState: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UserStateChangedImpl implements _UserStateChanged {
+  const _$UserStateChangedImpl(this.userState);
+
+  @override
+  final UserState userState;
+
+  @override
+  String toString() {
+    return 'BookRecordingTimeEvent.userStateChanged(userState: $userState)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserStateChangedImpl &&
+            (identical(other.userState, userState) ||
+                other.userState == userState));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userState);
+
+  /// Create a copy of BookRecordingTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserStateChangedImplCopyWith<_$UserStateChangedImpl> get copyWith =>
+      __$$UserStateChangedImplCopyWithImpl<_$UserStateChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime selectedTime) timeSelected,
+    required TResult Function(Duration selectedDuration) durationSelected,
+    required TResult Function(UserState userState) userStateChanged,
+    required TResult Function(BookingsState bookingsState) bookingsStateChanged,
+    required TResult Function() proceedButtonPressed,
+  }) {
+    return userStateChanged(userState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime selectedTime)? timeSelected,
+    TResult? Function(Duration selectedDuration)? durationSelected,
+    TResult? Function(UserState userState)? userStateChanged,
+    TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult? Function()? proceedButtonPressed,
+  }) {
+    return userStateChanged?.call(userState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime selectedTime)? timeSelected,
+    TResult Function(Duration selectedDuration)? durationSelected,
+    TResult Function(UserState userState)? userStateChanged,
+    TResult Function(BookingsState bookingsState)? bookingsStateChanged,
+    TResult Function()? proceedButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (userStateChanged != null) {
+      return userStateChanged(userState);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TimeSelected value) timeSelected,
+    required TResult Function(_DurationSelected value) durationSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
+    required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
+    required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
+  }) {
+    return userStateChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_TimeSelected value)? timeSelected,
+    TResult? Function(_DurationSelected value)? durationSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
+    TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
+  }) {
+    return userStateChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TimeSelected value)? timeSelected,
+    TResult Function(_DurationSelected value)? durationSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
+    TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
+    TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (userStateChanged != null) {
+      return userStateChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserStateChanged implements BookRecordingTimeEvent {
+  const factory _UserStateChanged(final UserState userState) =
+      _$UserStateChangedImpl;
+
+  UserState get userState;
+
+  /// Create a copy of BookRecordingTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserStateChangedImplCopyWith<_$UserStateChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -484,6 +675,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime selectedTime) timeSelected,
     required TResult Function(Duration selectedDuration) durationSelected,
+    required TResult Function(UserState userState) userStateChanged,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
     required TResult Function() proceedButtonPressed,
   }) {
@@ -495,6 +687,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime selectedTime)? timeSelected,
     TResult? Function(Duration selectedDuration)? durationSelected,
+    TResult? Function(UserState userState)? userStateChanged,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult? Function()? proceedButtonPressed,
   }) {
@@ -506,6 +699,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime selectedTime)? timeSelected,
     TResult Function(Duration selectedDuration)? durationSelected,
+    TResult Function(UserState userState)? userStateChanged,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult Function()? proceedButtonPressed,
     required TResult orElse(),
@@ -521,6 +715,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_TimeSelected value) timeSelected,
     required TResult Function(_DurationSelected value) durationSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
     required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
   }) {
@@ -532,6 +727,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TimeSelected value)? timeSelected,
     TResult? Function(_DurationSelected value)? durationSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
   }) {
@@ -543,6 +739,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TimeSelected value)? timeSelected,
     TResult Function(_DurationSelected value)? durationSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
     required TResult orElse(),
@@ -612,6 +809,7 @@ class _$ProceedButtonPressedImpl implements _ProceedButtonPressed {
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime selectedTime) timeSelected,
     required TResult Function(Duration selectedDuration) durationSelected,
+    required TResult Function(UserState userState) userStateChanged,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
     required TResult Function() proceedButtonPressed,
   }) {
@@ -623,6 +821,7 @@ class _$ProceedButtonPressedImpl implements _ProceedButtonPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime selectedTime)? timeSelected,
     TResult? Function(Duration selectedDuration)? durationSelected,
+    TResult? Function(UserState userState)? userStateChanged,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult? Function()? proceedButtonPressed,
   }) {
@@ -634,6 +833,7 @@ class _$ProceedButtonPressedImpl implements _ProceedButtonPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime selectedTime)? timeSelected,
     TResult Function(Duration selectedDuration)? durationSelected,
+    TResult Function(UserState userState)? userStateChanged,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
     TResult Function()? proceedButtonPressed,
     required TResult orElse(),
@@ -649,6 +849,7 @@ class _$ProceedButtonPressedImpl implements _ProceedButtonPressed {
   TResult map<TResult extends Object?>({
     required TResult Function(_TimeSelected value) timeSelected,
     required TResult Function(_DurationSelected value) durationSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
     required TResult Function(_ProceedButtonPressed value) proceedButtonPressed,
   }) {
@@ -660,6 +861,7 @@ class _$ProceedButtonPressedImpl implements _ProceedButtonPressed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_TimeSelected value)? timeSelected,
     TResult? Function(_DurationSelected value)? durationSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult? Function(_ProceedButtonPressed value)? proceedButtonPressed,
   }) {
@@ -671,6 +873,7 @@ class _$ProceedButtonPressedImpl implements _ProceedButtonPressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TimeSelected value)? timeSelected,
     TResult Function(_DurationSelected value)? durationSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
     TResult Function(_ProceedButtonPressed value)? proceedButtonPressed,
     required TResult orElse(),
@@ -688,6 +891,7 @@ abstract class _ProceedButtonPressed implements BookRecordingTimeEvent {
 
 /// @nodoc
 mixin _$BookRecordingTimeState {
+  UserState get userState => throw _privateConstructorUsedError;
   DateTime get selectedDate => throw _privateConstructorUsedError;
   BookingsState get bookingsState => throw _privateConstructorUsedError;
   DateTime? get selectedTime => throw _privateConstructorUsedError;
@@ -707,11 +911,13 @@ abstract class $BookRecordingTimeStateCopyWith<$Res> {
       _$BookRecordingTimeStateCopyWithImpl<$Res, BookRecordingTimeState>;
   @useResult
   $Res call(
-      {DateTime selectedDate,
+      {UserState userState,
+      DateTime selectedDate,
       BookingsState bookingsState,
       DateTime? selectedTime,
       Duration selectedDuration});
 
+  $UserStateCopyWith<$Res> get userState;
   $BookingsStateCopyWith<$Res> get bookingsState;
 }
 
@@ -731,12 +937,17 @@ class _$BookRecordingTimeStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userState = null,
     Object? selectedDate = null,
     Object? bookingsState = null,
     Object? selectedTime = freezed,
     Object? selectedDuration = null,
   }) {
     return _then(_value.copyWith(
+      userState: null == userState
+          ? _value.userState
+          : userState // ignore: cast_nullable_to_non_nullable
+              as UserState,
       selectedDate: null == selectedDate
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
@@ -760,6 +971,16 @@ class _$BookRecordingTimeStateCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $UserStateCopyWith<$Res> get userState {
+    return $UserStateCopyWith<$Res>(_value.userState, (value) {
+      return _then(_value.copyWith(userState: value) as $Val);
+    });
+  }
+
+  /// Create a copy of BookRecordingTimeState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $BookingsStateCopyWith<$Res> get bookingsState {
     return $BookingsStateCopyWith<$Res>(_value.bookingsState, (value) {
       return _then(_value.copyWith(bookingsState: value) as $Val);
@@ -777,11 +998,14 @@ abstract class _$$BookRecordingTimeStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {DateTime selectedDate,
+      {UserState userState,
+      DateTime selectedDate,
       BookingsState bookingsState,
       DateTime? selectedTime,
       Duration selectedDuration});
 
+  @override
+  $UserStateCopyWith<$Res> get userState;
   @override
   $BookingsStateCopyWith<$Res> get bookingsState;
 }
@@ -801,12 +1025,17 @@ class __$$BookRecordingTimeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userState = null,
     Object? selectedDate = null,
     Object? bookingsState = null,
     Object? selectedTime = freezed,
     Object? selectedDuration = null,
   }) {
     return _then(_$BookRecordingTimeStateImpl(
+      userState: null == userState
+          ? _value.userState
+          : userState // ignore: cast_nullable_to_non_nullable
+              as UserState,
       selectedDate: null == selectedDate
           ? _value.selectedDate
           : selectedDate // ignore: cast_nullable_to_non_nullable
@@ -831,12 +1060,15 @@ class __$$BookRecordingTimeStateImplCopyWithImpl<$Res>
 
 class _$BookRecordingTimeStateImpl extends _BookRecordingTimeState {
   const _$BookRecordingTimeStateImpl(
-      {required this.selectedDate,
+      {required this.userState,
+      required this.selectedDate,
       required this.bookingsState,
       this.selectedTime = null,
       this.selectedDuration = _kHourDuration})
       : super._();
 
+  @override
+  final UserState userState;
   @override
   final DateTime selectedDate;
   @override
@@ -850,7 +1082,7 @@ class _$BookRecordingTimeStateImpl extends _BookRecordingTimeState {
 
   @override
   String toString() {
-    return 'BookRecordingTimeState(selectedDate: $selectedDate, bookingsState: $bookingsState, selectedTime: $selectedTime, selectedDuration: $selectedDuration)';
+    return 'BookRecordingTimeState(userState: $userState, selectedDate: $selectedDate, bookingsState: $bookingsState, selectedTime: $selectedTime, selectedDuration: $selectedDuration)';
   }
 
   @override
@@ -858,6 +1090,8 @@ class _$BookRecordingTimeStateImpl extends _BookRecordingTimeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookRecordingTimeStateImpl &&
+            (identical(other.userState, userState) ||
+                other.userState == userState) &&
             (identical(other.selectedDate, selectedDate) ||
                 other.selectedDate == selectedDate) &&
             (identical(other.bookingsState, bookingsState) ||
@@ -869,8 +1103,8 @@ class _$BookRecordingTimeStateImpl extends _BookRecordingTimeState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, selectedDate, bookingsState, selectedTime, selectedDuration);
+  int get hashCode => Object.hash(runtimeType, userState, selectedDate,
+      bookingsState, selectedTime, selectedDuration);
 
   /// Create a copy of BookRecordingTimeState
   /// with the given fields replaced by the non-null parameter values.
@@ -884,12 +1118,15 @@ class _$BookRecordingTimeStateImpl extends _BookRecordingTimeState {
 
 abstract class _BookRecordingTimeState extends BookRecordingTimeState {
   const factory _BookRecordingTimeState(
-      {required final DateTime selectedDate,
+      {required final UserState userState,
+      required final DateTime selectedDate,
       required final BookingsState bookingsState,
       final DateTime? selectedTime,
       final Duration selectedDuration}) = _$BookRecordingTimeStateImpl;
   const _BookRecordingTimeState._() : super._();
 
+  @override
+  UserState get userState;
   @override
   DateTime get selectedDate;
   @override

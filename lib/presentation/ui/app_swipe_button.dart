@@ -64,6 +64,7 @@ class _AppSwipeButtonState extends State<AppSwipeButton>
     with TickerProviderStateMixin {
   late final AnimationController _controller;
   late final AnimationController _pullController;
+  late final Animation<double> _pullAnimation;
 
   late _SwipeState _state;
 
@@ -92,7 +93,7 @@ class _AppSwipeButtonState extends State<AppSwipeButton>
   }
 
   static const Duration _duration = Duration(milliseconds: 150);
-  static const Duration _pullBackDuration = Duration(milliseconds: 70);
+  static const Duration _pullBackDuration = Duration(milliseconds: 300);
 
   void _initControllers() {
     _controller = AnimationController(
@@ -103,9 +104,18 @@ class _AppSwipeButtonState extends State<AppSwipeButton>
 
     _pullController = AnimationController(
       vsync: this,
-      value: 1,
       duration: _duration,
       reverseDuration: _pullBackDuration,
+    );
+    _pullAnimation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(
+      CurvedAnimation(
+        parent: _pullController,
+        curve: Curves.easeOutCubic,
+        reverseCurve: Curves.easeInCubic,
+      ),
     );
   }
 
@@ -120,27 +130,31 @@ class _AppSwipeButtonState extends State<AppSwipeButton>
     final bool canTap = widget.isEnabled && !widget.isLoading;
 
     return AnimatedBuilder(
-        animation: _pullController,
+        animation: _pullAnimation,
         builder: (context, child) {
-          return Padding(
-            padding: Pad(left: 20, right: 10 + _pullController.value * 10),
-            child: IgnorePointer(
-              ignoring: !canTap,
-              child: Opacity(
-                opacity: widget.isEnabled ? 1 : .25,
-                child: SizedBox(
-                  width: widget.isExpanded ? double.maxFinite : widget.width,
-                  height: widget.height,
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      return Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          _buildTrack(context, constraints),
-                          _buildThumb(context, constraints),
-                        ],
-                      );
-                    },
+          return MatrixTransition(
+            animation: _pullAnimation.drive(Tween<double>(begin: 1, end: 0.9)),
+            onTransform: (value) => Matrix4.diagonal3Values(1, value, 1),
+            child: Padding(
+              padding: Pad(left: 20, right: 20 - _pullAnimation.value * 10),
+              child: IgnorePointer(
+                ignoring: !canTap,
+                child: Opacity(
+                  opacity: widget.isEnabled ? 1 : .25,
+                  child: SizedBox(
+                    width: widget.isExpanded ? double.maxFinite : widget.width,
+                    height: widget.height,
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            _buildTrack(context, constraints),
+                            _buildThumb(context, constraints),
+                          ],
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
@@ -299,13 +313,13 @@ class _AppSwipeButtonState extends State<AppSwipeButton>
       setState(() {
         _state = _SwipeState.completed;
       });
-      _pullController.reverse();
+      _pullController.forward();
       widget.onSwiped();
     }
   }
 
   _onHorizontalDragEnd(DragEndDetails details) {
-    _pullController.forward();
+    _pullController.reverse();
 
     if (widget.isLoading) return;
 

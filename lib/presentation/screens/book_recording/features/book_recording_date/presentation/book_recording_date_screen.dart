@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/presentation/pages/booking_already_exists_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,6 +53,7 @@ class BookRecordingDateScreen extends StatelessWidget {
           builder: (context, state) {
             if (state.isLoading) return const LoadingPage();
             if (state.hasError) return ErrorPage(message: state.message);
+            if (!state.canBookRecording) return const AlreadyExistsPage();
 
             return const CustomScrollView(
               slivers: [

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart' hide Order;
@@ -28,12 +30,20 @@ class MyOrdersFeatureBloc
     on<_SetLoading>(_onSetLoading);
 
     tryOrNullAsync(_getOrders);
-    _userBloc.stream.listen(_onUserStateEvent);
+    _userStateSubscription = _userBloc.stream.listen(_onUserStateEvent);
+  }
+
+  @override
+  Future<void> close() {
+    _userStateSubscription.cancel();
+    return super.close();
   }
 
   final UserBloc _userBloc;
   final OrdersClient _ordersClient;
   final MyOrdersLimitPolicy _limitPolicy;
+
+  late final StreamSubscription _userStateSubscription;
 
   Future<void> _onSetLoading(
     _SetLoading event,

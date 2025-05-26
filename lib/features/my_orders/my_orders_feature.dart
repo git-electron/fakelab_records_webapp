@@ -54,7 +54,7 @@ class MyOrdersFeature extends StatelessWidget {
         builder: (context, state) {
           return switch (scrollDirection) {
             Axis.vertical => _VerticalScroll(state, filtersBloc: filtersBloc),
-            Axis.horizontal => MyOrdersHorizontalScroll(state),
+            Axis.horizontal => _HorizontalScroll(state),
           };
         },
       ),

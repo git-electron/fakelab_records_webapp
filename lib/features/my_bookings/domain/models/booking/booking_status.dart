@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/gen/colors.gen.dart';
+import '../../../../../core/gen/colors.gen.dart';
 
 enum BookingStatus {
   REQUEST('Заявка', color: AppColors.request),
-  PENDING('Ожидание', color: AppColors.pending),
+  PENDING('Подтверждено', color: AppColors.pending),
   COMPLETED('Завершено', color: AppColors.completed),
   CANCELLED('Отменено', color: AppColors.cancelled);
 

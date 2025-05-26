@@ -6,6 +6,10 @@ class BookRecordingDateEvent with _$BookRecordingDateEvent {
     DateTime selectedDate,
   ) = _DateSelected;
 
+  const factory BookRecordingDateEvent.userStateChanged(
+    UserState userState,
+  ) = _UserStateChanged;
+
   const factory BookRecordingDateEvent.bookingsStateChanged(
     BookingsState bookingsState,
   ) = _BookingsStateChanged;

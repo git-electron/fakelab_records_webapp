@@ -19,18 +19,21 @@ mixin _$BookRecordingDateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime selectedDate) dateSelected,
+    required TResult Function(UserState userState) userStateChanged,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime selectedDate)? dateSelected,
+    TResult? Function(UserState userState)? userStateChanged,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime selectedDate)? dateSelected,
+    TResult Function(UserState userState)? userStateChanged,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$BookRecordingDateEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_DateSelected value) dateSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DateSelected value)? dateSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DateSelected value)? dateSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
     required TResult orElse(),
   }) =>
@@ -148,6 +154,7 @@ class _$DateSelectedImpl implements _DateSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime selectedDate) dateSelected,
+    required TResult Function(UserState userState) userStateChanged,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
   }) {
     return dateSelected(selectedDate);
@@ -157,6 +164,7 @@ class _$DateSelectedImpl implements _DateSelected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime selectedDate)? dateSelected,
+    TResult? Function(UserState userState)? userStateChanged,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
   }) {
     return dateSelected?.call(selectedDate);
@@ -166,6 +174,7 @@ class _$DateSelectedImpl implements _DateSelected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime selectedDate)? dateSelected,
+    TResult Function(UserState userState)? userStateChanged,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
     required TResult orElse(),
   }) {
@@ -179,6 +188,7 @@ class _$DateSelectedImpl implements _DateSelected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_DateSelected value) dateSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
   }) {
     return dateSelected(this);
@@ -188,6 +198,7 @@ class _$DateSelectedImpl implements _DateSelected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DateSelected value)? dateSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
   }) {
     return dateSelected?.call(this);
@@ -197,6 +208,7 @@ class _$DateSelectedImpl implements _DateSelected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DateSelected value)? dateSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
     required TResult orElse(),
   }) {
@@ -216,6 +228,167 @@ abstract class _DateSelected implements BookRecordingDateEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DateSelectedImplCopyWith<_$DateSelectedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserStateChangedImplCopyWith<$Res> {
+  factory _$$UserStateChangedImplCopyWith(_$UserStateChangedImpl value,
+          $Res Function(_$UserStateChangedImpl) then) =
+      __$$UserStateChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserState userState});
+
+  $UserStateCopyWith<$Res> get userState;
+}
+
+/// @nodoc
+class __$$UserStateChangedImplCopyWithImpl<$Res>
+    extends _$BookRecordingDateEventCopyWithImpl<$Res, _$UserStateChangedImpl>
+    implements _$$UserStateChangedImplCopyWith<$Res> {
+  __$$UserStateChangedImplCopyWithImpl(_$UserStateChangedImpl _value,
+      $Res Function(_$UserStateChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BookRecordingDateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userState = null,
+  }) {
+    return _then(_$UserStateChangedImpl(
+      null == userState
+          ? _value.userState
+          : userState // ignore: cast_nullable_to_non_nullable
+              as UserState,
+    ));
+  }
+
+  /// Create a copy of BookRecordingDateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserStateCopyWith<$Res> get userState {
+    return $UserStateCopyWith<$Res>(_value.userState, (value) {
+      return _then(_value.copyWith(userState: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UserStateChangedImpl implements _UserStateChanged {
+  const _$UserStateChangedImpl(this.userState);
+
+  @override
+  final UserState userState;
+
+  @override
+  String toString() {
+    return 'BookRecordingDateEvent.userStateChanged(userState: $userState)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserStateChangedImpl &&
+            (identical(other.userState, userState) ||
+                other.userState == userState));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userState);
+
+  /// Create a copy of BookRecordingDateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserStateChangedImplCopyWith<_$UserStateChangedImpl> get copyWith =>
+      __$$UserStateChangedImplCopyWithImpl<_$UserStateChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime selectedDate) dateSelected,
+    required TResult Function(UserState userState) userStateChanged,
+    required TResult Function(BookingsState bookingsState) bookingsStateChanged,
+  }) {
+    return userStateChanged(userState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime selectedDate)? dateSelected,
+    TResult? Function(UserState userState)? userStateChanged,
+    TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
+  }) {
+    return userStateChanged?.call(userState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime selectedDate)? dateSelected,
+    TResult Function(UserState userState)? userStateChanged,
+    TResult Function(BookingsState bookingsState)? bookingsStateChanged,
+    required TResult orElse(),
+  }) {
+    if (userStateChanged != null) {
+      return userStateChanged(userState);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DateSelected value) dateSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
+    required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
+  }) {
+    return userStateChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DateSelected value)? dateSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
+    TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
+  }) {
+    return userStateChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DateSelected value)? dateSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
+    TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
+    required TResult orElse(),
+  }) {
+    if (userStateChanged != null) {
+      return userStateChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserStateChanged implements BookRecordingDateEvent {
+  const factory _UserStateChanged(final UserState userState) =
+      _$UserStateChangedImpl;
+
+  UserState get userState;
+
+  /// Create a copy of BookRecordingDateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserStateChangedImplCopyWith<_$UserStateChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -304,6 +477,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime selectedDate) dateSelected,
+    required TResult Function(UserState userState) userStateChanged,
     required TResult Function(BookingsState bookingsState) bookingsStateChanged,
   }) {
     return bookingsStateChanged(bookingsState);
@@ -313,6 +487,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime selectedDate)? dateSelected,
+    TResult? Function(UserState userState)? userStateChanged,
     TResult? Function(BookingsState bookingsState)? bookingsStateChanged,
   }) {
     return bookingsStateChanged?.call(bookingsState);
@@ -322,6 +497,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime selectedDate)? dateSelected,
+    TResult Function(UserState userState)? userStateChanged,
     TResult Function(BookingsState bookingsState)? bookingsStateChanged,
     required TResult orElse(),
   }) {
@@ -335,6 +511,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_DateSelected value) dateSelected,
+    required TResult Function(_UserStateChanged value) userStateChanged,
     required TResult Function(_BookingsStateChanged value) bookingsStateChanged,
   }) {
     return bookingsStateChanged(this);
@@ -344,6 +521,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DateSelected value)? dateSelected,
+    TResult? Function(_UserStateChanged value)? userStateChanged,
     TResult? Function(_BookingsStateChanged value)? bookingsStateChanged,
   }) {
     return bookingsStateChanged?.call(this);
@@ -353,6 +531,7 @@ class _$BookingsStateChangedImpl implements _BookingsStateChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DateSelected value)? dateSelected,
+    TResult Function(_UserStateChanged value)? userStateChanged,
     TResult Function(_BookingsStateChanged value)? bookingsStateChanged,
     required TResult orElse(),
   }) {
@@ -378,6 +557,7 @@ abstract class _BookingsStateChanged implements BookRecordingDateEvent {
 
 /// @nodoc
 mixin _$BookRecordingDateState {
+  UserState get userState => throw _privateConstructorUsedError;
   BookingsState get bookingsState => throw _privateConstructorUsedError;
   DateTime? get selectedDate => throw _privateConstructorUsedError;
 
@@ -394,8 +574,12 @@ abstract class $BookRecordingDateStateCopyWith<$Res> {
           $Res Function(BookRecordingDateState) then) =
       _$BookRecordingDateStateCopyWithImpl<$Res, BookRecordingDateState>;
   @useResult
-  $Res call({BookingsState bookingsState, DateTime? selectedDate});
+  $Res call(
+      {UserState userState,
+      BookingsState bookingsState,
+      DateTime? selectedDate});
 
+  $UserStateCopyWith<$Res> get userState;
   $BookingsStateCopyWith<$Res> get bookingsState;
 }
 
@@ -415,10 +599,15 @@ class _$BookRecordingDateStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userState = null,
     Object? bookingsState = null,
     Object? selectedDate = freezed,
   }) {
     return _then(_value.copyWith(
+      userState: null == userState
+          ? _value.userState
+          : userState // ignore: cast_nullable_to_non_nullable
+              as UserState,
       bookingsState: null == bookingsState
           ? _value.bookingsState
           : bookingsState // ignore: cast_nullable_to_non_nullable
@@ -428,6 +617,16 @@ class _$BookRecordingDateStateCopyWithImpl<$Res,
           : selectedDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ) as $Val);
+  }
+
+  /// Create a copy of BookRecordingDateState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserStateCopyWith<$Res> get userState {
+    return $UserStateCopyWith<$Res>(_value.userState, (value) {
+      return _then(_value.copyWith(userState: value) as $Val);
+    });
   }
 
   /// Create a copy of BookRecordingDateState
@@ -450,8 +649,13 @@ abstract class _$$BookRecordingDateStateImplCopyWith<$Res>
       __$$BookRecordingDateStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BookingsState bookingsState, DateTime? selectedDate});
+  $Res call(
+      {UserState userState,
+      BookingsState bookingsState,
+      DateTime? selectedDate});
 
+  @override
+  $UserStateCopyWith<$Res> get userState;
   @override
   $BookingsStateCopyWith<$Res> get bookingsState;
 }
@@ -471,10 +675,15 @@ class __$$BookRecordingDateStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userState = null,
     Object? bookingsState = null,
     Object? selectedDate = freezed,
   }) {
     return _then(_$BookRecordingDateStateImpl(
+      userState: null == userState
+          ? _value.userState
+          : userState // ignore: cast_nullable_to_non_nullable
+              as UserState,
       bookingsState: null == bookingsState
           ? _value.bookingsState
           : bookingsState // ignore: cast_nullable_to_non_nullable
@@ -491,9 +700,13 @@ class __$$BookRecordingDateStateImplCopyWithImpl<$Res>
 
 class _$BookRecordingDateStateImpl extends _BookRecordingDateState {
   const _$BookRecordingDateStateImpl(
-      {required this.bookingsState, this.selectedDate = null})
+      {required this.userState,
+      required this.bookingsState,
+      this.selectedDate = null})
       : super._();
 
+  @override
+  final UserState userState;
   @override
   final BookingsState bookingsState;
   @override
@@ -502,7 +715,7 @@ class _$BookRecordingDateStateImpl extends _BookRecordingDateState {
 
   @override
   String toString() {
-    return 'BookRecordingDateState(bookingsState: $bookingsState, selectedDate: $selectedDate)';
+    return 'BookRecordingDateState(userState: $userState, bookingsState: $bookingsState, selectedDate: $selectedDate)';
   }
 
   @override
@@ -510,6 +723,8 @@ class _$BookRecordingDateStateImpl extends _BookRecordingDateState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookRecordingDateStateImpl &&
+            (identical(other.userState, userState) ||
+                other.userState == userState) &&
             (identical(other.bookingsState, bookingsState) ||
                 other.bookingsState == bookingsState) &&
             (identical(other.selectedDate, selectedDate) ||
@@ -517,7 +732,8 @@ class _$BookRecordingDateStateImpl extends _BookRecordingDateState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, bookingsState, selectedDate);
+  int get hashCode =>
+      Object.hash(runtimeType, userState, bookingsState, selectedDate);
 
   /// Create a copy of BookRecordingDateState
   /// with the given fields replaced by the non-null parameter values.
@@ -531,10 +747,13 @@ class _$BookRecordingDateStateImpl extends _BookRecordingDateState {
 
 abstract class _BookRecordingDateState extends BookRecordingDateState {
   const factory _BookRecordingDateState(
-      {required final BookingsState bookingsState,
+      {required final UserState userState,
+      required final BookingsState bookingsState,
       final DateTime? selectedDate}) = _$BookRecordingDateStateImpl;
   const _BookRecordingDateState._() : super._();
 
+  @override
+  UserState get userState;
   @override
   BookingsState get bookingsState;
   @override

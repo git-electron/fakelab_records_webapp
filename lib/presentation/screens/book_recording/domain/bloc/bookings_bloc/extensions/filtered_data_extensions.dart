@@ -3,7 +3,7 @@ part of '../bookings_bloc.dart';
 extension FilteredDataExtensions on BookingsState {
   List<Booking>? getDateBookings(DateTime date) => bookings
       ?.where((booking) => isSameDay(booking.date, date))
-      .where((booking) => booking.isPending || booking.isCompleted)
+      .where((booking) => !booking.isCancelled)
       .toList();
 
   List<DateTime> getAvailableTimes(

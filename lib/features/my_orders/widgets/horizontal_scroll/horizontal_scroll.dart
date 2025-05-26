@@ -1,7 +1,7 @@
 part of '../../my_orders_feature.dart';
 
-class MyOrdersHorizontalScroll extends StatelessWidget {
-  const MyOrdersHorizontalScroll(this.state, {super.key});
+class _HorizontalScroll extends StatelessWidget {
+  const _HorizontalScroll(this.state);
 
   final MyOrdersFeatureState state;
 
@@ -12,7 +12,7 @@ class MyOrdersHorizontalScroll extends StatelessWidget {
     final List<Order> orders = state.orders!;
 
     return Padding(
-      padding: const Pad(bottom: 20), 
+      padding: const Pad(bottom: 20),
       child: SizedBox(
         height: 120,
         child: ListView.separated(

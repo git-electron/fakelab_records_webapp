@@ -3,6 +3,7 @@ part of 'book_recording_bloc.dart';
 @freezed
 class BookRecordingState with _$BookRecordingState {
   const factory BookRecordingState({
+    required UserState userState,
     required BookingsState bookingsState,
     required DateTime selectedTime,
     required Duration selectedDuration,
@@ -15,6 +16,11 @@ class BookRecordingState with _$BookRecordingState {
   bool get hasError => errorMessage != null || bookingsState.hasError;
 
   String? get message => errorMessage ?? bookingsState.message;
+
+  bool get canBookRecording {
+    if (!userState.isAuthorized) return false;
+    return bookingsState.canBookRecording(userState.user!);
+  }
 
   bool get isTimeAvailable => bookingsState.isTimeAvailable(
         selectedTime,
@@ -30,4 +36,31 @@ class BookRecordingState with _$BookRecordingState {
 
   CheckoutItem get checkoutItem =>
       CheckoutItem(title: selectedDurationString, totalCost: totalCost);
+
+  Booking _booking(IdGenerator idGenerator, User customer) {
+    final String id = idGenerator.generate();
+    final DateTime now = DateTime.now();
+
+    final Booking booking = Booking(
+      id: id,
+      customer: customer,
+      status: BookingStatus.REQUEST,
+      statusHistory: [
+        BookingStatusHistoryItem(
+          status: BookingStatus.REQUEST,
+          dateChanged: now,
+        ),
+      ],
+      dateCreated: now,
+      dateChanged: now,
+      date: selectedTime,
+      totalCost: totalCost,
+      duration: selectedDuration,
+      filters: BookingFilters(
+        userIdStatus: '${customer.id}-${BookingStatus.REQUEST.name}',
+      ),
+    );
+
+    return booking;
+  }
 }

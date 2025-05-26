@@ -12,7 +12,7 @@ class AdminCreateOrderState with _$AdminCreateOrderState {
 
   bool get canProceed => customer != null && orderType != null;
 
-  Order order(IdGenerator idGenerator) {
+  Order _order(IdGenerator idGenerator) {
     final String id = idGenerator.generate();
     final DateTime now = DateTime.now();
 

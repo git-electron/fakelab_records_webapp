@@ -6,12 +6,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/domain/models/result/result.dart';
+import '../../../../../../core/domain/models/user/user.dart';
 import '../../../../../../core/extensions/datetime_extensions.dart';
 import '../../../../../../core/extensions/list_extensions.dart';
 import '../../../../../../core/utils/try_or/try_or_null.dart';
 import '../../../client/bookings_client.dart';
 import '../../models/availability_type/availability_type.dart';
-import '../../models/booking/booking.dart';
+import '../../../../../../features/my_bookings/domain/models/booking/booking.dart';
 
 part 'bookings_bloc.freezed.dart';
 part 'bookings_event.dart';

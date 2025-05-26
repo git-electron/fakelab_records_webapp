@@ -7,14 +7,14 @@ import 'package:fakelab_records_webapp/core/extensions/list_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/string_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order_status.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/booking_status.dart';
-import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/models/booking/status_history_item/booking_status_history_item.dart';
+import 'package:fakelab_records_webapp/features/my_bookings/domain/models/booking/booking_status.dart';
+import 'package:fakelab_records_webapp/features/my_bookings/domain/models/booking/status_history_item/booking_status_history_item.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../core/extensions/border_radius_extensions.dart';
 import '../../core/theme/theme_extensions.dart';
-import '../../presentation/screens/book_recording/domain/models/booking/booking.dart';
+import '../my_bookings/domain/models/booking/booking.dart';
 import '../my_orders/domain/models/order/order.dart';
 import '../my_orders/domain/models/order/status_history_item/order_status_history_item.dart';
 

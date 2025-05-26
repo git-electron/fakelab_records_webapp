@@ -25,6 +25,12 @@ import 'package:fakelab_records_webapp/core/utils/debouncer/debouncer.dart'
     as _i333;
 import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart'
     as _i610;
+import 'package:fakelab_records_webapp/features/my_bookings/data/client/bookings_client.dart'
+    as _i857;
+import 'package:fakelab_records_webapp/features/my_bookings/domain/bloc/my_bookings_feature_bloc.dart'
+    as _i327;
+import 'package:fakelab_records_webapp/features/my_bookings/domain/models/my_bookings_feature_bloc_data/my_bookings_feature_bloc_data.dart'
+    as _i89;
 import 'package:fakelab_records_webapp/features/my_orders/data/client/orders_client.dart'
     as _i652;
 import 'package:fakelab_records_webapp/features/my_orders/domain/bloc/my_orders_feature_bloc.dart'
@@ -87,6 +93,8 @@ import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff
     as _i775;
 import 'package:fakelab_records_webapp/presentation/screens/admin/features/staff/features/edit_staff_member/domain/models/admin_edit_staff_member_bloc_data.dart'
     as _i317;
+import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/book_recording_client.dart'
+    as _i761;
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/client/bookings_client.dart'
     as _i511;
 import 'package:fakelab_records_webapp/presentation/screens/book_recording/domain/bloc/book_recording_bloc/book_recording_bloc.dart'
@@ -164,12 +172,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
-    gh.factoryParam<_i108.BookRecordingBloc, _i227.BookRecordingBlocData,
-        dynamic>((
-      data,
-      _,
-    ) =>
-        _i108.BookRecordingBloc(data));
     gh.factory<_i415.AdminClientsClient>(() => _i415.AdminClientsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
@@ -218,6 +220,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i974.Logger>(),
         ));
     gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.factory<_i761.BookRecordingClient>(() => _i761.BookRecordingClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.factory<_i857.BookingsClient>(() => _i857.BookingsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
@@ -284,14 +294,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i109.UserBloc>(),
           gh<_i133.TelegramDataBloc>(),
         ));
-    gh.factoryParam<_i19.HomeBloc, _i298.HomeBlocData, dynamic>((
-      data,
-      _,
-    ) =>
-        _i19.HomeBloc(
-          gh<_i109.UserBloc>(),
-          data,
-        ));
     gh.factoryParam<_i140.BookRecordingTimeBloc,
         _i756.BookRecordingTimeBlocData, dynamic>((
       data,
@@ -299,6 +301,15 @@ extension GetItInjectableX on _i174.GetIt {
     ) =>
         _i140.BookRecordingTimeBloc(
           gh<_i352.AppRouter>(),
+          gh<_i109.UserBloc>(),
+          data,
+        ));
+    gh.factoryParam<_i19.HomeBloc, _i298.HomeBlocData, dynamic>((
+      data,
+      _,
+    ) =>
+        _i19.HomeBloc(
+          gh<_i109.UserBloc>(),
           data,
         ));
     gh.factoryParam<_i768.MyOrdersBloc, _i933.MyOrdersBlocData, dynamic>((
@@ -332,6 +343,26 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i330.AdminStaffBloc>(() => _i330.AdminStaffBloc(
           gh<_i109.UserBloc>(),
           gh<_i255.AdminStaffClient>(),
+        ));
+    gh.factoryParam<_i327.MyBookingsFeatureBloc, _i89.MyBookingsFeatureBlocData,
+        dynamic>((
+      data,
+      _,
+    ) =>
+        _i327.MyBookingsFeatureBloc(
+          gh<_i109.UserBloc>(),
+          gh<_i857.BookingsClient>(),
+          data,
+        ));
+    gh.factoryParam<_i206.BookRecordingDateBloc,
+        _i241.BookRecordingDateBlocData, dynamic>((
+      data,
+      _,
+    ) =>
+        _i206.BookRecordingDateBloc(
+          gh<_i352.AppRouter>(),
+          gh<_i109.UserBloc>(),
+          data,
         ));
     gh.factory<_i515.AdminClientsBloc>(() => _i515.AdminClientsBloc(
           gh<_i109.UserBloc>(),
@@ -382,13 +413,16 @@ extension GetItInjectableX on _i174.GetIt {
           data,
           gh<_i89.AdminCreateStaffMemberClient>(),
         ));
-    gh.factoryParam<_i206.BookRecordingDateBloc,
-        _i241.BookRecordingDateBlocData, dynamic>((
+    gh.factoryParam<_i108.BookRecordingBloc, _i227.BookRecordingBlocData,
+        dynamic>((
       data,
       _,
     ) =>
-        _i206.BookRecordingDateBloc(
+        _i108.BookRecordingBloc(
           gh<_i352.AppRouter>(),
+          gh<_i109.UserBloc>(),
+          gh<_i610.IdGenerator>(),
+          gh<_i761.BookRecordingClient>(),
           data,
         ));
     return this;

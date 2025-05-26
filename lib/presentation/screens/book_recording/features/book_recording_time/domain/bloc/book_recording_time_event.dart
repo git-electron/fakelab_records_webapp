@@ -10,6 +10,10 @@ class BookRecordingTimeEvent with _$BookRecordingTimeEvent {
     Duration selectedDuration,
   ) = _DurationSelected;
 
+  const factory BookRecordingTimeEvent.userStateChanged(
+    UserState userState,
+  ) = _UserStateChanged;
+
   const factory BookRecordingTimeEvent.bookingsStateChanged(
     BookingsState bookingsState,
   ) = _BookingsStateChanged;
