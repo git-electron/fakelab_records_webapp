@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeBlocData {
   MyOrdersFeatureBloc get myOrdersFeatureBloc =>
       throw _privateConstructorUsedError;
+  MyBookingsFeatureBloc get myBookingsFeatureBloc =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of HomeBlocData
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +34,9 @@ abstract class $HomeBlocDataCopyWith<$Res> {
           HomeBlocData value, $Res Function(HomeBlocData) then) =
       _$HomeBlocDataCopyWithImpl<$Res, HomeBlocData>;
   @useResult
-  $Res call({MyOrdersFeatureBloc myOrdersFeatureBloc});
+  $Res call(
+      {MyOrdersFeatureBloc myOrdersFeatureBloc,
+      MyBookingsFeatureBloc myBookingsFeatureBloc});
 }
 
 /// @nodoc
@@ -51,12 +55,17 @@ class _$HomeBlocDataCopyWithImpl<$Res, $Val extends HomeBlocData>
   @override
   $Res call({
     Object? myOrdersFeatureBloc = null,
+    Object? myBookingsFeatureBloc = null,
   }) {
     return _then(_value.copyWith(
       myOrdersFeatureBloc: null == myOrdersFeatureBloc
           ? _value.myOrdersFeatureBloc
           : myOrdersFeatureBloc // ignore: cast_nullable_to_non_nullable
               as MyOrdersFeatureBloc,
+      myBookingsFeatureBloc: null == myBookingsFeatureBloc
+          ? _value.myBookingsFeatureBloc
+          : myBookingsFeatureBloc // ignore: cast_nullable_to_non_nullable
+              as MyBookingsFeatureBloc,
     ) as $Val);
   }
 }
@@ -69,7 +78,9 @@ abstract class _$$HomeBlocDataImplCopyWith<$Res>
       __$$HomeBlocDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MyOrdersFeatureBloc myOrdersFeatureBloc});
+  $Res call(
+      {MyOrdersFeatureBloc myOrdersFeatureBloc,
+      MyBookingsFeatureBloc myBookingsFeatureBloc});
 }
 
 /// @nodoc
@@ -86,12 +97,17 @@ class __$$HomeBlocDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? myOrdersFeatureBloc = null,
+    Object? myBookingsFeatureBloc = null,
   }) {
     return _then(_$HomeBlocDataImpl(
       myOrdersFeatureBloc: null == myOrdersFeatureBloc
           ? _value.myOrdersFeatureBloc
           : myOrdersFeatureBloc // ignore: cast_nullable_to_non_nullable
               as MyOrdersFeatureBloc,
+      myBookingsFeatureBloc: null == myBookingsFeatureBloc
+          ? _value.myBookingsFeatureBloc
+          : myBookingsFeatureBloc // ignore: cast_nullable_to_non_nullable
+              as MyBookingsFeatureBloc,
     ));
   }
 }
@@ -99,14 +115,17 @@ class __$$HomeBlocDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeBlocDataImpl implements _HomeBlocData {
-  const _$HomeBlocDataImpl({required this.myOrdersFeatureBloc});
+  const _$HomeBlocDataImpl(
+      {required this.myOrdersFeatureBloc, required this.myBookingsFeatureBloc});
 
   @override
   final MyOrdersFeatureBloc myOrdersFeatureBloc;
+  @override
+  final MyBookingsFeatureBloc myBookingsFeatureBloc;
 
   @override
   String toString() {
-    return 'HomeBlocData(myOrdersFeatureBloc: $myOrdersFeatureBloc)';
+    return 'HomeBlocData(myOrdersFeatureBloc: $myOrdersFeatureBloc, myBookingsFeatureBloc: $myBookingsFeatureBloc)';
   }
 
   @override
@@ -115,11 +134,14 @@ class _$HomeBlocDataImpl implements _HomeBlocData {
         (other.runtimeType == runtimeType &&
             other is _$HomeBlocDataImpl &&
             (identical(other.myOrdersFeatureBloc, myOrdersFeatureBloc) ||
-                other.myOrdersFeatureBloc == myOrdersFeatureBloc));
+                other.myOrdersFeatureBloc == myOrdersFeatureBloc) &&
+            (identical(other.myBookingsFeatureBloc, myBookingsFeatureBloc) ||
+                other.myBookingsFeatureBloc == myBookingsFeatureBloc));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, myOrdersFeatureBloc);
+  int get hashCode =>
+      Object.hash(runtimeType, myOrdersFeatureBloc, myBookingsFeatureBloc);
 
   /// Create a copy of HomeBlocData
   /// with the given fields replaced by the non-null parameter values.
@@ -132,11 +154,14 @@ class _$HomeBlocDataImpl implements _HomeBlocData {
 
 abstract class _HomeBlocData implements HomeBlocData {
   const factory _HomeBlocData(
-          {required final MyOrdersFeatureBloc myOrdersFeatureBloc}) =
+          {required final MyOrdersFeatureBloc myOrdersFeatureBloc,
+          required final MyBookingsFeatureBloc myBookingsFeatureBloc}) =
       _$HomeBlocDataImpl;
 
   @override
   MyOrdersFeatureBloc get myOrdersFeatureBloc;
+  @override
+  MyBookingsFeatureBloc get myBookingsFeatureBloc;
 
   /// Create a copy of HomeBlocData
   /// with the given fields replaced by the non-null parameter values.

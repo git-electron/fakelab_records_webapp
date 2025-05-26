@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
+import '../../../../../../features/my_bookings/domain/bloc/my_bookings_feature_bloc.dart';
 import '../../../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import '../../models/home_bloc_data/home_bloc_data.dart';
 
@@ -18,6 +19,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     this._userBloc,
     @factoryParam HomeBlocData data,
   )   : myOrdersFeatureBloc = data.myOrdersFeatureBloc,
+        myBookingsFeatureBloc = data.myBookingsFeatureBloc,
         super(const _HomeState()) {
     on<_UserStateChanged>(_onUserStateChanged);
     on<_MyOrdersFeatureStateChanged>(_onMyOrdersFeatureStateChanged);
@@ -36,6 +38,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   final UserBloc _userBloc;
   final MyOrdersFeatureBloc myOrdersFeatureBloc;
+  final MyBookingsFeatureBloc myBookingsFeatureBloc;
 
   late final StreamSubscription _userStateSubscription;
   late final StreamSubscription _myOrdersFeatureStateSubscription;

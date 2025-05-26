@@ -19,6 +19,10 @@ import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/router/router.dart';
 import '../../../../core/router/router.gr.dart';
 import '../../../../core/theme/theme_extensions.dart';
+import '../../../../features/my_bookings/domain/bloc/my_bookings_feature_bloc.dart';
+import '../../../../features/my_bookings/domain/models/my_bookings_feature_bloc_data/my_bookings_feature_bloc_data.dart';
+import '../../../../features/my_bookings/domain/models/type_policy/type_policy.dart';
+import '../../../../features/my_bookings/my_bookings_feature.dart';
 import '../../../../features/my_orders/domain/bloc/my_orders_feature_bloc.dart';
 import '../../../../features/my_orders/domain/models/limit_policy/limit_policy.dart';
 import '../../../../features/my_orders/domain/models/my_orders_feature_bloc_data/my_orders_feature_bloc_data.dart';
@@ -78,6 +82,7 @@ part 'widgets/loyalty/widgets/header.dart';
 part 'widgets/loyalty/widgets/more_button.dart';
 part 'widgets/loyalty/widgets/points.dart';
 part 'widgets/my_orders.dart';
+part 'widgets/my_upcoming_booking.dart';
 part 'widgets/promo_text.dart';
 
 @RoutePage()
@@ -94,6 +99,11 @@ class HomeScreen extends StatelessWidget {
               myOrdersFeatureBloc: $<MyOrdersFeatureBloc>(
                 param1: const MyOrdersFeatureBlocData(
                   limitPolicy: MyOrdersLimitPolicy.limited,
+                ),
+              ),
+              myBookingsFeatureBloc: $<MyBookingsFeatureBloc>(
+                param1: const MyBookingsFeatureBlocData(
+                  typePolicy: MyBookingsTypePolicy.single,
                 ),
               ),
             ),
@@ -137,6 +147,7 @@ class _Body extends StatelessWidget {
             _Header(),
             _AdminPanel(),
             Gap(20),
+            _MyUpcomingBooking(),
             _MyOrders(),
             _Loyalty(),
             Gap(40),
