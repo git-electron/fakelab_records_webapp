@@ -4,6 +4,8 @@ const Duration kAnimationDuration = Duration(milliseconds: 300);
 
 const Curve kAnimationCurve = Curves.easeInOutCubicEmphasized;
 
+const double kPrepaymentPercent = .25;
+
 const String baseUrl = 'https://fakelab-records-webapp.vercel.app';
 const String telegramChannelUrl = 'https://t.me/fakelab_records';
 const String telegramSupportUrl = 'https://t.me/fakelab_records_support';

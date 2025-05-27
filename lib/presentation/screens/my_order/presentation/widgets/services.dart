@@ -8,7 +8,11 @@ class _Services extends StatelessWidget {
     return BlocBuilder<MyOrderBloc, MyOrderState>(
       builder: (context, state) {
         final Order order = state.order!;
-        return CheckoutFeature.order(order, hint: _hint(order));
+        return CheckoutFeature.order(
+          order,
+          hint: _hint(order),
+          prepaymentPercent: _prepaymentPercent(order),
+        );
       },
     );
   }
@@ -16,5 +20,10 @@ class _Services extends StatelessWidget {
   CheckoutHint? _hint(Order order) {
     if (!order.costFrom) return null;
     return CheckoutHint.costFrom;
+  }
+
+  double? _prepaymentPercent(Order order) {
+    if (!order.isRequest) return null;
+    return kPrepaymentPercent;
   }
 }
