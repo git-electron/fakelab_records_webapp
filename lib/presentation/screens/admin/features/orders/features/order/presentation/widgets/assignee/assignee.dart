@@ -14,7 +14,7 @@ class _Assignee extends StatelessWidget {
           if (assignee == null) return const SizedBox();
 
           return Container(
-            width: double.infinity,
+            width: double.maxFinite,
             margin: const Pad(top: 10),
             padding: const Pad(all: 20),
             decoration: ShapeDecoration(

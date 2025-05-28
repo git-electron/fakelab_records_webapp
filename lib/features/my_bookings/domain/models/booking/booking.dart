@@ -37,7 +37,8 @@ class Booking with _$Booking {
 
   Booking._();
 
-  String get title => 'БРОНИРОВАНИЕ';
+  String get title => 'Бронирование';
+  String get titleForCard => title.toUpperCase();
   
   String get idShort => '#${id.substring(id.length - 5)}';
 

@@ -11,7 +11,7 @@ class _AdminPanel extends StatelessWidget {
         if (!shouldDisplayPanel) return const SizedBox();
 
         return Container(
-          width: double.infinity,
+          width: double.maxFinite,
           padding: const Pad(all: 20),
           margin: const Pad(horizontal: 20, top: 20),
           decoration: ShapeDecoration(

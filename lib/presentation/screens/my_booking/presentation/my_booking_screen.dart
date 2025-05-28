@@ -1,8 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:blur/blur.dart';
-import 'package:fakelab_records_webapp/features/my_bookings/domain/models/booking/booking.dart';
-import 'package:fakelab_records_webapp/features/status_history/status_history_feature.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +14,9 @@ import '../../../../core/gen/assets.gen.dart';
 import '../../../../core/theme/theme_extensions.dart';
 import '../../../../features/checkout/domain/models/checkout_hint.dart';
 import '../../../../features/checkout/presentation/checkout_feature.dart';
+import '../../../../features/my_bookings/domain/models/booking/booking.dart';
 import '../../../../features/my_bookings/domain/models/booking/booking_status.dart';
+import '../../../../features/status_history/status_history_feature.dart';
 import '../../../ui/avatar/avatar.dart';
 import '../../../ui/pages/error_page.dart';
 import '../../../ui/pages/loading_page.dart';
@@ -34,6 +34,7 @@ part 'widgets/header/header.dart';
 part 'widgets/header/widgets/id.dart';
 part 'widgets/header/widgets/status.dart';
 part 'widgets/header/widgets/title.dart';
+part 'widgets/info/info.dart';
 part 'widgets/services.dart';
 part 'widgets/status_history.dart';
 
@@ -84,6 +85,8 @@ class _Body extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Header(),
+            Gap(10),
+            _Info(),
             _Assignee(),
             Gap(10),
             _Services(),

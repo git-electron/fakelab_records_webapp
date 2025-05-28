@@ -19,7 +19,7 @@ class _TitleSmall extends StatelessWidget {
           ),
         ),
         Text(
-          booking.title,
+          booking.titleForCard,
           style: context.styles.title3.copyWith(
             fontSize: 18,
             color: context.colors.body,

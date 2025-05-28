@@ -8,7 +8,7 @@ class _Id extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: double.maxFinite,
       decoration: ShapeDecoration(
         color: context.colors.card,
         shape: BorderRadius.circular(20).smoothShape(),

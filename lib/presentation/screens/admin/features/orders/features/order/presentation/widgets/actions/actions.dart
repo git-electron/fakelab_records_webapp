@@ -9,7 +9,7 @@ class _Actions extends StatelessWidget {
     final bool isMobile = size.width < 1000;
 
     return Container(
-      width: double.infinity,
+      width: double.maxFinite,
       decoration: ShapeDecoration(
         color: context.colors.card,
         shape: BorderRadius.circular(20).smoothShape(),

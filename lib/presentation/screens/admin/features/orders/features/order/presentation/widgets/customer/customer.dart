@@ -11,7 +11,7 @@ class _Customer extends StatelessWidget {
           final Order order = state.order!;
 
           return Container(
-            width: double.infinity,
+            width: double.maxFinite,
             decoration: ShapeDecoration(
               color: context.colors.card,
               shape: BorderRadius.circular(20).smoothShape(),

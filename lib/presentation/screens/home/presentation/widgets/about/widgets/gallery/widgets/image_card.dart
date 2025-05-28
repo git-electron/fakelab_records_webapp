@@ -36,8 +36,8 @@ class _ImageCard extends StatelessWidget {
                   )
                 : const SizedBox(),
             child: SizedBox(
-              height: double.infinity,
-              width: double.infinity,
+              height: double.maxFinite,
+              width: double.maxFinite,
               child: image.image(fit: BoxFit.cover),
             ),
           ),
