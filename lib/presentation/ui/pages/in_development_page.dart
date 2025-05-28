@@ -30,7 +30,7 @@ class InDevelopmentPage extends StatelessWidget {
             style: context.styles.title3.copyWith(fontSize: 20),
           ),
           const Gap(10),
-          Text('In development...', style: context.styles.footer1),
+          Text('В разработке...', style: context.styles.footer1),
         ],
       ),
     );
