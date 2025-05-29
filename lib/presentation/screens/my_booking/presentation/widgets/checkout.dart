@@ -1,7 +1,7 @@
 part of '../my_booking_screen.dart';
 
-class _Services extends StatelessWidget {
-  const _Services();
+class _Checkout extends StatelessWidget {
+  const _Checkout();
 
   @override
   Widget build(BuildContext context) {

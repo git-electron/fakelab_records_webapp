@@ -6,7 +6,7 @@ const Curve kAnimationCurve = Curves.easeInOutCubicEmphasized;
 
 const double kPrepaymentPercent = .25;
 
-const String baseUrl = 'https://fakelab-records-webapp.vercel.app';
+const String baseUrl = 'https://fakelab-records-webapp.vercel.app'; //TODO: rename all to start with k
 const String telegramChannelUrl = 'https://t.me/fakelab_records';
 const String telegramSupportUrl = 'https://t.me/fakelab_records_support';
 const String vkPublicUrl = 'https://vk.com/fakelab.records';

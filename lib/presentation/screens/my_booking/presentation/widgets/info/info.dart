@@ -5,6 +5,22 @@ class _Info extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      width: double.maxFinite,
+      padding: const Pad(all: 20),
+      decoration: ShapeDecoration(
+        color: context.colors.card,
+        shape: BorderRadius.circular(20).smoothShape(),
+      ),
+      child: Column(
+        spacing: 10,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Информация', style: context.styles.body1),
+          const _Properties(),
+          const _Buttons(),
+        ],
+      ),
+    );
   }
 }

@@ -1,10 +1,13 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:blur/blur.dart';
+import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
+import 'package:fakelab_records_webapp/presentation/ui/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/di/injector.dart';
@@ -35,7 +38,9 @@ part 'widgets/header/widgets/id.dart';
 part 'widgets/header/widgets/status.dart';
 part 'widgets/header/widgets/title.dart';
 part 'widgets/info/info.dart';
-part 'widgets/services.dart';
+part 'widgets/info/widgets/properties.dart';
+part 'widgets/info/widgets/buttons.dart';
+part 'widgets/checkout.dart';
 part 'widgets/status_history.dart';
 
 @RoutePage()
@@ -89,7 +94,7 @@ class _Body extends StatelessWidget {
             _Info(),
             _Assignee(),
             Gap(10),
-            _Services(),
+            _Checkout(),
             Gap(10),
             _StatusHistory(),
           ],
