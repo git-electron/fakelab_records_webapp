@@ -1,7 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:fakelab_records_webapp/core/constants/constants.dart';
 import 'package:fakelab_records_webapp/core/di/injector.dart';
 import 'package:fakelab_records_webapp/core/extensions/datetime_extensions.dart';
-import 'package:fakelab_records_webapp/core/utils/downloader/downloader.dart';
+import 'package:file_saver/file_saver.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../features/my_bookings/domain/models/booking/booking.dart';
@@ -14,8 +16,7 @@ class CalendarUtils {
     final String dateEnd = _getDateString(booking.endTime);
     final String title = booking.title;
     final String description = 'Описание ${booking.id}';
-    final String alarmDescription =
-        'Запись ${booking.idShort} на студии Fakelab Records';
+    const String alarmDescription = 'Запись на студии Fakelab Records';
 
     return _getIcsFileString(
       bookingId: bookingId,
@@ -23,7 +24,7 @@ class CalendarUtils {
       dateEnd: dateEnd,
       title: title,
       description: description,
-      address: businessStreetAddress,
+      address: businessCalendarAddress,
       alarmDescription: alarmDescription,
     );
   }
@@ -68,6 +69,10 @@ END:VCALENDAR
 }
 
 extension DownloadFileString on String {
-  download(String fileName) =>
-      $<Downloader>().donwload(this, fileName: '$fileName.ics');
+  Future<String> download(String fileName) async {
+    return await $<FileSaver>().saveFile(
+      name: '$fileName.ics',
+      bytes: Uint8List.fromList(codeUnits),
+    );
+  }
 }

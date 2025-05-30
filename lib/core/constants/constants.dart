@@ -20,6 +20,7 @@ const String businessTIN = '784803454288';
 const String businessZipCode = '195009';
 const String businessCity = 'Санкт-Петербург';
 const String businessStreetAddress = 'ул. Комсомола, д.2, офис 14';
+const String businessCalendarAddress = 'улица Комсомола, 2';
 const String businessAddress =
     '$businessZipCode, $businessCity, $businessStreetAddress';
 
