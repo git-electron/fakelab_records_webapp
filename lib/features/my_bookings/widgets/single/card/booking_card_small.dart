@@ -8,7 +8,7 @@ class _BookingCardSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tappable(
-      onTap: () {},
+      onTap: () => context.pushRoute(MyBookingRoute(bookingId: booking.id)),
       child: Container(
         width: double.maxFinite,
         padding: const Pad(all: 15),

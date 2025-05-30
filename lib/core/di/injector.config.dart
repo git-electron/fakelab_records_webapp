@@ -21,8 +21,12 @@ import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart
 import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart'
     as _i435;
 import 'package:fakelab_records_webapp/core/router/router.dart' as _i352;
+import 'package:fakelab_records_webapp/core/utils/calendar_utils/calendar_utils.dart'
+    as _i479;
 import 'package:fakelab_records_webapp/core/utils/debouncer/debouncer.dart'
     as _i333;
+import 'package:fakelab_records_webapp/core/utils/downloader/downloader.dart'
+    as _i47;
 import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart'
     as _i610;
 import 'package:fakelab_records_webapp/features/my_bookings/data/client/bookings_client.dart'
@@ -125,6 +129,12 @@ import 'package:fakelab_records_webapp/presentation/screens/images_viewer/domain
     as _i1021;
 import 'package:fakelab_records_webapp/presentation/screens/images_viewer/domain/models/images_viewer_bloc_data.dart'
     as _i465;
+import 'package:fakelab_records_webapp/presentation/screens/my_booking/data/client/my_booking_client.dart'
+    as _i167;
+import 'package:fakelab_records_webapp/presentation/screens/my_booking/domain/bloc/my_booking_bloc.dart'
+    as _i850;
+import 'package:fakelab_records_webapp/presentation/screens/my_booking/domain/models/my_booking_bloc_data.dart'
+    as _i1026;
 import 'package:fakelab_records_webapp/presentation/screens/my_order/data/client/my_order_client.dart'
     as _i129;
 import 'package:fakelab_records_webapp/presentation/screens/my_order/domain/bloc/my_order_bloc.dart'
@@ -172,6 +182,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
+    gh.factory<_i479.CalendarUtils>(() => _i479.CalendarUtils());
+    gh.factory<_i47.Downloader>(() => _i47.Downloader());
     gh.factory<_i415.AdminClientsClient>(() => _i415.AdminClientsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
@@ -231,6 +243,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
+    gh.factory<_i167.MyBookingClient>(() => _i167.MyBookingClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
     gh.singleton<_i133.TelegramDataBloc>(
         () => _i133.TelegramDataBloc(gh<_i435.TelegramService>()));
     gh.factory<_i763.BookingsBloc>(() => _i763.BookingsBloc(
@@ -266,6 +282,15 @@ extension GetItInjectableX on _i174.GetIt {
     ) =>
         _i843.MyOrderBloc(
           gh<_i129.MyOrderClient>(),
+          gh<_i435.TelegramService>(),
+          data,
+        ));
+    gh.factoryParam<_i850.MyBookingBloc, _i1026.MyBookingBlocData, dynamic>((
+      data,
+      _,
+    ) =>
+        _i850.MyBookingBloc(
+          gh<_i167.MyBookingClient>(),
           gh<_i435.TelegramService>(),
           data,
         ));

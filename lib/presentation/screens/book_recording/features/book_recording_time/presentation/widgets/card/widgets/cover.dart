@@ -10,8 +10,8 @@ class _Cover extends StatelessWidget {
     final double dimension = size.height - (_Card.padding * 2);
 
     return Container(
-      height: dimension.clamp(0, double.infinity),
-      width: dimension.clamp(0, double.infinity),
+      height: dimension.clamp(0, double.maxFinite),
+      width: dimension.clamp(0, double.maxFinite),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
         shape: BorderRadius.circular(10).smoothShape(),

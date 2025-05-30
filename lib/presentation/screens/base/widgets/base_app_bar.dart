@@ -119,8 +119,8 @@ class _Mobile extends StatelessWidget {
                     ),
                   ),
                   child: const SizedBox(
-                    height: double.infinity,
-                    width: double.infinity,
+                    height: double.maxFinite,
+                    width: double.maxFinite,
                   ),
                 ),
               );
@@ -143,10 +143,10 @@ class _Mobile extends StatelessWidget {
 
   double _expandedHeightByInsets(double inset, double contentInset) =>
       (_toolbarHeightExpanded + inset + contentInset)
-          .clamp(_toolbarHeightExpanded, double.infinity);
+          .clamp(_toolbarHeightExpanded, double.maxFinite);
 
   double _collapsedHeightByInsets(double inset, double contentInset) =>
-      (inset + contentInset).clamp(_toolbarHeightExpanded, double.infinity);
+      (inset + contentInset).clamp(_toolbarHeightExpanded, double.maxFinite);
 
   double _calculateExpandRatio(
     BoxConstraints constraints, {
@@ -218,7 +218,7 @@ class _Desktop extends StatelessWidget {
             ),
             child: const SizedBox(
               height: _toolbarHeightExpanded,
-              width: double.infinity,
+              width: double.maxFinite,
             ),
           );
         },

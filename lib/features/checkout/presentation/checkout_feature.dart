@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:fakelab_records_webapp/core/extensions/border_radius_extensions.dart';
+import 'package:fakelab_records_webapp/core/extensions/duration_extensions.dart';
 import 'package:fakelab_records_webapp/core/extensions/num_extensions.dart';
 import 'package:fakelab_records_webapp/core/gen/assets.gen.dart';
 import 'package:fakelab_records_webapp/core/theme/theme_extensions.dart';
@@ -8,6 +9,8 @@ import 'package:fakelab_records_webapp/features/checkout/domain/models/checkout_
 import 'package:fakelab_records_webapp/features/my_orders/domain/models/order/order.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import '../../my_bookings/domain/models/booking/booking.dart';
 
 part 'widgets/checkout_item.dart';
 part 'widgets/checkout_hint.dart';
@@ -19,18 +22,6 @@ class CheckoutFeature extends StatelessWidget {
     this.prepaymentPercent,
     super.key,
   });
-
-  factory CheckoutFeature.singleItem(
-    CheckoutItem item, {
-    CheckoutHint? hint,
-    double? prepaymentPercent,
-  }) {
-    return CheckoutFeature(
-      items: [item],
-      hint: hint,
-      prepaymentPercent: prepaymentPercent,
-    );
-  }
 
   factory CheckoutFeature.order(
     Order order, {
@@ -47,6 +38,37 @@ class CheckoutFeature extends StatelessWidget {
 
     return CheckoutFeature(
       items: items,
+      hint: hint,
+      prepaymentPercent: prepaymentPercent,
+    );
+  }
+
+  factory CheckoutFeature.booking(
+    Booking booking, {
+    CheckoutHint? hint,
+    double? prepaymentPercent,
+  }) {
+    final String selectedDurationString =
+        '${booking.duration.toHHplural(withMinutes: false)} записи на студии';
+    final CheckoutItem item = CheckoutItem(
+      title: selectedDurationString,
+      totalCost: booking.totalCost,
+    );
+
+    return CheckoutFeature.singleItem(
+      item,
+      hint: hint,
+      prepaymentPercent: prepaymentPercent,
+    );
+  }
+
+  factory CheckoutFeature.singleItem(
+    CheckoutItem item, {
+    CheckoutHint? hint,
+    double? prepaymentPercent,
+  }) {
+    return CheckoutFeature(
+      items: [item],
       hint: hint,
       prepaymentPercent: prepaymentPercent,
     );

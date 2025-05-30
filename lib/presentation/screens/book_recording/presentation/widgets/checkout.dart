@@ -12,7 +12,7 @@ class _Checkout extends StatelessWidget {
           child: CheckoutFeature.singleItem(
             state.checkoutItem,
             hint: CheckoutHint.prepayment,
-            prepaymentPercent: .25,
+            prepaymentPercent: kPrepaymentPercent,
           ),
         );
       },

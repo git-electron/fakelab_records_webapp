@@ -25,8 +25,18 @@ extension DateTimeExtensions on DateTime {
     return '$day ${_textMonth(month, isShort: isShort)} $year';
   }
 
-  String toHHmm({bool shoudApplyPaddingToHours = false}) {
-    return '${shoudApplyPaddingToHours ? _pad(hour) : hour}:${_pad(minute)}';
+  String toHHmm({
+    String separator = ':',
+    bool shouldApplyPaddingToHours = false,
+  }) {
+    return '${shouldApplyPaddingToHours ? _pad(hour) : hour}$separator${_pad(minute)}';
+  }
+
+  String toHHmmSS({
+    String separator = ':',
+    bool shouldApplyPaddingToHours = false,
+  }) {
+    return '${shouldApplyPaddingToHours ? _pad(hour) : hour}$separator${_pad(minute)}$separator${_pad(second)}';
   }
 
   String toYmmmm() => DateFormat.MMMM('ru').format(this);

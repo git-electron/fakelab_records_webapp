@@ -40,7 +40,7 @@ class _Mobile extends StatelessWidget {
                   blurColor: context.colors.background,
                   alignment: Alignment.bottomCenter,
                   overlay: Container(
-                    width: double.infinity,
+                    width: double.maxFinite,
                     alignment: Alignment.center,
                     height: meta.contentSafeAreaInset.top,
                     child: Text(
@@ -49,8 +49,8 @@ class _Mobile extends StatelessWidget {
                     ),
                   ),
                   child: const SizedBox(
-                    height: double.infinity,
-                    width: double.infinity,
+                    height: double.maxFinite,
+                    width: double.maxFinite,
                   ),
                 ),
               ),

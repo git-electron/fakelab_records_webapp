@@ -23,7 +23,7 @@ class _Info extends StatelessWidget {
               withWords: true,
               isShort: false,
             ),
-            order.dateCreated.toHHmm(shoudApplyPaddingToHours: true),
+            order.dateCreated.toHHmm(shouldApplyPaddingToHours: true),
           ),
           style: context.styles.footer2.copyWith(
             color: context.colors.subtitle,

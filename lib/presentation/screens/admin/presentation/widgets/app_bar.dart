@@ -33,7 +33,7 @@ class _Mobile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  width: double.infinity,
+                  width: double.maxFinite,
                   alignment: Alignment.center,
                   height: meta.contentSafeAreaInset.top,
                   child: const Logo(
@@ -45,8 +45,8 @@ class _Mobile extends StatelessWidget {
               ],
             ),
             child: const SizedBox(
-              height: double.infinity,
-              width: double.infinity,
+              height: double.maxFinite,
+              width: double.maxFinite,
             ),
           ),
         );
@@ -76,7 +76,7 @@ class _Desktop extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  width: double.infinity,
+                  width: double.maxFinite,
                   height: meta.totalSafeAreaInset.top,
                   padding: Pad(left: meta.totalSafeAreaInset.top + 10),
                   alignment: Alignment.centerLeft,
@@ -90,7 +90,7 @@ class _Desktop extends StatelessWidget {
             ),
             child: SizedBox(
               height: toolbarHeight,
-              width: double.infinity,
+              width: double.maxFinite,
             ),
           ),
         );

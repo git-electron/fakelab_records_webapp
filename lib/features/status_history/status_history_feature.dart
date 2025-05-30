@@ -44,7 +44,7 @@ class StatusHistoryFeature extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: double.maxFinite,
       padding: const Pad(all: 20),
       decoration: ShapeDecoration(
         color: context.colors.card,

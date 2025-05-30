@@ -76,6 +76,7 @@ Args: ${resolver.route.args}''');
         AutoRoute(page: MyOrderRoute.page, path: '/orders/:id'),
         AutoRoute(page: BookRecordingRoute.page, path: '/book'),
         AutoRoute(page: ImagesViewerRoute.page, path: '/images'),
+        AutoRoute(page: MyBookingRoute.page, path: '/bookings/:id'),
         AutoRoute(page: UnsupportedRoute.page, path: '/unsupported'),
         if (isMobile) AutoRoute(page: AdminRoute.page, path: '/admin'),
         AutoRoute(page: BookRecordingDateRoute.page, path: '/book/date'),
