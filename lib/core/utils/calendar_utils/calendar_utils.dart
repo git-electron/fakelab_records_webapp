@@ -71,7 +71,10 @@ END:VCALENDAR
 extension DownloadFileString on String {
   Future<String> download(String fileName) async {
     return await $<FileSaver>().saveFile(
-      name: '$fileName.ics',
+      name: fileName,
+      ext: 'ics',
+      mimeType: MimeType.custom,
+      customMimeType: 'text/calendar',
       bytes: Uint8List.fromList(codeUnits),
     );
   }
