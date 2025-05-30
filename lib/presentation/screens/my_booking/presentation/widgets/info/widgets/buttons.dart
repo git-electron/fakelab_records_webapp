@@ -15,9 +15,13 @@ class _Buttons extends StatelessWidget {
             return AppButton.primary(
               text: 'Добавить в календарь',
               icon: Assets.icons.calendar.dark,
-              onTap: () => CalendarUtils()
-                  .createIcsFileFromBooking(booking)
-                  .download(booking.icsFileName),
+              onTap: () async {
+                print('schedule download');
+                final String result = await CalendarUtils()
+                    .createIcsFileFromBooking(booking)
+                    .download(booking.icsFileName);
+                print(result);
+              },
             );
           },
         ),

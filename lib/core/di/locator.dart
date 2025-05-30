@@ -1,5 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:cloudinary_url_gen/cloudinary.dart';
+import 'package:file_saver/file_saver.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
@@ -13,6 +14,8 @@ abstract class Locator {
   FirebaseDatabase get database => FirebaseDatabase.instance;
 
   DatabaseReference get ref => database.ref();
+
+  FileSaver get fileSaver => FileSaver.instance;
 
   @preResolve
   Future<Cloudinary> get cloudinary async {

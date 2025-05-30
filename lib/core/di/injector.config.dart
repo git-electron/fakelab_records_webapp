@@ -147,6 +147,7 @@ import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/blo
     as _i454;
 import 'package:fakelab_records_webapp/presentation/screens/my_orders/domain/models/my_orders_bloc_data.dart'
     as _i933;
+import 'package:file_saver/file_saver.dart' as _i689;
 import 'package:firebase_database/firebase_database.dart' as _i345;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -167,13 +168,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i842.AssetsAudioPlayer>(() => locator.assetsAudioPlayer);
     gh.factory<_i345.FirebaseDatabase>(() => locator.database);
     gh.factory<_i345.DatabaseReference>(() => locator.ref);
+    gh.factory<_i689.FileSaver>(() => locator.fileSaver);
     await gh.factoryAsync<_i751.Cloudinary>(
       () => locator.cloudinary,
       preResolve: true,
     );
     gh.factory<_i974.Logger>(() => locator.logger);
     gh.factory<_i435.TelegramService>(() => _i435.TelegramService());
+    gh.factory<_i479.CalendarUtils>(() => _i479.CalendarUtils());
     gh.factory<_i333.Debouncer>(() => _i333.Debouncer());
+    gh.factory<_i47.Downloader>(() => _i47.Downloader());
     gh.factory<_i610.IdGenerator>(() => _i610.IdGenerator());
     gh.factory<_i689.AdminClientsFiltersBloc>(
         () => _i689.AdminClientsFiltersBloc());
@@ -182,8 +186,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
-    gh.factory<_i479.CalendarUtils>(() => _i479.CalendarUtils());
-    gh.factory<_i47.Downloader>(() => _i47.Downloader());
+    gh.factory<_i857.BookingsClient>(() => _i857.BookingsClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
     gh.factory<_i415.AdminClientsClient>(() => _i415.AdminClientsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
@@ -227,23 +233,19 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i562.AdminPanelClient>(() => _i562.AdminPanelClient(
-          gh<_i345.DatabaseReference>(),
-          gh<_i974.Logger>(),
-        ));
-    gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
-          gh<_i345.DatabaseReference>(),
-          gh<_i974.Logger>(),
-        ));
     gh.factory<_i761.BookRecordingClient>(() => _i761.BookRecordingClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
-    gh.factory<_i857.BookingsClient>(() => _i857.BookingsClient(
+    gh.factory<_i562.AdminPanelClient>(() => _i562.AdminPanelClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
     gh.factory<_i167.MyBookingClient>(() => _i167.MyBookingClient(
+          gh<_i345.DatabaseReference>(),
+          gh<_i974.Logger>(),
+        ));
+    gh.factory<_i129.MyOrderClient>(() => _i129.MyOrderClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),
         ));
