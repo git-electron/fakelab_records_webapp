@@ -14,6 +14,7 @@ import '../../../../../../core/domain/bloc/user_bloc/user_bloc.dart';
 import '../../../../../../core/domain/models/result/result.dart';
 import '../../../../../../core/domain/models/user/user.dart';
 import '../../../../../../core/router/router.dart';
+import '../../../../../../core/router/router.gr.dart';
 import '../../../../../../features/checkout/domain/models/checkout_item.dart';
 import '../../models/book_recording_bloc_data/book_recording_bloc_data.dart';
 import '../../../../../../features/my_bookings/domain/models/booking/booking.dart';
@@ -116,7 +117,7 @@ class BookRecordingBloc extends Bloc<BookRecordingEvent, BookRecordingState> {
           await _userBloc.refreshUser();
           _router.popUntilRoot();
           await Future.delayed(const Duration());
-          // TODO: _router.push(MyBookingRoute(bookingId: booking.id));
+          _router.push(MyBookingRoute(bookingId: booking.id));
         },
         error: (message) => emit(state.copyWith(errorMessage: message)),
       );

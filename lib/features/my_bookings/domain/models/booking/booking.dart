@@ -39,7 +39,7 @@ class Booking with _$Booking {
 
   String get title => 'Бронирование';
   String get titleForCard => title.toUpperCase();
-  
+
   String get idShort => '#${id.substring(id.length - 5)}';
 
   DateTime get startTime => date;
@@ -55,4 +55,6 @@ class Booking with _$Booking {
 
   bool isCurrentStatusHistoryItem(BookingStatusHistoryItem item) =>
       statusHistory.last == item;
+
+  String get icsFileName => '$title $idShort';
 }

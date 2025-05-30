@@ -8,10 +8,18 @@ class _Buttons extends StatelessWidget {
     return Column(
       spacing: 10,
       children: [
-        AppButton.primary(
-          text: 'Добавить в календарь',
-          icon: Assets.icons.calendar.dark,
-          onTap: () {},
+        BlocBuilder<MyBookingBloc, MyBookingState>(
+          builder: (context, state) {
+            final Booking booking = state.booking!;
+
+            return AppButton.primary(
+              text: 'Добавить в календарь',
+              icon: Assets.icons.calendar.dark,
+              onTap: () => CalendarUtils()
+                  .createIcsFileFromBooking(booking)
+                  .download(booking.icsFileName),
+            );
+          },
         ),
         AppButton.secondary(
           text: 'Построить маршрут',

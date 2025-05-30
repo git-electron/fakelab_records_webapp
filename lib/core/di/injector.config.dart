@@ -21,8 +21,12 @@ import 'package:fakelab_records_webapp/core/domain/bloc/user_bloc/user_bloc.dart
 import 'package:fakelab_records_webapp/core/domain/service/telegram_service.dart'
     as _i435;
 import 'package:fakelab_records_webapp/core/router/router.dart' as _i352;
+import 'package:fakelab_records_webapp/core/utils/calendar_utils/calendar_utils.dart'
+    as _i479;
 import 'package:fakelab_records_webapp/core/utils/debouncer/debouncer.dart'
     as _i333;
+import 'package:fakelab_records_webapp/core/utils/downloader/downloader.dart'
+    as _i47;
 import 'package:fakelab_records_webapp/core/utils/id_generator/id_generator.dart'
     as _i610;
 import 'package:fakelab_records_webapp/features/my_bookings/data/client/bookings_client.dart'
@@ -178,6 +182,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.AdminStaffFiltersBloc>(
         () => _i565.AdminStaffFiltersBloc());
     gh.factory<_i454.MyOrdersFiltersBloc>(() => _i454.MyOrdersFiltersBloc());
+    gh.factory<_i479.CalendarUtils>(() => _i479.CalendarUtils());
+    gh.factory<_i47.Downloader>(() => _i47.Downloader());
     gh.factory<_i415.AdminClientsClient>(() => _i415.AdminClientsClient(
           gh<_i345.DatabaseReference>(),
           gh<_i974.Logger>(),

@@ -56,7 +56,7 @@ class _StatusHistoryItem extends StatelessWidget {
       withWords: true,
       isShort: false,
     );
-    final String time = dateChanged.toHHmm(shoudApplyPaddingToHours: true);
+    final String time = dateChanged.toHHmm(shouldApplyPaddingToHours: true);
 
     return '$date в $time';
   }
